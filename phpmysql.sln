@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "phpmysql", ".", "{A11DB80C-BECE-4E74-8B0B-2854E9888912}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/phpmysql"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\xampp\htdocs\phpmysql\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\phpmysql\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/phpmysql"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\xampp\htdocs\phpmysql\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\phpmysql\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57724"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A11DB80C-BECE-4E74-8B0B-2854E9888912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11DB80C-BECE-4E74-8B0B-2854E9888912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
