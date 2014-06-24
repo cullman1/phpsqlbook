@@ -5,7 +5,7 @@ ini_set('display_errors', TRUE);
 
 function createTree(&$list, $parent){
     $tree = array();
-    foreach ($parent as $k=>$l){
+    foreach ((array)$parent as $k=>$l){
         if(isset($list[$l['comments_id']]))
         {
             $l['children'] = createTree($list, $list[$l['comments_id']]);

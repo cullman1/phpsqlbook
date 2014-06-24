@@ -1,27 +1,47 @@
-<?php
-$define( 'INCLUDE_DIR', dirname( __FILE__ ) . '/inc/' );
+<html>
+        <head>
+                <!-- Flux Header Custom Code Start--><!-- Flux Header Custom Code End-->
+                <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+                <title>New Site</title>
+        </head>
 
-$rules = array( 
-    'home'   => "mainsite"    // Rewriting rule1 
-    'article'   => "article"    // Rewriting rule2 
-);
+        <style>
 
-$uri = rtrim( dirname($_SERVER["SCRIPT_NAME"]), '/' );
-$uri = '/' . trim( str_replace( $uri, '', $_SERVER['REQUEST_URI'] ), '/' );
-$uri = urldecode( $uri );
+                        body{
+                                font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+                                background: #d2d2d2 url(http://www.websitesettings.com/resources/images/tile.png);
+                                font-size: 12px;
+                        }
 
-foreach ( $rules as $action => $rule ) {
-    if ( preg_match( '~^'.$rule.'$~i', $uri, $params ) ) {
-        /* now you know the action and parameters so you can 
-         * include appropriate template file ( or proceed in some other way )
-         */
-        include( INCLUDE_DIR . $action . '.php' );
+                        div{
+                                background-color: white;
+                                width: 400px;
+                                padding: 30px;
+                                border: 3px solid #7e7e7e;
+                                color: #757575;
+                                margin: 0 auto;
+                                display: block;
+                                margin-top: 100px;
+                        }
 
-        // exit to avoid the 404 message 
-        exit();
-    }
-}
+                        h2 {
+                                color: #4d9a49;
+                                margin: 0px;
+                                margin-bottom: 10px;
+                        }
 
-// nothing is found so handle the 404 error
-include( INCLUDE_DIR . '404.php' );
-?>
+        </style>
+
+
+
+        <body>
+
+<div class="message">
+        <h2>Your website is ready.</h2>
+    <a href="admin">Go To Admin</a><br/><br/>
+    <a href="pages/mainsite.php">Go To Main Site</a>
+</div>
+
+        </body>
+
+</html>

@@ -9,6 +9,13 @@
     <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
     <AssemblyName>phpsqlbook</AssemblyName>
     <IISProjectUrl>http://localhost:43997/</IISProjectUrl>
+    <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+    <Server>Custom</Server>
+    <CustomServerUrl>http://localhost/phpsqlbook/</CustomServerUrl>
+    <PublishEvent>None</PublishEvent>
+    <PHPDevAutoPort>True</PHPDevAutoPort>
+    <PHPDevPort>3037</PHPDevPort>
+    <PHPDevHostName>localhost</PHPDevHostName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <IncludeDebugInformation>true</IncludeDebugInformation>
@@ -73,7 +80,6 @@
     <Compile Include="includes\table.php" />
     <Compile Include="includes\table2.php" />
     <Compile Include="includes\upload.php" />
-    <Compile Include="index.php" />
     <Compile Include="login\loginuser.php" />
     <Compile Include="login\logon.php" />
     <Compile Include="login\logonadmin.php" />
@@ -120,7 +126,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="index.html" />
+    <Content Include="index.php" />
     <Content Include="index.php.old" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap-wysiwyg.js" />
