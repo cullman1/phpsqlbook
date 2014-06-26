@@ -24,7 +24,7 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="admin\AddArticle.php" />
+    <Compile Include="admin\AddArticle2.php" />
     <Compile Include="admin\addcategory.php" />
     <Compile Include="admin\adddata.php" />
     <Compile Include="admin\adduser.php" />
@@ -109,6 +109,7 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
+    <Content Include="css\admin.css" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap-theme.min.css" />

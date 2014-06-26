@@ -21,6 +21,7 @@
   <script src="../js/jquery.hotkeys.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
   <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/admin.css" rel="stylesheet">
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 
 <!--<link rel="stylesheet" type="text/css" href="../css/bootstrap-wysihtml5.css" />

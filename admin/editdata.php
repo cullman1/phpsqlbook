@@ -58,13 +58,13 @@ else
 		else
 		{
 			/* Redirect to original page */
-    		header('Location:../admin/EditArticle.php?submitted=true&article_id='.$_REQUEST["article_id"]);
+    		header('Location:../admin/EditArticle2.php?submitted=true&article_id='.$_REQUEST["article_id"]);
 		}
 	}
 	else
 	{
 		/* Redirect to original page */
-		header('Location:../admin/EditArticle.php?submitted=true&article_id='.$_REQUEST["article_id"]);
+		header('Location:../admin/EditArticle2.php?submitted=true&article_id='.$_REQUEST["article_id"]);
 	}
 	
 }

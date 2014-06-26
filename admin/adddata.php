@@ -78,13 +78,13 @@ else
 		else
 		{
 			/* Redirect to original page */
-			header('Location:../admin/AddArticle.php?submitted=true');
+			header('Location:../admin/AddArticle2.php?submitted=true');
 		}
 	}
 	else
 	{
 		/* Redirect to original page */
-		header('Location:../admin/AddArticle.php?submitted=true');
+		header('Location:../admin/AddArticle2.php?submitted=true');
 	}
 }
 ?>

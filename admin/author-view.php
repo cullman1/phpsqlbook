@@ -68,7 +68,7 @@ $catName = $row3["user_name"];
           if (($count>= $startPage) && ($count <= $endPage))
           { ?>
           <tr>
-            <td><a href="EditArticle.php?article_id=<?php echo $row['article_id'];?>"><?php echo $row['title']; ?></a></td>
+            <td><a href="EditArticle2.php?article_id=<?php echo $row['article_id'];?>"><?php echo $row['title']; ?></a></td>
             <td><a href="<?php if ($row['role_id']==1) { echo 'admins.php';} else { echo 'users.php';} ?>"><?php echo $row['user_name']; ?></a></td>
             <td>Published: <?php echo $row['date_posted']; ?></td>
             <td>

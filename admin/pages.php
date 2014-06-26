@@ -30,7 +30,7 @@ $recordsVisible =$totalRecords;
 ?>
 <?php include '../includes/header.php' ?>
 
-      <button type="button" class="btn btn-default" onclick="window.location.href='AddArticle.php';">Add article</button>
+      <button type="button" class="btn btn-default" onclick="window.location.href='AddArticle2.php';">Add article</button>
 
       <!-- table of articles -->
       <table class="table table-hover">
@@ -61,7 +61,7 @@ $recordsVisible =$totalRecords;
           if (($count>= $startPage) && ($count <= $endPage))
           { ?>
           <tr>
-            <td><a href="EditArticle.php?article_id=<?php echo $row['article_id'];?>"><?php echo $row['title']; ?></a></td>
+            <td><a href="EditArticle2.php?article_id=<?php echo $row['article_id'];?>"><?php echo $row['title']; ?></a></td>
             <td><a href="category-view.php?categoryid=<?php echo $row['category_id'];?>"><?php echo $row['category_name']; ?></a></td>
             <td><a href="author-view.php?userid=<?php echo $row['user_id'];?>"><?php echo $row['user_name']; ?></a></td>
             <td><?php echo $row['date_posted']; ?></td>
