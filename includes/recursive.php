@@ -8,6 +8,6 @@
       <div id="indentbox" style="padding-left:50px;">
         <?php include("../includes/replybox2.php"); ?>
       </div>
-<?  }
+<php?  }
   }
  ?>

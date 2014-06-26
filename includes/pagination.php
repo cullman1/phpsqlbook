@@ -15,7 +15,7 @@
          if ($currentPage == 1)
           { ?>
             <li class="disabled"><a href="#">&laquo;</a></li>
-       <? } 
+       <?php } 
         else 
           {
         ?>
