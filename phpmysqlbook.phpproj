@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>phpmysqlbook</Name>
+    <ProjectGuid>4e457140-7a98-4291-87bb-73264d0b73d0</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>phpmysqlbook</RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>phpmysqlbook</AssemblyName>
+    <IISProjectUrl>http://localhost:46028/</IISProjectUrl>
+    <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+    <Server>PHPDev</Server>
+    <PublishEvent>None</PublishEvent>
+    <PHPDevAutoPort>True</PHPDevAutoPort>
+    <PHPDevPort>55006</PHPDevPort>
+    <PHPDevHostName>localhost</PHPDevHostName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="admin\" />
+    <Folder Include="assets\" />
+    <Folder Include="css\" />
+    <Folder Include="fonts\" />
+    <Folder Include="includes\" />
+    <Folder Include="js\" />
+    <Folder Include="login\" />
+    <Folder Include="pages\" />
+    <Folder Include="uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="admin\AddArticle.php" />
+    <Compile Include="admin\AddArticle2.php" />
+    <Compile Include="admin\addcategory.php" />
+    <Compile Include="admin\adddata.php" />
+    <Compile Include="admin\adduser.php" />
+    <Compile Include="admin\admin.php" />
+    <Compile Include="admin\articleviewer.php" />
+    <Compile Include="admin\authenticate.php" />
+    <Compile Include="admin\author-view.php" />
+    <Compile Include="admin\categories.php" />
+    <Compile Include="admin\category-view.php" />
+    <Compile Include="admin\comments.php" />
+    <Compile Include="admin\deletedata.php" />
+    <Compile Include="admin\deleteitem.php" />
+    <Compile Include="admin\edit-category.php" />
+    <Compile Include="admin\EditArticle.php" />
+    <Compile Include="admin\EditArticle2.php" />
+    <Compile Include="admin\editcategory.php" />
+    <Compile Include="admin\editdata.php" />
+    <Compile Include="admin\index.php" />
+    <Compile Include="admin\media.php" />
+    <Compile Include="admin\mediaold.php" />
+    <Compile Include="admin\new-admin.php" />
+    <Compile Include="admin\new-category.php" />
+    <Compile Include="admin\new-user.php" />
+    <Compile Include="admin\pages.php" />
+    <Compile Include="admin\publisharticle.php" />
+    <Compile Include="admin\publishdata.php" />
+    <Compile Include="admin\uploadmedia.php" />
+    <Compile Include="admin\user.php" />
+    <Compile Include="includes\cmsviewer.php" />
+    <Compile Include="includes\commentscontrol.php" />
+    <Compile Include="includes\commentslist.php" />
+    <Compile Include="includes\db_config.php" />
+    <Compile Include="includes\footer.php" />
+    <Compile Include="includes\footereditor.php" />
+    <Compile Include="includes\footereditor2.php" />
+    <Compile Include="includes\footersite.php" />
+    <Compile Include="includes\gallerymodal.php" />
+    <Compile Include="includes\gallerymodal2.php" />
+    <Compile Include="includes\gallerymodal3.php" />
+    <Compile Include="includes\gallerymodaloriginal.php" />
+    <Compile Include="includes\header.php" />
+    <Compile Include="includes\headerarticle.php" />
+    <Compile Include="includes\headereditor.php" />
+    <Compile Include="includes\headereditor2.php" />
+    <Compile Include="includes\headerregister.php" />
+    <Compile Include="includes\headersite.php" />
+    <Compile Include="includes\images.php" />
+    <Compile Include="includes\loginvariables.php" />
+    <Compile Include="includes\pagination.php" />
+    <Compile Include="includes\recursive.php" />
+    <Compile Include="includes\replybox.php" />
+    <Compile Include="includes\replybox2.php" />
+    <Compile Include="includes\table.php" />
+    <Compile Include="includes\table2.php" />
+    <Compile Include="includes\upload.php" />
+    <Compile Include="index.php" />
+    <Compile Include="login\loginuser.php" />
+    <Compile Include="login\logon.php" />
+    <Compile Include="login\logonadmin.php" />
+    <Compile Include="login\logout.php" />
+    <Compile Include="login\register.php" />
+    <Compile Include="pages\addcomment.php" />
+    <Compile Include="pages\addcommenttext.php" />
+    <Compile Include="pages\article.php" />
+    <Compile Include="pages\articleviewer.php" />
+    <Compile Include="pages\cmsviewer.php" />
+    <Compile Include="pages\mainsite.php" />
+    <Compile Include="pages\testversion.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\background.jpg" />
+    <Content Include="assets\clip.jpg" />
+    <Content Include="assets\clip.png" />
+    <Content Include="assets\comments-xl.png" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap-wysihtml5.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\bootstrap3-wysiwyg5-color.css" />
+    <Content Include="css\pagination.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\summernote-bs2.css" />
+    <Content Include="css\summernote-bs3.css" />
+    <Content Include="css\summernote.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="index.php.old" />
+    <Content Include="js\bootstrap-datepicker.js" />
+    <Content Include="js\bootstrap-wysiwyg.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\bootstrap3-wysihtml5.js" />
+    <Content Include="js\deletebutton.js" />
+    <Content Include="js\jquery.hotkeys.js" />
+    <Content Include="js\summernote.js" />
+    <Content Include="js\wysihtml5-0.3.0.js" />
+    <Content Include="php.ini" />
+    <Content Include="README.md" />
+    <Content Include="uploads\2014-05-10 14.07.48.jpg" />
+    <Content Include="uploads\Active8_small.png" />
+    <Content Include="uploads\adobelogo.gif" />
+    <Content Include="uploads\blank.png" />
+    <Content Include="uploads\deciphered.png" />
+    <Content Include="uploads\Holwood.jpg" />
+    <Content Include="uploads\IMG_1819.JPG" />
+    <Content Include="uploads\IMG_1820.JPG" />
+    <Content Include="uploads\IMG_1821.JPG" />
+    <Content Include="uploads\IMG_1822.JPG" />
+    <Content Include="uploads\IMG_1824.JPG" />
+    <Content Include="uploads\IMG_1825.JPG" />
+    <Content Include="uploads\IMG_1826.JPG" />
+    <Content Include="uploads\IMG_1827.JPG" />
+    <Content Include="uploads\IMG_1828.JPG" />
+    <Content Include="uploads\IMG_1829.JPG" />
+    <Content Include="uploads\IMG_1831.JPG" />
+    <Content Include="uploads\note.txt" />
+    <Content Include="uploads\note2.txt" />
+    <Content Include="uploads\user.jpg" />
+    <Content Include="uploads\wordoress-toc.docx" />
+  </ItemGroup>
+</Project>

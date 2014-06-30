@@ -6,7 +6,9 @@ ini_set('display_errors', TRUE);
 require_once('../includes/db_config.php');
 
 /* Query */
-$tsql = 'UPDATE 387732_phpbook1.article SET title= "' .$_REQUEST["ArticleTitle"].'", content="' .$_REQUEST["ArticleContent"]. '", category_id=' .$_REQUEST["CategoryId"]. ', parent_id=' .$_REQUEST["PageId"]. ' where article_id='.$_REQUEST["article_id"];
+
+$tsql = "UPDATE 387732_phpbook1.article SET title= '" .$_REQUEST["ArticleTitle"]."', content='" .$_REQUEST["ArticleContent"]. "', category_id=" .$_REQUEST["CategoryId"]. ", parent_id=" .$_REQUEST["PageId"]. " where article_id=".$_REQUEST["article_id"];
+echo $tsql;
 $stmt = mysql_query($tsql);
 
 if(!$stmt)
