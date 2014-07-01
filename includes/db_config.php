@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 
 /* Include passwords and login details */
 require_once('loginvariables.php');

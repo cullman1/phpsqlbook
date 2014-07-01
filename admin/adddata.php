@@ -1,19 +1,7 @@
 <?php 
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
-  
-/* Include passwords and login details */
-require_once('../includes/loginvariables.php');
-  
-/* Connect using MySql Authentication. */
-$conn = mysql_connect( $serverName, $userName, $password);
-if(!$conn)
-{
-    die("Unable to connect. Error: " . mysql_error());
-}
-  
-/* Select db */
-mysql_select_db($databaseName) or die ("Couldn't select db. Error:"  . mysql_error()); 
+/* Db Details */
+require_once('../includes/db_config.php');
+
 session_start();
 /* Query SQL Server for inserting data. */
 $tsql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$_SESSION['authenticated']."')";
