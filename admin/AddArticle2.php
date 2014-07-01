@@ -28,8 +28,8 @@ if(!$stmt2)
 <script type="text/Javascript">
 function assigncontent()
 {
-  var hello = document.getElementById("some-textarea");
-  var sHTML = hello.innerHTML;
+  var textControl = document.getElementById("some-textarea");
+  var sHTML = textControl.innerHTML;
   var sHTML2 = $('#ArticleTitle').val();
   $('#ArticleContent').val(sHTML);
   $('#ArticleTitle').val(sHTML2);
