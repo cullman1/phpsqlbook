@@ -33,9 +33,15 @@ if(!$stmt)
           <?php 
           while($row = mysql_fetch_array($stmt)) { ?>
           <tr>
-            <td><a href=""><?php echo $row['user_name']; ?></a></td>
+            <td>
+                 <?php if  ($row['role_id']==1) { ?>
+                <a href="../admin/admin.php">
+ <?php } else if  ($row['role_id']==2) { ?>
+                         <a href="../admin/admin.php">
+                <?php } ?>
+                <?php echo $row['user_name']; ?></a></td>
             <td><?php echo $row['comment']; ?></td>
-            <td><a href=""><?php echo $row['title']; ?></a></td>
+            <td><a href="../admin/editarticle2.php?article_id=<?php echo $row['article_id']; ?>"><?php echo $row['title']; ?></a></td>
             <td><a href=""><span class="glyphicon glyphicon-remove"></span></a></td>
           </tr>
            <?php } ?>
