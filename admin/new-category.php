@@ -16,7 +16,7 @@ if(!$stmt)
 }
 
 ?>
-<?php include '../includes/headereditor.php' ?>
+<?php include '../includes/headereditor2.php' ?>
   <div id="body">
     <form id="form1" method="post" action="addcategory.php">
       <div id="middlewide">

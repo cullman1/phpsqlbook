@@ -24,7 +24,7 @@ if(!$stmt2)
 }
 
 ?>
-<?php include '../includes/headereditor.php' ?>
+<?php include '../includes/headereditor2.php' ?>
   <div id="body">
     <form id="form1" method="post" action="editcategory.php">
        <?php while($row2 = mysql_fetch_array($stmt2)) { ?>

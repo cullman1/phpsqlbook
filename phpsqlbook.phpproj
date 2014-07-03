@@ -38,7 +38,6 @@
     <Compile Include="admin\deletedata.php" />
     <Compile Include="admin\deleteitem.php" />
     <Compile Include="admin\edit-category.php" />
-    <Compile Include="admin\EditArticle.php" />
     <Compile Include="admin\EditArticle2.php" />
     <Compile Include="admin\editcategory.php" />
     <Compile Include="admin\editdata.php" />
