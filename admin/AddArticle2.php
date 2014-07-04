@@ -1,11 +1,11 @@
-<?php require_once('authenticate.php'); 
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
-  
+<?php 
+/* Login check */
+require_once('authenticate.php'); 
+
 /* Db Details */
 require_once('../includes/db_config.php');
 
-/* Query SQL Server for inserting data. */
+/* Query SQL Server for selecting category. */
 $tsql22 = "select category_id, category_name FROM 387732_phpbook1.category";
 $stmt22 = mysql_query($tsql22);
 if(!$stmt22)
@@ -14,7 +14,7 @@ if(!$stmt22)
     die("Query failed: ". mysql_error());
 }
 
-/* Query SQL Server for inserting data. */
+/* Query SQL Server for selecting parent page. */
 $tsql2 = "select parent_id, parent_name FROM 387732_phpbook1.parent";
 $stmt2 = mysql_query($tsql2);
 if(!$stmt2)
@@ -23,8 +23,9 @@ if(!$stmt2)
     die("Query failed: ". mysql_error());
 }
 
-?>
-<?php include '../includes/headereditor2.php' ?>
+/* Add header */
+include '../includes/headereditor2.php' ?>
+
 <script type="text/Javascript">
 function assigncontent()
 {
@@ -35,7 +36,8 @@ function assigncontent()
   $('#ArticleTitle').val(sHTML2);
 }
 </script>
-  <div id="body">
+
+<div id="body">
     <form id="galleryform" method="post" action="adddata.php" onsubmit="assigncontent()" enctype="multipart/form-data">
       <div id="middlewide">
         <div id="leftcol">
