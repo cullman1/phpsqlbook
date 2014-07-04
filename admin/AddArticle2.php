@@ -8,20 +8,12 @@ require_once('../includes/db_config.php');
 /* Query SQL Server for selecting category. */
 $tsql22 = "select category_id, category_name FROM 387732_phpbook1.category";
 $stmt22 = mysql_query($tsql22);
-if(!$stmt22)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-}
+if(!$stmt22){  die("Select Category failed: ". mysql_error()); }
 
 /* Query SQL Server for selecting parent page. */
 $tsql2 = "select parent_id, parent_name FROM 387732_phpbook1.parent";
 $stmt2 = mysql_query($tsql2);
-if(!$stmt2)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-}
+if(!$stmt2) {   die("Select Parent failed: ". mysql_error()); }
 
 /* Add header */
 include '../includes/headereditor2.php' ?>

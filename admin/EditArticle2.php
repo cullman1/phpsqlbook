@@ -1,7 +1,5 @@
 <?php 
 require_once('authenticate.php'); 
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
   
 /* Db Details */
 require_once('../includes/db_config.php');
@@ -9,46 +7,26 @@ require_once('../includes/db_config.php');
 /* Query SQL Server for selecting article and associated media. */
 $tsql = "SELECT title, content, article.article_id,  category_id, parent_id FROM 387732_phpbook1.article where article.article_id=".$_REQUEST['article_id'];
 $stmt = mysql_query($tsql);
+if(!$stmt) {   die("Select article failed: ". mysql_error()); }
 
-if(!$stmt)
-{  
-    /* Error Message */
-    die("Query failed1: ". mysql_error());
-}
-
-/* Query SQL Server for inserting data. */
+/* Query SQL Server for selecting category. */
 $tsql3 = "select category_id, category_name FROM 387732_phpbook1.category";
 $stmt3 = mysql_query($tsql3);
-if(!$stmt3)
-{  
-    /* Error Message */
-    die("Query failed2: ". mysql_error());
-}
+if(!$stmt3) { die("Select category failed: ". mysql_error()); }
 
-/* Query SQL Server for inserting data. */
+/* Query SQL Server for selecting parent. */
 $tsql2 = "select parent_id, parent_name FROM 387732_phpbook1.parent";
 $stmt2 = mysql_query($tsql2);
-if(!$stmt2)
-{  
-    /* Error Message */
-    die("Query failed3: ". mysql_error());
-}
+if(!$stmt2) {  die("Select parent failed: ". mysql_error()); }
 
 /* Query SQL Server linking media to article via media link table. */
 $tsql4 = "select * FROM 387732_phpbook1.media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where article_id=".$_REQUEST['article_id'];
 $stmt4 = mysql_query($tsql4);
-if(!$stmt4)
-{  
-    /* Error Message */
-    die("Query failed4: ". mysql_error());
-}
+if(!$stmt4) {  die("Select media failed: ". mysql_error()); }
 
-?>
-<?php include '../includes/headereditor2.php' ?>
+include '../includes/headereditor2.php' ?>
+
 <script type="text/Javascript">
-
-
-
 function assigncontent()
 {
   var hello = document.getElementById("some-textarea");
@@ -77,7 +55,6 @@ function assigncontent()
                 <td><span class="fieldheading">Content:</span></td>
                 <td>
                
-
  <div class="btn-toolbar" data-role="editor-toolbar" data-target="#some-textarea">
       <div class="btn-group">
         <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
@@ -132,11 +109,7 @@ function assigncontent()
           echo $_REQUEST["content"]; 
       } 
     } else { echo $row['content']; }?>
-    </div>
-
-        
-
-                
+    </div>           
                 </td> 
               </tr>
               <tr><td id='placehere'>&nbsp;</td></tr>
