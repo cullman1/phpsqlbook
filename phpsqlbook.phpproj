@@ -76,6 +76,7 @@
     <Compile Include="includes\recursive.php" />
     <Compile Include="includes\replybox.php" />
     <Compile Include="includes\replybox2.php" />
+    <Compile Include="includes\richtextcontrol.php" />
     <Compile Include="includes\table.php" />
     <Compile Include="includes\table2.php" />
     <Compile Include="includes\upload.php" />
