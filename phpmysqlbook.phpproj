@@ -34,7 +34,6 @@
     <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin\AddArticle.php" />
     <Compile Include="admin\AddArticle2.php" />
     <Compile Include="admin\addcategory.php" />
     <Compile Include="admin\adddata.php" />
@@ -49,7 +48,6 @@
     <Compile Include="admin\deletedata.php" />
     <Compile Include="admin\deleteitem.php" />
     <Compile Include="admin\edit-category.php" />
-    <Compile Include="admin\EditArticle.php" />
     <Compile Include="admin\EditArticle2.php" />
     <Compile Include="admin\editcategory.php" />
     <Compile Include="admin\editdata.php" />
@@ -88,6 +86,7 @@
     <Compile Include="includes\recursive.php" />
     <Compile Include="includes\replybox.php" />
     <Compile Include="includes\replybox2.php" />
+    <Compile Include="includes\richtextcontrol.php" />
     <Compile Include="includes\table.php" />
     <Compile Include="includes\table2.php" />
     <Compile Include="includes\upload.php" />

@@ -1,14 +1,11 @@
 <?php 
 
-  
 /* Db Details */
 require_once('../includes/db_config.php');
 
-/* Query */
-
+/* Update contents of article table */
 $tsql = "UPDATE 387732_phpbook1.article SET title= '" .$_REQUEST["ArticleTitle"]."', content='" .$_REQUEST["ArticleContent"]. "', category_id=" .$_REQUEST["CategoryId"]. ", parent_id=" .$_REQUEST["PageId"]. " where article_id=".$_REQUEST["article_id"];
 $stmt = mysql_query($tsql);
-
 if(!$stmt)
 {  
     /* Error Message */
@@ -16,7 +13,6 @@ if(!$stmt)
 }
 else
 {
-
 	if(isset($_FILES['document_upload']))
 	{
 		if($_FILES["document_upload"]["name"]!="")
@@ -33,8 +29,6 @@ else
       		die("Query failed: ". mysql_error());
     	}
 
-
-
 		$tsql3 = "INSERT media_link (article_id, media_id) VALUES  (".$_REQUEST["article_id"].",".mysql_insert_id().")";
 		$stmt3 = mysql_query($tsql3);
 		if(!$stmt3)
@@ -44,7 +38,6 @@ else
 		}
 		}
 	}
-
 
 	if($_REQUEST['fimagehidden']!="")
 	{
@@ -66,6 +59,5 @@ else
 		/* Redirect to original page */
 		header('Location:../admin/EditArticle2.php?submitted=true&article_id='.$_REQUEST["article_id"]);
 	}
-	
 }
 ?>

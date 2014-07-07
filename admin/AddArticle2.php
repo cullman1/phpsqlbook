@@ -6,22 +6,23 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting category. */
-$tsql22 = "select category_id, category_name FROM 387732_phpbook1.category";
-$stmt22 = mysql_query($tsql22);
-if(!$stmt22){  die("Select Category failed: ". mysql_error()); }
+$select_category_sql = "select category_id, category_name FROM 387732_phpbook1.category";
+$select_category_result = mysql_query($select_category_sql);
+if(!$select_category_result){  die("Select Category failed: ". mysql_error()); }
 
 /* Query SQL Server for selecting parent page. */
-$tsql2 = "select parent_id, parent_name FROM 387732_phpbook1.parent";
-$stmt2 = mysql_query($tsql2);
-if(!$stmt2) {   die("Select Parent failed: ". mysql_error()); }
+$select_parent_sql = "select parent_id, parent_name FROM 387732_phpbook1.parent";
+$select_parent_result = mysql_query($select_parent_sql);
+if(!$select_parent_result) {   die("Select Parent failed: ". mysql_error()); }
 
 /* Postback */
 if (isset($_REQUEST['ArticleTitle']))
 {
-    $tsql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$_SESSION['authenticated']."')";
-    $stmt = mysql_query($tsql);
+    /* Query SQL Server for inserting article. */
+    $insert_article_sql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$_SESSION['authenticated']."')";
+    $insert_article_result = mysql_query($insert_article_sql);
     $newarticleid = mysql_insert_id();
-    if(!$stmt)
+    if(!$insert_article_result)
     {  
         /* Error Message */
         die("Query failed1: ". mysql_error());
@@ -46,7 +47,7 @@ if (isset($_REQUEST['ArticleTitle']))
                 $folder = "../uploads/".$_FILES["document_upload"]["name"];
                 move_uploaded_file($_FILES['document_upload']['tmp_name'], $folder);
                 
-                /* Query SQL Server for inserting data. */
+                /* Query SQL Server for inserting media. */
                 $tsql3 = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["document_upload"]["name"]."','".$_FILES['document_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
                 $stmt3 = mysql_query($tsql3);
                 if(!$stmt3)
@@ -66,7 +67,6 @@ if (isset($_REQUEST['ArticleTitle']))
                 }
             }
         }
-
 
         if(isset($_REQUEST['fimagehidden']))
         {
@@ -90,7 +90,6 @@ if (isset($_REQUEST['ArticleTitle']))
         }
     }
 }
-
 
 /* Add header */
 include '../includes/headereditor2.php' ?>
@@ -121,74 +120,60 @@ function assigncontent()
          </div>
           <table>
             <tr>
-				      <td><span class="fieldheading">Title:</span></td>
-				      <td><input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php if (isset($_REQUEST["title"])){ echo $_REQUEST["title"]; }?>" /></td> 
-			       </tr>
-              <tr><td>&nbsp;</td></tr>
+		        <td><span class="fieldheading">Title:</span></td>
+				<td><input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php if (isset($_REQUEST["title"])){ echo $_REQUEST["title"]; }?>" /></td> 
+			</tr>
+            <tr><td>&nbsp;</td></tr>
             <tr>
-				      <td style="vertical-align:top;"><span class="fieldheading">Content:&nbsp;</span></td>
-				      <td>
-                     
-                          <?php include '../includes/richtextcontrol.php' ?>
-
-             </td> 
-			      </tr>
+		        <td style="vertical-align:top;"><span class="fieldheading">Content:&nbsp;</span></td>
+				<td>     
+                    <?php include '../includes/richtextcontrol.php' ?>
+                </td> 
+			</tr>
             <tr><td>&nbsp;</td></tr>
             <tr>
               <td style="vertical-align:top;"><span class="fieldheading">Category:&nbsp;</span></td>
-              <td>   <select id="CategoryId" name="CategoryId">
-              
-                 <?php 
-                 while($row22 = mysql_fetch_array($stmt22)) { ?>
-            
-                <option value="<?php  echo $row22['category_id']; ?>"><?php  echo $row22['category_name']; ?></option>
-                  <?php } ?> 
+              <td>
+                  <select id="CategoryId" name="CategoryId">
+                     <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>
+                     <option value="<?php  echo $select_category_row['category_id']; ?>"><?php  echo $select_category_row['category_name']; ?></option>
+                     <?php } ?> 
                   </select>
-             </td>
-
-             <tr><td>&nbsp;</td></tr>
+              </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
             <tr>
-              <td style="vertical-align:top;"><span class="fieldheading">Parent Page:&nbsp;</span></td>
-              <td>   <select id="PageId" name="PageId">
-              
-                 <?php while($row2 = mysql_fetch_array($stmt2)) { ?>
-                <option value="<?php  echo $row2['parent_id']; ?>"><?php  echo $row2['parent_name']; ?></option>
-                  <?php } ?> 
-                  </select>
-             </td>
-
-
-             <tr><td>&nbsp;</td></tr>
+                <td style="vertical-align:top;"><span class="fieldheading">Parent Page:&nbsp;</span></td>
+                <td>   
+                    <select id="PageId" name="PageId">
+                        <?php while($select_parent_row = mysql_fetch_array($select_parent_result)) { ?>
+                        <option value="<?php  echo $select_parent_row['parent_id']; ?>"><?php  echo $select_parent_row['parent_name']; ?></option>
+                        <?php } ?> 
+                    </select>
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
             <tr>
-
               <td>Featured Image:</td>
               <td>
                 <?php include '../includes/gallerymodaloriginal.php' ?> <?php if (isset($_REQUEST["imgname"])){ echo "<input type='text' id='fimage' name='fimage' value='".$_REQUEST["imgname"]."' readonly/>"; } if(isset($_REQUEST["pressed"])){ echo"<input type='hidden' id='fimagehidden' name='fimagehidden' value='".$_REQUEST["pressed"]."' />"; }?>
-            
-              </td>
-              
-            </tr>
-            <tr><td>&nbsp;</td></tr>
-                 <tr>
-
-              <td>Add associated documents/pdfs:</td>
-              <td>
-              
-              <input type="file" id="document_upload" name="document_upload"> 
-        
-            
-              </td>
-              
+              </td>         
             </tr>
             <tr><td>&nbsp;</td></tr>
             <tr>
-				      <td></td>
-        
-				      <td><input id="SaveButton" type="submit" name="submit" Value="Submit"  /></td>
-              <input id="ArticleContent" name="ArticleContent" type="hidden" />
-           
-
-			       </tr> 
+                <td>Add associated documents/pdfs:</td>
+                <td>
+                    <input type="file" id="document_upload" name="document_upload"> 
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+				<td></td>
+				<td>
+                    <input id="SaveButton" type="submit" name="submit" Value="Submit"  />
+				</td>
+                <input id="ArticleContent" name="ArticleContent" type="hidden" />
+			 </tr> 
           </table>
           <br />
           <br />

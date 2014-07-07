@@ -51,5 +51,11 @@
         { 
           echo $_REQUEST["content"]; 
       } 
-    } ?>
+    }
+    else if (isset($select_article_row["content"]))
+    {
+           echo $select_article_row["content"];     
+    }
+          
+          ?>
     </div>

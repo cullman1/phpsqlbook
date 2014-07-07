@@ -5,24 +5,88 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting article and associated media. */
-$tsql = "SELECT title, content, article.article_id,  category_id, parent_id FROM 387732_phpbook1.article where article.article_id=".$_REQUEST['article_id'];
-$stmt = mysql_query($tsql);
-if(!$stmt) {   die("Select article failed: ". mysql_error()); }
+$select_article_sql = "SELECT title, content, article.article_id,  category_id, parent_id FROM 387732_phpbook1.article where article.article_id=".$_REQUEST['article_id'];
+$select_article_result = mysql_query($select_article_sql);
+if(!$select_article_result) {   die("Select article failed: ". mysql_error()); }
 
 /* Query SQL Server for selecting category. */
-$tsql3 = "select category_id, category_name FROM 387732_phpbook1.category";
-$stmt3 = mysql_query($tsql3);
-if(!$stmt3) { die("Select category failed: ". mysql_error()); }
+$select_category_sql = "select category_id, category_name FROM 387732_phpbook1.category";
+$select_category_result = mysql_query($select_category_sql);
+if(!$select_category_result) { die("Select category failed: ". mysql_error()); }
 
 /* Query SQL Server for selecting parent. */
-$tsql2 = "select parent_id, parent_name FROM 387732_phpbook1.parent";
-$stmt2 = mysql_query($tsql2);
-if(!$stmt2) {  die("Select parent failed: ". mysql_error()); }
+$select_parent_sql = "select parent_id, parent_name FROM 387732_phpbook1.parent";
+$select_parent_statement = mysql_query($select_parent_sql);
+if(!$select_parent_statement) {  die("Select parent failed: ". mysql_error()); }
 
 /* Query SQL Server linking media to article via media link table. */
-$tsql4 = "select * FROM 387732_phpbook1.media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where article_id=".$_REQUEST['article_id'];
-$stmt4 = mysql_query($tsql4);
-if(!$stmt4) {  die("Select media failed: ". mysql_error()); }
+$select_medialink_sql = "select * FROM 387732_phpbook1.media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where article_id=".$_REQUEST['article_id'];
+$select_medialink_statement = mysql_query($select_medialink_sql);
+if(!$select_medialink_statement) {  die("Select media failed: ". mysql_error()); }
+
+/* Postback */
+if (isset($_REQUEST['ArticleTitle']))
+{
+    /* Update contents of article table */
+    $update_article_sql = "UPDATE 387732_phpbook1.article SET title= '" .$_REQUEST["ArticleTitle"]."', content='" .$_REQUEST["ArticleContent"]. "', category_id=" .$_REQUEST["CategoryId"]. ", parent_id=" .$_REQUEST["PageId"]. " where article_id=".$_REQUEST["article_id"];
+    $update_article_result = mysql_query($update_article_sql);
+    if(!$update_article_result)
+    {  
+        /* Error Message */
+        die("Query failed: ". mysql_error());
+    }
+    else
+    {
+        if(isset($_FILES['document_upload']))
+        {
+            if($_FILES["document_upload"]["name"]!="")
+            {
+                $folder = "../uploads/".$_FILES["document_upload"]["name"];
+                move_uploaded_file($_FILES['document_upload']['tmp_name'], $folder);
+                
+                /* Query SQL Server for inserting media. */
+                $insert_media_sql = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["document_upload"]["name"]."','".$_FILES['document_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
+                $insert_media_result = mysql_query($insert_media_sql);
+                if(!$insert_media_result)
+                {  
+                    /* Error Message */
+                    die("Insert Media Query failed: ". mysql_error());
+                }
+
+                /* Query SQL Server for inserting media link into link table. */
+                $insert_medialink_sql = "INSERT media_link (article_id, media_id) VALUES  (".$_REQUEST["article_id"].",".mysql_insert_id().")";
+                $insert_medialink_result = mysql_query($insert_medialink_sql);
+                if(!$insert_medialink_result)
+                { 
+                    /* Error Message */
+                    die("Insert Media Link Query failed: ". mysql_error());
+                }
+            }
+        }
+
+        if($_REQUEST['fimagehidden']!="")
+        {
+            $update_media_sql = "UPDATE 387732_phpbook1.media SET article_id =".$_REQUEST["article_id"]." where media_id=".$_REQUEST['fimagehidden'];
+            $update_media_statement = mysql_query($update_media_sql);
+            if(!$update_media_statement)
+            { 
+                /* Error Message */
+                die("Update media Query failed ". mysql_error());
+            }
+            else
+            {
+                /* Redirect to original page */
+                header('Location:../admin/EditArticle2.php?submitted=true&article_id='.$_REQUEST["article_id"]);
+            }
+        }
+        else
+        {
+            /* Redirect to original page */
+            header('Location:../admin/EditArticle2.php?submitted=true&article_id='.$_REQUEST["article_id"]);
+        }
+    }
+    
+}
 
 include '../includes/headereditor2.php' ?>
 
@@ -39,14 +103,14 @@ function assigncontent()
 
 <div id="body">
   <form id="form1" method="post" action="editdata.php" onsubmit="assigncontent()" enctype="multipart/form-data">
-    <?php while($row = mysql_fetch_array($stmt)) { ?>
+    <?php while($select_article_row = mysql_fetch_array($select_article_result)) { ?>
       <div id="middlewide">
         <div id="leftcol">
           <h2>Edit an Article</h2><br />
             <table>
               <tr>
                 <td><span class="fieldheading">Title:</span></td>
-                <td><input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php echo $row['title']; ?>"/></td> 
+                <td><input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php echo $select_article_row['title']; ?>"/></td> 
               </tr>
               <tr>
                 <td>&nbsp;</td>
@@ -55,7 +119,7 @@ function assigncontent()
                 <td><span class="fieldheading">Content:</span></td>
                 <td>
                
-              <?php include '../includes/richtextcontrol.php' ?>
+                <?php include '../includes/richtextcontrol.php' ?>
 
                 </td> 
               </tr>
@@ -68,70 +132,64 @@ function assigncontent()
                         { 
                           echo "<input type='text' id='fimage' name='fimage' value='".$_REQUEST["imgname"]."' readonly/>"; 
                         } 
-                        else if (isset($row['name']))
+                        else if (isset($select_article_row['name']))
                         { 
-                          echo "<input type='text' id='fimage' name='fimage' value='".$row['name']."' readonly/>"; 
+                            echo "<input type='text' id='fimage' name='fimage' value='".$select_article_row['name']."' readonly/>"; 
                         } 
                         echo"<input type='hidden' id='fimagehidden' name='fimagehidden' value='"; 
                         if (isset($_REQUEST["pressed"]))
                         { 
-                          echo $_REQUEST["pressed"];
+                            echo $_REQUEST["pressed"];
                         } 
-                        else if(isset($row['media_id']))
+                        else if(isset($select_article_row['media_id']))
                         { 
-                          echo $row['media_id'];
+                            echo $select_article_row['media_id'];
                         } 
                         echo "' />"; 
                   ?>
                 </td>
               </tr>
-<tr><td>&nbsp;</td></tr>
+              <tr><td>&nbsp;</td></tr>
               <tr>
                 <td>Associated Docs:</td>
                 <td>
-
-                <?php while($row4 = mysql_fetch_array($stmt4)) {
-                  if (isset($row4['name']) && ($row4['file_type']!="image/jpeg" && $row4['file_type']!="image/png"))
-                        { 
-                          echo $row4['name'] ." - " . "<span name='deletebutton".$row4['media_id']."' class='glyphicon glyphicon-remove red deleter'></span></div><br/>"; 
-                          echo "<input type='hidden' id='fdochidden". $row4['media_id']."' name='fdochidden". $row4['media_id']."' value='' />"; 
-                        } 
-                }
+                <?php while($select_medialink_row = mysql_fetch_array($select_medialink_statement)) 
+                  {
+                      if (isset($select_medialink_row['name']) && ($select_medialink_row['file_type']!="image/jpeg" && $select_medialink_row['file_type']!="image/png"))
+                    { 
+                        echo $select_medialink_row['name'] ." - " . "<span name='deletebutton".$select_medialink_row['media_id']."' class='glyphicon glyphicon-remove red deleter'></span></div><br/>"; 
+                          echo "<input type='hidden' id='fdochidden". $select_medialink_row['media_id']."' name='fdochidden". $select_medialink_row['media_id']."' value='' />"; 
+                    } 
+                  }
                   ?> 
-                        <input type="file" id="document_upload" name="document_upload"> 
+                <input type="file" id="document_upload" name="document_upload"> 
                 </td>
-              </tr>
-
-
-
-    <tr><td>&nbsp;</td></tr>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
             <tr>
               <td style="vertical-align:top;"><span class="fieldheading">Category:&nbsp;</span></td>
-              <td>   <select id="CategoryId" name="CategoryId">
-              
-                 <?php while($row3 = mysql_fetch_array($stmt3)) { ?>
-                <option value="<?php  echo $row3['category_id']; ?>"<?php if( $row3['category_id'] == $row['category_id']) { echo "selected";} ?> ><?php  echo $row3['category_name']; ?></option>
-                  <?php } ?> 
+              <td>   
+                  <select id="CategoryId" name="CategoryId">     
+                    <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>
+                    <option value="<?php  echo $select_category_row['category_id']; ?>"<?php if( $select_category_row['category_id'] == $select_article_row['category_id']) { echo "selected";} ?> ><?php  echo $select_category_row['category_name']; ?></option>
+                    <?php } ?> 
                   </select>
-             </td>
-
-
- <tr><td>&nbsp;</td></tr>
+              </td>
+            <tr><td>&nbsp;</td></tr>
             <tr>
               <td style="vertical-align:top;"><span class="fieldheading">Parent Page:&nbsp;</span></td>
-              <td>   <select id="PageId" name="PageId">
-              
-                 <?php while($row2 = mysql_fetch_array($stmt2)) { ?>
-                <option value="<?php  echo $row2['parent_id']; ?>"  <?php if( $row2['parent_id'] == $row['parent_id']) { echo "selected";} ?>><?php  echo $row2['parent_name']; ?></option>
-                  <?php } ?> 
+              <td>   
+                  <select id="PageId" name="PageId">
+                    <?php while($select_parent_row = mysql_fetch_array($select_parent_statement)) { ?>
+                    <option value="<?php  echo $select_parent_row['parent_id']; ?>"  <?php if( $select_parent_row['parent_id'] == $select_article_row['parent_id']) { echo "selected";} ?>><?php  echo $select_parent_row['parent_name']; ?></option>
+                    <?php } ?> 
                   </select>
              </td>
-
-              <tr><td>&nbsp;</td></tr>
-              <tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
                 <td></td>
                 <td> <input id="SaveButton" type="submit" name="submit" Value="Submit"  /><input id="ArticleContent" name="ArticleContent" type="hidden" value=""/></td>  
-              </tr> 
+            </tr> 
             </table>
             <br />
             <br />
