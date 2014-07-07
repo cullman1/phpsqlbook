@@ -57,6 +57,7 @@ function assigncontent()
  <input id="SaveButton" type="submit" name="submit" Value="Publish Article"  />
 <input id="articleid" name="articleid" type="hidden" value="<?php echo $_REQUEST["articleid"]?>"/>
 <input id="articlecontent" name="articlecontent" type="hidden" value=""/>
+     <input id="Submitted" name="Submitted" type="hidden" value="true"/>
       </div> <!-- /container -->
 </form>
 </div>

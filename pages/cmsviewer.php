@@ -45,7 +45,7 @@ while($row = mysql_fetch_array($stmt))
          
         <?php 
  /* Total number of comments */
-          $tsql5 = "select * from media_link join media on media.media_id = media_link.media_id WHERE article_id = ".$row['article_id'];
+          $tsql5 = "select * from media_link join media on media.media_id = media_link.media_id WHERE media.article_id = ".$row['article_id'];
           $stmt5 = mysql_query($tsql5);
           if(!$stmt5)
           {  
