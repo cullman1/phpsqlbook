@@ -25,7 +25,7 @@ $select_medialink_statement = mysql_query($select_medialink_sql);
 if(!$select_medialink_statement) {  die("Select media Query failed: ". mysql_error()); }
 
 /* Postback */
-if (isset($_REQUEST['ArticleTitle']))
+if (isset($_REQUEST['Submitted']))
 {
     /* Update contents of article table */
     $update_article_sql = "UPDATE 387732_phpbook1.article SET title= '" .$_REQUEST["ArticleTitle"]."', content='" .$_REQUEST["ArticleContent"]. "', category_id=" .$_REQUEST["CategoryId"]. ", parent_id=" .$_REQUEST["PageId"]. " where article_id=".$_REQUEST["article_id"];
@@ -98,7 +98,7 @@ function assigncontent()
           <h2>Edit an Article</h2>
           <div id="Status" >
               <?php 
-                if(isset($_REQUEST['submitted']))
+              if(isset($_REQUEST['Submitted']))
                 {
                   echo "<span class='red' style='color:red'>Article successfully edited</span>";
                 }
@@ -193,7 +193,7 @@ function assigncontent()
           <br />
           <a id="Return2" href="pages.php">Return to Main Page</a>
           <input id="article_id" name="article_id" type="hidden" value="<?php echo $_REQUEST['article_id'];?>"/>
-             <input id="submitted" name="submitted" type="hidden" value="true"/>
+             <input id="Submitted" name="Submitted" type="hidden" value="true"/>
         </div>
       <?php } ?>         
     </form><!--end content --> 

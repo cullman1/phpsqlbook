@@ -16,7 +16,7 @@ $(document).ready(function(){
         var sHTML = $('#summernote').code();
         var sHTML2 = $('#ArticleTitle').val();
         var _href = $(this).attr("data-url");
-        $(this).attr("data-url", _href + '&title=' + sHTML2 + "&ArticleContent=" + sHTML);
+        $(this).attr("data-url", _href + '&ArticleTitle=' + sHTML2 + "&ArticleContent=" + sHTML);
         window.location.href = $(this).attr("data-url");
 });
     });

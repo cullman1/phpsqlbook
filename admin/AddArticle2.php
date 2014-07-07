@@ -16,7 +16,7 @@ $select_parent_result = mysql_query($select_parent_sql);
 if(!$select_parent_result) {   die("Select Parent failed: ". mysql_error()); }
 
 /* Postback */
-if (isset($_REQUEST['ArticleTitle']))
+if (isset($_REQUEST['Submitted']))
 {
     /* Query SQL Server for inserting article. */
     $insert_article_sql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$_SESSION['authenticated']."')";
@@ -102,7 +102,7 @@ function assigncontent()
           <h2>Add an Article</h2><br />
           <div id="Status_Post">
                <?php 
-               if(isset($_REQUEST['ArticleContent']))
+               if(isset($_REQUEST['Submitted']))
                {
                   echo "<span class='red' style='color:red;'>Article successfully created!</span><br/>";
                }  
@@ -112,7 +112,7 @@ function assigncontent()
           <table>
             <tr>
 		        <td><span class="fieldheading">Title:</span></td>
-				<td><input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php if (isset($_REQUEST["title"])){ echo $_REQUEST["title"]; }?>" /></td> 
+				<td><input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php if (isset($_REQUEST["ArticleTitle"])){ echo $_REQUEST["ArticleTitle"]; }?>" /></td> 
 			</tr>
             <tr><td>&nbsp;</td></tr>
             <tr>
@@ -164,6 +164,7 @@ function assigncontent()
                     <input id="SaveButton" type="submit" name="submit" Value="Submit"  />
 				</td>
                 <input id="ArticleContent" name="ArticleContent" type="hidden" />
+                  <input id="Submitted" name="Submitted" type="hidden" value="true"/>
 			 </tr> 
           </table>
           <br />

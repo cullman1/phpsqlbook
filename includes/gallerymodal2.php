@@ -65,7 +65,7 @@ if(!$stmt)
                 var _href =  $(this).attr("data-url");
                 var url = window.location.search;
                 _href=_href+url;
-                $(this).attr("data-url", _href + '&title=' + sHTML2 + "&ArticleContent=" + sHTML);
+                $(this).attr("data-url", _href + '&ArticleTitle=' + sHTML2 + "&ArticleContent=" + sHTML);
                 window.location.href = $(this).attr("data-url");
               });
               $("#upload-btn").on('click', function(){
@@ -105,7 +105,7 @@ if(!$stmt)
                 var _href =  $(this).attr("data-url");
                 var url = window.location.search;
                 _href=_href+url;
-                $(this).attr("data-url", _href + '&title=' + sHTML2 + "&ArticleContent=" + sHTML);
+                $(this).attr("data-url", _href + '&ArticleTitle=' + sHTML2 + "&ArticleContent=" + sHTML);
                 window.location.href = $(this).attr("data-url");
         },
         error: function(xhr, desc, err) {
