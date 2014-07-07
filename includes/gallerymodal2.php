@@ -65,7 +65,7 @@ if(!$stmt)
                     sHTML =  new1 + '<img src=' + buttonname2 + ' />' ;
                 }
                 var sHTML2 = $('#ArticleTitle').val();
-                //alert($(this).attr("data-url"));
+       
                 var _href =  $(this).attr("data-url");
                 var url = window.location.search;
                 _href=_href+url;
@@ -105,7 +105,7 @@ if(!$stmt)
                     sHTML =  new1 + '<img src=../uploads/' + filename + ' />' ;
                 }
                 var sHTML2 = $('#ArticleTitle').val();
-            //alert($(this).attr("data-url"));
+       
                 var _href =  $(this).attr("data-url");
                 var url = window.location.search;
                 _href=_href+url;

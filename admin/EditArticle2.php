@@ -5,24 +5,24 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting article and associated media. */
-$select_article_sql = "SELECT title, content, article.article_id,  category_id, parent_id FROM 387732_phpbook1.article where article.article_id=".$_REQUEST['article_id'];
+$select_article_sql = "SELECT title, content, article.article_id,  category_id, parent_id FROM article where article.article_id=".$_REQUEST['article_id'];
 $select_article_result = mysql_query($select_article_sql);
 if(!$select_article_result) {   die("Select article failed: ". mysql_error()); }
 
 /* Query SQL Server for selecting category. */
-$select_category_sql = "select category_id, category_name FROM 387732_phpbook1.category";
+$select_category_sql = "select category_id, category_name FROM category";
 $select_category_result = mysql_query($select_category_sql);
 if(!$select_category_result) { die("Select category failed: ". mysql_error()); }
 
 /* Query SQL Server for selecting parent. */
-$select_parent_sql = "select parent_id, parent_name FROM 387732_phpbook1.parent";
+$select_parent_sql = "select parent_id, parent_name FROM parent";
 $select_parent_statement = mysql_query($select_parent_sql);
 if(!$select_parent_statement) {  die("Select parent failed: ". mysql_error()); }
 
 /* Query SQL Server linking media to article via media link table. */
-$select_medialink_sql = "select * FROM 387732_phpbook1.media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where article_id=".$_REQUEST['article_id'];
+$select_medialink_sql = "select * FROM media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where media.article_id=".$_REQUEST['article_id'];
 $select_medialink_statement = mysql_query($select_medialink_sql);
-if(!$select_medialink_statement) {  die("Select media failed: ". mysql_error()); }
+if(!$select_medialink_statement) {  die("Select media Query failed: ". mysql_error()); }
 
 /* Postback */
 if (isset($_REQUEST['ArticleTitle']))
@@ -73,19 +73,8 @@ if (isset($_REQUEST['ArticleTitle']))
                 /* Error Message */
                 die("Update media Query failed ". mysql_error());
             }
-            else
-            {
-                /* Redirect to original page */
-                header('Location:../admin/EditArticle2.php?submitted=true&article_id='.$_REQUEST["article_id"]);
-            }
         }
-        else
-        {
-            /* Redirect to original page */
-            header('Location:../admin/EditArticle2.php?submitted=true&article_id='.$_REQUEST["article_id"]);
-        }
-    }
-    
+    }  
 }
 
 include '../includes/headereditor2.php' ?>
@@ -102,11 +91,20 @@ function assigncontent()
 </script>
 
 <div id="body">
-  <form id="form1" method="post" action="editdata.php" onsubmit="assigncontent()" enctype="multipart/form-data">
+  <form id="form1" method="post" action="editarticle2.php" onsubmit="assigncontent()" enctype="multipart/form-data">
     <?php while($select_article_row = mysql_fetch_array($select_article_result)) { ?>
       <div id="middlewide">
         <div id="leftcol">
-          <h2>Edit an Article</h2><br />
+          <h2>Edit an Article</h2>
+          <div id="Status" >
+              <?php 
+                if(isset($_REQUEST['submitted']))
+                {
+                  echo "<span class='red' style='color:red'>Article successfully edited</span>";
+                }
+              ?>
+            </div>
+            <br />
             <table>
               <tr>
                 <td><span class="fieldheading">Title:</span></td>
@@ -191,20 +189,11 @@ function assigncontent()
                 <td> <input id="SaveButton" type="submit" name="submit" Value="Submit"  /><input id="ArticleContent" name="ArticleContent" type="hidden" value=""/></td>  
             </tr> 
             </table>
-            <br />
-            <br />
-            <div id="Status" >
-              <?php 
-                if(isset($_GET['submitted']))
-                {
-                  echo "<span class='red' style='color:red'>Article successfully edited</span>";
-                }
-              ?>
-            </div>
           </div>
           <br />
           <a id="Return2" href="pages.php">Return to Main Page</a>
           <input id="article_id" name="article_id" type="hidden" value="<?php echo $_REQUEST['article_id'];?>"/>
+             <input id="submitted" name="submitted" type="hidden" value="true"/>
         </div>
       <?php } ?>         
     </form><!--end content --> 

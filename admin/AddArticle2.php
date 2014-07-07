@@ -38,7 +38,6 @@ if (isset($_REQUEST['ArticleTitle']))
         {
             $articleid = mysql_insert_id($conn);
         }
-
         
         if(isset($_FILES['document_upload']))
         {
@@ -78,16 +77,6 @@ if (isset($_REQUEST['ArticleTitle']))
                 /* Error Message */
                 die("Update Media Query failed: ". mysql_error());
             }
-            else
-            {
-                /* Redirect to original page */
-                header('Location:../admin/AddArticle2.php?submitted=true');
-            }
-        }
-        else
-        {
-            /* Redirect to original page */
-            header('Location:../admin/AddArticle2.php?submitted=true');
         }
     }
 }
@@ -111,14 +100,15 @@ function assigncontent()
       <div id="middlewide">
         <div id="leftcol">
           <h2>Add an Article</h2><br />
-             <div id="Status_Post">
-            <?php 
-             if(isset($_GET['submitted']))
-             {
-              echo "<span class='red' style='color:red;'>Article successfully created!</span>";
-             }  
-           ?>
-         </div>
+          <div id="Status_Post">
+               <?php 
+               if(isset($_REQUEST['ArticleContent']))
+               {
+                  echo "<span class='red' style='color:red;'>Article successfully created!</span><br/>";
+               }  
+               ?>
+          </div>
+            <br/>
           <table>
             <tr>
 		        <td><span class="fieldheading">Title:</span></td>
@@ -177,8 +167,7 @@ function assigncontent()
 			 </tr> 
           </table>
           <br />
-          <br />
-       
+          <br />  
       </div>
       <br />
       <a id="Return2" href="../index.html">Return to Main Page</a>

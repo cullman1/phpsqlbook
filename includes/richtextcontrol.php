@@ -45,11 +45,11 @@
     </div>
 
     <div id="some-textarea">
-    <?php if (isset($_REQUEST["content"]))
+    <?php if (isset($_REQUEST["ArticleContent"]))
     {
-      if (!is_null($_REQUEST["content"]))
+        if (!is_null($_REQUEST["ArticleContent"]))
         { 
-          echo $_REQUEST["content"]; 
+            echo $_REQUEST["ArticleContent"]; 
       } 
     }
     else if (isset($select_article_row["content"]))
