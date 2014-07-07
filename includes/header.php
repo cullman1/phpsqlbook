@@ -7,10 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-
     <title>Simple CMS</title>
-
-    
     <!-- Bootstrap core CSS -->
       <script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -21,7 +18,6 @@
    <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
     </script>
-
     <style>
       body {
         min-height: 2000px;
@@ -42,9 +38,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
   </head>
-
   <body>
 
     <!-- Fixed navbar -->
@@ -81,10 +75,9 @@
           <ul class="nav navbar-nav navbar-right">
            <ul class="nav navbar-nav navbar-right">
             <?php
-          
             if (isset($_SESSION['authenticated'])) { ?> 
             <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
- <?php } else { ?>
+    <?php } else { ?>
     <li><a href="../login/logon.php?page=pages">Login</a></li>
     <?php } ?> 
           </ul>
@@ -92,5 +85,4 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
     <div class="container">
