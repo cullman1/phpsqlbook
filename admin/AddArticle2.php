@@ -25,7 +25,7 @@ if (isset($_REQUEST['ArticleTitle']))
     if(!$insert_article_result)
     {  
         /* Error Message */
-        die("Query failed1: ". mysql_error());
+        die("Insert article Query failed: ". mysql_error());
     }
     else
     {
@@ -48,34 +48,35 @@ if (isset($_REQUEST['ArticleTitle']))
                 move_uploaded_file($_FILES['document_upload']['tmp_name'], $folder);
                 
                 /* Query SQL Server for inserting media. */
-                $tsql3 = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["document_upload"]["name"]."','".$_FILES['document_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
-                $stmt3 = mysql_query($tsql3);
-                if(!$stmt3)
+                $insert_media_sql = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["document_upload"]["name"]."','".$_FILES['document_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
+                $insert_media_result = mysql_query($insert_media_sql);
+                if(!$insert_media_result)
                 {  
                     /* Error Message */
-                    die("Query failed: ". mysql_error());
+                    die("Insert Media Query failed: ". mysql_error());
                 }
                 $newmediaid = mysql_insert_id();
 
-                /* Query SQL Server for inserting data. */
-                $tsql4 = "INSERT INTO media_link (article_id, media_id) VALUES (".$newarticleid.", '".$newmediaid."')";
-                $stmt4 = mysql_query($tsql4);
-                if(!$stmt4)
+                /* Query SQL Server for inserting media link. */
+                $insert_medialink_sql = "INSERT INTO media_link (article_id, media_id) VALUES (".$newarticleid.", '".$newmediaid."')";
+                $insert_medialink_result = mysql_query($insert_medialink_sql);
+                if(!$insert_medialink_result)
                 {  
                     /* Error Message */
-                    die("Query failed: ". mysql_error());
+                    die("Insert Media Link Query failed: ". mysql_error());
                 }
             }
         }
 
         if(isset($_REQUEST['fimagehidden']))
         {
-            $tsql2 = "UPDATE media set article_id =".$articleid." where media_id=".$_REQUEST['fimagehidden'];
-            $stmt2 = mysql_query($tsql2);
-            if(!$stmt2)
+            /* Query SQL Server for updaing media. */
+            $update_media_sql = "UPDATE media set article_id =".$articleid." where media_id=".$_REQUEST['fimagehidden'];
+            $update_media_result = mysql_query($update_media_sql);
+            if(!$update_media_result)
             { 
                 /* Error Message */
-                die("Query failed2: ". mysql_error());
+                die("Update Media Query failed: ". mysql_error());
             }
             else
             {
