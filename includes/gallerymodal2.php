@@ -33,15 +33,11 @@
           </div>
           <div class="tab-pane" id="upload-library">
                   
-            <?php /* Query SQL Server for inserting data. */
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
+            <?php 
   
 /* Db Details */
 require_once('../includes/db_config.php');
-$tsql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM 387732_phpbook1.media where file_type='image/jpeg' OR 
-
-file_type='image/png'";
+$tsql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM 387732_phpbook1.media where file_type='image/jpeg' OR file_type='image/png'";
 $stmt = mysql_query($tsql);
 if(!$stmt)
 {  
@@ -69,7 +65,7 @@ if(!$stmt)
                 var _href =  $(this).attr("data-url");
                 var url = window.location.search;
                 _href=_href+url;
-                $(this).attr("data-url", _href + '&title=' + sHTML2 + "&content=" + sHTML);
+                $(this).attr("data-url", _href + '&title=' + sHTML2 + "&ArticleContent=" + sHTML);
                 window.location.href = $(this).attr("data-url");
               });
               $("#upload-btn").on('click', function(){
@@ -109,7 +105,7 @@ if(!$stmt)
                 var _href =  $(this).attr("data-url");
                 var url = window.location.search;
                 _href=_href+url;
-                $(this).attr("data-url", _href + '&title=' + sHTML2 + "&content=" + sHTML);
+                $(this).attr("data-url", _href + '&title=' + sHTML2 + "&ArticleContent=" + sHTML);
                 window.location.href = $(this).attr("data-url");
         },
         error: function(xhr, desc, err) {

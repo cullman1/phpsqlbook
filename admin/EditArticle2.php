@@ -91,7 +91,7 @@ function assigncontent()
 </script>
 
 <div id="body">
-  <form id="form1" method="post" action="editarticle2.php" onsubmit="assigncontent()" enctype="multipart/form-data">
+  <form id="form1" method="post" action="EditArticle2.php" onsubmit="assigncontent()" enctype="multipart/form-data">
     <?php while($select_article_row = mysql_fetch_array($select_article_result)) { ?>
       <div id="middlewide">
         <div id="leftcol">

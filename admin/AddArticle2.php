@@ -96,7 +96,7 @@ function assigncontent()
 </script>
 
 <div id="body">
-    <form id="galleryform" method="post" action="addarticle2.php" onsubmit="assigncontent()" enctype="multipart/form-data">
+    <form id="galleryform" method="post" action="AddArticle2.php" onsubmit="assigncontent()" enctype="multipart/form-data">
       <div id="middlewide">
         <div id="leftcol">
           <h2>Add an Article</h2><br />
