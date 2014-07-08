@@ -26,7 +26,6 @@
   <ItemGroup>
     <Compile Include="admin\AddArticle2.php" />
     <Compile Include="admin\addcategory.php" />
-    <Compile Include="admin\adddata.php" />
     <Compile Include="admin\adduser.php" />
     <Compile Include="admin\admin.php" />
     <Compile Include="admin\articleviewer.php" />
@@ -40,10 +39,8 @@
     <Compile Include="admin\edit-category.php" />
     <Compile Include="admin\EditArticle2.php" />
     <Compile Include="admin\editcategory.php" />
-    <Compile Include="admin\editdata.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="admin\media.php" />
-    <Compile Include="admin\mediaold.php" />
     <Compile Include="admin\new-admin.php" />
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
