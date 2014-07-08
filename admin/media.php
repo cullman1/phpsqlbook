@@ -2,8 +2,6 @@
 require_once('authenticate.php'); 
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
-  
-
 ?>
 <?php include '../includes/header.php' ?>
 
@@ -17,9 +15,7 @@ ini_set('display_errors', TRUE);
               <br/>
               <label for="title">Image title:</label>
               <input id="title" name="title" type="text"/> 
-
             </div>
-                   
             <input id="upld" type="button" class="btn btn-default" value="Upload"/>
      <script>
             $("#upld").click(function(){
@@ -75,8 +71,6 @@ function progressHandlingFunction(e){
            </div>
              <div id="Status_Post">
               <br/>
-            
-  
              </div>
         </div>
       </div>
@@ -92,18 +86,11 @@ function progressHandlingFunction(e){
              <th>Title</th>
             <th>File name</th>
             <th>File type</th>
-
             <th>Delete</th>
           </tr>
         </thead>
-      
         <tbody id="replacebody">
           <?php include '../includes/table.php' ?>
-
-       
-
-        </tbody>
-      
+        </tbody>      
       </table>
-
 <?php include '../includes/footer.php' ?>
