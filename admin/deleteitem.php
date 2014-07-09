@@ -17,7 +17,7 @@ while($select_media_row = mysql_fetch_array($select_media_result))
 	{ ?>
               <tr>
                 <td><?php echo $select_media_row['media_id']; ?></td>
-                <?php if($select_media_row['file_type']=="image/jpeg" || $select_media_row['file_type']=="image/png")
+                <?php if($select_media_row['file_type']=="image/jpeg" || $select_media_row['file_type']=="image/png" || $select_media_row['file_type']=="image/gif")
                       { ?>
                         <td><a href="../uploads/<?php echo $select_media_row['name']; ?>"><img  width=100 src='../uploads/<?php echo $select_media_row['name']; ?>' alt='<?php echo $select_media_row['name']; ?>' class='img-thumbnail'></a></td>
                <?php  } else { ?>

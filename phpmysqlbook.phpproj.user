@@ -3,6 +3,6 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>pages/mainsite.php</SpecificPageValue>
+    <SpecificPageValue>admin/pages.php</SpecificPageValue>
   </PropertyGroup>
 </Project>
