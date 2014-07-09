@@ -60,14 +60,12 @@
     <Compile Include="includes\commentslist.php" />
     <Compile Include="includes\db_config.php" />
     <Compile Include="includes\footer.php" />
-    <Compile Include="includes\footereditor.php" />
     <Compile Include="includes\footereditor2.php" />
     <Compile Include="includes\footersite.php" />
     <Compile Include="includes\gallerymodal2.php" />
     <Compile Include="includes\gallerymodaloriginal.php" />
     <Compile Include="includes\header.php" />
     <Compile Include="includes\headerarticle.php" />
-    <Compile Include="includes\headereditor.php" />
     <Compile Include="includes\headereditor2.php" />
     <Compile Include="includes\headerregister.php" />
     <Compile Include="includes\headersite.php" />

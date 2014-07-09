@@ -66,4 +66,4 @@ include '../includes/headereditor2.php' ?>
   <!--end content --> 
   </div>
 <div class="clear"></div>
-<?php include '../includes/footereditor.php' ?>
+<?php include '../includes/footereditor2.php' ?>
