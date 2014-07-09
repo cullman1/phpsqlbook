@@ -68,7 +68,7 @@ if(!$stmt2)
     ?>
               <tr>
                 <td><?php echo $row['media_id']; ?></td>
-                <?php if($row['file_type']=="image/jpeg")
+                <?php if($row['file_type']=="image/jpeg" || $row['file_type']=="image/png")
                       { ?>
                         <td><a href=""><img  width=100 src='../uploads/<?php echo $row['name']; ?>' alt='<?php echo $row['name']; ?>' class='img-thumbnail'></a></td>
                <?php  } else { ?>

@@ -9,12 +9,12 @@ function createTree(&$list, $parent){
         if(isset($list[$l['comments_id']]))
         {
             $l['children'] = createTree($list, $list[$l['comments_id']]);
-      }
+        }
         $tree[] = $l;
     } 
     return $tree;
 }
-  $new = array();
+$new = array();
   
 /* Db Details */
 require_once('../includes/db_config.php');
