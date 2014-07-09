@@ -1,61 +1,44 @@
-<?php 
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
-  
+<?php  
 /* Include passwords and login details */
-require_once('../includes/loginvariables.php');
-  
-/* Connect using MySql Authentication. */
-$conn = mysql_connect( $serverName, $userName, $password);
-if(!$conn)
-{
-        die("Unable to connect. Error: " . mysql_error());
-}
-  
-/* Select db */
-mysql_select_db($databaseName) or die ("Couldn't select db. Error:"  . mysql_error()); 
+require_once('../includes/dbconfig.php');
   
 /* Query SQL Server for checking user details. */
 $passwordToken = sha1($preSalt . $_REQUEST['password'] . $afterSalt);
-$tsql = "SELECT Count(*) as CorrectDetails, user_id, user_name from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'";
-$stmt = mysql_query($tsql);
-if(!$stmt)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-}
+$select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, user_name from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'";
+$select_user_result = mysql_query($select_user_sql);
+if(!$select_user_result) {  die("Query failed: ". mysql_error()); }
 else
 {
   	/* Redirect to original page */
-  	while($row = mysql_fetch_array($stmt))
+    while($select_user_row = mysql_fetch_array($select_user_result))
   	{
-  	 	if ($row["CorrectDetails"]==1)
+        if ($select_user_row["CorrectDetails"]==1)
   	 	{
   	 		session_start();
   	 		/* store user_id */
-  	 		$_SESSION['authenticated'] = $row["user_id"];
-        $_SESSION['username'] = $row["user_name"];
+  	 		$_SESSION['authenticated'] = $select_user_row["user_id"];
+            $_SESSION['username'] = $select_user_row["user_name"];
   	 		
-        if(isset($_REQUEST["page"]))
-        {
-          if ($_REQUEST["page"]=="pages")
-          {
-            header('Location:../admin/pages.php');
-          }
-          if ($_REQUEST["page"]=="mainsite")
-          {
-            header('Location:../home?showcomments=true');
-  	 	    }
+            if(isset($_REQUEST["page"]))
+            {
+                if ($_REQUEST["page"]=="pages")
+                {
+                    header('Location:../admin/pages.php');
+                }
+                if ($_REQUEST["page"]=="mainsite")
+                {
+                    header('Location:../home?showcomments=true');
+  	 	        }   
+            }
+            else
+            {
+                header('Location:../home');
+            }
         }
-        else
-        {
-          header('Location:../home');
-        }
-      }
   	 	else
   	 	{
-  	 			/* Incorrect details */
-			    header('Location:../login/logon.php?login=failed');
+  	 		/* Incorrect details */
+			header('Location:../login/logon.php?login=failed');
   	 	}
     }
 }
