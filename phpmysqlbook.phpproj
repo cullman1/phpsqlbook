@@ -127,7 +127,6 @@
     <Content Include="js\bootstrap3-wysihtml5.js" />
     <Content Include="js\deletebutton.js" />
     <Content Include="js\jquery.hotkeys.js" />
-    <Content Include="js\summernote.js" />
     <Content Include="js\wysihtml5-0.3.0.js" />
     <Content Include="php.ini" />
     <Content Include="README.md" />
