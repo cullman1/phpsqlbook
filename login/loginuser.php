@@ -1,6 +1,6 @@
 <?php  
 /* Include passwords and login details */
-require_once('../includes/dbconfig.php');
+require_once('../includes/db_config.php');
   
 /* Query SQL Server for checking user details. */
 $passwordToken = sha1($preSalt . $_REQUEST['password'] . $afterSalt);
@@ -18,9 +18,9 @@ else
   	 		/* store user_id */
   	 		$_SESSION['authenticated'] = $select_user_row["user_id"];
             $_SESSION['username'] = $select_user_row["user_name"];
-  	 		
             if(isset($_REQUEST["page"]))
             {
+                
                 if ($_REQUEST["page"]=="pages")
                 {
                     header('Location:../admin/pages.php');
