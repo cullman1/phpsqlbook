@@ -55,7 +55,6 @@
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
-    <Compile Include="admin\publisharticle.php" />
     <Compile Include="admin\publishdata.php" />
     <Compile Include="admin\uploadmedia.php" />
     <Compile Include="admin\user.php" />
