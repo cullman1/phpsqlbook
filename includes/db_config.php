@@ -14,5 +14,4 @@ if(!$conn)
   
 /* Select db */
 mysql_select_db($databaseName) or die ("Couldn't select db. Error:"  . mysql_error()); 
-
 ?>

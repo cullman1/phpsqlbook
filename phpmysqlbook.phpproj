@@ -63,7 +63,6 @@
     <Compile Include="includes\footereditor.php" />
     <Compile Include="includes\footereditor2.php" />
     <Compile Include="includes\footersite.php" />
-    <Compile Include="includes\gallerymodal.php" />
     <Compile Include="includes\gallerymodal2.php" />
     <Compile Include="includes\gallerymodaloriginal.php" />
     <Compile Include="includes\header.php" />
@@ -72,7 +71,6 @@
     <Compile Include="includes\headereditor2.php" />
     <Compile Include="includes\headerregister.php" />
     <Compile Include="includes\headersite.php" />
-    <Compile Include="includes\images.php" />
     <Compile Include="includes\loginvariables.php" />
     <Compile Include="includes\pagination.php" />
     <Compile Include="includes\recursive.php" />
@@ -80,8 +78,6 @@
     <Compile Include="includes\replybox2.php" />
     <Compile Include="includes\richtextcontrol.php" />
     <Compile Include="includes\table.php" />
-    <Compile Include="includes\table2.php" />
-    <Compile Include="includes\upload.php" />
     <Compile Include="index.php" />
     <Compile Include="login\loginuser.php" />
     <Compile Include="login\logon.php" />
