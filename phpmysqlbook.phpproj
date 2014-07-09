@@ -56,7 +56,6 @@
     <Compile Include="admin\pages.php" />
     <Compile Include="admin\publishdata.php" />
     <Compile Include="admin\user.php" />
-    <Compile Include="includes\cmsviewer.php" />
     <Compile Include="includes\commentscontrol.php" />
     <Compile Include="includes\commentslist.php" />
     <Compile Include="includes\db_config.php" />
@@ -119,7 +118,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="index.php.old" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap-wysiwyg.js" />
     <Content Include="js\bootstrap.js" />

@@ -1,4 +1,3 @@
-
 <?php include '../includes/headersite.php' ?>
  <div class="small_box">
     <div class="small_box_top">

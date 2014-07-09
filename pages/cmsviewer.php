@@ -1,17 +1,13 @@
 <?php 
 /* Query SQL Server for total records data. */
 $date = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', date("Y-m-d H:i:s"))));
-$tsql2 = "select Count(*) As TotalRecords FROM article where date_published <= '" . $date . "'" ;
-
-$stmt2 = mysql_query($tsql2);
-if(!$stmt2)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-}
-$row2 = mysql_fetch_array($stmt2);
-$totalRecords = $row2["TotalRecords"];
+$select_totalrecords_sql = "select Count(*) As TotalRecords FROM article where date_published <= '" . $date . "'" ;
+$select_totalrecords_result = mysql_query($select_totalrecords_sql);
+if(!$select_totalrecords_result) {  die("Query failed: ". mysql_error()); }
+$select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
+$totalRecords = $select_totalrecords_row["TotalRecords"];
 $recordsVisible = 0;
+
 /* Paging totals */ 
 $loopCount = 1;     
 $recordsPerPage = 10;
@@ -44,18 +40,14 @@ while($row = mysql_fetch_array($stmt))
         <ol style="list-style-type:none; margin: 0 0 0 0">
          
         <?php 
- /* Total number of comments */
-          $tsql5 = "select * from media_link join media on media.media_id = media_link.media_id WHERE media.article_id = ".$row['article_id'];
-          $stmt5 = mysql_query($tsql5);
-          if(!$stmt5)
-          {  
-            /* Error Message */
-            die("Query failed: ". mysql_error());
+          /* Select Media Link */
+          $select_medialink_sql = "select * from media_link join media on media.media_id = media_link.media_id WHERE media.article_id = ".$row['article_id'];
+          $select_medialink_result = mysql_query($select_medialink_sql);
+          if(!$select_medialink_result) {   die("Query failed: ". mysql_error()); }
+          while($select_medialink_row = mysql_fetch_array($select_medialink_result))
+          {
+             echo "<li><img src='../assets/clip.png'/><a type='". $select_medialink_row["file_type"] ."' href='../uploads/". $select_medialink_row["url"] ."'>". $select_medialink_row["url"] ."</a></li>";
           }
-            while($row5 = mysql_fetch_array($stmt5))
-            {
-              echo "<li><img src='../assets/clip.png'/><a type='". $row5["file_type"] ."' href='../uploads/". $row5["url"] ."'>". $row5["url"] ."</a></li>";
-            }
         ?>
           <li>
           </li>
@@ -63,24 +55,16 @@ while($row = mysql_fetch_array($stmt))
       </div>
         <?php 
           /* Total number of comments */
-          $tsql2 = "select count(*) as TotalComments FROM comments  WHERE article_id = ".$row['article_id'];
-          $stmt2 = mysql_query($tsql2);
-          if(!$stmt2)
-          {  
-            /* Error Message */
-            die("Query failed: ". mysql_error());
-          }
+          $select_totalcomments_sql = "select count(*) as TotalComments FROM comments  WHERE article_id = ".$row['article_id'];
+          $select_totalcomments_result = mysql_query($select_totalcomments_sql);
+          if(!$select_totalcomments_result) {   die("Query failed: ". mysql_error()); }
   
           /* Comments Per article */
-          $tsql3 = "select comments_id, comment_repliedto_id, comment, user_name, comment_date FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id']." Order by Comments_id desc";
-          $stmt3 = mysql_query($tsql3);
-          $stmt4 = mysql_query($tsql3);
-          if(!$stmt3)
-          {  
-            /* Error Message */
-            die("Query failed: ". mysql_error());
-          }
-
+          $select_comments_sql = "select comments_id, comment_repliedto_id, comment, user_name, comment_date FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id']." Order by Comments_id desc";
+          $select_comments_result = mysql_query($select_comments_sql);
+          $stmt4 = mysql_query($select_comments_sql);
+          if(!$select_comments_result) {  die("Query failed: ". mysql_error()); }
+          
           /* Add comments list */
           include('../includes/commentscontrol.php');
         ?>

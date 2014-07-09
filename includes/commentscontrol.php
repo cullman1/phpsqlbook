@@ -1,13 +1,16 @@
     <?php  
     
     /* comments accordion */
-    while($row2 = mysql_fetch_array($stmt2)) 
+    while($select_totalcomments_row = mysql_fetch_array($select_totalcomments_result)) 
     { ?>
     <div class="accordion" id="accordion2">
       <div class="accordion-group">
         <div class="accordion-heading">
           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $loopCount; ?>">
-            <img src="../assets/comments-xl.png"/> <?php echo $row2['TotalComments']; if ($row2['TotalComments']==1) {
+            <img src="../assets/comments-xl.png"/> 
+            <?php 
+            echo $select_totalcomments_row['TotalComments'];
+            if ($select_totalcomments_row['TotalComments']==1) {
               echo " comment";
             }
             else
@@ -19,7 +22,7 @@
         </div>
         <div id='collapse<?php echo $loopCount; ?>' class='accordion-body collapse <?php  if (isset($_REQUEST["showcomments"])) { if ($row["article_id"] == $_REQUEST["showcomments"]) { echo "in"; }}?>'>
           <div class="accordion-inner">
-            <?php if (mysql_num_rows($stmt3)!=0) 
+            <?php if (mysql_num_rows($select_comments_result)!=0) 
             { ?>
             <div id="TotalComments"><b>All comments</b>  <hr/></div> 
           <?php } 
