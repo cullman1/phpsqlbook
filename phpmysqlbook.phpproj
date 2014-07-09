@@ -105,9 +105,6 @@
     <Content Include="css\bootstrap3-wysiwyg5-color.css" />
     <Content Include="css\pagination.css" />
     <Content Include="css\style.css" />
-    <Content Include="css\summernote-bs2.css" />
-    <Content Include="css\summernote-bs3.css" />
-    <Content Include="css\summernote.css" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

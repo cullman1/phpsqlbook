@@ -31,22 +31,14 @@
            
             <input id="upload-btn" class="btn btn-primary note-image-btn" value="Insert Image" type="button" />
           </div>
-          <div class="tab-pane" id="upload-library">
-                  
+          <div class="tab-pane" id="upload-library">                
             <?php 
-  
-/* Db Details */
-require_once('../includes/db_config.php');
-$tsql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM 387732_phpbook1.media where file_type='image/jpeg' OR file_type='image/png'";
-$stmt = mysql_query($tsql);
-if(!$stmt)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-} ?>
-
-
-   <script type="text/javascript">
+            /* Db Details */
+            require_once('../includes/db_config.php');
+            $select_mediauploaded_sql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png' OR file_type='image/gif'";
+            $select_mediauploaded_result = mysql_query($select_mediauploaded_sql);
+            if(!$select_mediauploaded_result) {      die("Query failed: ". mysql_error());} ?>
+            <script type="text/javascript">
               $(document).ready(function(){
               $(".btn-clicked").on('click', function(){
                 var buttonid = this.id;
@@ -68,30 +60,25 @@ if(!$stmt)
                 $(this).attr("data-url", _href + '&ArticleTitle=' + sHTML2 + "&ArticleContent=" + sHTML);
                 window.location.href = $(this).attr("data-url");
               });
-              $("#upload-btn").on('click', function(){
-                
-           
-   $('#showprogress').css("visibility","visible");
- var formData = new FormData($('form')[0]); 
- $.ajax({
-        url: '../includes/table.php',  //Server script to process data
-        type: 'POST',
-        xhr: function() {  // Custom XMLHttpRequest
-            var myXhr = $.ajaxSettings.xhr();
-             if(myXhr.upload){ // Check if upload property exists
-                myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
-            }
-            return myXhr;
-        },
+              $("#upload-btn").on('click', function(){      
+                    $('#showprogress').css("visibility","visible");
+                    var formData = new FormData($('form')[0]); 
+                $.ajax({
+                url: '../includes/table.php',  //Server script to process data
+                type: 'POST',
+                xhr: function() {  // Custom XMLHttpRequest
+                    var myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload){ // Check if upload property exists
+                        myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+                    }
+                return myXhr;
+                },
         //Ajax events
         success: function(data, status) {
-          
             $('#showprogress').css("visibility","hidden");
-              
-         
             $('#replacebody').html(data);
                 var filename = document.getElementById("uploader").value;
-               filename = filename.split(/(\\|\/)/g).pop();
+                filename = filename.split(/(\\|\/)/g).pop();
                 var sHTML = '<img src=../uploads/' + filename + ' />' ;
                 var elem1 = document.getElementById("some-textarea");  
                 var decoded = elem1.innerHTML;
@@ -118,10 +105,9 @@ if(!$stmt)
         cache: false,
         contentType: false,
         processData: false
-    });
-              
-              });
-            });
+    });            
+  });
+});
 
 function progressHandlingFunction(e){
     if(e.lengthComputable){
@@ -136,7 +122,7 @@ function progressHandlingFunction(e){
                 <ol class="carousel-indicators" style="position: relative; top: 400px; left:250px;">
                   <?php 
                     $loopCounter = 0;     
-                    $totalRecords = mysql_num_rows($stmt);
+                    $totalRecords = mysql_num_rows($select_mediauploaded_result);
                     for ($i=$loopCounter; $i<$totalRecords; $i++)
                     { ?>
                   <li data-target="#carousel-example-generic" data-slide-to="<?php echo ($i); ?>" <?php if($i==0){echo "class='active'";} ?> ></li>
@@ -147,17 +133,17 @@ function progressHandlingFunction(e){
                 <div class="carousel-inner">
                   <?php
                     $innerCounter = 1;
-                    while($rowT = mysql_fetch_array($stmt))
+                    while($select_mediauploaded_row = mysql_fetch_array($select_mediauploaded_result))
                     { ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
-                    <img src='<?php echo $rowT["url"]; ?>' alt='<?php echo $rowT["media_title"]; ?>' />
+                    <img style="max-height:400px;" src='<?php echo $select_mediauploaded_row["url"]; ?>' alt='<?php echo $select_mediauploaded_row["media_title"]; ?>' />
                     <div class="carousel-caption" style="color:white; bottom: 45px;font-size: 15px;">
-                      <?php echo $rowT["media_title"]; ?>
+                      <?php echo $select_mediauploaded_row["media_title"]; ?>
                     </div>
                     <br/>
-                     <br/>
+                    <br/>
                     <div  style="text-align:center; padding-top:60px;">
-                      <button id="button<?php echo $rowT["media_id"]?>"  type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $rowT["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $rowT["name"]?>" class="btn-clicked btn btn-primary">Select this image</button>
+                      <button id="button<?php echo $select_mediauploaded_row["media_id"]?>"  type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $select_mediauploaded_row["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $select_mediauploaded_row["name"]?>" class="btn-clicked btn btn-primary">Select this image</button>
                     </div>
                   </div>
                   <?php 
