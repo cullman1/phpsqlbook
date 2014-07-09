@@ -35,15 +35,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\AddArticle2.php" />
-    <Compile Include="admin\addcategory.php" />
     <Compile Include="admin\adduser.php" />
     <Compile Include="admin\admin.php" />
-    <Compile Include="admin\articleviewer.php" />
     <Compile Include="admin\authenticate.php" />
     <Compile Include="admin\author-view.php" />
     <Compile Include="admin\categories.php" />
     <Compile Include="admin\category-view.php" />
     <Compile Include="admin\comments.php" />
+    <Compile Include="admin\deletecomment.php" />
     <Compile Include="admin\deletedata.php" />
     <Compile Include="admin\deleteitem.php" />
     <Compile Include="admin\edit-category.php" />
@@ -56,7 +55,6 @@
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
     <Compile Include="admin\publishdata.php" />
-    <Compile Include="admin\uploadmedia.php" />
     <Compile Include="admin\user.php" />
     <Compile Include="includes\cmsviewer.php" />
     <Compile Include="includes\commentscontrol.php" />

@@ -5,7 +5,7 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting categories by group. */
-$select_categoriesbygroup_sql = "select category_name, category_template, category.category_id, count(*)  as items FROM category JOIN article ON article.category_id = category.category_id group by category_name having count(*) > 0";
+$select_categoriesbygroup_sql = "select category_name, category_template, category.category_id, count(article_id) as items FROM category Left outer JOIN article ON article.category_id = category.category_id  group by category_name "; 
 $select_categoriesbygroup_result = mysql_query($select_categoriesbygroup_sql);
 if(!$select_categoriesbygroup_result)
 {  
