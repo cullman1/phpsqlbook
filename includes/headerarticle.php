@@ -1,8 +1,20 @@
 <?php 
-
-            session_start();
+session_start();
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
+
+function createTree(&$list, $parent){
+    $tree = array();
+    foreach ((array)$parent as $k=>$l){
+        if(isset($list[$l['comments_id']]))
+        {
+            $l['children'] = createTree($list, $list[$l['comments_id']]);
+        }
+        $tree[] = $l;
+    } 
+    return $tree;
+}
+$new = array();
   
 /* Db Details */
 require_once('../includes/db_config.php');
