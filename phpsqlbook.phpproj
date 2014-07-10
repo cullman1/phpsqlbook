@@ -56,7 +56,7 @@
     <Compile Include="includes\gallery-modal.php" />
     <Compile Include="includes\header.php" />
     <Compile Include="includes\headerarticle.php" />
-    <Compile Include="includes\headereditor2.php" />
+    <Compile Include="includes\header-editor.php" />
     <Compile Include="includes\headerregister.php" />
     <Compile Include="includes\headersite.php" />
     <Compile Include="includes\loginvariables.php" />

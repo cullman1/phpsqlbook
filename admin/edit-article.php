@@ -77,7 +77,7 @@ if (isset($_REQUEST['Submitted']))
     }  
 }
 
-include '../includes/headereditor2.php' ?>
+include '../includes/header-editor.php' ?>
 
 <script type="text/Javascript">
 function assigncontent()
@@ -200,4 +200,4 @@ function assigncontent()
   </div>
 <div class="clear"></div>
 <script src="../js/deletebutton.js" type="text/javascript"></script>
-<?php include '../includes/footereditor2.php' ?>
+<?php include '../includes/footer-editor.php' ?>

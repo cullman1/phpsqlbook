@@ -82,7 +82,7 @@ if (isset($_REQUEST['Submitted']))
 }
 
 /* Add header */
-include '../includes/headereditor2.php' ?>
+include '../includes/header-editor.php' ?>
 
 <script type="text/Javascript">
 function assigncontent()
@@ -177,4 +177,4 @@ function assigncontent()
   <!--end content --> 
   </div>
 <div class="clear"></div>
-<?php include '../includes/footereditor2.php' ?>
+<?php include '../includes/footer-editor.php' ?>
