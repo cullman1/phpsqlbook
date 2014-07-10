@@ -1,11 +1,8 @@
 <?php 
-/* Login check */
-require_once('authenticate.php'); 
-
 /* Include passwords and login details */
-require_once('../includes/dbconfig.php');
+require_once('../includes/db_config.php');
 
-if (empty( $_REQUEST['password']) || empty($_REQUEST['firstName']) || empty($_REQUEST['lastName']) || empty($_REQUEST['emailAddress']) )
+if (empty($_REQUEST['password']) || empty($_REQUEST['firstName']) || empty($_REQUEST['lastName']) || empty($_REQUEST['emailAddress']) )
 {
 	/* Redirect to original page */
   	$name = $_REQUEST['page'];
@@ -34,6 +31,7 @@ else
 	    {
 			/* Redirect to original page */
   		    $name = $_REQUEST['page'];
+      
   		    if($name=="register")
   		    {
 			    header('Location:../login/'.$name.'.php?submitted=false');
@@ -45,7 +43,7 @@ else
 	    }	
 	    else
 	    {
-		    /* Query SQL Server for inserting data. */
+		    /* Query SQL Server for inserting new user. */
             $name="";
             if(isset($_FILES['uploader']))
             {
@@ -55,7 +53,8 @@ else
 
             /* Query SQL Server for inserting new user. */
 		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined, user_image) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$passwordToken."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', '". $name ."')";
-		    $insert_user_result = mysql_query($insert_user_sql);
+	
+            $insert_user_result = mysql_query($insert_user_sql);
 		    if(!$insert_user_result) {  die("Query failed: ". mysql_error()); }
 		    else
 		    {

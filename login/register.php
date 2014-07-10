@@ -1,22 +1,3 @@
-
-<?php 
-
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
-  
-/* Db Details */
-require_once('../includes/db_config.php');
-
-/* Query SQL Server for inserting data. */
-$tsql = "select role_id, role_name FROM 387732_phpbook1.role";
-$stmt = mysql_query($tsql);
-if(!$stmt)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-}
-
-?>
 <?php include '../includes/header-register.php' ?>
 
  <form id="form1" method="post" action="../admin/add-user.php?page=register">
