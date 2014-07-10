@@ -24,27 +24,27 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="admin\AddArticle2.php" />
-    <Compile Include="admin\adduser.php" />
+    <Compile Include="admin\add-article.php" />
+    <Compile Include="admin\add-user.php" />
     <Compile Include="admin\admin.php" />
     <Compile Include="admin\authenticate.php" />
     <Compile Include="admin\author-view.php" />
     <Compile Include="admin\categories.php" />
     <Compile Include="admin\category-view.php" />
     <Compile Include="admin\comments.php" />
-    <Compile Include="admin\deletecomment.php" />
-    <Compile Include="admin\deletedata.php" />
-    <Compile Include="admin\deleteitem.php" />
+    <Compile Include="admin\delete-comment.php" />
+    <Compile Include="admin\delete-data.php" />
+    <Compile Include="admin\delete-item.php" />
     <Compile Include="admin\edit-category.php" />
-    <Compile Include="admin\EditArticle2.php" />
-    <Compile Include="admin\editcategory.php" />
+    <Compile Include="admin\edit-article.php" />
+    <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="admin\media.php" />
     <Compile Include="admin\new-admin.php" />
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
-    <Compile Include="admin\publishdata.php" />
+    <Compile Include="admin\publish-data.php" />
     <Compile Include="admin\user.php" />
     <Compile Include="includes\commentscontrol.php" />
     <Compile Include="includes\commentslist.php" />
@@ -96,9 +96,6 @@
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
     <Content Include="css\admin.css" />
-    <Content Include="css\bootstrap-theme.css" />
-    <Content Include="css\bootstrap-theme.css.map" />
-    <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css" />
@@ -119,9 +116,9 @@
     <Content Include="uploads\2014-05-10 14.07.48.jpg" />
     <Content Include="uploads\Active8_small.png" />
     <Content Include="uploads\adobelogo.gif" />
+    <Content Include="uploads\AirportAngel1.png" />
     <Content Include="uploads\blank.png" />
     <Content Include="uploads\deciphered.png" />
-    <Content Include="uploads\Holwood.jpg" />
     <Content Include="uploads\IMG_1819.JPG" />
     <Content Include="uploads\IMG_1820.JPG" />
     <Content Include="uploads\IMG_1821.JPG" />
@@ -133,6 +130,7 @@
     <Content Include="uploads\IMG_1828.JPG" />
     <Content Include="uploads\IMG_1829.JPG" />
     <Content Include="uploads\IMG_1831.JPG" />
+    <Content Include="uploads\NFC.gif" />
     <Content Include="uploads\note.txt" />
     <Content Include="uploads\note2.txt" />
     <Content Include="uploads\user.jpg" />

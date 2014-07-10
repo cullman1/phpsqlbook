@@ -31,8 +31,8 @@ include '../includes/header.php' ?>
                 <?php } ?>
                 <?php echo $select_comments_row['user_name']; ?></a></td>
             <td><?php echo $select_comments_row['comment']; ?></td>
-            <td><a href="../admin/editarticle2.php?article_id=<?php echo $select_comments_row['article_id']; ?>"><?php echo $select_comments_row['title']; ?></a></td>
-            <td><a href="../admin/deletecomment.php?comments_id=<?php echo $select_comments_row['comments_id']; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
+            <td><a href="../admin/edit-article.php?article_id=<?php echo $select_comments_row['article_id']; ?>"><?php echo $select_comments_row['title']; ?></a></td>
+            <td><a href="../admin/delete-comment.php?comments_id=<?php echo $select_comments_row['comments_id']; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
           </tr>
            <?php } ?>
         </tbody>

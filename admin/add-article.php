@@ -96,7 +96,7 @@ function assigncontent()
 </script>
 
 <div id="body">
-    <form id="galleryform" method="post" action="AddArticle2.php" onsubmit="assigncontent()" enctype="multipart/form-data">
+    <form id="galleryform" method="post" action="add-article.php" onsubmit="assigncontent()" enctype="multipart/form-data">
       <div id="middlewide">
         <div id="leftcol">
           <h2>Add an Article</h2><br />
@@ -171,7 +171,7 @@ function assigncontent()
           <br />  
       </div>
       <br />
-      <a id="Return2" href="../index.html">Return to Main Page</a>
+      <a id="Return2" href="../admin/pages.php">Return to Main Page</a>
       </div>
     </form>
   <!--end content --> 

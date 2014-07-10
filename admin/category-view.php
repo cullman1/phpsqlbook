@@ -52,7 +52,7 @@ include '../includes/header.php' ?>
             if (($count>= $startPage) && ($count <= $endPage))
             { ?>
             <tr>
-            <td><a href="EditArticle2.php?article_id=<?php echo $select_article_row['article_id'];?>"><?php echo $select_article_row['title']; ?></a></td>
+            <td><a href="edit-Article.php?article_id=<?php echo $select_article_row['article_id'];?>"><?php echo $select_article_row['title']; ?></a></td>
             <td><a href="<?php if ($select_article_row['role_id']==1) { echo 'admins.php';} else { echo 'users.php';} ?>"><?php echo $select_article_row['user_name']; ?></a></td>
             <td>Published: <?php echo $select_article_row['date_posted']; ?></td>
             <td>
@@ -66,7 +66,7 @@ include '../includes/header.php' ?>
                 echo $totalComments;
             ?>
             </td>
-            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item 652&#39;);" id="delete1" href="deletedata.php?article_id=<?php echo $select_article_row['article_id'];?>".><span class="glyphicon glyphicon-remove"></span></a></td>
+            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item 652&#39;);" id="delete1" href="delete-data.php?article_id=<?php echo $select_article_row['article_id'];?>".><span class="glyphicon glyphicon-remove"></span></a></td>
          <?php 
         }
          $count = $count+1;

@@ -14,7 +14,7 @@ $select_category_result = mysql_query($select_category_sql);
 if(!$select_category_result) {  die("Query failed: ". mysql_error()); }
 include '../includes/headereditor2.php' ?>
   <div id="body">
-    <form id="form1" method="post" action="editcategory.php">
+    <form id="form1" method="post" action="submit-category.php">
        <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>
       <div id="middlewide">
         <div id="leftcol">

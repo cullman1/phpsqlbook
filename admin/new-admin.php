@@ -10,7 +10,7 @@ $select_role_result = mysql_query($select_role_sql);
 if(!$select_role_result) {   die("Query failed: ". mysql_error()); }
 
 include '../includes/header.php'; ?>
- <form id="form1" method="post" action="adduser.php?page=admin">
+ <form id="form1" method="post" action="add-user.php?page=admin">
       <div class="col-md-4"></div>
       <div class="col-md-4">
         <form role="form">

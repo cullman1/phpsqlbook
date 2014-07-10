@@ -7,7 +7,7 @@
             if (r == true) 
             {
  $.ajax({
-        url: 'deleteitem.php?media_id='+id,  //Server script to process data
+        url: 'delete-item.php?media_id='+id,  //Server script to process data
         type: 'GET',
         xhr: function() {  // Custom XMLHttpRequest
             var myXhr = $.ajaxSettings.xhr();

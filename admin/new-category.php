@@ -60,7 +60,7 @@ include '../includes/headereditor2.php' ?>
           <br />
       </div>
       <br />
-      <a id="Return2" href="../index.html">Return to Main Page</a>
+      <a id="Return2" href="../admin/categories.php">Return to Main Page</a>
       </div>
     </form>
   <!--end content --> 

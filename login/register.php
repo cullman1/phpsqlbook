@@ -19,7 +19,7 @@ if(!$stmt)
 ?>
 <?php include '../includes/headerregister.php' ?>
 
- <form id="form1" method="post" action="../admin/adduser.php?page=register">
+ <form id="form1" method="post" action="../admin/add-user.php?page=register">
   <div class="wholeform">
   <br/>
       <div class="col-md-4"><h1>Please register:</h1></div>

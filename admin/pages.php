@@ -19,7 +19,7 @@ $totalRecords = $select_recordcount_row["TotalRecords"];
 $recordsVisible =$totalRecords;
 
 include '../includes/header.php' ?>
-      <button type="button" class="btn btn-default" onclick="window.location.href='AddArticle2.php';">Add article</button>
+      <button type="button" class="btn btn-default" onclick="window.location.href='add-article.php';">Add article</button>
 
       <!-- table of articles -->
       <table class="table table-hover">
@@ -50,7 +50,7 @@ include '../includes/header.php' ?>
           if (($count>= $startPage) && ($count <= $endPage))
           { ?>
           <tr>
-            <td><a href="EditArticle2.php?article_id=<?php echo $select_articles_row['article_id'];?>"><?php echo $select_articles_row['title']; ?></a></td>
+            <td><a href="edit-article.php?article_id=<?php echo $select_articles_row['article_id'];?>"><?php echo $select_articles_row['title']; ?></a></td>
             <td><a href="category-view.php?categoryid=<?php echo $select_articles_row['category_id'];?>"><?php echo $select_articles_row['category_name']; ?></a></td>
             <td><a href="author-view.php?userid=<?php echo $select_articles_row['user_id'];?>"><?php echo $select_articles_row['user_name']; ?></a></td>
             <td><?php echo $select_articles_row['date_posted']; ?></td>
@@ -77,11 +77,11 @@ include '../includes/header.php' ?>
                 echo $totalComments;
                 ?>
             </td>
-            <td><a href="publishdata.php?articleid=<?php echo $select_articles_row['article_id']; if ($select_articles_row['date_published']!=null) { echo "&publish=delete";} ?>">    
+            <td><a href="publish-data.php?articleid=<?php echo $select_articles_row['article_id']; if ($select_articles_row['date_published']!=null) { echo "&publish=delete";} ?>">    
             <?php if ($select_articles_row['date_published']==null)
             { ?><span class="glyphicon glyphicon-plus"></span> <?php } else { ?><span class="glyphicon glyphicon-remove red"></span><?php } ?></a></td>
       
-            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item <?php echo $select_articles_row['article_id'];?>&#39;);" id="delete1" href="deletedata.php?article_id=<?php echo $select_articles_row['article_id'];?>".><span class="glyphicon glyphicon-remove red"></span></a></td>
+            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item <?php echo $select_articles_row['article_id'];?>&#39;);" id="delete1" href="delete-data.php?article_id=<?php echo $select_articles_row['article_id'];?>".><span class="glyphicon glyphicon-remove red"></span></a></td>
          <?php 
         }
          $count = $count+1;

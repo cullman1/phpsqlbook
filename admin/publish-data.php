@@ -48,7 +48,7 @@ else
         }
         </script>
         <h2>Publish article</h2>
-        <form method="post" action="publishdata.php" onsubmit="assigncontent()">
+        <form method="post" action="publish-data.php" onsubmit="assigncontent()">
             <label for="today">Immediately</label>
             <input type="checkbox" id="immediatepublish" name="immediatepublish" onchange="if ( $('#dtb').css('visibility') == 'hidden' ) $('#dtb').css('visibility','visible'); else $('#dtb').css('visibility','hidden');"/>
             <div id="dtb">
