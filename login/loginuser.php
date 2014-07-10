@@ -4,7 +4,7 @@ require_once('../includes/db_config.php');
   
 /* Query SQL Server for checking user details. */
 $passwordToken = sha1($preSalt . $_REQUEST['password'] . $afterSalt);
-$select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, user_name from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'";
+$select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, user_name, full_name from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'";
 $select_user_result = mysql_query($select_user_sql);
 if(!$select_user_result) {  die("Query failed: ". mysql_error()); }
 else
