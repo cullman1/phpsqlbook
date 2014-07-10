@@ -7,44 +7,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-
     <title>Simple CMS</title>
-
-  
-    
-
-<!-- include libries(jQuery, bootstrap, fontawesome) -->
-<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
-
-
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-  <script src="../js/jquery.hotkeys.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
-  <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/admin.css" rel="stylesheet">
-  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-
-<!--<link rel="stylesheet" type="text/css" href="../css/bootstrap-wysihtml5.css" />
-<link rel="stylesheet" type="text/css" href="../css/bootstrap3-wysiwyg5-color.css" />
-<script src="../js/wysihtml5-0.3.0.js" type="text/javascript"></script>
-<script src="../js/bootstrap3-wysihtml5.js" type="text/javascript"></script>//-->
-
-
-  <script src="../js/bootstrap-wysiwyg.js"></script>
-
-
+    <!-- include libries(jQuery, bootstrap, fontawesome) -->
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <script src="../js/jquery.hotkeys.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <script src="../js/bootstrap-wysiwyg.js"></script>
     <style>
       body {
         min-height: 2000px;
         padding-top: 70px;
       }
     </style>
-    <!-- Custom styles for this template -->
-    <!--<link href="navbar-fixed-top.css" rel="stylesheet">//-->
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
