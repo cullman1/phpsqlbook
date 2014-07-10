@@ -17,7 +17,7 @@ else
   	 		session_start();
   	 		/* store user_id */
   	 		$_SESSION['authenticated'] = $select_user_row["user_id"];
-            $_SESSION['username'] = $select_user_row["user_name"];
+            $_SESSION['username'] = $select_user_row["full_name"];
             if(isset($_REQUEST["page"]))
             {
                 

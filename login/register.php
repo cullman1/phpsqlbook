@@ -30,17 +30,17 @@
          <br/>  <br/>
           <div id="Status_Post">
             <?php 
-             if(isset($_GET['submitted']))
+             if(isset($_REQUEST['submitted']))
              {
-              if($_GET['submitted']=="true")
+                 if($_REQUEST['submitted']=="true")
               {
                 echo "<span class='red' style='color:red;'>User successfully registered!</span>";
               }
-              else if($_GET['submitted']=="false")
+                else if($_REQUEST['submitted']=="false")
               {
                 echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
               }
-              else if($_GET['submitted']=="missing")
+              else if($_REQUEST['submitted']=="missing")
               {
                 echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
               }
