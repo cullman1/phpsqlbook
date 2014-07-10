@@ -36,7 +36,7 @@
       </div>
       
       <div class="btn-group">
-           <?php include '../includes/gallerymodal2.php' ?> 
+           <?php include '../includes/gallery-modal-insert.php' ?> 
       </div>
       <div class="btn-group">
         <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>

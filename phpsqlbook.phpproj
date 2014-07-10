@@ -52,8 +52,8 @@
     <Compile Include="includes\footer.php" />
     <Compile Include="includes\footereditor2.php" />
     <Compile Include="includes\footersite.php" />
-    <Compile Include="includes\gallerymodal2.php" />
-    <Compile Include="includes\gallerymodaloriginal.php" />
+    <Compile Include="includes\gallery-modal-insert.php" />
+    <Compile Include="includes\gallery-modal.php" />
     <Compile Include="includes\header.php" />
     <Compile Include="includes\headerarticle.php" />
     <Compile Include="includes\headereditor2.php" />

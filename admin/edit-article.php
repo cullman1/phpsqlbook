@@ -125,7 +125,7 @@ function assigncontent()
               <tr>
                 <td>Featured Image:</td>
                 <td>
-                  <?php include '../includes/gallerymodaloriginal.php' ?> 
+                  <?php include '../includes/gallery-modal.php' ?> 
                   <?php if (isset($_REQUEST["imgname"]))
                         { 
                           echo "<input type='text' id='fimage' name='fimage' value='".$_REQUEST["imgname"]."' readonly/>"; 

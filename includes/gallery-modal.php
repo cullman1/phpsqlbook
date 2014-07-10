@@ -1,12 +1,7 @@
 <?php /* Query SQL Server for inserting data. */
-$tsql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM 387732_phpbook1.media where file_type='image/jpeg' OR file_type='image/png'";
-$stmt = mysql_query($tsql);
-if(!$stmt)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-} ?>
-
+$select_mediaimages_sql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png'";
+$select_mediaimages_result = mysql_query($select_mediaimages_sql);
+if(!$select_mediaimages_result) {      die("Query failed: ". mysql_error()); } ?>
 <script type="text/javascript">
 $(document).ready(function(){
     $(".btn-clicked").click(function(){
@@ -18,8 +13,8 @@ $(document).ready(function(){
         var _href = $(this).attr("data-url");
         $(this).attr("data-url", _href + '&ArticleTitle=' + sHTML2 + "&ArticleContent=" + sHTML);
         window.location.href = $(this).attr("data-url");
-});
     });
+});
 </script>
 <div id="image" class="modal modal-content modal-header fade" style="width:623px;overflow-x:hidden; overflow-y:hidden;height:630px;">
   <div>
@@ -47,17 +42,17 @@ $(document).ready(function(){
             <div class="carousel-inner">
               <?php
                 $innerCounter = 1;
-                while($rowT = mysql_fetch_array($stmt))
+                while($select_mediaimages_row = mysql_fetch_array($select_mediaimages_result))
                 { ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
-                    <img src='<?php echo $rowT["url"]; ?>' alt='<?php echo $rowT["media_title"]; ?>' />
+                    <img src='<?php echo $select_mediaimages_row["url"]; ?>' alt='<?php echo $select_mediaimages_row["media_title"]; ?>' />
                     <div class="carousel-caption" style="color:white; bottom: 44px;">
-                      <?php echo $rowT["media_title"]; ?>
+                      <?php echo $select_mediaimages_row["media_title"]; ?>
                     </div>
                     <br/>
                     <br/>
                     <div  style="text-align:center; padding-top:30px;">
-                      <button id="button<?php echo $rowT["media_id"]?>" type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $rowT["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $rowT["name"]?>" class="btn-clicked btn btn-primary">Choose this image</a>
+                      <button id="button<?php echo $select_mediaimages_row["media_id"]?>" type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $select_mediaimages_row["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $select_mediaimages_row["name"]?>" class="btn-clicked btn btn-primary">Choose this image</a>
                       <!--  -->
                     </div>
                   </div>

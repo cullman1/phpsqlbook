@@ -7,7 +7,7 @@
         function overrideInsertImage()
         {
             var gm3 = "";
-            $.get('../includes/gallerymodal2.php', function(data) {
+            $.get('../includes/gallery-modal-insert.php', function(data) {
                 gm3 = data;
                 $(gm3).appendTo('#body').modal('show');
             });
