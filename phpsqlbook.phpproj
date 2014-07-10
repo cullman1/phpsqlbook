@@ -46,8 +46,8 @@
     <Compile Include="admin\pages.php" />
     <Compile Include="admin\publish-data.php" />
     <Compile Include="admin\user.php" />
-    <Compile Include="includes\commentscontrol.php" />
-    <Compile Include="includes\commentslist.php" />
+    <Compile Include="includes\comments-control.php" />
+    <Compile Include="includes\comments-list.php" />
     <Compile Include="includes\db_config.php" />
     <Compile Include="includes\footer.php" />
     <Compile Include="includes\footer-editor.php" />

@@ -24,7 +24,7 @@ while($row = mysql_fetch_array($stmt))
     if(!$select_comments_result) {   die("Query failed: ". mysql_error()); }
 
     /* Add comments list */
-    include('../includes/commentscontrol.php');
+    include('../includes/comments-control.php');
     ?>
   </div>
 </div>

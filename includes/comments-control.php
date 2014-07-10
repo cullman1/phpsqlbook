@@ -26,7 +26,7 @@
             { ?>
             <div id="TotalComments"><b>All comments</b>  <hr/></div> 
           <?php } 
-            include('../includes/commentslist.php');
+            include('../includes/comments-list.php');
           ?>
             <div id="AddComment">
               <a href='../pages/addcomment.php?articleid=<?php echo $row["article_id"]; ?>'>Add a comment</a>
