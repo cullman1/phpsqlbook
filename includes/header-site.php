@@ -36,13 +36,10 @@ if(!$stmt)
     die("Query failed: ". mysql_error());
 }
 
-$tsql2 = "select template from parent where parent_id=".$id;
-$stmt2 = mysql_query($tsql2);
-if(!$stmt2)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-}
+/* Query SQL Server for selecting template. */
+$select_template_sql = "select template from parent where parent_id=".$id;
+$select_template_result = mysql_query($select_template_sql);
+if(!$select_template_result) {      die("Query failed: ". mysql_error());}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,8 +78,8 @@ if(!$stmt2)
   </head>
 
 <?php 
-$row2 = mysql_fetch_array($stmt2);
-$template = $row2["template"];
+$select_template_row = mysql_fetch_array($select_template_result);
+$template = $select_template_row["template"];
 ?>
   <body class="<?php echo $template; ?>">
 
