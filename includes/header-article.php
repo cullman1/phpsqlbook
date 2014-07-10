@@ -1,7 +1,5 @@
 <?php 
 session_start();
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
 
 function createTree(&$list, $parent){
     $tree = array();
@@ -20,26 +18,20 @@ $new = array();
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
-$tsql = "select article_id, title, content, category_name, user_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
-$stmt = mysql_query($tsql);
-$stmt3 = mysql_query($tsql);
+$select_singlearticle_sql = "select article_id, title, content, category_name, user_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
+$stmt = mysql_query($select_singlearticle_sql);
+$select_singlearticle_result = mysql_query($select_singlearticle_sql);
 if(!$stmt)
 {  
-    /* Error Message */
     die("Query failed: ". mysql_error());
 }
-$row3 = mysql_fetch_array($stmt3);
-//echo "PARENT ".$row3["parent_id"];
+$select_singlearticle_row = mysql_fetch_array($select_singlearticle_result);
 
-$parent_id  = $row3["parent_id"];
+$parent_id  = $select_singlearticle_row["parent_id"];
 
-$tsql2 = "select template from parent where parent_id=".$parent_id;
-$stmt2 = mysql_query($tsql2);
-if(!$stmt2)
-{  
-    /* Error Message */
-    die("Query failed: ". mysql_error());
-}
+$select_template_sql = "select template from parent where parent_id=".$parent_id;
+$select_template_result = mysql_query($select_template_sql);
+if(!$select_template_result) {      die("Query failed: ". mysql_error()); }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,8 +67,8 @@ if(!$stmt2)
   </head>
 
 <?php 
-$row2 = mysql_fetch_array($stmt2);
-$template = $row2["template"];
+$select_template_row = mysql_fetch_array($select_template_result);
+$template = $select_template_row["template"];
 ?>
   <body class="<?php echo $template; ?>">
 
