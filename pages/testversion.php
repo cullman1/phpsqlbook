@@ -1,5 +1,5 @@
 
-<?php include '../includes/headersite.php' ?>
+<?php include '../includes/header-site.php' ?>
  <div class="small_box">
     <div class="small_box_top">
         CMS Articles
@@ -9,4 +9,4 @@
     </div>
  </div>
 <?php include('../includes/pagination.php'); ?>
-<?php include '../includes/footersite.php' ?>
+<?php include '../includes/footer-site.php' ?>

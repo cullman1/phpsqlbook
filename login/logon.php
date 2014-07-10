@@ -1,6 +1,6 @@
 
 
-<?php include '../includes/headerregister.php' ?>
+<?php include '../includes/header-register.php' ?>
  <form id="form1" method="post" action="loginuser.php">
        <div class="wholeform">
          <br/>
@@ -34,4 +34,4 @@
     </div> <!-- /container -->
    
 </form>
-<?php include '../includes/footersite.php' ?>
+<?php include '../includes/footer-site.php' ?>

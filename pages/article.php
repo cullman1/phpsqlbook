@@ -1,4 +1,4 @@
-<?php include '../includes/headerarticle.php' ?>
+<?php include '../includes/header-article.php' ?>
  <div class="small_box">
     <div class="pad">
         <?php include '../pages/articleviewer.php' ?>
@@ -6,4 +6,4 @@
     </div>
 
  </div>
-<?php include '../includes/footersite.php' ?>
+<?php include '../includes/footer-site.php' ?>
