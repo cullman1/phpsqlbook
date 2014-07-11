@@ -6,7 +6,7 @@ if (!isset($_SESSION['authenticated']))
 }
 else
 {
-	header('Location:../pages/mainsite.php?showcomments='.$_REQUEST["articleid"]);
+	header('Location:../pages/main.php?showcomments='.$_REQUEST["articleid"]);
 }
 
 ?>

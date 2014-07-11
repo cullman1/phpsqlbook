@@ -1,7 +1,7 @@
 RewriteEngine On    # Turn on the rewriting engine
 # FallbackResource index.php
 RewriteRule   ^admin/?$ /admin/pages.php        [NC,L]    # Handle requests for admin page
-RewriteRule   ^home/?$ /pages/mainsite.php        [NC,L]    # Handle requests for home page
+RewriteRule   ^home/?$ /pages/main.php        [NC,L]    # Handle requests for home page
 RewriteRule   ^article-([^/.]+)/?$ /pages/article.php?articleid=$1        [NC,L]    # Handle requests for article page
 RewriteRule   ^pages/article-([^/.]+)/?$ /pages/article.php?articleid=$1        [NC,L]    # Handle more requests for article page
 php_value upload_max_filesize 8M

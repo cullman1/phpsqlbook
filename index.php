@@ -39,7 +39,7 @@
 <div class="message">
         <h2>Your website is ready.</h2>
     <a href="admin">Go To Admin</a><br/><br/>
-    <a href="pages/mainsite.php">Go To Main Site</a>
+    <a href="pages/main.php">Go To Main Site</a>
 </div>
 
         </body>

@@ -24,6 +24,6 @@ if(!$insert_comment_result) {  die("Insert Comment Query failed: ". mysql_error(
 else
 {
   	/* Redirect to original page */
-    header('Location:../pages/mainsite.php?submitted=true&page='.$_REQUEST['page']);
+    header('Location:../pages/main.php?submitted=true&page='.$_REQUEST['page']);
 }
 ?>

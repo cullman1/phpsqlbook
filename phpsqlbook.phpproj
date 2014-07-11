@@ -73,10 +73,10 @@
     <Compile Include="pages\add-comment.php" />
     <Compile Include="pages\add-comment-text.php" />
     <Compile Include="pages\article.php" />
-    <Compile Include="pages\articleviewer.php" />
-    <Compile Include="pages\cmsviewer.php" />
-    <Compile Include="pages\mainsite.php" />
-    <Compile Include="pages\testversion.php" />
+    <Compile Include="pages\article-viewer.php" />
+    <Compile Include="pages\cms-viewer.php" />
+    <Compile Include="pages\main.php" />
+    <Compile Include="pages\test-version.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\" />
@@ -90,6 +90,7 @@
     <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".htaccess" />
     <Content Include="assets\background.jpg" />
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />

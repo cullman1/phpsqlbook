@@ -10,6 +10,6 @@ $_SESSION = array();
 session_destroy();
 
 /* Redirect */
-header('Location:../pages/mainsite.php');
+header('Location:../pages/main.php');
 
 ?>

@@ -4,7 +4,7 @@
         CMS Articles
     </div>
     <div class="pad">
-        <?php include 'cmsviewer.php' ?>
+        <?php include 'cms-viewer.php' ?>
     </div>
  </div>
 <?php include('../includes/pagination.php'); ?>
