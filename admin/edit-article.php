@@ -117,7 +117,7 @@ function assigncontent()
                 <td><span class="fieldheading">Content:</span></td>
                 <td>
                
-                <?php include '../includes/richtextcontrol.php' ?>
+                <?php include '../includes/rich-text-control.php' ?>
 
                 </td> 
               </tr>

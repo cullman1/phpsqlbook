@@ -12,8 +12,8 @@ foreach ($select_comments_row as $a)
 {
     $new[$a['comment_repliedto_id']][] = $a;
 }
- $row4 = createTree($new, $new[0]); // changed
+ $tree = createTree($new, $new[0]); // changed
  
- include("../includes/replybox2.php");
+ include("../includes/reply-box-parent.php");
 
 ?>
