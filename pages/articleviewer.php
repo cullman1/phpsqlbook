@@ -1,13 +1,13 @@
 <?php 
 /* iterate through table of articles */ 
 $loopCount = 1;     
-if(mysql_num_rows($select_singlearticle_result)==0)
+if(mysql_num_rows($select_singlearticleduplicate_result)==0)
 {
   echo "<div class='box2'>No article of that id has been published.</div>";
 }
-while($row = mysql_fetch_array($select_singlearticle_result)) 
+while($row = mysql_fetch_array($select_singlearticleduplicate_result)) 
 { ?>
-<div>
+<div id="comments_on_article">
   <h3><?php echo $row['title']; ?></h3>
   <h5><?php echo date("F j, Y, g:i a", strtotime($row['date_posted'])); ?></h5>
   <div class="box2"><?php echo $row['content']; ?><br/><br/>
