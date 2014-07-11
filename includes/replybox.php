@@ -5,7 +5,7 @@
   <?php if (isset($_SESSION['authenticated'])) { ?>  <button id="replybutton<?php echo $row["article_id"]; echo $row3[0]["comments_id"]; ?>" type="button"  class="btn btn-default">Reply</button> <?php } ?>
       
   <!--Submit reply box-->
-  <form id="form<?php echo $row["article_id"];echo $row3[0]["comments_id"]; ?>" method="post" action="../pages/addcommenttext.php?page=<?php echo $currPage; ?>&commentid=<?php echo $row3[0]["comments_id"]; ?>" style="display:none;">
+  <form id="form<?php echo $row["article_id"];echo $row3[0]["comments_id"]; ?>" method="post" action="../pages/add-comment-text.php?page=<?php echo $currPage; ?>&commentid=<?php echo $row3[0]["comments_id"]; ?>" style="display:none;">
     <div>
       <br/>
       <label for="commentText2" >Reply:</label>

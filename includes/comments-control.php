@@ -33,7 +33,7 @@
             </div>
             <?php  if (isset($_REQUEST["showcomments"])) { 
               if($_REQUEST["showcomments"] ==  $row["article_id"]) { ?>
-                <form id="form1" method="post" action="../pages/addcommenttext.php?page=<?php echo $currPage; ?>">
+                <form id="form1" method="post" action="../pages/add-comment-text.php?page=<?php echo $currPage; ?>">
                   <div>
                     <br/>
                     <label for="commentText" >Comment:</label>

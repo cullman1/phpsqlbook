@@ -72,7 +72,7 @@
     <Compile Include="login\logout.php" />
     <Compile Include="login\register.php" />
     <Compile Include="pages\addcomment.php" />
-    <Compile Include="pages\addcommenttext.php" />
+    <Compile Include="pages\add-comment-text.php" />
     <Compile Include="pages\article.php" />
     <Compile Include="pages\articleviewer.php" />
     <Compile Include="pages\cmsviewer.php" />
