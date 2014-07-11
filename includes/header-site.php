@@ -43,25 +43,10 @@ if(!$select_template_result) {      die("Query failed: ". mysql_error());}
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-
     <title>Simple CMS Viewer</title>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-
-    
-<link href="../css/pagination.css" rel="stylesheet">
-     <link href="../css/style.css" rel="stylesheet">
-    <style>
-      body {
-        min-height: 2000px;
-        padding-top: 70px;
-      }
-      .red{
-        color:red;
-      }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>    
+    <link href="../css/pagination.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

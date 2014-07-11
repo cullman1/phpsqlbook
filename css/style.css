@@ -1,4 +1,12 @@
-﻿#middlewide {
+﻿    body {
+        min-height: 2000px;
+        padding-top: 70px;
+      }
+      .red{
+        color:red;
+      }
+
+#middlewide {
 	width:640px;
 	float:left;
 	margin:20px 0 0 40px;

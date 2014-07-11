@@ -10,15 +10,6 @@
     <title>Simple CMS Viewer</title> 
     <!-- Bootstrap core CSS -->
      <link href="../css/style.css" rel="stylesheet">
-    <style>
-      body {
-        min-height: 2000px;
-        padding-top: 70px;
-      }
-      .red{
-        color:red;
-      }
-    </style>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
