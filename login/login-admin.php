@@ -1,7 +1,7 @@
 
 
 <?php include '../includes/header.php' ?>
- <form id="form1" method="post" action="../login/loginuser.php?page=pages">
+ <form id="form1" method="post" action="../login/login-user.php?page=pages">
       <div class="col-md-4"><h1>Please login:</div>
       <div class="col-md-4">
         <form role="form">

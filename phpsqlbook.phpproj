@@ -65,9 +65,9 @@
     <Compile Include="includes\reply-box-parent.php" />
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
-    <Compile Include="login\loginuser.php" />
+    <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
-    <Compile Include="login\logonadmin.php" />
+    <Compile Include="login\login-admin.php" />
     <Compile Include="login\logout.php" />
     <Compile Include="login\register.php" />
     <Compile Include="pages\add-comment.php" />

@@ -2,6 +2,6 @@
 session_start();
 if (!isset($_SESSION['authenticated']))
 {
-	  header('Location:../login/logonadmin.php');
+	  header('Location:../login/login-admin.php');
 }
 ?>

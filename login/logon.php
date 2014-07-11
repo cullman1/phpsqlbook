@@ -1,7 +1,7 @@
 
 
 <?php include '../includes/header-register.php' ?>
- <form id="form1" method="post" action="loginuser.php">
+ <form id="form1" method="post" action="login-user.php">
        <div class="wholeform">
          <br/>
       <div class="col-md-4"><h1>Please login:</div>
