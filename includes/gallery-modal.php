@@ -4,10 +4,9 @@ $select_mediaimages_result = mysql_query($select_mediaimages_sql);
 if(!$select_mediaimages_result) {      die("Query failed: ". mysql_error()); } ?>
 <script type="text/javascript">
 $(document).ready(function(){
-    $(".btn-clicked").click(function(){
-      
+    $(".btn-clicked").click(function()
+    {
         $("#image").modal('hide');
-
         var sHTML = $('#summernote').code();
         var sHTML2 = $('#ArticleTitle').val();
         var _href = $(this).attr("data-url");
@@ -30,8 +29,8 @@ $(document).ready(function(){
             <!-- Indicators -->
             <ol class="carousel-indicators" style="position: relative; top: 400px;left:250px;">
               <?php 
-                $loopCounter = 0;     
-                $totalRecords = mysql_num_rows($stmt);
+                $loopCounter = 0;  
+                $totalRecords = mysql_num_rows($select_mediaimages_result);
                 for ($i=$loopCounter; $i<$totalRecords; $i++)
                 { ?>
                   <li data-target="#carousel-example-generic" data-slide-to="<?php echo $loopCounter?>" <?php if($i==0){echo "class='active'";} ?> ></li>
@@ -74,4 +73,4 @@ $(document).ready(function(){
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal --> 
-<a data-toggle="modal" href="#image" class="btn btn-primary btn-large">Add Featured Image</a></div>
+<a data-toggle="modal" href="#image" class="btn btn-primary btn-large">Add Featured Image</a>
