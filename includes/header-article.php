@@ -19,12 +19,8 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
 $select_singlearticle_sql = "select article_id, title, content, category_name, user_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
-$stmt = mysql_query($select_singlearticle_sql);
 $select_singlearticle_result = mysql_query($select_singlearticle_sql);
-if(!$stmt)
-{  
-    die("Query failed: ". mysql_error());
-}
+if(!$select_singlearticle_result) {  die("Query failed: ". mysql_error()); }
 $select_singlearticle_row = mysql_fetch_array($select_singlearticle_result);
 
 $parent_id  = $select_singlearticle_row["parent_id"];
