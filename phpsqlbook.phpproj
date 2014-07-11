@@ -61,7 +61,6 @@
     <Compile Include="includes\header-site.php" />
     <Compile Include="includes\login-variables.php" />
     <Compile Include="includes\pagination.php" />
-    <Compile Include="includes\recursive.php" />
     <Compile Include="includes\replybox.php" />
     <Compile Include="includes\replybox2.php" />
     <Compile Include="includes\richtextcontrol.php" />

@@ -62,7 +62,7 @@ while($row = mysql_fetch_array($stmt))
           /* Comments Per article */
           $select_comments_sql = "select comments_id, comment_repliedto_id, comment, user_name, comment_date FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id']." Order by Comments_id desc";
           $select_comments_result = mysql_query($select_comments_sql);
-          $stmt4 = mysql_query($select_comments_sql);
+          $select_nestedcomments_result = mysql_query($select_comments_sql);
           if(!$select_comments_result) {  die("Query failed: ". mysql_error()); }
           
           /* Add comments list */
