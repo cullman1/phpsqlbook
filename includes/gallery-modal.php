@@ -7,7 +7,7 @@ $(document).ready(function(){
     $(".btn-clicked").click(function()
     {
         $("#image").modal('hide');
-        var sHTML = $('#summernote').code();
+        var sHTML = $('#some-text-area').code();
         var sHTML2 = $('#ArticleTitle').val();
         var _href = $(this).attr("data-url");
         $(this).attr("data-url", _href + '&ArticleTitle=' + sHTML2 + "&ArticleContent=" + sHTML);
@@ -24,7 +24,7 @@ $(document).ready(function(){
       </div>
       <div>
         <p>
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <div id="carousel-media" class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
             <ol class="carousel-indicators" style="position: relative; top: 400px;left:250px;">
@@ -33,7 +33,7 @@ $(document).ready(function(){
                 $totalRecords = mysql_num_rows($select_mediaimages_result);
                 for ($i=$loopCounter; $i<$totalRecords; $i++)
                 { ?>
-                  <li data-target="#carousel-example-generic" data-slide-to="<?php echo $loopCounter?>" <?php if($i==0){echo "class='active'";} ?> ></li>
+                  <li data-target="#carousel-media" data-slide-to="<?php echo $loopCounter?>" <?php if($i==0){echo "class='active'";} ?> ></li>
         <?php   } ?>
             </ol>
 
@@ -61,10 +61,10 @@ $(document).ready(function(){
             </div>
     
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <a class="left carousel-control" href="#carousel-media" data-slide="prev">
               <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <a class="right carousel-control" href="#carousel-media" data-slide="next">
               <span class="glyphicon glyphicon-chevron-right" style="right:0;"></span>
             </a>
           </div>
