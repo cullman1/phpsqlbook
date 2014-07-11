@@ -39,7 +39,7 @@
 
       <?php
 
-      $row3 = $row4[$i]['children'];
+      $select_comments_row = $row4[$i]['children'];
       include("../includes/replybox.php");
  ?>
     </div>
