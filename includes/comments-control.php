@@ -29,7 +29,7 @@
             include('../includes/comments-list.php');
           ?>
             <div id="AddComment">
-              <a href='../pages/addcomment.php?articleid=<?php echo $row["article_id"]; ?>'>Add a comment</a>
+              <a href='../pages/add-comment.php?articleid=<?php echo $row["article_id"]; ?>'>Add a comment</a>
             </div>
             <?php  if (isset($_REQUEST["showcomments"])) { 
               if($_REQUEST["showcomments"] ==  $row["article_id"]) { ?>

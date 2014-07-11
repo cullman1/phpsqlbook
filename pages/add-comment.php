@@ -3,7 +3,6 @@ session_start();
 if (!isset($_SESSION['authenticated']))
 {
 	  header('Location:../login/logon.php');
-
 }
 else
 {
