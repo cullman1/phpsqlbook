@@ -29,7 +29,7 @@
             $records=3;
           }
           
-          for ($i=1;$i<$records+2;$i=$i+$recordsPerPage)
+          for ($i=1;$i<$records+1;$i=$i+$recordsPerPage)
           { ?>
             <li><a href="<?php echo $fileName; ?>.php?page=<?php echo $pageNo?>"><?php echo $pageNo?></a></li>
             <?php    $pageNo++;
