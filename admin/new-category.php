@@ -21,7 +21,7 @@ if (isset($_REQUEST["Submitted"]))
         header('Location:../admin/categories.php');
     }   
 }
-include '../includes/header-editor.php' ?>
+include '../includes/header.php' ?>
   <div id="body">
     <form id="form1" method="post" action="new-category.php">
       <div id="middlewide">

@@ -13,3 +13,21 @@
   overflow: scroll;
   outline: none;
 }
+
+    body {
+        min-height: 2000px;
+        padding-top: 70px;
+      }
+      .red{
+        color:red;
+      }
+        .nav > li > a 
+        {
+            line-height: 20px;
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+        }
+        td
+        {
+            padding-right:10px;
+        }

@@ -82,7 +82,7 @@ if (isset($_REQUEST['Submitted']))
 }
 
 /* Add header */
-include '../includes/header-editor.php' ?>
+include '../includes/header.php' ?>
 
 <script type="text/Javascript">
 function assigncontent()
@@ -161,7 +161,7 @@ function assigncontent()
             <tr>
 				<td></td>
 				<td>
-                    <input id="SaveButton" type="submit" name="submit" Value="Submit"  />
+                    <input id="SaveButton" type="submit" name="submit" Value="Submit" class="btn btn-primary" />
 				</td>
                 <input id="ArticleContent" name="ArticleContent" type="hidden" />
                   <input id="Submitted" name="Submitted" type="hidden" value="true"/>

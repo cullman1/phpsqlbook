@@ -12,7 +12,7 @@ if(!$select_categorytemplate_result) { die("Query failed: ". mysql_error()); }
 $select_category_sql = "select category_id, category_name, category_template FROM category where category_id=".$_REQUEST["categoryid"];
 $select_category_result = mysql_query($select_category_sql);
 if(!$select_category_result) {  die("Query failed: ". mysql_error()); }
-include '../includes/header-editor.php' ?>
+include '../includes/header.php' ?>
   <div id="body">
     <form id="form1" method="post" action="submit-category.php">
        <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>

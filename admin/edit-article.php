@@ -77,8 +77,8 @@ if (isset($_REQUEST['Submitted']))
     }  
 }
 
-include '../includes/header-editor.php' ?>
-
+include '../includes/header.php' ?>
+    
 <script type="text/Javascript">
 function assigncontent()
 {
