@@ -48,7 +48,7 @@ include '../includes/header.php' ?>
             <?php 
 	           if(isset($_REQUEST['submitted']))
 	           {
-		          echo "<span class='red'>Category successfully created</span>";
+		          echo "<span class='red'>Category successfully edited</span>";
 	           }  
 	         ?>
          </div>

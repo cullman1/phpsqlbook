@@ -19,6 +19,7 @@ include '../includes/header.php' ?>
              <th>Image</th>
             <th>Joined</th>
             <th>Comments</th>
+              <th>Edit User?</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +39,7 @@ include '../includes/header.php' ?>
             $totalComments = $select_totalcomments_row["ArticleComments"];
             echo $totalComments; ?>
             </td>
+                <td><a href="edit-user.php?userid=<?php echo $select_user_row['user_id'];?>"><span class="glyphicon glyphicon-ok"></span></a></td>
           </tr>
          <?php } ?>
         </tbody>

@@ -46,6 +46,7 @@
     <Compile Include="admin\delete-data.php" />
     <Compile Include="admin\delete-item.php" />
     <Compile Include="admin\edit-article.php" />
+    <Compile Include="admin\edit-user.php" />
     <Compile Include="admin\edit-category.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="admin\media.php" />
@@ -54,6 +55,7 @@
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
     <Compile Include="admin\publish-data.php" />
+    <Compile Include="admin\submit-user.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\user.php" />
     <Compile Include="includes\comments-control.php" />
