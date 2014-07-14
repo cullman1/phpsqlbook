@@ -27,7 +27,7 @@ include '../includes/header.php' ?>
           <tr>
             <td><a href=""><?php echo $select_user_row['full_name']; ?></a></td>
             <td><a href="mailto:<?php echo $select_user_row['email']; ?>"><?php echo $select_user_row['email']; ?></a></td>
-            <td><?php if (isset($select_user_row['user_image'])) { ?><img width=50 src="../uploads/<?php echo $select_user_row['user_image']; ?>"/> <?php } else { ?> <img width=50 src="../uploads/blank.png" /> <?php } ?></td>
+             <td><?php if (isset($select_user_row['user_image'])) { if($select_user_row['user_image']!="") {?><img width=50 src="../uploads/<?php echo $select_user_row['user_image']; ?>"/> <?php }  else { ?> <img width=50 src="../uploads/blank.png" /> <?php }  } else { ?> <img width=50 src="../uploads/blank.png" /> <?php } ?></td>
             <td><?php echo $select_user_row['date_joined']; ?></td>
             <td><?php 
                 /* Query SQL Server for total comments data. */
