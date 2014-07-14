@@ -186,7 +186,10 @@ function assigncontent()
             <tr><td>&nbsp;</td></tr>
             <tr>
                 <td></td>
-                <td> <input id="SaveButton" type="submit" name="submit" Value="Submit"  /><input id="ArticleContent" name="ArticleContent" type="hidden" value=""/></td>  
+                <td> 
+                    <input id="SaveButton" type="submit" name="submit" Value="Submit" class="btn btn-primary" />
+                     <input id="ArticleContent" name="ArticleContent" type="hidden" value=""/>
+                </td>  
             </tr> 
             </table>
           </div>

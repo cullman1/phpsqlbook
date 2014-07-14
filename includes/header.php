@@ -9,12 +9,12 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <title>Simple CMS</title>
     <!-- Bootstrap core CSS -->
-    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <script src="../js/jquery.hotkeys.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/admin.css" rel="stylesheet" />
     <script src="../js/bootstrap-wysiwyg.js"></script>
