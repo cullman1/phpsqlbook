@@ -30,7 +30,12 @@ include '../includes/header.php' ?>
                          <a href="../admin/admin.php">
                 <?php } ?>
                 <?php echo $select_comments_row['user_name']; ?></a></td>
-            <td><?php echo $select_comments_row['comment']; ?></td>
+            <td>
+                <?php if ($select_comments_row['comment']=="This comment has been removed."){ ?>
+                <span class="red">Deleted comment</span><?php 
+                 } else { echo $select_comments_row['comment'];} ?>
+
+            </td>
             <td><a href="../admin/edit-article.php?article_id=<?php echo $select_comments_row['article_id']; ?>"><?php echo $select_comments_row['title']; ?></a></td>
             <td><a href="../admin/delete-comment.php?comments_id=<?php echo $select_comments_row['comments_id']; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
           </tr>
