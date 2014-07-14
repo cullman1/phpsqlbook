@@ -83,7 +83,7 @@ if (isset($_REQUEST['Submitted']))
 
 /* Add header */
 include '../includes/header.php' ?>
-
+ <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 <script type="text/Javascript">
 function assigncontent()
 {
