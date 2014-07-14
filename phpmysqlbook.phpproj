@@ -75,9 +75,9 @@
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
     <Compile Include="index.php" />
-    <Compile Include="login\loginuser.php" />
+    <Compile Include="login\login-admin.php" />
+    <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
-    <Compile Include="login\logonadmin.php" />
     <Compile Include="login\logout.php" />
     <Compile Include="login\register.php" />
     <Compile Include="pages\add-comment-text.php" />
@@ -115,9 +115,9 @@
     <Content Include="uploads\2014-05-10 14.07.48.jpg" />
     <Content Include="uploads\Active8_small.png" />
     <Content Include="uploads\adobelogo.gif" />
+    <Content Include="uploads\AirportAngel1.png" />
     <Content Include="uploads\blank.png" />
     <Content Include="uploads\deciphered.png" />
-    <Content Include="uploads\Holwood.jpg" />
     <Content Include="uploads\IMG_1819.JPG" />
     <Content Include="uploads\IMG_1820.JPG" />
     <Content Include="uploads\IMG_1821.JPG" />
@@ -129,6 +129,7 @@
     <Content Include="uploads\IMG_1828.JPG" />
     <Content Include="uploads\IMG_1829.JPG" />
     <Content Include="uploads\IMG_1831.JPG" />
+    <Content Include="uploads\NFC.gif" />
     <Content Include="uploads\note.txt" />
     <Content Include="uploads\note2.txt" />
     <Content Include="uploads\user.jpg" />

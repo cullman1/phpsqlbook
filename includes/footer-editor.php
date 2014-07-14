@@ -15,7 +15,7 @@
         };
 
         $(document).ready(function() {
-            $('#some-textarea').wysiwyg();
+            $('#rich-text-container').wysiwyg();
         });
     </script>
   </body>

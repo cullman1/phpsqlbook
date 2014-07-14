@@ -87,7 +87,7 @@ include '../includes/header.php' ?>
 <script type="text/Javascript">
 function assigncontent()
 {
-  var textControl = document.getElementById("some-textarea");
+  var textControl = document.getElementById("rich-text-container");
   var sHTML = textControl.innerHTML;
   var sHTML2 = $('#ArticleTitle').val();
   $('#ArticleContent').val(sHTML);

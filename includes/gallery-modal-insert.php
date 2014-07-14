@@ -45,7 +45,7 @@
                 var buttonname = $("#"+buttonid).attr("data-url");
                 buttonname2 = "../uploads/" + buttonname.substr(buttonname.lastIndexOf('=')+1,  (buttonname.length - buttonname.lastIndexOf('=')-1));
                 var sHTML = '<img src=' + buttonname2 + ' />' ;
-                var elem1 = document.getElementById("some-textarea");  
+                var elem1 = document.getElementById("rich-text-container");
                 var decoded = elem1.innerHTML;
                 var new1 = decoded.replace(/"/g, '');  
                 if(elem1.innerHTML != 'undefined')
@@ -80,7 +80,7 @@
                 var filename = document.getElementById("uploader").value;
                 filename = filename.split(/(\\|\/)/g).pop();
                 var sHTML = '<img src=../uploads/' + filename + ' />' ;
-                var elem1 = document.getElementById("some-textarea");  
+                var elem1 = document.getElementById("rich-text-container");
                 var decoded = elem1.innerHTML;
                 var new1 = decoded.replace(/"/g, '');  
                 if(elem1.innerHTML != 'undefined')

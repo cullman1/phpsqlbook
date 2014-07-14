@@ -1,4 +1,4 @@
-  <div class="btn-toolbar" data-role="editor-toolbar" data-target="#some-textarea">
+  <div class="btn-toolbar" data-role="editor-toolbar" data-target="#rich-text-container">
       <div class="btn-group">
         <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -32,9 +32,7 @@
           <button class="btn" type="button">Add</button>
         </div>
         <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
-
-      </div>
-      
+      </div>  
       <div class="btn-group">
            <?php include '../includes/gallery-modal-insert.php' ?> 
       </div>
@@ -43,8 +41,7 @@
         <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
       </div>
     </div>
-
-    <div id="some-textarea">
+    <div id="rich-text-container">
     <?php if (isset($_REQUEST["ArticleContent"]))
     {
         if (!is_null($_REQUEST["ArticleContent"]))
