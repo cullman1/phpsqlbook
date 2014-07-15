@@ -6,8 +6,8 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
 $select_user_sql = "select * FROM user where role_id=1";
-$select_user_result = mysql_query($select_user_sql);
-if(!$select_user_result) { die("Query failed: ". mysql_error()); }
+$select_user_result = $dbHost->query($select_user_sql);
+$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
 <a class="btn btn-default" href="new-admin.php" role="button">New admin</a>
       <!-- table of articles -->
@@ -33,8 +33,8 @@ include '../includes/header.php' ?>
             <?php 
             /* Query SQL Server for total records data. */
                      $select_totalcomments_sql = "select Count(*) As ArticleComments FROM comments where user_id=".$select_user_row['user_id'] ;
-            $select_totalcomments_result = mysql_query($select_totalcomments_sql);
-            if(!$select_totalcomments_result) {  die("Query failed: ". mysql_error()); }
+            $select_totalcomments_result = $dbHost->query($select_totalcomments_sql);
+            $select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
             $select_totalcomments_row = mysql_fetch_array($select_totalcomments_result);
             $totalComments = $select_totalcomments_row["ArticleComments"];
             echo $totalComments; ?>

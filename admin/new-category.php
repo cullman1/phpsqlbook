@@ -6,14 +6,14 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for inserting data. */
 $select_category_sql = "select distinct category_template FROM category";
-$select_category_result = mysql_query($select_category_sql);
+$select_category_result = $dbHost->query($select_category_sql);
 if(!$select_category_result) { die("Query failed: ". mysql_error()); }
 
 if (isset($_REQUEST["Submitted"]))
 {
     /* Query SQL Server for inserting a new category. */
     $insert_category_sql = "INSERT INTO category (category_name, category_template) VALUES ('".$_REQUEST['CategoryName']."', '".$_REQUEST['CategoryParent']."')";
-    $insert_category_result = mysql_query($insert_category_sql);
+    $insert_category_result = $dbHost->query($insert_category_sql);
     if(!$insert_category_result) { die("Query failed: ". mysql_error()); }
     else
     {

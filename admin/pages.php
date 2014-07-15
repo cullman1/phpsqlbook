@@ -6,12 +6,12 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting articles. */
 $select_articles_sql = "select article_id, title, content, category_name, category.category_id, user_name, user.user_id, date_posted, date_published, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id order by article_id";
-$select_articles_result = mysql_query($select_articles_sql);
+$select_articles_result = $dbHost->query($select_articles_sql);
 if(!$select_articles_result) { die("Select Articles Query failed: ". mysql_error()); }
 
 /* Query SQL Server for total records data. */
 $select_recordcount_sql = "select Count(*) As TotalRecords FROM article";
-$select_recordcount_result = mysql_query($select_recordcount_sql);
+$select_recordcount_result = $dbHost->query($select_recordcount_sql);
 if(!$select_recordcount_result) { die("Select RecordCount Query failed: ". mysql_error()); }
 
 $select_recordcount_row = mysql_fetch_array($select_recordcount_result);
@@ -66,7 +66,7 @@ include '../includes/header.php' ?>
                 <?php 
                 /* Query SQL Server for comments count data. */
               $select_commentscount_sql = "select Count(*) As ArticleComments FROM comments where article_id=".$select_articles_row['article_id'] ;
-                $select_commentscount_result = mysql_query($select_commentscount_sql);
+                $select_commentscount_result = $dbHost->query($select_commentscount_sql);
                 if(!$select_commentscount_result)
                 {  
                     /* Error Message */

@@ -8,7 +8,7 @@ if (isset($_REQUEST["publish"]))
 {
     /* Query to update article publish date*/
     $update_article_sql = "update article set date_published = null WHERE article_id=".$_REQUEST["articleid"];
-    $update_article_result = mysql_query($update_article_sql);
+    $update_article_result = $dbHost->query($update_article_sql);
     if(!$update_article_result) { die("Update Article Publish Date Query failed: ". mysql_error()); }
     else
     {
@@ -30,7 +30,7 @@ else
 
         /* Query to update publish date*/
         $update_publishdate_sql = "update article set date_published = '".$date."' WHERE article_id=".$_REQUEST["articleid"];
-        $update_publishdate_result = mysql_query($update_publishdate_sql);
+        $update_publishdate_result = $dbHost->query($update_publishdate_sql);
         if(!$update_publishdate_result) {  die("Query failed: ". mysql_error()); } else 
         {
             /* Redirect to original page */

@@ -19,15 +19,15 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
 $select_singlearticle_sql = "select article_id, title, content, category_name, user_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
-$select_singlearticle_result = mysql_query($select_singlearticle_sql);
-$select_singlearticleduplicate_result = mysql_query($select_singlearticle_sql);
+$select_singlearticle_result = $dbHost->query($select_singlearticle_sql);
+$select_singlearticleduplicate_result = $dbHost->query($select_singlearticle_sql);
 if(!$select_singlearticle_result) {  die("Query failed: ". mysql_error()); }
 $row= mysql_fetch_array($select_singlearticle_result);
 
 $parent_id  = $row["parent_id"];
 
 $select_template_sql = "select template from parent where parent_id=".$parent_id;
-$select_template_result = mysql_query($select_template_sql);
+$select_template_result = $dbHost->query($select_template_sql);
 if(!$select_template_result) {      die("Query failed: ". mysql_error()); }
 ?>
 <!DOCTYPE html>

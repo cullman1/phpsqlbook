@@ -6,11 +6,11 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting category template. */
 $select_categorytemplate_sql = "select distinct category_template FROM category";
-$select_categorytemplate_result = mysql_query($select_categorytemplate_sql);
+$select_categorytemplate_result = $dbHost->query($select_categorytemplate_sql);
 if(!$select_categorytemplate_result) { die("Query failed: ". mysql_error()); }
 
 $select_category_sql = "select category_id, category_name, category_template FROM category where category_id=".$_REQUEST["categoryid"];
-$select_category_result = mysql_query($select_category_sql);
+$select_category_result = $dbHost->query($select_category_sql);
 if(!$select_category_result) {  die("Query failed: ". mysql_error()); }
 include '../includes/header.php' ?>
   <div id="body">

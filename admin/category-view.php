@@ -6,20 +6,26 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting article. */
 $select_article_sql = "select article_id, title, content, category_name, category.category_id, user_name, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where category.category_id = ".$_REQUEST["categoryid"]." order by article_id";
-$select_article_result = mysql_query($select_article_sql);
-if(!$select_article_result) { die("Query failed: ". mysql_error()); }
+$select_article_result = $dbHost->query($select_article_sql);
+
+# setting the fetch mode
+$select_article_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for total records data. */
 $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article";
-$select_totalrecords_result = mysql_query($select_totalrecords_sql);
-if(!$select_totalrecords_result) {      die("Query failed: ". mysql_error()); }
+$select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
+
+# setting the fetch mode
+$select_totalrecords_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 
 /* Query SQL Server for category. */
 $select_category_sql = "select category_name from category where category_id= ".$_REQUEST["categoryid"];
-$select_category_result = mysql_query($select_category_sql);
-if(!$select_category_result) {   die("Query failed: ". mysql_error()); }
+$select_category_result = $dbHost->query($select_category_sql);
+
+# setting the fetch mode
+$select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_category_row = mysql_fetch_array($select_category_result);
 $catName = $select_category_row["category_name"];
 include '../includes/header.php' ?>
@@ -59,8 +65,9 @@ include '../includes/header.php' ?>
             <?php 
                 /* Query SQL Server for comments count. */
                 $select_comments_sql = "select Count(*) As ArticleComments FROM comments where article_id=".$select_article_row['article_id'] ;
-                $select_comments_result = mysql_query($select_comments_sql);
-                if(!$select_comments_result) {      die("Query failed: ". mysql_error()); }
+                $select_comments_result = $dbHost->query($select_comments_sql);
+                # setting the fetch mode
+                $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
                 $select_comments_row = mysql_fetch_array($select_comments_result);
                 $totalComments = $select_comments_row["ArticleComments"];
                 echo $totalComments;

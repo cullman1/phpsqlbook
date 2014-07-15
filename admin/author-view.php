@@ -6,20 +6,22 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
 $select_article_sql = "select article_id, title, content, category_name, category.category_id, user_name, user.user_id, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where user.user_id = ".$_REQUEST["userid"]." order by article_id";
-$select_article_result = mysql_query($select_article_sql);
-if(!$select_article_result) {  die("Select Article Query failed: ". mysql_error()); }
+$select_article_result = $dbHost->query($select_article_sql);
+# setting the fetch mode
+$select_article_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for total records data. */
 $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article";
-$select_totalrecords_result = mysql_query($select_totalrecords_sql);
-if(!$select_totalrecords_result) { die("Query failed: ". mysql_error()); }
+$select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
+$select_totalrecords_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 
 /* Query SQL Server for user name. */
 $select_user_sql = "select user_name from user where user_id= ".$_REQUEST["userid"];
-$select_user_result = mysql_query($select_user_sql);
-if(!$select_user_result) {  die("Query failed: ". mysql_error()); }
+$select_user_result = $dbHost->query($select_user_sql);
+# setting the fetch mode
+$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_user_row = mysql_fetch_array($select_user_result);
 $catName = $select_user_row["user_name"];
 include '../includes/header.php' ?>
@@ -59,8 +61,9 @@ include '../includes/header.php' ?>
             <?php 
                 /* Query SQL Server for article comments. */
                 $select_comments_sql = "select Count(*) As ArticleComments FROM comments where article_id=".$select_article_row['article_id'] ;
-                $select_comments_result = mysql_query($select_comments_sql);
-                if(!$select_comments_result) {  die("Query failed: ". mysql_error()); }
+                $select_comments_result = $dbHost->query($select_comments_sql);
+                # setting the fetch mode
+                $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
                 $select_comments_row = mysql_fetch_array($select_comments_result);
                 $totalComments = $select_comments_row["ArticleComments"];
                 echo $totalComments;

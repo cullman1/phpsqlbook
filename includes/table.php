@@ -14,7 +14,7 @@ if(isset($_FILES['uploader']))
               
     /* Query SQL Server for inserting data. */
    $insert_media_sql = "INSERT INTO media (thumbnail, media_title, name, file_type, url, size, date_uploaded) VALUES ('". $thumbnail."','".$_REQUEST['title']."','".$_FILES['uploader']['name']."', '".$_FILES['uploader']['type']."', '".$folder."', '".$_FILES['uploader']['size']."', '". date("Y-m-d H:i:s") ."')";
-   $insert_media_result = mysql_query($insert_media_sql);
+   $insert_media_result = $dbHost->query($insert_media_sql);
    if(!$insert_media_result) {       die("Query failed: ". mysql_error()); }
 }
 else if ((!$_FILES) && isset($_REQUEST["submitted"]))
@@ -24,14 +24,14 @@ else if ((!$_FILES) && isset($_REQUEST["submitted"]))
 
 /* Query SQL Server for selecting data. */
 $select_media_sql = "select * FROM media";
-$select_media_result = mysql_query($select_media_sql);
+$select_media_result = $dbHost->query($select_media_sql);
 if(!$select_media_result) {      die("Query failed: ". mysql_error()); }
 
 while($select_media_row = mysql_fetch_array($select_media_result)) { 
 
 /* Query SQL Server for selecting data. */
 $select_medialink_sql = "select * FROM media_link where media_id=".$select_media_row['media_id'];
-$select_medialink_result = mysql_query($select_medialink_sql);
+$select_medialink_result = $dbHost->query($select_medialink_sql);
 if(!$select_medialink_result) {      die("Query failed: ". mysql_error()); }
 ?>
               <tr>

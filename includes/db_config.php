@@ -5,13 +5,13 @@ ini_set('display_errors', TRUE);
 /* Include passwords and login details */
 require_once('login-variables.php');
   
-/* Connect using MySql Authentication. */
-$conn = mysql_connect( $serverName, $userName, $password);
-if(!$conn)
+/* Connect using PDO . */
+try
 {
-        die("Unable to connect. Error: " . mysql_error());
+    $dbHost = new PDO("mysql:host=$serverName;dbname=$dbname", $userName, $password);
 }
-  
-/* Select db */
-mysql_select_db($databaseName) or die ("Couldn't select db. Error:"  . mysql_error()); 
+catch (PDOException $e)
+{
+    echo $e->getMessage();
+}
 ?>

@@ -5,13 +5,14 @@ require_once('../includes/db_config.php');
 
 /* Query to delete item from media */
 $delete_media_sql = 'delete FROM media where media_id='.$_REQUEST["media_id"];
-$delete_media_result = mysql_query($delete_media_sql);
+$delete_media_result = $dbHost->query($delete_media_sql);
 if(!$delete_media_result) {   die("Query failed: ". mysql_error()); }
 
 /* Query SQL Server for selecting data. */
 $select_media_sql = "select * FROM media";
-$select_media_result = mysql_query($select_media_sql);
-if(!$select_media_result) { die("Query failed: ". mysql_error()); }
+$select_media_result = $dbHost->query($select_media_sql);
+# setting the fetch mode
+$select_media_result->setFetchMode(PDO::FETCH_ASSOC);
 
 while($select_media_row = mysql_fetch_array($select_media_result)) 
 	{ ?>

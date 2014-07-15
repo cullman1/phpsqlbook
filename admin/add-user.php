@@ -22,11 +22,9 @@ else
 
     /* Query SQL Server for checking existing user. */
     $select_user_sql = "SELECT * from user WHERE email = '".$_REQUEST['emailAddress']."'";
-    $select_user_result = mysql_query($select_user_sql);
-    if(!$select_user_result)
-    {  die("Query failed: ". mysql_error()); }
-    else
-    {
+    $select_user_result = $dbHost->query($select_user_sql);
+# setting the fetch mode
+$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 	    if(mysql_num_rows($select_user_result)>0)
 	    {
 			/* Redirect to original page */
@@ -54,7 +52,7 @@ else
             /* Query SQL Server for inserting new user. */
 		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined, user_image) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$passwordToken."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', '". $name ."')";
 	
-            $insert_user_result = mysql_query($insert_user_sql);
+            $insert_user_result = $dbHost->query($insert_user_sql);
 		    if(!$insert_user_result) {  die("Query failed: ". mysql_error()); }
 		    else
 		    {
@@ -70,6 +68,6 @@ else
 			    }
 	        }
 	    }
-    }
+    
 }
 ?>

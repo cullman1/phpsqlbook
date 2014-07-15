@@ -19,7 +19,7 @@ $articleid  = $_REQUEST["articleid"];
 
 /* Query SQL Server for inserting data. */
 $insert_comment_sql = "INSERT INTO comments (comment, article_id, user_id, comment_date, comment_repliedto_id) VALUES ('".$_REQUEST['commentText']."', '".$articleid."', '".$_SESSION['authenticated']."', '". date("Y-m-d H:i:s") ."', '".$commentid."')";
-$insert_comment_result = mysql_query($insert_comment_sql);
+$insert_comment_result = $dbHost->query($insert_comment_sql);
 if(!$insert_comment_result) {  die("Insert Comment Query failed: ". mysql_error() . " " . $_REQUEST['commentText']." - ".$articleid." -  ".$_SESSION["authenticated"]); }
 else
 {

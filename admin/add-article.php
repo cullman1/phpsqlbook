@@ -7,20 +7,22 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting category. */
 $select_category_sql = "select category_id, category_name FROM 387732_phpbook1.category";
-$select_category_result = mysql_query($select_category_sql);
-if(!$select_category_result){  die("Select Category failed: ". mysql_error()); }
+$select_category_result = $dbHost->query($select_category_sql);
+# setting the fetch mode
+$select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting parent page. */
 $select_parent_sql = "select parent_id, parent_name FROM 387732_phpbook1.parent";
-$select_parent_result = mysql_query($select_parent_sql);
-if(!$select_parent_result) {   die("Select Parent failed: ". mysql_error()); }
+$select_parent_result = $dbHost->query($select_parent_sql);
+# setting the fetch mode
+$select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Postback */
 if (isset($_REQUEST['Submitted']))
 {
     /* Query SQL Server for inserting article. */
     $insert_article_sql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$_SESSION['authenticated']."')";
-    $insert_article_result = mysql_query($insert_article_sql);
+    $insert_article_result = $dbHost->query($insert_article_sql);
     $newarticleid = mysql_insert_id();
     if(!$insert_article_result)
     {  
@@ -48,7 +50,7 @@ if (isset($_REQUEST['Submitted']))
                 
                 /* Query SQL Server for inserting media. */
                 $insert_media_sql = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["document_upload"]["name"]."','".$_FILES['document_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
-                $insert_media_result = mysql_query($insert_media_sql);
+                $insert_media_result = $dbHost->query($insert_media_sql);
                 if(!$insert_media_result)
                 {  
                     /* Error Message */
@@ -58,7 +60,7 @@ if (isset($_REQUEST['Submitted']))
 
                 /* Query SQL Server for inserting media link. */
                 $insert_medialink_sql = "INSERT INTO media_link (article_id, media_id) VALUES (".$newarticleid.", '".$newmediaid."')";
-                $insert_medialink_result = mysql_query($insert_medialink_sql);
+                $insert_medialink_result = $dbHost->query($insert_medialink_sql);
                 if(!$insert_medialink_result)
                 {  
                     /* Error Message */
@@ -71,7 +73,7 @@ if (isset($_REQUEST['Submitted']))
         {
             /* Query SQL Server for updaing media. */
             $update_media_sql = "UPDATE media set article_id =".$articleid." where media_id=".$_REQUEST['fimagehidden'];
-            $update_media_result = mysql_query($update_media_sql);
+            $update_media_result = $dbHost->query($update_media_sql);
             if(!$update_media_result)
             { 
                 /* Error Message */

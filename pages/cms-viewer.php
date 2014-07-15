@@ -2,7 +2,7 @@
 /* Query SQL Server for total records data. */
 $date = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', date("Y-m-d H:i:s"))));
 $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article where date_published <= '" . $date . "'" ;
-$select_totalrecords_result = mysql_query($select_totalrecords_sql);
+$select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
 if(!$select_totalrecords_result) {  die("Query failed: ". mysql_error()); }
 $select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
 $totalRecords = $select_totalrecords_row["TotalRecords"];
@@ -42,7 +42,7 @@ while($row = mysql_fetch_array($select_articles_result))
         <?php 
           /* Select Media Link */
       $select_medialink_sql = "select * from media_link join media on media.media_id = media_link.media_id WHERE media.article_id = ".$row['article_id'];
-          $select_medialink_result = mysql_query($select_medialink_sql);
+          $select_medialink_result = $dbHost->query($select_medialink_sql);
           if(!$select_medialink_result) {   die("Query failed: ". mysql_error()); }
           while($select_medialink_row = mysql_fetch_array($select_medialink_result))
           {
@@ -56,13 +56,13 @@ while($row = mysql_fetch_array($select_articles_result))
         <?php 
           /* Total number of comments */
           $select_totalcomments_sql = "select count(*) as TotalComments FROM comments  WHERE article_id = ".$row['article_id'];
-          $select_totalcomments_result = mysql_query($select_totalcomments_sql);
+          $select_totalcomments_result = $dbHost->query($select_totalcomments_sql);
           if(!$select_totalcomments_result) {   die("Query failed: ". mysql_error()); }
   
           /* Comments Per article */
           $select_comments_sql = "select comments_id, comment_repliedto_id, comment, user_name, comment_date FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id']." Order by Comments_id desc";
-          $select_comments_result = mysql_query($select_comments_sql);
-          $select_nestedcomments_result = mysql_query($select_comments_sql);
+          $select_comments_result = $dbHost->query($select_comments_sql);
+          $select_nestedcomments_result = $dbHost->query($select_comments_sql);
           if(!$select_comments_result) {  die("Query failed: ". mysql_error()); }
           
           /* Add comments list */
