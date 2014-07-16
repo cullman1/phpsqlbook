@@ -56,7 +56,7 @@ else
 	
             $insert_user_result = $dbHost->prepare($insert_user_sql);
             $insert_user_result->execute();
-		    if($insert_user_result->errorInfo()[1]!=0) {  die("Insert User Query failed: ".$insert_user_result->errorInfo()[0]); }
+		    if($insert_user_result->errorCode()!=0) {  die("Insert User Query failed"); }
 		    else
 		    {
   			    /* Redirect to original page */

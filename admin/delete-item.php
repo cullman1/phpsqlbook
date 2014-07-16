@@ -7,7 +7,7 @@ require_once('../includes/db_config.php');
 $delete_media_sql = 'delete FROM media where media_id='.$_REQUEST["media_id"];
 $delete_media_result = $dbHost->prepare($delete_media_sql);
 $delete_media_result->execute();
-if($delete_media_result->errorInfo()[1]!=0) {  die("Delete Media Query failed: ".$delete_media_result->errorInfo()[0]); }
+if($delete_media_result->errorCode()!=0) {  die("Delete Media Query failed"); }
 
 /* Query SQL Server for selecting data. */
 $select_media_sql = "select * FROM media";
