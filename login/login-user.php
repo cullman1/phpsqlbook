@@ -10,7 +10,7 @@ $select_user_result = $dbHost->query($select_user_sql);
 $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 
   	/* Redirect to original page */
-    while($select_user_row = mysql_fetch_array($select_user_result))
+while($select_user_row = $select_user_result->fetch())
   	{
         if ($select_user_row["CorrectDetails"]==1)
   	 	{

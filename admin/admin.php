@@ -23,7 +23,7 @@ include '../includes/header.php' ?>
           </tr>
         </thead>
         <tbody>
-          <?php  while($select_user_row = mysql_fetch_array($select_user_result)) { ?>
+          <?php  while($select_user_row = $select_user_result->fetch()) { ?>
           <tr>
             <td><a href=""><?php echo $select_user_row['full_name']; ?></a></td>
             <td><a href="mailto:<?php echo $select_user_row['email']; ?>"><?php echo $select_user_row['email']; ?></a></td>
@@ -35,7 +35,7 @@ include '../includes/header.php' ?>
                      $select_totalcomments_sql = "select Count(*) As ArticleComments FROM comments where user_id=".$select_user_row['user_id'] ;
             $select_totalcomments_result = $dbHost->query($select_totalcomments_sql);
             $select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
-            $select_totalcomments_row = mysql_fetch_array($select_totalcomments_result);
+            $select_totalcomments_row = $select_totalcomments_result->fetch();
             $totalComments = $select_totalcomments_row["ArticleComments"];
             echo $totalComments; ?>
             </td>

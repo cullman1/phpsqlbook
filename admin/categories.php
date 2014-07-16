@@ -21,7 +21,7 @@ include '../includes/header.php' ?>
           </tr>
         </thead>
         <tbody>
-           <?php while($select_categoriesbygroup_row = mysql_fetch_array($select_categoriesbygroup_result)) { ?>
+           <?php while($select_categoriesbygroup_row = $select_categoriesbygroup_result->fetch()) { ?>
           <tr>
             <td><a href="category-view.php?categoryid=<?php echo $select_categoriesbygroup_row['category_id']; ?>"><?php echo $select_categoriesbygroup_row['category_name']; ?></a></td>
             <td><?php echo $select_categoriesbygroup_row['items']; ?></td>

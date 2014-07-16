@@ -6,7 +6,7 @@ if(mysql_num_rows($select_singlearticleduplicate_result)==0)
 {
   echo "<div class='box2'>No article of that id has been published.</div>";
 }
-while($row = mysql_fetch_array($select_singlearticleduplicate_result)) 
+while($row = $select_singlearticleduplicate_result->fetch()) 
 { ?>
 <div id="comments_on_article">
   <h3><?php echo $row['title']; ?></h3>

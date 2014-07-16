@@ -14,7 +14,7 @@ $select_article_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article";
 $select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
 $select_totalrecords_result->setFetchMode(PDO::FETCH_ASSOC);
-$select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
+$select_totalrecords_row = $select_totalrecords_result->fetch();
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 
 /* Query SQL Server for user name. */
@@ -22,7 +22,7 @@ $select_user_sql = "select full_name from user where user_id= ".$_REQUEST["useri
 $select_user_result = $dbHost->query($select_user_sql);
 # setting the fetch mode
 $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
-$select_user_row = mysql_fetch_array($select_user_result);
+$select_user_row = $select_user_result->fetch();
 $catName = $select_user_row["full_name"];
 include '../includes/header.php' ?>
 <div>User:
@@ -49,7 +49,7 @@ include '../includes/header.php' ?>
             $endPage = ($_REQUEST["page"] * $recordsPerPage);
           }
           $count=1;
-          while($select_article_row = mysql_fetch_array($select_article_result)) 
+          while($select_article_row =$select_article_result->fetch()) 
           { 
             if (($count>= $startPage) && ($count <= $endPage))
             { ?>
@@ -64,7 +64,7 @@ include '../includes/header.php' ?>
                 $select_comments_result = $dbHost->query($select_comments_sql);
                 # setting the fetch mode
                 $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
-                $select_comments_row = mysql_fetch_array($select_comments_result);
+                $select_comments_row = $select_comments_result->fetch();
                 $totalComments = $select_comments_row["ArticleComments"];
                 echo $totalComments;
             ?>

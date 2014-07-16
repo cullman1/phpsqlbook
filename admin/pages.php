@@ -16,7 +16,7 @@ $select_recordcount_result = $dbHost->query($select_recordcount_sql);
 # setting the fetch mode
 $select_recordcount_result->setFetchMode(PDO::FETCH_ASSOC);
 
-$select_recordcount_row = mysql_fetch_array($select_recordcount_result);
+$select_recordcount_row = $select_recordcount_result->fetch();
 $totalRecords = $select_recordcount_row["TotalRecords"];
 $recordsVisible =$totalRecords;
 
@@ -47,7 +47,7 @@ include '../includes/header.php' ?>
             $endPage = ($_REQUEST["page"] * $recordsPerPage);
           }
           $count=1;
-          while($select_articles_row = mysql_fetch_array($select_articles_result)) { 
+          while($select_articles_row = $select_articles_result->fetch()) { 
 
           if (($count>= $startPage) && ($count <= $endPage))
           { ?>
@@ -71,7 +71,7 @@ include '../includes/header.php' ?>
                 $select_commentscount_result = $dbHost->query($select_commentscount_sql);
                 # setting the fetch mode
                 $select_commentscount_result->setFetchMode(PDO::FETCH_ASSOC);
-                $select_commentscount_row = mysql_fetch_array($select_commentscount_result);
+                $select_commentscount_row = $select_commentscount_result->fetch();
                 $totalComments = $select_commentscount_row["ArticleComments"];
                 echo $totalComments;
                 ?>

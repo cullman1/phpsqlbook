@@ -17,7 +17,7 @@ $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
   <div id="body">
     <form id="form1" method="post" action="submit-category.php">
-       <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>
+       <?php while($select_category_row = $select_category_result->fetch()) { ?>
       <div id="middlewide">
         <div id="leftcol">
           <h2>Edit Category</h2><br />
@@ -31,7 +31,7 @@ include '../includes/header.php' ?>
               <td><span class="fieldheading">Category Template:</span></td>
               <td>
                 <select id="CategoryParent" name="CategoryParent">
-                 <?php while($select_categorytemplate_row = mysql_fetch_array($select_categorytemplate_result)) { ?>
+                 <?php while($select_categorytemplate_row = $select_categorytemplate_result->fetch()) { ?>
                 <option <?php if( $select_category_row['category_template'] == $select_categorytemplate_row['category_template']) { echo "selected";} ?> ><?php  echo $select_categorytemplate_row['category_template']; ?></option>
                   <?php } ?> 
                   </select>

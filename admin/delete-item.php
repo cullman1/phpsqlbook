@@ -14,7 +14,7 @@ $select_media_result = $dbHost->query($select_media_sql);
 # setting the fetch mode
 $select_media_result->setFetchMode(PDO::FETCH_ASSOC);
 
-while($select_media_row = mysql_fetch_array($select_media_result)) 
+while($select_media_row = $select_media_result->fetch()) 
 	{ ?>
               <tr>
                 <td><?php echo $select_media_row['media_id']; ?></td>

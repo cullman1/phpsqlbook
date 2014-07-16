@@ -40,7 +40,7 @@ include '../includes/header.php' ?>
               <td><span class="fieldheading">Category Template:</span></td>
               <td>
                 <select id="CategoryParent" name="CategoryParent">
-                    <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>
+                    <?php while($select_category_row = $select_category_result->fetch()) { ?>
                     <option><?php  echo $select_category_row['category_template']; ?></option>
                     <?php } ?> 
                 </select>

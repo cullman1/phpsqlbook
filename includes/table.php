@@ -28,7 +28,7 @@ $select_media_result = $dbHost->query($select_media_sql);
 # setting the fetch mode
 $select_media_result->setFetchMode(PDO::FETCH_ASSOC);
 
-while($select_media_row = mysql_fetch_array($select_media_result)) { 
+while($select_media_row = $select_media_result->fetch()) { 
 
 /* Query SQL Server for selecting data. */
 $select_medialink_sql = "select * FROM media_link where media_id=".$select_media_row['media_id'];
@@ -44,7 +44,7 @@ $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
                <?php  } else { ?>
                         <td>-</td>
                <?php  } ?>
-                <td><?php while($select_medialink_row = mysql_fetch_array($select_medialink_result)) { echo $select_medialink_row['article_id'] . " "; } ?></td>
+                <td><?php while($select_medialink_row = $select_medialink_result->fetch()) { echo $select_medialink_row['article_id'] . " "; } ?></td>
                 <td><?php echo $select_media_row['media_title']; ?></td>
                 <td><?php echo $select_media_row['name']; ?></td>
                 <td><?php echo $select_media_row['file_type']; ?></td>

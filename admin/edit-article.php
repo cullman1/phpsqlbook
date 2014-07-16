@@ -18,15 +18,15 @@ $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting parent. */
 $select_parent_sql = "select parent_id, parent_name FROM parent";
-$select_parent_statement = $dbHost->query($select_parent_sql);
+$select_parent_result = $dbHost->query($select_parent_sql);
 # setting the fetch mode
-$select_parent_statement->setFetchMode(PDO::FETCH_ASSOC);
+$select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server linking media to article via media link table. */
 $select_medialink_sql = "select * FROM media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where media.article_id=".$_REQUEST['article_id'];
-$select_medialink_statement = $dbHost->query($select_medialink_sql);
+$select_medialink_result = $dbHost->query($select_medialink_sql);
 # setting the fetch mode
-$select_medialink_statement->setFetchMode(PDO::FETCH_ASSOC);
+$select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Postback */
 if (isset($_REQUEST['Submitted']))
@@ -71,8 +71,8 @@ if (isset($_REQUEST['Submitted']))
         if($_REQUEST['fimagehidden']!="")
         {
             $update_media_sql = "UPDATE 387732_phpbook1.media SET article_id =".$_REQUEST["article_id"]." where media_id=".$_REQUEST['fimagehidden'];
-            $update_media_statement = $dbHost->query($update_media_sql);
-            if(!$update_media_statement)
+            $update_media_result = $dbHost->query($update_media_sql);
+            if(!$update_media_result)
             { 
                 /* Error Message */
                 die("Update media Query failed ". mysql_error());
@@ -96,7 +96,7 @@ function assigncontent()
 
 <div id="body">
   <form id="form1" method="post" action="edit-article.php" onsubmit="assigncontent()" enctype="multipart/form-data">
-    <?php while($select_article_row = mysql_fetch_array($select_article_result)) { ?>
+    <?php while($select_article_row = $select_article_result->fetch()) { ?>
       <div id="middlewide">
         <div id="leftcol">
           <h2>Edit an Article</h2>
@@ -155,7 +155,7 @@ function assigncontent()
               <tr>
                 <td>Associated Docs:</td>
                 <td>
-                <?php while($select_medialink_row = mysql_fetch_array($select_medialink_statement)) 
+                <?php while($select_medialink_row = $select_medialink_result->fetch()) 
                   {
                       if (isset($select_medialink_row['name']) && ($select_medialink_row['file_type']!="image/jpeg" && $select_medialink_row['file_type']!="image/png"))
                     { 
@@ -172,7 +172,7 @@ function assigncontent()
               <td style="vertical-align:top;"><span class="fieldheading">Category:&nbsp;</span></td>
               <td>   
                   <select id="CategoryId" name="CategoryId">     
-                    <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>
+                    <?php while($select_category_row = $select_category_result->fetch()) { ?>
                     <option value="<?php  echo $select_category_row['category_id']; ?>"<?php if( $select_category_row['category_id'] == $select_article_row['category_id']) { echo "selected";} ?> ><?php  echo $select_category_row['category_name']; ?></option>
                     <?php } ?> 
                   </select>
@@ -182,7 +182,7 @@ function assigncontent()
               <td style="vertical-align:top;"><span class="fieldheading">Parent Page:&nbsp;</span></td>
               <td>   
                   <select id="PageId" name="PageId">
-                    <?php while($select_parent_row = mysql_fetch_array($select_parent_statement)) { ?>
+                    <?php while($select_parent_row = $select_parent_result->fetch()) { ?>
                     <option value="<?php  echo $select_parent_row['parent_id']; ?>"  <?php if( $select_parent_row['parent_id'] == $select_article_row['parent_id']) { echo "selected";} ?>><?php  echo $select_parent_row['parent_name']; ?></option>
                     <?php } ?> 
                   </select>

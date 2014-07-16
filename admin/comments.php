@@ -22,7 +22,7 @@ include '../includes/header.php' ?>
         </thead>
         <tbody>
           <?php 
-          while($select_comments_row = mysql_fetch_array($select_comments_result)) { ?>
+          while($select_comments_row =$select_comments_result->fetch()) { ?>
           <tr>
             <td>
                  <?php if  ($select_comments_row['role_id']==1) { ?>

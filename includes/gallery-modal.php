@@ -43,7 +43,7 @@ $(document).ready(function(){
             <div class="carousel-inner">
               <?php
                 $innerCounter = 1;
-                while($select_mediaimages_row = mysql_fetch_array($select_mediaimages_result))
+                while($select_mediaimages_row = $select_mediaimages_result->fetch())
                 { ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
                     <img src='<?php echo $select_mediaimages_row["url"]; ?>' alt='<?php echo $select_mediaimages_row["media_title"]; ?>' />

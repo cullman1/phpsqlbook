@@ -36,7 +36,7 @@ include '../includes/header.php'; ?>
 <label for="password">Role</label>
                 <select id="Role" name="Role">
               
-                 <?php while($select_role_row = mysql_fetch_array($select_role_result)) { ?>
+                 <?php while($select_role_row = $select_role_result->fetch()) { ?>
                 <option value="<?php  echo $select_role_row['role_id']; ?>"><?php  echo $select_role_row['role_name']; ?></option>
                   <?php } ?> 
                   </select>

@@ -135,7 +135,7 @@ function progressHandlingFunction(e){
                 <div class="carousel-inner">
                   <?php
                     $innerCounter = 1;
-                    while($select_mediauploaded_row = mysql_fetch_array($select_mediauploaded_result))
+                    while($select_mediauploaded_row =$select_mediauploaded_result->fetch())
                     { ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
                     <img style="max-height:440px;" src='<?php echo $select_mediauploaded_row["url"]; ?>' alt='<?php echo $select_mediauploaded_row["media_title"]; ?>' />

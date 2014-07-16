@@ -17,7 +17,7 @@ $select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
 
 # setting the fetch mode
 $select_totalrecords_result->setFetchMode(PDO::FETCH_ASSOC);
-$select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
+$select_totalrecords_row = $select_totalrecords_result->fetch();
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 
 /* Query SQL Server for category. */
@@ -26,7 +26,7 @@ $select_category_result = $dbHost->query($select_category_sql);
 
 # setting the fetch mode
 $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
-$select_category_row = mysql_fetch_array($select_category_result);
+$select_category_row = $select_category_result->fetch();
 $catName = $select_category_row["category_name"];
 include '../includes/header.php' ?>
 <div>Category:
@@ -53,7 +53,7 @@ include '../includes/header.php' ?>
             $endPage = ($_REQUEST["page"] * $recordsPerPage);
           }
           $count=1;
-          while($select_article_row = mysql_fetch_array($select_article_result)) 
+          while($select_article_row = $select_article_result->fetch()) 
           { 
             if (($count>= $startPage) && ($count <= $endPage))
             { ?>
@@ -68,7 +68,7 @@ include '../includes/header.php' ?>
                 $select_comments_result = $dbHost->query($select_comments_sql);
                 # setting the fetch mode
                 $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
-                $select_comments_row = mysql_fetch_array($select_comments_result);
+                $select_comments_row =$select_comments_result->fetch();
                 $totalComments = $select_comments_row["ArticleComments"];
                 echo $totalComments;
             ?>

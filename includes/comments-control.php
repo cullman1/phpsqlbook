@@ -1,7 +1,7 @@
     <?php  
     
     /* comments accordion */
-    while($select_totalcomments_row = mysql_fetch_array($select_totalcomments_result)) 
+    while($select_totalcomments_row = $select_totalcomments_result->fetch()) 
     { ?>
     <div class="accordion" id="accordion2">
       <div class="accordion-group">

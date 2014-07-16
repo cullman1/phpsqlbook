@@ -24,7 +24,7 @@ $select_singlearticleduplicate_result = $dbHost->query($select_singlearticle_sql
 # setting the fetch mode
 $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_singlearticleduplicate_result->setFetchMode(PDO::FETCH_ASSOC);
-$row= mysql_fetch_array($select_singlearticle_result);
+$row= $select_singlearticle_result->fetch();
 
 $parent_id  = $row["parent_id"];
 
@@ -55,7 +55,7 @@ $select_template_result->setFetchMode(PDO::FETCH_ASSOC);
   </head>
 
 <?php 
-$select_template_row = mysql_fetch_array($select_template_result);
+$select_template_row = $select_template_result->fetch();
 $template = $select_template_row["template"];
 ?>
   <body class="<?php echo $template; ?>">

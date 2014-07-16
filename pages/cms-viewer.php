@@ -5,7 +5,7 @@ $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article where d
 $select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
 # setting the fetch mode
 $select_totalrecords_result->setFetchMode(PDO::FETCH_ASSOC);
-$select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
+$select_totalrecords_row = $select_totalrecords_result->fetch();
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 $recordsVisible = 0;
 
@@ -27,7 +27,7 @@ else
 $count=1;
 
 /* Iterate through table of articles */ 
-while($row = mysql_fetch_array($select_articles_result)) 
+while($row =$select_articles_result->fetch()) 
 { 
   if (($count>= $startPage) && ($count <= $endPage))
   {   $recordsVisible++; ?>
@@ -46,7 +46,7 @@ while($row = mysql_fetch_array($select_articles_result))
           $select_medialink_result = $dbHost->query($select_medialink_sql);
           # setting the fetch mode
           $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
-          while($select_medialink_row = mysql_fetch_array($select_medialink_result))
+          while($select_medialink_row = $select_medialink_result->fetch())
           {
              echo "<li><img src='../assets/clip.png'/><a type='". $select_medialink_row["file_type"] ."' href='../uploads/". $select_medialink_row["url"] ."'>". $select_medialink_row["url"] ."</a></li>";
           }

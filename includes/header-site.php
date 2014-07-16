@@ -58,7 +58,7 @@ $select_template_result->setFetchMode(PDO::FETCH_ASSOC);
   </head>
 
 <?php 
-$select_template_row = mysql_fetch_array($select_template_result);
+$select_template_row = $select_template_result->fetch();
 $template = $select_template_row["template"];
 ?>
   <body class="<?php echo $template; ?>">

@@ -3,7 +3,7 @@
 //Show comments
 $select_comments_row = array();
 unset($new);
-while( $select_nestedcomments_row = mysql_fetch_array($select_nestedcomments_result))
+while( $select_nestedcomments_row =$select_nestedcomments_result->fetch())
 {
     $select_comments_row[] = $select_nestedcomments_row;
 }

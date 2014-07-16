@@ -128,7 +128,7 @@ function assigncontent()
               <td style="vertical-align:top;"><span class="fieldheading">Category:&nbsp;</span></td>
               <td>
                   <select id="CategoryId" name="CategoryId">
-                     <?php while($select_category_row = mysql_fetch_array($select_category_result)) { ?>
+                     <?php while($select_category_row = $select_category_result->fetch()) { ?>
                      <option value="<?php  echo $select_category_row['category_id']; ?>"><?php  echo $select_category_row['category_name']; ?></option>
                      <?php } ?> 
                   </select>
@@ -139,7 +139,7 @@ function assigncontent()
                 <td style="vertical-align:top;"><span class="fieldheading">Parent Page:&nbsp;</span></td>
                 <td>   
                     <select id="PageId" name="PageId">
-                        <?php while($select_parent_row = mysql_fetch_array($select_parent_result)) { ?>
+                        <?php while($select_parent_row = $select_parent_result->fetch()) { ?>
                         <option value="<?php  echo $select_parent_row['parent_id']; ?>"><?php  echo $select_parent_row['parent_name']; ?></option>
                         <?php } ?> 
                     </select>

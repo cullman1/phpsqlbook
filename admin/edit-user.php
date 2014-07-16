@@ -12,7 +12,7 @@ $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
   <div id="body">
     <form id="form1" method="post" action="submit-user.php">
-       <?php while($select_user_row = mysql_fetch_array($select_user_result)) { ?>
+       <?php while($select_user_row = $select_user_result->fetch()) { ?>
       <div id="middlewide">
         <div id="leftcol">
           <h2>Edit User</h2><br />
