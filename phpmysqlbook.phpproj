@@ -111,7 +111,6 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\deletebutton.js" />
     <Content Include="js\jquery.hotkeys.js" />
-    <Content Include="php.ini" />
     <Content Include="phpsqlbook.phpproj" />
     <Content Include="README.md" />
     <Content Include="uploads\2014-05-10 14.07.48.jpg" />

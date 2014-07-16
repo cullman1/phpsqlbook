@@ -14,8 +14,9 @@ if (isset($_REQUEST["Submitted"]))
 {
     /* Query SQL Server for inserting a new category. */
     $insert_category_sql = "INSERT INTO category (category_name, category_template) VALUES ('".$_REQUEST['CategoryName']."', '".$_REQUEST['CategoryParent']."')";
-    $insert_category_result = $dbHost->query($insert_category_sql);
-    if(!$insert_category_result) { die("Query failed: ". mysql_error()); }
+    $insert_category_result = $dbHost->prepare($insert_category_sql);
+    $insert_category_result->execute();
+    if($insert_category_result->errorInfo()[1]!=0) {  die("INSERT Category Query failed: ".$insert_category_result->errorInfo()[0]); }
     else
     {
         /* Redirect to original page */

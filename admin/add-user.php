@@ -54,8 +54,9 @@ else
             /* Query SQL Server for inserting new user. */
 		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined, user_image) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$passwordToken."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', '". $name ."')";
 	
-            $insert_user_result = $dbHost->query($insert_user_sql);
-		    if(!$insert_user_result) {  die("Query failed: ". mysql_error()); }
+            $insert_user_result = $dbHost->prepare($insert_user_sql);
+            $insert_user_result->execute();
+		    if($insert_user_result->errorInfo()[1]!=0) {  die("Insert User Query failed: ".$insert_user_result->errorInfo()[0]); }
 		    else
 		    {
   			    /* Redirect to original page */

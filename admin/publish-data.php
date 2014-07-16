@@ -8,8 +8,9 @@ if (isset($_REQUEST["publish"]))
 {
     /* Query to update article publish date*/
     $update_article_sql = "update article set date_published = null WHERE article_id=".$_REQUEST["articleid"];
-    $update_article_result = $dbHost->query($update_article_sql);
-    if(!$update_article_result) { die("Update Article Publish Date Query failed: ". mysql_error()); }
+    $update_article_result = $dbHost->prepare($update_article_sql);
+    $update_article_result->execute();
+    if($update_article_result->errorInfo()[1]!=0) {  die("Update article Query failed: ".$update_article_result->errorInfo()[0]); }
     else
     {
         /* Redirect to original page */
@@ -30,8 +31,10 @@ else
 
         /* Query to update publish date*/
         $update_publishdate_sql = "update article set date_published = '".$date."' WHERE article_id=".$_REQUEST["articleid"];
-        $update_publishdate_result = $dbHost->query($update_publishdate_sql);
-        if(!$update_publishdate_result) {  die("Query failed: ". mysql_error()); } else 
+        $update_publishdate_result = $dbHost->prepare($update_publishdate_sql);
+        $update_publishdate_result->execute();
+        if($update_publishdate_result->errorInfo()[1]!=0) {  die("Update article Query failed: ".$update_publishdate_result->errorInfo()[0]); }
+        else 
         {
             /* Redirect to original page */
             header('Location:../admin/pages.php');
