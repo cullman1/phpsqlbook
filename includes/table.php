@@ -25,14 +25,16 @@ else if ((!$_FILES) && isset($_REQUEST["submitted"]))
 /* Query SQL Server for selecting data. */
 $select_media_sql = "select * FROM media";
 $select_media_result = $dbHost->query($select_media_sql);
-if(!$select_media_result) {      die("Query failed: ". mysql_error()); }
+# setting the fetch mode
+$select_media_result->setFetchMode(PDO::FETCH_ASSOC);
 
 while($select_media_row = mysql_fetch_array($select_media_result)) { 
 
 /* Query SQL Server for selecting data. */
 $select_medialink_sql = "select * FROM media_link where media_id=".$select_media_row['media_id'];
 $select_medialink_result = $dbHost->query($select_medialink_sql);
-if(!$select_medialink_result) {      die("Query failed: ". mysql_error()); }
+# setting the fetch mode
+$select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
 ?>
               <tr>
                 <td><?php echo $select_media_row['media_id']; ?></td>

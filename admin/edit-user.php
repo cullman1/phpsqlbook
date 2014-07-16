@@ -7,7 +7,8 @@ require_once('../includes/db_config.php');
 /* Query SQL Server for selecting category template. */
 $select_user_sql = "select * FROM user where user_id=".$_REQUEST["userid"];
 $select_user_result = $dbHost->query($select_user_sql);
-if(!$select_user_result) {  die("Query failed: ". mysql_error()); }
+# setting the fetch mode
+$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
   <div id="body">
     <form id="form1" method="post" action="submit-user.php">

@@ -6,9 +6,9 @@ require_once('../includes/db_config.php');
 $passwordToken = sha1($preSalt . $_REQUEST['password'] . $afterSalt);
 $select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, user_name, full_name from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'";
 $select_user_result = $dbHost->query($select_user_sql);
-if(!$select_user_result) {  die("Query failed: ". mysql_error()); }
-else
-{
+# setting the fetch mode
+$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
+
   	/* Redirect to original page */
     while($select_user_row = mysql_fetch_array($select_user_result))
   	{
@@ -41,5 +41,5 @@ else
 			header('Location:../login/logon.php?login=failed');
   	 	}
     }
-}
+
 ?>

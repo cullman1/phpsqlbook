@@ -7,22 +7,26 @@ require_once('../includes/db_config.php');
 /* Query SQL Server for selecting article and associated media. */
 $select_article_sql = "SELECT title, content, article.article_id,  category_id, parent_id FROM article where article.article_id=".$_REQUEST['article_id'];
 $select_article_result = $dbHost->query($select_article_sql);
-if(!$select_article_result) {   die("Select article failed: ". mysql_error()); }
+# setting the fetch mode
+$select_article_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting category. */
 $select_category_sql = "select category_id, category_name FROM category";
 $select_category_result = $dbHost->query($select_category_sql);
-if(!$select_category_result) { die("Select category failed: ". mysql_error()); }
+# setting the fetch mode
+$select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting parent. */
 $select_parent_sql = "select parent_id, parent_name FROM parent";
 $select_parent_statement = $dbHost->query($select_parent_sql);
-if(!$select_parent_statement) {  die("Select parent failed: ". mysql_error()); }
+# setting the fetch mode
+$select_parent_statement->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server linking media to article via media link table. */
 $select_medialink_sql = "select * FROM media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where media.article_id=".$_REQUEST['article_id'];
 $select_medialink_statement = $dbHost->query($select_medialink_sql);
-if(!$select_medialink_statement) {  die("Select media Query failed: ". mysql_error()); }
+# setting the fetch mode
+$select_medialink_statement->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Postback */
 if (isset($_REQUEST['Submitted']))

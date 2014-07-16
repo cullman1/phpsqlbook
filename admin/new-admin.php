@@ -7,7 +7,8 @@ require_once('../includes/db_config.php');
 /* Query SQL Server for inserting data. */
 $select_role_sql = "select role_id, role_name FROM role";
 $select_role_result = $dbHost->query($select_role_sql);
-if(!$select_role_result) {   die("Query failed: ". mysql_error()); }
+# setting the fetch mode
+$select_role_result->setFetchMode(PDO::FETCH_ASSOC);
 
 include '../includes/header.php'; ?>
  <form id="form1" method="post" action="add-user.php?page=admin">

@@ -16,13 +16,16 @@ while($row = mysql_fetch_array($select_singlearticleduplicate_result))
     /* Total number of comments */
     $select_totalcomments_sql = "select count(*) as TotalComments FROM comments  WHERE article_id = ".$row['article_id'];
     $select_totalcomments_result = $dbHost->query($select_totalcomments_sql);
-    if(!$select_totalcomments_result) {   die("Query failed: ". mysql_error()); }
+    # setting the fetch mode
+    $select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
   
     /* Comments Per article */
     $select_comments_sql = "select * FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id'];
     $select_comments_result = $dbHost->query($select_comments_sql);
     $select_nestedcomments_result = $dbHost->query($select_comments_sql);
-    if(!$select_comments_result) {   die("Query failed: ". mysql_error()); }
+    # setting the fetch mode
+    $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
+    $select_nestedcomments_result->setFetchMode(PDO::FETCH_ASSOC);
 
     /* Add comments list */
     include('../includes/comments-control.php');

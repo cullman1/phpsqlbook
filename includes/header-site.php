@@ -27,12 +27,14 @@ if (isset($_REQUEST["search"]))
 }
 
 $select_articles_result = $dbHost->query($select_articles_sql);
-if(!$select_articles_result) {      die("Query failed: ". mysql_error()); }
+# setting the fetch mode
+$select_articles_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting template. */
 $select_template_sql = "select template from parent where parent_id=".$id;
 $select_template_result = $dbHost->query($select_template_sql);
-if(!$select_template_result) {      die("Query failed: ". mysql_error());}
+# setting the fetch mode
+$select_template_result->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
