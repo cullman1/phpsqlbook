@@ -32,7 +32,6 @@
 if (isset($select_comments_row[0]['children']))
 {
     $select_comments_row = $select_comments_row[0]['children']; ?>
-
     <div style="padding-left:20px;">
       <?php include("../includes/reply-box.php"); ?>
     </div>
