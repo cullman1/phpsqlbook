@@ -10,7 +10,7 @@ if (isset($_REQUEST["publish"]))
     $update_article_sql = "update article set date_published = null WHERE article_id=".$_REQUEST["articleid"];
     $update_article_result = $dbHost->prepare($update_article_sql);
     $update_article_result->execute();
-    if($update_article_result->errorInfo()[1]!=0) {  die("Update article Query failed: ".$update_article_result->errorInfo()[0]); }
+    if($update_article_result->errorCode()!=0) {  die("Update Article Query failed"); }
     else
     {
         /* Redirect to original page */
@@ -33,7 +33,7 @@ else
         $update_publishdate_sql = "update article set date_published = '".$date."' WHERE article_id=".$_REQUEST["articleid"];
         $update_publishdate_result = $dbHost->prepare($update_publishdate_sql);
         $update_publishdate_result->execute();
-        if($update_publishdate_result->errorInfo()[1]!=0) {  die("Update article Query failed: ".$update_publishdate_result->errorInfo()[0]); }
+        if($update_publishdate_result->errorCode()!=0) {  die("Update Article Query failed"); }
         else 
         {
             /* Redirect to original page */

@@ -17,7 +17,7 @@ $update_user_sql = 'UPDATE user SET full_name= "' .$_REQUEST["UserName"].'", ema
 echo $update_user_sql;
 $update_user_result = $dbHost->prepare($update_user_sql);
 $update_user_result->execute();
-if($update_user_result->errorInfo()[1]!=0) {  die("Update User Query failed: ".$update_user_result->errorInfo()[0]); }
+if($update_user_result->errorCode()!=0) {  die("Update User Query failed"); }
 else
 {	
 	/* Redirect to original page */

@@ -16,9 +16,7 @@ if(isset($_FILES['uploader']))
    $insert_media_sql = "INSERT INTO media (thumbnail, media_title, name, file_type, url, size, date_uploaded) VALUES ('". $thumbnail."','".$_REQUEST['title']."','".$_FILES['uploader']['name']."', '".$_FILES['uploader']['type']."', '".$folder."', '".$_FILES['uploader']['size']."', '". date("Y-m-d H:i:s") ."')";
    $insert_media_result = $dbHost->prepare($insert_media_sql);
    $insert_media_result->execute();
-   $err = $insert_media_result->errorInfo();
-   if(isset($err)) {  die("Insert Media Query failed: ".$err); }
-}
+   if($insert_media_result->errorCode()!=0) {  die("Insert Media Query failed"); }
 else if ((!$_FILES) && isset($_REQUEST["submitted"]))
 {
     echo "<br/><br/><span class='red'>File upload failed</span>";

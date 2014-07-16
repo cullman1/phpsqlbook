@@ -35,7 +35,7 @@ if (isset($_REQUEST['Submitted']))
     $update_article_sql = "UPDATE 387732_phpbook1.article SET title= '" .$_REQUEST["ArticleTitle"]."', content='" .$_REQUEST["ArticleContent"]. "', category_id=" .$_REQUEST["CategoryId"]. ", parent_id=" .$_REQUEST["PageId"]. " where article_id=".$_REQUEST["article_id"];
     $update_article_result = $dbHost->prepare($update_article_sql);
     $update_article_result->execute();
-    if($update_article_result->errorInfo()[1]!=0) {  die("Update Article Query failed: ".$update_article_result->errorInfo()[0]); }
+    if($update_article_result->errorCode()!=0) {  die("Delete Media Query failed"); }
     else
     {
         if(isset($_FILES['document_upload']))
@@ -49,13 +49,13 @@ if (isset($_REQUEST['Submitted']))
                 $insert_media_sql = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["document_upload"]["name"]."','".$_FILES['document_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
                 $insert_media_result = $dbHost->prepare($insert_media_sql);
                 $insert_media_result->execute();
-                if($insert_media_result->errorInfo()[1]!=0) {  die("Insert Media Query failed: ".$insert_media_result->errorInfo()[0]); }
+                if($insert_media_result->errorCode()!=0) {  die("Insert Media Query failed"); }
 
                 /* Query SQL Server for inserting media link into link table. */
                 $insert_medialink_sql = "INSERT media_link (article_id, media_id) VALUES  (".$_REQUEST["article_id"].",".$dbHost->lastInsertId().")";
                 $insert_medialink_result = $dbHost->prepare($insert_medialink_sql);
                 $insert_medialink_result->execute();
-                if($insert_medialink_result->errorInfo()[1]!=0) {  die("Insert Media Query failed: ".$insert_medialink_result->errorInfo()[0]); }
+                if($insert_medialink_result->errorCode()!=0) {  die("Insert Media LinkQuery failed"); }
             }
         }
 
@@ -64,7 +64,7 @@ if (isset($_REQUEST['Submitted']))
             $update_media_sql = "UPDATE 387732_phpbook1.media SET article_id =".$_REQUEST["article_id"]." where media_id=".$_REQUEST['fimagehidden'];
             $update_media_result = $dbHost->prepare($update_media_sql);
             $update_media_result->execute();
-            if($update_media_result->errorInfo()[1]!=0) {  die("Update Media Query failed: ".$update_media_result->errorInfo()[0]); }
+            if($update_media_result->errorCode()!=0) {  die("Update Media Query failed"); }
         }
     }  
 }
