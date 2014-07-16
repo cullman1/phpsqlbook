@@ -32,7 +32,9 @@ $(document).ready(function(){
             <ol class="carousel-indicators" style="position: relative; top: 400px;left:250px;">
               <?php 
                 $loopCounter = 0;  
-                $totalRecords = mysql_num_rows($select_mediaimages_result);
+                
+                $select_mediaimages_rows = $select_mediaimages_result->fetchAll();
+                $totalRecords = count($select_mediaimages_rows);
                 for ($i=$loopCounter; $i<$totalRecords; $i++)
                 { ?>
                   <li data-target="#carousel-media" data-slide-to="<?php echo $loopCounter?>" <?php if($i==0){echo "class='active'";} ?> ></li>

@@ -23,9 +23,11 @@ else
     /* Query SQL Server for checking existing user. */
     $select_user_sql = "SELECT * from user WHERE email = '".$_REQUEST['emailAddress']."'";
     $select_user_result = $dbHost->query($select_user_sql);
-# setting the fetch mode
-$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
-	    if(mysql_num_rows($select_user_result)>0)
+    # setting the fetch mode
+    $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
+    $select_user_rows = $select_user_result->fetchAll();
+    $num_rows = count($select_user_rows);
+	    if($num_rows>0)
 	    {
 			/* Redirect to original page */
   		    $name = $_REQUEST['page'];

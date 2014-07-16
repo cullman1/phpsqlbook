@@ -79,7 +79,9 @@ while($row =$select_articles_result->fetch())
   $count=$count+1;
   $loopCount = $loopCount+1;
 } 
-if (mysql_num_rows($select_articles_result)==0)
+$select_articles_rows = $select_articles_result->fetchAll();
+$num_rows = count($select_articles_rows);
+if ($num_rows==0)
 {
   echo "<br/><div>No articles found</div>";
 }

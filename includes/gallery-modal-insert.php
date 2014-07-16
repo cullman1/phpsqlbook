@@ -124,7 +124,8 @@ function progressHandlingFunction(e){
                 <ol class="carousel-indicators" style="position: relative; top: 400px; left:250px;">
                   <?php 
                     $loopCounter = 0;     
-                    $totalRecords = mysql_num_rows($select_mediauploaded_result);
+                    $select_mediauploaded_rows = $select_mediauploaded_result->fetchAll();
+                    $totalRecords = count($select_mediauploaded_rows);
                     for ($i=$loopCounter; $i<$totalRecords; $i++)
                     { ?>
                   <li data-target="#carousel-example-generic" data-slide-to="<?php echo ($i); ?>" <?php if($i==0){echo "class='active'";} ?> ></li>

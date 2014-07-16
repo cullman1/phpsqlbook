@@ -22,7 +22,10 @@
         </div>
         <div id='collapse<?php echo $loopCount; ?>' class='accordion-body collapse <?php  if (isset($_REQUEST["showcomments"])) { if ($row["article_id"] == $_REQUEST["showcomments"]) { echo "in"; }}?>'>
           <div class="accordion-inner">
-            <?php if (mysql_num_rows($select_comments_result)!=0) 
+            <?php 
+        $select_comments_rows = $select_comments_result->fetchAll();
+        $num_rows = count($select_comments_rows);   
+        if ($num_rows!=0) 
             { ?>
             <div id="TotalComments"><b>All comments</b>  <hr/></div> 
           <?php } 

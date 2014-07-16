@@ -2,7 +2,10 @@
 /* iterate through table of articles */ 
 $loopCount = 1;  
 $currPage=1;
-if(mysql_num_rows($select_singlearticleduplicate_result)==0)
+
+$select_singlearticleduplicate_rows = $select_singlearticleduplicate_result->fetchAll();
+$num_rows = count($select_singlearticleduplicate_rows);
+if($num_rows==0)
 {
   echo "<div class='box2'>No article of that id has been published.</div>";
 }
