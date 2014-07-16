@@ -8,7 +8,7 @@ require_once('../includes/db_config.php');
 $select_user_sql = "select * FROM user where role_id=2";
 $select_user_result = $dbHost->query($select_user_sql);
 # setting the fetch mode
-$select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
+$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
 <a class="btn btn-default" href="new-user.php" role="button">New user</a>
       <!-- table of articles -->
@@ -20,7 +20,8 @@ include '../includes/header.php' ?>
             <th>Image</th>
             <th>Joined</th>
             <th>Comments</th>
-               <th>Edit User?</th>
+            <th>Edit User?</th>
+            <th>Ban User?</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +42,10 @@ include '../includes/header.php' ?>
                 echo $totalComments; ?>
             </td>
                <td><a href="edit-user.php?userid=<?php echo $select_user_row['user_id'];?>"><span class="glyphicon glyphicon-ok"></span></a></td>
+            
+              <td><a href="ban-user.php?publish=user&userid=<?php echo $select_user_row['user_id']; ?>">    
+            <?php if ($select_user_row['active']==0)
+            { ?><span class="glyphicon glyphicon-ok"></span> <?php } else { ?><span class="glyphicon glyphicon-remove red"></span><?php } ?></a></td>
           </tr>
          <?php } ?>
         </tbody>
