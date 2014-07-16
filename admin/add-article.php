@@ -22,13 +22,10 @@ if (isset($_REQUEST['Submitted']))
 {
     /* Query SQL Server for inserting article. */
     $insert_article_sql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$_SESSION['authenticated']."')";
-    $insert_article_result = $dbHost->query($insert_article_sql);
-    $newarticleid = mysql_insert_id();
-    if(!$insert_article_result)
-    {  
-        /* Error Message */
-        die("Insert article Query failed: ". mysql_error());
-    }
+    $insert_article_result = $dbHost->prepare($insert_article_sql);
+    $insert_article_result->execute();
+    $newarticleid = $dbHost->lastInsertId();
+    if($insert_article_result->errorInfo()[1]!=0) {  die("Insert Article Query failed: ".$insert_article_result->errorInfo()[0]); }
     else
     {
         $articleid = "0";
@@ -38,7 +35,7 @@ if (isset($_REQUEST['Submitted']))
         }
         else
         {
-            $articleid = mysql_insert_id($conn);
+            $articleid = $dbHost->lastInsertId();
         }
         
         if(isset($_FILES['document_upload']))
@@ -50,22 +47,16 @@ if (isset($_REQUEST['Submitted']))
                 
                 /* Query SQL Server for inserting media. */
                 $insert_media_sql = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["document_upload"]["name"]."','".$_FILES['document_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
-                $insert_media_result = $dbHost->query($insert_media_sql);
-                if(!$insert_media_result)
-                {  
-                    /* Error Message */
-                    die("Insert Media Query failed: ". mysql_error());
-                }
-                $newmediaid = mysql_insert_id();
+                $insert_media_result = $dbHost->prepare($insert_media_sql);
+                $insert_media_result->execute();
+                if($insert_media_result->errorInfo()[1]!=0) {  die("Insert Media Query failed: ".$insert_media_result->errorInfo()[0]); }
+                $newmediaid = $dbHost->lastInsertId();
 
                 /* Query SQL Server for inserting media link. */
                 $insert_medialink_sql = "INSERT INTO media_link (article_id, media_id) VALUES (".$newarticleid.", '".$newmediaid."')";
-                $insert_medialink_result = $dbHost->query($insert_medialink_sql);
-                if(!$insert_medialink_result)
-                {  
-                    /* Error Message */
-                    die("Insert Media Link Query failed: ". mysql_error());
-                }
+                $insert_medialink_result = $dbHost->prepare($insert_medialink_sql);
+                $insert_medialink_result->execute();
+                if($insert_medialink_result->errorInfo()[1]!=0) {  die("Insert Media Link Query failed: ".$insert_medialink_result->errorInfo()[0]); }
             }
         }
 
@@ -73,12 +64,9 @@ if (isset($_REQUEST['Submitted']))
         {
             /* Query SQL Server for updaing media. */
             $update_media_sql = "UPDATE media set article_id =".$articleid." where media_id=".$_REQUEST['fimagehidden'];
-            $update_media_result = $dbHost->query($update_media_sql);
-            if(!$update_media_result)
-            { 
-                /* Error Message */
-                die("Update Media Query failed: ". mysql_error());
-            }
+            $update_media_result = $dbHost->prepare($update_media_sql);
+            $update_media_result->execute();
+            if($update_media_result->errorInfo()[1]!=0) {  die("Update Media Query failed: ".$update_media_result->errorInfo()[0]); }
         }
     }
 }
