@@ -9,6 +9,7 @@ require_once('login-variables.php');
 try
 {
     $dbHost = new PDO("mysql:host=$serverName;dbname=$databaseName", $userName, $password);
+    $dbHost->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 }
 catch (PDOException $e)
 {
