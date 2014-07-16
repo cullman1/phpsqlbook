@@ -18,12 +18,12 @@ $new = array();
 require_once('../includes/db_config.php');
 $id = 1;
 /* Query SQL Server for selecting data. */
-$select_articles_sql = "select article_id, title, content, category_name, category_template, user_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() order by article_id DESC";
+$select_articles_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() order by article_id DESC";
 if (isset($_REQUEST["search"]))
 {
     $searchterm = "AND ((content like '%".$_REQUEST["search"]."' OR content like '".$_REQUEST["search"]."%' OR content like '%".$_REQUEST["search"]."%'  OR content like '".$_REQUEST["search"]."')";
     $searchterm .= " OR (title like '%".$_REQUEST["search"]."' OR title like '".$_REQUEST["search"]."%' OR title like '%".$_REQUEST["search"]."%'  OR title like '".$_REQUEST["search"]."'))";
-    $select_articles_sql = "select article_id, title, content, category_name, category_template, user_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() ". $searchterm." order by article_id DESC";
+    $select_articles_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() ". $searchterm." order by article_id DESC";
 }
 
 $select_articles_result = $dbHost->query($select_articles_sql);

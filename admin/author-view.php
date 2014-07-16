@@ -5,7 +5,7 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
-$select_article_sql = "select article_id, title, content, category_name, category.category_id, user_name, user.user_id, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where user.user_id = ".$_REQUEST["userid"]." order by article_id";
+$select_article_sql = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where user.user_id = ".$_REQUEST["userid"]." order by article_id";
 $select_article_result = $dbHost->query($select_article_sql);
 # setting the fetch mode
 $select_article_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -18,12 +18,12 @@ $select_totalrecords_row = mysql_fetch_array($select_totalrecords_result);
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 
 /* Query SQL Server for user name. */
-$select_user_sql = "select user_name from user where user_id= ".$_REQUEST["userid"];
+$select_user_sql = "select full_name from user where user_id= ".$_REQUEST["userid"];
 $select_user_result = $dbHost->query($select_user_sql);
 # setting the fetch mode
 $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_user_row = mysql_fetch_array($select_user_result);
-$catName = $select_user_row["user_name"];
+$catName = $select_user_row["full_name"];
 include '../includes/header.php' ?>
 <div>User:
       <button type="button" class="btn btn-default"><?php echo $catName; ?></button>
@@ -55,7 +55,7 @@ include '../includes/header.php' ?>
             { ?>
             <tr>
             <td><a href="edit-article.php?article_id=<?php echo $select_article_row['article_id'];?>"><?php echo $select_article_row['title']; ?></a></td>
-            <td><a href="<?php if ($select_article_row['role_id']==1) { echo 'admins.php';} else { echo 'users.php';} ?>"><?php echo $select_article_row['user_name']; ?></a></td>
+            <td><a href="<?php if ($select_article_row['role_id']==1) { echo 'admins.php';} else { echo 'users.php';} ?>"><?php echo $select_article_row['full_name']; ?></a></td>
             <td>Published: <?php echo $select_article_row['date_posted']; ?></td>
             <td>
             <?php 

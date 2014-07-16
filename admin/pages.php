@@ -5,7 +5,7 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting articles. */
-$select_articles_sql = "select article_id, title, content, category_name, category.category_id, user_name, user.user_id, date_posted, date_published, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id order by article_id";
+$select_articles_sql = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, date_published, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id order by article_id";
 $select_articles_result = $dbHost->query($select_articles_sql);
 # setting the fetch mode
 $select_articles_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -54,7 +54,7 @@ include '../includes/header.php' ?>
           <tr>
             <td><a href="edit-article.php?article_id=<?php echo $select_articles_row['article_id'];?>"><?php echo $select_articles_row['title']; ?></a></td>
             <td><a href="category-view.php?categoryid=<?php echo $select_articles_row['category_id'];?>"><?php echo $select_articles_row['category_name']; ?></a></td>
-            <td><a href="author-view.php?userid=<?php echo $select_articles_row['user_id'];?>"><?php echo $select_articles_row['user_name']; ?></a></td>
+            <td><a href="author-view.php?userid=<?php echo $select_articles_row['user_id'];?>"><?php echo $select_articles_row['full_name']; ?></a></td>
             <td><?php echo $select_articles_row['date_posted']; ?></td>
             <?php if ($select_articles_row['date_published']!=null)
             { ?>

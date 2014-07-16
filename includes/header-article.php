@@ -18,7 +18,7 @@ $new = array();
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
-$select_singlearticle_sql = "select article_id, title, content, category_name, user_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
+$select_singlearticle_sql = "select article_id, title, content, category_name, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
 $select_singlearticle_result = $dbHost->query($select_singlearticle_sql);
 $select_singlearticleduplicate_result = $dbHost->query($select_singlearticle_sql);
 # setting the fetch mode

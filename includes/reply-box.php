@@ -1,7 +1,7 @@
 <div id="commentbox">
   <?php echo $select_comments_row[0]['comment'];  ?> 
   <br/> 
-  <span class='small_name'><i> <?php echo $select_comments_row[0]['user_name'];  ?></i></span> - <span class='small_name'> <?php echo $select_comments_row[0]['comment_date'];  ?></span> 
+  <span class='small_name'><i> <?php echo $select_comments_row[0]['full_name'];  ?></i></span> - <span class='small_name'> <?php echo $select_comments_row[0]['comment_date'];  ?></span> 
   <?php if (isset($_SESSION['authenticated'])) { ?>  <button id="replybutton<?php echo $row["article_id"]; echo $select_comments_row[0]["comments_id"]; ?>" type="button"  class="btn btn-default">Reply</button> <?php } ?>
       
   <!--Submit reply box-->

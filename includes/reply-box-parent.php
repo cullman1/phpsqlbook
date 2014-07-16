@@ -5,7 +5,7 @@
         <?php 
           echo $tree[$i]['comment'];  ?> 
         <br/> 
-        <span class='small_name'><i> <?php echo $tree[$i]['user_name'];  ?></i></span> - <span class='small_name'> <?php echo $tree[$i]['comment_date'];  ?></span> 
+        <span class='small_name'><i> <?php echo $tree[$i]['full_name'];  ?></i></span> - <span class='small_name'> <?php echo $tree[$i]['comment_date'];  ?></span> 
         <?php if (isset($_SESSION['authenticated'])) 
             { ?>  
                 <button id="replybutton<?php echo $row["article_id"]; echo $tree[$i]["comments_id"]; ?>" type="button"  class="btn btn-default">Reply</button> 

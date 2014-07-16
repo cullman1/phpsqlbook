@@ -30,7 +30,7 @@ include '../includes/header.php' ?>
  <?php } else if  ($select_comments_row['role_id']==2) { ?>
                          <a href="../admin/admin.php">
                 <?php } ?>
-                <?php echo $select_comments_row['user_name']; ?></a></td>
+                <?php echo $select_comments_row['full_name']; ?></a></td>
             <td>
                 <?php if ($select_comments_row['comment']=="This comment has been removed."){ ?>
                 <span class="red">Deleted comment</span><?php 

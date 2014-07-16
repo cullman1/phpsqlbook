@@ -5,7 +5,7 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting article. */
-$select_article_sql = "select article_id, title, content, category_name, category.category_id, user_name, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where category.category_id = ".$_REQUEST["categoryid"]." order by article_id";
+$select_article_sql = "select article_id, title, content, category_name, category.category_id, full_name, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where category.category_id = ".$_REQUEST["categoryid"]." order by article_id";
 $select_article_result = $dbHost->query($select_article_sql);
 
 # setting the fetch mode
@@ -59,7 +59,7 @@ include '../includes/header.php' ?>
             { ?>
             <tr>
             <td><a href="edit-Article.php?article_id=<?php echo $select_article_row['article_id'];?>"><?php echo $select_article_row['title']; ?></a></td>
-            <td><a href="<?php if ($select_article_row['role_id']==1) { echo 'admins.php';} else { echo 'users.php';} ?>"><?php echo $select_article_row['user_name']; ?></a></td>
+            <td><a href="<?php if ($select_article_row['role_id']==1) { echo 'admins.php';} else { echo 'users.php';} ?>"><?php echo $select_article_row['full_name']; ?></a></td>
             <td>Published: <?php echo $select_article_row['date_posted']; ?></td>
             <td>
             <?php 

@@ -8,7 +8,7 @@ require_once('login-variables.php');
 /* Connect using PDO . */
 try
 {
-    $dbHost = new PDO("mysql:host=$serverName;dbname=$dbname", $userName, $password);
+    $dbHost = new PDO("mysql:host=$serverName;dbname=$databaseName", $userName, $password);
 }
 catch (PDOException $e)
 {

@@ -63,7 +63,7 @@ while($row = mysql_fetch_array($select_articles_result))
           $select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
   
           /* Comments Per article */
-          $select_comments_sql = "select comments_id, comment_repliedto_id, comment, user_name, comment_date FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id']." Order by Comments_id desc";
+          $select_comments_sql = "select comments_id, comment_repliedto_id, comment, full_name, comment_date FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id']." Order by Comments_id desc";
           $select_comments_result = $dbHost->query($select_comments_sql);
           $select_nestedcomments_result = $dbHost->query($select_comments_sql);
           # setting the fetch mode
