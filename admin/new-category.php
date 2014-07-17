@@ -6,8 +6,8 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for inserting data. */
 $select_category_sql = "select distinct category_template FROM category";
-$select_category_result = $dbHost->query($select_category_sql);
-# setting the fetch mode
+$select_category_result = $dbHost->prepare($select_category_sql);
+$select_category_result->execute();
 $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 
 if (isset($_REQUEST["Submitted"]))

@@ -6,13 +6,13 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting category template. */
 $select_categorytemplate_sql = "select distinct category_template FROM category";
-$select_categorytemplate_result = $dbHost->query($select_categorytemplate_sql);
-# setting the fetch mode
+$select_categorytemplate_result = $dbHost->prepare($select_categorytemplate_sql);
+$select_categorytemplate_result->execute();
 $select_categorytemplate_result->setFetchMode(PDO::FETCH_ASSOC);
 
 $select_category_sql = "select category_id, category_name, category_template FROM category where category_id=".$_REQUEST["categoryid"];
-$select_category_result = $dbHost->query($select_category_sql);
-# setting the fetch mode
+$select_category_result = $dbHost->prepare($select_category_sql);
+$select_category_result->execute();
 $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
   <div id="body">

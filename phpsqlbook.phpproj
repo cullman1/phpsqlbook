@@ -29,6 +29,7 @@
     <Compile Include="admin\admin.php" />
     <Compile Include="admin\authenticate.php" />
     <Compile Include="admin\author-view.php" />
+    <Compile Include="admin\ban-user.php" />
     <Compile Include="admin\categories.php" />
     <Compile Include="admin\category-view.php" />
     <Compile Include="admin\comments.php" />

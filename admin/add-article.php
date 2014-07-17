@@ -7,14 +7,14 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting category. */
 $select_category_sql = "select category_id, category_name FROM 387732_phpbook1.category";
-$select_category_result = $dbHost->query($select_category_sql);
-# setting the fetch mode
+$select_category_result = $dbHost->prepare($select_category_sql);
+$select_category_result->execute();
 $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting parent page. */
 $select_parent_sql = "select parent_id, parent_name FROM 387732_phpbook1.parent";
-$select_parent_result = $dbHost->query($select_parent_sql);
-# setting the fetch mode
+$select_parent_result = $dbHost->prepare($select_parent_sql);
+$select_parent_result->execute();
 $select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Postback */

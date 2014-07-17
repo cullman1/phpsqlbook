@@ -36,8 +36,8 @@
             /* Db Details */
             require_once('../includes/db_config.php');
             $select_mediauploaded_sql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png' OR file_type='image/gif'";
-            $select_mediauploaded_result = $dbHost->query($select_mediauploaded_sql);
-            # setting the fetch mode
+            $select_mediauploaded_result = $dbHost->prepare($select_mediauploaded_sql);
+            $select_mediauploaded_result->execute();
             $select_mediauploaded_result->setFetchMode(PDO::FETCH_ASSOC);
             ?>
             <script type="text/javascript">

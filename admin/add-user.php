@@ -22,8 +22,8 @@ else
 
     /* Query SQL Server for checking existing user. */
     $select_user_sql = "SELECT * from user WHERE email = '".$_REQUEST['emailAddress']."'";
-    $select_user_result = $dbHost->query($select_user_sql);
-    # setting the fetch mode
+    $select_user_result = $dbHost->prepare($select_user_sql);
+    $select_user_result->execute();
     $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
     $select_user_rows = $select_user_result->fetchAll();
     $num_rows = count($select_user_rows);

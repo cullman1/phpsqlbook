@@ -18,15 +18,16 @@ while($row = $select_singlearticleduplicate_result->fetch())
     <?php 
     /* Total number of comments */
     $select_totalcomments_sql = "select count(*) as TotalComments FROM comments  WHERE article_id = ".$row['article_id'];
-    $select_totalcomments_result = $dbHost->query($select_totalcomments_sql);
-    # setting the fetch mode
+    $select_totalcomments_result = $dbHost->prepare($select_totalcomments_sql);
+    $select_totalcomments_result->execute();
     $select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
   
     /* Comments Per article */
     $select_comments_sql = "select * FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id'];
-    $select_comments_result = $dbHost->query($select_comments_sql);
-    $select_nestedcomments_result = $dbHost->query($select_comments_sql);
-    # setting the fetch mode
+    $select_comments_result = $dbHost->prepare($select_comments_sql);
+    $select_comments_result->execute();
+    $select_nestedcomments_result = $dbHost->prepare($select_comments_sql);
+    $select_nestedcomments_result->execute();
     $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
     $select_nestedcomments_result->setFetchMode(PDO::FETCH_ASSOC);
 

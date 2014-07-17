@@ -17,6 +17,7 @@ if(isset($_FILES['uploader']))
    $insert_media_result = $dbHost->prepare($insert_media_sql);
    $insert_media_result->execute();
    if($insert_media_result->errorCode()!=0) {  die("Insert Media Query failed"); }
+}
 else if ((!$_FILES) && isset($_REQUEST["submitted"]))
 {
     echo "<br/><br/><span class='red'>File upload failed</span>";
@@ -24,16 +25,16 @@ else if ((!$_FILES) && isset($_REQUEST["submitted"]))
 
 /* Query SQL Server for selecting data. */
 $select_media_sql = "select * FROM media";
-$select_media_result = $dbHost->query($select_media_sql);
-# setting the fetch mode
+$select_media_result = $dbHost->prepare($select_media_sql);
+$select_media_result->execute();
 $select_media_result->setFetchMode(PDO::FETCH_ASSOC);
 
 while($select_media_row = $select_media_result->fetch()) { 
 
 /* Query SQL Server for selecting data. */
 $select_medialink_sql = "select * FROM media_link where media_id=".$select_media_row['media_id'];
-$select_medialink_result = $dbHost->query($select_medialink_sql);
-# setting the fetch mode
+$select_medialink_result = $dbHost->prepare($select_medialink_sql);
+$select_medialink_result->execute();
 $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
 ?>
               <tr>
@@ -53,6 +54,4 @@ $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
 <?php 
 } ?>
 <input id="media_id" name="media_id" type="hidden"/>
-<script src="../js/deletebutton.js" type="text/javascript"></script>
-
- 
+<script src="../js/deletebutton.js" type="text/javascript"></script> 

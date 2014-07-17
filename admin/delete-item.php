@@ -11,8 +11,8 @@ if($delete_media_result->errorCode()!=0) {  die("Delete Media Query failed"); }
 
 /* Query SQL Server for selecting data. */
 $select_media_sql = "select * FROM media";
-$select_media_result = $dbHost->query($select_media_sql);
-# setting the fetch mode
+$select_media_result = $dbHost->prepare($select_media_sql);
+$select_media_result->execute();
 $select_media_result->setFetchMode(PDO::FETCH_ASSOC);
 
 while($select_media_row = $select_media_result->fetch()) 

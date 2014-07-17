@@ -6,25 +6,22 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting article. */
 $select_article_sql = "select article_id, title, content, category_name, category.category_id, full_name, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where category.category_id = ".$_REQUEST["categoryid"]." order by article_id";
-$select_article_result = $dbHost->query($select_article_sql);
-
-# setting the fetch mode
+$select_article_result = $dbHost->prepare($select_article_sql);
+$select_article_result->execute();
 $select_article_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for total records data. */
 $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article";
-$select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
-
-# setting the fetch mode
+$select_totalrecords_result = $dbHost->prepare($select_totalrecords_sql);
+$select_totalrecords_result->execute();
 $select_totalrecords_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_totalrecords_row = $select_totalrecords_result->fetch();
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 
 /* Query SQL Server for category. */
 $select_category_sql = "select category_name from category where category_id= ".$_REQUEST["categoryid"];
-$select_category_result = $dbHost->query($select_category_sql);
-
-# setting the fetch mode
+$select_category_result = $dbHost->prepare($select_category_sql);
+$select_category_result->execute();
 $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_category_row = $select_category_result->fetch();
 $catName = $select_category_row["category_name"];
@@ -65,8 +62,8 @@ include '../includes/header.php' ?>
             <?php 
                 /* Query SQL Server for comments count. */
                 $select_comments_sql = "select Count(*) As ArticleComments FROM comments where article_id=".$select_article_row['article_id'] ;
-                $select_comments_result = $dbHost->query($select_comments_sql);
-                # setting the fetch mode
+                $select_comments_result = $dbHost->prepare($select_comments_sql);
+                $select_comments_result->execute();
                 $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
                 $select_comments_row =$select_comments_result->fetch();
                 $totalComments = $select_comments_row["ArticleComments"];

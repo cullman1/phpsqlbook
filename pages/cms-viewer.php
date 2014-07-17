@@ -2,8 +2,8 @@
 /* Query SQL Server for total records data. */
 $date = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', date("Y-m-d H:i:s"))));
 $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article where date_published <= '" . $date . "'" ;
-$select_totalrecords_result = $dbHost->query($select_totalrecords_sql);
-# setting the fetch mode
+$select_totalrecords_result = $dbHost->prepare($select_totalrecords_sql);
+$select_totalrecords_result->execute();
 $select_totalrecords_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_totalrecords_row = $select_totalrecords_result->fetch();
 $totalRecords = $select_totalrecords_row["TotalRecords"];
@@ -43,8 +43,8 @@ while($row =$select_articles_result->fetch())
         <?php 
           /* Select Media Link */
       $select_medialink_sql = "select * from media_link join media on media.media_id = media_link.media_id WHERE media.article_id = ".$row['article_id'];
-          $select_medialink_result = $dbHost->query($select_medialink_sql);
-          # setting the fetch mode
+          $select_medialink_result = $dbHost->prepare($select_medialink_sql);
+          $select_medialink_result->execute();
           $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
           while($select_medialink_row = $select_medialink_result->fetch())
           {
@@ -58,14 +58,16 @@ while($row =$select_articles_result->fetch())
         <?php 
           /* Total number of comments */
           $select_totalcomments_sql = "select count(*) as TotalComments FROM comments  WHERE article_id = ".$row['article_id'];
-          $select_totalcomments_result = $dbHost->query($select_totalcomments_sql);
-          # setting the fetch mode
+          $select_totalcomments_result = $dbHost->prepare($select_totalcomments_sql);
+          $select_totalcomments_result->execute();
           $select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
   
           /* Comments Per article */
           $select_comments_sql = "select comments_id, comment_repliedto_id, comment, full_name, comment_date FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$row['article_id']." Order by Comments_id desc";
-          $select_comments_result = $dbHost->query($select_comments_sql);
-          $select_nestedcomments_result = $dbHost->query($select_comments_sql);
+          $select_comments_result = $dbHost->prepare($select_comments_sql);
+          $select_comments_result->execute();
+          $select_nestedcomments_result = $dbHost->prepare($select_comments_sql);
+          $select_nestedcomments_result->execute();
           # setting the fetch mode
           $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
           $select_nestedcomments_result->setFetchMode(PDO::FETCH_ASSOC);

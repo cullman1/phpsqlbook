@@ -1,7 +1,7 @@
 <?php /* Query SQL Server for inserting data. */
 $select_mediaimages_sql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png'";
-$select_mediaimages_result = $dbHost->query($select_mediaimages_sql);
-# setting the fetch mode
+$select_mediaimages_result = $dbHost->prepare($select_mediaimages_sql);
+$select_mediaimages_result->execute();
 $select_mediaimages_result->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 <script type="text/javascript">

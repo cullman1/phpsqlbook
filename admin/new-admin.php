@@ -6,8 +6,8 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for inserting data. */
 $select_role_sql = "select role_id, role_name FROM role";
-$select_role_result = $dbHost->query($select_role_sql);
-# setting the fetch mode
+$select_role_result = $dbHost->prepare($select_role_sql);
+$select_role_result->execute();
 $select_role_result->setFetchMode(PDO::FETCH_ASSOC);
 
 include '../includes/header.php'; ?>

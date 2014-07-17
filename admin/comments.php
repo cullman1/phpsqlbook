@@ -6,8 +6,8 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
 $select_comments_sql = "select * FROM comments JOIN user ON comments.user_id = user.user_id JOIN article ON article.article_id = comments.article_id";
-$select_comments_result = $dbHost->query($select_comments_sql);
-# setting the fetch mode
+$select_comments_result = $dbHost->prepare($select_comments_sql);
+$select_comments_result->execute();
 $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
 <!-- table of articles -->

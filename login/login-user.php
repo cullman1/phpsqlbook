@@ -5,8 +5,8 @@ require_once('../includes/db_config.php');
 /* Query SQL Server for checking user details. */
 $passwordToken = sha1($preSalt . $_REQUEST['password'] . $afterSalt);
 $select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, full_name from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'" ." AND active= 0";
-$select_user_result = $dbHost->query($select_user_sql);
-# setting the fetch mode
+$select_user_result = $dbHost->prepare($select_user_sql);
+$select_user_result->execute();
 $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 
   	/* Redirect to original page */

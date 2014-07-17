@@ -26,14 +26,14 @@ if (isset($_REQUEST["search"]))
     $select_articles_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() ". $searchterm." order by article_id DESC";
 }
 
-$select_articles_result = $dbHost->query($select_articles_sql);
-# setting the fetch mode
+$select_articles_result = $dbHost->prepare($select_articles_sql);
+$select_articles_result->execute();
 $select_articles_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting template. */
 $select_template_sql = "select template from parent where parent_id=".$id;
-$select_template_result = $dbHost->query($select_template_sql);
-# setting the fetch mode
+$select_template_result = $dbHost->prepare($select_template_sql);
+$select_template_result->execute();
 $select_template_result->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>

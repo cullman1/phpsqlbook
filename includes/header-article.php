@@ -19,9 +19,10 @@ require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
 $select_singlearticle_sql = "select article_id, title, content, category_name, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
-$select_singlearticle_result = $dbHost->query($select_singlearticle_sql);
-$select_singlearticleduplicate_result = $dbHost->query($select_singlearticle_sql);
-# setting the fetch mode
+$select_singlearticle_result = $dbHost->prepare($select_singlearticle_sql);
+$select_singlearticle_result->execute();
+$select_singlearticleduplicate_result = $dbHost->prepare($select_singlearticle_sql);
+$select_singlearticleduplicate_result->execute();
 $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_singlearticleduplicate_result->setFetchMode(PDO::FETCH_ASSOC);
 $row= $select_singlearticle_result->fetch();
@@ -29,8 +30,8 @@ $row= $select_singlearticle_result->fetch();
 $parent_id  = $row["parent_id"];
 
 $select_template_sql = "select template from parent where parent_id=".$parent_id;
-$select_template_result = $dbHost->query($select_template_sql);
-# setting the fetch mode
+$select_template_result = $dbHost->prepare($select_template_sql);
+$select_template_result->execute();
 $select_template_result->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
