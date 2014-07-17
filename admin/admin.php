@@ -5,7 +5,7 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
-$select_user_sql = "select * FROM user where role_id=1";
+$select_user_sql = "select user_id,password,role_id,email,date_joined,full_name,user_image,active FROM user where role_id=1";
 $select_user_result = $dbHost->prepare($select_user_sql);
 $select_user_result->execute();
 $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -40,7 +40,7 @@ include '../includes/header.php' ?>
             $select_totalcomments_result->setFetchMode(PDO::FETCH_ASSOC);
             $select_totalcomments_row = $select_totalcomments_result->fetch();
             $totalComments = $select_totalcomments_row["ArticleComments"];
-            echo $totalComments; ?>
+            echo $totalComments; ?> 
             </td>
                 <td><a href="edit-user.php?userid=<?php echo $select_user_row['user_id'];?>"><span class="glyphicon glyphicon-ok"></span></a></td>
            <td><a href="ban-user.php?publish=admin&userid=<?php echo $select_user_row['user_id'];  ?>">    

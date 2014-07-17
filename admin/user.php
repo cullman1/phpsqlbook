@@ -5,7 +5,7 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
-$select_user_sql = "select * FROM user where role_id=2";
+$select_user_sql = "select user_id,password,role_id,email,date_joined,full_name,user_image,active FROM user where role_id=2";
 $select_user_result = $dbHost->prepare($select_user_sql);
 $select_user_result->execute();
 $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
