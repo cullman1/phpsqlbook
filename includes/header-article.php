@@ -21,10 +21,18 @@ require_once('../includes/db_config.php');
 $select_singlearticle_sql = "select article_id, title, content, category_name, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
 $select_singlearticle_result = $dbHost->prepare($select_singlearticle_sql);
 $select_singlearticle_result->execute();
+$select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
+
 $select_singlearticleduplicate_result = $dbHost->prepare($select_singlearticle_sql);
 $select_singlearticleduplicate_result->execute();
-$select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
 $select_singlearticleduplicate_result->setFetchMode(PDO::FETCH_ASSOC);
+
+$select_singlearticlefull_result = $dbHost->prepare($select_singlearticle_sql);
+$select_singlearticlefull_result->execute();
+$select_singlearticlefull_result->setFetchMode(PDO::FETCH_ASSOC);
+
+
+
 $row= $select_singlearticle_result->fetch();
 
 $parent_id  = $row["parent_id"];
