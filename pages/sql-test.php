@@ -67,7 +67,7 @@ $display_string = "";
             <br /><br />
             <input id="submit" type="submit" value="Submit Query" />
             <br /><br />
-            <table id="sqlresult" name="sqlresult" style="height:350px; background-color:lightgoldenrodyellow" >
+            <table id="sqlresult" name="sqlresult" style="height:350px; background-color:#cccccc;" >
                  <?php if (isset($_REQUEST["sqlquery"]))
       { 
                 echo $display_string;
