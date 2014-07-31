@@ -27,7 +27,7 @@
         $num_rows = count($select_comments_rows);   
         if ($num_rows!=0) 
             { ?>
-            <div id="TotalComments"><b>All comments</b>  <hr/></div> 
+            <div id="TotalComments"><b>All comments</b> <?php if (!isset($_SESSION['authenticated'])) { ?> <b>Login to leave a comment</b> <?php } ?> <hr/></div> 
           <?php } 
             include('../includes/comments-list.php');
           ?>
