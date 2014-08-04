@@ -15,88 +15,131 @@ function showTable()
     $('.hidetable').css("display", "block");
     $('#sqlquery').val($('#command').val());
 }
-function showWhere()
+function showcolumn()
 {
     $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val());
     $('.hidewhere').css("display", "block");
 }
-function showOperator()
-{
+function showwhere() {
+    $colval = $('#column').val();
+    if ($colval == "NONE") {
+        $colval = "*";
+    }
+    $('#sqlquery').val($('#command').val() + " " + $colval + " FROM " + $('#table').val() + " WHERE ");
     $('.hideoperator').css("display", "block");
 }
-function showColumn()
+function showOperator()
+{
+    $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val() + " WHERE " + $('#where').val());
+    $('.hideoperator').css("display", "block");
+}
+function showValue() {
+    $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val() + " WHERE " + $('#where').val() + " " + $('#operator').val());
+    $('.wherevalue').css("display", "block");
+}
+
+function completeValue() {
+    finalval = "";
+    if (isNaN(wherevalue))
+    {
+        finalval = "'" + $('#wherevalue').val() + "'";
+    }
+    else
+    {
+        finalval = +$('#wherevalue').val();
+    }
+    $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val() + " WHERE " + $('#where').val() + " " + $('#operator').val() + " " + finalval);
+    $('.wherevalue').css("display", "block");
+}
+
+function showFrom()
 {
     $('#sqlquery').val($('#command').val() + " * FROM " + $('#table').val());
     $('#placeholdercolumn').fadeIn();
     $('.hidecolumn').css("display", "block");
+    $('.hidewhere').css("display", "block");
     $.get("func2.php", {
         func: "show_column",
         drop_var: $('#table').val()
     },  function(response){
-        $('#result_1').fadeOut();
-        setTimeout("finishAjax('placeholdercolumn', '"+escape(response)+"')", 400);
+        setTimeout("finishAjax('placeholdercolumn', '" + escape(response) + "')", 400);
+        setTimeout("finishAjax('placeholderwhere', '" + escape(response.replace(/column/g,'where')) + "')", 400);
     });
     return false;
- 
 }
 
 function finishAjax(id, response) {
     $('#'+id).html(unescape(response));
     $('#'+id).fadeIn();
 }
-
-
 </script>
 <?php 
 $display_string = "";
       if (isset($_REQUEST["sqlquery"]))
       {
+          $display_string = "";
           try
           {
-              $query_sql = $_REQUEST["sqlquery"];
+              $query_sql = $_REQUEST["sqlquery"];      
               $query_sql_result = $dbHost->prepare($query_sql);
               $query_sql_result->execute();
-              $query_sql_result->setFetchMode(PDO::FETCH_BOTH);
-              
+              $query_sql_result->setFetchMode(PDO::FETCH_BOTH);     
               $query_sql = strtolower($query_sql);
               $exploded = explode(" ", $query_sql);
               $count = count($exploded)-1;
+              $remember = 0;
               for ($j=0; $j<=$count; $j++)
               {
                   if ($exploded[$j]=="from")
                   {
+                      $remember = $j-1;
                       $table_name = $exploded[$j+1];
                   }
               }
-              
-              $columnname_sql = "DESCRIBE ". $table_name;
-              $columnname_result = $dbHost->prepare($columnname_sql);
-              $columnname_result->execute();
-              $columnname_row = $columnname_result->fetchAll(PDO::FETCH_COLUMN);
-              
-              $colcount = $query_sql_result->columnCount();
-              $columncount = count($columnname_row)-1;
-              $display_string .= "<tr>";
-              for ($i=0;$i<$columncount;$i++)
+              if ($exploded[$remember]=="*")
               {
+                $columnname_sql = "DESCRIBE ". $table_name;
+                $columnname_result = $dbHost->prepare($columnname_sql);
+                $columnname_result->execute();
+                $columnname_row = $columnname_result->fetchAll(PDO::FETCH_COLUMN);
+                $colcount = $query_sql_result->columnCount();
+                $columncount = count($columnname_row)-1;
+                $display_string .= "<tr>";
+                for ($i=0;$i<$columncount;$i++)
+                {
                   $display_string .= "<td><b style='font-size:11pt'>".$columnname_row[$i] . "</b></td> ";
+                }
+                $display_string .= "</tr>";
               }
-              $display_string .= "</tr>";
+              else
+              {
+                  $colcount = 1;
+                  if ($exploded[$remember]=="") { $display_string .= "<tr><td colspan=10>No rows returned.</td></tr>";}
+                  else
+                  {
+                  $display_string .= "<tr><td><b style='font-size:11pt'>".$exploded[$remember] . "</b></td></tr>";
+                  }
+              }
+              $count=0;
               while($row = $query_sql_result->fetch())
               {
+                  $count++;
                   $display_string .= "<tr>";
-                  for ($i=0;$i<$colcount-1;$i++)
+                  for ($i=0;$i<$colcount;$i++)
                   {
                       $display_string .=  "<td style='font-size:11pt'>".$row[$i] . "</td>";
-                  }
-                  
+                  }      
                   $display_string .= "</tr>";
               }
+              if ($count==0)
+              {
+                  $display_string .= "<tr><td colspan=10>No rows returned.</td></tr>";
+              }
+             
           }
           catch (PDOException $e)
           {
-              $display_string = "<tr style='vertical-align:top; '><td><b style='font-size:11pt'>".$e->getMessage()."</b></td></tr>";
-            
+              $display_string = "<tr style='vertical-align:top; '><td><b style='font-size:11pt'>ERROR ".$e->getMessage()."</b></td></tr>";         
           }
       }
 ?>
@@ -116,11 +159,11 @@ $display_string = "";
                 <option>DELETE</option>
             </select>
             </label>&nbsp;
-               <label class="hidecolumn" for="column"><span>COLUMN:</span>
-            <span id="placeholdercolumn"></span>
-                 </label>
+            <label class="hidecolumn" for="column"><span>COLUMN:</span>
+                <span id="placeholdercolumn"></span>
+            </label>
             <label class="hidetable" for="table"><span>FROM:</span>
-            <select id="table" onchange="showColumn();" style="width:200px">
+            <select id="table" onchange="showFrom();" style="width:200px">
                 <option>None</option>
                 <option>article</option>
                 <option>category</option>
@@ -132,24 +175,23 @@ $display_string = "";
                 <option>user</option>
             </select>
                  </label>
-             <label class="hidewhere" for="where"><span>WHERE:</span>
-            <select id="where" onchange="showOperator();" style="width:200px">
+            <label class="hidewhere" for="where"><span>WHERE:</span>
+                  <span id="placeholderwhere"></span>
+            </label>
+            <label class="hideoperator" for="where"><span>OP:</span>
+            <select id="operator" onchange="showValue();" style="width:200px">
                 <option>None</option>
-               <?php 
-               ?>
-            </select>
-                 </label>
-                <label class="hideoperator" for="where"><span>OP:</span>
-            <select id="Select1" onchange="showOperator();" style="width:200px">
-                <option>None</option>
-                       <option>=</option>
-                 <option>!=</option>
-                    <option><</option>
-                 <option>></option>
+                <option>=</option>
+                <option>!=</option>
+                <option><</option>
+                <option>></option>
                 <option><=</option>
-                 <option>>=</option>
+                <option>>=</option>
             </select>
-                 </label>
+            </label>
+            <label class="hideoperator" for="where"><span>VALUE:</span>
+            <input id="wherevalue" type="text" name="wherevalue" /><input id="addvalue" type="button" value="Add value to SQL" onclick="completeValue();" />
+            </label>
   		    <textarea id="sqlquery" name="sqlquery" style="width: 790px; height:120px"> <?php if (isset($_REQUEST["sqlquery"]))
       { 
           echo $_REQUEST["sqlquery"];
@@ -158,9 +200,8 @@ $display_string = "";
             <input id="submit" type="submit" value="Submit Query" />
             <br /><br />
             <table id="sqlresult" name="sqlresult" style="height:350px; background-color:#cccccc;" >
-              
                  <?php if (isset($_REQUEST["sqlquery"]))
-      { 
+                { 
                 echo $display_string;
                } ?>
             </table>
