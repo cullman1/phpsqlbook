@@ -12,24 +12,40 @@ select { width: 150px; border: 1px solid #000; padding: 5px; }
 <script type="text/javascript">
 function showTable()
 {
- 
-       $('.hidetable').css("display","block");
+    $('.hidetable').css("display", "block");
+    $('#sqlquery').val($('#command').val());
 }
 function showWhere()
 {
- 
+    $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val());
     $('.hidewhere').css("display", "block");
 }
 function showOperator()
 {
- 
     $('.hideoperator').css("display", "block");
 }
 function showColumn()
 {
- 
+    $('#sqlquery').val($('#command').val() + " * FROM " + $('#table').val());
+    $('#placeholdercolumn').fadeIn();
     $('.hidecolumn').css("display", "block");
+    $.get("func2.php", {
+        func: "show_column",
+        drop_var: $('#table').val()
+    },  function(response){
+        $('#result_1').fadeOut();
+        setTimeout("finishAjax('placeholdercolumn', '"+escape(response)+"')", 400);
+    });
+    return false;
+ 
 }
+
+function finishAjax(id, response) {
+    $('#'+id).html(unescape(response));
+    $('#'+id).fadeIn();
+}
+
+
 </script>
 <?php 
 $display_string = "";
@@ -101,31 +117,19 @@ $display_string = "";
             </select>
             </label>&nbsp;
                <label class="hidecolumn" for="column"><span>COLUMN:</span>
-            <select id="Select2" onchange="showColumn();" style="width:200px">
-                <option>None</option>
-               <?php 
-               $query_sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'user'";
-              $query_sql_result = $dbHost->prepare($query_sql);
-              $query_sql_result->execute();
-              $query_sql_result->setFetchMode(PDO::FETCH_BOTH);
-              while($query_sql_row = $query_sql_result->fetch())
-              { ?>
-             <option><?php echo $query_sql_row["COLUMN_NAME"]; ?></option>
-              <?php }
-               ?>
-            </select>
+            <span id="placeholdercolumn"></span>
                  </label>
             <label class="hidetable" for="table"><span>FROM:</span>
             <select id="table" onchange="showColumn();" style="width:200px">
                 <option>None</option>
-                <option>Article</option>
-                <option>Category</option>
-                <option>Comments</option>
-                <option>Media</option>
-                <option>Media_Link</option>
-                <option>Parent</option>
-                <option>Role</option>
-                <option>User</option>
+                <option>article</option>
+                <option>category</option>
+                <option>comments</option>
+                <option>media</option>
+                <option>media_link</option>
+                <option>arent</option>
+                <option>role</option>
+                <option>user</option>
             </select>
                  </label>
              <label class="hidewhere" for="where"><span>WHERE:</span>

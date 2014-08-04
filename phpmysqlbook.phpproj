@@ -88,6 +88,7 @@
     <Compile Include="pages\article-viewer.php" />
     <Compile Include="pages\article.php" />
     <Compile Include="pages\cms-viewer.php" />
+    <Compile Include="pages\func2.php" />
     <Compile Include="pages\main.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
