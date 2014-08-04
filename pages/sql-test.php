@@ -5,7 +5,7 @@
 span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
 select { width: 150px; border: 1px solid #000; padding: 5px; }
     .hidetable, .hidewhere, .hideoperator, .hidecolumn {
-        visibility: hidden;
+        display: none;
     }
     
 </style>
@@ -13,22 +13,22 @@ select { width: 150px; border: 1px solid #000; padding: 5px; }
 function showTable()
 {
  
-       $('.hidetable').css("visibility","visible");
+       $('.hidetable').css("display","block");
 }
 function showWhere()
 {
  
-       $('.hidewhere').css("visibility","visible");
+    $('.hidewhere').css("display", "block");
 }
 function showOperator()
 {
  
-       $('.hideoperator').css("visibility","visible");
+    $('.hideoperator').css("display", "block");
 }
 function showColumn()
 {
  
-       $('.hidecolumn').css("visibility","visible");
+    $('.hidecolumn').css("display", "block");
 }
 </script>
 <?php 
@@ -89,10 +89,10 @@ $display_string = "";
         SQL Query
     </div>
     <form id="form1" method="post" action="sql-test.php">
-        <div class="pad" style="width:700px;">
+        <div class="pad" style="width:790px;">
             <br />
             <label for="command"><span>COMMAND:</span>
-            <select id="command"  onchange="showTable();">
+            <select id="command"  onchange="showTable();" style="width:200px">
                 <option>None</option>
                 <option>SELECT</option>
                 <option>INSERT</option>
@@ -100,13 +100,11 @@ $display_string = "";
                 <option>DELETE</option>
             </select>
             </label>&nbsp;
-               <label class="hidecolumn" for="column"><span></span>
-            <select id="Select2" onchange="showColumn();">
+               <label class="hidecolumn" for="column"><span>COLUMN:</span>
+            <select id="Select2" onchange="showColumn();" style="width:200px">
                 <option>None</option>
                <?php 
-               $query_sql = "SELECT COLUMN_NAME
-  FROM INFORMATION_SCHEMA.COLUMNS
- WHERE table_name = 'users'";
+               $query_sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'user'";
               $query_sql_result = $dbHost->prepare($query_sql);
               $query_sql_result->execute();
               $query_sql_result->setFetchMode(PDO::FETCH_BOTH);
@@ -118,7 +116,7 @@ $display_string = "";
             </select>
                  </label>
             <label class="hidetable" for="table"><span>FROM:</span>
-            <select id="table" onchange="showColumn();">
+            <select id="table" onchange="showColumn();" style="width:200px">
                 <option>None</option>
                 <option>Article</option>
                 <option>Category</option>
@@ -131,14 +129,14 @@ $display_string = "";
             </select>
                  </label>
              <label class="hidewhere" for="where"><span>WHERE:</span>
-            <select id="where" onchange="showOperator();">
+            <select id="where" onchange="showOperator();" style="width:200px">
                 <option>None</option>
                <?php 
                ?>
             </select>
                  </label>
                 <label class="hideoperator" for="where"><span>OP:</span>
-            <select id="Select1" onchange="showOperator();">
+            <select id="Select1" onchange="showOperator();" style="width:200px">
                 <option>None</option>
                        <option>=</option>
                  <option>!=</option>
@@ -148,7 +146,7 @@ $display_string = "";
                  <option>>=</option>
             </select>
                  </label>
-  		    <textarea id="sqlquery" name="sqlquery" style="width: 600px; height:80px"> <?php if (isset($_REQUEST["sqlquery"]))
+  		    <textarea id="sqlquery" name="sqlquery" style="width: 790px; height:120px"> <?php if (isset($_REQUEST["sqlquery"]))
       { 
           echo $_REQUEST["sqlquery"];
                } ?></textarea>
@@ -156,6 +154,7 @@ $display_string = "";
             <input id="submit" type="submit" value="Submit Query" />
             <br /><br />
             <table id="sqlresult" name="sqlresult" style="height:350px; background-color:#cccccc;" >
+              
                  <?php if (isset($_REQUEST["sqlquery"]))
       { 
                 echo $display_string;
