@@ -39,7 +39,7 @@ function showValue() {
 
 function completeValue() {
     finalval = "";
-    if (isNaN(wherevalue))
+    if (isNaN($('#wherevalue').val()))
     {
         finalval = "'" + $('#wherevalue').val() + "'";
     }
@@ -51,19 +51,55 @@ function completeValue() {
     $('.wherevalue').css("display", "block");
 }
 
-function showFrom()
+function showRest()
 {
-    $('#sqlquery').val($('#command').val() + " * FROM " + $('#table').val());
-    $('#placeholdercolumn').fadeIn();
     $('.hidecolumn').css("display", "block");
     $('.hidewhere').css("display", "block");
+    switch($('#command').val())
+    {
+        case "SELECT":
+            $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val());
+            break;
+        case "INSERT":
+            $('#sqlquery').val($('#command').val() + " INTO " + $('#table').val() + " () VALUES ");
+            break;
+        case "UPDATE":
+            $('#sqlquery').val($('#command').val() + " " + $('#table').val() + " SET ");
+            break;
+        case "DELETE":
+            $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val());
+            break;
+
+    }
+    $.get("func2.php", {
+        func: "show_column",
+        drop_var: $('#table').val()
+    }, function (response) {
+        setTimeout("finishAjax('placeholdercolumn', '" + escape(response) + "')", 400);
+        setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
+
+    });
+
+    return false;
+}
+
+function showFrom()
+{
+    $('#sqlquery').val("SELECT * FROM " + $('#table').val());
+    $('#placeholdercolumn').fadeIn();
+    $('.hidetable').css("display", "block");
+
+    //$('.hidecolumn').css("display", "block");
+    //$('.hidewhere').css("display", "block");
     $.get("func2.php", {
         func: "show_column",
         drop_var: $('#table').val()
     },  function(response){
         setTimeout("finishAjax('placeholdercolumn', '" + escape(response) + "')", 400);
-        setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g,'where') + "')", 400);
+        setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
+       
     });
+   
     return false;
 }
 
@@ -104,7 +140,7 @@ $display_string = "";
                 $colcount = $query_sql_result->columnCount();
                 $columncount = count($columnname_row)-1;
                 $display_string .= "<tr>";
-                for ($i=0;$i<$columncount;$i++)
+                for ($i=0;$i<$columncount+1;$i++)
                 {
                   $display_string .= "<td><b style='font-size:11pt'>".$columnname_row[$i] . "</b></td> ";
                 }
@@ -149,8 +185,8 @@ $display_string = "";
     <form id="form1" method="post" action="sql-test.php">
         <div class="pad" style="width:790px;">
             <br />
-            <label for="command"><span>COMMAND:</span>
-            <select id="command"  onchange="showTable();" style="width:200px">
+            <label for="command" class="hidetable"><span>COMMAND:</span>
+            <select id="command"  onchange="showRest();" style="width:200px">
                 <option>None</option>
                 <option>SELECT</option>
                 <option>INSERT</option>
@@ -161,7 +197,7 @@ $display_string = "";
             <label class="hidecolumn" for="column"><span>COLUMN:</span>
                 <span id="placeholdercolumn"></span>
             </label>
-            <label class="hidetable" for="table"><span>FROM:</span>
+            <label  for="table"><span>TABLE:</span>
             <select id="table" onchange="showFrom();" style="width:200px">
                 <option>None</option>
                 <option>article</option>
@@ -169,7 +205,7 @@ $display_string = "";
                 <option>comments</option>
                 <option>media</option>
                 <option>media_link</option>
-                <option>arent</option>
+                <option>parent</option>
                 <option>role</option>
                 <option>user</option>
             </select>
