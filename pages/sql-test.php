@@ -1,13 +1,11 @@
-
 <?php include '../includes/header-site.php' ?>
 <style>
     label { width: 200px; float: left; margin: 0 20px 0 0; }
-span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
-select { width: 150px; border: 1px solid #000; padding: 5px; }
+    span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
+    select { width: 150px; border: 1px solid #000; padding: 5px; }
     .hidetable, .hidewhere, .hideoperator, .hidecolumn {
         display: none;
-    }
-    
+    }  
 </style>
 <script type="text/javascript">
 function showTable()
@@ -36,6 +34,7 @@ function showOperator()
 function showValue() {
     $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val() + " WHERE " + $('#where').val() + " " + $('#operator').val());
     $('.wherevalue').css("display", "block");
+    $('.wherevalue').focus();
 }
 
 function completeValue() {
@@ -63,7 +62,7 @@ function showFrom()
         drop_var: $('#table').val()
     },  function(response){
         setTimeout("finishAjax('placeholdercolumn', '" + escape(response) + "')", 400);
-        setTimeout("finishAjax('placeholderwhere', '" + escape(response.replace(/column/g,'where')) + "')", 400);
+        setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g,'where') + "')", 400);
     });
     return false;
 }
@@ -187,14 +186,15 @@ $display_string = "";
                 <option>></option>
                 <option><=</option>
                 <option>>=</option>
+                <option>LIKE</option>
             </select>
             </label>
             <label class="hideoperator" for="where"><span>VALUE:</span>
             <input id="wherevalue" type="text" name="wherevalue" /><input id="addvalue" type="button" value="Add value to SQL" onclick="completeValue();" />
             </label>
   		    <textarea id="sqlquery" name="sqlquery" style="width: 790px; height:120px"> <?php if (isset($_REQUEST["sqlquery"]))
-      { 
-          echo $_REQUEST["sqlquery"];
+                { 
+                    echo $_REQUEST["sqlquery"];
                } ?></textarea>
             <br /><br />
             <input id="submit" type="submit" value="Submit Query" />
@@ -208,5 +208,4 @@ $display_string = "";
         </div>
     </form>
  </div>
-
 <?php include '../includes/footer-site.php' ?>
