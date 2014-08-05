@@ -73,12 +73,28 @@ function showRest()
      $('.hidecolumn').css("display", "none");
     $('.hidewhere').css("display", "block");
     $('.hideoperator').css("display", "none");
+  $.get("func2.php", {
+        func: "show_column",
+        drop_var: $('#table').val()
+    }, function (response) {
+        setTimeout("finishAjax('placeholdercolumn', '" + escape(response) + "')", 400);
+        setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
+
+    });
             break;
         case "INSERT":
             $('#sqlquery').val($('#command').val() + " INTO " + $('#table').val() + " () VALUES ");
    $('.hidecolumn').css("display", "none");
-    $('.hidewhere').css("display", "none");
+    $('.hidewhere').css("display", "block");
     $('.hideoperator').css("display", "none");
+  $.get("func2.php", {
+        func: "show_combo",
+        drop_var: $('#table').val()
+    }, function (response) {
+        setTimeout("finishAjax('placeholdercolumn', '" + escape(response) + "')", 400);
+        setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
+
+    });
             break;
         case "UPDATE":
             $('#sqlquery').val($('#command').val() + " " + $('#table').val() + " SET ");
@@ -89,12 +105,9 @@ function showRest()
         case "DELETE":
             $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
    $('.hidecolumn').css("display", "none");
-    $('.hidewhere').css("display", "none");
+    $('.hidewhere').css("display", "block");
     $('.hideoperator').css("display", "none");
-            break;
-
-    }
-    $.get("func2.php", {
+  $.get("func2.php", {
         func: "show_column",
         drop_var: $('#table').val()
     }, function (response) {
@@ -102,26 +115,23 @@ function showRest()
         setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
 
     });
+            break;
+
+    }
+  
 
     return false;
 }
 
 function showFrom()
 {
-
-
     $('#sqlquery').val("SELECT * FROM " + $('#table').val());
-
     $('.hidetable').css("display", "block");
-
-if ($('#sqlresult').html().trim()=="")
-{
-    $('#hiddenpass').val($('#table').val());
-
-    document.tableform.submit();
-}
-    //$('.hidecolumn').css("display", "block");
-    //$('.hidewhere').css("display", "block");
+    if ($('#sqlresult').html().trim()=="")
+    {
+        $('#hiddenpass').val($('#table').val());
+        document.tableform.submit();
+    }
     $.get("func2.php", {
         func: "show_column",
         drop_var: $('#table').val()
@@ -130,7 +140,6 @@ if ($('#sqlresult').html().trim()=="")
         setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
        
     });
-   
     return false;
 }
 
