@@ -3,11 +3,12 @@
     label { width: 200px; float: left; margin: 0 20px 0 0; }
     span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
     select { width: 150px; border: 1px solid #000; padding: 5px; }
-    .hidetable, .hidewhere, .hideoperator, .hidecolumn {
+    .hidewhere, .hideoperator, .hidecolumn {
         display: none;
     }  
 </style>
 <script type="text/javascript">
+
 function showTable()
 {
     $('.hidetable').css("display", "block");
@@ -15,15 +16,21 @@ function showTable()
 }
 function showcolumn()
 {
-    $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val());
+ colval = $('#column').val();
+
+    if (colval == "NONE" || typeof colval == undefined) {
+        colval = "*";
+    }
+    $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
     $('.hidewhere').css("display", "block");
 }
 function showwhere() {
-    $colval = $('#column').val();
-    if ($colval == "NONE") {
-        $colval = "*";
+    colval = $('#column').val();
+
+    if (colval == "NONE" || typeof colval == undefined) {
+        colval = "*";
     }
-    $('#sqlquery').val($('#command').val() + " " + $colval + " FROM " + $('#table').val() + " WHERE ");
+    $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val() + " WHERE ");
     $('.hideoperator').css("display", "block");
 }
 function showOperator()
@@ -53,12 +60,17 @@ function completeValue() {
 
 function showRest()
 {
+ colval = $('#column').val();
+
+    if (colval == "NONE" ||  colval == undefined) {
+        colval = "*";
+    }
     $('.hidecolumn').css("display", "block");
     $('.hidewhere').css("display", "block");
     switch($('#command').val())
     {
         case "SELECT":
-            $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val());
+            $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
             break;
         case "INSERT":
             $('#sqlquery').val($('#command').val() + " INTO " + $('#table').val() + " () VALUES ");
@@ -67,7 +79,7 @@ function showRest()
             $('#sqlquery').val($('#command').val() + " " + $('#table').val() + " SET ");
             break;
         case "DELETE":
-            $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val());
+            $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
             break;
 
     }
@@ -93,6 +105,8 @@ function showFrom()
 
 if ($('#sqlresult').html().trim()=="")
 {
+    $('#hiddenpass').val($('#table').val());
+
     document.tableform.submit();
 }
     //$('.hidecolumn').css("display", "block");
@@ -113,10 +127,27 @@ function finishAjax(id, response) {
     $('#'+id).html(unescape(response));
     $('#'+id).fadeIn();
 }
+ var check = '<?php if (isset(  $_POST['hiddenpass'])){ echo $_POST['hiddenpass'];} ?>';
+
+
 </script>
+
 <?php 
 $display_string = "";
-      if (isset($_REQUEST["sqlquery"]))
+function isPostBack()
+{
+    return ($_SERVER['REQUEST_METHOD'] == 'POST');
+}
+if (!isPostBack())
+{ ?>
+    <style>
+    .hidetable {
+        display: none;
+  }  
+</style>
+<?php  
+}
+if (isset($_REQUEST["sqlquery"]))
       {
           $display_string = "";
           try
@@ -189,6 +220,7 @@ $display_string = "";
         SQL Query
     </div>
     <form id="form1" method="post" action="sql-test.php" name="tableform">
+        <input id="hiddenpass" name="hiddenpass" type="hidden" />
         <div class="pad" style="width:790px;">
             <br />
             <label for="command" class="hidetable"><span>COMMAND:</span>
@@ -204,16 +236,16 @@ $display_string = "";
                 <span id="placeholdercolumn"></span>
             </label>
             <label  for="table"><span>TABLE:</span>
-            <select id="table" onchange="showFrom();" style="width:200px">
-                <option>None</option>
-                <option>article</option>
-                <option>category</option>
-                <option>comments</option>
-                <option>media</option>
-                <option>media_link</option>
-                <option>parent</option>
-                <option>role</option>
-                <option>user</option>
+            <select id="table" name="table" onchange="showFrom();" style="width:200px">
+                <option value="None">None</option>
+                <option value="article">article</option>
+                <option value="category">category</option>
+                <option value="comments">comments</option>
+                <option value="media">media</option>
+                <option value="media_link">media_link</option>
+                <option value="parent">parent</option>
+                <option value="role">role</option>
+                <option value="user">user</option>
             </select>
                  </label>
             <label class="hidewhere" for="where"><span>WHERE:</span>
@@ -249,5 +281,14 @@ $display_string = "";
             </table>
         </div>
     </form>
+     <script type="text/javascript">
+
+if (check != "")
+{
+
+      var selectset = document.getElementById("table");
+    selectset.value = check;
+}
+     </script>
  </div>
 <?php include '../includes/footer-site.php' ?>
