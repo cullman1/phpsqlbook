@@ -85,16 +85,11 @@ function showRest()
 
 function showFrom()
 {
-
+ document.tableform.submit();
 
     $('#sqlquery').val("SELECT * FROM " + $('#table').val());
-
     $('.hidetable').css("display", "block");
 
-if ($('#sqlresult').html().trim()=="")
-{
-    document.tableform.submit();
-}
     //$('.hidecolumn').css("display", "block");
     //$('.hidewhere').css("display", "block");
     $.get("func2.php", {
@@ -188,8 +183,9 @@ $display_string = "";
     <div class="small_box_top">
         SQL Query
     </div>
-    <form id="form1" method="post" action="sql-test.php" name="tableform">
+    <form id="form1" method="post" action="http://example.org" name="tableform">
         <div class="pad" style="width:790px;">
+
             <br />
             <label for="command" class="hidetable"><span>COMMAND:</span>
             <select id="command"  onchange="showRest();" style="width:200px">
@@ -200,22 +196,25 @@ $display_string = "";
                 <option>DELETE</option>
             </select>
             </label>&nbsp;
+
             <label class="hidecolumn" for="column"><span>COLUMN:</span>
                 <span id="placeholdercolumn"></span>
             </label>
+
             <label  for="table"><span>TABLE:</span>
-            <select id="table" onchange="showFrom();" style="width:200px">
+            <select id="table" style="width:200px">
                 <option>None</option>
-                <option>article</option>
-                <option>category</option>
-                <option>comments</option>
-                <option>media</option>
-                <option>media_link</option>
-                <option>parent</option>
-                <option>role</option>
-                <option>user</option>
+                <option value="article">article</option>
+                <option value="category">category</option>
+                <option value="comments">comments</option>
+                <option value="media">media</option>
+                <option value="media_link">media_link</option>
+                <option value="parent">parent</option>
+                <option value="role">role</option>
+                <option value="user">user</option>
             </select>
-                 </label>
+            </label>
+
             <label class="hidewhere" for="where"><span>WHERE:</span>
                   <span id="placeholderwhere"></span>
             </label>
@@ -231,23 +230,34 @@ $display_string = "";
                 <option>LIKE</option>
             </select>
             </label>
+
             <label class="hideoperator" for="where"><span>VALUE:</span>
             <input id="wherevalue" type="text" name="wherevalue" /><input id="addvalue" type="button" value="Add value to SQL" onclick="completeValue();" />
             </label>
-  		    <textarea id="sqlquery" name="sqlquery" style="width: 790px; height:120px"> <?php if (isset($_REQUEST["sqlquery"]))
+
+
+          <textarea id="sqlquery" name="sqlquery" style="width: 790px; height:120px"> <?php if (isset($_REQUEST["sqlquery"]))
                 { 
                     echo $_REQUEST["sqlquery"];
                } ?></textarea>
             <br /><br />
-       <input id="gogogo" type="submit" name="submit_button" value="Submit Query" />
             <br /><br />
+
+            <input id="gogogo" type="submit" name="submit_button" value="Submit Query" />
+
             <table id="sqlresult" name="sqlresult" style="height:350px; background-color:#cccccc;" >
                  <?php if (isset($_REQUEST["sqlquery"]))
                 { 
                 echo $display_string;
                } ?>
             </table>
-        </div>
     </form>
  </div>
+ <script>
+$(function(){
+  $('#table').on('change', function() {
+    document.tableform.submit();
+  });
+});
+ </script>
 <?php include '../includes/footer-site.php' ?>
