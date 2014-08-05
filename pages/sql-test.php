@@ -65,21 +65,32 @@ function showRest()
     if (colval == "NONE" ||  colval == undefined) {
         colval = "*";
     }
-    $('.hidecolumn').css("display", "block");
-    $('.hidewhere').css("display", "block");
+ 
     switch($('#command').val())
     {
         case "SELECT":
             $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
+     $('.hidecolumn').css("display", "none");
+    $('.hidewhere').css("display", "block");
+    $('.hideoperator').css("display", "none");
             break;
         case "INSERT":
             $('#sqlquery').val($('#command').val() + " INTO " + $('#table').val() + " () VALUES ");
+   $('.hidecolumn').css("display", "none");
+    $('.hidewhere').css("display", "none");
+    $('.hideoperator').css("display", "none");
             break;
         case "UPDATE":
             $('#sqlquery').val($('#command').val() + " " + $('#table').val() + " SET ");
+   $('.hidecolumn').css("display", "none");
+    $('.hidewhere').css("display", "none");
+    $('.hideoperator').css("display", "none");
             break;
         case "DELETE":
             $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
+   $('.hidecolumn').css("display", "none");
+    $('.hidewhere').css("display", "none");
+    $('.hideoperator').css("display", "none");
             break;
 
     }
