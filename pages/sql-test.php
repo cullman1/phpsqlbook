@@ -87,7 +87,7 @@ function showRest()
    $('.hidecolumn').css("display", "none");
     $('.hidewhere').css("display", "block");
     $('.hideoperator').css("display", "none");
-  $.get("func2.php", {
+  $.get("func3.php", {
         func: "show_combo",
         drop_var: $('#table').val()
     }, function (response) {
