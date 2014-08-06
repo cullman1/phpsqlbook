@@ -172,5 +172,13 @@ color: gray;}
     border: none;
 }
 
+.hidden2{
+  width:300px;border:none;background:none;
+}
+
+.hidden2 td{
+  border:none;background:none;
+}
+
 
 

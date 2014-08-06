@@ -13,15 +13,18 @@ function show_combo($drop_var2)
 {  
     include_once('../includes/db_config.php');
     $drop_var2 = strtolower($drop_var2);
+    $count =0;
     $query_sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '$drop_var2'";
     $query_sql_result = $dbHost->prepare($query_sql);
     $query_sql_result->execute();
-    $query_sql_result->setFetchMode(PDO::FETCH_BOTH);         
-    echo '<span>test</span>';
+    $query_sql_result->setFetchMode(PDO::FETCH_BOTH);   
+    echo "<table class=hidden2><tbody>";
     while($query_sql_row = $query_sql_result->fetch())
     {
-        echo '<input type="checkbox" class="checker" oncheck="showInput()" /><span>'. $query_sql_row["COLUMN_NAME"].'</span><br/>';
+        $count++;
+        echo '<tr style="font-weight:normal; font-size:11pt; height: 10px;"><td><input type="checkbox" class="checker" onchange="showInput('.$count.')" /></td><td> '. $query_sql_row["COLUMN_NAME"].'</td><td> <input id="textvalue'.$count.'" class="hideinput" type="textbox"/></td></tr>';
     }
+    echo "</tbody></table>";
 }
 
 

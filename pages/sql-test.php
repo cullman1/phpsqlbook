@@ -3,12 +3,23 @@
     label { width: 200px; float: left; margin: 0 20px 0 0; }
     span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
     select { width: 150px; border: 1px solid #000; padding: 5px; }
-    .hidewhere, .hideoperator, .hidecolumn {
+    .hidewhere, .hideoperator, .hidecolumn, .hideinput {
         display: none;
     }  
 </style>
 <script type="text/javascript">
-
+    function showInput(count) {
+      
+        alert(document.activeElement);
+        $(document.activeElement).removeClass("hideinput");
+        if ($(document.activeElement).is(':visible')) {
+       
+            $(document.activeElement).attr("class", "");
+        } else {
+            $(document.activeElement).attr("class", "");
+        }
+        $('#sqlquery').val($('#command').val());
+    }
 function showTable()
 {
     $('.hidetable').css("display", "block");
@@ -84,7 +95,8 @@ function showRest()
             break;
         case "INSERT":
             $('#sqlquery').val($('#command').val() + " INTO " + $('#table').val() + " () VALUES ");
-   $('.hidecolumn').css("display", "none");
+            $('.hidecolumn').css("display", "none");
+            $('#whereheader').val("COLUMN:");
     $('.hidewhere').css("display", "block");
     $('.hideoperator').css("display", "none");
   $.get("func3.php", {
@@ -268,7 +280,7 @@ if (isset($_REQUEST["sqlquery"]))
                 <option value="user">user</option>
             </select>
                  </label>
-            <label class="hidewhere" for="where"><span>WHERE:</span>
+            <label class="hidewhere" for="where"><span id="whereheader">WHERE:</span>
                   <span id="placeholderwhere"></span>
             </label>
             <label class="hideoperator" for="where"><span>OP:</span>
