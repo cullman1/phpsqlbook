@@ -14,14 +14,14 @@
 
         var inputElem = document.getElementById(name);
         
-        if (inputElem.style.display=="block") {
+        if (inputElem.style.display==="block") {
           
             inputElem.style.display = "none";
            
         } else {
             alert(inputElem.id);
             inputElem.className = "";
-            inputElem.style.display = "block !important";
+            inputElem.style.display = "block";
             alert(inputElem.className);
         }
         $('#sqlquery').val($('#command').val());
