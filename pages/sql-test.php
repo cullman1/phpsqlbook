@@ -10,13 +10,19 @@
 <script type="text/javascript">
     function showInput(count) {
       
-        alert(document.activeElement);
-        $(document.activeElement).removeClass("hideinput");
-        if ($(document.activeElement).is(':visible')) {
-       
-            $(document.activeElement).attr("class", "");
+        var name = "textvalue" + count;
+
+        var inputElem = document.getElementById(name);
+        
+        if (inputElem.style.display=="block") {
+          
+            inputElem.style.display = "none";
+           
         } else {
-            $(document.activeElement).attr("class", "");
+            alert(inputElem.id);
+            inputElem.className = "";
+            inputElem.style.display = "block !important";
+            alert(inputElem.className);
         }
         $('#sqlquery').val($('#command').val());
     }
