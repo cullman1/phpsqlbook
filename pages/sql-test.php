@@ -8,21 +8,20 @@
     }  
 </style>
 <script type="text/javascript">
-    function showInput(count) {
-      
-        var name = "textvalue" + count;
-
-        var inputElem = document.getElementById(name);
-        
-        if (inputElem.style.display==="block") {
-          
-            inputElem.style.display = "none";
+function showInput(count) 
+{    
+    var name2 = "textbox" + count;
+     
+        var inputElem2 = document.getElementById(name2);
+  alert (inputElem2.style.width);
+        if (inputElem2.style.width =="0px") {
+ inputElem2.style.width = "100px";
+     alert (inputElem2.style.width);
            
         } else {
-            alert(inputElem.id);
-            inputElem.className = "";
-            inputElem.style.display = "block";
-            alert(inputElem.className);
+           
+inputElem2.style.width = "0px";
+  alert (inputElem2.style.width);
         }
         $('#sqlquery').val($('#command').val());
     }
@@ -287,7 +286,7 @@ if (isset($_REQUEST["sqlquery"]))
             </select>
                  </label>
             <label class="hidewhere" for="where"><span id="whereheader">WHERE:</span>
-                  <span id="placeholderwhere"></span>
+                  <div id="placeholderwhere"></div>
             </label>
             <label class="hideoperator" for="where"><span>OP:</span>
             <select id="operator" onchange="showValue();" style="width:200px">

@@ -172,13 +172,21 @@ color: gray;}
     border: none;
 }
 
+#placeholderwhere {
+    width: 105px;
+    overflow: hidden;
+}
+
 .hidden2{
-  width:300px;border:none;background:none;
+  width:100px;border:none;background:none;
 }
 
 .hidden2 td{
   border:none;background:none;
 }
 
+.newclass {
+    visibility:visible !important;
+}
 
 
