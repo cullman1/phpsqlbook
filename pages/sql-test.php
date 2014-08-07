@@ -208,8 +208,9 @@ function showFrom()
 {
     $('#sqlquery').val("SELECT * FROM " + $('#table').val());
     $('.hidetable').css("display", "block");
-    if ($('#sqlresult').html().trim()=="")
+    if ($('#sqlresult').html().trim()=="" || $('#command').css('display','block'))
     {
+        $('#command').css('display','none');
         $('#hiddenpass').val($('#table').val());
         document.tableform.submit();
     }
@@ -293,8 +294,8 @@ if (isset($_REQUEST["sqlquery"]))
                   }
               }
               $count=0;
-              
-              if(strpos($query_sql,"SELECT"))
+             
+              if(strpos($query_sql,"select")===0)
               {
                 while($row = $query_sql_result->fetch())
                 {
