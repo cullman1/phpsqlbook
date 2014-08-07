@@ -19,9 +19,9 @@ function showInput(el)
     var name = "div" + el.id.replace("checkbox","");
  elemdiv = document.getElementById(name);
    elem3 = document.createElement("input");
-        elem3.id = "textbox" + i;
+        elem3.id = "textbox" + el.id.replace("checkbox","");;
         elem3.type = "text";
-        elem3.name = "textbox" + i;
+        elem3.name = "textbox" + el.id.replace("checkbox","");;
      
     
 elemdiv.appendChild(elem3);
