@@ -48,12 +48,23 @@ function createElement(id, response)
             elem4.name = "button" + e.target.id.replace("checkbox","");
             elem4.value = "Add Value";
             elem4.onclick = function (e) {  
-            var number = e.target.id.replace("button","");
-            var colname = "label" + number;
-            var textcontent = "textbox" + number;
-            var doc1 = document.getElementById(colname);
-            var doc2 = document.getElementById(textcontent);
-            $('#sqlquery').val("INSERT INTO " + $('#table').val() + " (" + doc1.textContent + ") VALUES (" +  doc2.value + ")");
+                var number = e.target.id.replace("button","");
+                var colnames = "";
+                var contents = "";
+                for(j=1;j<i;j++)
+                {
+                var colname = "label" + j;
+                var textcontent = "textbox" + j;
+                var doc1 = document.getElementById(colname);
+                var doc2 = document.getElementById(textcontent);
+                if (doc2 != null)
+{
+                colnames = colnames + doc1.textContent + ",";
+
+                contents = contents + "'" + doc2.value + "',";
+                  }
+                }
+                $('#sqlquery').val("INSERT INTO " + $('#table').val() + " (" + colnames.substring(0,colnames.length-1) + ") VALUES (" +  contents.substring(0,contents.length-1) + ")");
  };
 
             divname = "div" + e.target.id.replace("checkbox","");
@@ -63,6 +74,8 @@ function createElement(id, response)
         }
         else
         {
+           if (e.target.id.indexOf("textbox")==-1 && e.target.id.indexOf("button")==-1 )
+{
             divname = "div" + e.target.id.replace("checkbox","");
             var second = document.getElementById(divname);
             var name1 = "textbox" + e.target.id.replace("checkbox","");
@@ -71,6 +84,7 @@ function createElement(id, response)
             var fourth = document.getElementById(name2);
             second.removeChild(third);
             second.removeChild(fourth);
+}
         }
 	}
 });
