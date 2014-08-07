@@ -17,14 +17,15 @@
 function showInput(el) 
 {    
     var name = "div" + el.id.replace("checkbox","");
-var doc = document.getElementById(name);
-alert(doc);
+ elemdiv = document.getElementById(name);
    elem3 = document.createElement("input");
- elem3.id = "textb" + el.id.replace("checkbox","");;
+        elem3.id = "textbox" + i;
         elem3.type = "text";
-        elem3.name = "textb" + el.id.replace("checkbox","");
-doc.appendChild(elem3);
-alert(doc.innerHTML);
+        elem3.name = "textbox" + i;
+     
+    
+elemdiv.appendChild(elem3);
+alert(elemdiv.innerHTML);
 }
 
 function createElement(id, response) 
@@ -51,13 +52,7 @@ function createElement(id, response)
         elem.appendChild(elem1);
         elem.appendChild(elem2);
       
-        elem3 = document.createElement("input");
-        elem3.id = "textbox" + i;
-        elem3.type = "text";
-        elem3.name = "textbox" + i;
-     
-        elem3.className = "hideinput";
-elem.appendChild(elem3);
+       
 
         root.appendChild(elem);
     }
