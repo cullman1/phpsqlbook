@@ -17,15 +17,27 @@
 function showInput(el) 
 {    
     var name = "div" + el.id.replace("checkbox","");
- elemdiv = document.getElementById(name);
-   elem3 = document.createElement("input");
-        elem3.id = "textbox" + el.id.replace("checkbox","");;
-        elem3.type = "text";
-        elem3.name = "textbox" + el.id.replace("checkbox","");;
-     
-    
-elemdiv.appendChild(elem3);
-alert(elemdiv.innerHTML);
+    var name2 = "#div" + el.id.replace("checkbox","");
+   
+    elemdiv = document.getElementById(name);
+    if(elemdiv.innerHTML.indexOf("textbox")==-1)
+    {
+    elem3 = document.createElement("input");
+    elem3.id = "textbox" + el.id.replace("checkbox","");
+    elem3.type = "text";
+    elem3.name = "textbox" + el.id.replace("checkbox","");
+    elemdiv.appendChild(elem3);
+    alert(elemdiv.innerHTML);
+}
+else
+{
+    name3 = "textbox" + el.id.replace("checkbox","");
+    doc2 = document.getElementById(name3);
+    elemdiv.removeChild(doc2);
+    alert(elemdiv.innerHTML);
+}
+console.log(name2);
+console.log($(name2).html());
 }
 
 function createElement(id, response) 
