@@ -3,33 +3,76 @@
     label { width: 200px; float: left; margin: 0 20px 0 0; }
     span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
     select { width: 150px; border: 1px solid #000; padding: 5px; }
-    .hidewhere, .hideoperator, .hidecolumn, .hideinput {
+    .hidewhere, .hideoperator, .hidecolumn,  .hideinput {
         display: none;
-    }  
+    }
+  .hideinput {
+        display: none !important;
+    }
+     .showinput {
+        display:block !important;
+    }
 </style>
 <script type="text/javascript">
-function showInput(count) 
+function showInput(el) 
 {    
-    var name2 = "textbox" + count;
+    var name = "div" + el.id.replace("checkbox","");
+var doc = document.getElementById(name);
+alert(doc);
+   elem3 = document.createElement("input");
+ elem3.id = "textb" + el.id.replace("checkbox","");;
+        elem3.type = "text";
+        elem3.name = "textb" + el.id.replace("checkbox","");
+doc.appendChild(elem3);
+alert(doc.innerHTML);
+}
+
+function createElement(id, response) 
+{
+    var response1 = unescape(response);
+    splitter = response1.split(",");
+    root = document.createElement("div");
+    for(i=1;i<=splitter.length-1;i++)
+    {
+        elem = document.createElement("div");
+       elem.id = "div" + i;
+        elem1 = document.createElement("label");
+      
+        elem1.textContent  = splitter[i];
+
+        elem2 = document.createElement("input");
+        elem2.id = "checkbox" + i;
+        elem2.name = "checkbox" + i;
+        elem2.type = "checkbox";
+   elem2.onchange=function(){
+    showInput(this);
+};
+
+        elem.appendChild(elem1);
+        elem.appendChild(elem2);
+      
+        elem3 = document.createElement("input");
+        elem3.id = "textbox" + i;
+        elem3.type = "text";
+        elem3.name = "textbox" + i;
      
-        var inputElem2 = document.getElementById(name2);
-  alert (inputElem2.style.width);
-        if (inputElem2.style.width =="0px") {
- inputElem2.style.width = "100px";
-     alert (inputElem2.style.width);
-           
-        } else {
-           
-inputElem2.style.width = "0px";
-  alert (inputElem2.style.width);
-        }
-        $('#sqlquery').val($('#command').val());
+        elem3.className = "hideinput";
+elem.appendChild(elem3);
+
+        root.appendChild(elem);
     }
+    $('#'+id).html(root);
+   
+
+ $('#'+id).fadeIn();
+}
+
 function showTable()
 {
     $('.hidetable').css("display", "block");
     $('#sqlquery').val($('#command').val());
 }
+
 function showcolumn()
 {
  colval = $('#column').val();
@@ -108,8 +151,8 @@ function showRest()
         func: "show_combo",
         drop_var: $('#table').val()
     }, function (response) {
-        setTimeout("finishAjax('placeholdercolumn', '" + escape(response) + "')", 400);
-        setTimeout("finishAjax('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
+        setTimeout("createElement('placeholdercolumn', '" + escape(response) + "')", 400);
+        setTimeout("createElement('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
 
     });
             break;

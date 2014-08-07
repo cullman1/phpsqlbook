@@ -18,13 +18,13 @@ function show_combo($drop_var2)
     $query_sql_result = $dbHost->prepare($query_sql);
     $query_sql_result->execute();
     $query_sql_result->setFetchMode(PDO::FETCH_BOTH);   
-    echo "<table id=table1 class=hidden2><tbody>";
+
     while($query_sql_row = $query_sql_result->fetch())
     {
         $count++;
-        echo '<tr style="font-weight:normal; font-size:11pt; height: 10px;"><td><input type="checkbox" class="checker" onchange="showInput('.$count.')" /></td><td> '. $query_sql_row["COLUMN_NAME"].'</td><td id="textvalue'.$count.'"><input id="textbox'.$count.'" style="width:0px;" type="textbox"/></td></tr>';
+        echo $query_sql_row["COLUMN_NAME"].',';
     }
-    echo "</tbody></table>";
+    echo "last";
 }
 
 
