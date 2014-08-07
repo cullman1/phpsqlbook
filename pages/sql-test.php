@@ -18,26 +18,25 @@ function showInput(el)
 {    
     var name = "div" + el.id.replace("checkbox","");
     var name2 = "#div" + el.id.replace("checkbox","");
-   
     elemdiv = document.getElementById(name);
     if(elemdiv.innerHTML.indexOf("textbox")==-1)
     {
-    elem3 = document.createElement("input");
-    elem3.id = "textbox" + el.id.replace("checkbox","");
-    elem3.type = "text";
-    elem3.name = "textbox" + el.id.replace("checkbox","");
-    elemdiv.appendChild(elem3);
-    alert(elemdiv.innerHTML);
-}
-else
-{
-    name3 = "textbox" + el.id.replace("checkbox","");
-    doc2 = document.getElementById(name3);
-    elemdiv.removeChild(doc2);
-    alert(elemdiv.innerHTML);
-}
-console.log(name2);
-console.log($(name2).html());
+        elem3 = document.createElement("input");
+        elem3.id = "textbox" + el.id.replace("checkbox","");
+        elem3.type = "text";
+        elem3.name = "textbox" + el.id.replace("checkbox","");
+        elemdiv.appendChild(elem3);
+        alert(elemdiv.innerHTML);
+    }
+    else
+    {
+        name3 = "textbox" + el.id.replace("checkbox","");
+        doc2 = document.getElementById(name3);
+        elemdiv.removeChild(doc2);
+        alert(elemdiv.innerHTML);
+    }
+    console.log(name2);
+    console.log($(name2).html());
 }
 
 function createElement(id, response) 
@@ -48,30 +47,48 @@ function createElement(id, response)
     for(i=1;i<=splitter.length-1;i++)
     {
         elem = document.createElement("div");
-       elem.id = "div" + i;
-        elem1 = document.createElement("label");
-      
+        elem.id = "div" + i;
+        elem1 = document.createElement("label"); 
         elem1.textContent  = splitter[i];
 
         elem2 = document.createElement("input");
         elem2.id = "checkbox" + i;
         elem2.name = "checkbox" + i;
         elem2.type = "checkbox";
-   elem2.onchange=function(){
-    showInput(this);
-};
+        
 
         elem.appendChild(elem1);
         elem.appendChild(elem2);
       
-       
-
         root.appendChild(elem);
     }
-    $('#'+id).html(root);
-   
+var listener = document.getElementById("placeholderwhere").addEventListener("click", function(e) {
+// If it was a list item
+	if(e.target && e.target.nodeName == "INPUT") {
+		// List item found!  Output the ID!
+	    if (e.target.checked)
+{
+    elem3 = document.createElement("input");
+        elem3.id = "textbox" + e.target.id.replace("checkbox","");
+        elem3.type = "text";
+        elem3.name = "textbox" + e.target.id.replace("checkbox","");
+        divname = "div" + e.target.id.replace("checkbox","");
+        var second = document.getElementById(divname);
+        second.appendChild(elem3);
+}
+else
+{
+         divname = "div" + e.target.id.replace("checkbox","");
+        var second = document.getElementById(divname);
+        var name1 = "textbox" + e.target.id.replace("checkbox","");
+        var third = document.getElementById(name1);
+        second.removeChild(third);
+}
+    
 
- $('#'+id).fadeIn();
+	}
+});
+    $('#'+id).html(root);
 }
 
 function showTable()
@@ -158,7 +175,7 @@ function showRest()
         func: "show_combo",
         drop_var: $('#table').val()
     }, function (response) {
-        setTimeout("createElement('placeholdercolumn', '" + escape(response) + "')", 400);
+        
         setTimeout("createElement('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
 
     });
