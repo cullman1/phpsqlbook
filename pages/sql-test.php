@@ -13,7 +13,7 @@ function createElement(id, response)
     var response1 = unescape(response);
     splitter = response1.split(",");
     root = document.createElement("div");
-    for(i=1;i<=splitter.length-1;i++)
+    for(i=1;i<=splitter.length-2;i++)
     {
         elem = document.createElement("div");
         elem.id = "div" + i;
@@ -44,47 +44,51 @@ function createElement(id, response)
             elem4 = document.createElement("input");
             elem4.id = "button" + e.target.id.replace("checkbox","");
             elem4.type = "button";
-            elem4.style = "padding-left:10px;";
+            elem4.style.marginLeft = "10px";
             elem4.name = "button" + e.target.id.replace("checkbox","");
             elem4.value = "Add Value";
             elem4.onclick = function (e) {  
-                var number = e.target.id.replace("button","");
-                var colnames = "";
-                var contents = "";
-                for(j=1;j<i;j++)
-                {
+            var number = e.target.id.replace("button","");
+            var colnames = "";
+            var contents = "";
+            for(j=1;j<i;j++)
+            {
                 var colname = "label" + j;
                 var textcontent = "textbox" + j;
                 var doc1 = document.getElementById(colname);
                 var doc2 = document.getElementById(textcontent);
                 if (doc2 != null)
-{
-                colnames = colnames + doc1.textContent + ",";
-
-                contents = contents + "'" + doc2.value + "',";
-                  }
+                {
+                    colnames = colnames + doc1.textContent + ",";
+                    if (isNaN(doc2.value))
+                    {
+                        contents = contents + "'" + doc2.value + "',";
+                    }
+                    else
+                    {
+                        contents = contents + "" + doc2.value + ",";
+                    }
                 }
-                $('#sqlquery').val("INSERT INTO " + $('#table').val() + " (" + colnames.substring(0,colnames.length-1) + ") VALUES (" +  contents.substring(0,contents.length-1) + ")");
- };
-
-            divname = "div" + e.target.id.replace("checkbox","");
-            var second = document.getElementById(divname);
-            second.appendChild(elem3);
-            second.appendChild(elem4);
+             }
+             $('#sqlquery').val("INSERT INTO " + $('#table').val() + " (" + colnames.substring(0,colnames.length-1) + ") VALUES (" +  contents.substring(0,contents.length-1) + ")");};
+             divname = "div" + e.target.id.replace("checkbox","");
+             var second = document.getElementById(divname);
+             second.appendChild(elem3);
+             second.appendChild(elem4);
         }
         else
         {
            if (e.target.id.indexOf("textbox")==-1 && e.target.id.indexOf("button")==-1 )
-{
-            divname = "div" + e.target.id.replace("checkbox","");
-            var second = document.getElementById(divname);
-            var name1 = "textbox" + e.target.id.replace("checkbox","");
-            var third = document.getElementById(name1);
-            var name2 = "button" + e.target.id.replace("checkbox","");
-            var fourth = document.getElementById(name2);
-            second.removeChild(third);
-            second.removeChild(fourth);
-}
+            {   
+                divname = "div" + e.target.id.replace("checkbox","");
+                var second = document.getElementById(divname);
+                var name1 = "textbox" + e.target.id.replace("checkbox","");
+                var third = document.getElementById(name1);
+                var name2 = "button" + e.target.id.replace("checkbox","");
+                var fourth = document.getElementById(name2);
+                second.removeChild(third);
+                second.removeChild(fourth);
+            }
         }
 	}
 });
@@ -289,8 +293,11 @@ if (isset($_REQUEST["sqlquery"]))
                   }
               }
               $count=0;
-              while($row = $query_sql_result->fetch())
+              
+              if(strpos($query_sql,"SELECT"))
               {
+                while($row = $query_sql_result->fetch())
+                {
                   $count++;
                   $display_string .= "<tr>";
                   for ($i=0;$i<$colcount;$i++)
@@ -298,12 +305,16 @@ if (isset($_REQUEST["sqlquery"]))
                       $display_string .=  "<td style='font-size:11pt'>".$row[$i] . "</td>";
                   }      
                   $display_string .= "</tr>";
-              }
-              if ($count==0)
-              {
+                }
+                if ($count==0)
+                {
                   $display_string .= "<tr><td colspan=10>No rows returned.</td></tr>";
+                }
               }
-             
+              else
+              {
+                  $display_string .= "<tr><td colspan=10>Database updated successfully.</td></tr>";
+              }
           }
           catch (PDOException $e)
           {
