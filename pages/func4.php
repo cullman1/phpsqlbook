@@ -1,5 +1,4 @@
 <?php
-<?php
 
 //**************************************
 //     First selection results     //
@@ -16,7 +15,7 @@ function show_column($drop_var)
     $query_sql_result = $dbHost->prepare($query_sql);
     $query_sql_result->execute();
     $query_sql_result->setFetchMode(PDO::FETCH_BOTH);         
-	echo '<select id="column" onchange="showcolumn();" style="width:200px; display:block;"><option>*</option>';
+	echo '<select id="update" onchange="showupdate();" style="width:200px; display:block;"><option>*</option>';
     while($query_sql_row = $query_sql_result->fetch())
     {
        echo '<option>'. $query_sql_row["COLUMN_NAME"].'</option>';

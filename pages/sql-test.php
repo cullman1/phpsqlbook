@@ -193,7 +193,7 @@ function createUpdate(id, response)
             {
                 $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " = " + doc2.value);
             }
-$.get("func2.php", {
+$.get("func4.php", {
         func: "show_column",
         drop_var: $('#table').val()
     },  function(response){
@@ -244,6 +244,15 @@ function showcolumn()
     $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
     $('.hidewhere').css("display", "block");
 }
+
+
+function showupdate()
+{
+
+    $('.hideoperator').css("display", "block");
+}
+
+
 function showwhere() {
     colval = $('#column').val();
 
