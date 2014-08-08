@@ -3,7 +3,7 @@
     label { width: 200px; float: left; margin: 0 20px 0 0; }
     span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
     select { width: 150px; border: 1px solid #000; padding: 5px; }
-    .hidewhere, .hideoperator, .hidecolumn,  .hideinput {
+    .hidewhere, .hideoperator, .hidecolumn,  .hideinput, .hideupdatewhere {
         display: none;
     }
 </style>
@@ -95,6 +95,91 @@ function createElement(id, response)
     $('#'+id).html(root);
 }
 
+function createUpdate(id, response) 
+{
+    var response1 = unescape(response);
+    splitter = response1.split(",");
+    root = document.createElement("div");
+    for(i=1;i<=splitter.length-2;i++)
+    {
+        elem = document.createElement("div");
+        elem.id = "div" + i;
+        elem1 = document.createElement("label"); 
+        elem1.textContent  = splitter[i];
+        elem1.id = "label" + i;
+        elem2 = document.createElement("input");
+        elem2.id = "checkbox" + i;
+        elem2.name = "checkbox" + i;
+        elem2.type = "checkbox";
+        
+        elem.appendChild(elem1);
+        elem.appendChild(elem2);
+      
+        root.appendChild(elem);
+    }
+    var listener = document.getElementById("placeholderwhere").addEventListener("click", function(e) {
+
+	if(e.target && e.target.nodeName == "INPUT") 
+    {
+	    if (e.target.checked)
+        {
+            whereheader = document.getElementById("whereheader");
+            whereheader.innerHTML = "SET:";
+             $('.hideupdatewhere').css("display", "block");
+            labelname  = "label" + e.target.id.replace("checkbox","");
+            label1 = document.getElementById(labelname);
+            label1.textContent = label1.textContent + " = ";
+
+            elem3 = document.createElement("input");
+            elem3.id = "textbox" + e.target.id.replace("checkbox","");
+            elem3.type = "text";
+            elem3.name = "textbox" + e.target.id.replace("checkbox","");
+            elem3.style.width = "150px";            
+
+            elem4 = document.createElement("input");
+            elem4.id = "button" + e.target.id.replace("checkbox","");
+            elem4.type = "button";
+            elem4.style.marginLeft = "10px";
+            elem4.name = "button" + e.target.id.replace("checkbox","");
+            elem4.value = "Add Value";
+            elem4.onclick = function (e) {  
+            var number = e.target.id.replace("button","");
+     
+                var doc2 = document.getElementById(elem3.id);
+          
+            if (isNaN(doc2.Value))
+            {
+                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " '" + doc2.value +"'");
+            }
+            else
+            {
+                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " " + doc2.value);
+            }};
+             divname = "div" + e.target.id.replace("checkbox","");
+             var second = document.getElementById(divname);
+             second.appendChild(elem3);
+             second.appendChild(elem4);
+        }
+        else
+        {
+           if (e.target.id.indexOf("textbox")==-1 && e.target.id.indexOf("button")==-1 )
+            {   
+                divname = "div" + e.target.id.replace("checkbox","");
+                var second = document.getElementById(divname);
+                var name1 = "textbox" + e.target.id.replace("checkbox","");
+                var third = document.getElementById(name1);
+                var name2 = "button" + e.target.id.replace("checkbox","");
+                var fourth = document.getElementById(name2);
+                second.removeChild(third);
+                second.removeChild(fourth);
+            }
+        }
+	}
+});
+    $('#'+id).html(root);
+}
+
+
 function showTable()
 {
     $('.hidetable').css("display", "block");
@@ -183,9 +268,17 @@ function showRest()
             break;
         case "UPDATE":
             $('#sqlquery').val($('#command').val() + " " + $('#table').val() + " SET ");
-            $('.hidecolumn').css("display", "none");
-            $('.hidewhere').css("display", "none");
+      $('.hidecolumn').css("display", "none");
+            $('#whereheader').val("COLUMN:");
+            $('.hidewhere').css("display", "block");
             $('.hideoperator').css("display", "none");
+            $.get("func3.php", {
+                func: "show_combo",
+                drop_var: $('#table').val()
+                }, function (response) {
+             setTimeout("createUpdate('placeholderwhere', '" + response.replace(/column/g, 'where') + "')", 400);
+            });
+            break;
             break;
         case "DELETE":
             $('#sqlquery').val($('#command').val() + " " + colval + " FROM " + $('#table').val());
@@ -358,6 +451,9 @@ if (isset($_REQUEST["sqlquery"]))
                  </label>
             <label class="hidewhere" for="where"><span id="whereheader">WHERE:</span>
                   <div id="placeholderwhere"></div>
+            </label>
+            <label class="hideupdatewhere" for="where"><span id="updatewhere">WHERE:</span>
+                  <div id="placeholderupdatewhere"></div>
             </label>
             <label class="hideoperator" for="where"><span>OP:</span>
             <select id="operator" onchange="showValue();" style="width:200px">
