@@ -13,6 +13,22 @@ function createElement(id, response)
     var response1 = unescape(response);
     splitter = response1.split(",");
     root = document.createElement("div");
+
+ for(i=1;i<=splitter.length-2;i++)
+    {
+      divname = "divup" + i;
+                var second = document.getElementById(divname);
+                var name1 = "textbox" + i;
+                var third = document.getElementById(name1);
+                var name2 = "button" +i ;
+                var fourth = document.getElementById(name2);
+                if (second!=null)
+{
+                second.removeChild(third);
+                second.removeChild(fourth);
+}
+}
+
     for(i=1;i<=splitter.length-2;i++)
     {
         elem = document.createElement("div");
@@ -100,10 +116,26 @@ function createUpdate(id, response)
     var response1 = unescape(response);
     splitter = response1.split(",");
     root = document.createElement("div");
+ for(i=1;i<=splitter.length-2;i++)
+    {
+                divname = "div" + i;
+                var second = document.getElementById(divname);
+                var name1 = "textbox" + i;
+                var third = document.getElementById(name1);
+                var name2 = "button" +i ;
+                var fourth = document.getElementById(name2);
+                                if (second!=null)
+{
+              
+                second.removeChild(third);
+                second.removeChild(fourth);
+}
+}
+
     for(i=1;i<=splitter.length-2;i++)
     {
         elem = document.createElement("div");
-        elem.id = "div" + i;
+        elem.id = "divup" + i;
         elem1 = document.createElement("label"); 
         elem1.textContent  = splitter[i];
         elem1.id = "label" + i;
@@ -128,8 +160,10 @@ function createUpdate(id, response)
              $('.hideupdatewhere').css("display", "block");
             labelname  = "label" + e.target.id.replace("checkbox","");
             label1 = document.getElementById(labelname);
+            if(label1.textContent.indexOf('=')===-1)
+{
             label1.textContent = label1.textContent + " = ";
-
+}
             elem3 = document.createElement("input");
             elem3.id = "textbox" + e.target.id.replace("checkbox","");
             elem3.type = "text";
@@ -155,7 +189,7 @@ function createUpdate(id, response)
             {
                 $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " " + doc2.value);
             }};
-             divname = "div" + e.target.id.replace("checkbox","");
+             divname = "divup" + e.target.id.replace("checkbox","");
              var second = document.getElementById(divname);
              second.appendChild(elem3);
              second.appendChild(elem4);
@@ -164,7 +198,7 @@ function createUpdate(id, response)
         {
            if (e.target.id.indexOf("textbox")==-1 && e.target.id.indexOf("button")==-1 )
             {   
-                divname = "div" + e.target.id.replace("checkbox","");
+                divname = "divup" + e.target.id.replace("checkbox","");
                 var second = document.getElementById(divname);
                 var name1 = "textbox" + e.target.id.replace("checkbox","");
                 var third = document.getElementById(name1);
