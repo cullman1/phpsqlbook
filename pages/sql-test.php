@@ -248,8 +248,21 @@ function showcolumn()
 
 function showupdate()
 {
-
+    whereheader = document.getElementById("whereheader");
+    whereheader.innerHTML = "SET:";
+    labelname  = "label" + i;
+    textboxname = "textbox" + i;
+    elem1 = document.getElementById(labelname);
+  doc2 = document.getElementById(textboxname);
     $('.hideoperator').css("display", "block");
+   if (isNaN(doc2.Value))
+            {
+                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " = '" + doc2.value +"' WHERE " + $('#update').val() );
+            }
+            else
+            {
+                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " = " + doc2.value +  " WHERE " +  $('#update').val());
+            }
 }
 
 
@@ -268,7 +281,10 @@ function showOperator()
     $('.hideoperator').css("display", "block");
 }
 function showValue() {
+    if($('#command').val()!="UPDATE")
+{
     $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val() + " WHERE " + $('#where').val() + " " + $('#operator').val());
+}
     $('.wherevalue').css("display", "block");
     $('.wherevalue').focus();
 }
