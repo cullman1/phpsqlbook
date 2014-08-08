@@ -82,7 +82,6 @@
     <Compile Include="pages\func2.php" />
     <Compile Include="pages\main.php" />
     <Compile Include="pages\sql-test.php" />
-    <Compile Include="pages\sql-test2.php" />
     <Compile Include="pages\test-version.php" />
   </ItemGroup>
   <ItemGroup>

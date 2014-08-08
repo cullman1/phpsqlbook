@@ -116,11 +116,13 @@ function createElement(id, response)
 function createUpdate(id, response) 
 {
     whereheader = document.getElementById("whereheader");
-            whereheader.innerHTML = "SET:";
+    whereheader.innerHTML = "SET:";
     var response1 = unescape(response);
     splitter = response1.split(",");
     root = document.createElement("div");
- for(i=1;i<=splitter.length-2;i++)
+    
+    //Remove previous textboxes
+    for(i=1;i<=splitter.length-2;i++)
     {
                 divname = "div" + i;
                 var second = document.getElementById(divname);
@@ -128,14 +130,14 @@ function createUpdate(id, response)
                 var third = document.getElementById(name1);
                 var name2 = "button" +i ;
                 var fourth = document.getElementById(name2);
-                                if (second!=null)
-{
-              
-                second.removeChild(third);
-                second.removeChild(fourth);
-}
-}
+                if (second!=null)
+                {
+                    second.removeChild(third);
+                    second.removeChild(fourth);
+                }
+    }
 
+    //Add label and checkbox
     for(i=1;i<=splitter.length-2;i++)
     {
         elem = document.createElement("div");
@@ -153,21 +155,20 @@ function createUpdate(id, response)
       
         root.appendChild(elem);
     }
+    
+    //Add event to checkbox
     var listener = document.getElementById("placeholderwhere").addEventListener("click", function(e) {
-
 	if(e.target && e.target.nodeName == "INPUT") 
     {
 	    if (e.target.checked)
-        {
-        
-             $('.hideupdatewhere').css("display", "block");
+        {  
             labelname  = "label" + e.target.id.replace("checkbox","");
             label1 = document.getElementById(labelname);
 
             if(label1.textContent.indexOf('=')===-1)
-{
-            label1.textContent = label1.textContent + " = ";
-}
+            {
+                label1.textContent = label1.textContent + " = ";
+            }
             elem3 = document.createElement("input");
             elem3.id = "textbox" + e.target.id.replace("checkbox","");
             elem3.type = "text";
@@ -181,18 +182,17 @@ function createUpdate(id, response)
             elem4.name = "button" + e.target.id.replace("checkbox","");
             elem4.value = "Add Value";
             elem4.onclick = function (e) {  
-            var number = e.target.id.replace("button","");
-     
+                var number = e.target.id.replace("button","");
+                $('.hideupdatewhere').css("display", "block");
                 var doc2 = document.getElementById(elem3.id);
-          
-            if (isNaN(doc2.Value))
-            {
-                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " = '" + doc2.value +"'");
-            }
-            else
-            {
-                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " = " + doc2.value);
-            }
+                if (isNaN(doc2.Value))
+                {
+                 $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + label1.textContent+ " '" + doc2.value +"'");
+                }
+                else
+                {
+                    $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + label1.textContent+ " " + doc2.value);
+                }
 $.get("func4.php", {
         func: "show_column",
         drop_var: $('#table').val()
@@ -290,6 +290,8 @@ function showValue() {
 }
 
 function completeValue() {
+ if($('#command').val()!="UPDATE")
+{
     finalval = "";
     if (isNaN($('#wherevalue').val()))
     {
@@ -301,6 +303,13 @@ function completeValue() {
     }
     $('#sqlquery').val($('#command').val() + " " + $('#column').val() + " FROM " + $('#table').val() + " WHERE " + $('#where').val() + " " + $('#operator').val() + " " + finalval);
     $('.wherevalue').css("display", "block");
+}
+else
+{
+    var sofar = $('#sqlquery').val();
+ $('#sqlquery').val(sofar + " WHERE " + $('#update').val() + " " + $('#operator').val() + " " +  $('#wherevalue').val());
+
+}
 }
 
 function showRest()
