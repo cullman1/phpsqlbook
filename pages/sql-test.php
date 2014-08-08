@@ -10,6 +10,8 @@
 <script type="text/javascript">
 function createElement(id, response) 
 {
+    whereheader = document.getElementById("whereheader");
+            whereheader.innerHTML = "INTO:";
     var response1 = unescape(response);
     splitter = response1.split(",");
     root = document.createElement("div");
@@ -113,6 +115,8 @@ function createElement(id, response)
 
 function createUpdate(id, response) 
 {
+    whereheader = document.getElementById("whereheader");
+            whereheader.innerHTML = "SET:";
     var response1 = unescape(response);
     splitter = response1.split(",");
     root = document.createElement("div");
@@ -155,8 +159,7 @@ function createUpdate(id, response)
     {
 	    if (e.target.checked)
         {
-            whereheader = document.getElementById("whereheader");
-            whereheader.innerHTML = "SET:";
+        
              $('.hideupdatewhere').css("display", "block");
             labelname  = "label" + e.target.id.replace("checkbox","");
             label1 = document.getElementById(labelname);
