@@ -163,6 +163,7 @@ function createUpdate(id, response)
              $('.hideupdatewhere').css("display", "block");
             labelname  = "label" + e.target.id.replace("checkbox","");
             label1 = document.getElementById(labelname);
+
             if(label1.textContent.indexOf('=')===-1)
 {
             label1.textContent = label1.textContent + " = ";
@@ -186,12 +187,22 @@ function createUpdate(id, response)
           
             if (isNaN(doc2.Value))
             {
-                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " '" + doc2.value +"'");
+                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " = '" + doc2.value +"'");
             }
             else
             {
-                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " " + doc2.value);
-            }};
+                $('#sqlquery').val("UPDATE " + $('#table').val() + " SET " + elem1.textContent+ " = " + doc2.value);
+            }
+$.get("func2.php", {
+        func: "show_column",
+        drop_var: $('#table').val()
+    },  function(response){
+        setTimeout("finishAjax('placeholderupdatewhere', '" + escape(response) + "')", 400);
+   
+       
+    });
+
+};
              divname = "divup" + e.target.id.replace("checkbox","");
              var second = document.getElementById(divname);
              second.appendChild(elem3);
@@ -356,6 +367,8 @@ function showFrom()
 }
 
 function finishAjax(id, response) {
+   whereheader = document.getElementById("whereheader");
+            whereheader.innerHTML = "WHERE:";
     $('#'+id).html(unescape(response));
     $('#'+id).fadeIn();
 }
