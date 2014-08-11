@@ -74,7 +74,7 @@ if (isset($_REQUEST["sqlquery"]))
               }
               $count=0;
              
-              if(strpos($query_sql,"select")===0)
+              if((strpos($query_sql,"select")==0) || (strpos($query_sql,"show")==0))
               {
                 while($row = $query_sql_result->fetch())
                 {
