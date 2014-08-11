@@ -1,5 +1,4 @@
 <?php
-<?php
 
 //**************************************
 //     First selection results     //

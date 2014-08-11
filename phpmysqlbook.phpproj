@@ -90,6 +90,7 @@
     <Compile Include="pages\cms-viewer.php" />
     <Compile Include="pages\func2.php" />
     <Compile Include="pages\func3.php" />
+    <Compile Include="pages\func4.php" />
     <Compile Include="pages\main.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
@@ -115,6 +116,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\deletebutton.js" />
     <Content Include="js\jquery.hotkeys.js" />
+    <Content Include="js\sql-window.js" />
     <Content Include="phpsqlbook.phpproj" />
     <Content Include="README.md" />
     <Content Include="uploads\2014-05-10 14.07.48.jpg" />
