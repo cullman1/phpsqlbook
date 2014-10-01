@@ -3,6 +3,6 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>pages/sql-test.php</SpecificPageValue>
+    <SpecificPageValue>pages/input.php</SpecificPageValue>
   </PropertyGroup>
 </Project>
