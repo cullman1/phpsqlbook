@@ -39,6 +39,7 @@
     <Compile Include="admin\edit-category.php" />
     <Compile Include="admin\edit-article.php" />
     <Compile Include="admin\edit-user.php" />
+    <Compile Include="admin\perform-check.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="admin\media.php" />
@@ -67,6 +68,7 @@
     <Compile Include="includes\reply-box-parent.php" />
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
+    <Compile Include="login\emailcheck.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
     <Compile Include="login\login-admin.php" />
@@ -76,11 +78,13 @@
     <Compile Include="pages\add-comment-text.php" />
     <Compile Include="pages\article.php" />
     <Compile Include="pages\article-viewer.php" />
+    <Compile Include="pages\chapter2_ex_01.php" />
     <Compile Include="pages\cms-viewer.php" />
     <Compile Include="pages\func4.php" />
     <Compile Include="pages\func3.php" />
     <Compile Include="pages\func2.php" />
     <Compile Include="pages\main.php" />
+    <Compile Include="pages\search.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
   </ItemGroup>
