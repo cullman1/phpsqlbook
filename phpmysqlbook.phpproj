@@ -82,6 +82,8 @@
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
     <Compile Include="login\logout.php" />
+    <Compile Include="login\register2.php" />
+    <Compile Include="login\register3.php" />
     <Compile Include="login\register.php" />
     <Compile Include="pages\add-comment-text.php" />
     <Compile Include="pages\add-comment.php" />
