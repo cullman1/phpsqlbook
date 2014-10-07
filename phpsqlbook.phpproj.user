@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>login/emailcheck.php</SpecificPageValue>
+    <SpecificPageValue>pages/emailcheck.php</SpecificPageValue>
     <StartUrlValue />
     <PHPDebugging>True</PHPDebugging>
     <JsDebugging>False</JsDebugging>

@@ -80,9 +80,12 @@
     <Compile Include="pages\article-viewer.php" />
     <Compile Include="pages\chapter2_ex_01.php" />
     <Compile Include="pages\cms-viewer.php" />
+    <Compile Include="pages\emailcheck.php" />
     <Compile Include="pages\func4.php" />
     <Compile Include="pages\func3.php" />
     <Compile Include="pages\func2.php" />
+    <Compile Include="pages\two_page_form_amended.php" />
+    <Compile Include="pages\submit_form.php" />
     <Compile Include="pages\main.php" />
     <Compile Include="pages\search.php" />
     <Compile Include="pages\sql-test.php" />
@@ -121,6 +124,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\deletebutton.js" />
     <Content Include="js\jquery.hotkeys.js" />
+    <Content Include="js\validation.js" />
     <Content Include="php.ini" />
     <Content Include="phpmysqlbook.phpproj" />
     <Content Include="README.md" />
