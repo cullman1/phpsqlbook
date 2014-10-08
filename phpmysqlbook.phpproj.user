@@ -3,6 +3,6 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>login/register3.php</SpecificPageValue>
+    <SpecificPageValue>login/emailcheck.php</SpecificPageValue>
   </PropertyGroup>
 </Project>

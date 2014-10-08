@@ -14,7 +14,7 @@ if (!empty($_REQUEST['emailAddress']))
 }
 
 include '../includes/header-register.php' ?>
- <form id="form1" method="post" action="emailcheck.php">
+ <form id="register" name="register" method="post" action="emailcheck.php">
   <div class="wholeform">
       <div class="col-md-4"><h1>Check to see if email exists:</h1></div>
       <div class="col-md-4">

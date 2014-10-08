@@ -78,6 +78,7 @@
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
     <Compile Include="index.php" />
+    <Compile Include="login\emailcheck.php" />
     <Compile Include="login\login-admin.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
@@ -119,6 +120,7 @@
     <Content Include="js\deletebutton.js" />
     <Content Include="js\jquery.hotkeys.js" />
     <Content Include="js\sql-window.js" />
+    <Content Include="js\validation.js" />
     <Content Include="phpsqlbook.phpproj" />
     <Content Include="README.md" />
     <Content Include="uploads\2014-05-10 14.07.48.jpg" />

@@ -1,6 +1,6 @@
 ﻿(function() {
-document.forms.register.noValidate = true;
-$('#form1').on('submit', function(e) {
+document.forms[0].noValidate = true;
+$('#register').on('submit', function(e) {
 	alert("yo");
 	var elements = this.elements;
 	var valid = {};
@@ -41,7 +41,29 @@ function validateRequired(el) {
 		return valid;
 	}
 	return true;
-	}
+}
+
+function validateTypes(el) {
+    if (!el.value) return true;
+    var type = $(el).data('type') || el.getAttribute('type');
+    if (typeof validateType[type] === 'function') {
+        return validateType[type](el);
+    } else {
+        return true;
+    }
+}
+
+var validateType = {
+    email: function (el)
+    {
+        var valid = /[^@]+@[^@]+/.test(el.value);
+        if (!valid)
+        {
+            setErrorMessage(el, 'Please enter a valid email');
+        }
+        return valid;
+    }
+}
 
 function isRequired(el) {
 return ((typeof el.required === 'boolean') && el.required) || 
@@ -63,5 +85,10 @@ function showErrorMessage(el) {
 		$errorContainer = $('<span class="error"></span>').insertAfter($el);
 		}
 		$errorContainer.text($(el).data('errorMessage'));
-	}
+}
+
+function removeErrorMessage(el) {
+    var $el = $(el)
+    var $errorContainer = "";
+}
 }());
