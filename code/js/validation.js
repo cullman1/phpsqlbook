@@ -6,6 +6,7 @@ $('#register').on('submit', function(e) {
 	var isValid;
 	var isFormValid;
 		for (var i=0,l=(elements.length-1);i<l;i++) {
+
 		isValid= validateRequired(elements[i]) && validateTypes(elements[i]);
 		if (!isValid) {
 
@@ -34,7 +35,7 @@ $('#register').on('submit', function(e) {
 function validateRequired(el) {
 	if(isRequired(el)) { 
 		var valid = !isEmpty(el);
-		alert("here - " + valid);
+	
 		if (!valid) {
 			setErrorMessage (el, ' This field is required');
 		}
@@ -84,7 +85,7 @@ function showErrorMessage(el) {
 		
 	if (!$errorContainer.length) 
 	{	
-		$errorContainer = $('<span class="error"></span>').insertAfter($el);			
+		$errorContainer = $('<span class="error" style="color:red"></span>').insertAfter($el);			
 	}
 	
 	$errorContainer.text($(el).data('errorMessage'));

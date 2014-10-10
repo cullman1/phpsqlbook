@@ -50,6 +50,15 @@
     <Compile Include="admin\publish-data.php" />
     <Compile Include="admin\submit-user.php" />
     <Compile Include="admin\user.php" />
+    <Compile Include="code\chapter4\emailcheck1.php" />
+    <Compile Include="code\chapter4\emailcheck2.php" />
+    <Compile Include="code\chapter4\register3.php" />
+    <Compile Include="code\includes\db_config.php" />
+    <Compile Include="code\includes\footer-site.php" />
+    <Compile Include="code\includes\header-register.php" />
+    <Compile Include="code\includes\header-site.php" />
+    <Compile Include="code\includes\login-variables.php" />
+    <Compile Include="code\index.php" />
     <Compile Include="includes\comments-control.php" />
     <Compile Include="includes\comments-list.php" />
     <Compile Include="includes\db_config.php" />
@@ -68,7 +77,8 @@
     <Compile Include="includes\reply-box-parent.php" />
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
-    <Compile Include="login\emailcheck.php" />
+    <Compile Include="login\emailcheck2.php" />
+    <Compile Include="login\index.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
     <Compile Include="login\login-admin.php" />
@@ -94,6 +104,13 @@
   <ItemGroup>
     <Folder Include="admin\" />
     <Folder Include="assets\" />
+    <Folder Include="code\" />
+    <Folder Include="code\chapter2\" />
+    <Folder Include="code\chapter3\" />
+    <Folder Include="code\chapter4\" />
+    <Folder Include="code\css\" />
+    <Folder Include="code\includes\" />
+    <Folder Include="code\js\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
     <Folder Include="includes\" />
@@ -108,6 +125,8 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
+    <Content Include="code\css\style.css" />
+    <Content Include="code\js\validation.js" />
     <Content Include="css\admin.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.css.map" />

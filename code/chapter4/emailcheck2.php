@@ -1,7 +1,7 @@
 <?php 
 /* Include passwords and login details */
 require_once('../includes/db_config.php');
-$num_rows = 0;
+ $num_rows = 0;
 if (!empty($_REQUEST['emailAddress']))
 {
     /* Query SQL Server for checking existing user. */
@@ -14,13 +14,14 @@ if (!empty($_REQUEST['emailAddress']))
 }
 
 include '../includes/header-register.php' ?>
- <form id="register" method="post" action="emailcheck.php">
+ <form id="register" name="register" method="post" action="emailcheck.php">
   <div class="wholeform">
       <div class="col-md-4"><h1>Check to see if email exists:</h1></div>
       <div class="col-md-4">
          <div class="form-group">
            <label for="emailAddress">Email address</label>
            <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Enter email" required>
+           <input type="hidden" name="submit_check" value="submit" />
          </div>
          <button type="submit" class="btn btn-default">Submit</button>
          <br/>  <br/>
@@ -42,3 +43,4 @@ include '../includes/header-register.php' ?>
    </div>
 </form>
 <?php include '../includes/footer-site.php' ?>
+
