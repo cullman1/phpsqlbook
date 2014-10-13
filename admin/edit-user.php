@@ -11,7 +11,7 @@ $select_user_result->execute();
 $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 include '../includes/header.php' ?>
   <div id="body">
-    <form id="form1" method="post" action="submit-user.php">
+    <form id="form1" name="form1" method="post" action="submit-user.php" enctype="multipart/form-data">
        <?php while($select_user_row = $select_user_result->fetch()) { ?>
       <div id="middlewide">
         <div id="leftcol">
@@ -30,7 +30,7 @@ include '../includes/header.php' ?>
             <tr><td></td><td>&nbsp; </td></tr>
                <tr>
 				 <td style="vertical-align:top;"><span class="fieldheading" >User Image:</span></td>
-                   	 <td><input id="UserImage" name="UserImage" type="text" value="<?php echo $select_user_row['user_image']; ?>" /><br /><br /><input type="file" id="uploader" name="uploader"></td> 
+                   	 <td><input id="UserImage" name="UserImage" type="text" value="<?php echo $select_user_row['user_image']; ?>" /><br /><br /><input type="file" id="uploader" name="uploader" /></td> 
                
 			</tr>
               <tr><td> </td><td>&nbsp; </td></tr>
@@ -40,6 +40,7 @@ include '../includes/header.php' ?>
 			</tr> 
           </table>
           <input id="userid" name="userid" type="hidden" value="<?php echo $_REQUEST['userid']; ?>"/>
+                   <input id="role" name="role" type="hidden" value="<?php echo $_REQUEST['role']; ?>"/>
           <br />
           <br />
           <div id="Status" >

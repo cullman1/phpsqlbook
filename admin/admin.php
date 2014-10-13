@@ -42,7 +42,7 @@ include '../includes/header.php' ?>
             $totalComments = $select_totalcomments_row["ArticleComments"];
             echo $totalComments; ?> 
             </td>
-                <td><a href="edit-user.php?userid=<?php echo $select_user_row['user_id'];?>"><span class="glyphicon glyphicon-ok"></span></a></td>
+                <td><a href="edit-user.php?role=admin&userid=<?php echo $select_user_row['user_id'];?>"><span class="glyphicon glyphicon-ok"></span></a></td>
            <td><a href="ban-user.php?publish=admin&userid=<?php echo $select_user_row['user_id'];  ?>">    
             <?php if ($select_user_row['active']==0)
             { ?><span class="glyphicon glyphicon-ok"></span> <?php } else { ?><span class="glyphicon glyphicon-remove red"></span><?php } ?></a></td>

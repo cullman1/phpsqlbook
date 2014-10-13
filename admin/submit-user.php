@@ -2,14 +2,17 @@
 /* Db Details */
 require_once('../includes/db_config.php');
 $userimage = "";
-/* Query nto update user */
+$role = "../admin/".$_REQUEST["role"];
+/* Query to update user */
 if(isset($_FILES['uploader']))
 {
+  
     $userimage = $_FILES["uploader"]["name"];
     move_uploaded_file($_FILES['uploader']['tmp_name'], $folder);
 }
 else
 {
+
     $userimage = $_REQUEST["UserImage"];
 }
 
@@ -20,6 +23,7 @@ if($update_user_result->errorCode()!=0) {  die("Update User Query failed"); }
 else
 {	
 	/* Redirect to original page */
-    header('Location:../admin/user.php');	
+	
+    header('Location:'.$role.'.php?submitted=true');
 }
 ?>
