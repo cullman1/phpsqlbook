@@ -1,23 +1,39 @@
 <?php
 
-include '../includes/header-register.php' ?>
+include '../includes/header-chapters.php' ?>
  
   <div class="wholeform">
-      <div class="col-md-4"><h1>Code examples</h1><br /></div>
-      <div class="col-md-4">
+      <div class="col-md-4" style="padding-left:60px;"><h1>Code examples</h1><br /></div>
+        
+       <a href="/code/chapter1/chapter1.php"><div class="col-md-4 boxy1">
+         <h3>Chapter 1</h3>
+       
+             <div>Introduction to Server-side programming</div>
+       </div></a>
+      
+      <a href="/code/chapter2/chapter2.php">
+          <div class="col-md-4 boxy2">
          <h3>Chapter 2</h3>
+               
+             <div>Getting data from a database into your templates</div>
        </div>
-        <div class="col-md-4">
+          </a>
+
+      <a href="/code/chapter3/chapter3.php">
+        <div class="col-md-4 boxy1">
          <h3>Chapter 3</h3>
-       </div>
-        <div class="col-md-4">
+             
+             <div>Server side Processing of data</div>
+       </div></a>
+
+      <a href="/code/chapter4/chapter4.php">
+        <div class="col-md-4 boxy2">
          <h3>Chapter 4</h3>
-            <ul style="list-style-type:none;">
-                <li><a href="/phpsqlbook/code/chapter4/emailcheck1.php">Email exists example - without validation</a></li>
-                <li><a href="/phpsqlbook/code/chapter4/emailcheck2.php">Email exists example - with validation</a></li>
-                <li><a href="/phpsqlbook/code/chapter4/register3.php">Register User example</a></li>
-                </ul>
+               
+             <div>Updating the database</div>
+            
        </div>
-   </div>
+          </a>
+      </div>
 
 <?php include '../includes/footer-site.php' ?>

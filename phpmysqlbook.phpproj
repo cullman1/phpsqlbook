@@ -25,6 +25,14 @@
   <ItemGroup>
     <Folder Include="admin\" />
     <Folder Include="assets\" />
+    <Folder Include="code\" />
+    <Folder Include="code\chapter4\" />
+    <Folder Include="code\css\" />
+    <Folder Include="code\includes\" />
+    <Folder Include="code\js\" />
+    <Folder Include="code\chapter1\" />
+    <Folder Include="code\chapter2\" />
+    <Folder Include="code\chapter3\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
     <Folder Include="includes\" />
@@ -59,6 +67,20 @@
     <Compile Include="admin\submit-user.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\user.php" />
+    <Compile Include="code\chapter1\chapter1.php" />
+    <Compile Include="code\chapter2\chapter2.php" />
+    <Compile Include="code\chapter3\chapter3.php" />
+    <Compile Include="code\chapter3\search.php" />
+    <Compile Include="code\chapter4\chapter4.php" />
+    <Compile Include="code\chapter4\emailcheck1.php" />
+    <Compile Include="code\chapter4\emailcheck2.php" />
+    <Compile Include="code\chapter4\register3.php" />
+    <Compile Include="code\includes\db_config.php" />
+    <Compile Include="code\includes\footer-site.php" />
+    <Compile Include="code\includes\header-register.php" />
+    <Compile Include="code\includes\header-site.php" />
+    <Compile Include="code\includes\login-variables.php" />
+    <Compile Include="code\index.php" />
     <Compile Include="includes\comments-control.php" />
     <Compile Include="includes\comments-list.php" />
     <Compile Include="includes\db_config.php" />
@@ -68,6 +90,7 @@
     <Compile Include="includes\gallery-modal-insert.php" />
     <Compile Include="includes\gallery-modal.php" />
     <Compile Include="includes\header-article.php" />
+    <Compile Include="includes\header-chapters.php" />
     <Compile Include="includes\header-register.php" />
     <Compile Include="includes\header-site.php" />
     <Compile Include="includes\header.php" />
@@ -78,7 +101,6 @@
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
     <Compile Include="index.php" />
-    <Compile Include="login\emailcheck.php" />
     <Compile Include="login\login-admin.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
@@ -95,6 +117,7 @@
     <Compile Include="pages\func3.php" />
     <Compile Include="pages\func4.php" />
     <Compile Include="pages\main.php" />
+    <Compile Include="pages\search.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
   </ItemGroup>
@@ -104,6 +127,8 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
+    <Content Include="code\css\style.css" />
+    <Content Include="code\js\validation.js" />
     <Content Include="css\admin.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.css.map" />

@@ -189,4 +189,11 @@ color: gray;}
     visibility:visible !important;
 }
 
+.boxy {
+    width: 150px;
+    height: 100px;
+    border: 1px solid gray;
+    padding: 0px 50px;
+}
+
 
