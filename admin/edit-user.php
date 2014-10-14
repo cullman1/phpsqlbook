@@ -52,8 +52,13 @@ include '../includes/header.php' ?>
 	         ?>
          </div>
             <script>
-$(".uploader").on('change', function() {
-         alert("yo");
+$("#uploader").on('change', function() {
+   var filename = $('#uploader').val();
+
+filename2 = filename.replace("fakepath","");
+filename2 = filename2.replace("C:\\\\","");
+
+        $("#UserImage").val(filename2);
 });
             </script>
       </div>

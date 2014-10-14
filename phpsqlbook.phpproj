@@ -50,6 +50,11 @@
     <Compile Include="admin\publish-data.php" />
     <Compile Include="admin\submit-user.php" />
     <Compile Include="admin\user.php" />
+    <Compile Include="code\chapter1\chapter1.php" />
+    <Compile Include="code\chapter2\chapter2.php" />
+    <Compile Include="code\chapter2\multiplerecords.php" />
+    <Compile Include="code\chapter2\singlerecord.php" />
+    <Compile Include="code\chapter2\user.php" />
     <Compile Include="code\chapter4\emailcheck1.php" />
     <Compile Include="code\chapter4\emailcheck2.php" />
     <Compile Include="code\chapter4\register3.php" />
@@ -105,6 +110,7 @@
     <Folder Include="admin\" />
     <Folder Include="assets\" />
     <Folder Include="code\" />
+    <Folder Include="code\chapter1\" />
     <Folder Include="code\chapter2\" />
     <Folder Include="code\chapter3\" />
     <Folder Include="code\chapter4\" />

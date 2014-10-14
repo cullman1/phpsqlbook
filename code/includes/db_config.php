@@ -1,14 +1,9 @@
 <?php
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
-
-/* Include passwords and login details */
-require_once('login-variables.php');
-  
 /* Connect using PDO . */
 try
 {
-    $dbHost = new PDO("mysql:host=$serverName;dbname=$databaseName", $userName, $password);
+    $dbHost = new PDO("mysql:host=72.32.1.16;dbname=phpbook1", "testuser", 
+    "PHPBookPassword");
     $dbHost->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 }
 catch (PDOException $e)
