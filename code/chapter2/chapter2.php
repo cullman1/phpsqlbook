@@ -12,7 +12,7 @@ include '../includes/header-chapters.php' ?>
                 <br />
     <li class="blox"><a href="/code/chapter2/multiplerecords.php">Select name and login number - multiple records example</a></li>
                 <br />
-                  <li class="blox"><a href="/code/chapter2/multiplerecords.php">List of users example</a></li>
+                  <li class="blox"><a href="/code/chapter2/user.php">List of users example</a></li>
                 <br />
                 </ul>
        </div>
