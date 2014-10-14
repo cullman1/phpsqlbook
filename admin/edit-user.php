@@ -51,6 +51,11 @@ include '../includes/header.php' ?>
 	           }  
 	         ?>
          </div>
+            <script>
+$(".uploader").on('change', function() {
+         alert("yo");
+});
+            </script>
       </div>
       <br />
       <a id="Return2" href="../admin/user.php">Return to Main Page</a>

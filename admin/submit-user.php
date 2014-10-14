@@ -8,6 +8,7 @@ if(isset($_FILES['uploader']))
 {
   
     $userimage = $_FILES["uploader"]["name"];
+    $folder = "../uploads/". $userimage;
     move_uploaded_file($_FILES['uploader']['tmp_name'], $folder);
 }
 else

@@ -47,7 +47,9 @@ else
             $name="";
             if(isset($_FILES['uploader']))
             {
+               
                 $name = $_FILES["uploader"]["name"];
+                $folder = "../uploads/". $name;
                 move_uploaded_file($_FILES['uploader']['tmp_name'], $folder);
             }
 
