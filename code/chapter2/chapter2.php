@@ -14,6 +14,8 @@ include '../includes/header-chapters.php' ?>
                 <br />
                     <li class="blox"><a href="/code/chapter2/sql-test.php?sqlquery=SELECT%20MAX(total_log_ins)%20FROM%20Users">SQL example - SELECT MAX</a></li>
                 <br />
+                  <li class="blox"><a href="/code/chapter2/maxlogins.php">Code example - SELECT MAX</a></li>
+                <br />
                   <li class="blox"><a href="/code/chapter2/user.php">List of users example</a></li>
                 <br />
                 </ul>

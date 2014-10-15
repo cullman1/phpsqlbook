@@ -110,6 +110,7 @@ if (isset($_REQUEST["sqlquery"]))
         <input id="hiddenpass" name="hiddenpass" type="hidden" />
         <div class="pad" style="width:790px;">
             <br />
+             <div style="display:none;">
             <label for="command" class="hidetable"><span>COMMAND:</span>
             <select id="command"  onchange="showRest();" style="width:200px">
                 <option>None</option>
@@ -119,9 +120,11 @@ if (isset($_REQUEST["sqlquery"]))
                 <option>DELETE</option>
             </select>
             </label>&nbsp;
+                 </div>
             <label class="hidecolumn" for="column"><span>COLUMN:</span>
                 <span id="placeholdercolumn"></span>
             </label>
+            <div style="display:none;">
             <label  for="table"><span>TABLE:</span>
             <select id="table" name="table" onchange="showFrom();" style="width:200px">
                 <option value="None">None</option>
@@ -134,7 +137,7 @@ if (isset($_REQUEST["sqlquery"]))
                 <option value="role">role</option>
                 <option value="user">user</option>
             </select>
-                 </label>
+                 </label></div>
             <label class="hidewhere" for="where"><span id="whereheader">WHERE:</span>
                   <div id="placeholderwhere"></div>
             </label>
