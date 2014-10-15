@@ -2,7 +2,7 @@
 
 include '../includes/header-chapters.php' ?>
  
-  <div class="wholeform">
+  <div class="wholeform" style="margin-left:30%; margin-right:30%; background-color: lightgray;">
       <div class="col-md-4" style="padding-left:60px;"><h1>Code examples</h1><br /></div>
         
        <a href="/code/chapter1/chapter1.php"><div class="col-md-4 boxy1">
