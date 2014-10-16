@@ -10,10 +10,15 @@ $select_category_result = $dbHost->prepare($select_category_sql);
 $select_category_result->execute();
 $select_category_result->setFetchMode(PDO::FETCH_ASSOC);
 
+$select_parent_sql = "select category_id FROM category";
+$select_parent_result = $dbHost->prepare($select_parent_sql);
+$select_parent_result->execute();
+$select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
+
 if (isset($_REQUEST["Submitted"]))
 {
     /* Query SQL Server for inserting a new category. */
-    $insert_category_sql = "INSERT INTO category (category_name, category_template) VALUES ('".$_REQUEST['CategoryName']."', '".$_REQUEST['CategoryParent']."')";
+    $insert_category_sql = "INSERT INTO category (category_name, category_template, category_parent) VALUES ('".$_REQUEST['CategoryName']."', '".$_REQUEST['CategoryTemplate']."', '".$_REQUEST['CategoryParent']."')";
     $insert_category_result = $dbHost->prepare($insert_category_sql);
     $insert_category_result->execute();
     if($insert_category_result->errorCode()!=0) {  die("Insert Category Query failed"); }
@@ -40,9 +45,23 @@ include '../includes/header.php' ?>
             <tr>
               <td><span class="fieldheading">Category Template:</span></td>
               <td>
-                <select id="CategoryParent" name="CategoryParent">
+                <select id="CategoryTemplate" name="CategoryTemplate">
                     <?php while($select_category_row = $select_category_result->fetch()) { ?>
                     <option><?php  echo $select_category_row['category_template']; ?></option>
+                    <?php } ?> 
+                </select>
+              </td> 
+            </tr>
+            <tr>
+                <td> </td><td>&nbsp; </td>
+            </tr>
+              <tr>
+              <td><span class="fieldheading">Parent Category Id:</span></td>
+              <td>
+                <select id="CategoryParent" name="CategoryParent">
+                      <option>0</option>
+                    <?php while($select_parent_row = $select_parent_result->fetch()) { ?>
+                    <option><?php  echo $select_parent_row['category_id']; ?></option>
                     <?php } ?> 
                 </select>
               </td> 
