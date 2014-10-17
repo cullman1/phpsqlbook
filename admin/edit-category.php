@@ -11,7 +11,7 @@ $select_categorytemplate_result->execute();
 $select_categorytemplate_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for selecting category template. */
-$select_parent_sql = "select distinct parent_category FROM category";
+$select_parent_sql = "select category_id, category_name FROM category";
 $select_parent_result = $dbHost->prepare($select_parent_sql);
 $select_parent_result->execute();
 $select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -48,8 +48,9 @@ include '../includes/header.php' ?>
               <td><span class="fieldheading">Category Parent:</span></td>
               <td>
                 <select id="CategoryParent" name="CategoryParent">
+                     <option value="0">None</option>
                  <?php while($select_parent_row = $select_parent_result->fetch()) { ?>
-                <option <?php if( $select_parent_row['parent_category'] == $select_category_row['parent_category']) { echo "selected";} ?> ><?php  echo $select_parent_row['parent_category']; ?></option>
+                <option <?php if( $select_category_row['parent_category'] == $select_parent_row['category_id']) { echo "selected";} ?> ><?php  echo $select_parent_row['category_name']; ?></option>
                   <?php } ?> 
                   </select>
               </td> 
