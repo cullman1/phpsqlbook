@@ -57,7 +57,7 @@ include '../includes/header.php' ?>
             <tr>
 		        <td style="vertical-align:top;"><span class="fieldheading">Content:&nbsp;</span></td>
 				<td>     
-                    <textarea></textarea>
+                    <textarea class="contentbox"></textarea>
                 </td> 
 			</tr>
             <tr><td>&nbsp;</td></tr>

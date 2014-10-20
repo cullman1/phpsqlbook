@@ -1,0 +1,22 @@
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->   
+    <script>
+        function overrideInsertImage()
+        {
+            var gm3 = "";
+            $.get('../includes/gallery-modal-insert.php', function(data) {
+                gm3 = data;
+                $(gm3).appendTo('#body').modal('show');
+            });
+            return false;  
+        };
+
+        $(document).ready(function() {
+            $('#rich-text-container').wysiwyg();
+        });
+    </script>
+  </body>
+</html>

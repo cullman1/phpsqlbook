@@ -82,6 +82,7 @@
     <Compile Include="code\chapter4\emailcheck2.php" />
     <Compile Include="code\chapter4\register3.php" />
     <Compile Include="code\chapter5\ch5_first_attempt.php" />
+    <Compile Include="code\chapter5\chapter5.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-site.php" />
     <Compile Include="code\includes\header-register.php" />
@@ -135,6 +136,7 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
+    <Content Include="code\css\admin.css" />
     <Content Include="code\css\style.css" />
     <Content Include="code\js\validation.js" />
     <Content Include="css\admin.css" />
