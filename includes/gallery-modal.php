@@ -3,6 +3,11 @@ $select_mediaimages_sql = "select media.media_id, media_title, file_type, url, t
 $select_mediaimages_result = $dbHost->prepare($select_mediaimages_sql);
 $select_mediaimages_result->execute();
 $select_mediaimages_result->setFetchMode(PDO::FETCH_ASSOC);
+
+
+$select_mediaimages_result2 = $dbHost->prepare($select_mediaimages_sql);
+$select_mediaimages_result2->execute();
+$select_mediaimages_result2->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -45,17 +50,19 @@ $(document).ready(function(){
             <div class="carousel-inner">
               <?php
                 $innerCounter = 1;
-                while($select_mediaimages_row = $select_mediaimages_result->fetch())
-                { ?>
+          
+                while($select_mediaimages_row2 = $select_mediaimages_result2->fetch())
+                {
+              ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
-                    <img src='<?php echo $select_mediaimages_row["url"]; ?>' alt='<?php echo $select_mediaimages_row["media_title"]; ?>' />
+                    <img src='<?php echo $select_mediaimages_row2["url"]; ?>' alt='<?php echo $select_mediaimages_row2["media_title"]; ?>' style="max-height: 500px;" />
                     <div class="carousel-caption" style="color:white; bottom: 44px;">
-                      <?php echo $select_mediaimages_row["media_title"]; ?>
+                      <?php echo $select_mediaimages_row2["media_title"]; ?>
                     </div>
                     <br/>
                     <br/>
                     <div  style="text-align:center; padding-top:30px;">
-                      <button id="button<?php echo $select_mediaimages_row["media_id"]?>" type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $select_mediaimages_row["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $select_mediaimages_row["name"]?>" class="btn-clicked btn btn-primary">Choose this image</a>
+                      <button id="button<?php echo $select_mediaimages_row2["media_id"]?>" type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $select_mediaimages_row2["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $select_mediaimages_row2["name"]?>" class="btn-clicked btn btn-primary">Choose this image</a>
                       <!--  -->
                     </div>
                   </div>
