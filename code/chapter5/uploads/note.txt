@@ -1,0 +1,20 @@
+parent pages
+category view
+
+registration
+
+url rewriting
+
+publish date
+
+make headings the links
+
+database - give read only
+
+Filter to own admin.
+
+O
+
+Numbered steps -> checklist (template)
+
+https://compilr.com/

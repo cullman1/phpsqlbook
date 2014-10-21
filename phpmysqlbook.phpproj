@@ -64,6 +64,7 @@
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
+    <Compile Include="admin\perform-check.php" />
     <Compile Include="admin\publish-data.php" />
     <Compile Include="admin\submit-user.php" />
     <Compile Include="admin\submit-category.php" />
@@ -81,14 +82,18 @@
     <Compile Include="code\chapter4\emailcheck1.php" />
     <Compile Include="code\chapter4\emailcheck2.php" />
     <Compile Include="code\chapter4\register3.php" />
+    <Compile Include="code\chapter5\file_upload.php" />
     <Compile Include="code\chapter5\ch5_first_attempt.php" />
     <Compile Include="code\chapter5\chapter5.php" />
     <Compile Include="code\includes\db_config.php" />
+    <Compile Include="code\includes\footer-editor.php" />
     <Compile Include="code\includes\footer-site.php" />
     <Compile Include="code\includes\header-register.php" />
     <Compile Include="code\includes\header-site.php" />
+    <Compile Include="code\includes\header.php" />
     <Compile Include="code\includes\login-variables.php" />
     <Compile Include="code\index.php" />
+    <Compile Include="code\login-variables.php" />
     <Compile Include="includes\comments-control.php" />
     <Compile Include="includes\comments-list.php" />
     <Compile Include="includes\db_config.php" />
@@ -137,6 +142,7 @@
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
     <Content Include="code\css\admin.css" />
+    <Content Include="code\css\bootstrap.min.css" />
     <Content Include="code\css\style.css" />
     <Content Include="code\js\validation.js" />
     <Content Include="css\admin.css" />

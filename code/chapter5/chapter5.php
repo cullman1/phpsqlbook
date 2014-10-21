@@ -10,7 +10,8 @@ include '../includes/header-chapters.php' ?>
             <ul style="list-style-type:none; padding-top:10px;">
                 <li class="blox"><a href="/code/chapter5/ch5_first_attempt.php">Chapter 5 - add article page</a></li>
                 <br />
-         
+         <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - File Upload</a></li>
+                <br />
                 </ul>
        </div>
    </div>
