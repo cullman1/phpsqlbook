@@ -8,9 +8,16 @@ include '../includes/header-chapters.php' ?>
         <div class="col-md-4">
          <h3>Chapter 5</h3>
             <ul style="list-style-type:none; padding-top:10px;">
-                <li class="blox"><a href="/code/chapter5/ch5_first_attempt.php">Chapter 5 - add article page</a></li>
+              
+         <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - File Upload control</a></li>
                 <br />
-         <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - File Upload</a></li>
+          <li class="blox"><a href="/code/chapter5/ch5_first_attempt.php">Chapter 5 - Basic add article page</a></li>
+                <br />
+          <li class="blox"><a href="/code/chapter5/edit-article.php?article_id=39">Chapter 5 - Basic edit article page</a></li>
+                <br />
+           <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - Rich Text Editor enhanced Add Article Page</a></li>
+                <br />
+               <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - Rich Text Editor enhanced Edit Article Page</a></li>
                 <br />
                 </ul>
        </div>
