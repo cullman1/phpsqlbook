@@ -11,6 +11,8 @@ include '../includes/header-chapters.php' ?>
               
          <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - File Upload control</a></li>
                 <br />
+                 <li class="blox"><a href="/code/chapter5/file_upload_improved.php">Chapter 5 - File Upload control improved version</a></li>
+                <br />
           <li class="blox"><a href="/code/chapter5/ch5_first_attempt.php">Chapter 5 - Basic add article page</a></li>
                 <br />
           <li class="blox"><a href="/code/chapter5/edit-article.php?article_id=39">Chapter 5 - Basic edit article page</a></li>

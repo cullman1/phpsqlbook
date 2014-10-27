@@ -73,7 +73,12 @@ if(isset($_FILES['image_upload']))
 
 /* Add header */
 include '../includes/header.php' ?>
- 
+ <script type="text/Javascript">
+     function assigncontent() {
+         $('#ArticleContent').val(document.getElementById("rich-text-container").innerHTML);
+     }
+</script>
+
 <div id="body">
     <form id="galleryform" method="post" action="edit-article.php" onsubmit="assigncontent()" enctype="multipart/form-data">
          <?php while($select_article_row = $select_article_result->fetch()) { ?>

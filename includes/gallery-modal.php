@@ -3,11 +3,7 @@ $select_mediaimages_sql = "select media.media_id, media_title, file_type, url, t
 $select_mediaimages_result = $dbHost->prepare($select_mediaimages_sql);
 $select_mediaimages_result->execute();
 $select_mediaimages_result->setFetchMode(PDO::FETCH_ASSOC);
-
-
-$select_mediaimages_result2 = $dbHost->prepare($select_mediaimages_sql);
-$select_mediaimages_result2->execute();
-$select_mediaimages_result2->setFetchMode(PDO::FETCH_ASSOC);
+$totalRecords = $select_mediaimages_result->rowCount();
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -36,10 +32,7 @@ $(document).ready(function(){
             <!-- Indicators -->
             <ol class="carousel-indicators" style="position: relative; top: 400px;left:250px;">
               <?php 
-                $loopCounter = 0;  
-                
-                $select_mediaimages_rows = $select_mediaimages_result->fetchAll();
-                $totalRecords = count($select_mediaimages_rows);
+                $loopCounter = 0;                
                 for ($i=$loopCounter; $i<$totalRecords; $i++)
                 { ?>
                   <li data-target="#carousel-media" data-slide-to="<?php echo $loopCounter?>" <?php if($i==0){echo "class='active'";} ?> ></li>
@@ -50,8 +43,7 @@ $(document).ready(function(){
             <div class="carousel-inner">
               <?php
                 $innerCounter = 1;
-          
-                while($select_mediaimages_row2 = $select_mediaimages_result2->fetch())
+                while($select_mediaimages_row2 = $select_mediaimages_result->fetch())
                 {
               ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
