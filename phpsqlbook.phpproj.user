@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>code/chapter5/chapter5.php</SpecificPageValue>
+    <SpecificPageValue>admin/add-article.php</SpecificPageValue>
     <StartUrlValue />
     <PHPDebugging>True</PHPDebugging>
     <JsDebugging>False</JsDebugging>

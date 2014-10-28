@@ -18,7 +18,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<div id="image" class="modal modal-content modal-header fade" style="width:623px;overflow-x:hidden; overflow-y:hidden;height:630px;">
+<div id="image" class="modal modal-content modal-header fade gallery-size">
   <div>
     <div >
       <div>
@@ -30,7 +30,7 @@ $(document).ready(function(){
           <div id="carousel-media" class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
-            <ol class="carousel-indicators" style="position: relative; top: 400px;left:250px;">
+            <ol class="carousel-indicators carousel-pos">
               <?php 
                 $loopCounter = 0;                
                 for ($i=$loopCounter; $i<$totalRecords; $i++)
@@ -48,12 +48,10 @@ $(document).ready(function(){
               ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
                     <img src='<?php echo $select_mediaimages_row2["url"]; ?>' alt='<?php echo $select_mediaimages_row2["media_title"]; ?>' style="max-height: 500px;" />
-                    <div class="carousel-caption" style="color:white; bottom: 44px;">
+                    <div class="carousel-caption caption-text">
                       <?php echo $select_mediaimages_row2["media_title"]; ?>
                     </div>
-                    <br/>
-                    <br/>
-                    <div  style="text-align:center; padding-top:30px;">
+                    <div  class="button-pos">
                       <button id="button<?php echo $select_mediaimages_row2["media_id"]?>" type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $select_mediaimages_row2["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $select_mediaimages_row2["name"]?>" class="btn-clicked btn btn-primary">Choose this image</a>
                       <!--  -->
                     </div>

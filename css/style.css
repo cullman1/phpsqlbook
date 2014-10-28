@@ -240,3 +240,25 @@ color: gray;}
         background-color: white;
         border: 1px solid black;
     }
+
+.carousel-pos {
+   position: relative; 
+   top: 400px;
+   left:250px;
+}
+
+.gallery-size {
+    width: 623px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 630px;
+}
+
+.caption-text {
+    color:white; 
+    bottom: 44px;
+}
+
+.button-pos {
+ text-align:center; padding-top:58px;
+}

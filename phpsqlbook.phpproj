@@ -40,6 +40,7 @@
     <Compile Include="admin\edit-article.php" />
     <Compile Include="admin\edit-user.php" />
     <Compile Include="admin\perform-check.php" />
+    <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="admin\media.php" />
