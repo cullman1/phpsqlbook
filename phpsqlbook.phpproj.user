@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>admin/add-article.php</SpecificPageValue>
+    <SpecificPageValue>code/chapter5/image_cropper.php</SpecificPageValue>
     <StartUrlValue />
     <PHPDebugging>True</PHPDebugging>
     <JsDebugging>False</JsDebugging>

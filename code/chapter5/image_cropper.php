@@ -19,7 +19,7 @@ include '../includes/header.php' ?>
                    {
                        try
                        {
-                           $folder = "../uploads/".$_FILES["image_upload"]["name"];
+                           $folder = "../../uploads/".$_FILES["image_upload"]["name"];
                            if (($_FILES["image_upload"]["type"] != "image/jpeg") && ($_FILES["image_upload"]["type"] != "image/png") && ($_FILES["image_upload"]["type"] != "image/gif")) 
                            {
                                throw new Exception('Illegal file type');
@@ -50,17 +50,17 @@ include '../includes/header.php' ?>
                    $file_type = exif_imagetype($filename); //exif values - 1-gif, 2-jpg,3 - png
                    switch($file_type) {
                        case 1:
-                           $copied_image= "../uploads/copy.gif";
+                           $copied_image= "../../uploads/copy.gif";
                            $img = imageCreateFromGif($filename);
                            imagegif($img, $copied_image);
                            break;
                        case 2:
-                           $copied_image= "../uploads/copy.jpg";
+                           $copied_image= "../../uploads/copy.jpg";
                            $img = imageCreateFromJpeg($filename);
                            imagejpeg($img, $copied_image);
                            break;
                        case 3:
-                           $copied_image= "../uploads/copy.png";
+                           $copied_image= "../../uploads/copy.png";
                            $img = imageCreateFromPng($filename);
                            imagepng($img, $copied_image);
                            break;
@@ -84,20 +84,20 @@ include '../includes/header.php' ?>
                            $src = imagecreatefromgif($filename);
                            $img_id = imagecreatetruecolor($newwidth, $newheight);
                            imagecopyresampled($img_id,$src,0,0,0,0,$newwidth,$newheight,$width_orig,$height_orig);
-                           imagegif($img_id, "../uploads/thumbnail.gif");
-                           return "../uploads/thumbnail.gif";
+                           imagegif($img_id, "../../uploads/thumbnail.gif");
+                           return "../../uploads/thumbnail.gif";
                        case 2:
                            $src = imagecreatefromjpeg($filename);
                            $img_id = imagecreatetruecolor($newwidth, $newheight);
                            imagecopyresampled($img_id,$src,0,0,0,0,$newwidth, $newheight, $width_orig, $height_orig);
                            imagejpeg($img_id, "../uploads/thumbnail.jpg");
-                           return "../uploads/thumbnail.jpg";
+                           return "../../uploads/thumbnail.jpg";
                        case 3:
                            $src = imagecreatefrompng($filename);
                            $img_id = imagecreatetruecolor($newwidth, $newheight);
                            imagecopyresampled($img_id,$src,0,0,0,0, $newwidth, $newheight, $width_orig, $height_orig);
                            imagepng($img_id, "../uploads/thumbnail.png");
-                           return "../uploads/thumbnail.png";
+                           return "../../uploads/thumbnail.png";
                    }
                    return "";
                } 
@@ -116,7 +116,7 @@ include '../includes/header.php' ?>
                    $image->cropImage($width_original,$height_original,0,0);
                    $image->thumbnailImage($width_resize, $height_resize);
                    $locate_period = strrpos($filename, '.');
-                   $filename = $substr_replace($filename, "_cropped", $locate_period);
+                   $filename = substr_replace($filename, "_cropped", $locate_period);
                    $image->writeImage($filename);
                    return $filename;
                }

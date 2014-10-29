@@ -62,6 +62,7 @@
     <Compile Include="code\chapter5\edit-article.php" />
     <Compile Include="code\chapter5\chapter5.php" />
     <Compile Include="code\chapter5\file_upload.php" />
+    <Compile Include="code\chapter5\imagick_check.php" />
     <Compile Include="code\chapter5\uploads\edit-user.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-site.php" />
