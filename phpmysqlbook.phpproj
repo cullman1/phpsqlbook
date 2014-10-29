@@ -82,9 +82,10 @@
     <Compile Include="code\chapter4\emailcheck1.php" />
     <Compile Include="code\chapter4\emailcheck2.php" />
     <Compile Include="code\chapter4\register3.php" />
-    <Compile Include="code\chapter5\file_upload_improved.php" />
+    <Compile Include="code\chapter5\image_cropper.php" />
     <Compile Include="code\chapter5\ch5_first_attempt.php" />
     <Compile Include="code\chapter5\chapter5.php" />
+    <Compile Include="code\chapter5\image_resizer.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-editor.php" />
     <Compile Include="code\includes\footer-site.php" />

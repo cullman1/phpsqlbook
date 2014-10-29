@@ -21,6 +21,8 @@ include '../includes/header-chapters.php' ?>
                 <br />
                <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - Rich Text Editor enhanced Edit Article Page</a></li>
                 <br />
+                <li class="blox"><a href="/code/chapter5/image_resizer.php">Chapter 5 - Image resizer</a></li>
+                <br />
                 </ul>
        </div>
    </div>
