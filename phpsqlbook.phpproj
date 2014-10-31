@@ -61,6 +61,7 @@
     <Compile Include="code\chapter4\register3.php" />
     <Compile Include="code\chapter5\edit-article.php" />
     <Compile Include="code\chapter5\chapter5.php" />
+    <Compile Include="code\chapter5\file_get_contents.php" />
     <Compile Include="code\chapter5\file_read.php" />
     <Compile Include="code\chapter5\file_upload.php" />
     <Compile Include="code\chapter5\imagick_check.php" />
@@ -141,7 +142,7 @@
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
     <Content Include="code\chapter5\data-jsonp.js" />
-    <Content Include="code\chapter5\names.txt" />
+    <Content Include="code\chapter5\namesonly.txt" />
     <Content Include="code\chapter5\uploads\2014-05-10 14.07.48.jpg" />
     <Content Include="code\chapter5\uploads\46995349.jpg" />
     <Content Include="code\chapter5\uploads\Active8_small.png" />
