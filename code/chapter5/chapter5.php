@@ -29,6 +29,8 @@ include '../includes/header-chapters.php' ?>
                 <br />
                  <li class="blox"><a href="/code/chapter5/image_cropper.php">Chapter 5 - Image cropper - ImageMagick</a></li>
                 <br />
+                <li class="blox"><a href="/code/chapter5/full_example.php">Chapter 5 - Full example</a></li>
+                <br />
                 </ul>
        </div>
    </div>

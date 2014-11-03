@@ -3,6 +3,6 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>code/chapter5/image_cropper.php</SpecificPageValue>
+    <SpecificPageValue>code/chapter5/full_example.php</SpecificPageValue>
   </PropertyGroup>
 </Project>
