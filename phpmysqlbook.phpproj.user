@@ -3,6 +3,6 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <StartAction>SpecificPage</StartAction>
-    <SpecificPageValue>code/chapter5/full_example.php</SpecificPageValue>
+    <SpecificPageValue>code/index.php</SpecificPageValue>
   </PropertyGroup>
 </Project>

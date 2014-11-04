@@ -148,6 +148,13 @@ color: gray;}
 	margin-left: 40%;
 }
 
+.wholeform2 {
+    margin-left:26%;
+    width: 500px;
+    height: 600px;
+    overflow: hidden;
+    background-color: lightgray;
+}
 #publishcontainer
 {
 	width: 400px;
@@ -209,6 +216,7 @@ color: gray;}
  .boxy1 h3, .boxy2 h3
  {
      padding-left: 40px;
+     font-size: 22px;
  }
 
   .boxy1 div, .boxy2 div

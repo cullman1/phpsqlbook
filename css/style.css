@@ -190,8 +190,8 @@ color: gray;}
 }
 
 .boxy1 {
-    width: 200px;
-    height: 110px;
+    width: 230px;
+    height: 120px;
     border: 1px solid gray;
         background-color: white !important;
     float: left;
@@ -199,8 +199,8 @@ color: gray;}
 }
 
 .boxy2 {
-    width: 200px;
-    height: 110px;
+    width: 230px;
+    height: 120px;
     border: 1px solid gray;
         background-color: white !important;
     float: right;
@@ -208,7 +208,8 @@ color: gray;}
 }
  .boxy1 h3, .boxy2 h3
  {
-     padding-left: 40px;
+     padding-left: 60px;
+     font-size: 22px;
  }
 
   .boxy1 div, .boxy2 div
@@ -226,7 +227,7 @@ color: gray;}
 
     .newlook
     {
-      margin-left:30%; margin-right:10%; background-color: lightgray;
+      margin-left:30%; margin-right:30%; background-color: lightgray;
     }
 
     .viewlook{
@@ -261,4 +262,31 @@ color: gray;}
 
 .button-pos {
  text-align:center; padding-top:58px;
+}
+
+
+
+.linked
+{
+
+    color:black;
+}
+.linked div div:hover
+{
+    text-decoration:underline;
+    color: blue;
+}
+
+.linked div:hover
+{
+ 
+    color: blue;
+}
+
+.wholeform2 {
+    margin-left:26%;
+    width: 500px;
+    height: 600px;
+    overflow: hidden;
+    background-color: lightgray;
 }
