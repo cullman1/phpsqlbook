@@ -56,9 +56,16 @@
     <Compile Include="code\chapter2\multiplerecords.php" />
     <Compile Include="code\chapter2\singlerecord.php" />
     <Compile Include="code\chapter2\user.php" />
+    <Compile Include="code\chapter3\chapter3.php" />
+    <Compile Include="code\chapter3\search.php" />
+    <Compile Include="code\chapter3\single_form.php" />
+    <Compile Include="code\chapter3\submit_form_2.php" />
+    <Compile Include="code\chapter3\two_page_form_amended.php" />
+    <Compile Include="code\chapter4\chapter4.php" />
     <Compile Include="code\chapter4\emailcheck1.php" />
     <Compile Include="code\chapter4\emailcheck2.php" />
     <Compile Include="code\chapter4\register3.php" />
+    <Compile Include="code\chapter4\submit-user.php" />
     <Compile Include="code\chapter5\edit-article.php" />
     <Compile Include="code\chapter5\chapter5.php" />
     <Compile Include="code\chapter5\file_get_contents.php" />
@@ -66,6 +73,8 @@
     <Compile Include="code\chapter5\file_upload.php" />
     <Compile Include="code\chapter5\imagick_check.php" />
     <Compile Include="code\chapter5\uploads\edit-user.php" />
+    <Compile Include="code\chapter6\chapter6.php" />
+    <Compile Include="code\chapter6\setcookie.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-site.php" />
     <Compile Include="code\includes\header-register.php" />
@@ -124,6 +133,7 @@
     <Folder Include="code\chapter4\" />
     <Folder Include="code\chapter5\" />
     <Folder Include="code\chapter5\uploads\" />
+    <Folder Include="code\chapter6\" />
     <Folder Include="code\css\" />
     <Folder Include="code\includes\" />
     <Folder Include="code\js\" />

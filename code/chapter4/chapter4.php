@@ -14,7 +14,7 @@ include '../includes/header-chapters.php' ?>
                         <br />
                 <li  class="blox"><a href="/code/chapter4/register3.php">Register User example</a></li>
                   <br />
-                <li  class="blox"><a href="/code/chapter4/update.php">Update User example</a></li>
+                <li  class="blox"><a href="/code/chapter4/update.php?userid=1">Update User example</a></li>
                 </ul>
        </div>
    </div>
