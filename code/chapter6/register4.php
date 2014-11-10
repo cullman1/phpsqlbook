@@ -47,7 +47,7 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
 
 ?>
 
- <form id="form1" method="post" action="register3.php">
+ <form id="form1" method="post" action="register4.php">
   <div class="wholeform">
       <div class="col-md-4"><h1>Please register:</h1></div>
       <div class="col-md-4">
