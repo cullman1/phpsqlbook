@@ -6,6 +6,13 @@ include '../includes/header-register.php';
 $error=-1;
 if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_REQUEST['lastName']) && !empty($_REQUEST['emailAddress']) )
 {
+    
+    if (!preg_match("#.*^(?=.{8,50})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_REQUEST['password'])){
+
+        $error=4;
+    }
+    else
+    {
     /* Query SQL Server for checking existing user. */
     $select_user_sql = "SELECT * from user WHERE email = '".$_REQUEST['emailAddress']."'";
     $select_user_result = $dbHost->prepare($select_user_sql);
@@ -21,14 +28,12 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
 	    else
 	    {
 		    /* Query SQL Server for inserting new user. */
-		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined,  active) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$_REQUEST['password']."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', 0)";
-            
+		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined, , active) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$_REQUEST['password']."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', 0)";
             $insert_user_result = $dbHost->prepare($insert_user_sql);
             $insert_user_result->execute();
 		    if($insert_user_result->errorCode()!=0) 
             {  
                 /* Insert failed */
-            
                 $error=2;
             }
 		    else
@@ -37,7 +42,7 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
                 $error=0;
 	        }
 	    }
-    
+    }
 }
 
 ?>
@@ -68,21 +73,21 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
          <br/>  <br/>
           <div id="Status_Post">  
                           <?php 
-                          if(isset($error))
-                          {
-                              switch($error)
-                              {
-                                  case 0:
-                                      echo "<span class='red' style='color:red;'>User successfully registered!</span>";
-                                      break;
-                                  case 1:
-                                      echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
-                                      break;
-                                  case 2:      
-                                      echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
-                                      break;
-                              }  
-                          }
+             if(isset($error))
+             {
+                 if($error==0)
+              {
+                echo "<span class='red' style='color:red;'>User successfully registered!</span>";
+              }
+                else if($error==2)
+              {
+                echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
+              }
+              else if($error==1)
+              {
+                echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
+              }
+             }  
            ?>
 
          </div>

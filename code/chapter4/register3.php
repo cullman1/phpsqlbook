@@ -21,7 +21,8 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
 	    else
 	    {
 		    /* Query SQL Server for inserting new user. */
-		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined, , active) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$passwordToken."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', 0)";
+		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined,  active) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$_REQUEST['password']."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', 0)";
+    
             $insert_user_result = $dbHost->prepare($insert_user_sql);
             $insert_user_result->execute();
 		    if($insert_user_result->errorCode()!=0) 
@@ -68,18 +69,18 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
                           <?php 
              if(isset($error))
              {
-                 if($error==0)
-              {
-                echo "<span class='red' style='color:red;'>User successfully registered!</span>";
-              }
-                else if($error==2)
-              {
-                echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
-              }
-              else if($error==1)
-              {
-                echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
-              }
+                 switch($error)
+                 {
+                     case 0:
+                         echo "<span class='red' style='color:red;'>User successfully registered!</span>";
+                         break;
+                     case 1:
+                         echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
+                         break;
+                     case 2:      
+                         echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
+                         break;
+                 }    
              }  
            ?>
 
