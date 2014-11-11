@@ -16,7 +16,7 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
 	    if($num_rows>0)
 	    {
 			/* User exists */
-            echo "User already exists";
+            $error=2;
 	    }	
 	    else
 	    {
@@ -27,12 +27,12 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
 		    if($insert_user_result->errorCode()!=0) 
             {  
                 /* Insert failed */
-                echo "User registration failed";
+                $error=1;
             }
 		    else
 		    {
   			    /* Insert succeeded */
-                  echo "User registration succeeded";
+               $error=0;
 	        }
 	    }
     
@@ -65,6 +65,26 @@ if (!empty($_REQUEST['password']) && !empty($_REQUEST['firstName']) && !empty($_
          <button type="submit" class="btn btn-default">Register</button>
          <br/>  <br/>
           <div id="Status_Post">  
+                <?php 
+             if(isset($error))
+             {
+                 switch($error)
+                 {
+                     case 0:
+                         echo "<span class='red' style='color:red;'>User successfully registered!</span>";
+                         break;
+                     case 1:
+                         echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
+                         break;
+                     case 2:      
+                         echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
+                         break;
+                     case 3:      
+                         echo "<span class='red' style='color:red;'>Your password must contain at least one alphanumeric, one digit and one non-alpha-numeric character</span>";
+                         break;
+                 }    
+             }  
+           ?>
          </div>
              </div>
       </div>

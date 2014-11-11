@@ -14,6 +14,11 @@
            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
          </div>
          <button type="submit" class="btn btn-default">Login</button>
+            <div class="form-group">
+                <br />
+         <a href="forgotten-password.php">Forgotten your Password?</a>
+         </div>
+
           <div id="Status" ><?php 
     
     if(isset($_REQUEST['login']))

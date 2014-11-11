@@ -74,6 +74,9 @@
     <Compile Include="code\chapter5\imagick_check.php" />
     <Compile Include="code\chapter5\uploads\edit-user.php" />
     <Compile Include="code\chapter6\chapter6.php" />
+    <Compile Include="login\forgotten-password.php" />
+    <Compile Include="code\chapter6\hash2.php" />
+    <Compile Include="code\chapter6\register4.php" />
     <Compile Include="code\chapter6\setcookie.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-site.php" />

@@ -12,6 +12,8 @@
                 <br />
                  <li class="blox"><a href="/code/chapter6/hash.php">Chapter 6 - Hashing Algorithms Example</a></li>
                 <br />
+                <li class="blox"><a href="/code/chapter6/hash2.php">Chapter 6 - password_hash Example</a></li>
+                <br />
                 </ul>
        </div>
    </div>

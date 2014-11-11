@@ -32,18 +32,21 @@
             <?php 
              if(isset($_REQUEST['submitted']))
              {
-                 if($_REQUEST['submitted']=="true")
-              {
-                echo "<span class='red' style='color:red;'>User successfully registered!</span>";
-              }
-                else if($_REQUEST['submitted']=="false")
-              {
-                echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
-              }
-              else if($_REQUEST['submitted']=="missing")
-              {
-                echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
-              }
+                 switch($error)
+                 {
+                     case 0:
+                         echo "<span class='red' style='color:red;'>User successfully registered!</span>";
+                         break;
+                     case 1:
+                         echo "<span class='red' style='color:red;'>A user with that email address has already been registered! Please either login or use a different password.</span>";
+                         break;
+                     case 2:      
+                         echo "<span class='red' style='color:red;'>You haven't filled in all of the fields!</span>";
+                         break;
+                     case 3:      
+                         echo "<span class='red' style='color:red;'>Your password must contain at least one alphanumeric, one digit and one non-alpha-numeric character</span>";
+                         break;
+                 }    
              }  
            ?>
          </div>
