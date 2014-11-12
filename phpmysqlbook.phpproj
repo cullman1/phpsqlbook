@@ -92,6 +92,7 @@
     <Compile Include="code\chapter5\image_resizer.php" />
     <Compile Include="code\chapter6\chapter6.php" />
     <Compile Include="code\chapter6\hash.php" />
+    <Compile Include="code\chapter6\links.php" />
     <Compile Include="code\chapter6\register4.php" />
     <Compile Include="code\chapter6\setcookie.php" />
     <Compile Include="code\chapter6\smtp-test.php" />

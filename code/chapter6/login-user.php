@@ -18,7 +18,6 @@ while($select_user_row = $select_user_result->fetch())
   	 		/* store user_id */
   	 		$_SESSION['authenticated'] = $select_user_row["user_id"];
             $_SESSION['username'] = $select_user_row["full_name"];
-            
             $_SESSION['email'] = $select_user_row["email"];
             if(isset($_REQUEST["page"]))
             {
@@ -31,7 +30,7 @@ while($select_user_row = $select_user_result->fetch())
                 {
                     header('Location:../home?showcomments=true');
   	 	        }
-                if ($_REQUEST["page"]=="example") {				header('Location:../code/chapter6/links.php');						 	        }     
+                if ($_REQUEST["page"]=="example") {				header('Location:../chapter6/links.php');						 	        }     
             }
             else
             {
