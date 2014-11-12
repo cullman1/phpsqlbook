@@ -94,6 +94,7 @@
     <Compile Include="code\chapter6\hash.php" />
     <Compile Include="code\chapter6\register4.php" />
     <Compile Include="code\chapter6\setcookie.php" />
+    <Compile Include="code\chapter6\smtp-test.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-editor.php" />
     <Compile Include="code\includes\footer-site.php" />

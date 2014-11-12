@@ -14,14 +14,14 @@
                 <?php if (!empty($_REQUEST["email"])){           
                     $to = $_REQUEST['email'];                                                        
                     $subject = "Reset Password Link";                                                           
-                    $message = "The link to reset your password is";
-                    $message.= "<a href='reset-password.php?email=".$_REQUEST['email']. "&token=" .sha1($_REQUEST['email'].date('Y/m/d'))."'>here</a>";           	    		
+                    $message = "The link to reset your password is ";
+            $message.="<a href='http://test1.phpandmysqlbook.com/login/reset-password.php?email=".$_REQUEST['email']. "&token=".sha1($_REQUEST['email'].date('Y/m/d'))."'>here</a>";           	    		
                     $headers = "MIME-Version: 1.0" . "\r\n";                                                           
                     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";                           
                     $headers .= 'From: CMS Admin <admin@deciphered.com>' . "\r\n";                            
                     mail($to, $subject, $message, $headers);                                           
                     echo "<br/>A link to reset your password has been emailed to that address.";  
-                    echo "<br/>TEST the link is <a href='reset-password.php?email=".$_REQUEST['email']. "&token=" .sha1($_REQUEST['email'].date('Y/m/d'))."'>here</a>"; 
+            
                 } 											
                 ?>        
                    </div>									

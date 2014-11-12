@@ -8,7 +8,7 @@
 <input type="password" id="password" name="password" />
           <br /><br />
           <label for="confirmpassword">Confirm Your Password:</label> 
-<input type="confirmpassword" id="confirmpassword" name="confirmpassword" />
+<input type="password" id="confirmpassword" name="confirmpassword" />
           <input type="hidden" id="email" name="email" value="<?php  if (!empty($_REQUEST['email'])) { echo $_REQUEST['email']; } else { throw new Exception ("<br/>Email missing!");}  ?>" />
           <input type="hidden" id="token" name="token" value="<?php  if (!empty($_REQUEST['token'])) { echo $_REQUEST['token']; } else { throw new Exception ("<br/>Token missing!");}  ?>" />
           <br /><br />
