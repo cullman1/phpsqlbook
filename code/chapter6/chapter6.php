@@ -14,6 +14,8 @@
                 <br />
                 <li class="blox"><a href="/code/chapter6/hash2.php">Chapter 6 - password_hash Example</a></li>
                 <br />
+                 <li class="blox"><a href="/code/chapter6/login-admin.php">Chapter 6 - Forgotten Password Example</a></li>
+                <br />
                 </ul>
        </div>
    </div>
