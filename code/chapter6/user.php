@@ -1,5 +1,5 @@
 <?php 
-require_once('authenticate.php'); 
+
   
 /* Db Details */
 require_once('../includes/db_config.php');
