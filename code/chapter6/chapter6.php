@@ -20,6 +20,8 @@
                 <br />
                   <li class="blox"><a href="/code/chapter6/user.php">Chapter 6 - Ban User Example</a></li>
                 <br />
+                <li class="blox"><a href="/code/chapter6/commenting.php">Chapter 6 - Commenting Example</a></li>
+                <br />
                 </ul>
        </div>
    </div>

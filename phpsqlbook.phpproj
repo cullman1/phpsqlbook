@@ -73,7 +73,17 @@
     <Compile Include="code\chapter5\file_upload.php" />
     <Compile Include="code\chapter5\imagick_check.php" />
     <Compile Include="code\chapter5\uploads\edit-user.php" />
+    <Compile Include="code\chapter6\authenticate.php" />
+    <Compile Include="code\chapter6\ban-user.php" />
     <Compile Include="code\chapter6\chapter6.php" />
+    <Compile Include="code\chapter6\commenting.php" />
+    <Compile Include="code\chapter6\forgotten-password.php" />
+    <Compile Include="code\chapter6\hash.php" />
+    <Compile Include="code\chapter6\links.php" />
+    <Compile Include="code\chapter6\login-admin2.php" />
+    <Compile Include="code\chapter6\login-user.php" />
+    <Compile Include="code\chapter6\smtp-test.php" />
+    <Compile Include="code\chapter6\user.php" />
     <Compile Include="login\forgotten-password.php" />
     <Compile Include="code\chapter6\hash2.php" />
     <Compile Include="code\chapter6\register4.php" />
