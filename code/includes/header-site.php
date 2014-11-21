@@ -1,19 +1,6 @@
 <?php 
 session_start();
-
-function createTree(&$list, $parent){
-    $tree = array();
-    foreach ((array)$parent as $k=>$l){
-        if(isset($list[$l['comments_id']]))
-        {
-            $l['children'] = createTree($list, $list[$l['comments_id']]);
-        }
-        $tree[] = $l;
-    } 
-    return $tree;
-}
-$new = array();
-  
+ 
 /* Db Details */
 require_once('../includes/db_config.php');
 $id = 1;
@@ -71,9 +58,9 @@ $template = $select_template_row["template"];
             <?php
    
             if (isset($_SESSION['authenticated'])) { ?> 
-            <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
+            <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../chapter6/logout.php">Logout</a></li>
  <?php } else { ?>
-    <li><a href="../login/logon.php">Login</a><a href="../login/register.php">Register</a></li>
+    <li><a href="../chapter6/login-user.php">Login</a><a href="../chapter6/register4.php">Register</a></li>
   
     <?php } ?> 
       <li><form class="navbar-form navbar-left" role="search" method="post" action="../home">

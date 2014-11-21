@@ -82,8 +82,18 @@
     <Compile Include="code\chapter6\links.php" />
     <Compile Include="code\chapter6\login-admin2.php" />
     <Compile Include="code\chapter6\login-user.php" />
+    <Compile Include="code\chapter6\logout.php" />
     <Compile Include="code\chapter6\smtp-test.php" />
     <Compile Include="code\chapter6\user.php" />
+    <Compile Include="code\includes\add-comment-text.php" />
+    <Compile Include="code\includes\add-comment.php" />
+    <Compile Include="code\includes\comments-control.php" />
+    <Compile Include="code\includes\comments-list.php" />
+    <Compile Include="code\includes\footer-editor.php" />
+    <Compile Include="code\includes\gallery-modal.php" />
+    <Compile Include="code\includes\header.php" />
+    <Compile Include="code\includes\reply-box-parent.php" />
+    <Compile Include="code\includes\rich-text-control.php" />
     <Compile Include="login\forgotten-password.php" />
     <Compile Include="code\chapter6\hash2.php" />
     <Compile Include="code\chapter6\register4.php" />
@@ -191,6 +201,7 @@
     <Content Include="code\chapter5\uploads\note2.txt" />
     <Content Include="code\chapter5\uploads\user.jpg" />
     <Content Include="code\chapter5\uploads\wordoress-toc.docx" />
+    <Content Include="code\css\bootstrap.min.css" />
     <Content Include="code\css\style.css" />
     <Content Include="code\js\validation.js" />
     <Content Include="css\admin.css" />
