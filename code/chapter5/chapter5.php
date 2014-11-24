@@ -25,6 +25,8 @@ include '../includes/header-chapters.php' ?>
                 <br />
                <li class="blox"><a href="/code/chapter5/file_upload.php">Chapter 5 - Rich Text Editor enhanced Edit Article Page</a></li>
                 <br />
+                               <li class="blox"><a href="/code/chapter5/carousel.php">Chapter 5 - Carousel basic example</a></li>
+                <br />
                 <li class="blox"><a href="/code/chapter5/image_resizer.php">Chapter 5 - Image resizer - GD</a></li>
                 <br />
                  <li class="blox"><a href="/code/chapter5/image_cropper.php">Chapter 5 - Image cropper - ImageMagick</a></li>

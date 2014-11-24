@@ -40,6 +40,7 @@
     <Folder Include="includes\" />
     <Folder Include="js\" />
     <Folder Include="login\" />
+    <Folder Include="classes\" />
     <Folder Include="pages\" />
     <Folder Include="uploads\" />
   </ItemGroup>
@@ -70,6 +71,7 @@
     <Compile Include="admin\submit-user.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\user.php" />
+    <Compile Include="classes\user.php" />
     <Compile Include="code\chapter1\chapter1.php" />
     <Compile Include="code\chapter2\chapter2.php" />
     <Compile Include="code\chapter2\chapter2_ex_01.php" />
@@ -85,6 +87,7 @@
     <Compile Include="code\chapter4\register3.php" />
     <Compile Include="code\chapter4\submit-user.php" />
     <Compile Include="code\chapter4\update.php" />
+    <Compile Include="code\chapter5\carousel.php" />
     <Compile Include="code\chapter5\full_example.php" />
     <Compile Include="code\chapter5\image_cropper.php" />
     <Compile Include="code\chapter5\ch5_first_attempt.php" />
