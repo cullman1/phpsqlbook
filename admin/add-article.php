@@ -21,7 +21,7 @@ $select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
 if (isset($_REQUEST['Submitted']))
 {
     /* Query SQL Server for inserting article. */
-    $insert_article_sql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$_SESSION['authenticated']."')";
+    $insert_article_sql = "INSERT INTO article (title, content, date_posted, category_id, parent_id, user_id) VALUES ('".$_REQUEST['ArticleTitle']."', '".$_REQUEST['ArticleContent']."',  '". date("Y-m-d H:i:s") ."', '".$_REQUEST['CategoryId']."', '".$_REQUEST['PageId']."', '".$user_object->authenticated."')";
     $insert_article_result = $dbHost->prepare($insert_article_sql);
     $insert_article_result->execute();
     $newarticleid = $dbHost->lastInsertId();

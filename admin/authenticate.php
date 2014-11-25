@@ -1,6 +1,7 @@
 <?php
 require_once('../classes/user.php');
 session_start();
+$user_object = "";
 if (!isset($_SESSION["user"])) 
             { 
                 $so = $_SESSION["user"];
@@ -11,3 +12,10 @@ if (!isset($_SESSION["user"]))
                 }
 }
 ?>
+
+/* admin/add-article.php
+   includes/comments-control.php
+   includes/reply-box.php
+   includes/reply-box-parent.php
+   pages/add-comment.php
+   pages/add-comment-text.php */
