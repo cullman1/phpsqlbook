@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+require_once('../classes/user.php');
 function createTree(&$list, $parent){
     $tree = array();
     foreach ((array)$parent as $k=>$l){
@@ -76,11 +76,18 @@ $template = $select_template_row["template"];
           <ul class="nav navbar-nav navbar-right floatright">
             <?php
    
-            if (isset($_SESSION['authenticated'])) { ?> 
+             if (isset($_SESSION["user"])) { 
+                $so = $_SESSION["user"];
+                $user_object = unserialize($so);
+                if(!empty($user_object->authenticated)) {
+            ?> 
             <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
  <?php } else { ?>
-    <li><a href="../login/logon.php">Login</a><a href="../login/register.php">Register</a></li>
-
+    <li><a href="../login/logon.php?page=pages">Login</a></li>
+    <?php }
+            } 
+               else { ?>
+    <li><a href="../login/logon.php?page=pages">Login</a></li>
     <?php } ?> 
           </ul>
       </div>

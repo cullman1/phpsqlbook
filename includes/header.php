@@ -1,3 +1,4 @@
+<?php   require_once('../classes/user.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,14 +61,26 @@
           <ul class="nav navbar-nav navbar-right">
            <ul class="nav navbar-nav navbar-right">
             <?php
-            if (isset($_SESSION['authenticated'])) { ?> 
-            <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
-    <?php } else { ?>
-    <li><a href="../login/logon.php?page=pages">Login</a></li>
-    <?php } ?> 
+            if (isset($_SESSION["user"])) 
+            { 
+                $so = $_SESSION["user"];
+                $user_object = unserialize($so);
+                if(!empty($user_object->authenticated)) 
+                { ?> 
+                    <li>Hello <?php echo $user_object->fullName; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
+          <?php } 
+                else 
+                { ?>
+                    <li><a href="../login/logon.php?page=pages">Login</a></li>
+          <?php }
+           } 
+           else 
+           { ?>
+                <li><a href="../login/logon.php?page=pages">Login</a></li>
+     <?php } ?> 
           </ul>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div> <!--/.nav-collapse -->
       </div>
     </div>
     <div class="container">

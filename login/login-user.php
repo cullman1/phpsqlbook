@@ -1,7 +1,8 @@
 <?php  
 /* Include passwords and login details */
 require_once('../includes/db_config.php');
-  
+require_once('../classes/user.php');
+
 /* Query SQL Server for checking user details. */
 $passwordToken = sha1($preSalt . $_REQUEST['password'] . $afterSalt);
 $select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, full_name, email from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'" ." AND active= 0";
@@ -16,10 +17,16 @@ while($select_user_row = $select_user_result->fetch())
   	 	{
   	 		session_start();
   	 		/* store user_id */
-  	 		$_SESSION['authenticated'] = $select_user_row["user_id"];
-            $_SESSION['username'] = $select_user_row["full_name"];
+               
+            $user_object = new User( $select_user_row["full_name"],  $select_user_row["email"], $select_user_row["user_id"] ); 
+  	 		//$_SESSION['authenticated'] = $select_user_row["user_id"];
+            //$_SESSION['username'] = $select_user_row["full_name"];
+            //$_SESSION['email'] = $select_user_row["email"];
             
-            $_SESSION['email'] = $select_user_row["email"];
+            /* serialize */
+            $s =serialize($user_object);
+            $_SESSION["user"] = $s;
+            
             if(isset($_REQUEST["page"]))
             {
                 
