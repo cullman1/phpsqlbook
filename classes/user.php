@@ -4,19 +4,34 @@ class User {
     private $emailAddress;
     private $authenticated;
 
-    function __construct($fullName, $emailAddress, $authenticated)
-    {
+    function __construct($fullName, $emailAddress, $authenticated) {
         $this->fullName = $fullName;
         $this->emailAddress = $emailAddress;
         $this->authenticated = $authenticated;
     }
-
-    function __destruct()
-    {
-        if (!empty($this->authenticated))
-        {
-            print "Logging out";   
-        }
+    
+    public function getFullName() {
+        return $this->fullName;
+    }
+    
+    public function getEmailAddress() {
+        return $this->emailAddress;
+    }
+    
+    public function getAuthenticated() {
+        return $this->authenticated;
+    }
+    
+    public function setFullName($name) {
+        $this->fullName = $name;
+    }
+    
+    public function setEmailAddress($email) {
+        $this->emailAddress = $email;
+    }
+    
+    public function setAuthenticated($authenticate) {
+        $this->authenticated = $authenticate;
     }
 }
 ?>

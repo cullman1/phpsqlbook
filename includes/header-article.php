@@ -79,7 +79,8 @@ $template = $select_template_row["template"];
              if (isset($_SESSION["user"])) { 
                 $so = $_SESSION["user"];
                 $user_object = unserialize($so);
-                if(!empty($user_object->authenticated)) {
+                $auth = $user_object->getAuthenticated();
+                if(!empty($auth)) {
             ?> 
             <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
  <?php } else { ?>

@@ -22,11 +22,11 @@ while($select_user_row = $select_user_result->fetch())
   	 		//$_SESSION['authenticated'] = $select_user_row["user_id"];
             //$_SESSION['username'] = $select_user_row["full_name"];
             //$_SESSION['email'] = $select_user_row["email"];
-            
+          
             /* serialize */
             $s =serialize($user_object);
             $_SESSION["user"] = $s;
-            
+        
             if(isset($_REQUEST["page"]))
             {
                 
