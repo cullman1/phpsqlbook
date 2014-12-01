@@ -5,20 +5,21 @@ include '../includes/header-chapters.php' ?>
   <div class="wholeform2">
       <div class="col-md-4" style="padding-left:23%;"><h1>Code examples</h1><br /></div>
         
-       <a class="linked" href="/code/chapter1/chapter1.php"><div class="col-md-4 boxy1">
+        <a class="linked" href="/code/chapter1/chapter1.php"><div class="col-md-4 boxy1">
          <h3>Chapter 1</h3>
        
              <div>Introduction to Server-side programming</div>
-       </div></a>
+        </div></a>
       
-      <a class="linked" href="/code/chapter2/chapter2.php">
+         <a class="linked" href="/code/chapter2/chapter2.php">
           <div class="col-md-4 boxy2">
          <h3>Chapter 2</h3>
                
              <div>Getting data from a database into your templates</div>
-       </div>
+        </div>
           </a>
       <br />
+
       <a class="linked" href="/code/chapter3/chapter3.php">
         <div class="col-md-4 boxy1">
          <h3>Chapter 3</h3>
@@ -53,6 +54,23 @@ include '../includes/header-chapters.php' ?>
             
        </div>
           </a>
+      <br />
+          <a class="linked" href="/code/chapter7/chapter7.php"><div class="col-md-4 boxy1">
+         <h3>Chapter 7</h3>
+       
+             <div>Application Design</div>
+        </div></a>
+      
+         <a class="linked" href="/code/chapter8/chapter8.php">
+          <div class="col-md-4 boxy2">
+         <h3>Chapter 8</h3>
+               
+             <div>Objects and APIS</div>
+        </div>
+          </a>
+      <br />
+
+
       </div>
 
 <?php include '../includes/footer-site.php' ?>
