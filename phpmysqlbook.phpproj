@@ -37,6 +37,8 @@
     <Folder Include="code\chapter6\" />
     <Folder Include="code\chapter7\" />
     <Folder Include="code\chapter8\" />
+    <Folder Include="code\chapter9\" />
+    <Folder Include="code\chapter10\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
     <Folder Include="includes\" />
@@ -113,6 +115,7 @@
     <Compile Include="code\chapter8\chapter8.php" />
     <Compile Include="code\chapter8\user.php" />
     <Compile Include="code\chapter8\userclass.php" />
+    <Compile Include="code\chapter10\chapter10.php" />
     <Compile Include="code\includes\db_config2.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-editor.php" />

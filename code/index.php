@@ -65,11 +65,24 @@ include '../includes/header-chapters.php' ?>
           <div class="col-md-4 boxy2">
          <h3>Chapter 8</h3>
                
-             <div>Objects and APIS</div>
+             <div>Objects </div>
         </div>
           </a>
       <br />
-
+        <a class="linked" href="/code/chapter9/chapter9.php"><div class="col-md-4 boxy1">
+         <h3>Chapter 9</h3>
+       
+             <div>APIs</div>
+        </div></a>
+      
+         <a class="linked" href="/code/chapter10/chapter10.php">
+          <div class="col-md-4 boxy2">
+         <h3>Chapter 10</h3>
+               
+             <div>Error Handling and Troubleshooting </div>
+        </div>
+          </a>
+      <br />
 
       </div>
 
