@@ -1,6 +1,8 @@
 <?php 
 session_start();
-require_once('../classes/user.php');
+ 
+/* Db Details */
+require_once('../includes/db_config.php');
 function createTree(&$list, $parent){
     $tree = array();
     foreach ((array)$parent as $k=>$l){
@@ -13,9 +15,7 @@ function createTree(&$list, $parent){
     return $tree;
 }
 $new = array();
-  
-/* Db Details */
-require_once('../includes/db_config.php');
+include('../classes/user.php');
 $id = 1;
 /* Query SQL Server for selecting data. */
 $select_articles_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() order by article_id DESC";
@@ -70,19 +70,15 @@ $template = $select_template_row["template"];
           <ul class="nav navbar-nav navbar-right floatright">
             <?php
    
-             if (isset($_SESSION["user"])) { 
-                 $so = $_SESSION["user"];
-                 $user_object = unserialize($so);
-                 $auth = $user_object->getAuthenticated();
-                 if(!empty($auth)) {
-            ?> 
-            <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
+           if (isset($_SESSION["user"])) 
+            { 
+                $so = $_SESSION["user"];
+                $user_object = unserialize($so); 
+           ?>
+            <li>Hello <?php echo $user_object->getFullName(); ?>&nbsp;<a href="../chapter6/logout.php">Logout</a></li>
  <?php } else { ?>
-    <li><a href="../login/logon.php?page=pages">Login</a></li>
-    <?php }
-            } 
-               else { ?>
-    <li><a href="../login/logon.php?page=pages">Login</a></li>
+    <li><a href="../chapter6/login-user.php">Login</a><a href="../chapter6/register4.php">Register</a></li>
+  
     <?php } ?> 
       <li><form class="navbar-form navbar-left" role="search" method="post" action="../home">
     <div class="form-group">

@@ -135,7 +135,7 @@
     <Compile Include="code\includes\footer-site.php" />
     <Compile Include="code\includes\gallery-modal.php" />
     <Compile Include="code\includes\header-register.php" />
-    <Compile Include="code\includes\header-site.php" />
+    <Compile Include="includes\header-site.php" />
     <Compile Include="code\includes\header.php" />
     <Compile Include="code\includes\login-variables.php" />
     <Compile Include="code\includes\rich-text-control.php" />
