@@ -130,6 +130,7 @@
     <Compile Include="code\chapter8\userclass.php" />
     <Compile Include="code\chapter10\chapter10.php" />
     <Compile Include="code\chapter9\chapter9.php" />
+    <Compile Include="code\chapter9\getusers.php" />
     <Compile Include="code\includes\db_config2.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-editor.php" />

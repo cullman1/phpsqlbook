@@ -6,7 +6,7 @@
         <div class="col-md-4">
          <h3>Chapter 9</h3>
             <ul style="list-style-type:none;">
-                  <li class="blox"><a href="/code/chapter9/storedproc.php">Chapter 9 - API Example</a></li>
+                  <li class="blox"><a href="/code/chapter9/ajax.html">Chapter 9 - Search for users example</a></li>
                 <br />
                  
               
@@ -14,4 +14,3 @@
        </div>
    </div>
 
-<?php include '../includes/footer-site.php' ?>
