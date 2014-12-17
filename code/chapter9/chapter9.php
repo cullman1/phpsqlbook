@@ -8,7 +8,8 @@
             <ul style="list-style-type:none;">
                   <li class="blox"><a href="/code/chapter9/ajax.html">Chapter 9 - Search for users example</a></li>
                 <br />
-                 
+                 <li class="blox"><a href="/code/chapter9/search-predict.html">Chapter 9 - Predictive Search Text example</a></li>
+                <br />
               
                 </ul>
        </div>

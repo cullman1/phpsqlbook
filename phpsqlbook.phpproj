@@ -105,9 +105,12 @@
     <Compile Include="code\chapter7\storedproc2.php" />
     <Compile Include="code\chapter7\storedproc3.php" />
     <Compile Include="code\chapter8\chapter8.php" />
+    <Compile Include="code\chapter8\FileSessionHandler.php" />
     <Compile Include="code\chapter8\user.php" />
     <Compile Include="code\chapter8\userclass.php" />
     <Compile Include="code\chapter9\chapter9.php" />
+    <Compile Include="code\chapter9\getpredictive.php" />
+    <Compile Include="code\chapter9\getusers.php" />
     <Compile Include="code\includes\add-comment-text.php" />
     <Compile Include="code\includes\add-comment.php" />
     <Compile Include="code\includes\comments-control.php" />
@@ -205,6 +208,8 @@
     <Content Include="code\chapter5\names.txt" />
     <Content Include="code\chapter5\namesonly.txt" />
     <Content Include="code\chapter5\thumbnail.jpg" />
+    <Content Include="code\chapter9\search-predict.html" />
+    <Content Include="code\chapter9\ajax.html" />
     <Content Include="code\css\admin.css" />
     <Content Include="code\css\bootstrap-combined.no-icons.min.css" />
     <Content Include="code\css\bootstrap.min.css" />

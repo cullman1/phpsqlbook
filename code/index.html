@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	<title>Displaying your flickr photos in an unobtrusive manner</title>
+	<style type="text/css">
+		@import 'fjb.css';
+		@import 'pagestyles.css';
+	</style>
+	<script type="text/javascript" src="fjb.js"></script>
+</head>
+<body>
+<h1>FJB - An unobtrusive, navigable flickr badge</h1>
+<p>This is your three step plan to add a flickr badge the following one to your page:</p>
+<h2>My flickr Photos</h2>
+<p><a href="http://flickr.com/photos/11414938@N00" id="flickrlink">Check out my flickr photostream</a></p>
+<ol>
+	<li>Download the <a href="fjb.zip">badge code zip</a> and unzip it</li>
+	<li>Insert the CSS and the JavaScript in the HEAD of your HTML document: 
+<pre><code>&#60;style type=&#34;text/css&#34;&#62;@import 'fjb.css';&#60;/style&#62;
+&#60;script type=&#34;text/javascript&#34; src=&#34;fjb.js&#34;&#62;&#60;/script&#62;</code></pre>
+	</li>
+	<li>Add a link to your Flickr Photos with the ID "flickrlink" in your document (notice you need the ID - the thing with the @ in it - and not your clean URL):
+<pre><code>&#60;a href=&#34;http://flickr.com/photos/11414938@N00&#34; id=&#34;flickrlink&#34;&#62;My Flickr photos&#60;/a&#62;</code></pre>
+	</li>
+</ol>
+<p>If there is no JavaScript available, all the visitor gets is a link to your flickr profile.</p>
+<h2>It's UGLY! I want it different!</h2>
+<p>The whole badge can be styled by you, just change the CSS to your needs. The script generates the following HTML code for the badge:</p>
+<pre><code>&#60;ul id=&#34;flickrlink&#34;&#62;
+  &#60;li class=&#34;nav&#34;&#62;&#60;a href=&#34;#&#34;&#62;prev&#60;/a&#62;&#60;/li&#62;
+  &#60;li&#62;&#60;a [...]&#62;&#60;img [...] &#62;&#60;/a&#62;&#60;/li&#62;
+  [...repeated for each thumbnail...]
+  &#60;li class=&#34;nav&#34;&#62;&#60;a [...]&#62;next&#60;/a&#62;&#60;/li&#62;
+&#60;/ul&#62;</code></pre>
+<p>And this is the HTML for the generated large photo:</p>
+<pre><code>&#60;div id=&#34;flickrshot&#34;&#62;
+  &#60;a href=&#34;#&#34; class=&#34;fjbcloser&#34;&#62;X&#60;/a&#62;
+  &#60;h4&#62;[Title]&#60;/h4&#62;&#60;a href=&#34;#&#34;[...]&#62;&#60;img [...] /&#62;&#60;/a&#62;
+  &#60;p&#62;&#60;a href=&#34;[...]&#34;&#62;See full image on flickr&#60;/a&#62;&#60;/p&#62;
+&#60;/div&#62;</code></pre>
+<h2>It's not my language! The amount of thumbnails is wrong! I want to use other class and ID names! Change it!</h2>
+<p>If you need to change the amount of thumbnails or the wording of the labels, you can change the settings in the script:</p>
+<pre><code>pics:5,  
+  nextLabel:'next',
+  prevLabel:'prev',
+  linkID:'flickrlink',
+  largePicID:'flickrshot',
+  navClass:'nav',
+  loadingMessage:'Loading images...',
+  fullImageLink:'See full image on flickr',</code></pre>
+<p>That's the lot. Drop feedback <a href="http://www.wait-till-i.com/index.php?p=318">on the blog</a> and also tell me when you made it prettier!</p>
+</body>
+</html>
