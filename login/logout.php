@@ -1,7 +1,5 @@
 <?php
-
-/* Include passwords and login details */
-session_start();
+require_once('../classes/FileSessionHandler.php');
 
 // Unset all of the session variables.
 $_SESSION = array();

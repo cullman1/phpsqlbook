@@ -1,20 +1,17 @@
 <?php 
-
 class session { 
 
     private $lifeTime; 
     private $dbHandle; 
-    
+
+    private $serverName = "mysql51-036.wc1.dfw1.stabletransit.com";
+    private $userName = "387732_phpbook1";
+    private $password = "F8sk3j32j2fslsd0"; 
+    private $databaseName = "387732_phpbook1";
     
     function open($savePath, $sessName) { 
-        // Get session lifetime
-        $serverName = "72.32.1.169";
-        $userName = "387732_phpbook1";
-        $password = "F8sk3j32j2fslsd0"; 
-        $databaseName = "387732_phpbook1";
-        
-        $dbHost = new PDO("mysql:host=$serverName;dbname=$databaseName", $userName, 
-                       $password);
+        // Get session lifetime  
+        $dbHost = new PDO("mysql:host=$this->serverName;dbname=$this->databaseName", $this->userName, $this->password);
         $dbHost->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         $this->lifeTime = get_cfg_var("session.gc_maxlifetime"); 
         $this->dbHandle = $dbHost; 
@@ -29,7 +26,7 @@ class session {
     function read($sessID) { 
         
         $select_session_sql = "SELECT session_data AS d FROM sessions WHERE session_id = '$sessID' AND session_expiry > ".time(); 
-        $select_session_result = $dbHost->prepare($select_session_sql);
+        $select_session_result =  $this->dbHandle->prepare($select_session_sql);
         $select_session_result->execute();
         $select_session_result->setFetchMode(PDO::FETCH_ASSOC);	
         
@@ -41,12 +38,14 @@ class session {
     } 
     
     function write($sessID,$sessData) { 
-        
-        $newExp = time() + $this->lifeTime; 
-        
+        if ($sessData=="")
+        {
+            die("Insert Article Query failed "); 
+        }
+        $newExp = time() + $this->lifeTime;    
         // Find existing session? 
         $select_session_sql = "SELECT COUNT(*)  FROM sessions  WHERE session_id = '$sessID'"; 
-        $select_session_result = $dbHost->prepare($select_session_sql);
+        $select_session_result = $this->dbHandle->prepare($select_session_sql);
         $select_session_result->execute();
         $select_session_result->setFetchMode(PDO::FETCH_ASSOC);	
         $num_rows = $select_session_result->fetchColumn();
@@ -55,9 +54,9 @@ class session {
         if($num_rows>0) {
             
             // Update session 
-            $update_session_sql ="UPDATE sessions SET session_expirt = '$newExp', session_data = '$sessData' WHERE session_id = '$sessID'";
-            $update_session_result = $dbHost->prepare($select_session_sql);
-            $update_session_result->execute();
+            $update_session_sql ="UPDATE sessions SET session_expiry = '$newExp', session_data = ? WHERE session_id = '$sessID'";
+            $update_session_result = $this->dbHandle->prepare($select_session_sql);
+            $update_session_result->execute(array($sessData));
             $update_session_result->setFetchMode(PDO::FETCH_ASSOC);	
             
             // if update happened, return true 
@@ -68,9 +67,9 @@ class session {
         else { 
             
             // create a new row 
-            $insert_session_sql = "INSERT INTO sessions (  session_id,  session_expiry, session_data) VALUES( '$sessID', '$newExp', '$sessData')"; 
-            $insert_session_result = $dbHost->prepare($insert_session_sql);
-            $insert_session_result->execute();
+            $insert_session_sql = "INSERT INTO sessions (  session_id,  session_expiry, session_data) VALUES( '$sessID', '$newExp', ?)"; 
+            $insert_session_result = $this->dbHandle->prepare($insert_session_sql);
+            $insert_session_result->execute(array($sessData));
             $insert_session_result->setFetchMode(PDO::FETCH_ASSOC);	
             
             // if row was created, return true 
@@ -86,7 +85,7 @@ class session {
     function destroy($sessID) { 
         // delete session data 
         $delete_session_sql = "DELETE FROM sessions WHERE session_id = '$sessID'"; 
-        $delete_session_result = $dbHost->prepare($delete_session_sql);
+        $delete_session_result = $this->dbHandle->prepare($delete_session_sql);
         $delete_session_result->execute();
         $delete_session_result->setFetchMode(PDO::FETCH_ASSOC);	
         
@@ -102,13 +101,13 @@ class session {
     function gc($sessMaxLifeTime) { 
         // delete old sessions 
         $delete_session_sql = "DELETE FROM sessions WHERE session_expiry < ".time();
-        $delete_session_result = $dbHost->prepare($delete_session_sql);
+        $delete_session_result = $this->dbHandle->prepare($delete_session_sql);
         $delete_session_result->execute();
         $delete_session_result->setFetchMode(PDO::FETCH_ASSOC);	
         
         // return affected rows 
  
-        return $delete_session_result->rowCount(); 
+        return true; 
     } 
 } 
 
@@ -118,8 +117,6 @@ session_set_save_handler(array(&$session,"open"),
                          array(&$session,"read"), 
                          array(&$session,"write"), 
                          array(&$session,"destroy"), 
-                         array(&$session,"gc"),
-                         array(&$session,"dummy")); 
+                         array(&$session,"gc")); 
 session_start(); 
-
 ?>

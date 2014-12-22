@@ -1,8 +1,9 @@
 <?php 
-session_start();
+
  
 /* Db Details */
 require_once('../includes/db_config.php');
+require_once('../classes/FileSessionHandler.php');
 function createTree(&$list, $parent){
     $tree = array();
     foreach ((array)$parent as $k=>$l){
@@ -69,10 +70,10 @@ $template = $select_template_row["template"];
        <div style="z-index: 100;">
           <ul class="nav navbar-nav navbar-right floatright">
             <?php
-   
-           if (isset($_SESSION["user"])) 
-            { 
-                $so = $_SESSION["user"];
+           
+           if (isset($_SESSION["user2"]))
+            {       
+                $so = $_SESSION["user2"];
                 $user_object = unserialize($so); 
            ?>
             <li>Hello <?php echo $user_object->getFullName(); ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
