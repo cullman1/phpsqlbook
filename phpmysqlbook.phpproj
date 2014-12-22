@@ -78,6 +78,7 @@
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\user.php" />
     <Compile Include="classes\email.php" />
+    <Compile Include="classes\FileSessionHandler.php" />
     <Compile Include="classes\user.php" />
     <Compile Include="code\chapter1\chapter1.php" />
     <Compile Include="code\chapter2\chapter2.php" />
