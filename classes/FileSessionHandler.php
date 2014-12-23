@@ -38,11 +38,7 @@ class session {
     } 
     
     function write($sessID,$sessData) { 
-        if ($sessData=="")
-        {
-            die("Insert Article Query failed "); 
-        }
-        $newExp = time() + $this->lifeTime;    
+               $newExp = time() + $this->lifeTime;    
         // Find existing session? 
         $select_session_sql = "SELECT COUNT(*)  FROM sessions  WHERE session_id = '$sessID'"; 
         $select_session_result = $this->dbHandle->prepare($select_session_sql);

@@ -21,9 +21,6 @@ class emailer
   
   function __construct()
   {
-    $this->server = "mailserver.com";
-    $this->port = 25;
-    $this->mailServer = "mail.yourmaildomain"; 
     $this->connectTimeout = 30;
     $this->responseTimeout = 8;
     $this->from = array();
@@ -66,4 +63,33 @@ class emailer
   }
   
 }
+
+class simple_emailer extends emailer
+{
+    function __construct()
+   {	
+        $this->server = "mailserver.com";
+        $this->port = 25;
+        $this->mailServer = "mail.yourmaildomain"; 
+    }
+
+    function getSimpleEmailProperty() {
+    
+    }
+}
+
+class google_ emailer extends emailer
+{
+    function __construct()
+   {	
+        $this->server = "mailserver.com";
+        $this->port = 25;
+        $this->mailServer = "mail.yourmaildomain"; 
+    }
+
+	function getGoogleEmailProperty() {
+    }
+}
+
+
 ?>
