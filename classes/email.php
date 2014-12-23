@@ -73,7 +73,7 @@ class simple_emailer extends emailer
         $this->mailServer = "mail.yourmaildomain"; 
     }
 
-    function getSimpleEmailProperty() {
+    function sendSimpleEmail() {
     
     }
 }
@@ -82,12 +82,18 @@ class google_ emailer extends emailer
 {
     function __construct()
    {	
-        $this->server = "mailserver.com";
-        $this->port = 25;
-        $this->mailServer = "mail.yourmaildomain"; 
+       
+
+        $smtp = Mail::factory('smtp', array(
+        'host' => 'ssl://smtp.gmail.com',
+        'port' => '465',
+        'auth' => true,
+        'username' => 'salondadasiegt@gmail.com',
+        'password' => 'TVD!nner2'
+    ));
     }
 
-	function getGoogleEmailProperty() {
+	function sendGoogleEmail() {
     }
 }
 
