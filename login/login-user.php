@@ -16,12 +16,22 @@ if(isset($_REQUEST['password']))
     /* Redirect to original page */
     while($select_user_row = $select_user_result->fetch()) {
         if ($select_user_row["CorrectDetails"]==1) {
-            require_once('../classes/FileSessionHandler.php');
+            //require_once('../classes/FileSessionHandler.php');
+            session_start();
             $user_object = new User( $select_user_row["full_name"],$select_user_row["email"],$select_user_row["user_id"]);
             $s =serialize($user_object);
-        
+            
             $_SESSION["user2"] = $s;
-            header('Location:../pages/main.php');
+         
+            if (isset($_REQUEST["page"])) {
+               if ($_REQUEST["page"]=="pages") {
+                    header('Location:../admin/pages.php');
+               }
+            }
+            else
+            {
+              header('Location:../pages/main.php');   
+            }
         }
         else
         {

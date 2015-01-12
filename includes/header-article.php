@@ -1,6 +1,7 @@
 <?php 
-session_start();
+//require_once('../classes/FileSessionHandler.php') ;
 require_once('../classes/user.php');
+
 function createTree(&$list, $parent){
     $tree = array();
     foreach ((array)$parent as $k=>$l){
@@ -18,7 +19,7 @@ $new = array();
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
-$select_singlearticle_sql = "select article_id, title, content, category_name, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
+$select_singlearticle_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$_REQUEST["articleid"];
 $select_singlearticle_result = $dbHost->prepare($select_singlearticle_sql);
 $select_singlearticle_result->execute();
 $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -76,8 +77,8 @@ $template = $select_template_row["template"];
           <ul class="nav navbar-nav navbar-right floatright">
             <?php
    
-             if (isset($_SESSION["user"])) { 
-                $so = $_SESSION["user"];
+             if (isset($_SESSION["user2"])) { 
+                $so = $_SESSION["user2"];
                 $user_object = unserialize($so);
                 $auth = $user_object->getAuthenticated();
                 if(!empty($auth)) {

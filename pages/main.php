@@ -1,8 +1,9 @@
 <?php include '../includes/header-site.php' ?>
- <div class="small_box">
-    <div class="small_box_top">
+   <div class="small_box_top">
         CMS Articles
-    </div>
+    </div> 
+<div class="small_box">
+ 
     <div class="pad">
         <?php include 'cms-viewer.php' ?>
     </div>

@@ -53,7 +53,7 @@
     <Compile Include="admin\add-article.php" />
     <Compile Include="admin\add-user.php" />
     <Compile Include="admin\admin.php" />
-    <Compile Include="admin\authenticate.php" />
+    <Compile Include="admin\authenticate.php_esh" />
     <Compile Include="admin\author-view.php" />
     <Compile Include="admin\ban-user.php" />
     <Compile Include="admin\categories.php" />

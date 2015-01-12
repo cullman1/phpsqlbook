@@ -15,8 +15,8 @@ if (isset($_SESSION["user2"]))
 }
             else
             {
-           
-                header('Location:../login/login-admin.php');   
+                
+    header('Location:../login/login-admin.php');   
             }
 
 /* admin/add-article.php
@@ -26,3 +26,4 @@ includes/reply-box-parent.php
 pages/add-comment.php
 pages/add-comment-text.php */
 ?>
+

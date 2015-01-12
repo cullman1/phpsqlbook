@@ -65,8 +65,10 @@ input {
 
 	font-size: 36px;
 	margin-left: 14px;
+    margin-top: 10px;
 	z-index: 2;
-	width: 600px;
+	width: 300px;
+    height:100px;
 }
 
 .small_box {

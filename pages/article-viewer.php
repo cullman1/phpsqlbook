@@ -11,7 +11,7 @@ if($num_rows==0)
 }
 while($select_singlearticlefull_rows = $select_singlearticlefull_result->fetch()) 
 {  ?>
-<div id="comments_on_article">
+<div id="comments_on_article" class="<?php echo $select_singlearticlefull_rows['category_template']; ?>">
   <h3><?php echo $select_singlearticlefull_rows['title']; ?></h3>
   <h5><?php echo date("F j, Y, g:i a", strtotime($select_singlearticlefull_rows['date_posted'])); ?></h5>
   <div class="box2"><?php echo $row['content']; ?><br/><br/>

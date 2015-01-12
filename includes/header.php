@@ -1,4 +1,5 @@
 <?php   require_once('../classes/user.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,14 +62,14 @@
           <ul class="nav navbar-nav navbar-right">
            <ul class="nav navbar-nav navbar-right">
             <?php
-            if (isset($_SESSION["user"])) 
+            if (isset($_SESSION["user2"])) 
             { 
-                $so = $_SESSION["user"];
+                $so = $_SESSION["user2"];
                 $user_object = unserialize($so);
                 $auth = $user_object->getAuthenticated();
                 if(!empty($auth)) 
                 { ?> 
-                    <li>Hello <?php echo $user_object->fullName; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
+                    <li><?php echo $user_object->getFullName(); ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
           <?php } 
                 else 
                 { ?>
