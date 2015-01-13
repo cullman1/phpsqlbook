@@ -6,6 +6,8 @@
         <div class="col-md-4">
          <h3>Chapter 9</h3>
             <ul style="list-style-type:none;">
+                 <li class="blox"><a href="/code/chapter9/gravatar.php">Chapter 9 - GRAVATAR example</a></li>
+                <br />
                   <li class="blox"><a href="/code/chapter9/ajax.html">Chapter 9 - Search for users example</a></li>
                 <br />
                  <li class="blox"><a href="/code/chapter9/search-predict.html">Chapter 9 - Predictive Search Text example</a></li>
