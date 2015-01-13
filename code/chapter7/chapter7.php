@@ -10,7 +10,10 @@
                 <br />
                   <li class="blox"><a href="/code/chapter7/storedproc2.php">Chapter 7 - Stored Procedure - Mysqli Example</a></li>
                 <br />
-              
+              <li class="blox"><a href="/code/chapter7/content.php">Chapter 7 - Templates For Content </a></li>
+                <br />
+                <li class="blox"><a href="/code/chapter7/admin.php">Chapter 7 - Templates For Admin</a></li>
+                <br />
                 </ul>
        </div>
    </div>
