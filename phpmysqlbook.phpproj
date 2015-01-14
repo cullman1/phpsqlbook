@@ -122,7 +122,15 @@
     <Compile Include="code\chapter6\setcookie.php" />
     <Compile Include="code\chapter6\smtp-test.php" />
     <Compile Include="code\chapter6\user.php" />
+    <Compile Include="code\chapter7\admin.php" />
+    <Compile Include="code\chapter7\authenticate.php" />
     <Compile Include="code\chapter7\chapter7.php" />
+    <Compile Include="code\chapter7\content.php" />
+    <Compile Include="code\chapter7\footer.php" />
+    <Compile Include="code\chapter7\header-admin.php" />
+    <Compile Include="code\chapter7\header-content.php" />
+    <Compile Include="code\chapter7\login-admin.php" />
+    <Compile Include="code\chapter7\login-user.php" />
     <Compile Include="code\chapter7\storedproc3.php" />
     <Compile Include="code\chapter7\storedproc2.php" />
     <Compile Include="code\chapter7\storedproc.php" />
@@ -131,7 +139,9 @@
     <Compile Include="code\chapter8\userclass.php" />
     <Compile Include="code\chapter10\chapter10.php" />
     <Compile Include="code\chapter9\chapter9.php" />
+    <Compile Include="code\chapter9\getpredictive.php" />
     <Compile Include="code\chapter9\getusers.php" />
+    <Compile Include="code\chapter9\gravatar.php" />
     <Compile Include="code\includes\db_config2.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\footer-editor.php" />
@@ -199,6 +209,8 @@
     <Content Include="code\chapter5\names.txt" />
     <Content Include="code\chapter5\namesonly.txt" />
     <Content Include="code\chapter5\thumbnail.jpg" />
+    <Content Include="code\chapter9\ajax.html" />
+    <Content Include="code\chapter9\search-predict.html" />
     <Content Include="code\css\admin.css" />
     <Content Include="code\css\bootstrap.min.css" />
     <Content Include="code\css\style.css" />
