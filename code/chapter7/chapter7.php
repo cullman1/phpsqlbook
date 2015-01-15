@@ -17,7 +17,7 @@
                 <br />
                 <li class="blox"><a href="/code/chapter7/articleslist.php">Chapter 7 - List of articles page</a></li>
                 <br />
-                  <li class="blox"><a href="/code/chapter7/singlearticle.php">Chapter 7 - Single article page</a></li>
+                  <li class="blox"><a href="/code/chapter7/singlearticle.php?article_id=87">Chapter 7 - Single article page</a></li>
                 <br />
                 </ul>
        </div>

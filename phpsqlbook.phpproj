@@ -103,6 +103,7 @@
     <Compile Include="code\chapter6\smtp-test.php" />
     <Compile Include="code\chapter6\user.php" />
     <Compile Include="code\chapter7\chapter7.php" />
+    <Compile Include="code\chapter7\singlearticle.php" />
     <Compile Include="code\chapter7\storedproc.php" />
     <Compile Include="code\chapter7\storedproc2.php" />
     <Compile Include="code\chapter7\storedproc3.php" />
