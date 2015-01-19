@@ -9,7 +9,7 @@ include '../includes/header-chapters.php' ?>
          <h3>Chapter 6</h3>
             <ul style="list-style-type:none; padding-top:10px;">
               
-         <li class="blox"><a href="/code/chapter6/file_upload.php">ile Upload control</a></li>
+         <li class="blox"><a href="/code/chapter6/file_upload.php">File Upload control</a></li>
                 <br />
                  <li class="blox"><a href="/code/chapter6/file_upload_improved.php">File Upload control improved version</a></li>
                 <br />

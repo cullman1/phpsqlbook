@@ -164,7 +164,7 @@
     <Compile Include="code\includes\header.php" />
     <Compile Include="code\includes\login-variables.php" />
     <Compile Include="code\includes\rich-text-control.php" />
-    <Compile Include="code\index.php" />
+    <Compile Include="code\index.html" />
     <Compile Include="code\login-variables.php" />
     <Compile Include="includes\comments-control.php" />
     <Compile Include="includes\comments-list.php" />
