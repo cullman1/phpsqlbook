@@ -4,9 +4,9 @@
       <div class="col-md-4"><h1>Code examples</h1><br /></div>
 
         <div class="col-md-4">
-         <h3>Chapter 8</h3>
+         <h3>Chapter 9</h3>
             <ul style="list-style-type:none;">
-                  <li class="blox"><a href="/code/chapter8/userclass.php">Chapter 8 - User class</a></li>
+                  <li class="blox"><a href="/code/chapter9/userclass.php">User class</a></li>
                 <br />
                 
                 </ul>

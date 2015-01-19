@@ -100,15 +100,15 @@
     <Compile Include="code\chapter4\single_form.php" />
     <Compile Include="code\chapter4\submit_form_2.php" />
     <Compile Include="code\chapter4\two_page_form_amended.php" />
-    <Compile Include="code\chapter5\chapter4.php" />
+    <Compile Include="code\chapter5\chapter5.php" />
     <Compile Include="code\chapter5\emailcheck1.php" />
     <Compile Include="code\chapter5\emailcheck2.php" />
     <Compile Include="code\chapter5\register3.php" />
     <Compile Include="code\chapter5\submit-user.php" />
     <Compile Include="code\chapter5\update.php" />
     <Compile Include="code\chapter6\carousel.php" />
-    <Compile Include="code\chapter6\ch5_first_attempt.php" />
-    <Compile Include="code\chapter6\chapter5.php" />
+    <Compile Include="code\chapter6\ch6_first_attempt.php" />
+    <Compile Include="code\chapter6\chapter6.php" />
     <Compile Include="code\chapter6\edit-article.php" />
     <Compile Include="code\chapter6\file_get_contents.php" />
     <Compile Include="code\chapter6\file_read.php" />
@@ -120,7 +120,7 @@
     <Compile Include="code\chapter6\imagick_check.php" />
     <Compile Include="code\chapter7\authenticate.php" />
     <Compile Include="code\chapter7\ban-user.php" />
-    <Compile Include="code\chapter7\chapter6.php" />
+    <Compile Include="code\chapter7\chapter7.php" />
     <Compile Include="code\chapter7\commenting.php" />
     <Compile Include="code\chapter7\forgotten-password.php" />
     <Compile Include="code\chapter7\hash.php" />
@@ -137,7 +137,7 @@
     <Compile Include="code\chapter8\admin.php" />
     <Compile Include="code\chapter8\articleslist.php" />
     <Compile Include="code\chapter8\authenticate.php" />
-    <Compile Include="code\chapter8\chapter7.php" />
+    <Compile Include="code\chapter8\chapter8.php" />
     <Compile Include="code\chapter8\content.php" />
     <Compile Include="code\chapter8\footer.php" />
     <Compile Include="code\chapter8\header-admin.php" />
@@ -148,7 +148,7 @@
     <Compile Include="code\chapter8\storedproc.php" />
     <Compile Include="code\chapter8\storedproc2.php" />
     <Compile Include="code\chapter8\storedproc3.php" />
-    <Compile Include="code\chapter9\chapter8.php" />
+    <Compile Include="code\chapter9\chapter9.php" />
     <Compile Include="code\chapter9\FileSessionHandler.php" />
     <Compile Include="code\chapter9\user.php" />
     <Compile Include="code\chapter9\userclass.php" />

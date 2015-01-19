@@ -31,29 +31,6 @@ if (isset($_REQUEST['Submitted']))
     }
 }
 
-if(isset($_FILES['image_upload']))
-{
-    if($_FILES["image_upload"]["name"]!="")
-    {
-        $folder = "../uploads/".$_FILES["image_upload"]["name"];
-        move_uploaded_file($_FILES['image_upload']['tmp_name'], $folder);
-        
-        /* Query SQL Server for inserting media. */
-        $insert_media_sql = "INSERT INTO media (media_title, name, file_type, url, size, date_uploaded) VALUES ('".$_FILES["image_upload"]["name"]."','".$_FILES['image_upload']['name']."', '".$_FILES['document_upload']['type']."', '".$folder."', '".$_FILES['document_upload']['size']."', '". date("Y-m-d H:i:s") ."')";
-        $insert_media_result = $dbHost->prepare($insert_media_sql);
-        $insert_media_result->execute();
-        
-        if($insert_media_result->errorCode() != 0) {  die("Insert Media Query failed: "); }
-        $newmediaid = $dbHost->lastInsertId();
-
-        /* Query SQL Server for inserting media link. */
-        $insert_medialink_sql = "INSERT INTO media_link (article_id, media_id) VALUES (".$newarticleid.", '".$newmediaid."')";
-        $insert_medialink_result = $dbHost->prepare($insert_medialink_sql);
-        $insert_medialink_result->execute();
-        if($insert_medialink_result->errorCode() != 0) {  die("Insert Media Link Query failed: "); }
-    }
-}
-
 /* Add header */
 include '../includes/header.php' ?>
  
@@ -98,7 +75,7 @@ include '../includes/header.php' ?>
             <tr>
                 <td>Add featured image:</td>
                 <td>
-                    <input type="file" id="image_upload" name="image_upload"> 
+                    <input type="file" id="document_upload" name="document_upload"> 
                 </td>
             </tr>
      
