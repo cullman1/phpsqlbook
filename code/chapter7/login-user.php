@@ -16,17 +16,21 @@ if(isset($_REQUEST['password']))
         if ($select_user_row["CorrectDetails"]==1) {
             session_start();
             /* store user_id */
-            
+            $user_object = new User( $select_user_row["full_name"],  $select_user_row["email"], $select_user_row["user_id"] ); 
             $_SESSION['authenticated'] = $select_user_row["user_id"];
             $_SESSION['username'] = $select_user_row["full_name"];
-           
+            $_SESSION['email'] = $select_user_row["email"];
             
-            header('Location:../chapter7/admin.php');
+            /* serialize */
+            $s =serialize($user_object);
+            $_SESSION["user"] = $s;
+            
+            header('Location:../chapter6/commenting.php');
         }
         else
         {
             /* Incorrect details */
-			header('Location:../chapter7/login-user.php?login=failed');
+			header('Location:../chapter6/login-user.php?login=failed');
         }
     }
 }

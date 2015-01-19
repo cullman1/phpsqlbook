@@ -12,7 +12,7 @@ include '../includes/header-chapters.php' ?>
              <div>Introduction to Server-side programming</div>
         </div></a>
       
-         <a class="linked" href="/code/chapter1b/chapter1b.php">
+         <a class="linked" href="/code/chapter2/chapter2.php">
           <div class="col-md-4 boxy2">
          <h3>Chapter 2</h3>
                
@@ -21,7 +21,7 @@ include '../includes/header-chapters.php' ?>
           </a>
       <br />
 
-         <a class="linked" href="/code/chapter2/chapter2.php">
+         <a class="linked" href="/code/chapter3/chapter3.php">
           <div class="col-md-4 boxy1">
          <h3>Chapter 3</h3>
                
@@ -30,14 +30,14 @@ include '../includes/header-chapters.php' ?>
           </a>
    
 
-      <a class="linked" href="/code/chapter3/chapter3.php">
+      <a class="linked" href="/code/chapter4/chapter4.php">
         <div class="col-md-4 boxy2">
          <h3>Chapter 4</h3>
              
              <div>Server side Processing of data</div>
        </div></a>
          <br />
-      <a class="linked" href="/code/chapter4/chapter4.php">
+      <a class="linked" href="/code/chapter5/chapter5.php">
         <div class="col-md-4 boxy1">
          <h3>Chapter 5</h3>
                
@@ -46,7 +46,7 @@ include '../includes/header-chapters.php' ?>
        </div>
           </a>
             <br />
-            <a class="linked" href="/code/chapter5/chapter5.php">
+            <a class="linked" href="/code/chapter6/chapter6.php">
         <div  class="col-md-4 boxy2">
          <h3>Chapter 6</h3>
                
@@ -56,7 +56,7 @@ include '../includes/header-chapters.php' ?>
           </a>
   
 
-   <a class="linked" href="/code/chapter6/chapter6.php">
+   <a class="linked" href="/code/chapter7/chapter7.php">
         <div class="col-md-4 boxy1">
          <h3>Chapter 7</h3>
                
@@ -65,13 +65,13 @@ include '../includes/header-chapters.php' ?>
        </div>
           </a>
       <br />
-          <a class="linked" href="/code/chapter7/chapter7.php"><div class="col-md-4 boxy2">
+          <a class="linked" href="/code/chapter8/chapter8.php"><div class="col-md-4 boxy2">
          <h3>Chapter 8</h3>
        
              <div>Application Design</div>
         </div></a>
       
-         <a class="linked" href="/code/chapter8/chapter8.php">
+         <a class="linked" href="/code/chapter9/chapter9.php">
           <div class="col-md-4 boxy1">
          <h3>Chapter 9</h3>
                
@@ -79,13 +79,13 @@ include '../includes/header-chapters.php' ?>
         </div>
           </a>
       <br />
-        <a class="linked" href="/code/chapter9/chapter9.php"><div class="col-md-4 boxy2">
+        <a class="linked" href="/code/chapter10/chapter10.php"><div class="col-md-4 boxy2">
          <h3>Chapter 10</h3>
        
              <div>APIs</div>
         </div></a>
       
-         <a class="linked" href="/code/chapter10/chapter10.php">
+         <a class="linked" href="/code/chapter11/chapter11.php">
           <div class="col-md-4 boxy1">
          <h3>Chapter 11</h3>
                
