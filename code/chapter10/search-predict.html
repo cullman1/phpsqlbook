@@ -2,73 +2,28 @@
     <head>
         	<title>Search for User Example</title>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+           <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script> 
         <link href="../css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <form id="new-form">
             <br />
             <label for="checkfirst">Full Name:</label>
-            <input id="checkfirst" name="checkfirst" type="text" /><br /><br />
-            <input id="SubmitButton" name="submit" value="Submit Search" type="button" />
+            <input id="checkfirst"><br /><br />
         </form>
         <div id="results-box">
         </div>
-        <script type="text/javascript">
-            $(function () {
-                var namebox="";
-                $("#SubmitButton").on("click", Submit_Search);
-            });
-
-            function Submit_Search() {
-                var formData = new FormData($('form')[0]);
-                var checkfirst = document.getElementById("checkfirst").value;
-                $.ajax({
-                    url: 'getpredictive.php?checkfirst=' + checkfirst,  //Server script to process data
-                    type: 'GET',
-                    xhr: function() {  // Custom XMLHttpRequest
-                        var myXhr = $.ajaxSettings.xhr();
-                        return myXhr;
-                    },
-                    //Ajax events
-                    success: function (data, status) {
-                       
-                        data = data.replace("[","");
-                        data = data.replace("]","");
-                        if (data!="")
-                        {
-                            obj = JSON.parse(data);
-                      
-                            var resultbox = document.getElementById("checkfirst");
-                         
-                            namebox = [
-                            { value: obj.full_name, data: obj.full_name }
-                            ];           
-                        }
-                    },
-               
-                    error: function(xhr, desc, err) {
-                        console.log(xhr);
-                        alert("Details: " + desc + "\nError:" + err);
-                    },
-                // Form data
-                data: formData,
-                //Options to tell jQuery not to process data or worry about content-type.
-                cache: false,
-                contentType: false,
-                processData: false
-            });
-
-            }
-
-// setup autocomplete function pulling from currencies[] array
-$('#checkfirst').autocomplete({
-  lookup: namebox,
-  onSelect: function (suggestion) {
-  }
-});
-
-        </script>
-      
+         
 <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
+
+ <script type="text/javascript">
+     $(function () {
+      
+         // setup autocomplete function pulling from namebox[] array
+         $('#checkfirst').autocomplete({ source: "getpredictive.php" });
+         
+     });
+
+        </script>
