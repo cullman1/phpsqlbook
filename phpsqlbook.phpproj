@@ -246,6 +246,7 @@
     <Content Include="code\uploads\thumbnail.gif" />
     <Content Include="code\uploads\thumbnail.jpg" />
     <Content Include="code\uploads\thumbnail2.jpg" />
+    <Content Include="composer.json" />
     <Content Include="css\admin.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.css.map" />

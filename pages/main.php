@@ -7,6 +7,12 @@
     <div class="pad">
         <?php include 'cms-viewer.php' ?>
     </div>
+    <div class="side">
+        
+
+    </div>
+
+
  </div>
 <?php include('../includes/pagination.php'); ?>
 <?php include '../includes/footer-site.php' ?>
