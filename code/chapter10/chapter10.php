@@ -8,11 +8,12 @@
             <ul style="list-style-type:none;">
                  <li class="blox"><a href="/code/chapter10/gravatar.php">GRAVATAR example</a></li>
                 <br />
-                  <li class="blox"><a href="/code/chapter10/ajax.html">Search for users example</a></li>
+                  <li class="blox"><a href="/code/chapter10/ajax.html">Validate email example</a></li>
                 <br />
                  <li class="blox"><a href="/code/chapter10/search-predict.html">Predictive Search Text example</a></li>
                 <br />
-              
+              <li class="blox"><a href="/code/chapter10/Facebookexample.php">Facebook Sidebar example</a></li>
+                <br />
                 </ul>
        </div>
    </div>

@@ -1,69 +1,55 @@
 <html>
     <head>
-        	<title>Search for User Example</title>
+        	<title>Validate User Email Example</title>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <form id="new-form">
             <br />
-            <label for="checkfirst">First Name:</label>
+            <label for="checkfirst">Email:</label>
             <input id="checkfirst" name="checkfirst" type="text" /><br /><br />
-            <label for="checklast">Last Name:</label>
-            <input id="checklast" name="checklast" type="text" /><br /><br />
+            <label for="checknext">Next form field:</label>
+            <input id="checknext" name="checklast" type="text" /><br /><br />
             <input id="SubmitButton" name="submit" value="Submit Search" type="button" />
         </form>
         <div id="results-box">
         </div>
         <script type="text/javascript">
             $(function () {
-                $("#SubmitButton").on("click", Submit_Search);
+                $("#checknext").on("focus", Submit_Search);
             });
-
             function Submit_Search() {
                 var formData = new FormData($('form')[0]);
                 var checkfirst = document.getElementById("checkfirst").value;
-                var checklast = document.getElementById("checklast").value;
                 $.ajax({
-                    url: 'getusers.php?checkfirst=' + checkfirst + '&checklast=' + checklast,  //Server script to process data
+                    url: 'getusers.php?checkfirst=' + checkfirst,  
                     type: 'GET',
                     xhr: function() {  // Custom XMLHttpRequest
                         var myXhr = $.ajaxSettings.xhr();
                         return myXhr;
                     },
-                    //Ajax events
-                    success: function (data, status) {
-                       
+                    success: function (data, status) { 
                         data = data.replace("[","");
                         data = data.replace("]","");
-                        if (data!="")
-                        {
-                         
+                        data = data.trim();
+                        if (data!=""){
                             obj = JSON.parse(data);
-                         ;
                             var resultbox = document.getElementById("results-box");
-                       
-                            resultbox.innerHTML = "<ul><li>Name:" + obj.full_name + "</li>" + "<li>Email:" + obj.email_address + "</li>" + "<li>Number of Logins:" + obj.total_log_ins + "</li>";
-                                
-                         
+                            resultbox.innerHTML = "This user email has already been registered";
                         }
                     },
-               
                     error: function(xhr, desc, err) {
                         console.log(xhr);
                         alert("Details: " + desc + "\nError:" + err);
                     },
-                // Form data
-                data: formData,
-                //Options to tell jQuery not to process data or worry about content-type.
-                cache: false,
-                contentType: false,
-                processData: false
-            });
-
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
             }
         </script>
-      
 <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 include_once('../includes/db_config.php');
 
-$select_users_sql = "Select * from Users WHERE full_name= '".$_REQUEST['checkfirst']." ".$_REQUEST['checklast']."'";
+$select_users_sql = "Select * from Users WHERE email_address= '".$_REQUEST['checkfirst']."'";
 
 $select_users_result = $dbHost->prepare($select_users_sql);
 $select_users_result->execute();
