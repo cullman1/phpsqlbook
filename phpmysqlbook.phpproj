@@ -87,6 +87,8 @@
     <Compile Include="classes\FileSessionHandler.php" />
     <Compile Include="classes\user.php" />
     <Compile Include="code\chapter10\chapter10.php" />
+    <Compile Include="code\chapter10\facebookexample.php" />
+    <Compile Include="code\chapter10\facebooksidebar.php" />
     <Compile Include="code\chapter10\getpredictive.php" />
     <Compile Include="code\chapter10\getusers.php" />
     <Compile Include="code\chapter10\gravatar.php" />
@@ -253,6 +255,10 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
+    <Content Include="code\chapter10\chamomile.txt" />
+    <Content Include="code\chapter10\lavender.txt" />
+    <Content Include="code\chapter10\pansy.txt" />
+    <Content Include="code\chapter10\simpleajax.html" />
     <Content Include="code\chapter10\ajax.html" />
     <Content Include="code\chapter10\search-predict.html" />
     <Content Include="code\chapter6\data-jsonp.js" />

@@ -8,6 +8,8 @@
             <ul style="list-style-type:none;">
                  <li class="blox"><a href="/code/chapter10/gravatar.php">GRAVATAR example</a></li>
                 <br />
+                 <li class="blox"><a href="/code/chapter10/simpleajax.html">Simple AJAX object example</a></li>
+                <br />
                   <li class="blox"><a href="/code/chapter10/ajax.html">Validate email example</a></li>
                 <br />
                  <li class="blox"><a href="/code/chapter10/search-predict.html">Predictive Search Text example</a></li>

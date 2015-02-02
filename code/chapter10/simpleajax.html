@@ -1,0 +1,45 @@
+<html>
+    <head>
+        	<title>AJAX Object Example</title>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <link href="../css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <form id="new-form">
+            <div>
+            <img id="chamomile" src="../images/chamomile.gif" style="margin:10px; width:200px;float: left;"/>
+            <img id="lavender" src="../images/lavender.gif" style="margin:10px;width:200px;float: left;"/>
+            <img id="pansy" src="../images/pansy.gif"  style="margin:10px;width:200px;float: left;"/>
+           </div>
+       
+        <div id="results-box" style="clear:both; top:300px;height:200px;width:300px; margin:10px; background-color:palegoldenrod; color:black;">
+        </div>
+             </form>
+        <script type="text/javascript">
+            $(function () {
+                $("#chamomile").on("mouseover", { name: "chamomile" }, Get_Info);
+                $("#lavender").on("mouseover", { name: "lavender" }, Get_Info);
+                $("#pansy").on("mouseover", { name: "pansy" }, Get_Info);
+            });
+            function Get_Info(event) {
+                var formData = new FormData($('form')[0]);
+                $.ajax({
+                    url: event.data.name + '.txt',  
+                    type: 'GET',
+                    success: function (data, status) {              
+                        $("#results-box").text(data);
+                    },
+                   
+                    error: function(xhr, desc, err) {
+                        console.log(xhr);
+                        alert("Details: " + desc + "\nError:" + err);
+                    },
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            }
+        </script>
+    </body>
+</html>
