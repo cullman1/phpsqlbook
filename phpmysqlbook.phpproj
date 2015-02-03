@@ -89,6 +89,7 @@
     <Compile Include="code\chapter10\chapter10.php" />
     <Compile Include="code\chapter10\facebookexample.php" />
     <Compile Include="code\chapter10\facebooksidebar.php" />
+    <Compile Include="includes\facebooksidebar.php" />
     <Compile Include="code\chapter10\getpredictive.php" />
     <Compile Include="code\chapter10\getusers.php" />
     <Compile Include="code\chapter10\gravatar.php" />

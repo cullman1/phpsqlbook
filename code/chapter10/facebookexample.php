@@ -21,10 +21,33 @@ use Facebook\FacebookRequestException;
 use Facebook\FacebookAuthorizationException;
 use Facebook\GraphObject;
 
-FacebookSession::setDefaultApplication('464651713667817', 'a8f67bca9e608806baf6a2fae8b53d5b');
-$facebook = new FacebookRedirectLoginHelper('http://test1.phpandmysqlbook.com/pages/facebookexample.php');
 
+$helper = new FacebookRedirectLoginHelper('http://test1.phpandmysqlbook.com/pages/facebookexample.php', '838101672918431', '8d77fe43aeac414752080cb768f01fff');
+$loginUrl = $helper->getLoginUrl();
+header('Location:'.$loginUrl);
 //Get User ID
-require '../includes/facebooksidebar.php';
+try {
+    $session = $helper->getSessionFromRedirect();
+} catch(FacebookSDKException $e) {
+    echo "Error ";
+    $session = null;
+    echo "Error ". $e;
+}
+
+if ($session) {
+    // User logged in, get the AccessToken entity.
+    $accessToken = $session->getAccessToken();
+    $session = new FacebookSession($accessToken);
+    
+    $user_profile = (new FacebookRequest(      $session, 'GET', '/me' ))->execute()->getGraphObject(GraphUser::className());
+
+    echo "Name: " . $user_profile->getName();
+}
+else
+{
+    
+    echo "No Session";
+}
+//require 'facebooksidebar.php';
 
  ?>

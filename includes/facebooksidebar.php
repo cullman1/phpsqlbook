@@ -24,11 +24,15 @@ echo "TESTING";
 //App Info, needed for Auth
 $app_id = "464651713667817";
 $app_secret = "a8f67bca9e608806baf6a2fae8b53d5b";
-
-
-
-
+//$accessToken = $facebook->getAccessToken();
 //Retrieve auth token
+try {
+    $session = $facebook->getSessionFromRedirect();
+}
+catch(FacebookSDKException $e) {
+    $session = null;
+}
+//$accessToken = $session->getAccessToken();
 
 $authToken = fetchUrl("https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=".$app_id."&client_secret=".$app_secret);
 
@@ -44,12 +48,14 @@ echo "</ol></div><div class='facebook_list'><ol style='list-style-type:none;'>";
 
 foreach ( $feedarray->data as $feed_data ) {  
     if(!($feed_data->type=="status" && $feed_data->message=="")) {
-      if(!($feed_data->type=="link")) 
-      if(isset($feed_data->link))     { {
-        echo "<li><a href='".$feed_data->link."'>";
-    }
-      //Message
-      if($feed_data->type=="status" && $feed_data->message!="")  {
+      if(!($feed_data->type=="link")){
+          
+          if(isset($feed_data->link))
+          {
+              echo "<li><a href='".$feed_data->link."'>";
+          }
+        //Message
+        if($feed_data->type=="status" && $feed_data->message!="")  {
         echo "<div style='color:#666;'>{$feed_data->message}</div>";
       }
   

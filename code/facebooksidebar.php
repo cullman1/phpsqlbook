@@ -21,16 +21,16 @@ return $retData;
 }
 
 //App Info, needed for Auth
-//$app_id = "464651713667817";
-//$app_secret = "a8f67bca9e608806baf6a2fae8b53d5b";
+$app_id = "464651713667817";
+$app_secret = "a8f67bca9e608806baf6a2fae8b53d5b";
 
-//$concat_token = $app_id . "|" .$app_secret;
+$concat_token = $app_id . "|" .$app_secret;
 
 $authToken = fetchUrl("https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=".$app_id."&client_secret=".$app_secret);
-echo $authToken
-//$json_object = fetchUrl("https://graph.facebook.com/279377105567659/feed?".$authToken."&fields=id,message,from,type,picture,created_time,comments,link,likes&limit=5'");
 
-/*$feedarray = json_decode($json_object);
+$json_object = fetchUrl("https://graph.facebook.com/279377105567659/feed?".$authToken."&fields=id,message,from,type,picture,created_time,comments,link,likes&limit=5'");
+
+$feedarray = json_decode($json_object);
 
 $count=1;
 echo "<div class='facebook_list' style='width:250px; font-size:10px; word-wrap:break-word; border: 1px solid gray; padding-right:40px;'><ol style='list-style-type:none;'>";
@@ -96,5 +96,5 @@ foreach ( $feedarray->data as $feed_data ) {
         if($count>5) { break;}
     }
 }
-echo "</ol></div>"; */
+echo "</ol></div>";
 ?>
