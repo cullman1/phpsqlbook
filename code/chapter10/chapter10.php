@@ -14,7 +14,11 @@
                 <br />
                  <li class="blox"><a href="search-predict.html">Predictive Search Text example</a></li>
                 <br />
+                  <li class="blox"><a href="uploadmedia.php">Upload Media example</a></li>
+                <br />
               <li class="blox"><a href="Facebookexample.php">Facebook Sidebar example</a></li>
+                <br />
+              <li class="blox"><a href="Facebookuserauthentication.php">Facebook User Authentication example</a></li>
                 <br />
                 </ul>
        </div>
