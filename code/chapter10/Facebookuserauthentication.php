@@ -43,11 +43,12 @@ try {
             $response = $request->execute();
             $user_profile = $response->getGraphObject();
             echo "Name: " . $user_profile->getProperty('name') . "<br/>";
-            echo "Birthday: " . $user_profile->getProperty('user_birthday') . "<br/>";
+            echo "Email: " . $user_profile->getProperty('email') . "<br/>";
+           
     }
     else
     {    
-        $permissions = array('user_birthday');
+        $permissions = array('email');
         $loginUrl = $helper->getLoginUrl($permissions); 
         header("location:".$loginUrl);
         exit; 
