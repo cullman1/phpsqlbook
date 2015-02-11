@@ -244,6 +244,8 @@
     <Compile Include="pages\article.php" />
     <Compile Include="pages\cms-viewer.php" />
     <Compile Include="pages\emailcheck.php" />
+    <Compile Include="pages\error-page.php" />
+    <Compile Include="pages\exception.php" />
     <Compile Include="pages\func2.php" />
     <Compile Include="pages\func3.php" />
     <Compile Include="pages\func4.php" />
