@@ -80,7 +80,7 @@ include '../includes/header.php' ?>
 </script>
 
 <div id="body">
-    <form id="galleryform" method="post" action="edit-article.php" onsubmit="assigncontent()" enctype="multipart/form-data">
+    <form id="galleryform" method="post" action="edit-article.php?article_id=39" onsubmit="assigncontent()" enctype="multipart/form-data">
          <?php while($select_article_row = $select_article_result->fetch()) { ?>
       <div id="middlewide">
         <div id="leftcol">

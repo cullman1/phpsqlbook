@@ -17,7 +17,7 @@ include '../includes/header-chapters.php' ?>
                 <br />
                   <li class="blox"><a href="/code/chapter6/file_read.php">fread example</a></li>
                 <br />
-          <li class="blox"><a href="/code/chapte6/ch6_first_attempt.php">Basic add article page</a></li>
+          <li class="blox"><a href="/code/chapter6/ch6_first_attempt.php">Basic add article page</a></li>
                 <br />
           <li class="blox"><a href="/code/chapter6/edit-article.php?article_id=39">Basic edit article page</a></li>
                 <br />

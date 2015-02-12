@@ -92,7 +92,7 @@
     <Compile Include="code\chapter6\file_get_contents.php" />
     <Compile Include="code\chapter6\file_read.php" />
     <Compile Include="code\chapter6\file_upload.php" />
-    <Compile Include="code\chapter6\file_upload_improved.php" />
+    <Compile Include="code\chapter11\file_upload_error_log.php" />
     <Compile Include="code\chapter6\full_example.php" />
     <Compile Include="code\chapter6\image_cropper.php" />
     <Compile Include="code\chapter6\image_resizer.php" />
