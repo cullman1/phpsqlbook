@@ -220,31 +220,7 @@ public function delete()
    }
 
 
-/**
- * View a message
- * @param int $message the ID of the message
- * @return void
- */
-private function viewMessage( $message )
-{
-   require_once( FRAMEWORK_PATH . 'models/message.php' );
-   $message = new Message( $this->registry, $message );
-   if( $message->getRecipient() == $this->registry-
-     >getObject('authenticate')->getUser()->getUserID() )
-   {
-      $this->registry->getObject('template')-
-        >buildFromTemplates('header.tpl.php', 'messages/view.tpl.php',
-        'footer.tpl.php');
-      $message->toTags( 'inbox_' );
-      $message->setRead(1);
-      $message->save();
-   }
-   else
-   {
-      $this->registry->errorPage( 'Access denied',
-        'Sorry, you are not allowed to view that message');
-   }
-}
+
 
 
 }
