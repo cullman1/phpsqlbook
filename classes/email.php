@@ -1,15 +1,15 @@
-class emailer
+<?php class emailer
 {
   const newline = "\r\n";
-  private $server;
-  private $port;
-  private $mailServer;
-  private $socket;
+  public $server;
+  public $port;
+  public $mailServer;
+  public $socket;
 
   public $username;
   public $password; 
   public $connectTimeout; 
-  public $responseTimeout,
+  public $responseTimeout;
   public $headers;
   public $contentType;
   public $from; 
@@ -31,22 +31,6 @@ class emailer
     $this->headers['Content-type'] = "text/plain; charset=iso-8859-1";
   }
   
-  private function FormatAddress(&$address)
-  {
-    if ($address[1] == "") return $address[0]; else return "\"{$address[1]}\" <{$address[0]}>";
-  }
-  
-  private function FormatAddressList(&$addresslist)
-  {
-    $list = "";
-    foreach ($addresslist as $address)
-    {
-      if ($list) $list .= ", ".self::newline."\t";
-      $list .= $this->FormatAddress($address);
-    }
-    return $list;
-  }
-  
   function SentTo($address,$name = "")
   {
     $this->to[] = array($address,$name);
@@ -59,7 +43,88 @@ class emailer
   
   function SentFrom($address,$name = "")
   {
-    $this->from = array($address,$name);
+    $this->from[] = array($address,$name);
+  }
+
+  
+  private function GetResponse()
+  {
+      stream_set_timeout($this->skt, $this->responseTimeout);
+      $response = '';
+      while (($line = fgets($this->skt, 515)) != false)
+      {
+          $response .= trim($line) . "\n";
+          if (substr($line,3,1)==' ') break;
+      }
+      return trim($response);
+  }
+  
+  private function SendCMD($CMD)
+  {
+      fputs($this->skt, $CMD . self::newline);
+      return $this->GetResponse();
+  }
+
+  function Send()
+  {
+    $newLine = self::newline;
+    
+    //Connect to the host on the specified port
+    $this->skt = fsockopen($this->server, $this->port, $errno, $errstr, $this->connectTimeout);
+    if (empty($this->skt)) {
+        return false;
+    }
+    
+    $this->GetResponse();
+    
+    //Say Hello to SMTP
+    $this->SendCMD("EHLO {$this->mailServer}");
+    
+    //Request Auth Login
+    $this->SendCMD("AUTH LOGIN");
+    $this->SendCMD(base64_encode($this->username));
+    $this->SendCMD(base64_encode($this->password));
+    
+    //Email From
+     $this->SendCMD("MAIL FROM:<{$this->from[0]}>");
+    
+    //Email To
+    $i = 1;
+    if (!empty($this->cc)) {
+        foreach (array_merge($this->to,$this->cc) as $addr) {
+            $this->SendCMD("RCPT TO:<{$addr[0]}>");
+        }
+    }
+    
+    
+    //The Email
+    $this->SendCMD("DATA");
+    
+    //Construct Headers
+    if (!empty($this->contentType)) {
+        $this->Headers['Content-type'] = $this->contentType;
+    }
+    
+    $this->Headers['From'] = $this->from[0];
+    $this->Headers['To'] = $this->to[0];
+    
+    if (!empty($this->cc)) {
+        $this->Headers['Cc'] = $this->cc[0];
+    }
+    
+    $this->Headers['Subject'] = $this->subject;
+    $this->Headers['Date'] = date('r');
+    
+    $headers = '';
+    foreach ($this->Headers as $key => $val) {
+        $headers .= $key . ': ' . $val . self::newline;
+    }
+    
+    $this->SendCMD("{$headers}{$newLine}{$this->message}{$newLine}.");
+    
+    $this->SendCMD("QUIT");
+    fclose($this->skt);
+    return true;
   }
   
 }
@@ -68,17 +133,16 @@ class simple_emailer extends emailer
 {
     function __construct()
    {	
-        $this->server = "mailserver.com";
-        $this->port = 25;
-        $this->mailServer = "mail.yourmaildomain"; 
+        $this->server = "94.76.218.242";
+        $this->port =  8889; // or use alternate port 8889
+        $this->mailServer = "eastcornwallharriers.com"; //Must exist in Control pael
+       
     }
 
-    function sendSimpleEmail() {
     
-    }
 }
 
-class google_ emailer extends emailer
+class google_emailer extends emailer
 {
     function __construct()
    {	
@@ -93,8 +157,7 @@ class google_ emailer extends emailer
     ));
     }
 
-	function sendGoogleEmail() {
-    }
+
 }
 
 

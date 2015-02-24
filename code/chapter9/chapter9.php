@@ -8,7 +8,8 @@
             <ul style="list-style-type:none;">
                   <li class="blox"><a href="/code/chapter9/userclass.php">User class</a></li>
                 <br />
-                
+                  <li class="blox"><a href="/code/chapter9/forgotten-password-email.php">Forgotten Password Email Object</a></li>
+                <br />
                 </ul>
        </div>
    </div>

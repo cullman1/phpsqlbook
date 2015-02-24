@@ -129,6 +129,7 @@
     <Compile Include="code\chapter8\storedproc3.php" />
     <Compile Include="code\chapter9\chapter9.php" />
     <Compile Include="code\chapter9\FileSessionHandler.php" />
+    <Compile Include="code\chapter9\forgotten-password-email.php" />
     <Compile Include="code\chapter9\user.php" />
     <Compile Include="code\chapter9\userclass.php" />
     <Compile Include="code\includes\add-comment-text.php" />
