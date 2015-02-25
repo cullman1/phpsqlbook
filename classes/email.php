@@ -70,7 +70,7 @@
     $newLine = self::newline;
     
     //Connect to the host on the specified port
-    $this->skt = fsockopen($this->server, $this->port, $errno, $errstr, $this->connectTimeout);
+    $this->skt = @fsockopen($this->server, $this->port, $errno, $errstr, $this->connectTimeout);
     if (empty($this->skt)) {
         return false;
     }

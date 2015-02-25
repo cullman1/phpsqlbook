@@ -91,6 +91,7 @@
     <Compile Include="code\chapter10\Facebookresponse.php" />
     <Compile Include="code\chapter10\facebooksidebar.php" />
     <Compile Include="code\chapter10\facebookuserauthentication.php" />
+    <Compile Include="code\chapter9\forgotten-password-email.php" />
     <Compile Include="includes\facebooksidebar.php" />
     <Compile Include="code\chapter10\getpredictive.php" />
     <Compile Include="code\chapter10\getusers.php" />
