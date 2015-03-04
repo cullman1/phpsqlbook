@@ -131,8 +131,10 @@
     <Compile Include="code\chapter9\chapter9.php" />
     <Compile Include="code\chapter9\FileSessionHandler.php" />
     <Compile Include="code\chapter9\forgotten-password-email.php" />
+    <Compile Include="code\chapter9\index.php" />
     <Compile Include="code\chapter9\user.php" />
     <Compile Include="code\chapter9\userclass.php" />
+    <Compile Include="code\classes\url-handler.php" />
     <Compile Include="code\includes\add-comment-text.php" />
     <Compile Include="code\includes\add-comment.php" />
     <Compile Include="code\includes\comments-control.php" />
@@ -214,6 +216,7 @@
     <Folder Include="code\images\" />
     <Folder Include="code\includes\" />
     <Folder Include="code\js\" />
+    <Folder Include="code\classes\" />
     <Folder Include="code\uploads\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />

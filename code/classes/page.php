@@ -1,16 +1,14 @@
 <?php
-require_once('../includes/headerclass.php');
-require_once('../includes/footerclass.php');
-require_once('../includes/menuclass.php');
-require_once('../includes/widgetsclass.php');
-require_once('../includes/contentclass.php');
+require_once('../classes/menuclass.php');
+require_once('../classes/widgetsclass.php');
+require_once('../classes/contentclass.php');
 
 abstract class Page {
     public function getHeader() {  
-        return new Header;
+        require_once ("../includes/header.php");
     }
     public function getFooter() {
-        return new Footer;
+        require_once ("../includes/footer.php");
     }
     public function getMenu() {
         return new Menu;
