@@ -1,6 +1,6 @@
 <?php
 
-abstract class Content{   
+ class Content{   
     public function addContent() {
         
     }

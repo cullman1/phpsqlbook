@@ -1,14 +1,14 @@
 <?php
-require_once('../classes/menuclass.php');
-require_once('../classes/widgetsclass.php');
-require_once('../classes/contentclass.php');
+require_once('../classes/menu.php');
+require_once('../classes/widgets.php');
+require_once('../classes/content.php');
 
-abstract class Page {
+class Page {
     public function getHeader() {  
-        require_once ("../includes/header.php");
+        require_once ("templates/header.php");
     }
     public function getFooter() {
-        require_once ("../includes/footer.php");
+        require_once ("templates/footer.php");
     }
     public function getMenu() {
         return new Menu;
