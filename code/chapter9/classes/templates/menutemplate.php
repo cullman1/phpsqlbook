@@ -1,6 +1,6 @@
-<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:900,700italic,400,400italic,700' rel='stylesheet' type='text/css'>
 <div style="width:980px; height:100px; display:block; background-color:white;">
-   <div style="margin-left:40px; font-size:48px; font-family:Glametrix Bold">endurance</div> 
+   <div style="margin-left:40px; font-size:48px; font-family:'Glametrix-Bold', 'Lato'">endurance</div> 
 </div>
 
 <ul class="mainnavbar">

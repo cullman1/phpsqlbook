@@ -3,12 +3,22 @@
 
 @font-face {
     font-family: 'Glametrix-Bold';
-    src:url('Glametrix-Bold.ttf.woff') format('woff'),
-        url('Glametrix-Bold.ttf.svg#Glametrix-Bold') format('svg'),
-        url('Glametrix-Bold.ttf.eot'),
-        url('Glametrix-Bold.ttf.eot?#iefix') format('embedded-opentype'); 
+    src:url('Glametrix-Bold.ttf.eot'),
+        url('Glametrix-Bold.ttf.woff') format('woff'),
+         url("PTF55F-webfont.ttf") format("truetype"),
+        url('Glametrix-Bold.ttf.svg#Glametrix-Bold') format('svg');
+
+   
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face{ 
+	font-family: 'PT Serif';
+	src:  url('PTF55F-webfont.eot'),
+	     url('PTF55F-webfont.woff') format('woff'),
+	     url('PTF55F-webfont.ttf') format('truetype'),
+	     url('PTF55F-webfont.svg#webfont') format('svg');
 }
 
     .mainnavbar, .navbar2		{

@@ -129,6 +129,7 @@
     <Compile Include="code\chapter8\storedproc2.php" />
     <Compile Include="code\chapter8\storedproc3.php" />
     <Compile Include="code\chapter9\chapter9.php" />
+    <Compile Include="code\chapter9\classes\templates\dummy-content.php" />
     <Compile Include="code\chapter9\classes\templates\footer.php" />
     <Compile Include="code\chapter9\classes\templates\header.php" />
     <Compile Include="code\chapter9\classes\templates\menustyle.php" />

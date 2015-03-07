@@ -26,5 +26,8 @@ $page->getHeader();
 $menu = $page->getMenu();
 $menu->getMenuStyle();
 $menu->getMenuTemplate();
+$registry->set('content', new Content());
+$content = $registry->get('content');
+$content->getContent();
 $page->getFooter();
 ?>

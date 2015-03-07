@@ -4,8 +4,8 @@
     public function addContent() {
         
     }
-    public function viewContent() {
-        
+    public function getContent() {
+        require_once("templates/dummy-content.php");
     }
     public function editContent() {
         
