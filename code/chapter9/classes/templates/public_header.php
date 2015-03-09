@@ -11,9 +11,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+       <link href="../../code/css/style.css" rel="stylesheet">
 
-
-    <script src="../js/bootstrap-wysiwyg.js"></script>
+    <script src="../../code/js/bootstrap-wysiwyg.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -30,5 +30,9 @@ background: black;
   </style>
   </head>
   
-  <body>
+  <body class="home">
+      <div class="container containerback">
       <div id="header" style="background-color:white;">
+          <div class="small_box2">
+ 
+    <div class="pad">

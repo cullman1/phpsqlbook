@@ -5,7 +5,7 @@
 
 <ul class="mainnavbar">
   <li style="border-left: none;">
-    <b >Home <img class="dropdown" width="8px " src="../images/dropdown_arrow.png"></img>
+    <b >Home <img class="dropdown" width="8px " src="../../code/images/dropdown_arrow.png"></img>
   </b>
     <ul class="subnavbar">
       <li>
@@ -19,7 +19,7 @@
 
   <li>
     <b>
-      Gallery <img class="dropdown" width="8px " src="../images/dropdown_arrow.png"></img>
+      Gallery <img class="dropdown" width="8px " src="../../code/images/dropdown_arrow.png"></img>
     </b>
     <ul class="subnavbar">
       <li>
@@ -29,7 +29,7 @@
     </ul>
   </li>
  <li>
-    <b>Speaking <img class="dropdown" width="8px " src="../images/dropdown_arrow.png"></img>
+    <b>Speaking <img class="dropdown" width="8px " src="../../code/images/dropdown_arrow.png"></img>
     </b>
     <ul class="subnavbar">
       <li style="border-bottom: 1px white solid;">
@@ -48,7 +48,7 @@
     
   </li>
   <li>
-    <b>Achievements <img class="dropdown" width="8px " src="../images/dropdown_arrow.png"></img>
+    <b>Achievements <img class="dropdown" width="8px " src="../../code/images/dropdown_arrow.png"></img>
     </b>
     <ul class="subnavbar">
       <li style="border-bottom: 1px white solid;">
@@ -59,7 +59,7 @@
   </li>
 
   <li>
-    <b>Consultancy <img class="dropdown" width="8px " src="../images/dropdown_arrow.png"></img>
+    <b>Consultancy <img class="dropdown" width="8px " src="../../code/images/dropdown_arrow.png"></img>
   </b>
     <ul class="subnavbar">
       <li>
@@ -71,7 +71,7 @@
     </ul>
     </li>
   <li>
-    <b>Merchandise <img class="dropdown" width="8px " src="../images/dropdown_arrow.png"></img>
+    <b>Merchandise <img class="dropdown" width="8px " src="../../code/images/dropdown_arrow.png"></img>
   </b>
 
 
@@ -86,7 +86,7 @@
   </li>
 
   <li>
-    <b>Events <img class="dropdown" width="8px " src="../images/dropdown_arrow.png"></img>
+    <b>Events <img class="dropdown" width="8px " src="../../code/images/dropdown_arrow.png"></img>
   </b>
     <ul class="subnavbar">
       <li>
@@ -103,10 +103,7 @@
     </ul>
   
   </li>
-
-
-  
-
-
-  
 </ul>
+<br />
+<br />
+<div class="clear"></div>

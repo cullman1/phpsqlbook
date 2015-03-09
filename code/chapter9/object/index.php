@@ -6,6 +6,7 @@ require_once('../classes/configuration.php');
 require_once('../classes/url-handler.php');
 require_once('../classes/page.php');
 
+//Registy create instance of
 $registry = Registry::instance();
 
 //Database
@@ -14,20 +15,22 @@ $db = $registry->get('configfile');
 $pdoString="mysql:host=".$db->getServerName().";dbname=".$db->getDatabaseName();
 $pdo = new PDO($pdoString, $db->getUserName(), $db->getPassword()); 
 $registry->set('pdo', $pdo);
+$dbHost =  $registry->get('pdo');
 
 //Url handling
 $registry->set('urlhandler', new UrlHandler());
+$urlhandler = $registry->get('urlhandler');
+$controller = $urlhandler->getController();
+$page = $urlhandler->getAction();
+$parameters = $urlhandler->getParameters();
 
 //Assemble Template
-
-$registry->set('page', new Page());
+$registry->set('page', new Page($controller,$page,$parameters, $dbHost));
 $page =  $registry->get('page');
-$page->getHeader();
+$page->getHeader($urlhandler->getController());
 $menu = $page->getMenu();
 $menu->getMenuStyle();
 $menu->getMenuTemplate();
-$registry->set('content', new Content());
-$content = $registry->get('content');
-$content->getContent();
-$page->getFooter();
+$page->getContent();
+$page->getFooter($urlhandler->getController());
 ?>

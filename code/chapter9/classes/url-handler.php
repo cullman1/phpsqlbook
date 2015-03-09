@@ -1,37 +1,56 @@
 <?php
 class UrlHandler {
-    private $array_parts;
-    private $query_parts;
-    public function __construct() {
+    private $parameters="";
+    public function __construct() { 
+            $this->parseUrl();
+    }
+    
+    public function parseUrl() {
+        $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
+        $url_parts = explode("/", $path, 3);
         
-    }
-    
-    public function getUrl() {  
-        $this->array_parts = explode("/",$_SERVER['REQUEST_URI']);     
-        return $this->array_parts;
-    }
-    
-    public function getQueryString() {  
-        $querystring_array = array();
-        $url_parts = explode("?",$_SERVER['REQUEST_URI']);
-        if (strlen($query_parts)>1)
+        $controller = $url_parts[0];
+        $action = $url_parts[1];
+        if(sizeof($url_parts)==3)
         {
-            $querystring = $url_parts[1];
-            $querystring_parts = explode("&", $querystring);
-            for ($i=0;$i<strlen($querystring_parts);$i++)
-            {
-                if (($i % 2)==0)
-                {
-                    $querystring_array[$querystring_parts[$i]] = $querystring_parts[$i+i];
-                }
-            }
+            $parameters = $url_parts[2];
         }
-        $this->query_parts = $querystring_array;
-        return $this->query_parts;
+        if (isset($controller)) {
+            $this->setController($controller);
+        }
+        if (isset($action)) {
+            $this->setAction($action);
+        }
+        if (!empty($parameters)) {
+            $this->setParameters(explode("/", $parameters));
+        }
     }
     
-    public function getId($querystring_array) { 
-        
+    public function setController($controller) {
+       // $controller = strtolower($controller) . "_controller";
+        $this->controller = $controller; 
+    }
+    
+    public function setAction($action) {
+        //if (method_exists($action, $this->controller)) {
+            $this->action = $action;
+        //}
+    }
+    
+    public function setParameters(array $parameters) {
+        $this->parameters = $parameters;   
+    }
+    
+    public function getController() {
+        return $this->controller; 
+    }
+    
+    public function getAction() {
+        return $this->action; 
+    }
+    
+    public function getParameters() {
+        return $this->parameters; 
     }
 }
 ?>
