@@ -1,14 +1,16 @@
 <?php
  class Content{   
      
-    public function __construct($page,$parameters,$pdo){
-        if(empty($parameters))
-        {
+    public function __construct($controller, $page,$parameters,$pdo){
+        switch ($controller) {
+        case "public": 
+            if(empty($parameters)) {
             $this->parseTemplate($this->getArticleList($pdo));
-        }
-        else
-        {
-            $this->parseTemplate($this->getArticleById($parameters, $pdo));
+            }
+            else {
+                $this->parseTemplate($this->getArticleById($parameters, $pdo));
+            }
+            break;
         }
      }
     
@@ -32,23 +34,16 @@
         $regex = '#{(.*?)}#';
         preg_match_all($regex, $string, $matches);
        
-       
-
-
         while($row = $recordset->fetch())
         {
             $template=$string;
             //Get out content of string, replace with $row
            foreach($matches[0] as $value)
-           {
-              
-                         
+           {           
                $replace= str_replace("{","", $value);
                $replace= str_replace("}","", $replace);
                $template = str_replace($value, $row[$replace], $template);  
-               
            }
-           
            echo $template;
         }
 

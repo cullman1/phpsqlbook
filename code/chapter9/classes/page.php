@@ -29,7 +29,7 @@ class Page {
         return new Widgets;
     } 
     public function getContent() {
-        return new Content($this->page,$this->parameters,$this->pdo);
+        return new Content($this->controller, $this->page,$this->parameters,$this->pdo);
     }
 }
 ?>
