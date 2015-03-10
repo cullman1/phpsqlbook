@@ -30,6 +30,7 @@
     <Folder Include="code\chapter4\" />
     <Folder Include="code\chapter9\classes\" />
     <Folder Include="code\chapter9\classes\templates\" />
+    <Folder Include="code\chapter9\images\" />
     <Folder Include="code\chapter9\object\" />
     <Folder Include="code\css\" />
     <Folder Include="code\images\" />
@@ -96,6 +97,7 @@
     <Compile Include="code\chapter10\facebookuserauthentication.php" />
     <Compile Include="code\chapter9\classes\configuration.php" />
     <Compile Include="code\chapter9\classes\content.php" />
+    <Compile Include="code\chapter9\classes\search.php" />
     <Compile Include="code\chapter9\classes\menu.php" />
     <Compile Include="code\chapter9\classes\page.php" />
     <Compile Include="code\chapter9\classes\registry.php" />
@@ -295,6 +297,7 @@
     <Content Include="code\chapter9\classes\templates\PTF55F-webfont.svg" />
     <Content Include="code\chapter9\classes\templates\PTF55F-webfont.ttf" />
     <Content Include="code\chapter9\classes\templates\PTF55F-webfont.woff" />
+    <Content Include="code\chapter9\images\dropdown_arrow.png" />
     <Content Include="code\css\admin.css" />
     <Content Include="code\css\bootstrap.min.css" />
     <Content Include="code\css\style.css" />

@@ -31,7 +31,7 @@
     
     public function parseTemplate($recordset) {
         $string = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/code/chapter9/classes/templates/article-content.php");
-        $regex = '#{(.*?)}#';
+        $regex = '#{{(.*?)}}#';
         preg_match_all($regex, $string, $matches);
        
         while($row = $recordset->fetch())
@@ -40,8 +40,8 @@
             //Get out content of string, replace with $row
            foreach($matches[0] as $value)
            {           
-               $replace= str_replace("{","", $value);
-               $replace= str_replace("}","", $replace);
+               $replace= str_replace("{{","", $value);
+               $replace= str_replace("}}","", $replace);
                $template = str_replace($value, $row[$replace], $template);  
            }
            echo $template;

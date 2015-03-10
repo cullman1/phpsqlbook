@@ -1,5 +1,4 @@
 <?php
-require_once('../classes/menu.php');
 require_once('../classes/widgets.php');
 require_once('../classes/content.php');
 
@@ -22,9 +21,7 @@ class Page {
     public function getFooter($page) {
         require_once ("templates/".$this->controller."_footer.php");
     }
-    public function getMenu() {
-        return new Menu;
-    }
+    
     public function getWidgets() {
         return new Widgets;
     } 
