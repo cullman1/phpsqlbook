@@ -1,9 +1,13 @@
 <?php
 class UrlHandler {
     private $parameters="";
-    public function __construct() { 
+    private $registry;
+    private $pdo;
+    public function __construct($pdo) { 
+            $this->registry = Registry::instance();
+            $this->pdo = $pdo;
             $this->parseUrl();
-    }
+    }       
     
     public function parseUrl() {
         $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
@@ -52,5 +56,7 @@ class UrlHandler {
     public function getParameters() {
         return $this->parameters; 
     }
+    
+   
 }
 ?>
