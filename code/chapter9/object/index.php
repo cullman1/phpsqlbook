@@ -5,7 +5,7 @@ require_once('../classes/registry.php');
 require_once('../classes/configuration.php');
 require_once('../classes/url-handler.php');
 require_once('../classes/db-handler.php');
-require_once('../classes/layout.php');
+require_once('../classes/controller.php');
 
 //Registy create instance of
 $registry = Registry::instance();
@@ -15,6 +15,7 @@ $registry->set('configfile', new Configuration());
 $db = $registry->get('configfile');
 $pdoString="mysql:host=".$db->getServerName().";dbname=".$db->getDatabaseName();
 $pdo = new PDO($pdoString, $db->getUserName(), $db->getPassword()); 
+$pdo->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true);
 $registry->set('pdo', $pdo);
 $dbHost =  $registry->get('pdo');
 
@@ -26,11 +27,11 @@ $page = $urlhandler->getAction();
 $parameters = $urlhandler->getParameters();
 
 //Assemble Template
-$registry->set('Layout', new Layout(array('Search'), $controller, $page, $parameters, $dbHost));
-$layout = $registry->get('Layout');
-$layout->getPart("header");
-//$layout->getSearch();
-$layout->getPart("menu");
-$layout->getContent();
-$layout->getPart("footer");
+$registry->set('Controller', new Controller(array('Search'), $controller, $page, $parameters, $dbHost));
+$controller = $registry->get('Controller');
+$controller->getPart("header");
+//$controller->getSearch();
+$controller->getPart("menu");
+$controller->getContent();
+$controller->getPart("footer");
 ?>
