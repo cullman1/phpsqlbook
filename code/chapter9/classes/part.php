@@ -1,14 +1,15 @@
 <?php
-class Search {
-    private $pdo;
+class Part {
+    private $part;
     
-    public function __construct($pdo) {   
-        $this->pdo = $pdo;
-      
+    public function __construct($part) {   
+        $this->part = $part;
+        
     }
     
-    public function getSearchTemplate() {
-        require_once ("templates/searchtemplate.php");
+    public function getTemplate()
+    {
+        require_once ("templates/".$this->controller."_".$this->part.".php");
     }
     
     public function getSearchResults($dbHost) {

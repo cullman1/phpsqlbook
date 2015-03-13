@@ -4,7 +4,6 @@ ini_set('display_errors', TRUE);
 require_once('../classes/registry.php');
 require_once('../classes/configuration.php');
 require_once('../classes/url-handler.php');
-require_once('../classes/db-handler.php');
 require_once('../classes/controller.php');
 
 //Registy create instance of
@@ -23,15 +22,11 @@ $dbHost =  $registry->get('pdo');
 $registry->set('urlhandler', new UrlHandler($dbHost));
 $urlhandler = $registry->get('urlhandler');
 $controller = $urlhandler->getController();
-$page = $urlhandler->getAction();
+$action = $urlhandler->getAction();
 $parameters = $urlhandler->getParameters();
 
 //Assemble Template
-$registry->set('Controller', new Controller(array('Search'), $controller, $page, $parameters, $dbHost));
+$registry->set('Controller', new Controller(array('Search'), $controller, $action, $parameters, $dbHost));
 $controller = $registry->get('Controller');
-$controller->getPart("header");
-//$controller->getSearch();
-$controller->getPart("menu");
-$controller->getContent();
-$controller->getPart("footer");
+$controller->assemblePage(array("header","search","menu","content","footer"));
 ?>
