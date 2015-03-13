@@ -20,7 +20,6 @@ class UrlHandler {
         if(sizeof($url_parts)==3) {
             $parameters = $url_parts[2];
         }
-        
         if (isset($controller)) {
             $this->setController($controller);
         }
@@ -55,7 +54,5 @@ class UrlHandler {
     public function getParameters() {
         return $this->parameters; 
     }
-    
-   
 }
 ?>

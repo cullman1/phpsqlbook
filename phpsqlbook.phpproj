@@ -133,6 +133,7 @@
     <Compile Include="code\chapter9\classes\controller.php" />
     <Compile Include="code\chapter9\classes\layout-template.php" />
     <Compile Include="code\chapter9\classes\part.php" />
+    <Compile Include="code\chapter9\classes\templates\article_content.php" />
     <Compile Include="code\chapter9\classes\templates\search_content.php" />
     <Compile Include="code\chapter9\classes\templates\article_footer.php" />
     <Compile Include="code\chapter9\classes\templates\article_header.php" />

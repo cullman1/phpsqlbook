@@ -1,5 +1,4 @@
 <?php
-require_once('../classes/registry.php');
 
 class LayoutTemplate {
 
@@ -7,8 +6,7 @@ class LayoutTemplate {
         //Removes modifier for time being
         if(isset($category_modifier)) {
             $category_modifier = "";
-        }
-            
+        } 
         $string = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/code/chapter9/classes/templates/".$category_modifier.$controller."_content.php");
         $regex = '#{{(.*?)}}#';
         preg_match_all($regex, $string, $matches);
