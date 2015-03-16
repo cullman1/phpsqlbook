@@ -38,13 +38,13 @@ if (isset($_REQUEST["search"])) {
   $select_articles_result->setFetchMode(PDO::FETCH_BOTH);   
 
   while($get_article = $select_articles_result ->fetch()) { ?>
-  <div id="article">
+  <div id="comments_on_article">
     <h3><?php echo $get_article['title']; ?></h3>
     <p><i><?php echo date("F j, Y, g:i a", strtotime($get_article['date_posted'])); ?></i></p>
     <p><?php echo substr($get_article['content'], 0, 100); ?>...</p>
   </div>
-  <?php 
-  }
+  <?php }
+}
 if ($total > $count) {
   echo '<div class="pagination">';
   for( $i = 0; $i < $total_pages; $i++ ) { // Pagination links
@@ -56,6 +56,5 @@ if ($total > $count) {
     }
   }
   echo '</div>';
-}
 }
 ?>

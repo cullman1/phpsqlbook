@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Register</title></head>
+  <body>
+
+    <form action="register.php" method="post">
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name" value="<?php echo $name ?>">
+
+      <label for="age">Age: </label>
+      <input type="number" name="age" id="age" value="<?php echo $age ?>">
+
+      <label for="email">Email: </label>
+      <input type="email" name="email" id="email" value="<?php echo $email ?>">
+
+      <label for="url">Website: </label>
+      <input type="url" name="url" id="url" value="<?php echo $url ?>">
+
+      <label for="age">Favorite HTML Tag: </label>
+      <input type="text" name="html" id="html" value="<?php echo $html ?>">
+
+      <input type="submit" name="submit">
+    </form>
+
+  </body>
+</html>

@@ -14,6 +14,15 @@ include '../includes/header-chapters.php' ?>
                 <br />
                         <li class="blox"><a href="/code/chapter4/two_page_form_amended.php">Two Page Form Example</a></li>
                 <br />
+                         <li class="blox"><a href="/code/chapter4/pagination.php">Pagination Example</a></li>
+                <br />
+                         <li class="blox"><a href="/code/chapter4/sanitize.php">Sanitize HTML input Example</a></li>
+                <br />
+                         <li class="blox"><a href="/code/chapter4/validate.php">Validation Example</a></li>
+                <br />
+
+                           <li class="blox"><a href="/code/chapter4/register.php">Regex Example</a></li>
+                <br />
                 </ul>
        </div>
    </div>

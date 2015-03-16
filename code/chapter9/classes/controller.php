@@ -32,7 +32,13 @@ class Controller {
     
     public function getPart($part)
     {
-        require_once ("templates/".$this->controller."_".$part.".php");
+        $controller_modifier = $this->controller."_";
+        if ($part=="menu" || $part=="search")
+        {
+            $controller_modifier = "";
+        }
+        
+        require_once ("templates/".$controller_modifier.$part.".php");
     }
         
     public function getContent() {
@@ -49,26 +55,27 @@ class Controller {
                     while ($row = $recordset->fetch()) {
                         $category_modifier = $row["category.category_name"];
                     }
-                    $layouttemplate->parseTemplate($dbhandler->getArticleList($this->pdo),  $category_modifier, $this->controller);
+                    $layouttemplate->parseTemplate($dbhandler->getArticleList($this->pdo),  $category_modifier, $this->controller, $this->pdo);
+                  
                 }
                 else if(is_numeric($this->parameters[0])) {
                     $recordset = $dbhandler->getArticleById($this->parameters, $this->pdo);
                     while ($row = $recordset->fetch()) {
                         $category_modifier = $row["category.category_name"];
                     }
-                    $layouttemplate->parseTemplate($dbhandler->getArticleById($this->parameters, $this->pdo), $category_modifier, $this->controller);
+                    $layouttemplate->parseTemplate($dbhandler->getArticleById($this->parameters, $this->pdo), $category_modifier, $this->controller, $this->pdo);
                 }
                 else {
                     $recordset = $dbhandler->getArticleByName($this->parameters, $this->pdo);
                     while ($row = $recordset->fetch()) {
                         $category_modifier = $row["category.category_name"];
                     }
-                    $layouttemplate->parseTemplate($dbhandler->getArticleByName($this->parameters, $this->pdo), $category_modifier, $this->controller);
+                    $layouttemplate->parseTemplate($dbhandler->getArticleByName($this->parameters, $this->pdo), $category_modifier, $this->controller, $this->pdo);
                 }
                 break;
             case "search":
                 $recordset = $dbhandler->getSearchResults($this->pdo);
-                $layouttemplate->parseTemplate($dbhandler->getSearchResults($this->pdo), "",$this->controller);
+                $layouttemplate->parseTemplate($dbhandler->getSearchResults($this->pdo), "",$this->controller, $this->pdo);
                 $this->controller = "article";
                 break;
         } 

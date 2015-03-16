@@ -13,11 +13,15 @@ class UrlHandler {
         $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
         $url_parts = explode("/", $path, 3);
         $controller = $url_parts[0];
-        $action = $url_parts[1];
+        
         if(sizeof($url_parts)==1) {
             $action = "view";
         }
+        if(sizeof($url_parts)==2) {
+            $action = $url_parts[1];
+        }
         if(sizeof($url_parts)==3) {
+            $action = $url_parts[1];
             $parameters = $url_parts[2];
         }
         if (isset($controller)) {
