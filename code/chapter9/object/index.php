@@ -28,5 +28,5 @@ $parameters = $urlhandler->getParameters();
 //Assemble Template
 $registry->set('Controller', new Controller(array('Search'), $controller, $action, $parameters, $dbHost));
 $controller = $registry->get('Controller');
-$controller->assemblePage(array("header","search","menu","content","footer"));
+
 ?>

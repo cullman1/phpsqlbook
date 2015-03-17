@@ -7,7 +7,7 @@ class Controller {
     private $registry;
     private $controller;
     private $action;
-    public function __construct(array $widgets, $controller, $action, $parameters, $pdo) {
+    public function __construct($controller, $action, $parameters, $pdo) {
         $this->registry = Registry::instance();
         $this->controller=$controller;
         $this->action=$action;
@@ -31,6 +31,17 @@ class Controller {
     }
     
     public function getPart($part)
+    {
+        $controller_modifier = $this->controller."_";
+        if ($part=="menu" || $part=="search")
+        {
+            $controller_modifier = "";
+        }
+        
+        require_once ("templates/".$controller_modifier.$part.".php");
+    }
+    
+    public function getArticle($part)
     {
         $controller_modifier = $this->controller."_";
         if ($part=="menu" || $part=="search")
