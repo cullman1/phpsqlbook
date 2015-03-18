@@ -1,10 +1,17 @@
-
+  <div class="accordion" id="accordion2">
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{comments.article_id}}">
+            <img src="../../code/images/comments-xl.png" /> 
+            Comments: {{.TotalComments}}
+          </a>
+        </div>
         <div id='collapse{{comments.article_id}}' class='accordion-body collapse in'>
           <div class="accordion-inner">
             <div id="commentbox">
                 {{comments.comment}}
                 <br/> 
-                    <span class='small_name'><i> {{users.full_name}}</i></span> - <span class='small_name'> {{comments.comment_date}}</span> 
+                    <span class='small_name'><i> {{user.full_name}}</i></span> - <span class='small_name'> {{comments.comment_date}}</span> 
              </div> 
                 <hr/> 
             </div>
@@ -21,4 +28,6 @@
                   </div>
                 </form>
           </div>
+          </div>
+      </div>
     
