@@ -21,12 +21,5 @@ $dbHost =  $registry->get('pdo');
 //Url handling
 $registry->set('urlhandler', new UrlHandler($dbHost));
 $urlhandler = $registry->get('urlhandler');
-$controller = $urlhandler->getController();
-$action = $urlhandler->getAction();
-$parameters = $urlhandler->getParameters();
-
-//Assemble Template
-$registry->set('Controller', new Controller(array('Search'), $controller, $action, $parameters, $dbHost));
-$controller = $registry->get('Controller');
-
+$urlhandler->assemblePage();
 ?>

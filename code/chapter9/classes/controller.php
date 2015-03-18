@@ -7,22 +7,30 @@ class Controller {
     private $registry;
     private $controller;
     private $action;
+    private $page_structure;
+    
     public function __construct($controller, $action, $parameters, $pdo) {
         $this->registry = Registry::instance();
         $this->controller=$controller;
         $this->action=$action;
         $this->parameters=$parameters;
         $this->pdo = $pdo;
+        $this->page_structure = array("header","search", "menu","article","footer");
+        $this->content_structure = array("content","comments","like");
     }
     
-    public function assemblePage(array $parts)
+    public function assemblePage()
     {
-        foreach($parts as $part) {
-            if ($part == "content") {
+        if (isset($_GET["search"])) {
+            $this->controller="search"; 
+        }
+        foreach($this->page_structure as $part) {
+         
+            if ($part == "article") {
                 if (isset($_GET["search"])) {
                     $this->controller="search"; 
                 }
-                $this->getContent();   
+                $this->getArticle($part);   
             }
             else {
                  $this->getPart($part);     
@@ -37,19 +45,12 @@ class Controller {
         {
             $controller_modifier = "";
         }
-        
         require_once ("templates/".$controller_modifier.$part.".php");
     }
     
     public function getArticle($part)
     {
-        $controller_modifier = $this->controller."_";
-        if ($part=="menu" || $part=="search")
-        {
-            $controller_modifier = "";
-        }
-        
-        require_once ("templates/".$controller_modifier.$part.".php");
+        $this->getContent();
     }
         
     public function getContent() {
@@ -61,7 +62,7 @@ class Controller {
         $category_modifier ="";
         switch ($this->controller) {
             case "article": 
-                if(!(isset($this->parameters[0]))) {
+                if($this->parameters[0]=="") {
                     $recordset = $dbhandler->getArticleList($this->pdo);
                     while ($row = $recordset->fetch()) {
                         $category_modifier = $row["category.category_name"];
