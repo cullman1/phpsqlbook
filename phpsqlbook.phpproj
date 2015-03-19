@@ -134,7 +134,6 @@
     <Compile Include="code\chapter9\classes\layout-template.php" />
     <Compile Include="code\chapter9\classes\templates\article_content.php" />
     <Compile Include="code\chapter9\classes\templates\comments.php" />
-    <Compile Include="code\chapter9\classes\templates\comments_content.php" />
     <Compile Include="code\chapter9\classes\templates\menu.php" />
     <Compile Include="code\chapter9\classes\templates\pagination_content.php" />
     <Compile Include="code\chapter9\classes\templates\search.php" />
@@ -161,9 +160,7 @@
     <Compile Include="code\includes\header-register.php" />
     <Compile Include="code\includes\header-site.php" />
     <Compile Include="code\includes\header.php" />
-    <Compile Include="code\includes\content.php" />
     <Compile Include="code\includes\login-variables.php" />
-    <Compile Include="code\includes\page.php" />
     <Compile Include="code\includes\reply-box-parent.php" />
     <Compile Include="code\includes\rich-text-control.php" />
     <Compile Include="code\index.php" />
@@ -188,8 +185,6 @@
     <Compile Include="includes\reply-box-parent.php" />
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
-    <Compile Include="login\emailcheck2.php" />
-    <Compile Include="login\index.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
     <Compile Include="login\login-admin.php" />

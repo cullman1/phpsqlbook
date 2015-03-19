@@ -76,8 +76,7 @@ class LayoutTemplate {
                     while ($row = $recordset->fetch()) {
                         $category_modifier = $row["category.category_name"];
                     }
-                    $this->parseTemplate($dbhandler->getArticleList($this->pdo),  $category_modifier, $this->controller, $this->pdo);
-                    
+                    $this->parseTemplate($dbhandler->getArticleList($this->pdo),  $category_modifier, $this->controller, $this->pdo);  
                 }
                 else if(is_numeric($this->parameters[0])) {
                     $recordset = $dbhandler->getArticleById($this->parameters, $this->pdo);
@@ -94,8 +93,7 @@ class LayoutTemplate {
                     $this->parseTemplate($dbhandler->getArticleByName($this->parameters, $this->pdo), $category_modifier, $this->controller, $this->pdo);
                 }
                 break;
-            case "search":
-           
+            case "search":   
                 $recordset = $dbhandler->getSearchResults($this->pdo);
                 $this->parseTemplate($dbhandler->getSearchResults($this->pdo), "",$this->controller, $this->pdo);
                 $this->controller = "article";
@@ -109,8 +107,7 @@ class LayoutTemplate {
         $regex = '#{{(.*?)}}#';
         preg_match_all($regex, $string, $matches);
         while($row = $recordset->fetch())
-        {
-            
+        {  
             $template=$string;
             //Get out content of string, replace with $row
             foreach($matches[0] as $value) {           

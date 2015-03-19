@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['authenticated']))
+if (!isset($_SESSION["user2"])) 
 {
 	  header('Location:../login/logon.php');
 }

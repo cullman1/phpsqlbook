@@ -56,10 +56,10 @@ $template = $select_template_row["template"];
        <div style="z-index: 100;">
           <ul class="nav navbar-nav navbar-right floatright">
             <?php
-   
-           if (isset($_SESSION["user"])) 
+   session_start();
+           if (isset($_SESSION["user2"])) 
             { 
-                $so = $_SESSION["user"];
+                $so = $_SESSION["user2"];
                 $user_object = unserialize($so); 
            }?>
             <li>Hello <?php echo $user_object->getFullName(); ?>&nbsp;<a href="../chapter6/logout.php">Logout</a></li>

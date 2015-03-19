@@ -15,22 +15,26 @@ class Controller {
         $this->action=$action;
         $this->parameters=$parameters;
         $this->pdo = $pdo;
-        $this->page_structure = array("header","search", "menu","article","footer");
-        $this->content_structure = array("content","comments","like");
+        switch( $this->controller)
+        {
+            case "article": 
+                $this->page_structure = array("header","search", "menu","article","footer");
+                $this->content_structure = array("content","comments","like");
+                break;
+            case "admin":
+                $this->page_structure = array("header", "menu","article","footer");
+                $this->content_structure = array("content");
+                break;       
+        }
     }
     
     public function assemblePage()
-    {
-       
-        
-       
+    {     
         foreach($this->page_structure as $part) {
-         
             if ($part == "article") {
                 if (isset($_GET["search"])) {
                     $part="search"; 
-                    $this->controller = "search";
-                  
+                    $this->controller = "search";     
                 }
                 $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
                 $layouttemplate = $this->registry->get('LayoutTemplate');
@@ -43,7 +47,5 @@ class Controller {
             }
         }
     }
-    
-    
 }
 ?>

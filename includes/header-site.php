@@ -1,6 +1,6 @@
 <?php 
 
- 
+session_start();
 /* Db Details */
 require_once('../includes/db_config.php');
 //require_once('../classes/FileSessionHandler.php');
@@ -70,14 +70,17 @@ $template = $select_template_row["template"];
        <div style="z-index: 100;">
           <ul class="nav navbar-nav navbar-right floatright">
             <?php
-           
+  
            if (isset($_SESSION["user2"]))
             {       
+           
                 $so = $_SESSION["user2"];
                 $user_object = unserialize($so); 
            ?>
             <li>Hello <?php echo $user_object->getFullName(); ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
- <?php } else { ?>
+ <?php } else {
+                 ?>
+             
     <li><a href="../login/login-user.php">Login</a><a href="../login/register4.php">Register</a></li>
   
     <?php } ?> 

@@ -22,7 +22,6 @@ if(isset($_REQUEST['password']))
             $s =serialize($user_object);
             
             $_SESSION["user2"] = $s;
-         
             if (isset($_REQUEST["page"])) {
                if ($_REQUEST["page"]=="pages") {
                     header('Location:../admin/pages.php');
