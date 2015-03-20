@@ -21,5 +21,5 @@ $dbHost =  $registry->get('pdo');
 //Url handling
 $registry->set('urlhandler', new UrlHandler($dbHost));
 $urlhandler = $registry->get('urlhandler');
-$urlhandler->assemblePage();
+$urlhandler->routeRequest();
 ?>

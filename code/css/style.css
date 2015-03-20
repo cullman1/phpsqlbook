@@ -388,3 +388,10 @@ color: gray;}
 				
 .mainnavbar li ul li a:hover, .navbar2 li ul li a:hover	{background-color: #366b82;height:25px; border-left: 1px solid #dddddd; border-right: 1px solid #dddddd;}
 
+label {
+
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}

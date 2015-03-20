@@ -74,6 +74,26 @@
         return $select_comments_result;
     }
     
+    public function getAuthorName($pdo, $article_id ) {
+   
+        
+        $select_singlearticle_sql = "select full_name FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id='".$article_id."'";
+        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
+        $select_singlearticle_result->execute();
+        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
+        return $select_singlearticle_result;
+    }
+    
+    public function getLikesTotal($pdo, $article_id) {
+        
+        
+        $select_singlearticle_sql = "select count(like_id) as likes, article_id, user_id FROM article_like where article_id='".$article_id."'";
+        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
+        $select_singlearticle_result->execute();
+        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
+        return $select_singlearticle_result;
+    }
+    
 }
 
 

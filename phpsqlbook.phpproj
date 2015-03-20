@@ -133,6 +133,9 @@
     <Compile Include="code\chapter9\classes\controller.php" />
     <Compile Include="code\chapter9\classes\layout-template.php" />
     <Compile Include="code\chapter9\classes\templates\article_content.php" />
+    <Compile Include="code\chapter9\classes\templates\author.php" />
+    <Compile Include="code\chapter9\classes\templates\login_bar.php" />
+    <Compile Include="code\chapter9\classes\templates\like.php" />
     <Compile Include="code\chapter9\classes\templates\comments.php" />
     <Compile Include="code\chapter9\classes\templates\menu.php" />
     <Compile Include="code\chapter9\classes\templates\pagination_content.php" />
@@ -163,6 +166,8 @@
     <Compile Include="code\includes\login-variables.php" />
     <Compile Include="code\includes\reply-box-parent.php" />
     <Compile Include="code\includes\rich-text-control.php" />
+    <Compile Include="code\includes\submit-like.php" />
+    <Compile Include="code\includes\table.php" />
     <Compile Include="code\index.php" />
     <Compile Include="code\login-variables.php" />
     <Compile Include="code\templates\menu.template.php" />

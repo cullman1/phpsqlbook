@@ -42,9 +42,10 @@ class UrlHandler {
         if (isset($parameters)) {
             $this->setParameters(explode("/", $parameters));
         }
+        
     }
     
-    public function assemblePage() {
+    public function routeRequest() {
         $this->registry->set('Controller', new Controller($this->controller, $this->action, $this->parameters, $this->pdo));
         $control = $this->registry->get('Controller');   
         $control->assemblePage();
