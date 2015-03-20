@@ -149,9 +149,12 @@ class LayoutTemplate {
         $string3= str_replace("]","", $string2);
         $header_template= substr($string3, 0, $opening_tag);
         $remain = $closing_tag - $opening_tag;
-        $subset_template = substr($string3, $opening_tag+1, $remain-9);
+    
+        $subset_template2 = array();
         $count=0;
+        
         while ($row = $recordset->fetch()) {  
+            $subset_template = substr($string3, $opening_tag+1, $remain-9);
             //header 
             if ($count==0) {
                 //Get out content of string, replace with $row
@@ -163,17 +166,25 @@ class LayoutTemplate {
                 echo $header_template;
             } 
             //content
+         
             preg_match_all($regex, $subset_template, $inner_matches);
             foreach($inner_matches[0] as $value) {   
                 $replace= str_replace("{{","", $value);
                 $replace= str_replace("}}","", $replace);
-                $subset_template = str_replace($value, $row[$replace], $subset_template);  
-                
+                //echo "Value: " . $value . " Row Replace: ". $row[$replace] . "<br/>";
+                $subset_template = str_replace($value, $row[$replace], $subset_template);    
+                $subset_template2[$count] = $subset_template;
             }
-            echo $subset_template;  
+   
+
             $count++;
         }
-        echo "</div></div>";
+        for ($i=0;$i<$count;$i++)
+        {
+            echo $subset_template2[$i];
+        }
+        
+        echo "</div></div></div>";
     }
 }
 ?>
