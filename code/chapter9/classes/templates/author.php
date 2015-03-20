@@ -2,7 +2,7 @@
     <div class="accordion-group">
        
 
-                <span> Written by: <?php echo $_REQUEST["name"]; ?> users like this article</span>   
+                <span style="margin-left:15px;"> Written by: <?php echo $_REQUEST["name"]; ?> </span>   
                 
         
    </div>

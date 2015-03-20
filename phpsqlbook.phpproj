@@ -143,6 +143,7 @@
     <Compile Include="code\chapter9\classes\templates\search_content.php" />
     <Compile Include="code\chapter9\classes\templates\article_footer.php" />
     <Compile Include="code\chapter9\classes\templates\article_header.php" />
+    <Compile Include="code\chapter9\classes\user.php" />
     <Compile Include="code\chapter9\FileSessionHandler.php" />
     <Compile Include="code\chapter9\forgotten-password-email.php" />
     <Compile Include="code\chapter9\object\index.php" />

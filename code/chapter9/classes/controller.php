@@ -23,7 +23,7 @@ class Controller {
         {
             case "article": 
                 $this->page_structure = array("header","search", "menu","article","footer");
-                $this->content_structure = array("content", "like", "comments");
+                $this->content_structure = array("content", "author", "like", "comments");
                 break;
             case "admin":
                 $this->page_structure = array("header", "menu","article","footer");

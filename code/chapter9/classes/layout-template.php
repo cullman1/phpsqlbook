@@ -63,6 +63,14 @@ class LayoutTemplate {
                 $_REQUEST["article_id"]=$param[0];
                 $_REQUEST["likes"]=0;
             }
+            if (isset($auth))
+            {
+                $_REQUEST["user_id"] = $auth;
+            }
+            else
+            {
+                $_REQUEST["user_id"] = 0;
+            }
             break;
          case "author":
             $controller_modifier = "";
