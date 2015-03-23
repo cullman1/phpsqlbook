@@ -9,7 +9,7 @@ class User {
         $this->fullName = $fullName;
         $this->emailAddress = $emailAddress;
         $this->authenticated = $authenticated;
-        $this->role = $role;
+        //$this->role = $role;
     }
     
     public function getFullName() {

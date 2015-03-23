@@ -1,21 +1,42 @@
 <?php
 class User {
-    private $fullname;
-    private $emailAddress;								           
-    private $user_id; 
-    
-    function __construct($fullName, $emailAddress) {
-        $this->fullname = $fullName;
+    private $fullName;
+    private $emailAddress;
+    private $authenticated;
+    private $role;
+
+    function __construct($fullName, $emailAddress, $authenticated) {
+        $this->fullName = $fullName;
         $this->emailAddress = $emailAddress;
+        $this->authenticated = $authenticated;
+        //$this->role = $role;
     }
     
-    function getFullname()
-    {
-        return $this->fullname;
+    public function getFullName() {
+        return $this->fullName;
     }
     
-    public function setFullname($name) {
-        $this->fullname = $name;
+    public function getEmailAddress() {
+        return $this->emailAddress;
+    }
+    
+    public function getAuthenticated() {
+        return $this->authenticated;
+    }
+    function getRole() {
+        return $this->role;
+    }
+
+    public function setFullName($name) {
+        $this->fullName = $name;
+    }
+    
+    public function setEmailAddress($email) {
+        $this->emailAddress = $email;
+    }
+    
+    public function setAuthenticated($authenticate) {
+        $this->authenticated = $authenticate;
     }
 }
 ?>

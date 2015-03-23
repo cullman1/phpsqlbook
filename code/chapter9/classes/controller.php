@@ -39,7 +39,11 @@ class Controller {
                 }
                 $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
                 $layouttemplate = $this->registry->get('LayoutTemplate');
-                $layouttemplate->getArticle($part, $this->content_structure);   
+                if ($this->parameters[0]!="") {
+                    $layouttemplate->getArticle($part, $this->content_structure, "single" );   
+                } else {
+                    $layouttemplate->getArticle($part, $this->content_structure, "multiple" );  
+                }
             }
             else {
                 $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  

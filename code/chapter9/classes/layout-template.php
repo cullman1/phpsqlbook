@@ -15,20 +15,38 @@ class LayoutTemplate {
         $this->registry->set('DbHandler', new DbHandler($this->pdo));  
     }
     
-    public function getArticle($part, $content_structure)
+    public function getArticle($part, $content_structure, $multiplesingle)
     {
-        $check_comments = false;
-        if (in_array("comments",$content_structure)) {
-            $check_comments = true;
-        }
-        foreach ($content_structure as $content_part) {
-            if ($content_part == "content") {
-                $this->getContent($check_comments);
+        $article_ids = array();
+        if ($multiplesingle=="multiple") {
+            $dbhandler = $this->registry->get('DbHandler');
+            $recordset = $dbhandler->getArticleList($this->pdo);   
+            
+            $count=0;
+            while ($row=$recordset->fetch()) {
+                $article_ids[$count]=$row["article.article_id"];
+                $count++;
             }
-            else {
-                $this->getPart($content_part, $this->parameters);
+        } else {
+            $article_ids[0]=$this->parameters[0];
+        }
+           
+        for($i=0;$i<sizeof($article_ids);$i++) {
+            foreach ($content_structure as $content_part) {
+                if ($content_part == "content") {
+                    $this->getContent($article_ids[$i]);
+                }
+                else {
+                    if ($this->parameters[0]=="" ||is_numeric($this->parameters[0])) {
+                        $this->getPart($content_part, $article_ids[$i]);
+                    }
+                    else {
+                        $this->getPart($content_part, $this->parameters[0]);
+                    }
+                }
             }
         }
+        
     }
     
     public function getPart($part, $param="")
@@ -48,35 +66,33 @@ class LayoutTemplate {
          case "comments":
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');
-            $recordset2 = $dbhandler->getArticleComments($this->pdo, $param[0]);   
+            $recordset2 = $dbhandler->getArticleComments($this->pdo, $param);   
             $this->writeComments($recordset2);
             break;
          case "like":
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');        
-            $recordset2 = $dbhandler->getLikesTotal($this->pdo, $param[0]);   
+            $recordset2 = $dbhandler->getLikesTotal($this->pdo, $param);   
             if ($row = $recordset2->fetch()) {
                 $_REQUEST["article_id"]=$row["article_like.article_id"];
                 $_REQUEST["likes"]=$row[".likes"];
             }
             else {
-                $_REQUEST["article_id"]=$param[0];
+                $_REQUEST["article_id"]=$param;
                 $_REQUEST["likes"]=0;
             }
-            if (isset($auth))
-            {
+            if (isset($auth)) {
                 $_REQUEST["user_id"] = $auth;
             }
-            else
-            {
+            else {
                 $_REQUEST["user_id"] = 0;
             }
             break;
          case "author":
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');
-            $recordset2 = $dbhandler->getAuthorName($this->pdo, $param[0]);   
-            if ($row = $recordset2->fetch()) {
+            $recordset2 = $dbhandler->getAuthorName($this->pdo, $param);   
+            while ($row = $recordset2->fetch()) {
                 $_REQUEST["name"]=$row["user.full_name"];
             }
              
@@ -87,33 +103,15 @@ class LayoutTemplate {
         }
     }
     
-    public function getContent($check_comments) {   
+    public function getContent($article_id) { 
+        $category_modifier="";
         $dbhandler = $this->registry->get('DbHandler');
-        $category_modifier ="";
         switch ($this->controller) {
             case "article": 
-                if($this->parameters[0]=="") {
-                    $recordset = $dbhandler->getArticleList($this->pdo);
-                    while ($row = $recordset->fetch()) {
-                        $category_modifier = $row["category.category_name"];
-                        $this->parseTemplate($dbhandler->getArticleById($row["article.article_id"], $this->pdo),  $category_modifier, $this->controller, $this->pdo);               
-                        if ($check_comments==true) {
-                            $this->getPart("comments",$row["article.article_id"]);
-                        }
-                    } 
-                }
-                else if(is_numeric($this->parameters[0])) {
-                    $recordset = $dbhandler->getArticleById($this->parameters, $this->pdo);
-                    while ($row = $recordset->fetch()) {
-                        $category_modifier = $row["category.category_name"];
-                    }
-                    $this->parseTemplate($dbhandler->getArticleById($this->parameters, $this->pdo), $category_modifier, $this->controller, $this->pdo);
+                if(is_numeric($this->parameters[0]) || $this->parameters[0]=="") {
+                    $this->parseTemplate($dbhandler->getArticleById($article_id, $this->pdo), $category_modifier, $this->controller, $this->pdo);
                 }
                 else {
-                    $recordset = $dbhandler->getArticleByName($this->parameters, $this->pdo);
-                    while ($row = $recordset->fetch()) {
-                        $category_modifier = $row["category.category_name"];
-                    }
                     $this->parseTemplate($dbhandler->getArticleByName($this->parameters, $this->pdo), $category_modifier, $this->controller, $this->pdo);
                 }
                 break;
@@ -160,7 +158,6 @@ class LayoutTemplate {
     
         $subset_template2 = array();
         $count=0;
-        
         while ($row = $recordset->fetch()) {  
             $subset_template = substr($string3, $opening_tag+1, $remain-9);
             //header 
@@ -174,7 +171,6 @@ class LayoutTemplate {
                 echo $header_template;
             } 
             //content
-         
             preg_match_all($regex, $subset_template, $inner_matches);
             foreach($inner_matches[0] as $value) {   
                 $replace= str_replace("{{","", $value);

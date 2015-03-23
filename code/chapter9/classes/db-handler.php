@@ -2,7 +2,7 @@
  class DbHandler{   
      
     public function getArticleById($id, $pdo) {
-        $select_singlearticle_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$id[0];
+        $select_singlearticle_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$id;
         $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
         $select_singlearticle_result->execute();
         $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -67,7 +67,23 @@
     
     public function getArticleComments($pdo, $articleid)
     {
-        $select_comments_sql = "select (select count(*) as TotalComments FROM comments  WHERE article_id =".$articleid.") as TotalComments, comments_id, comment_repliedto_id, comment, full_name, comment_date, article_id FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$articleid." Order by Comments_id desc";
+        //Needs to return TotalComments amount
+        $select_comments_sql = "select count(*) as TotalComments From comments WHERE article_id = ".$articleid;
+        $select_comments_result = $pdo->prepare($select_comments_sql);
+        $select_comments_result->execute();
+        $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
+        $total=0;
+        while ($row = $select_comments_result->fetch())
+        {
+            $total=$row[".TotalComments"];  
+           
+        }
+        if ($total!=0)
+        {
+            $select_comments_sql = "select (select count(*) as TotalComments  From comments where article_id=".$articleid.") as TotalComments, comments_id, comment_repliedto_id, comment, full_name, comment_date, article_id FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$articleid." Order by Comments_id desc";
+        }  else{
+        $select_comments_sql = "select count(*) as TotalComments, comments_id, comment_repliedto_id, comment, full_name, comment_date, article_id FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$articleid." Order by Comments_id desc";
+        }   
         $select_comments_result = $pdo->prepare($select_comments_sql);
         $select_comments_result->execute();
         $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
