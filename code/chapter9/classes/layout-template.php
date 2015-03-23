@@ -41,6 +41,7 @@ class LayoutTemplate {
                         $this->getPart($content_part, $article_ids[$i]);
                     }
                     else {
+                        //Get numeric id ... to do 
                         $this->getPart($content_part, $this->parameters[0]);
                     }
                 }
