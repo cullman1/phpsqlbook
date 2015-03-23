@@ -110,6 +110,15 @@
         return $select_singlearticle_result;
     }
     
+    public function getLikeStatus($pdo, $user_id,$article_id) {
+        
+        $select_singlearticle_sql = "select Count(*) as likes_count FROM article_like where article_id=".$article_id." and user_id=".$user_id;
+        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
+        $select_singlearticle_result->execute();
+        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
+        return $select_singlearticle_result;
+    }
+    
 }
 
 

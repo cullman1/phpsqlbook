@@ -61,6 +61,7 @@ class LayoutTemplate {
         switch($part) {
          case "menu":
          case "search":
+         case "login_bar":
             $controller_modifier = "";
             break;
          case "comments":
@@ -81,11 +82,23 @@ class LayoutTemplate {
                 $_REQUEST["article_id"]=$param;
                 $_REQUEST["likes"]=0;
             }
+            
             if (isset($auth)) {
-                $_REQUEST["user_id"] = $auth;
+                $recordset2 = $dbhandler->getLikeStatus($this->pdo,$auth,$param);   
+                if ($row = $recordset2->fetch()) {
+                    $_REQUEST["user_id"]= $auth;
+                    $_REQUEST["article_id"]=$param;
+                    if ($row[".likes_count"]==0) {
+                        $_REQUEST['liked']="Like";
+                    }
+                    else {
+                        $_REQUEST['liked']="Liked";
+                    }
+                }
             }
             else {
                 $_REQUEST["user_id"] = 0;
+                $_REQUEST["article_id"]=$param;
             }
             break;
          case "author":
