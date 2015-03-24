@@ -241,7 +241,6 @@
     <Compile Include="code\login\logon.php" />
     <Compile Include="code\login\logout.php" />
     <Compile Include="code\login\profile.php" />
-    <Compile Include="code\templates\menu.template.php" />
     <Compile Include="login\forgotten-password.php" />
     <Compile Include="includes\comments-control.php" />
     <Compile Include="includes\comments-list.php" />
@@ -312,7 +311,6 @@
     <Folder Include="code\includes\" />
     <Folder Include="code\js\" />
     <Folder Include="code\login\" />
-    <Folder Include="code\templates\" />
     <Folder Include="code\uploads\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
