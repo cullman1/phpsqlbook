@@ -79,10 +79,10 @@
         }
         if ($total!=0)
         {
-            $select_comments_sql = "select (select count(*) as TotalComments  From comments where article_id=".$articleid.") as TotalComments, comments_id, comment_repliedto_id, comment, full_name, comment_date, ".$articleid." as article_id FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$articleid." Order by Comments_id desc";
+            $select_comments_sql = "select (select count(*) as TotalComments  From comments where article_id=".$articleid.") as TotalComments, comments_id, comment_repliedto_id, comment, full_name, comment_date, article_id FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$articleid." Order by Comments_id desc";
         }  else{
-            $select_comments_sql = "select count(*) as TotalComments, comments_id, comment_repliedto_id, comment, full_name, comment_date, ".$articleid." as article_id FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$articleid." Order by Comments_id desc";
-        }  
+        $select_comments_sql = "select count(*) as TotalComments, comments_id, comment_repliedto_id, comment, full_name, comment_date, article_id FROM comments JOIN user ON comments.user_id = user.user_id WHERE article_id = ".$articleid." Order by Comments_id desc";
+        }   
         $select_comments_result = $pdo->prepare($select_comments_sql);
         $select_comments_result->execute();
         $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);

@@ -81,8 +81,7 @@ class LayoutTemplate {
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');
             $recordset2 = $dbhandler->getArticleComments($this->pdo, $param);   
-    
-            $this->writeComments($recordset2, $param);
+            $this->writeComments($recordset2);
             break;
          case "like":
             $controller_modifier = "";
@@ -147,7 +146,7 @@ class LayoutTemplate {
         if(isset($category_modifier)) {
             $category_modifier = "";
         } 
-        $string = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/code/chapter_12/classes/templates/".$category_modifier.$controller."_content.php");
+        $string = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/code/chapter9/classes/templates/".$category_modifier.$controller."_content.php");
         $regex = '#{{(.*?)}}#';
         preg_match_all($regex, $string, $matches);
         while($row = $recordset->fetch())
@@ -163,10 +162,9 @@ class LayoutTemplate {
         }
     }
     
-    public function writeComments($recordset, $param)
+    public function writeComments($recordset)
     {   
-        $_REQUEST["articleid"]=$param;
-        $string = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/code/chapter_12/classes/templates/comments.php");
+        $string = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/code/chapter9/classes/templates/comments.php");
         $regex = '#{{(.*?)}}#';
         preg_match_all($regex, $string, $matches);
         $opening_tag = strpos($string, "]]");
@@ -190,26 +188,24 @@ class LayoutTemplate {
                     $header_template = str_replace($value, $row[$replace], $header_template);      
                 }  
                 echo $header_template;
-               
             } 
             //content
-          
-                preg_match_all($regex, $subset_template, $inner_matches);
-                foreach($inner_matches[0] as $value) {   
-                    $replace= str_replace("{{","", $value);
-                    $replace= str_replace("}}","", $replace);
-                    $subset_template = str_replace($value, $row[$replace], $subset_template);    
-                    $subset_template2[$count] = $subset_template;
-                }
-            
+            preg_match_all($regex, $subset_template, $inner_matches);
+            foreach($inner_matches[0] as $value) {   
+                $replace= str_replace("{{","", $value);
+                $replace= str_replace("}}","", $replace);
+                //echo "Value: " . $value . " Row Replace: ". $row[$replace] . "<br/>";
+                $subset_template = str_replace($value, $row[$replace], $subset_template);    
+                $subset_template2[$count] = $subset_template;
+            }
+   
 
             $count++;
         }
-       
-            for ($i=0;$i<$count;$i++)
-            {
-                echo $subset_template2[$i];
-            }
+        for ($i=0;$i<$count;$i++)
+        {
+            echo $subset_template2[$i];
+        }
         
         echo "</div></div></div>";
     }

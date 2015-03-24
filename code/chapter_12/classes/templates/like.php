@@ -1,4 +1,4 @@
-<div id="accord<?php echo $_REQUEST["article_id"]; ?>">
+<div id="accordion3">
     <div class="accordion-group">
          <form id="likeform" method="post" action="../../code/includes/submit-like.php?user_id=<?php echo $_REQUEST["user_id"]; ?>&article_id=<?php echo $_REQUEST["article_id"]; ?>&liked=<?php echo $_REQUEST["liked"]; ?>">
             <div> 

@@ -1,7 +1,7 @@
 <?php  
 /* Include passwords and login details */
 require_once('../includes/db_config.php');
-require_once('../chapter9/classes/user.php');
+require_once('../chapter_12/classes/user.php');
   
 /* Query SQL Server for checking user details. */
 if(isset($_REQUEST['password']))
