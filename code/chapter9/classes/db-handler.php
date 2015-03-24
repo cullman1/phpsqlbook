@@ -1,7 +1,7 @@
 <?php
  class DbHandler{   
      
-    public function getArticleById($id, $pdo) {
+    public function getArticleById($pdo, $id ) {
         $select_singlearticle_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=".$id;
         $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
         $select_singlearticle_result->execute();
@@ -9,9 +9,8 @@
         return $select_singlearticle_result;
     }
     
-    public function getArticleByName($title, $pdo) {
+    public function getArticleByName($pdo, $title) {
         $new_title = str_replace("-"," ", trim($title[0]));
-        
         $select_singlearticle_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where title='".$new_title."'";
         $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
         $select_singlearticle_result->execute();

@@ -17,9 +17,10 @@ class LayoutTemplate {
     
     public function getArticle($part, $content_structure, $multiplesingle)
     {
+        $dbhandler = $this->registry->get('DbHandler');
         $article_ids = array();
         if ($multiplesingle=="multiple") {
-            $dbhandler = $this->registry->get('DbHandler');
+        
             $recordset = $dbhandler->getArticleList($this->pdo);   
             
             $count=0;
@@ -40,9 +41,12 @@ class LayoutTemplate {
                     if ($this->parameters[0]=="" ||is_numeric($this->parameters[0])) {
                         $this->getPart($content_part, $article_ids[$i]);
                     }
-                    else {
-                        //Get numeric id ... to do 
-                        $this->getPart($content_part, $this->parameters[0]);
+                    else {  
+                        $recordset2 = $dbhandler->getArticleByName($this->pdo,$this->parameters); 
+                        while ($row=$recordset2->fetch()) {
+                            $article_ids[0]=$row["article.article_id"];
+                        }           
+                        $this->getPart($content_part, $article_ids[0]);
                     }
                 }
             }
@@ -100,6 +104,7 @@ class LayoutTemplate {
             else {
                 $_REQUEST["user_id"] = 0;
                 $_REQUEST["article_id"]=$param;
+                $_REQUEST['liked']="Like";
             }
             break;
          case "author":
@@ -123,10 +128,10 @@ class LayoutTemplate {
         switch ($this->controller) {
             case "article": 
                 if(is_numeric($this->parameters[0]) || $this->parameters[0]=="") {
-                    $this->parseTemplate($dbhandler->getArticleById($article_id, $this->pdo), $category_modifier, $this->controller, $this->pdo);
+                    $this->parseTemplate($dbhandler->getArticleById($this->pdo, $article_id), $category_modifier, $this->controller, $this->pdo);
                 }
                 else {
-                    $this->parseTemplate($dbhandler->getArticleByName($this->parameters, $this->pdo), $category_modifier, $this->controller, $this->pdo);
+                    $this->parseTemplate($dbhandler->getArticleByName($this->pdo, $this->parameters ), $category_modifier, $this->controller, $this->pdo);
                 }
                 break;
             case "search":   
