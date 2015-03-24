@@ -19,16 +19,24 @@ class LayoutTemplate {
     {
         $dbhandler = $this->registry->get('DbHandler');
         $article_ids = array();
-        if ($multiplesingle=="multiple") {
         
-            $recordset = $dbhandler->getArticleList($this->pdo);   
-            
+        if ($multiplesingle=="multiple") {
+            $recordset = $dbhandler->getArticleList($this->pdo);    
             $count=0;
             while ($row=$recordset->fetch()) {
                 $article_ids[$count]=$row["article.article_id"];
                 $count++;
             }
-        } else {
+        } 
+        else if($multiplesingle=="search"){
+            $recordset = $dbhandler->getSearchResults($this->pdo);    
+            $count=0;
+            while ($row=$recordset->fetch()) {
+                $article_ids[$count]=$row["article.article_id"];
+                $count++;
+            }
+        }
+        else {
             $article_ids[0]=$this->parameters[0];
         }
            
@@ -124,21 +132,13 @@ class LayoutTemplate {
     
     public function getContent($article_id) { 
         $category_modifier="";
-        $dbhandler = $this->registry->get('DbHandler');
-        switch ($this->controller) {
-            case "article": 
-                if(is_numeric($this->parameters[0]) || $this->parameters[0]=="") {
-                    $this->parseTemplate($dbhandler->getArticleById($this->pdo, $article_id), $category_modifier, $this->controller, $this->pdo);
-                }
-                else {
-                    $this->parseTemplate($dbhandler->getArticleByName($this->pdo, $this->parameters ), $category_modifier, $this->controller, $this->pdo);
-                }
-                break;
-            case "search":   
-                $this->parseTemplate($dbhandler->getSearchResults($this->pdo), "",$this->controller, $this->pdo);
-                $this->controller = "article";
-                break;
-        } 
+        $dbhandler = $this->registry->get('DbHandler');  
+        if(is_numeric($this->parameters[0]) || $this->parameters[0]=="" || isset($_REQUEST["search"] )) {
+            $this->parseTemplate($dbhandler->getArticleById($this->pdo, $article_id), $category_modifier, $this->controller, $this->pdo);
+        }
+        else {        
+            $this->parseTemplate($dbhandler->getArticleByName($this->pdo, $this->parameters ), $category_modifier, $this->controller, $this->pdo);
+        }
     }
     
     public function parseTemplate($recordset, $category_modifier, $controller, $pdo) {

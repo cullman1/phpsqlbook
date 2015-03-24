@@ -175,6 +175,7 @@
     <Compile Include="code\login\login-user.php" />
     <Compile Include="code\login\logon.php" />
     <Compile Include="code\login\logout.php" />
+    <Compile Include="code\login\profile.php" />
     <Compile Include="code\templates\menu.template.php" />
     <Compile Include="login\forgotten-password.php" />
     <Compile Include="includes\comments-control.php" />

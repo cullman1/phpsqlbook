@@ -34,13 +34,14 @@ class Controller {
         foreach($this->page_structure as $part) {
             if ($part == "article") {
                 if (isset($_GET["search"])) {
-                    $part="search"; 
-                    $this->controller = "search";     
+                    $part="search";    
                 }
                 $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
                 $layouttemplate = $this->registry->get('LayoutTemplate');
-                if ($this->parameters[0]!="") {
+                if ($this->parameters[0]!="" && $part!="search") {
                     $layouttemplate->getArticle($part, $this->content_structure, "single" );   
+                } else if ($part=="search") {
+                    $layouttemplate->getArticle($part, $this->content_structure, "search" );  
                 } else {
                     $layouttemplate->getArticle($part, $this->content_structure, "multiple" );  
                 }
