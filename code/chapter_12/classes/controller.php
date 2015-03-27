@@ -17,10 +17,8 @@ class Controller {
         $this->pdo = $pdo; 
     }
     
-    public function createPageStructure()
-    {     
-        switch( $this->controller)
-        {
+    public function createPageStructure() {     
+        switch( $this->controller) {
             case "article": 
                 $this->page_structure = array("header","login_bar", "search", "menu","article","footer");
                 $this->content_structure = array("content", "author", "like", "comments");
@@ -29,14 +27,12 @@ class Controller {
                 $this->page_structure = array("header", "menu","article","footer");
                 $this->content_structure = array("content");
                 break;       
-        }
-        
+        } 
         foreach($this->page_structure as $part) {
             if ($part == "article") {
                 if (isset($_GET["search"])) {
                     $part="search";    
                 }
-          
                 if ($this->parameters[0]!="" && $part!="search") {
                     $this->assemblePage($part, $this->content_structure, "single" );   
                 } else if ($part=="search") {
