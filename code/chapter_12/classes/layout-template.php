@@ -15,52 +15,7 @@ class LayoutTemplate {
         $this->registry->set('DbHandler', new DbHandler($this->pdo));  
     }
     
-    public function getArticle($part, $content_structure, $multiplesingle)
-    {
-        $dbhandler = $this->registry->get('DbHandler');
-        $article_ids = array();
-        
-        if ($multiplesingle=="multiple") {
-            $recordset = $dbhandler->getArticleList($this->pdo);    
-            $count=0;
-            while ($row=$recordset->fetch()) {
-                $article_ids[$count]=$row["article.article_id"];
-                $count++;
-            }
-        } 
-        else if($multiplesingle=="search"){
-            $recordset = $dbhandler->getSearchResults($this->pdo);    
-            $count=0;
-            while ($row=$recordset->fetch()) {
-                $article_ids[$count]=$row["article.article_id"];
-                $count++;
-            }
-        }
-        else {
-            $article_ids[0]=$this->parameters[0];
-        }
-           
-        for($i=0;$i<sizeof($article_ids);$i++) {
-            foreach ($content_structure as $content_part) {
-                if ($content_part == "content") {
-                    $this->getContent($article_ids[$i]);
-                }
-                else {
-                    if ($this->parameters[0]=="" ||is_numeric($this->parameters[0]) || isset($_REQUEST["search"])) {
-                        $this->getPart($content_part, $article_ids[$i]);
-                    }
-                    else {  
-                        $recordset2 = $dbhandler->getArticleByName($this->pdo,$this->parameters); 
-                        while ($row=$recordset2->fetch()) {
-                            $article_ids[0]=$row["article.article_id"];
-                        }           
-                        $this->getPart($content_part, $article_ids[0]);
-                    }
-                }
-            }
-        }
-        
-    }
+   
     
     public function getPart($part, $param="")
     {

@@ -134,6 +134,16 @@
     <Compile Include="code\chapter_08\setcookie.php" />
     <Compile Include="code\chapter_08\smtp-test.php" />
     <Compile Include="code\chapter_08\user.php" />
+    <Compile Include="code\chapter_09\content.php" />
+    <Compile Include="code\chapter_09\footer.php" />
+    <Compile Include="code\chapter_09\header-admin.php" />
+    <Compile Include="code\chapter_09\header-content.php" />
+    <Compile Include="code\chapter_09\login-admin.php" />
+    <Compile Include="code\chapter_09\login-user.php" />
+    <Compile Include="code\chapter_09\singlearticle.php" />
+    <Compile Include="code\chapter_09\storedproc.php" />
+    <Compile Include="code\chapter_09\storedproc2.php" />
+    <Compile Include="code\chapter_09\storedproc3.php" />
     <Compile Include="code\chapter_10\chapter10.php" />
     <Compile Include="code\chapter_10\Facebookexample.php" />
     <Compile Include="code\chapter_10\Facebookresponse.php" />
@@ -295,6 +305,7 @@
     <Folder Include="code\chapter_06\" />
     <Folder Include="code\chapter_07\" />
     <Folder Include="code\chapter_08\" />
+    <Folder Include="code\chapter_09\" />
     <Folder Include="code\chapter_10\" />
     <Folder Include="code\chapter_11\" />
     <Folder Include="code\chapter_12\" />

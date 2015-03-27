@@ -24,11 +24,7 @@ class UrlHandler {
                 $parameters = $url_parts[2];
             }
         }
-        else {
-            if(sizeof($url_parts)==1) {
-                $action = "view";
-            }
-            
+        else { 
             if(sizeof($url_parts)==2) {
                 $parameters = $url_parts[1];
             }
@@ -48,7 +44,7 @@ class UrlHandler {
     public function routeRequest() {
         $this->registry->set('Controller', new Controller($this->controller, $this->action, $this->parameters, $this->pdo));
         $control = $this->registry->get('Controller');   
-        $control->assemblePage();
+        $control->createPageStructure();
     }
     
     public function setController($controller) {
