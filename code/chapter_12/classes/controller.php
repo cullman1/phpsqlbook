@@ -21,7 +21,7 @@ class Controller {
         switch( $this->controller) {
             case "article": 
                 $this->page_structure = array("header","login_bar", "search", "menu","article","footer");
-                $this->content_structure = array("content", "author", "like", "comments");
+                $this->content_structure = array("content", "author");
                 break;
             case "admin":
                 $this->page_structure = array("header", "menu","article","footer");

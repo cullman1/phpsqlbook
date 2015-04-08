@@ -74,15 +74,13 @@ class LayoutTemplate {
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');
             $recordset2 = $dbhandler->getAuthorName($this->pdo, $param);   
-            while ($row = $recordset2->fetch()) {
-                $_REQUEST["name"]=$row["user.full_name"];
-            }
-             
+            $this->parseTemplate($dbhandler->getAuthorName($this->pdo, $param), "", "author", $this->pdo);
             break;
         }
-        if ($part!="comments") {
+        if ($part!="comments" && $part!="author") {
             include ("templates/".$controller_modifier.$part.".php"); 
         }
+       
     }
     
     public function getContent($article_id) { 
