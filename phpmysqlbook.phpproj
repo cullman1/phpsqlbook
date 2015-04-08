@@ -277,6 +277,7 @@
     <Compile Include="code\login\login-user.php" />
     <Compile Include="code\login\logon.php" />
     <Compile Include="code\login\logout.php" />
+    <Compile Include="code\login\profile.php" />
     <Compile Include="includes\facebooksidebar.php" />
     <Compile Include="code\includes\db_config2.php" />
     <Compile Include="code\includes\db_config.php" />

@@ -1,7 +1,8 @@
 <?php
 require_once('../classes/registry.php');
 require_once('../classes/configuration.php');
-
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 $registry = Registry::instance();
 $registry->set('configfile', new Configuration());
 $db = $registry->get('configfile');
@@ -12,21 +13,17 @@ $registry->set('pdo', $pdo);
 $dbHost =  $registry->get('pdo');
 
 /* Query to update user */
-if(isset($_FILES['uploader']))
-{
-    
+if(isset($_FILES['uploader'])) {
     $userimage = $_FILES["uploader"]["name"];
-    $folder = "../uploads/". $userimage;
+    $folder = dirname(__FILE__) ."/". $userimage;
     move_uploaded_file($_FILES['uploader']['tmp_name'], $folder);
 }
-else
-{
-
+else {   
     $userimage = $_REQUEST["UserImage"];
 }
 if(isset($_REQUEST["UserName"]))
 {
-    $update_user_sql = 'UPDATE user SET full_name= "' .$_REQUEST["UserName"].'", email="' .$_REQUEST["UserEmail"].'", user_image="' .$_REQUEST["UserImage"].'" where user_id='.$_REQUEST["userid"];
+    $update_user_sql = 'UPDATE user SET full_name= "' .$_REQUEST["UserName"].'", email="' .$_REQUEST["UserEmail"].'", user_image="' .$userimage.'" where user_id='.$_REQUEST["userid"];
     $update_user_result = $dbHost->prepare($update_user_sql);
     $update_user_result->execute();
     if($update_user_result->errorCode()!=0) {  die("Update User Query failed"); }
@@ -61,7 +58,7 @@ $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
             <tr><td></td><td>&nbsp; </td></tr>
                <tr>
 				 <td style="vertical-align:top;"><span class="fieldheading" >User Image:</span></td>
-                   	 <td><img src="../../uploads/<?php echo $select_user_row['user.user_image']; ?>" /><br /><br /><input id="UserImage" disabled name="UserImage" type="text" value="<?php echo $select_user_row['user.user_image']; ?>" /><br /><br /><input type="file" id="uploader" name="uploader" /></td> 
+                   	 <td><img src="../login/<?php echo $select_user_row['user.user_image']; ?>" /><br /><br /><input id="UserImage"  name="UserImage" disabled type="text" value="<?php echo $select_user_row['user.user_image']; ?>" /><br /><br /><input type="file" id="uploader" name="uploader" /></td> 
                
 			</tr>
               <tr><td> </td><td>&nbsp; </td></tr>
