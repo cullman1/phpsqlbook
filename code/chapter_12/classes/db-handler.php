@@ -118,6 +118,14 @@
         return $select_singlearticle_result;
     }
     
+    public function getAllLikes($pdo, $user_id,$article_id) {
+        $select_singlearticle_sql = "select coalesce(a.article_id,".$article_id.") as articleid, coalesce(".$user_id.",0) as userid,  Count(*) as likes_count, (select count(like_id) as likes FROM article_like where article_id='".$article_id."') as likes_total FROM article_like as a  join (select user_id FROM article_like as b where article_id='".$article_id."' and user_id='".$user_id."' ) as c ON (c.user_id = a.user_id) where article_id='".$article_id."'" ;
+      
+        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
+        $select_singlearticle_result->execute();
+        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
+        return $select_singlearticle_result;
+    }
 }
 
 

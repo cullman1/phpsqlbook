@@ -221,6 +221,7 @@
     <Compile Include="code\chapter_12\classes\templates\author_content.php" />
     <Compile Include="code\chapter_12\classes\templates\comments.php" />
     <Compile Include="code\chapter_12\classes\templates\like.php" />
+    <Compile Include="code\chapter_12\classes\templates\like_content.php" />
     <Compile Include="code\chapter_12\classes\templates\login_bar.php" />
     <Compile Include="code\chapter_12\classes\templates\menu.php" />
     <Compile Include="code\chapter_12\classes\templates\pagination_content.php" />

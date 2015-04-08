@@ -40,44 +40,21 @@ class LayoutTemplate {
             break;
          case "like":
             $controller_modifier = "";
-            $dbhandler = $this->registry->get('DbHandler');        
-            $recordset2 = $dbhandler->getLikesTotal($this->pdo, $param);   
-            if ($row = $recordset2->fetch()) {
-                $_REQUEST["article_id"]=$row["article_like.article_id"];
-                $_REQUEST["likes"]=$row[".likes"];
-            }
-            else {
-                $_REQUEST["article_id"]=$param;
-                $_REQUEST["likes"]=0;
-            }
-            
+            $dbhandler = $this->registry->get('DbHandler');   
             if (isset($auth)) {
-                $recordset2 = $dbhandler->getLikeStatus($this->pdo,$auth,$param);   
-                if ($row = $recordset2->fetch()) {
-                    $_REQUEST["user_id"]= $auth;
-                    $_REQUEST["article_id"]=$param;
-                    if ($row[".likes_count"]==0) {
-                        $_REQUEST['liked']="Like";
-                    }
-                    else {
-                        $_REQUEST['liked']="Liked";
-                    }
-                }
+                $user_id = $auth;
+            } else {
+                $user_id  = "0";
             }
-            else {
-                $_REQUEST["user_id"] = 0;
-                $_REQUEST["article_id"]=$param;
-                $_REQUEST['liked']="Like";
-            }
+                $this->parseTemplate($dbhandler->getAllLikes($this->pdo,  $user_id , $param), "", "like", $this->pdo);
             break;
          case "author":
             $controller_modifier = "";
-            $dbhandler = $this->registry->get('DbHandler');
-            $recordset2 = $dbhandler->getAuthorName($this->pdo, $param);   
+            $dbhandler = $this->registry->get('DbHandler'); 
             $this->parseTemplate($dbhandler->getAuthorName($this->pdo, $param), "", "author", $this->pdo);
             break;
         }
-        if ($part!="comments" && $part!="author") {
+        if ($part!="comments" && $part!="author" && $part!="like") {
             include ("templates/".$controller_modifier.$part.".php"); 
         }
        
@@ -109,11 +86,14 @@ class LayoutTemplate {
             foreach($matches[0] as $value) {           
                 $replace= str_replace("{{","", $value);
                 $replace= str_replace("}}","", $replace);
+            
                 $template = str_replace($value, $row[$replace], $template);  
             }  
             echo $template;
         }
     }
+    
+  
     
     public function writeComments($recordset)
     {   
