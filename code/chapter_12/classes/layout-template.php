@@ -7,6 +7,7 @@ class LayoutTemplate {
     private $controller;
     private $pdo;
     private $counter;
+    private $indent;
     public function __construct($controller, $action, $parameters ,$pdo) {
         $this->registry = Registry::instance();
         $this->pdo = $pdo;
@@ -134,6 +135,7 @@ class LayoutTemplate {
         $remain = $closing_tag - $opening_tag;
         $combined_comments = array();
         $this->counter=0;
+        $this->indent=0;
         foreach ($recordset as $row) {
             $subset_template = substr($string3, $opening_tag+1, $remain-9);
             //header 
@@ -156,17 +158,18 @@ class LayoutTemplate {
     
     public function recursiveCheck($regex, $subset_template, $row, $combine_comments)
     {
-        if (isset($row['children'])) {
+        if (isset($row['children'])) {       
             $combine_comments = $this->tagReplace($regex, $subset_template, $row, $combine_comments);
             $this->counter++;
+            $this->indent+=20;
             foreach ($row['children'] as $row2) {     
-                $combine_comments = $this->tagReplace($regex, $subset_template,  $row2, $combine_comments);
                 $combine_comments = $this->recursiveCheck($regex, $subset_template,  $row2, $combine_comments);
             }      
         }
         else {      
             $combine_comments = $this->tagReplace($regex, $subset_template,  $row, $combine_comments);
             $this->counter++;
+            $this->indent=0;
         } 
         return $combine_comments;
     } 
@@ -177,7 +180,12 @@ class LayoutTemplate {
             $replace= str_replace("{{","", $value);
             $replace= str_replace("}}","", $replace);
             $subset_template = str_replace($value, $row[$replace], $subset_template);    
-            $combined_comments[$this->counter] = $subset_template;
+            if ($this->indent>0) { 
+                $combined_comments[$this->counter] = "<div style='margin-left:".$this->indent."px'>".$subset_template."</div>"; 
+            } 
+            else {
+                $combined_comments[$this->counter] = $subset_template;
+            }
         }
         return $combined_comments;
     }
