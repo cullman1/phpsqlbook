@@ -6,7 +6,6 @@ class LayoutTemplate {
     private $registry;
     private $controller;
     private $pdo;
-    private $counter;
     public function __construct($controller, $action, $parameters ,$pdo) {
         $this->registry = Registry::instance();
         $this->pdo = $pdo;
@@ -14,21 +13,6 @@ class LayoutTemplate {
         $this->action = $action;
         $this->parameters = $parameters;
         $this->registry->set('DbHandler', new DbHandler($this->pdo));  
-    }
-    
-    public function createTree(&$list, $parent){
-        $tree = array();
-        foreach ((array)$parent as $reply) {
-            if (isset($list[$reply['comments.comments_id']])) {
-                $reply['children'] = $this->createTree($list, $list[$reply['comments.comments_id']]);
-            }
-            $tree[] = $reply;
-        } 
-        return $tree;
-    }
-    
-    public function countNested($arr) {
-        return (count($arr, COUNT_RECURSIVE) - count($arr));
     }
     
     public function getPart($part, $param="")
@@ -49,20 +33,8 @@ class LayoutTemplate {
          case "comments":
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');
-            $select_comments_result = $dbhandler->getArticleComments($this->pdo, $param);   
-            $new = array();
-            unset($new);
-            $select_nestedcomments_row = array();
-            while($select_comments_row =$select_comments_result->fetch()) {
-                $select_nestedcomments_row[] = $select_comments_row;
-            }  
-            $counter=0;
-            foreach ($select_nestedcomments_row as $branch) {
-                $counter++;
-                $new[$branch['comments.comment_repliedto_id']][] = $branch;
-            }
-            $tree = $this->createTree($new, $new[0]); 
-            $this->writeComments($tree);
+            $recordset2 = $dbhandler->getArticleComments($this->pdo, $param);   
+            $this->writeComments($recordset2);
             break;
          case "like":
             $controller_modifier = "";
@@ -84,8 +56,6 @@ class LayoutTemplate {
             include ("templates/".$controller_modifier.$part.".php"); 
         }   
     }
-    
-   
     
     public function getContent($article_id) { 
         $category_modifier="";
@@ -120,6 +90,8 @@ class LayoutTemplate {
         }
     }
     
+  
+    
     public function writeComments($recordset)
     {   
         $string = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/code/chapter_12/classes/templates/comments.php");
@@ -132,12 +104,12 @@ class LayoutTemplate {
         $string3= str_replace("]","", $string2);
         $header_template= substr($string3, 0, $opening_tag);
         $remain = $closing_tag - $opening_tag;
-        $combined_comments = array();
-        $this->counter=0;
-        foreach ($recordset as $row) {
+        $subset_template2 = array();
+        $count=0;
+        while ($row = $recordset->fetch()) {  
             $subset_template = substr($string3, $opening_tag+1, $remain-9);
             //header 
-            if ($this->counter==0) {
+            if ($count==0) {
                 //Get out content of string, replace with $row
                 foreach($matches[0] as $value) {           
                     $replace= str_replace("{{","", $value);
@@ -145,41 +117,21 @@ class LayoutTemplate {
                     $header_template = str_replace($value, $row[$replace], $header_template);      
                 }  
                 echo $header_template;
-            }           
-            $combined_comments = $this->recursiveCheck($regex, $subset_template, $row, $combined_comments);
+            } 
+            //content
+            preg_match_all($regex, $subset_template, $inner_matches);
+            foreach($inner_matches[0] as $value) {   
+                $replace= str_replace("{{","", $value);
+                $replace= str_replace("}}","", $replace);
+                $subset_template = str_replace($value, $row[$replace], $subset_template);    
+                $subset_template2[$count] = $subset_template;
+            }
+            $count++;
         }
-        for ($i=0;$i<$this->counter;$i++) {
-            echo $combined_comments[$i];
+        for ($i=0;$i<$count;$i++) {
+            echo $subset_template2[$i];
         }
         echo "</div></div></div>";
-    }
-    
-    public function recursiveCheck($regex, $subset_template, $row, $combine_comments)
-    {
-        if (isset($row['children'])) {
-            $combine_comments = $this->tagReplace($regex, $subset_template, $row, $combine_comments);
-            $this->counter++;
-            foreach ($row['children'] as $row2) {     
-                $combine_comments = $this->tagReplace($regex, $subset_template,  $row2, $combine_comments);
-                $combine_comments = $this->recursiveCheck($regex, $subset_template,  $row2, $combine_comments);
-            }      
-        }
-        else {      
-            $combine_comments = $this->tagReplace($regex, $subset_template,  $row, $combine_comments);
-            $this->counter++;
-        } 
-        return $combine_comments;
-    } 
-    
-    public function tagReplace($regex, $subset_template, $row, $combined_comments) {
-        preg_match_all($regex, $subset_template, $inner_matches);
-        foreach($inner_matches[0] as $value) {   
-            $replace= str_replace("{{","", $value);
-            $replace= str_replace("}}","", $replace);
-            $subset_template = str_replace($value, $row[$replace], $subset_template);    
-            $combined_comments[$this->counter] = $subset_template;
-        }
-        return $combined_comments;
     }
 }
 ?>
