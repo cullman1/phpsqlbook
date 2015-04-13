@@ -38,11 +38,6 @@ class LayoutTemplate {
         $controller_modifier = $this->controller."_";
         $querystring="";
         switch($part) {
-         case "menu":
-         case "search":
-         case "login_bar":
-            $controller_modifier = "";
-            break;
          case "comments":
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');
@@ -76,10 +71,11 @@ class LayoutTemplate {
             $dbhandler = $this->registry->get('DbHandler'); 
             $this->parseTemplate($dbhandler->getAuthorName($this->pdo, $param), "", "author", $this->pdo);
             break;
+         default:
+             include ("templates/".$controller_modifier.$part.".php"); 
+             break;         
         }
-        if ($part!="comments" && $part!="author" && $part!="like") {
-            include ("templates/".$controller_modifier.$part.".php"); 
-        }   
+     
     }
     
     public function getContent($article_id) { 
@@ -107,8 +103,7 @@ class LayoutTemplate {
             //Get out content of string, replace with $row
             foreach($matches[0] as $value) {           
                 $replace= str_replace("{{","", $value);
-                $replace= str_replace("}}","", $replace);
-            
+                $replace= str_replace("}}","", $replace);   
                 $template = str_replace($value, $row[$replace], $template);  
             }  
             echo $template;
