@@ -392,15 +392,6 @@
     <Content Include="code\chapter_10\pansy.txt" />
     <Content Include="code\chapter_10\search-predict.html" />
     <Content Include="code\chapter_10\simpleajax.html" />
-    <Content Include="code\chapter_12\classes\templates\PTF55F-webfont.eot" />
-    <Content Include="code\chapter_12\classes\templates\PTF55F-webfont.svg" />
-    <Content Include="code\chapter_12\classes\templates\PTF55F-webfont.ttf" />
-    <Content Include="code\chapter_12\classes\templates\PTF55F-webfont.woff" />
-    <Content Include="code\chapter_12\classes\templates\PTF55F.ttf" />
-    <Content Include="code\chapter_12\classes\templates\PTF56F.ttf" />
-    <Content Include="code\chapter_12\classes\templates\PTF75F.ttf" />
-    <Content Include="code\chapter_12\classes\templates\PTZ55F.ttf" />
-    <Content Include="code\chapter_12\classes\templates\PTZ56F.ttf" />
     <Content Include="code\chapter_12\images\comments-xl.png" />
     <Content Include="code\chapter_12\images\dropdown_arrow.png" />
     <Content Include="code\css\admin.css" />

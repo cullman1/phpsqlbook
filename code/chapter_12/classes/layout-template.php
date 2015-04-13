@@ -27,11 +27,7 @@ class LayoutTemplate {
         } 
         return $tree;
     }
-    
-    public function countNested($arr) {
-        return (count($arr, COUNT_RECURSIVE) - count($arr));
-    }
-    
+     
     public function getPart($part, $param="")
     {
         if (isset($_SESSION["user2"])) { 
@@ -85,8 +81,6 @@ class LayoutTemplate {
             include ("templates/".$controller_modifier.$part.".php"); 
         }   
     }
-    
-   
     
     public function getContent($article_id) { 
         $category_modifier="";
