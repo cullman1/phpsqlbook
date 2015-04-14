@@ -72,6 +72,7 @@ class LayoutTemplate {
             $this->parseTemplate($dbhandler->getAuthorName($this->pdo, $param), "", "author", $this->pdo);
             break;
          default:
+             $controller_modifier = "";
              include ("templates/".$controller_modifier.$part.".php"); 
              break;         
         }
