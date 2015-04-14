@@ -219,6 +219,7 @@
     <Compile Include="code\chapter_12\classes\templates\article_footer.php" />
     <Compile Include="code\chapter_12\classes\templates\article_header.php" />
     <Compile Include="code\chapter_12\classes\templates\author_content.php" />
+    <Compile Include="code\chapter_12\classes\templates\no_comments_content.php" />
     <Compile Include="code\chapter_12\classes\templates\comments.php" />
     <Compile Include="code\chapter_12\classes\templates\like.php" />
     <Compile Include="code\chapter_12\classes\templates\like_content.php" />
