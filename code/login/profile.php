@@ -50,9 +50,13 @@ $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 				 <td><input id="UserName" name="UserName" type="text" value="<?php echo $select_user_row['user.full_name']; ?>" /></td> 
 			</tr>
             <tr><td></td><td>&nbsp; </td></tr>
-               <tr>
+            <tr>
 				 <td><span class="fieldheading">User Email:</span></td>
 				 <td><input id="UserEmail" name="UserEmail" type="text" value="<?php echo $select_user_row['user.email']; ?>" /></td> 
+			</tr>
+              <tr>
+				 <td><span class="fieldheading">User Status:</span></td>
+				 <td><input id="UserStatus" name="UserStatus" type="text" value="<?php echo $select_user_row['user.status']; ?>" /></td> 
 			</tr>
               <tr><td> </td><td>&nbsp; </td></tr>
             <tr><td></td><td>&nbsp; </td></tr>

@@ -274,6 +274,7 @@
     <Compile Include="code\includes\add-comment.php" />
     <Compile Include="code\includes\comments-control.php" />
     <Compile Include="code\includes\comments-list.php" />
+    <Compile Include="code\login\view-profile.php" />
     <Compile Include="code\login\login-admin.php" />
     <Compile Include="code\login\login-user.php" />
     <Compile Include="code\login\logon.php" />

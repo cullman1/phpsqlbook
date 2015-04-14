@@ -22,8 +22,7 @@ class LayoutTemplate {
         foreach ((array)$parent as $reply) {
             if (isset($list[$reply['comments.comments_id']])) {
                 $reply['children'] = $this->createTree($list, $list[$reply['comments.comments_id']]);
-            }
-           
+            } 
             $tree[] = $reply;
         } 
         return $tree;
@@ -74,14 +73,12 @@ class LayoutTemplate {
             $this->parseTemplate($dbhandler->getAuthorName($this->pdo, $param), "", "author", $this->pdo);
             break;
          default:
-             if ($part=="search" || $part=="menu" || $part=="login_bar")
-             {
+             if ($part=="search" || $part=="menu" || $part=="login_bar") {
                  $controller_modifier = "";
-                } 
+             } 
              include ("templates/".$controller_modifier.$part.".php"); 
              break;         
         }
-     
     }
     
     public function getContent($article_id) { 
