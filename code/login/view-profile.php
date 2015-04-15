@@ -37,7 +37,7 @@ if (isset($_GET["profile"])) {
 			</tr>
               <tr>
 				 <td><span class="fieldheading">Status:</span></td>
-				 <td><?php echo $select_user_row['user.status']; ?></td> 
+				 <td><?php echo $select_user_row['user.user_status']; ?></td> 
 			</tr>
               <tr><td> </td><td>&nbsp; </td></tr>   
           </table>    
