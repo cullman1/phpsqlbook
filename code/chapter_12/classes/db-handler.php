@@ -82,8 +82,18 @@
         return $select_comments_result;
     }
     
+    public function generateCommentId($pdo, $articleid)
+    {
+        //Needs to return TotalComments amount
+        $select_comments_sql = "select article_id, FLOOR(RAND() * 50001) + 1000 As random From article WHERE article_id = ".$articleid;
+        $select_comments_result = $pdo->prepare($select_comments_sql);
+        $select_comments_result->execute();
+        $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
+        return $select_comments_result;
+    }
+    
     public function getAuthorName($pdo, $article_id ) {    
-        $select_singlearticle_sql = "select full_name FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id='".$article_id."'";
+        $select_singlearticle_sql = "select user.user_id, full_name FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id='".$article_id."'";
         $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
         $select_singlearticle_result->execute();
         $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);

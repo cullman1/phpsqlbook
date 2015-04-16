@@ -22,16 +22,12 @@ class LayoutTemplate {
         foreach ((array)$parent as $reply) {
             if (isset($list[$reply['comments.comments_id']])) {
                 $reply['children'] = $this->createTree($list, $list[$reply['comments.comments_id']]);
-            }
+            } 
             $tree[] = $reply;
         } 
         return $tree;
     }
-    
-    public function countNested($arr) {
-        return (count($arr, COUNT_RECURSIVE) - count($arr));
-    }
-    
+     
     public function getPart($part, $param="")
     {
         if (isset($_SESSION["user2"])) { 
@@ -42,28 +38,24 @@ class LayoutTemplate {
         $controller_modifier = $this->controller."_";
         $querystring="";
         switch($part) {
-         case "menu":
-         case "search":
-         case "login_bar":
-            $controller_modifier = "";
-            break;
          case "comments":
             $controller_modifier = "";
             $dbhandler = $this->registry->get('DbHandler');
             $select_comments_result = $dbhandler->getArticleComments($this->pdo, $param);   
-            $new = array();
-            unset($new);
+            $new = array();  
             $select_nestedcomments_row = array();
             while($select_comments_row =$select_comments_result->fetch()) {
                 $select_nestedcomments_row[] = $select_comments_row;
             }  
-            $counter=0;
             foreach ($select_nestedcomments_row as $branch) {
-                $counter++;
-                $new[$branch['comments.comment_repliedto_id']][] = $branch;
+                $new[$branch['comments.comment_repliedto_id']][] = $branch;             
             }
-            $tree = $this->createTree($new, $new[0]); 
-            $this->writeComments($tree);
+            if (isset($new[0])) {
+                $tree = $this->createTree($new, $new[0]); 
+                $this->writeComments($tree);
+            } else {
+                $this->parseTemplate($dbhandler->generateCommentId($this->pdo,  $param), "", "no_comments", $this->pdo);
+            }
             break;
          case "like":
             $controller_modifier = "";
@@ -80,13 +72,14 @@ class LayoutTemplate {
             $dbhandler = $this->registry->get('DbHandler'); 
             $this->parseTemplate($dbhandler->getAuthorName($this->pdo, $param), "", "author", $this->pdo);
             break;
+         default:
+             if ($part=="search" || $part=="menu" || $part=="login_bar") {
+                 $controller_modifier = "";
+             } 
+             include ("templates/".$controller_modifier.$part.".php"); 
+             break;         
         }
-        if ($part!="comments" && $part!="author" && $part!="like") {
-            include ("templates/".$controller_modifier.$part.".php"); 
-        }   
     }
-    
-   
     
     public function getContent($article_id) { 
         $category_modifier="";
@@ -113,8 +106,7 @@ class LayoutTemplate {
             //Get out content of string, replace with $row
             foreach($matches[0] as $value) {           
                 $replace= str_replace("{{","", $value);
-                $replace= str_replace("}}","", $replace);
-            
+                $replace= str_replace("}}","", $replace);   
                 $template = str_replace($value, $row[$replace], $template);  
             }  
             echo $template;

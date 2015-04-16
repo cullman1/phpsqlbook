@@ -1,8 +1,6 @@
 <?php
 require_once('../classes/registry.php');
 require_once('../classes/configuration.php');
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
 $registry = Registry::instance();
 $registry->set('configfile', new Configuration());
 $db = $registry->get('configfile');
@@ -11,33 +9,31 @@ $pdo = new PDO($pdoString, $db->getUserName(), $db->getPassword());
 $pdo->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true);
 $registry->set('pdo', $pdo);
 $dbHost =  $registry->get('pdo');
-
+$userImage = "";
 /* Query to update user */
 if(isset($_FILES['uploader'])) {
-    $userimage = $_FILES["uploader"]["name"];
-    $folder = dirname(__FILE__) ."/". $userimage;
-    move_uploaded_file($_FILES['uploader']['tmp_name'], $folder);
+    if(!empty($_FILES['uploader']['name'])) {
+        $user_image_short = $_FILES["uploader"]["name"];
+        $userimage = ' ,user_image="'.$_FILES["uploader"]["name"].'"';
+        $folder = dirname(__FILE__) ."/". $user_image_short;
+        move_uploaded_file($_FILES['uploader']['tmp_name'], $folder);
+    }
 }
-else {   
-    $userimage = $_REQUEST["UserImage"];
+else {  
+    if(isset($_REQUEST['UserImage'])) {
+        $userimage = ' ,user_image="'.$_REQUEST["UserImage"].'"';
+    }
 }
-if(isset($_REQUEST["UserName"]))
-{
-    $update_user_sql = 'UPDATE user SET full_name= "' .$_REQUEST["UserName"].'", email="' .$_REQUEST["UserEmail"].'", user_image="' .$userimage.'" where user_id='.$_REQUEST["userid"];
+if(isset($_REQUEST["UserName"])) {
+    $update_user_sql = 'UPDATE user SET full_name= "' .$_REQUEST["UserName"].'", email="' .$_REQUEST["UserEmail"].'", user_status="' .$_REQUEST["UserStatus"].'"'.$userimage.' where user_id='.$_REQUEST["userid"];
     $update_user_result = $dbHost->prepare($update_user_sql);
     $update_user_result->execute();
     if($update_user_result->errorCode()!=0) {  die("Update User Query failed"); }
 }
-
-
-
-/* Query SQL Server for selecting category template. */
 $select_user_sql = "select * FROM user where user_id=".$_REQUEST["userid"];
-
 $select_user_result = $pdo->prepare($select_user_sql);
 $select_user_result->execute();
-$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
-?>
+$select_user_result->setFetchMode(PDO::FETCH_ASSOC); ?>
   <div id="body">
     <form id="form1" name="form1" method="post" action="profile.php" enctype="multipart/form-data">
        <?php while($select_user_row = $select_user_result->fetch()) { ?>
@@ -50,11 +46,16 @@ $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
 				 <td><input id="UserName" name="UserName" type="text" value="<?php echo $select_user_row['user.full_name']; ?>" /></td> 
 			</tr>
             <tr><td></td><td>&nbsp; </td></tr>
-               <tr>
+            <tr>
 				 <td><span class="fieldheading">User Email:</span></td>
 				 <td><input id="UserEmail" name="UserEmail" type="text" value="<?php echo $select_user_row['user.email']; ?>" /></td> 
 			</tr>
-              <tr><td> </td><td>&nbsp; </td></tr>
+                    <tr><td> </td><td>&nbsp; </td></tr>
+              <tr>
+				 <td><span class="fieldheading">User Status:</span></td>
+				 <td><input id="UserStatus" name="UserStatus" type="text" value="<?php echo $select_user_row['user.user_status']; ?>" /></td> 
+			</tr>
+        
             <tr><td></td><td>&nbsp; </td></tr>
                <tr>
 				 <td style="vertical-align:top;"><span class="fieldheading" >User Image:</span></td>
@@ -73,8 +74,7 @@ $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
           <br />
           <div id="Status" >
             <?php 
-	           if(isset($_REQUEST['submitted']))
-	           {
+	           if(isset($_REQUEST['submitted']))  {
 		          echo "<span class='red'>Profile successfully edited</span>";
 	           }  
 	         ?>
@@ -82,10 +82,8 @@ $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
             <script>
 $("#uploader").on('change', function() {
    var filename = $('#uploader').val();
-
 filename2 = filename.replace("fakepath","");
 filename2 = filename2.replace("C:\\\\","");
-
         $("#UserImage").val(filename2);
 });
             </script>
@@ -93,8 +91,6 @@ filename2 = filename2.replace("C:\\\\","");
       <br />
       <a id="Return2" href="../../article">Return to Main Site</a>
       </div>
-    </form>
-    <?php } ?>
-  <!--end content --> 
+    </form>    <?php } ?>
 </div>
 <div class="clear"></div>
