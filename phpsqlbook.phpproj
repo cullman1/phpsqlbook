@@ -103,7 +103,7 @@
     <Compile Include="code\chapter_06\emailcheck2.php" />
     <Compile Include="code\chapter_06\index.php" />
     <Compile Include="code\chapter_06\insertdata.php" />
-    <Compile Include="code\chapter_06\insertform.php" />
+    <Compile Include="code\chapter_06\updateform.php" />
     <Compile Include="code\chapter_06\register3.php" />
     <Compile Include="code\chapter_06\submit-user.php" />
     <Compile Include="code\chapter_06\update.php" />

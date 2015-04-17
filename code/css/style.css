@@ -395,3 +395,24 @@ label {
     float:left;
     margin-right:15px;
 }
+
+.indent {
+    margin-left: 10px;
+    width:400px;
+}
+
+label {
+    width:100px;
+    clear:left;
+    text-align:left;
+    padding-top:10px;
+    padding-right:10px;
+}
+
+input, label {
+    float:left;
+}
+
+body {
+    overflow: hidden;
+}
