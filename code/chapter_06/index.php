@@ -9,7 +9,8 @@ include '../includes/header-chapters.php' ?>
       <li><a href="emailcheck2.php">Email exists example - with validation</a></li>
       <li><a href="register3.php">Register User example</a></li>
       <li><a href="insertform.php">Insert Data Two Page example</a></li>
-      <li><a href="updateform.php">Update Data Two Page example</a></li>
+      <li><a href="update-form.php">Update Data Two Page example</a></li>
+              <li><a href="delete-user.php">Delete Users Who Have Never Logged In example</a></li>
       <li><a href="update.php?userid=1">Update User example</a></li>
     </ul>
   </div>

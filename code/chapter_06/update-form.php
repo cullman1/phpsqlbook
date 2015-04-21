@@ -9,13 +9,12 @@ $sel_user_set->setFetchMode(PDO::FETCH_ASSOC); ?>
       <div id="col-md-4">
          <h2>Edit User</h2>
          <label class="fieldheading">User Name:</label>
-         <input name="uame" type="text" value="<?php echo $sel_user_row['full_name'];?>" />
+         <input name="name" type="text" value="<?php echo $sel_user_row['full_name'];?>" />
          <label  class="fieldheading">User Email:</label>
          <input name="email" type="text" value="<?php echo $sel_user_row['email_address']; ?>" />
          <input id="SaveButton" type="submit" name="submit" Value="Submit"  />
          <input id="userid" name="userid" type="hidden" value="1001" />
-         <br /><br />
-         <div id="Status" >
+         <div id="Status" class="status_block">
             <?php if(isset($_REQUEST['submitted'])) {
                echo "<span class='red'>User successfully edited</span>";
             } ?>

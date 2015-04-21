@@ -1,25 +1,11 @@
-<?php 
-/* Db Details */
-require_once('../includes/db_config.php');
-$userimage = "";
-/* Query nto update user */
-if(isset($_FILES['uploader']))
-{
-    $userimage = $_FILES["uploader"]["name"];
-    move_uploaded_file($_FILES['uploader']['tmp_name'], $folder);
-}
-else
-{
-    $userimage = $_REQUEST["UserImage"];
-}
-
-$update_user_sql = 'UPDATE user SET full_name= "' .$_REQUEST["UserName"].'", email="' .$_REQUEST["UserEmail"].'", user_image="' .$userimage.'" where user_id='.$_REQUEST["userid"];
-$update_user_result = $dbHost->prepare($update_user_sql);
+<?php require_once('../includes/db_config.php');
+$update_user_result = $dbHost->prepare("UPDATE Users SET full_name= :name, email_address= :email where user_id= :user_id");
+$ins_user_set->bindParam(":name", $_POST["name"]);  
+$ins_user_set->bindParam(":email", $_POST["email"]);  
+$ins_user_set->bindParam(":user_id", $_POST["userid"]);  
 $update_user_result->execute();
-if($update_user_result->errorCode()!=0) {  die("Update User Query failed"); }
-else
-{	
-	/* Redirect to original page */
-    header('Location:../admin/user.php');	
-}
-?>
+if($update_user_result->errorCode()!=0) {  
+    echo ("Update query failed");
+} else {	
+    header('Location:../chapter_06/updateform.php?submitted=true');	
+} ?>

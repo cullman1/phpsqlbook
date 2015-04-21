@@ -99,13 +99,15 @@
     <Compile Include="code\chapter_05\submit_form_2.php" />
     <Compile Include="code\chapter_05\two_page_form_amended.php" />
     <Compile Include="code\chapter_05\validate.php" />
+    <Compile Include="code\chapter_06\delete-user.php" />
     <Compile Include="code\chapter_06\emailcheck1.php" />
     <Compile Include="code\chapter_06\emailcheck2.php" />
     <Compile Include="code\chapter_06\index.php" />
     <Compile Include="code\chapter_06\insertdata.php" />
-    <Compile Include="code\chapter_06\updateform.php" />
+    <Compile Include="code\chapter_06\insertform.php" />
     <Compile Include="code\chapter_06\register3.php" />
     <Compile Include="code\chapter_06\submit-user.php" />
+    <Compile Include="code\chapter_06\update-form.php" />
     <Compile Include="code\chapter_06\update.php" />
     <Compile Include="code\chapter_07\add-article.php" />
     <Compile Include="code\chapter_07\carousel.php" />

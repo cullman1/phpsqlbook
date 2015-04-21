@@ -401,6 +401,12 @@ label {
     width:400px;
 }
 
+.status_block {
+    margin-top: 160px;
+    width:400px;
+    display:block;
+}
+
 label {
     width:100px;
     clear:left;
