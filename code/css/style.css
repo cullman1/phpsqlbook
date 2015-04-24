@@ -398,12 +398,24 @@ label {
 
 .indent {
     margin-left: 10px;
-    width:400px;
+    width:412px;
 }
 
 .status_block {
     margin-top: 160px;
     width:400px;
+    display:block;
+}
+
+#Status_Post{
+    width:400px;
+    display:block;
+        margin-top: 120px;
+}
+
+.button_block {
+    margin-bottom: 10px !important;
+    width:100px;
     display:block;
 }
 
