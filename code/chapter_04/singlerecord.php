@@ -1,3 +1,6 @@
+<?php include '../includes/header-register.php' ?>
+<div style="margin-left:10px;">
+<h2>User</h2>
 <?php
 try {
    /* Step 1 Connection */
@@ -18,5 +21,6 @@ catch (Exception $e)
 {
     /* Step 4 Or display an error message */
     echo $e->getMessage();
-}
-?>
+} ?>
+</div>
+<?php include '../includes/footer-site.php'; ?>
