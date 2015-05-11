@@ -1,65 +1,50 @@
 <?php 
-/* Db Details */
 require_once('../includes/db_config.php');
-
-/* Add header */
 include '../includes/header.php' ?>
-<div id="body">
-    <form id="galleryform" method="post" action="image_resizer.php" onsubmit="assigncontent()" enctype="multipart/form-data">
+<form id="galleryform" method="post" action="image_resizer.php" enctype="multipart/form-data">
       <div id="middlewide">
-        <div id="leftcol">
           <h2>Upload an Image</h2><br />
           <div id="Status_Post">
-               <?php 
-               $copied_image="";
-               $resized_image="";
-               if(isset($_FILES['image_upload']))
-               {
-                   if($_FILES["image_upload"]["name"]!="")
-                   {
-                       try
-                       {
-                           $folder = "../uploads/".$_FILES["image_upload"]["name"];
-                           if (($_FILES["image_upload"]["type"] != "image/jpeg") && ($_FILES["image_upload"]["type"] != "image/png") && ($_FILES["image_upload"]["type"] != "image/gif")) 
-                           {
+               <?php  $copied_image="";
+                      $resized_image="";
+                      if(isset($_FILES['image_upload']))  {
+                       if($_FILES["image_upload"]["name"]!="") {
+                        try {
+                         $folder = "../uploads/".$_FILES["image_upload"]["name"];
+                          if (($_FILES["image_upload"]["type"] != "image/jpeg") && ($_FILES["image_upload"]["type"] != "image/png") && ($_FILES["image_upload"]["type"] != "image/gif"))  {
                                throw new Exception('Illegal file type');
                            }
-                           if (!move_uploaded_file($_FILES['image_upload']['tmp_name'], $folder))
-                           {
+                           if (!move_uploaded_file($_FILES['image_upload']['tmp_name'], $folder)) {
                                throw new Exception('Unable to upload file');
                            }
                            $copied_image = copy_image($folder);
                            $resized_image = resize_image($copied_image, 50, 50);
                        }
-                       catch (Exception $ex)
-                       {
+                       catch (Exception $ex) {
                            unset($_REQUEST['Submitted']);
-                           echo "<span class='red' style='color:red;'>".$ex->getMessage()."</span><br/>";
+                           echo "<span class='red'>".$ex->getMessage()."</span><br/>";
                        }
                    }
                }
-               
-               if(isset($_REQUEST['Submitted']))
-               {
-                   echo "<span class='red' style='color:red;'>Image successfully uploaded!</span><br/>";
+               if(isset($_REQUEST['Submitted'])) {
+                   echo "<span class='red'>Image successfully uploaded!</span><br/>";
                    echo "<img src='".$resized_image."' />";
-               }  
-               
+               }            
                function copy_image($filename) {
                    $copied_image = "";
-                   $file_type = exif_imagetype($filename); //exif values - 1-gif, 2-jpg,3 - png
+                   $file_type = exif_imagetype($filename);
                    switch($file_type) {
-                       case 1:
+                       case 1: //exif values - 1-gif
                            $copied_image= "../uploads/copy.gif";
                            $img = imageCreateFromGif($filename);
                            imagegif($img, $copied_image);
                            break;
-                       case 2:
+                       case 2: //exif values -  2-jpg
                            $copied_image= "../uploads/copy.jpg";
                            $img = imageCreateFromJpeg($filename);
                            imagejpeg($img, $copied_image);
                            break;
-                       case 3:
+                       case 3: //exif values -  3 - png
                            $copied_image= "../uploads/copy.png";
                            $img = imageCreateFromPng($filename);
                            imagepng($img, $copied_image);
@@ -101,7 +86,6 @@ include '../includes/header.php' ?>
                    }
                    return "";
                } 
-
                ?>
           </div>
             <br/>
@@ -126,9 +110,6 @@ include '../includes/header.php' ?>
           <br />
           <br />  
       </div>
-      </div>
     </form>
-  <!--end content --> 
-  </div>
 <div class="clear"></div>
 <?php include '../includes/footer-editor.php' ?>
