@@ -1,36 +1,8 @@
 <?php 
 require_once('../includes/db_config.php');
-include '../includes/header.php' ?>
-<form id="galleryform" method="post" action="image_resizer.php" enctype="multipart/form-data">
-      <div id="middlewide">
-          <h2>Upload an Image</h2><br />
-          <div id="Status_Post">
-               <?php  $copied_image="";
-                      $resized_image="";
-                      if(isset($_FILES['image_upload']))  {
-                       if($_FILES["image_upload"]["name"]!="") {
-                        try {
-                         $folder = "../uploads/".$_FILES["image_upload"]["name"];
-                          if (($_FILES["image_upload"]["type"] != "image/jpeg") && ($_FILES["image_upload"]["type"] != "image/png") && ($_FILES["image_upload"]["type"] != "image/gif"))  {
-                               throw new Exception('Illegal file type');
-                           }
-                           if (!move_uploaded_file($_FILES['image_upload']['tmp_name'], $folder)) {
-                               throw new Exception('Unable to upload file');
-                           }
-                           $copied_image = copy_image($folder);
-                           $resized_image = resize_image($copied_image, 50, 50);
-                       }
-                       catch (Exception $ex) {
-                           unset($_REQUEST['Submitted']);
-                           echo "<span class='red'>".$ex->getMessage()."</span><br/>";
-                       }
-                   }
-               }
-               if(isset($_REQUEST['Submitted'])) {
-                   echo "<span class='red'>Image successfully uploaded!</span><br/>";
-                   echo "<img src='".$resized_image."' />";
-               }            
-               function copy_image($filename) {
+include '../includes/header.php';
+         
+ function copy_image($filename) {
                    $copied_image = "";
                    $file_type = exif_imagetype($filename);
                    switch($file_type) {
@@ -85,31 +57,39 @@ include '../includes/header.php' ?>
                            return "../uploads/thumbnail.png";
                    }
                    return "";
-               } 
-               ?>
-          </div>
-            <br/>
-          <table>       
-            <tr>
-                <td>Upload image:</td>
-                <td>
-                       <input type="file" id="image_upload" name="image_upload" accept="image/jpeg, image/png, image/gif" /> 
-                </td>
-            </tr>
-     
-            <tr><td>&nbsp;</td></tr>    
-            <tr>
-				<td></td>
-				<td>
-                    <input id="SaveButton" type="submit" name="submit" Value="Submit" class="btn btn-primary" />
-				</td>
-                
-			 </tr> 
-          </table>
-              <input id="Submitted" name="Submitted" type="hidden" value="true"/>
-          <br />
-          <br />  
-      </div>
+               }  ?>
+     <?php    if(isset($_FILES['image_upload']))  { ?>
+          <div id="Status_Post">
+               <h2>Upload an Image</h2><br />
+               <?php  $copied_image="";
+                      $resized_image="";    
+                       if($_FILES["image_upload"]["name"]!="") {
+                        try {
+                         $folder = "../uploads/".$_FILES["image_upload"]["name"];
+                          if (($_FILES["image_upload"]["type"] != "image/jpeg") && ($_FILES["image_upload"]["type"] != "image/png") && ($_FILES["image_upload"]["type"] != "image/gif"))  {
+                               throw new Exception('Illegal file type');
+                           }
+                           if (!move_uploaded_file($_FILES['image_upload']['tmp_name'], $folder)) {
+                               throw new Exception('Unable to upload file');
+                           }
+                           $copied_image = copy_image($folder);
+                           $resized_image = resize_image($copied_image, 50, 50);
+                       }
+                       catch (Exception $ex) {
+                           unset($_POST['Submitted']);
+                           echo "<span class='red'>".$ex->getMessage()."</span><br/>";
+                       }
+                        if(isset($_POST['Submitted'])) {
+                            echo "<span class='red'>Image successfully uploaded!</span><br/>";
+                            echo "<img src='".$resized_image."' />";
+                        }
+                   }
+              } else { ?>
+         <form  class="indent" method="post" action="image_resizer.php"  enctype="multipart/form-data">
+        <label>File to upload:</label>
+        <input type="file" name="image_upload" /> 
+        <button type="submit" class="button_block spacing btn btn-primary">Submit</button>
+        <input id="Submitted" name="Submitted" type="hidden" value="true"/>
     </form>
-<div class="clear"></div>
+<?php } ?>
 <?php include '../includes/footer-editor.php' ?>
