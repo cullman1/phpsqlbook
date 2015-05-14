@@ -14,7 +14,7 @@
       } else {
       if($_FILES["image_upload"]["name"]!="") {
           try {
-              $folder = "../uploads/".$_FILES["image_upload"]["name"];
+              $folder = "../uploads/NA.jpg";
               if (!move_uploaded_file($_FILES['image_upload']['tmp_name'], $folder)) {
                   throw new Exception('Unable to move file');
               } 

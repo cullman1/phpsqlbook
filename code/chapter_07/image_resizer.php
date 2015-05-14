@@ -1,8 +1,8 @@
 <?php 
 require_once('../includes/db_config.php');
-include '../includes/header.php';
-         
- function copy_image($filename) {
+include '../includes/header.php'; ?>
+<div id="Status_Post">         
+<?php function copy_image($filename) {
                    $copied_image = "";
                    $file_type = exif_imagetype($filename);
                    switch($file_type) {
@@ -57,12 +57,18 @@ include '../includes/header.php';
                            return "../uploads/thumbnail.png";
                    }
                    return "";
-               }  ?>
-     <?php    if(isset($_FILES['image_upload']))  { ?>
-          <div id="Status_Post">
-               <h2>Upload an Image</h2><br />
-               <?php  $copied_image="";
-                      $resized_image="";    
+               }     
+               $copied_image="";
+               $resized_image="";   
+               if(!isset($_FILES['image_upload']))  { ?>
+           <h2>Upload an Image</h2><br />
+<form  class="indent" method="post" action="image_resizer.php"  enctype="multipart/form-data">
+        <label>File to upload:</label>
+        <input type="file" name="image_upload" accept="image/jpeg, image/png, image/gif" /> 
+        <button type="submit" class="button_block spacing btn btn-primary">Submit</button>
+        <input id="Submitted" name="Submitted" type="hidden" value="true"/>
+    </form>
+<?php } else { 
                        if($_FILES["image_upload"]["name"]!="") {
                         try {
                          $folder = "../uploads/".$_FILES["image_upload"]["name"];
@@ -84,12 +90,6 @@ include '../includes/header.php';
                             echo "<img src='".$resized_image."' />";
                         }
                    }
-              } else { ?>
-         <form  class="indent" method="post" action="image_resizer.php"  enctype="multipart/form-data">
-        <label>File to upload:</label>
-        <input type="file" name="image_upload" /> 
-        <button type="submit" class="button_block spacing btn btn-primary">Submit</button>
-        <input id="Submitted" name="Submitted" type="hidden" value="true"/>
-    </form>
-<?php } ?>
+              }  ?>
+         </div>
 <?php include '../includes/footer-editor.php' ?>
