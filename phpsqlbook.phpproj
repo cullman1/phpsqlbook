@@ -114,14 +114,15 @@
     <Compile Include="code\chapter_06\transactions.php" />
     <Compile Include="code\chapter_06\update-form.php" />
     <Compile Include="code\chapter_06\update.php" />
+    <Compile Include="code\chapter_07\add_article_short.php" />
     <Compile Include="code\chapter_07\add-article.php" />
     <Compile Include="code\chapter_07\carousel.php" />
-    <Compile Include="code\chapter_07\ch6_first_attempt.php" />
     <Compile Include="code\chapter_07\edit-article.php" />
     <Compile Include="code\chapter_07\file_get_contents.php" />
     <Compile Include="code\chapter_07\file_read.php" />
     <Compile Include="code\chapter_07\file_upload.php" />
-    <Compile Include="code\chapter_07\file_upload_improved.php" />
+    <Compile Include="code\chapter_07\file_upload_improved_short.php" />
+    <Compile Include="code\chapter_07\file_upload_short.php" />
     <Compile Include="code\chapter_07\full_example.php" />
     <Compile Include="code\chapter_07\image_cropper.php" />
     <Compile Include="code\chapter_07\image_resizer.php" />
