@@ -14,7 +14,7 @@
     <script src="../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../js/jquery.hotkeys.js"></script>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/admin.css" rel="stylesheet" />

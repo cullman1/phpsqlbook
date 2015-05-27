@@ -10,6 +10,7 @@ include '../includes/header-chapters.php' ?>
       <li><a href="file_read.php">fread example</a></li>
       <li><a href="ch6_first_attempt.php">Basic add article page</a></li>
       <li><a href="add_article_short.php">Add article short page</a></li>
+          <li><a href="featured-image.php">Image Wall example</a></li>
       <li><a href="edit-article.php?article_id=39">Basic edit article page</a></li>
       <li><a href="file_upload.php">Rich Text Editor enhanced Add Article Page</a></li>
       <li><a href="file_upload.php">Rich Text Editor enhanced Edit Article Page</a></li>

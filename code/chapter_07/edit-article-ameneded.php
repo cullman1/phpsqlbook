@@ -1,11 +1,32 @@
 <?php 
 require_once('authenticate.php'); 
-  
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 /* Db Details */
-require_once('../includes/db_config.php');
+require_once('/home/sites/bobbrownendurance.com/public_html/classes/registry.php');
+require_once('/home/sites/bobbrownendurance.com/public_html/classes/configuration.php');
+
+//Registy create instance of
+$registry = Registry::instance();
+
+//Database
+$registry->set('configfile', new Configuration());
+$db = $registry->get('configfile');
+$pdoString="mysql:host=".$db->getServerName().";dbname=".$db->getDatabaseName();
+$pdo = new PDO($pdoString, $db->getUserName(), $db->getPassword()); 
+$pdo->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true);
+$registry->set('pdo', $pdo);
+$dbHost =  $registry->get('pdo');
+
+/* Query SQL Server for selecting category. */
+$select_category_sql = "select category_id, category_name FROM category";
+$select_category_result = $dbHost->prepare($select_category_sql);
+$select_category_result->execute();
+$select_category_result->setFetchMode(PDO::FETCH_ASSOC);
+
 
 /* Query SQL Server for selecting article and associated media. */
-$select_article_sql = "SELECT title, content, article.article_id,  category_id, parent_id, featured_media_id FROM article where article.article_id=".$_REQUEST['article_id'];
+$select_article_sql = "SELECT * FROM article left outer join media on article.featured_media_id = media.media_id where article.article_id=".$_REQUEST['article_id'];
 $select_article_result = $dbHost->prepare($select_article_sql);
 $select_article_result->execute();
 $select_article_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -23,7 +44,7 @@ $select_parent_result->execute();
 $select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server linking media to article via media link table. */
-$select_medialink_sql = "select * FROM media_link JOIN 387732_phpbook1.media ON media.media_id = media_link.media_id where media_link.article_id=".$_REQUEST['article_id'];
+$select_medialink_sql = "select * FROM media_link JOIN media ON media.media_id = media_link.media_id where article_id=".$_REQUEST['article_id'];
 $select_medialink_result = $dbHost->prepare($select_medialink_sql);
 $select_medialink_result->execute();
 $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -32,10 +53,10 @@ $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
 if (isset($_REQUEST['Submitted']))
 {
     /* Update contents of article table */
-    $update_article_sql = "UPDATE 387732_phpbook1.article SET title= '" .$_REQUEST["ArticleTitle"]."', content='" .$_REQUEST["ArticleContent"]. "', category_id=" .$_REQUEST["CategoryId"]. ", parent_id=" .$_REQUEST["PageId"]. " where article_id=".$_REQUEST["article_id"];
+    $update_article_sql = "UPDATE article SET title= '" .$_REQUEST["ArticleTitle"]."', content='" .$_REQUEST["ArticleContent"]. "', category_id=" .$_REQUEST["CategoryId"]. ", parent_id=" .$_REQUEST["PageId"]. " , featured_media_id=" .$_REQUEST["featured_image"]. " where article_id=".$_REQUEST["article_id"];
     $update_article_result = $dbHost->prepare($update_article_sql);
     $update_article_result->execute();
-    if($update_article_result->errorCode()!=0) {  die("Delete Media Query failed"); }
+    if($update_article_result->errorCode()!=0) {  die("Update Media Query failed"); }
     else
     {
         if(isset($_FILES['document_upload']))
@@ -57,14 +78,6 @@ if (isset($_REQUEST['Submitted']))
                 $insert_medialink_result->execute();
                 if($insert_medialink_result->errorCode()!=0) {  die("Insert Media LinkQuery failed"); }
             }
-        }
-
-        if($_REQUEST['fimagehidden']!="")
-        {
-            $update_media_sql = "UPDATE 387732_phpbook1.media SET article_id =".$_REQUEST["article_id"]." where media_id=".$_REQUEST['fimagehidden'];
-            $update_media_result = $dbHost->prepare($update_media_sql);
-            $update_media_result->execute();
-            if($update_media_result->errorCode()!=0) {  die("Update Media Query failed"); }
         }
     }  
 }
@@ -88,13 +101,12 @@ function assigncontent()
       <div id="middlewide">
         <div id="leftcol">
           <h2>Edit an Article</h2>
-          
           <div id="Status" >
               <?php 
               if(isset($_REQUEST['Submitted']))
-                {
+              {
                   echo "<span class='red' style='color:red'>Article successfully edited</span>";
-                }
+              }
               ?>
             </div>
             <br />
@@ -114,7 +126,7 @@ function assigncontent()
 
                 </td> 
               </tr>
-               <tr><td id='placehere'>&nbsp;</td></tr>
+              <tr><td id='placehere'>&nbsp;</td></tr>
               <tr>
                 <td>Featured Image:</td>
                 <td>
@@ -134,9 +146,9 @@ function assigncontent()
               } 
               else {
                   
-                  if($select_article_row["featured_media_id"]!=0) {
+                  if($select_article_row["media_id"]!=0) {
                       
-                      echo "<input name='featured_image' type=hidden value='".$select_article_row["featured_media_id"]."' />";
+                      echo "<input name='featured_image' type=hidden value='".$select_article_row["media_id"]."' />";
                   } else {
                       echo "<input name='featured_image' type=hidden value='0' />";
                   }
@@ -154,14 +166,14 @@ function assigncontent()
                 <td>Associated Docs:</td>
                 <td>
                 <?php while($select_medialink_row = $select_medialink_result->fetch()) 
-                  {
-                      if (isset($select_medialink_row['name']) && ($select_medialink_row['file_type']!="image/jpeg" && $select_medialink_row['file_type']!="image/png"))
-                    { 
-                        echo $select_medialink_row['name'] ." - " . "<span name='deletebutton".$select_medialink_row['media_id']."' class='glyphicon glyphicon-remove red deleter'></span></div><br/>"; 
-                          echo "<input type='hidden' id='fdochidden". $select_medialink_row['media_id']."' name='fdochidden". $select_medialink_row['media_id']."' value='' />"; 
-                    } 
-                  }
-                  ?> 
+                      {
+                          if (isset($select_medialink_row['name']) && ($select_medialink_row['file_type']!="image/jpeg" && $select_medialink_row['file_type']!="image/png"))
+                          { 
+                              echo $select_medialink_row['name'] ." - " . "<span name='deletebutton".$select_medialink_row['media_id']."' class='glyphicon glyphicon-remove red deleter'></span></div><br/>"; 
+                              echo "<input type='hidden' id='fdochidden". $select_medialink_row['media_id']."' name='fdochidden". $select_medialink_row['media_id']."' value='' />"; 
+                          } 
+                      }
+                ?> 
                 <input type="file" id="document_upload" name="document_upload"> 
                 </td>
             </tr>

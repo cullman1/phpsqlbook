@@ -3,7 +3,7 @@ require_once('../includes/db_config.php');
 $sel_cat_set = $dbHost->prepare("select category_id, category_name FROM category");
 $sel_cat_set->execute();
 if (isset($_POST['Submit'])) {
-     $ins_article_set->bindParam(":article_title", $_POST['ArticleTitle']);
+  
      $ins_article_set->bindParam(":article_content", $_POST['ArticleContent']);
      $ins_article_set->bindParam(":date", date("Y-m-d H:i:s"));
      $ins_article_set->bindParam(":category_id", $_POST['CategoryId']);
@@ -30,7 +30,7 @@ if (isset($_POST['Submit'])) {
                     <option value="<?php  echo $sel_category_row['category_id']; ?>"><?php  echo $sel_category_row['category_name']; ?></option>
                 <?php } ?> 
                 </select> </label>
-            <label>Add featured image:   <input type="file" id="document_upload" name="document_upload"> </label>
+           <a class="btn" href="../featured-image.php">Add Featured Image</a>    <!-- <label>Add featured image:  <input type="file" id="document_upload" name="document_upload">//--> </label>
             <button name="submit" value="Submit" value="sent" class="btn btn-primary" style="float:left;display:block;">Submit Article</button>
     </form>
     <?php if (isset($_POST['submit'])) {
