@@ -18,7 +18,7 @@ $select_parent_result->setFetchMode(PDO::FETCH_ASSOC);
 if (isset($_REQUEST["Submitted"]))
 {
     /* Query SQL Server for inserting a new category. */
-    $insert_category_sql = "INSERT INTO category (category_name, category_template, category_parent) VALUES ('".$_REQUEST['CategoryName']."', '".$_REQUEST['CategoryTemplate']."', '".$_REQUEST['CategoryParent']."')";
+    $insert_category_sql = "INSERT INTO category (category_name, category_template, parent_category) VALUES ('".$_REQUEST['CategoryName']."', '".$_REQUEST['CategoryTemplate']."', '".$_REQUEST['CategoryParent']."')";
     $insert_category_result = $dbHost->prepare($insert_category_sql);
     $insert_category_result->execute();
     if($insert_category_result->errorCode()!=0) {  die("Insert Category Query failed"); }

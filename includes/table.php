@@ -41,13 +41,13 @@ $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);
                 <td><?php echo $select_media_row['media_id']; ?></td>
                 <?php if($select_media_row['file_type']=="image/jpeg" || $select_media_row['file_type']=="image/png" || $select_media_row['file_type']=="image/gif")
                       { ?>
-                        <td><a href=""><img  width=100 src='../uploads/<?php echo $select_media_row['name']; ?>' alt='<?php echo $select_media_row['name']; ?>' class='img-thumbnail'></a></td>
+                        <td><a href=""><img  width=100 src='../uploads/<?php echo $select_media_row['file_name']; ?>' alt='<?php echo $select_media_row['file_name']; ?>' class='img-thumbnail'></a></td>
                <?php  } else { ?>
                         <td>-</td>
                <?php  } ?>
                 <td><?php while($select_medialink_row = $select_medialink_result->fetch()) { echo $select_medialink_row['article_id'] . " "; } ?></td>
                 <td><?php echo $select_media_row['media_title']; ?></td>
-                <td><?php echo $select_media_row['name']; ?></td>
+                <td><?php echo $select_media_row['file_name']; ?></td>
                 <td><?php echo $select_media_row['file_type']; ?></td>
                 <td><div name="deletebutton<?php echo $select_media_row['media_id']; ?>" class="deleter"><span class="glyphicon glyphicon-remove red"></span></div></td>   
               </tr>          

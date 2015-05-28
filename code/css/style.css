@@ -439,3 +439,22 @@ input, label {
 body {
     overflow: hidden;
 }
+
+.div_pos {
+    display: inline-block;
+    width: 110px;
+}
+
+.img_pos{ width:100px; float:left; margin-right:10px;}
+
+.label_pos {font-weight:bold; font-size:12px; background-color:lightgray;}
+
+.radio_pos {
+    font-weight: bold;
+    font-size: 12px;
+    background-color: lightgray;
+}
+
+.image_wall { 
+    width:950px; overflow:hidden; background-color:lightgray; padding-left:10px; padding-top: 10px;
+}
