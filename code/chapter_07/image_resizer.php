@@ -61,10 +61,10 @@ include '../includes/header.php'; ?>
                $copied_image="";
                $resized_image="";   
                if(!isset($_FILES['image_upload']))  { ?>
-           <h2>Upload an Image</h2><br />
+           <h2>Upload an Image</h2>
 <form  class="indent" method="post" action="image_resizer.php"  enctype="multipart/form-data">
         <label>File to upload:</label>
-        <input type="file" name="image_upload" accept="image/jpeg, image/png, image/gif" /> 
+        <input type="file" name="image_upload" accept="image/jpeg, image/png, image/gif" /> <br />
         <button type="submit" class="button_block spacing btn btn-primary">Submit</button>
         <input id="Submitted" name="Submitted" type="hidden" value="true"/>
     </form>
