@@ -6,6 +6,7 @@ $sel_article_set->bindParam(":article_id", $_GET['articleid']);
 $sel_article_set->execute();
 $sel_cat_set = $dbHost->prepare("select category_id, category_name FROM category");
 $sel_cat_set->execute();
+
 if (isset($_POST['submit'])) { 
     $upd_article_set = $dbHost->prepare("UPDATE article SET title= :title, content= :content, category_id= :category_id, featured_media_id = :media_id where article_id= :article_id");
     $upd_article_set->bindParam(":title", $_POST['ArticleTitle']);

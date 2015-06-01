@@ -1,10 +1,10 @@
-<?php include '../includes/header-register.php'; 
+<?php include '../includes/header.php'; 
  if(!isset($_FILES['image_upload'])) {
   ?>
     <h2>Upload an Image</h2><br />
     <form method="post" action="file_upload.php"  enctype="multipart/form-data">
-      <label>Upload file: <input type="file" name="image_upload"  /></label><br />
-      <button style="margin-top: 40px" type="submit" name="Submitted" value="sent" >Submit</button>
+      <label>Upload file: <input type="file" name="image_upload"  /></label>
+      <button class="btn" style="margin-top: 40px" type="submit" name="Submitted" value="sent" >Submit</button>
     </form>
   <?php 
  } else {
