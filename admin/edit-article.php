@@ -85,10 +85,9 @@ function assigncontent()
 <div id="body">
   <form id="form1" method="post" action="edit-article.php" onsubmit="assigncontent()" enctype="multipart/form-data">
     <?php while($select_article_row = $select_article_result->fetch()) { ?>
-      <div id="middlewide">
-        <div id="leftcol">
-          <h2>Edit an Article</h2>
-          
+      <div>
+      
+          <h2>Edit an Article</h2>   
           <div id="Status" >
               <?php 
               if(isset($_REQUEST['Submitted']))
@@ -98,27 +97,9 @@ function assigncontent()
               ?>
             </div>
             <br />
-            <table>
-              <tr>
-                <td><span class="fieldheading">Title:</span></td>
-                <td><input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php echo $select_article_row['title']; ?>"/></td> 
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td><span class="fieldheading">Content:</span></td>
-                <td>
-               
-                <?php include '../includes/rich-text-control.php' ?>
-
-                </td> 
-              </tr>
-               <tr><td id='placehere'>&nbsp;</td></tr>
-              <tr>
-                <td>Featured Image:</td>
-                <td>
-                   <?php 
+            <label>Title: <input id="ArticleTitle" name="ArticleTitle" type="text" value="<?php echo $select_article_row['title']; ?>"/></label>
+            <label><?php include '../includes/rich-text-control.php' ?></label>
+            <label>Featured Image:  <?php 
               if (isset($_REQUEST['img_choose']))  {
                   
                   
@@ -146,14 +127,9 @@ function assigncontent()
                   echo "<span>../uploads/". $select_article_row["file_name"]."</span>";
               } ?>
                   <br />
-                   <a class="btn" href="../admin/featured-image.php?featured=edit&article_id=<?php echo $select_article_row["article_id"]; ?>">Add Featured Image</a> 
-                </td>
-              </tr>
-              <tr><td>&nbsp;</td></tr>
-              <tr>
-                <td>Associated Docs:</td>
-                <td>
-                <?php while($select_medialink_row = $select_medialink_result->fetch()) 
+                   <a class="btn" href="../admin/featured-image.php?featured=edit&article_id=<?php echo $select_article_row["article_id"]; ?>">Add Featured Image</a> </label>
+                
+                <label>Associated Docs:  <?php while($select_medialink_row = $select_medialink_result->fetch()) 
                   {
                       if (isset($select_medialink_row['name']) && ($select_medialink_row['file_type']!="image/jpeg" && $select_medialink_row['file_type']!="image/png"))
                     { 
@@ -162,39 +138,23 @@ function assigncontent()
                     } 
                   }
                   ?> 
-                <input type="file" id="document_upload" name="document_upload"> 
-                </td>
-            </tr>
-            <tr><td>&nbsp;</td></tr>
-            <tr>
-              <td style="vertical-align:top;"><span class="fieldheading">Category:&nbsp;</span></td>
-              <td>   
-                  <select id="CategoryId" name="CategoryId">     
+                </label>
+              <label>Category:&nbsp;    <select id="CategoryId" name="CategoryId">     
                     <?php while($select_category_row = $select_category_result->fetch()) { ?>
                     <option value="<?php  echo $select_category_row['category_id']; ?>"<?php if( $select_category_row['category_id'] == $select_article_row['category_id']) { echo "selected";} ?> ><?php  echo $select_category_row['category_name']; ?></option>
                     <?php } ?> 
-                  </select>
-              </td>
-            <tr><td>&nbsp;</td></tr>
-            <tr>
-              <td style="vertical-align:top;"><span class="fieldheading">Parent Page:&nbsp;</span></td>
-              <td>   
-                  <select id="PageId" name="PageId">
+                  </select></label>
+              
+              <label>Parent Page:&nbsp; <select id="PageId" name="PageId">
                     <?php while($select_parent_row = $select_parent_result->fetch()) { ?>
                     <option value="<?php  echo $select_parent_row['parent_id']; ?>"  <?php if( $select_parent_row['parent_id'] == $select_article_row['parent_id']) { echo "selected";} ?>><?php  echo $select_parent_row['parent_name']; ?></option>
                     <?php } ?> 
-                  </select>
-             </td>
-            <tr><td>&nbsp;</td></tr>
-            <tr>
-                <td></td>
-                <td> 
+                  </select></label>
+                 <br />
+           
                     <input id="SaveButton" type="submit" name="submit" Value="Submit" class="btn btn-primary" />
                      <input id="ArticleContent" name="ArticleContent" type="hidden" value=""/>
-                </td>  
-            </tr> 
-            </table>
-          </div>
+               
           <br />
           <a id="Return2" href="pages.php">Return to Main Page</a>
           <input id="article_id" name="article_id" type="hidden" value="<?php echo $_REQUEST['article_id'];?>"/>

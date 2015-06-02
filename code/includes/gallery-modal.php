@@ -1,5 +1,5 @@
 <?php 
-$select_mediaimages_sql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png'";
+$select_mediaimages_sql = "select media.media_id, media_title, file_type, file_path, thumbnail, name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png'";
 $select_mediaimages_result = $dbHost->prepare($select_mediaimages_sql);
 $select_mediaimages_result->execute();
 $select_mediaimages_result->setFetchMode(PDO::FETCH_ASSOC);
@@ -43,7 +43,7 @@ $totalRecords = $select_mediaimages_result->rowCount(); ?>
           $innerCounter = 1;
           while($select_mediaimages_row2 = $select_mediaimages_result->fetch()) { ?>
               <div class="item <?php if($innerCounter==1){echo "active";} ?>">
-              <img src='<?php echo $select_mediaimages_row2["url"]; ?>' alt='<?php echo $select_mediaimages_row2["media_title"]; ?>' style="max-height: 500px;" />
+              <img src='<?php echo $select_mediaimages_row2["file_path"]; ?>' alt='<?php echo $select_mediaimages_row2["media_title"]; ?>' style="max-height: 500px;" />
               <div class="carousel-caption caption-text">
                  <?php echo $select_mediaimages_row2["media_title"]; ?>
               </div>
