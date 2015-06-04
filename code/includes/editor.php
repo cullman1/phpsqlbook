@@ -27,6 +27,7 @@
       <input placeholder="URL" type="text" data-edit="createLink" />
       <button class="btn" type="button">Add</button>
     </div>
+
   <a class="btn" data-edit="html"><i class="icon-file-alt"></i></a>
   </div>
 </div>
@@ -35,7 +36,7 @@
           if (!is_null($_POST["Content"])){ 
             echo $_POST["Content"]; 
           } 
-        } else if (isset($select_row["content"])) {
-            echo $select_row["content"];     
+        } else if (isset($sel_article_row["content"])) {
+            echo $sel_article_row["content"];     
         } ?>
 </div>

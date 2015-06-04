@@ -160,6 +160,8 @@
     <Compile Include="code\chapter_07\add_article_short.php" />
     <Compile Include="code\chapter_07\carousel.php" />
     <Compile Include="code\chapter_07\edit-article.php" />
+    <Compile Include="code\chapter_07\edit_article_rich_text.php" />
+    <Compile Include="code\chapter_07\edit_article_short.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
     <Compile Include="code\chapter_07\file_get_contents.php" />
