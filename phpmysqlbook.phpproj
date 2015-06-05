@@ -155,9 +155,13 @@
     <Compile Include="code\chapter_06\update-form.php" />
     <Compile Include="code\chapter_06\update.php" />
     <Compile Include="code\chapter_07\add-article.php" />
+    <Compile Include="code\chapter_07\add_article_amended.php" />
+    <Compile Include="code\chapter_07\add_article_rich_text.php" />
     <Compile Include="code\chapter_07\add_article_short.php" />
     <Compile Include="code\chapter_07\carousel.php" />
     <Compile Include="code\chapter_07\edit-article.php" />
+    <Compile Include="code\chapter_07\edit_article_rich_text.php" />
+    <Compile Include="code\chapter_07\edit_article_short.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
     <Compile Include="code\chapter_07\file_get_contents.php" />
@@ -287,6 +291,7 @@
     <Compile Include="code\includes\add-comment.php" />
     <Compile Include="code\includes\comments-control.php" />
     <Compile Include="code\includes\comments-list.php" />
+    <Compile Include="code\includes\editor.php" />
     <Compile Include="code\includes\table.php" />
     <Compile Include="code\login\view-profile.php" />
     <Compile Include="code\login\login-admin.php" />

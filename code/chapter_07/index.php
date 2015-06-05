@@ -13,8 +13,8 @@ include '../includes/header-chapters.php' ?>
       <li><a href="featured-image.php?featured=add">Image Wall example</a></li>
       <li><a href="add_article_amended.php">Add article extended page</a></li>
       <li><a href="edit_article_short.php?articleid=87">Basic edit article page</a></li>
-      <li><a href="file_upload.php">Rich Text Editor enhanced Add Article Page</a></li>
-      <li><a href="file_upload.php">Rich Text Editor enhanced Edit Article Page</a></li>
+      <li><a href="add_article_rich_text.php">Rich Text Editor enhanced Add Article Page</a></li>
+      <li><a href="edit_article_rich_text.php?articleid=87">Rich Text Editor enhanced Edit Article Page</a></li>
       <li><a href="full_example.php">Full example</a></li>
       <li><a href="file_get_contents.php">file_get_contents and file example</a></li>
       <li><a href="file_read.php">fread example</a></li>

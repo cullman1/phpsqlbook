@@ -1,9 +1,13 @@
 <?php /* Query SQL Server for inserting data. */
-$select_mediaimages_sql = "select media.media_id, media_title, file_type, url, thumbnail, name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png'";
+$select_mediaimages_sql = "select media.media_id, media_title, file_type, file_path, file_thumbnail, file_name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png'";
 $select_mediaimages_result = $dbHost->prepare($select_mediaimages_sql);
 $select_mediaimages_result->execute();
 $select_mediaimages_result->setFetchMode(PDO::FETCH_ASSOC);
-$totalRecords = $select_mediaimages_result->rowCount();
+
+
+$select_mediaimages_result2 = $dbHost->prepare($select_mediaimages_sql);
+$select_mediaimages_result2->execute();
+$select_mediaimages_result2->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -18,7 +22,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<div id="image" class="modal modal-content modal-header fade gallery-size">
+<div id="image" class="modal modal-content modal-header fade" style="width:623px;overflow-x:hidden; overflow-y:hidden;height:630px;">
   <div>
     <div >
       <div>
@@ -30,9 +34,12 @@ $(document).ready(function(){
           <div id="carousel-media" class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
-            <ol class="carousel-indicators carousel-pos">
+            <ol class="carousel-indicators" style="position: relative; top: 400px;left:250px;">
               <?php 
-                $loopCounter = 0;                
+                $loopCounter = 0;  
+                
+                $select_mediaimages_rows = $select_mediaimages_result->fetchAll();
+                $totalRecords = count($select_mediaimages_rows);
                 for ($i=$loopCounter; $i<$totalRecords; $i++)
                 { ?>
                   <li data-target="#carousel-media" data-slide-to="<?php echo $loopCounter?>" <?php if($i==0){echo "class='active'";} ?> ></li>
@@ -43,16 +50,19 @@ $(document).ready(function(){
             <div class="carousel-inner">
               <?php
                 $innerCounter = 1;
-                while($select_mediaimages_row2 = $select_mediaimages_result->fetch())
+          
+                while($select_mediaimages_row2 = $select_mediaimages_result2->fetch())
                 {
               ?>
                   <div class="item <?php if($innerCounter==1){echo "active";} ?>">
-                    <img src='<?php echo $select_mediaimages_row2["url"]; ?>' alt='<?php echo $select_mediaimages_row2["media_title"]; ?>' style="max-height: 500px;" />
-                    <div class="carousel-caption caption-text">
+                    <img src='<?php echo $select_mediaimages_row2["file_path"]; ?>' alt='<?php echo $select_mediaimages_row2["media_title"]; ?>' style="max-height: 500px;" />
+                    <div class="carousel-caption" style="color:white; bottom: 44px;">
                       <?php echo $select_mediaimages_row2["media_title"]; ?>
                     </div>
-                    <div  class="button-pos">
-                      <button id="button<?php echo $select_mediaimages_row2["media_id"]?>" type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $select_mediaimages_row2["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $select_mediaimages_row2["name"]?>" class="btn-clicked btn btn-primary">Choose this image</a>
+                    <br/>
+                    <br/>
+                    <div  style="text-align:center; padding-top:30px;">
+                      <button id="button<?php echo $select_mediaimages_row2["media_id"]?>" type="button" data-url="<?php echo basename($_SERVER['PHP_SELF']);?>?pressed=<?php echo $select_mediaimages_row2["media_id"]?><?php if(isset($_REQUEST["article_id"])){echo "&article_id=".$_REQUEST["article_id"];} ?>&imgname=<?php echo $select_mediaimages_row2["file_name"]?>" class="btn-clicked btn btn-primary">Choose this image</a>
                       <!--  -->
                     </div>
                   </div>
