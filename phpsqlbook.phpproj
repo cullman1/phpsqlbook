@@ -48,6 +48,7 @@
     <Compile Include="code\chapter_07\add_article_amended.php" />
     <Compile Include="code\chapter_07\edit_article_short.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
+    <Compile Include="code\chapter_07\image.php" />
     <Compile Include="code\chapter_07\insertform.php" />
     <Compile Include="code\chapter_07\media_short.php" />
     <Compile Include="admin\new-admin.php" />
