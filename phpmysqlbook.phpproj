@@ -176,6 +176,7 @@
     <Compile Include="code\chapter_07\imagick_check.php" />
     <Compile Include="code\chapter_07\index.php" />
     <Compile Include="code\chapter_07\insertform.php" />
+    <Compile Include="code\chapter_07\multiple.php" />
     <Compile Include="code\chapter_08\authenticate.php" />
     <Compile Include="code\chapter_08\ban-user.php" />
     <Compile Include="code\chapter_08\commenting.php" />
