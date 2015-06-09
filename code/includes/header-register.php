@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     <title>Simple CMS Viewer</title> 
     <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="../cleanbusiness/layout/styles/layout.css" type="text/css" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>   
      <link href="../css/style.css" rel="stylesheet">
             
