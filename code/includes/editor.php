@@ -29,6 +29,7 @@
     </div>
 
   <a class="btn" data-edit="html"><i class="icon-file-alt"></i></a>
+           <?php include '../includes/document_insert.php' ?>
   </div>
 </div>
 <div id="rich-text-container">

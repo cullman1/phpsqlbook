@@ -7,6 +7,28 @@ require_once('../includes/db_config.php');
 $sel_cat_set = $dbHost->prepare("select category_id, category_name FROM category");
 $sel_cat_set->execute();
  if (isset($_POST['submit'])) {
+     if(isset($_FILES['doc_upload'])) {
+  if($_FILES["doc_upload"]["name"]!="") {
+    $folder = "../uploads/".$_FILES["doc_upload"]["name"];
+   move_uploaded_file($_FILES['doc_upload']['tmp_name'], $folder);
+   $ins_media_set = $dbHost->prepare("INSERT INTO media(alt_text,file_name,file_type,
+     file_path,file_size,date_uploaded) VALUES (:text, :name, :type, :path, :size, :date)");
+    $ins_media_set->bindParam(":text", $_FILES["doc_upload"]["name"]);
+    $ins_media_set->bindParam(":name", $_FILES["doc_upload"]["name"]);
+    $ins_media_set->bindParam(":type", $_FILES["doc_upload"]["type"]);
+    $ins_media_set->bindParam(":path", $_FILES["doc_upload"]["name"]);
+    $ins_media_set->bindParam(":size", $_FILES["doc_upload"]["size"]);
+    $ins_media_set->bindParam(":date", date("Y-m-d H:i:s"));
+    $ins_media_set->execute();
+    if($ins_media_set->errorCode() != 0) {  die("Insert Media Query failed: "); }
+    $newmediaid = $dbHost->lastInsertId();
+   $ins_medialink_set = $dbHost->prepare("INSERT INTO media_link (article_id, media_id) VALUES (:article_id, :media_id)");
+    $ins_medialink_set->bindParam(":article_id", $newarticleid);
+    $ins_medialink_set->bindParam(":media_id", $newmediaid);
+    $ins_medialink_set->execute();
+    if($ins_medialink_set->errorCode() != 0) {die("Insert Media Link Query failed"); }
+  }
+}
   $ins_article_set = $dbHost->prepare("INSERT INTO article (title, content, date_posted, category_id, featured_media_id) VALUES (:article_title, :article_content, :date , :category_id, :media_id)"); 
   $ins_article_set->bindParam(":article_title", $_POST['ArticleTitle']);
   $ins_article_set->bindParam(":article_content", $_POST['ArticleContent']);
@@ -48,6 +70,8 @@ $sel_cat_set->execute();
     </select> </label>
      <label style="width:540px">Featured image: <?php if (isset($_POST['img_name'])) { echo "<img src='../uploads/".$_POST['img_name']."'/><input type='hidden' name='media_id' value='".$_POST['img_id']."' />";} ?>
          <a class="btn" href="../chapter_07/featured-image.php?featured=add">Add featured image</a> </label>
+    <label>Add associated documents/pdfs:  <?php if (isset($_POST['doc_upload'])) { 
+  echo "../uploads/".$_POST['doc_upload']; } ?>   <input type="file" name="doc_upload" id="doc_upload" />  </label>
   <button type=submit name="submit" value="sent">Submit Article</button>
     <input id="Content" name="Content" type="hidden" />
 

@@ -16,7 +16,8 @@ include '../includes/header-chapters.php' ?>
       <li><a href="add_article_rich_text.php">Rich Text Editor enhanced Add Article Page</a></li>
       <li><a href="edit_article_rich_text.php?articleid=87">Rich Text Editor enhanced Edit Article Page</a></li>
       <li><a href="multiple.php">Multiple Uploads Page</a></li>
-      <li><a href="full_example.php">Full example</a></li>
+      <li><a href="add_article_document.php">Add documents example</a></li><br /><br />
+
       <li><a href="file_get_contents.php">file_get_contents and file example</a></li>
       <li><a href="file_read.php">fread example</a></li>
     </ul>

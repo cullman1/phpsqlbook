@@ -46,7 +46,11 @@
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="code\chapter_07\add_article_amended.php" />
+    <Compile Include="code\chapter_07\add_article_document.php" />
+    <Compile Include="code\chapter_07\add_article_rich_text.php" />
+    <Compile Include="code\chapter_07\articles.php" />
     <Compile Include="code\chapter_07\articles2.php" />
+    <Compile Include="code\chapter_07\edit_article_rich_text.php" />
     <Compile Include="code\chapter_07\edit_article_short.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
     <Compile Include="code\chapter_07\image.php" />
@@ -254,6 +258,8 @@
     <Compile Include="code\includes\comments-list.php" />
     <Compile Include="code\includes\db_config.php" />
     <Compile Include="code\includes\db_config2.php" />
+    <Compile Include="code\includes\document_insert.php" />
+    <Compile Include="code\includes\editor.php" />
     <Compile Include="code\includes\footer-editor.php" />
     <Compile Include="code\includes\footer-site.php" />
     <Compile Include="code\includes\gallery-modal.php" />
