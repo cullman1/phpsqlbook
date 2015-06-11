@@ -52,6 +52,7 @@
     <Compile Include="code\chapter_07\articles2.php" />
     <Compile Include="code\chapter_07\edit_article_rich_text.php" />
     <Compile Include="code\chapter_07\edit_article_short.php" />
+    <Compile Include="code\chapter_07\featured-image2.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
     <Compile Include="code\chapter_07\image.php" />
     <Compile Include="code\chapter_07\insertform.php" />
@@ -262,10 +263,12 @@
     <Compile Include="code\includes\editor.php" />
     <Compile Include="code\includes\footer-editor.php" />
     <Compile Include="code\includes\footer-site.php" />
+    <Compile Include="code\includes\featured-image-modal.php" />
     <Compile Include="code\includes\gallery-modal.php" />
     <Compile Include="code\includes\header-register.php" />
     <Compile Include="code\includes\header-site.php" />
     <Compile Include="code\includes\header.php" />
+    <Compile Include="code\includes\image_insert.php" />
     <Compile Include="code\includes\login-variables.php" />
     <Compile Include="code\includes\reply-box-parent.php" />
     <Compile Include="code\includes\submit-like.php" />

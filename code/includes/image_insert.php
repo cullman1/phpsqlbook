@@ -1,12 +1,11 @@
-
-<a class="btn" title="Insert doc" id="docBtn" tabindex="-1" ><i class="icon-book"></i></a>
+<div class='modal modal-content modal-header fade'></div>
+<a class="btn" title="Insert document" id="imgBtn"  tabindex="-1" ><i class="icon-picture"></i></a>
 <script type="text/javascript">
 $(function() {
-  $("#docBtn").on("click", document_click);
+  $("#imgBtn").on("click", document_click);
   function document_click() {
    var doc1 = document.getElementById("doc_upload");
    filepath = doc1.value;
-   alert(filepath);
    if (filepath != '') {
     var sections = filepath.split('\\');
     var file = sections[2];
@@ -14,7 +13,8 @@ $(function() {
     var txt = el.innerHTML;
     txt = txt.replace(/"/g, '');
     if((el.innerHTML != 'undefined')) {
-      el.innerHTML=txt + "<a target='_blank' href='../uploads/" +file+ "'>"+file+"</a>";
+      el.innerHTML=  txt + " <a target='_blank'  
+      href='../uploads/" + file + "'>" + file + "</a>" ;
     }
   }
  }

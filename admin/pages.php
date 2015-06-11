@@ -5,7 +5,7 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting articles. */
-$select_articles_sql = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, date_published, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id order by article_id";
+$select_articles_sql = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.user_id left outer JOIN category ON article.category_id = category.category_id order by article_id";
 $select_articles_result = $dbHost->prepare($select_articles_sql);
 $select_articles_result->execute();
 $select_articles_result->setFetchMode(PDO::FETCH_ASSOC);

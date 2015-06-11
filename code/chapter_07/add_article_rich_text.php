@@ -9,7 +9,7 @@ $sel_cat_set->execute();
  if (isset($_POST['submit'])) {
   $ins_article_set = $dbHost->prepare("INSERT INTO article (title, content, date_posted, category_id, featured_media_id) VALUES (:article_title, :article_content, :date , :category_id, :media_id)"); 
   $ins_article_set->bindParam(":article_title", $_POST['ArticleTitle']);
-  $ins_article_set->bindParam(":article_content", $_POST['ArticleContent']);
+  $ins_article_set->bindParam(":article_content", $_POST['Content']);
   $date = date("Y-m-d H:i:s");
   $ins_article_set->bindParam(":date", $date);
   $ins_article_set->bindParam(":category_id", $_POST['CategoryId']);

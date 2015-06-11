@@ -55,3 +55,20 @@
 .image_wall { 
     width:950px; overflow:hidden; background-color:lightgray; padding-left:10px; padding-top: 10px;
 }
+
+.image_wall2 { 
+    width:450px; overflow:hidden; background-color:lightgray; padding-left:10px; padding-top: 10px;
+}
+
+.lab2 {
+    float: left;
+    width: 110px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.pos2 {
+       display: inline-block;
+    width: 110px;
+    float: left;
+}

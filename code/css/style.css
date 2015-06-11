@@ -458,3 +458,14 @@ body {
 .image_wall { 
     width:950px; overflow:hidden; background-color:lightgray; padding-left:10px; padding-top: 10px;
 }
+
+.image_wall2 { 
+    width:950px; overflow:hidden; background-color:lightgray; padding-left:10px; padding-top: 10px;
+}
+
+.label_pos2 {
+    float: left;
+    width: 110px;
+    font-weight: bold;
+    font-size: 12px;
+}
