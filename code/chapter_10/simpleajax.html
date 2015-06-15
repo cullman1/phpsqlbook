@@ -3,16 +3,29 @@
         	<title>AJAX Object Example</title>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
    <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .results-background {
+            clear:both; top:300px;height:200px;width:300px; margin:10px; background-color:palegoldenrod; color:black;
+            }
+
+            .size {
+            margin:10px; width:200px;float: left;
+            }
+
+            img:hover {
+                border: 3px solid palegoldenrod;
+            }
+        </style>
     </head>
     <body>
         <form id="new-form">
-            <div>
-            <img id="chamomile" src="../images/chamomile.gif" style="margin:10px; width:200px;float: left;"/>
-            <img id="lavender" src="../images/lavender.gif" style="margin:10px;width:200px;float: left;"/>
-            <img id="pansy" src="../images/pansy.gif"  style="margin:10px;width:200px;float: left;"/>
-           </div>
+        
+            <img id="chamomile" src="../images/chamomile.gif" class="size" />
+            <img id="lavender" src="../images/lavender.gif" class="size" />
+            <img id="pansy" src="../images/pansy.gif"  class="size" />
+ 
        
-        <div id="results-box" style="clear:both; top:300px;height:200px;width:300px; margin:10px; background-color:palegoldenrod; color:black;">
+        <div id="results-box" class="results-background">
         </div>
              </form>
         <script type="text/javascript">
