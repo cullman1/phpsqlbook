@@ -209,7 +209,7 @@
     <Compile Include="code\chapter_10\facebooksidebar.php" />
     <Compile Include="code\chapter_10\Facebookuserauthentication.php" />
     <Compile Include="code\chapter_10\getpredictive.php" />
-    <Compile Include="code\chapter_10\getusers.php" />
+    <Compile Include="code\chapter_10\get-users.php" />
     <Compile Include="code\chapter_10\gravatar.php" />
     <Compile Include="code\chapter_10\table1.php" />
     <Compile Include="code\chapter_10\uploadmedia.php" />
@@ -410,7 +410,7 @@
     <Content Include="code\chapter_07\names.txt" />
     <Content Include="code\chapter_07\namesonly.txt" />
     <Content Include="code\chapter_07\pansy.gif" />
-    <Content Include="code\chapter_10\ajax.html" />
+    <Content Include="code\chapter_10\validation.html" />
     <Content Include="code\chapter_10\chamomile.txt" />
     <Content Include="code\chapter_10\lavender.txt" />
     <Content Include="code\chapter_10\pansy.txt" />
@@ -425,6 +425,7 @@
     <Content Include="code\images\chamomile.gif" />
     <Content Include="code\images\lavender.gif" />
     <Content Include="code\images\pansy.gif" />
+    <Content Include="code\js\search.js" />
     <Content Include="code\js\validation.js" />
     <Content Include="code\uploads\46995349.jpg" />
     <Content Include="code\uploads\Active8_small.png" />
