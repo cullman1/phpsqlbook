@@ -13,12 +13,16 @@
                 <br />
                  <li class="blox"><a href="search-predict.html">Predictive Search Text example</a></li>
                  <br />
+
+                     <li class="blox"><a href="curl.php">cURL Instagram example</a></li>
+                <br />
+                  <li class="blox"><a href="uploadmedia.php">Upload Media example</a></li>
+                <br />
                   <li class="blox"><a href="ajax.html">Validate email example</a></li>
                 <br />
                 <li class="blox"><a href="validation.html">Validate email example (SHORT)</a></li>
                 <br />
-                  <li class="blox"><a href="uploadmedia.php">Upload Media example</a></li>
-                <br />
+                
               <li class="blox"><a href="Facebookexample.php">Facebook Sidebar example</a></li>
                 <br />
               <li class="blox"><a href="Facebookuserauthentication.php">Facebook User Authentication example</a></li>

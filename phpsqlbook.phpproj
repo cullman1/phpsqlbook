@@ -170,6 +170,7 @@
     <Compile Include="code\chapter_09\storedproc2.php" />
     <Compile Include="code\chapter_09\storedproc3.php" />
     <Compile Include="code\chapter_10\chapter10.php" />
+    <Compile Include="code\chapter_10\curl.php" />
     <Compile Include="code\chapter_10\Facebookexample.php" />
     <Compile Include="code\chapter_10\Facebookresponse.php" />
     <Compile Include="code\chapter_10\facebooksidebar.php" />
