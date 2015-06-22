@@ -19,22 +19,18 @@
     </head>
     <body>
         <form id="new-form">
-        
             <img id="chamomile" src="../images/chamomile.gif" class="size" />
             <img id="lavender" src="../images/lavender.gif" class="size" />
             <img id="pansy" src="../images/pansy.gif"  class="size" />
- 
-       
-        <div id="results-box" class="results-background">
-        </div>
+        <div id="results-box" class="results-background"></div>
              </form>
         <script type="text/javascript">
             $(function () {
-                $("#chamomile").on("mouseover", { name: "chamomile" }, Get_Info);
-                $("#lavender").on("mouseover", { name: "lavender" }, Get_Info);
-                $("#pansy").on("mouseover", { name: "pansy" }, Get_Info);
+                $("#chamomile").on("mouseover", { name: "chamomile" }, loadTx);
+                $("#lavender").on("mouseover", { name: "lavender" }, loadTx);
+                $("#pansy").on("mouseover", { name: "pansy" }, loadTx);
             });
-            function Get_Info(event) {
+            function loadTx(event) {
                 var formData = new FormData($('form')[0]);
                 $.ajax({
                     url: event.data.name + '.txt',  
@@ -48,8 +44,6 @@
                         alert("Details: " + desc + "\nError:" + err);
                     },
                     data: formData,
-                    cache: false,
-                    contentType: false,
                     processData: false
                 });
             }

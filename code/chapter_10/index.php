@@ -11,6 +11,8 @@
                  <li class="blox"><a href="simpleajax.html">Simple AJAX object example</a></li>
                
                 <br />
+                   <li class="blox"><a href="json_encode.php">JSON_ENCODE example</a></li>
+                 <br />
                  <li class="blox"><a href="search-predict.html">Predictive Search Text example</a></li>
                  <br />
 

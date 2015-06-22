@@ -24,10 +24,6 @@ function Submit_Search() {
   $.ajax({
    url: 'get-users.php?email=' + email,  
     type: 'GET',
-    xhr: function() {  
-    var myXhr = $.ajaxSettings.xhr();
-    return myXhr;
-  },
   success: function (data, status) { 
    data = data.replace("[","");
     data = data.replace("]","");
