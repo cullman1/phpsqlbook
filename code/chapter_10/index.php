@@ -1,35 +1,16 @@
 <?php include '../includes/header-chapters.php' ?>
- 
-  <div class="wholeform newlook">
-      <div class="col-md-4"><h1>Code examples</h1><br /></div>
-
-        <div class="col-md-4">
-         <h3>Chapter 10</h3>
+      <div class="col-md-4">
             <ul style="list-style-type:none;">
-                 <li class="blox"><a href="gravatar.php">GRAVATAR example</a></li>
-                <br />
-                 <li class="blox"><a href="simpleajax.html">Simple AJAX object example</a></li>
-               
-                <br />
-                   <li class="blox"><a href="json_encode.php">JSON_ENCODE example</a></li>
-                 <br />
-                 <li class="blox"><a href="search-predict.html">Predictive Search Text example</a></li>
-                 <br />
-
-                     <li class="blox"><a href="curl.php">cURL Instagram example</a></li>
-                <br />
-                  <li class="blox"><a href="uploadmedia.php">Upload Media example</a></li>
-                <br />
-                  <li class="blox"><a href="ajax.html">Validate email example</a></li>
-                <br />
-                <li class="blox"><a href="validation.html">Validate email example (SHORT)</a></li>
-                <br />
-                
-              <li class="blox"><a href="Facebookexample.php">Facebook Sidebar example</a></li>
-                <br />
-              <li class="blox"><a href="Facebookuserauthentication.php">Facebook User Authentication example</a></li>
-                <br />
-                </ul>
-       </div>
+                 <li ><a href="gravatar.php">GRAVATAR example</a></li>
+                 <li ><a href="simpleajax.html">Simple AJAX object example</a></li>
+                 <li ><a href="json_encode.php">JSON_ENCODE example</a></li>
+                 <li ><a href="search-predict.html">Predictive Search Text example</a></li>
+                 <li ><a href="curl.php">cURL Instagram example</a></li>
+                 <li ><a href="uploadmedia.php">Upload Media example</a></li>
+                 <li ><a href="ajax.html">Validate email example</a></li>
+                 <li ><a href="validation.html">Validate email example (SHORT)</a></li>
+                 <li ><a href="Facebookexample.php">Facebook Sidebar example</a></li>
+                 <li ><a href="Facebookuserauthentication.php">Facebook User Authentication example</a></li>
+             </ul>
    </div>
 

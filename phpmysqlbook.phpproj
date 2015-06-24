@@ -213,8 +213,6 @@
     <Compile Include="code\chapter_10\gravatar.php" />
     <Compile Include="code\chapter_10\json_encode.php" />
     <Compile Include="code\chapter_10\table1.php" />
-    <Compile Include="code\chapter_10\table2.php" />
-    <Compile Include="code\chapter_10\uploadmedia _short.php" />
     <Compile Include="code\chapter_10\uploadmedia.php" />
     <Compile Include="code\chapter_11\admin.php" />
     <Compile Include="code\chapter_11\articleslist.php" />
