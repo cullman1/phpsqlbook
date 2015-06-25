@@ -11,6 +11,7 @@
                  <li ><a href="validation.html">Validate email example (SHORT)</a></li>
                  <li ><a href="Facebookexample.php">Facebook Sidebar example</a></li>
                  <li ><a href="Facebookuserauthentication.php">Facebook User Authentication example</a></li>
+                        <li ><a href="fbauthentication.php">Facebook User Authentication example (short)</a></li>
              </ul>
    </div>
 
