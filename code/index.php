@@ -2,106 +2,21 @@
 
 include '../includes/header-chapters.php' ?>
  
-  <div class="wholeform2">
-      <div class="col-md-4" style="padding-left:23%;"><h1>Code examples</h1><br /></div>
-        
-        <a class="linked" href="/code/chapter1/chapter1.php">
-            <div class="col-md-4 boxy1">
-         <h3>Chapter 1</h3>
-       
-             <div>Introduction to Server-side programming</div>
-        </div></a>
-      
-         <a class="linked" href="/code/chapter2/chapter2.php">
-          <div class="col-md-4 boxy2">
-         <h3>Chapter 2</h3>
-               
-             <div>PHP constructs</div>
-        </div>
-          </a>
-      <br />
-
-         <a class="linked" href="/code/chapter3/chapter3.php">
-          <div class="col-md-4 boxy1">
-         <h3>Chapter 3</h3>
-               
-             <div>Getting data from a database into your templates</div>
-        </div>
-          </a>
-   
-
-      <a class="linked" href="/code/chapter4/chapter4.php">
-        <div class="col-md-4 boxy2">
-         <h3>Chapter 4</h3>
-             
-             <div>Server side Processing of data</div>
-       </div></a>
-         <br />
-      <a class="linked" href="/code/chapter5/chapter5.php">
-        <div class="col-md-4 boxy1">
-         <h3>Chapter 5</h3>
-               
-             <div>Updating the database</div>
-            
-       </div>
-          </a>
-            <br />
-            <a class="linked" href="/code/chapter6/chapter6.php">
-        <div  class="col-md-4 boxy2">
-         <h3>Chapter 6</h3>
-               
-             <div>Media and Files</div>
-            
-       </div>
-          </a>
-  
-
-   <a class="linked" href="/code/chapter7/chapter7.php">
-        <div class="col-md-4 boxy1">
-         <h3>Chapter 7</h3>
-               
-             <div>Membership</div>
-            
-       </div>
-          </a>
-      <br />
-          <a class="linked" href="/code/chapter8/chapter8.php"><div class="col-md-4 boxy2">
-         <h3>Chapter 8</h3>
-       
-             <div>Application Design</div>
-        </div></a>
-      
-         <a class="linked" href="/code/chapter9/chapter9.php">
-          <div class="col-md-4 boxy1">
-         <h3>Chapter 9</h3>
-               
-             <div>Objects </div>
-        </div>
-          </a>
-      <br />
-        <a class="linked" href="/code/chapter10/chapter10.php"><div class="col-md-4 boxy2">
-         <h3>Chapter 10</h3>
-       
-             <div>APIs</div>
-        </div></a>
-      
-         <a class="linked" href="/code/chapter11/chapter11.php">
-          <div class="col-md-4 boxy1">
-         <h3>Chapter 11</h3>
-               
-             <div>Error Handling and Troubleshooting </div>
-        </div>
-          </a>
- 
-
-       <a class="linked" href="/code/chapter12/chapter12.php">
-          <div class="col-md-4 boxy2">
-         <h3>Extras</h3>
-               
-             <div>Extras </div>
-        </div>
-          </a>
-      <br />
+      <div class="col-md-4"><h1>Code examples</h1><br /></div>
+        <table>
+          <tr><td><a href="chapter_01/index.php">Chapter 1</a></td><td>Introduction to Programming</td></tr>
+          <tr><td><a href="chapter_02/index.php">Chapter 2</a></td><td>Basic Programming Instructions</td></tr>
+          <tr><td><a href="chapter_03/index.php">Chapter 3</a></td><td>PHP Programming Instructions</td></tr>
+          <tr><td><a href="chapter_04/index.php">Chapter 4</a></td><td>Getting Data From a Database</td></tr>
+          <tr><td><a href="chapter_05/index.php">Chapter 5</a></td><td>Server-Side Processing</td></tr>
+          <tr><td><a href="chapter_06/index.php">Chapter 6</a></td><td>Updating A Database</td></tr>
+          <tr><td><a href="chapter_07/index.php">Chapter 7</a></td><td>Media</td></tr>
+          <tr><td><a href="chapter_08/index.php">Chapter 8</a></td><td>Membership  </td></tr>
+          <tr><td><a href="chapter_09/index.php">Chapter 9</a></td><td>App Design</td></tr>
+          <tr><td><a href="chapter_10/index.php">Chapter 10</a></td><td>APIs</td></tr>
+          <tr><td><a href="chapter_11/index.php">Chapter 11</a></td><td>Objects</td></tr>
+          <tr><td><a href="chapter_12/index.php">Chapter 12</a></td><td>Objects 2 - social media</td></tr>
+        </table>
 
       </div>
 

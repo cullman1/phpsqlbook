@@ -1,37 +1,43 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d54408e251f874f22d257ac37ff522b5",
+    "hash": "2694432a90f6d09b341cf23a95ae3a49",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
-            "version": "4.0.15",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
-                "reference": "ebc82667ef953b98e2eca5dfb6784d6466a185cd"
+                "reference": "cde1d8b9f32fc375a8748838eaac1b6d4f48fa5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/ebc82667ef953b98e2eca5dfb6784d6466a185cd",
-                "reference": "ebc82667ef953b98e2eca5dfb6784d6466a185cd",
+                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/cde1d8b9f32fc375a8748838eaac1b6d4f48fa5e",
+                "reference": "cde1d8b9f32fc375a8748838eaac1b6d4f48fa5e",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "~4.0",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "3.7.*"
+                "guzzlehttp/guzzle": "~5.0",
+                "mockery/mockery": "~0.8",
+                "phpunit/phpunit": "~4.0"
             },
             "suggest": {
                 "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Facebook\\": "src/Facebook/"
@@ -53,13 +59,15 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2015-01-06 21:29:27"
+            "time": "2015-05-18 22:26:49"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "facebook/php-sdk-v4": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

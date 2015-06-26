@@ -175,6 +175,7 @@
     <Compile Include="code\chapter_10\Facebookresponse.php" />
     <Compile Include="code\chapter_10\facebooksidebar.php" />
     <Compile Include="code\chapter_10\fbauthentication.php" />
+    <Compile Include="code\chapter_10\gadget_short.php" />
     <Compile Include="code\chapter_10\getpredictive.php" />
     <Compile Include="code\chapter_10\getusers.php" />
     <Compile Include="code\chapter_10\gravatar.php" />
