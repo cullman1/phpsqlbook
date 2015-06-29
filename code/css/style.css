@@ -507,7 +507,7 @@ body {
     margin-top: 5px;
 }
 
-.cmt_box1 {
+.cmt1 {
     font-weight: bold;
     font-size: 10px;
     margin-top: 5px;
@@ -517,7 +517,7 @@ body {
     border-bottom: 1px solid #dddddd;
 }
 
-.cmt_box2 {
+.cmt2 {
     font-weight: bold;
     font-size: 10px;
     color: black;
@@ -529,11 +529,15 @@ body {
 
 .date_box {float:right; font-size:10px;background:#f6f7f8; padding-bottom: 5px;}
 
-.right_box{float:right; color:black; font-size: 11px}
+.rbox{float:right; color:black; font-size: 11px}
 
 .left {
     float: left;
 }
 
 .gray {color:#666;
+}
+
+.none {
+    list-style-type: none;
 }
