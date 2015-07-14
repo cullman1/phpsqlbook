@@ -1,4 +1,4 @@
-<?php include '../includes/header-site.php';
+<?php include '../includes/header-facebook.php';
 function fetchUrl($url){
   $retData="";
   try {
@@ -36,10 +36,10 @@ foreach ($feedarray->data as $apidata ){
     if($feed_data->type=="photo") {
      echo "<img src='{$apidata->picture}'/><br/>";
     }
-   echo "<div class='img'><img src='https://graph.facebook.com/".$apidata->from->id."/picture' width=30 />";
+   echo "<div class='img'><img src='https://graph.facebook.com/".$apidata->from->id."/picture' class='left30' />";
     echo "<span class='name_box'> {$apidata->from->name}</span><br/>";
    $unixTime = $apidata->created_time;
-    echo "<span class='right_box'>".date("F j, Y, g:i a", strtotime($unixTime))."</span></div>";
+    echo "<span class='rbox'>".date("F j, Y, g:i a", strtotime($unixTime))."</span><br/><span>&nbsp;</span></div>";
     $likes=0;
   if(isset($apidata->likes)) {
    foreach ($apidata->likes->data as $apilikes ) {    
@@ -73,4 +73,4 @@ foreach ($feedarray->data as $apidata ){
  }
 }
 echo "</ol></div>"; 
- include '../includes/footer-site.php' ?>
+ ?>

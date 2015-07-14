@@ -1,14 +1,11 @@
 <?php include '../includes/header-chapters.php' ?>
-
+ 
   <div class="col-md-4">
-    <h3>Chapter 8</h3>
+    <h3>Chapter 9</h3>
     <ul>
-      <li><a href="content.php">Templates For Content </a></li>
-      <li><a href="admin.php">Templates For Admin</a></li>
-      <li><a href="storedproc.php">Stored Procedure - PDO Example</a></li>
-      <li><a href="storedproc2.php">Stored Procedure - Mysqli Example</a></li>
-      <li><a href="articleslist.php">List of articles page</a></li>
-      <li><a href="singlearticle.php?article_id=87">Single article page</a></li>
+      <li><a href="userclass.php">User class</a></li>
+         <li><a href="new-user-short.php">User class - add image example</a></li>
+      <li><a href="forgotten-password-email.php">Forgotten Password Email Object</a></li>
     </ul>
   </div>
 
