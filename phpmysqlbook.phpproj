@@ -219,11 +219,13 @@
     <Compile Include="code\chapter_11\authenticate.php" />
     <Compile Include="code\chapter_11\content.php" />
     <Compile Include="code\chapter_11\footer.php" />
+    <Compile Include="code\chapter_11\forgotten-password-email.php" />
     <Compile Include="code\chapter_11\header-admin.php" />
     <Compile Include="code\chapter_11\header-content.php" />
     <Compile Include="code\chapter_11\index.php" />
     <Compile Include="code\chapter_11\login-admin.php" />
     <Compile Include="code\chapter_11\login-user.php" />
+    <Compile Include="code\chapter_11\new-user-short.php" />
     <Compile Include="code\chapter_11\singlearticle.php" />
     <Compile Include="code\chapter_11\storedproc.php" />
     <Compile Include="code\chapter_11\storedproc2.php" />
