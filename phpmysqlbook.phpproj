@@ -377,7 +377,7 @@
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
     <Compile Include="index.php" />
-    <Compile Include="login\forgotten-password.php" />
+    <Compile Include="code\chapter_11\forgotten-password.php" />
     <Compile Include="login\login-admin.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
@@ -386,7 +386,7 @@
     <Compile Include="login\register3.php" />
     <Compile Include="login\register4.php" />
     <Compile Include="login\register.php" />
-    <Compile Include="login\reset-password.php" />
+    <Compile Include="code\chapter_11\reset-password.php" />
     <Compile Include="pages\add-comment-text.php" />
     <Compile Include="pages\add-comment.php" />
     <Compile Include="pages\article-viewer.php" />
