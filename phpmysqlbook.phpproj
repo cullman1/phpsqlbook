@@ -38,6 +38,7 @@
     <Folder Include="code\chapter_09\" />
     <Folder Include="code\chapter_10\" />
     <Folder Include="code\chapter_11\" />
+    <Folder Include="code\chapter_11\classes\" />
     <Folder Include="code\chapter_12\" />
     <Folder Include="code\chapter_12\classes\" />
     <Folder Include="code\chapter_12\classes\templates\" />
@@ -223,8 +224,10 @@
     <Compile Include="code\chapter_11\articleslist.php" />
     <Compile Include="code\chapter_11\authenticate.php" />
     <Compile Include="code\chapter_11\content.php" />
+    <Compile Include="code\chapter_11\classes\email.php" />
     <Compile Include="code\chapter_11\footer.php" />
     <Compile Include="code\chapter_11\forgotten-password-email.php" />
+    <Compile Include="code\chapter_11\forgotten-password-short.php" />
     <Compile Include="code\chapter_11\header-admin.php" />
     <Compile Include="code\chapter_11\header-content.php" />
     <Compile Include="code\chapter_11\index.php" />
@@ -377,7 +380,7 @@
     <Compile Include="includes\rich-text-control.php" />
     <Compile Include="includes\table.php" />
     <Compile Include="index.php" />
-    <Compile Include="code\chapter_11\forgotten-password.php" />
+    <Compile Include="code\chapter_11\reset-password-short.php" />
     <Compile Include="login\login-admin.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
