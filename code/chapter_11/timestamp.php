@@ -1,6 +1,12 @@
 <?php
 
-$date = new DateTime('+24 hours');
-$newdate = serialize($date->format('Y/m/d'));
-echo("Date:".$newdate);
+class User {
+    private $fullname="Pablo Picasso";
+    private $emailaddress="Pablo@acme.org";          
+    private $user_image="Pablo.jpg";                
+}
+
+$user= new User();
+$serialized_user = serialize($user);
+echo ($serialized_user);
 ?>
