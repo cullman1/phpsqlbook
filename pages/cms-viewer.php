@@ -42,7 +42,7 @@ while($row =$select_articles_result->fetch())
          
         <?php 
           /* Select Media Link */
-      $select_medialink_sql = "select * from media_link join media on media.media_id = media_link.media_id WHERE media.article_id = ".$row['article_id'];
+      $select_medialink_sql = "select * from media_link join article on media_link.media_id = article.featured_media_id WHERE article.article_id = ".$row['article_id'];
           $select_medialink_result = $dbHost->prepare($select_medialink_sql);
           $select_medialink_result->execute();
           $select_medialink_result->setFetchMode(PDO::FETCH_ASSOC);

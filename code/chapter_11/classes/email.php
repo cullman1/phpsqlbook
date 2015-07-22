@@ -4,18 +4,22 @@
   public $connectTimeout,$responseTimeout,$headers;
   public $from,$to,$subject,$message,$contentType;
 
-  function __construct() {
+function __construct($user,$password,$subject,$message) {
     $this->server = "94.76.218.242";
     $this->port = 8889; 
     $this->mailServer = "eastcornwallharriers.com"; 
     $this->connectTimeout = 60;
     $this->responseTimeout = 8;
-    $this->from = array();
     $this->to = array();
     $this->headers = array();
+    $this->user = $user;
+    $this->password = $password;
+    $this->subject = $subject;
+    $this->message = $message;
     $this->headers['MIME-Version'] = "1.0";
     $this->headers['Content-type'] = "text/html";
   }
+
   function SentTo($address,$name = "") {
      $this->to = array($address,$name);
   }

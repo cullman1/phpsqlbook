@@ -13,7 +13,7 @@ if (!preg_match("#.*^(?=.{8,50})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#", $_POST['pas
   throw new Exception ("<br/>Password must contain one alphanumeric, one digit and one upper case char.");  
 }
 
-if (sha1(trim($_POST['email']).date('Y/m/d')) ==$_POST['token'] ) {        
+if (hash('sha256',trim($_POST['email']).date('Y/m/d')) ==$_POST['token'] ) {        
   $update_user_result = $dbHost->prepare("UPDATE user Set Password = :password  WHERE email= :email");
   $password = sha1($preSalt.$_POST['password'].$afterSalt);  
   $update_user_result->bindParam(":password", $password ) ; 

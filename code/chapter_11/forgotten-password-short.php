@@ -11,19 +11,13 @@
    $to = $_POST['email'];                                                        
     $subject = "Reset Password Link";                                                           
     $message = "The link to reset your password is ";
-    $message.="<a href='http://test1.phpandmysqlbook.com/code/chapter_11/reset-password-short.php?email=".$_POST['email']." &token=".sha1(trim($_POST['email']).date('Y/m/d'))."'>here</a>";   
+    $message.="<a href='http://test1.phpandmysqlbook.com/code/chapter_11/reset-password-short.php?email=".$_POST['email']." &token=".hash('sha256', trim($_POST['email']).date('Y/m/d'))."'>here</a>";   
 $headers = "MIME-Version: 1.0" . "\r\n";                                                           
    $headers .="Content-type:text/html;charset=UTF-8"."\r\n";
     $headers .="From: Admin<admin@deciphered.com>"."\r\n";                            
-    $mail = new Emailer;
-    $mail->user = 'ech@eastcornwallharriers.com'; 
-    $mail->password = 'TVD!nner2';
-    $mail->SentFrom("ech@eastcornwallharriers.com","Admin");   
-    $mail->SentTo($to); 
-    $mail->subject = $subject;
-    $mail->message = $message;
-    $mail->contentType = "text/html";          
-    $mail->connectTimeout =60;
+  $mail = new Emailer('ech@eastcornwallharriers.com','TVD!nner2',$subject,$message);
+  $mail->SentFrom("ech@eastcornwallharriers.com","Admin");   
+  $mail->SentTo($to);  
     $mail->responseTimeout = 18;                               
     $success = $mail->Send();      
     if ($success=="true") { 

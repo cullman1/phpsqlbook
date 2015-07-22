@@ -239,6 +239,7 @@
     <Compile Include="code\chapter_11\storedproc.php" />
     <Compile Include="code\chapter_11\storedproc2.php" />
     <Compile Include="code\chapter_11\storedproc3.php" />
+    <Compile Include="code\chapter_11\timestamp.php" />
     <Compile Include="code\chapter_11\user_static.php" />
     <Compile Include="code\chapter_12\classes\configuration.php" />
     <Compile Include="code\chapter_12\classes\controller.php" />
