@@ -223,6 +223,7 @@
     <Compile Include="code\chapter_11\admin.php" />
     <Compile Include="code\chapter_11\articleslist.php" />
     <Compile Include="code\chapter_11\authenticate.php" />
+    <Compile Include="code\chapter_11\classes\user_accessors.php" />
     <Compile Include="code\chapter_11\content.php" />
     <Compile Include="code\chapter_11\classes\email.php" />
     <Compile Include="code\chapter_11\footer.php" />
@@ -240,6 +241,8 @@
     <Compile Include="code\chapter_11\storedproc2.php" />
     <Compile Include="code\chapter_11\storedproc3.php" />
     <Compile Include="code\chapter_11\timestamp.php" />
+    <Compile Include="code\chapter_11\user_display.php" />
+    <Compile Include="code\chapter_11\user_display2.php" />
     <Compile Include="code\chapter_11\user_static.php" />
     <Compile Include="code\chapter_12\classes\configuration.php" />
     <Compile Include="code\chapter_12\classes\controller.php" />
@@ -406,6 +409,7 @@
     <Compile Include="pages\search.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
+    <Compile Include="code\chapter_11\classes\user_constructor.php" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".htaccess" />
