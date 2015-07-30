@@ -184,9 +184,12 @@
     <Compile Include="code\chapter_11\admin.php" />
     <Compile Include="code\chapter_11\articleslist.php" />
     <Compile Include="code\chapter_11\authenticate.php" />
+    <Compile Include="code\chapter_11\classes\email.php" />
     <Compile Include="code\chapter_11\content.php" />
+    <Compile Include="code\chapter_11\email-form.php" />
     <Compile Include="code\chapter_11\footer.php" />
     <Compile Include="code\chapter_11\forgotten-password-email.php" />
+    <Compile Include="code\chapter_11\forgotten-password-short.php" />
     <Compile Include="code\chapter_11\header-admin.php" />
     <Compile Include="code\chapter_11\header-content.php" />
     <Compile Include="code\chapter_11\index.php" />
@@ -344,6 +347,7 @@
     <Folder Include="code\chapter_09\" />
     <Folder Include="code\chapter_10\" />
     <Folder Include="code\chapter_11\" />
+    <Folder Include="code\chapter_11\classes\" />
     <Folder Include="code\chapter_12\" />
     <Folder Include="code\chapter_12\classes\" />
     <Folder Include="code\chapter_12\classes\templates\" />
