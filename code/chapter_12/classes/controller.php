@@ -30,12 +30,9 @@ class Controller {
         } 
         foreach($this->page_structure as $part) {
             if ($part == "article") {
-                if (isset($_GET["search"])) {
-                    $part="search";    
-                }
-                if ($this->parameters[0]!="" && $part!="search") {
+                if ($this->parameters[0]!="" && !isset($_GET["search"])) {
                     $this->assemblePage($part, $this->content_structure, "single" );   
-                } else if ($part=="search") {
+                } else if (isset($_GET["search"])) {
                     $this->assemblePage($part, $this->content_structure, "search" );  
                 } else {
                     $this->assemblePage($part, $this->content_structure, "multiple" );  
@@ -49,7 +46,7 @@ class Controller {
         }
     }
     
-    public function assemblePage($part, $content_structure, $contenttype) {
+    public function assemblePage($part, $content, $contenttype) {
         $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
         $layouttemplate = $this->registry->get('LayoutTemplate');
         $dbhandler = $this->registry->get('DbHandler');
@@ -70,12 +67,12 @@ class Controller {
             $count++;
           }
           break;
-       default:
-         $article_ids[0]=$this->parameters[0];
-         break;
-     }   
+        default:
+          $article_ids[0]=$this->parameters[0];
+          break;
+        }   
      for($i=0;$i<sizeof($article_ids);$i++) {
-       foreach ($content_structure as $content_part) {
+       foreach ($content as $content_part) {
          if ($content_part == "content") {
            $layouttemplate->getContent($article_ids[$i]);
           } else {
