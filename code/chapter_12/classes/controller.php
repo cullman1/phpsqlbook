@@ -45,6 +45,10 @@ class Controller {
             }
         }
     }
+
+    public function testParameters() {
+
+    }
     
     public function assemblePage($part, $content, $contenttype) {
         $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  

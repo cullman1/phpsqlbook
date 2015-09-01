@@ -26,11 +26,11 @@ echo "<div class='fb_list list_box'><ol class='none'>";
 foreach ($feedarray->data as $apidata ){
  if (isset($apidata->message)) {
   if(!($apidata->type=="status" && $apidata->message=="")){
-   if(!($apidata->type=="link"))      {
+ 
     if(isset($apidata->link)) {
-     echo "<li><a href='".$apidata->link."'>";
+     echo "<li><a href='".$apidata->link."'></a>";
     }               
-    if($apidata->type=="status" && $apidata->message!=""){
+   if(($apidata->type=="status" || $apidata->type=="link") && $apidata->message!=""){
      echo "<div class='gray'>{$apidata->message}</div>"; 
     }
     if($feed_data->type=="photo") {
@@ -71,6 +71,6 @@ foreach ($feedarray->data as $apidata ){
    }
   }
  }
-}
+
 echo "</ol></div>"; 
  ?>

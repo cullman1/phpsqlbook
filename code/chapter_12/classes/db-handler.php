@@ -1,43 +1,43 @@
 <?php
  class DbHandler{   
      
-    public function getArticleById($pdo, $id ) {
-        $select_singlearticle_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=:id";
-        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
-        $select_singlearticle_result->bindParam(":id", $id);
-        $select_singlearticle_result->execute();
-        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
-        return $select_singlearticle_result;
+    public function getArticleById($pdo, $id) {
+        $query = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=:id";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(":id", $id);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement;
     }
     
     public function getArticleByName($pdo, $title) {
         $new_title = str_replace("-"," ", trim($title[0]));
-        $select_singlearticle_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where title= :new_title";
-        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
-        $select_singlearticle_result->bindParam(":title", $new_title);
-        $select_singlearticle_result->execute();
-        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
-        return $select_singlearticle_result;
+        $query = "select article_id, title, content, category_name, category_template, full_name, date_posted, parent_id, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where title= :new_title";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(":title", $new_title);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement;
     }
     
     public function getArticleList($pdo) {
-        $select_articles_sql = "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() order by article_id DESC";
-        $select_articles_result = $pdo->prepare($select_articles_sql);
-        $select_articles_result->execute();
-        $select_articles_result->setFetchMode(PDO::FETCH_ASSOC);
-        return $select_articles_result;
+        $query = "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category ON article.category_id = category.category_id where date_published <= now() order by article_id DESC";
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement;
     }  
     
     public function getSearchResults($pdo) {
         $trimmed_search = trim($_GET["search"]);
         $searchterm =  "AND ((title like '%" . $trimmed_search . "%') ";
         $searchterm .= "OR (content like '%" . $trimmed_search . "%'))";
-        $search_sql =  "select article_id, title, content, date_posted FROM article ";
-        $search_sql .= "where date_published <= now() " . $searchterm . " order by article_id DESC";
-        $select_articles_result = $pdo->prepare($search_sql);
-        $select_articles_result->execute();
-        $select_articles_result->setFetchMode(PDO::FETCH_BOTH); 
-        return $select_articles_result;
+        $query =  "select article_id, title, content, date_posted FROM article ";
+        $query .= "where date_published <= now() " . $searchterm . " order by article_id DESC";
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_BOTH); 
+        return $statement;
     }
     
     public function getPaginationResults($pdo, $count, $page)
@@ -52,14 +52,14 @@
         $total_results->execute();
         $total = $total_results->fetchColumn(); 
         $total_pages = ceil($total / $count);                 // Total pages of results
-        $search_sql =  "select article_id, title, content, date_posted FROM article ";
-        $search_sql .= "where date_published <= now() " . $searchterm;
-        $search_sql .= " order by article_id DESC";
-        $search_sql .= " limit " . $count . " offset " . ($page * $count);
-        $select_articles_result = $pdo->prepare($search_sql);
-        $select_articles_result->execute();
-        $select_articles_result->setFetchMode(PDO::FETCH_ASSOC);          
-        return $select_articles_result;
+        $query =  "select article_id, title, content, date_posted FROM article ";
+        $query .= "where date_published <= now() " . $searchterm;
+        $query .= " order by article_id DESC";
+        $query .= " limit " . $count . " offset " . ($page * $count);
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);          
+        return $statement;
     }
     
     public function getArticleComments($pdo, $articleid)
@@ -89,31 +89,31 @@
     public function generateCommentId($pdo, $articleid)
     {
         //Needs to return TotalComments amount
-        $select_comments_sql = "select article_id, FLOOR(RAND() * 50001) + 1000 As random From article WHERE article_id = :articleid";
-        $select_comments_result = $pdo->prepare($select_comments_sql);
-        $select_comments_result->bindParam(":articleid", $articleid);
-        $select_comments_result->execute();
-        $select_comments_result->setFetchMode(PDO::FETCH_ASSOC);
-        return $select_comments_result;
+        $query = "select article_id, FLOOR(RAND() * 50001) + 1000 As random From article WHERE article_id = :articleid";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(":articleid", $articleid);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement;
     }
     
     public function getAuthorName($pdo, $article_id ) {    
-        $select_singlearticle_sql = "select user.user_id, full_name FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=:articleid";
-        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
-        $select_singlearticle_result->bindParam(":articleid", $articleid);
-        $select_singlearticle_result->execute();
-        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
-        return $select_singlearticle_result;
+        $query = "select user.user_id, full_name FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id=:articleid";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(":articleid", $article_id);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement;
     }
     
     public function getAllLikes($pdo, $user_id,$article_id) {
-        $select_singlearticle_sql = "select coalesce(a.article_id,".$article_id.") as articleid, coalesce(:userid,0) as userid,  Count(*) as likes_count, (select count(like_id) as likes FROM article_like where article_id=:articleid) as likes_total FROM article_like as a  join (select user_id FROM article_like as b where article_id=:articleid and user_id=:user_id ) as c ON (c.user_id = a.user_id) where article_id=:articleid" ;
-        $select_singlearticle_result = $pdo->prepare($select_singlearticle_sql);
-        $select_singlearticle_result->bindParam(":articleid", $article_id);
-        $select_singlearticle_result->bindParam(":userid", $user_id);
-        $select_singlearticle_result->execute();
-        $select_singlearticle_result->setFetchMode(PDO::FETCH_ASSOC);
-        return $select_singlearticle_result;
+        $query = "select coalesce(a.article_id,".$article_id.") as articleid, coalesce(:userid,0) as userid,  Count(*) as likes_count, (select count(like_id) as likes FROM article_like where article_id=:articleid) as likes_total FROM article_like as a  join (select user_id FROM article_like as b where article_id=:articleid and user_id=:user_id ) as c ON (c.user_id = a.user_id) where article_id=:articleid" ;
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(":articleid", $article_id);
+        $statement->bindParam(":userid", $user_id);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        return $statement;
     }
 }
 
