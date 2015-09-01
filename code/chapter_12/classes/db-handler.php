@@ -91,7 +91,7 @@
         //Needs to return TotalComments amount
         $query = "select article_id, FLOOR(RAND() * 50001) + 1000 As random From article WHERE article_id = :articleid";
         $statement = $pdo->prepare($query);
-        $statement->bindParam(":articleid", $articleid);
+        $statement->bindValue(':articleid',$articleid, PDO::PARAM_INT);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
         return $statement;
