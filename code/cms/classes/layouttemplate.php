@@ -42,7 +42,7 @@ public function getPart($part, $param="") {
     }
   
 public function parseTemplate($recordset, $controller, $pdo) {
-  echo "Doc root: ". $_SERVER['HTTP_HOST'];
+ 
   $root = "http://".$_SERVER['HTTP_HOST'] . "/" . $controller;
  $string = file_get_contents($root. "/classes/templates/".$controller."_content.php");
   $regex = '#{{(.*?)}}#';
