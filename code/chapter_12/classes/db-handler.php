@@ -25,6 +25,7 @@
         $statement = $pdo->prepare($query);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
+        echo "here";
         return $statement;
     }  
     
