@@ -1,0 +1,3 @@
+RewriteEngine On 
+RewriteRule ^recipes/([^/.]+)/?$ /cms3/pages/index.php [NC,L]
+RewriteRule ^recipes/?$ /cms3/pages/index.php [NC,L]

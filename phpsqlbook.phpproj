@@ -45,6 +45,18 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
+    <Compile Include="cms2\classes\configuration.php" />
+    <Compile Include="cms2\classes\controller.php" />
+    <Compile Include="cms2\classes\dbhandler.php" />
+    <Compile Include="cms2\classes\layouttemplate.php" />
+    <Compile Include="cms2\classes\registry.php" />
+    <Compile Include="cms2\classes\templates\content.php" />
+    <Compile Include="cms2\classes\templates\footer.php" />
+    <Compile Include="cms2\classes\templates\header.php" />
+    <Compile Include="cms2\classes\templates\menu.php" />
+    <Compile Include="cms2\classes\templates\search.php" />
+    <Compile Include="cms2\classes\urlhandler.php" />
+    <Compile Include="cms2\pages\index.php" />
     <Compile Include="code\chapter_07\add_article_amended.php" />
     <Compile Include="code\chapter_07\add_article_document.php" />
     <Compile Include="code\chapter_07\add_article_rich_text.php" />
@@ -344,6 +356,11 @@
     <Folder Include="admin\" />
     <Folder Include="assets\" />
     <Folder Include="classes\" />
+    <Folder Include="cms2\classes\" />
+    <Folder Include="cms2\classes\templates\" />
+    <Folder Include="cms2\css\" />
+    <Folder Include="cms2\js\" />
+    <Folder Include="cms2\pages\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01\" />
     <Folder Include="code\chapter_02\" />
@@ -382,6 +399,7 @@
     <Folder Include="includes\" />
     <Folder Include="js\" />
     <Folder Include="login\" />
+    <Folder Include="cms2\" />
     <Folder Include="pages\" />
     <Folder Include="uploads\" />
   </ItemGroup>
@@ -391,6 +409,7 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
+    <Content Include="cms2\.htaccess" />
     <Content Include="code\chapter_05\get-data-form.html" />
     <Content Include="code\chapter_05\post-data-form.html" />
     <Content Include="code\chapter_05\register.html" />

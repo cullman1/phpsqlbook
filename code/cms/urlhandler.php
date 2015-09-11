@@ -13,20 +13,18 @@
 
   private function parseUrl() {
     $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
-     $i=1;
-    $url_parts = explode("/", $path, $i+3);
-   
-    $controller = $url_parts[$i];
+    $url_parts = explode("/", $path, 3);
+    $controller = $url_parts[0];
     $action = "";
     $parameters = "";
     if($controller=="admin") {
-        if(sizeof($url_parts)==$i+3) {
-            $action = $url_parts[$i+1];
-            $parameters = $url_parts[$i+2];
+        if(sizeof($url_parts)==3) {
+            $action = $url_parts[1];
+            $parameters = $url_parts[2];
         }
     } else { 
-        if(sizeof($url_parts)==$i+2) {
-            $parameters = $url_parts[$i+1];
+        if(sizeof($url_parts)==2) {
+            $parameters = $url_parts[1];
         }
     }
     if (isset($controller)) {
@@ -46,7 +44,7 @@
 public function setAction($action) {
   $this->action = $action;
 }
-public function setParameters(array $parameters) {
+public function setParams(array $parameters) {
   $this->parameters = $parameters;   
 }
 public function getController() {
@@ -62,11 +60,7 @@ public function getParameters() {
 public function routeRequest() {
   $this->registry->set('Controller', new Controller($this->controller, $this->action, $this->parameters, $this->pdo));
 $control = $this->registry->get('Controller');
-//$path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
-  //   $i=2;
-  //  $url_parts = explode("/", $path, $i+3);
-// echo("controller: ".$this->controller." action:". $this->action." parameters: ".$this->parameters[0] . " number of parts: ". sizeof($url_parts));
- $control->createPageStructure();
+  $control->createPageStructure();
 }
 
 }
