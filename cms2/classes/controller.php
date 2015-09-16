@@ -33,7 +33,6 @@ class Controller {
 
 
  foreach($this->page_html as $part) {
- echo $part;
   if($part == "article") {
    if(($this->parameters[0]!="") && !(isset($_GET["search"]))) { 
       $this->assemblePage($part,$this->content_html,"single");   

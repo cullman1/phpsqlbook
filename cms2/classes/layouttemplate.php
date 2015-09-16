@@ -34,9 +34,8 @@ case "author":
 }  
 
 public function getContent($articleid) { 
-  $category_modifier="";
   $dbhandler = $this->registry->get('DbHandler');  
-  if(is_numeric($this->parameters[0]) || $this->parameters[0]=="" || isset($_REQUEST["search"] )) {
+  if(is_numeric($this->parameters[0]) || $this->parameters[0]=="" || isset($_GET["search"] )) {
     $this->parseTemplate($dbhandler->getArticleById($this->pdo,$articleid),$this->controller,$this->pdo);
   } else {        
     $this->parseTemplate($dbhandler->getArticleByName($this->pdo, $this->parameters ), $this->controller, $this->pdo);
