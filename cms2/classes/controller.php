@@ -19,7 +19,7 @@ class Controller {
  switch($this->controller) {
   case "article": 
    $this->page_html = array("header","search", "menu", "article","footer");
-   $this->content_html = array("content");
+   $this->content_html = array("content", "author");
    break;
   case "admin":
    $this->page_html = array("header","menu","article","footer");
@@ -27,16 +27,15 @@ class Controller {
    break;
   default:
    $this->page_html = array("header", "menu","article","footer");
-   $this->content_html = array("content");
+    $this->content_html = array("content",   "author");
    break;     
  }
 
 
  foreach($this->page_html as $part) {
- 
+ echo $part;
   if($part == "article") {
    if(($this->parameters[0]!="") && !(isset($_GET["search"]))) { 
-   echo "here1:".$this->parameters[0];
       $this->assemblePage($part,$this->content_html,"single");   
    } else if (isset($_GET["search"])) {
 
@@ -45,9 +44,7 @@ class Controller {
     $this->assemblePage($part,$this->content_html,"list");  
    }   
   } else {
-    $this->registry->set('LayoutTemplate', 
-     new LayoutTemplate($this->controller, 
-     $this->action, $this->parameters, $this->pdo ));  
+    $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
     $layouttemplate = $this->registry->get('LayoutTemplate');
     $layouttemplate->getPart($part);
   }

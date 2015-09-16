@@ -2,8 +2,7 @@
   private $registry;
   private $controller;
   private $pdo;
-  public function __construct($controller, $action, 
-   $parameters ,$pdo) {
+  public function __construct($controller, $action, $parameters ,$pdo) {
     $this->registry = Registry::instance();
     $this->pdo = $pdo;
     $this->controller = $controller;
@@ -20,7 +19,12 @@
   }                                     
   $controller_modifier = $this->controller."_";                                                        
   $querystring="";                                                                                                              
-  switch($part) {                                                                                                                                      
+  switch($part) {   
+case "author":
+  $controller_modifier = "";
+  $dbhandler = $this->registry->get('DbHandler');
+  $this->parseTemplate($dbhandler->getAuthorName($this->pdo,$param),"author",$this->pdo);
+  break;                                                                                                                                   
   default:					
     if ($part=="search"||$part=="menu"||$part=="login_bar"){       
       $controller_modifier = ""; 		 
@@ -39,9 +43,9 @@ public function getContent($articleid) {
   }
 }
 
-public function parseTemplate($recordset,$controller,$pdo) {
-  $root ="http://".$_SERVER['HTTP_HOST'] . "/" . $controller;
- $string = file_get_contents($root. "/classes/templates/" .$controller."_content.php");  $regex = '#{{(.*?)}}#';
+public function parseTemplate($recordset,$template,$pdo) {
+  $root ="http://".$_SERVER['HTTP_HOST'] . "/" . $this->controller;
+ $string = file_get_contents($root. "/classes/templates/" .$template."_content.php");  $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $string, $matches);
   while($row = $recordset->fetch()) {
     $template=$string;
