@@ -17,8 +17,7 @@
    $user_object = unserialize($so);                                                                                                     
    $auth = $user_object->getAuthenticated(); 
   }                                     
-  $controller_modifier = $this->controller."_";                                                        
-  $querystring="";                                                                                                              
+  $controller_modifier = $this->controller."_";                                                                                                                                                                   
   switch($part) {   
 case "author":
   $controller_modifier = "";
