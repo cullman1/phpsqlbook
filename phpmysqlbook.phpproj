@@ -31,6 +31,9 @@
     <Folder Include="cms2\css\" />
     <Folder Include="cms2\js\" />
     <Folder Include="cms2\pages\" />
+    <Folder Include="cmsfull\classes\" />
+    <Folder Include="cmsfull\classes\templates\" />
+    <Folder Include="cmsfull\pages\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01\" />
     <Folder Include="code\chapter_02\" />
@@ -70,6 +73,7 @@
     <Folder Include="js\" />
     <Folder Include="login\" />
     <Folder Include="classes\" />
+    <Folder Include="cmsfull\" />
     <Folder Include="pages\" />
     <Folder Include="uploads\" />
   </ItemGroup>
@@ -117,6 +121,17 @@
     <Compile Include="cms2\classes\templates\search.php" />
     <Compile Include="cms2\classes\urlhandler.php" />
     <Compile Include="cms2\pages\index.php" />
+    <Compile Include="cmsfull\classes\controller.php" />
+    <Compile Include="cmsfull\classes\dbhandler.php" />
+    <Compile Include="cmsfull\classes\layouttemplate.php" />
+    <Compile Include="cmsfull\classes\templates\author_content.php" />
+    <Compile Include="cmsfull\classes\templates\cmsfull_content.php" />
+    <Compile Include="cmsfull\classes\templates\cmsfull_footer.php" />
+    <Compile Include="cmsfull\classes\templates\cmsfull_header.php" />
+    <Compile Include="cmsfull\classes\templates\menu.php" />
+    <Compile Include="cmsfull\classes\templates\search.php" />
+    <Compile Include="cmsfull\classes\urlhandler.php" />
+    <Compile Include="cmsfull\pages\index.php" />
     <Compile Include="code\chapter_01\index.php" />
     <Compile Include="code\chapter_02\arrays.php" />
     <Compile Include="code\chapter_02\associative-arrays.php" />
@@ -442,6 +457,7 @@
     <Content Include="cms2\js\bootstrap.js" />
     <Content Include="cms2\js\bootstrap.min.js" />
     <Content Include="cms2\php_errors.log" />
+    <Content Include="cmsfull\.htaccess" />
     <Content Include="code\chapter_05\get-data-form.html" />
     <Content Include="code\chapter_05\post-data-form.html" />
     <Content Include="code\chapter_05\register.html" />
