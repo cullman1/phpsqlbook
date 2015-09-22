@@ -20,11 +20,15 @@
     $auth = $user_object->getAuthenticated(); 
   }
   $controller_modifier = $this->controller."_"; 
+   if ($part!="header") {
+
+  }
   switch($part) {
   case "author":
   $controller_modifier = "";
   $dbhandler = $this->registry->get('DbHandler');
   $this->parseTemplate($dbhandler->getAuthorName($this->pdo,$param),"author",$this->pdo);
+
   break;
   default:
    if ($part=="search"||$part=="menu"||$part=="login_bar"){ 
@@ -45,9 +49,11 @@ public function getContent($articleid) {
   }
 }
 
-public function parseTemplate($recordset,$template,$pdo) {
+public function parseTemplate($recordset,$prefix,$pdo) {
+ 
 $root="http://".$_SERVER['HTTP_HOST']."/".$this->controller;
-$string = file_get_contents($root. "/classes/templates/".$template."_content.php");  
+
+$string = file_get_contents($root. "/classes/templates/".$prefix."_content.php");  
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $string, $matches);
   while($row = $recordset->fetch()) {
@@ -58,7 +64,8 @@ $string = file_get_contents($root. "/classes/templates/".$template."_content.php
       $template = str_replace($value,$row[$replace], 
       $template);  
     }  
-   echo $template;        
+   
+echo $template;  
   }						                    
 }
 

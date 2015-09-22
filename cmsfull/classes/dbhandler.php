@@ -27,7 +27,7 @@
 }
 
 public function getAuthorName($pdo, $id) { 
- $query = "select user.user_id, full_name FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id= :article_id";
+  $query = "select user.user_id, full_name FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id= :article_id";
  $statement = $pdo->prepare($query);
  $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
  $statement->execute();

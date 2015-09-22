@@ -20,7 +20,7 @@ class Controller {
   public function createPageStructure() {     
  switch($this->controller) {
   case "article": 
-   $this->page_html = array("header","search", "menu",  "article","footer");
+   $this->page_html = array("header", "menu","search", "article","footer");
    $this->content_html = array("content", "author");
    break;
   case "admin":
@@ -28,11 +28,11 @@ class Controller {
    $this->content_html = array("content");
    break;
   default:
-   $this->page_html = array("header", "menu","article", "footer");
-   $this->content_html = array("content");
+   $this->page_html = array("header", "menu","search","article", "footer");
+   $this->content_html = array("content", "author");
    break;     
  }
- foreach($this->page_html as $part) {
+ foreach($this->page_html as $part) { 
   if($part == "article") {
    if($this->parameters[0]!="" && !isset($_GET["search"])) {
     $this->assemblePage($part,$this->content_html,"single");   
@@ -42,18 +42,15 @@ class Controller {
     $this->assemblePage($part,$this->content_html,"list");  
    }   
   } else {
-    $this->registry->set('LayoutTemplate', 
-     new LayoutTemplate($this->controller, 
-     $this->action, $this->parameters, $this->pdo ));  
-    $layouttemplate = $this->registry->get('LayoutTemplate');
+    $this->registry->set('LayoutTemplate',  new LayoutTemplate($this->controller,  $this->action, $this->parameters, $this->pdo ));  
+    $layouttemplate = $this->registry->get('LayoutTemplate'); 
     $layouttemplate->getPart($part);
   }
  }
 }
 
 public function assemblePage($part, $content, $contenttype) {
- $this->registry->set('LayoutTemplate',
-  new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
+ $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
  $lt = $this->registry->get('LayoutTemplate');
  $dbh = $this->registry->get('DbHandler');
  $article_ids = array();
@@ -82,13 +79,13 @@ public function assemblePage($part, $content, $contenttype) {
   if ($content_part == "content") {
    $lt->getContent($article_ids[$i]);
    } else {
-   if ($this->parameters[0]==""||is_numeric($this->parameters[0])||isset($_GET["search"])) {
-    $lt->getPart($content_part, $article_ids[$i]);
+   if ($this->parameters[0]==""||is_numeric($this->parameters[0])||isset($_GET["search"])) {   
+$lt->getPart($content_part, $article_ids[$i]);
     } else {  
     $result2 = $dbh->getArticleByName($this->pdo,$this->parameters); 
      while ($row=$result2->fetch()) {
      $article_ids[0]=$row["article.article_id"];
-     }           
+     }          
      $lt->getPart($content_part, $article_ids[0]);
     }
    }
