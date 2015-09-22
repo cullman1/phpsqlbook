@@ -16,14 +16,25 @@
   public function getPart($part, $param="") {
  if (isset($_SESSION["user2"])) {
     $so = $_SESSION["user2"];
-    $user_object = unserialize($so);
-    $auth = $user_object->getAuthenticated(); 
+
+   $user_object = unserialize($so);
+   //print_r( $user_object );
+   $auth = $user_object->getAuthenticated(); 
   }
   $controller_modifier = $this->controller."_"; 
-   if ($part!="header") {
-
-  }
   switch($part) {
+  case "like":            
+  $controller_modifier = "";
+
+  $dbhandler = $this->registry->get('DbHandler');   
+ if (isset($auth)) {
+   $user_id = $auth;
+    
+  } else {
+   $user_id = "0";
+  }
+ $this->parseTemplate($dbhandler->getAllLikes($this->pdo, $user_id,$param), "like", $this->pdo);
+  break;
   case "author":
   $controller_modifier = "";
   $dbhandler = $this->registry->get('DbHandler');
@@ -52,9 +63,11 @@ public function getContent($articleid) {
 public function parseTemplate($recordset,$prefix,$pdo) {
  
 $root="http://".$_SERVER['HTTP_HOST']."/".$this->controller;
-
+ 
 $string = file_get_contents($root. "/classes/templates/".$prefix."_content.php");  
-  $regex = '#{{(.*?)}}#';
+
+ $regex = '#{{(.*?)}}#';
+ $template="";
   preg_match_all($regex, $string, $matches);
   while($row = $recordset->fetch()) {
     $template=$string;

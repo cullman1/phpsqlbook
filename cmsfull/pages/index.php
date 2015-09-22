@@ -12,8 +12,7 @@ $registry = Registry::instance();
 //Database
 $registry->set('configfile', new Configuration());
 $db = $registry->get('configfile');
-$conn="mysql:host=".$db->getServerName().";dbname=".$db->
-getDatabaseName();
+$conn="mysql:host=".$db->getServerName().";dbname=".$db->getDatabaseName();
 $pdo = new PDO($conn,$db->getUserName(),$db->getPassword()); 
 $pdo->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true);
 $registry->set('pdo', $pdo);

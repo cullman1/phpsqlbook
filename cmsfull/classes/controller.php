@@ -28,8 +28,8 @@ class Controller {
    $this->content_html = array("content");
    break;
   default:
-   $this->page_html = array("header", "menu","search","article", "footer");
-   $this->content_html = array("content", "author");
+              $this->page_html = array("header","login_bar", "search", "menu","article","footer");
+                $this->content_html = array("content", "author", "like");
    break;     
  }
  foreach($this->page_html as $part) { 

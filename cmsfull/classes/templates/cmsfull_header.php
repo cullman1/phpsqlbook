@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php include_once '../classes/user.php'; 
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
  <head>

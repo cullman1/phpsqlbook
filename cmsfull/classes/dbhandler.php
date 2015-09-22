@@ -48,4 +48,15 @@ public function getAuthorName($pdo, $id) {
   $statement->setFetchMode(PDO::FETCH_BOTH); 
   return $statement;
  }
+
+ public function getAllLikes($pdo, $user_id,$article_id) {
+  $query = "select coalesce(a.article_id,:artid) as articleid, coalesce(:userid,0) as userid,  Count(*) as likes_count, (select count(like_id) as likes FROM  article_like where article_id=:artid) as likes_total FROM article_like as a  join (select user_id  FROM article_like as b where article_id=:artid and user_id= :userid ) as c ON (c.user_id = a.user_id) where article_id=:artid"; 
+$statement = $pdo->prepare($query);
+  $statement->bindParam(':artid', $article_id);
+  $statement->bindParam(':userid',$user_id);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_ASSOC);
+  return $statement;
+}
+
 } ?>
