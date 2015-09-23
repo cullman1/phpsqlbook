@@ -18,8 +18,12 @@ class Controller {
     }
     
     public function createPageStructure() {     
-        switch( $this->controller) {
+        switch($this->controller) {
             case "article": 
+                $this->page_structure = array("header","login_bar", "search", "menu","article","footer");
+                $this->content_structure = array("content", "author", "like", "comments");
+                break;
+             case "code": 
                 $this->page_structure = array("header","login_bar", "search", "menu","article","footer");
                 $this->content_structure = array("content", "author", "like", "comments");
                 break;
@@ -28,11 +32,15 @@ class Controller {
                 $this->content_structure = array("content");
                 break;       
         } 
+        echo $this->controller;
         foreach($this->page_structure as $part) {
             if ($part == "article") {
-                if ($this->parameters[0]!="" && !isset($_GET["search"])) {
+                if (isset($_GET["search"])) {
+                    $part="search";    
+                }
+                if ($this->parameters[0]!="" && $part!="search") {
                     $this->assemblePage($part, $this->content_structure, "single" );   
-                } else if (isset($_GET["search"])) {
+                } else if ($part=="search") {
                     $this->assemblePage($part, $this->content_structure, "search" );  
                 } else {
                     $this->assemblePage($part, $this->content_structure, "multiple" );  
@@ -45,53 +53,52 @@ class Controller {
             }
         }
     }
-
-    public function testParameters() {
-
-    }
     
-    public function assemblePage($part, $content, $contenttype) {
+    public function assemblePage($part, $content_structure, $multiplesingle) {  
         $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
         $layouttemplate = $this->registry->get('LayoutTemplate');
         $dbhandler = $this->registry->get('DbHandler');
         $article_ids = array();
-        $count=0;
-        switch($contentype) {
-        case "multiple":
-          $recordset = $dbhandler->getArticleList($this->pdo);    
-          while ($row=$recordset->fetch()) {
-            $article_ids[$count]=$row["article.article_id"];
-            $count++;
-          }
-          break;
-        case "search":
-          $recordset = $dbhandler->getSearchResults($this->pdo);    
-          while ($row=$recordset->fetch()) {
-            $article_ids[$count]=$row["article.article_id"];
-            $count++;
-          }
-          break;
-        default:
-          $article_ids[0]=$this->parameters[0];
-          break;
-        }   
-     for($i=0;$i<sizeof($article_ids);$i++) {
-       foreach ($content as $content_part) {
-         if ($content_part == "content") {
-           $layouttemplate->getContent($article_ids[$i]);
-          } else {
-            if ($this->parameters[0]=="" ||is_numeric($this->parameters[0]) || isset($_REQUEST["search"])) {
-              $layouttemplate->getPart($content_part, $article_ids[$i]);
-            } else {  
-              $recordset2 = $dbhandler->getArticleByName($this->pdo,$this->parameters); 
-              while ($row=$recordset2->fetch()) {
-                $article_ids[0]=$row["article.article_id"];
-              }           
-              $layouttemplate->getPart($content_part, $article_ids[0]);
+        if ($multiplesingle=="multiple") {
+            $recordset = $dbhandler->getArticleList($this->pdo);    
+            $count=0;
+            while ($row=$recordset->fetch()) {
+                $article_ids[$count]=$row["article.article_id"];
+                $count++;
             }
-          }
+        } 
+        else if($multiplesingle=="search"){
+            $recordset = $dbhandler->getSearchResults($this->pdo);    
+            $count=0;
+            while ($row=$recordset->fetch()) {
+                $article_ids[$count]=$row["article.article_id"];
+                $count++;
+            }
         }
-      }  
-   }
+        else {
+            $article_ids[0]=$this->parameters[0];
+        }
+        
+        for($i=0;$i<sizeof($article_ids);$i++) {
+            foreach ($content_structure as $content_part) {
+                if ($content_part == "content") {
+                    $layouttemplate->getContent($article_ids[$i]);
+                }
+                else {
+                    if ($this->parameters[0]=="" ||is_numeric($this->parameters[0]) || isset($_REQUEST["search"])) {
+                        $layouttemplate->getPart($content_part, $article_ids[$i]);
+                    }
+                    else {  
+                        $recordset2 = $dbhandler->getArticleByName($this->pdo,$this->parameters); 
+                        while ($row=$recordset2->fetch()) {
+                            $article_ids[0]=$row["article.article_id"];
+                        }           
+                        $layouttemplate->getPart($content_part, $article_ids[0]);
+                    }
+                }
+            }
+        }
+        
+    }
 }
 ?>

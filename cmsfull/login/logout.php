@@ -8,6 +8,6 @@ setcookie(session_name(),'', time()-3600, '/');
 session_destroy();
 
 /* Redirect */
-header('Location:../../article');
+ header('Location:../recipes');  
 
 ?>

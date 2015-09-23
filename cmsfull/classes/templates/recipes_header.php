@@ -10,10 +10,9 @@ session_start();?>
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Example CMS</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/ 
-  jquery/1.11.0/jquery.min.js"></script>
-  <link href="../../css/style.css" rel="stylesheet">
-  <script src="../../js/bootstrap-wysiwyg.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <link href="../../cmsfull/css/style1.css" rel="stylesheet">
+  <script src="../../cmsfull/js/bootstrap-wysiwyg.js"></script>
  </head>
  <body class="home">
   <div class="container containerback">

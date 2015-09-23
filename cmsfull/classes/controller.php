@@ -17,8 +17,8 @@ class Controller {
     $this->pdo = $pdo; 
   }
 
-  public function createPageStructure() {     
- switch($this->controller) {
+ public function createPageStructure() {   
+  switch($this->controller) {
   case "article": 
    $this->page_html = array("header", "menu","search", "article","footer");
    $this->content_html = array("content", "author");
@@ -28,8 +28,8 @@ class Controller {
    $this->content_html = array("content");
    break;
   default:
-              $this->page_html = array("header","login_bar", "search", "menu","article","footer");
-                $this->content_html = array("content", "author", "like");
+   $this->page_html = array("header","login_bar", "search", "menu","article","footer");
+   $this->content_html = array("content", "author", "like");
    break;     
  }
  foreach($this->page_html as $part) { 

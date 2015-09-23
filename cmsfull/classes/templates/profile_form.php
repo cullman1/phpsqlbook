@@ -1,41 +1,4 @@
-<?php
-require_once('../classes/registry.php');
-require_once('../classes/configuration.php');
-$registry = Registry::instance();
-$registry->set('configfile', new Configuration());
-$db = $registry->get('configfile');
-$pdoString="mysql:host=".$db->getServerName().";dbname=".$db->getDatabaseName();
-$pdo = new PDO($pdoString, $db->getUserName(), $db->getPassword()); 
-$pdo->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true);
-$registry->set('pdo', $pdo);
-$dbHost =  $registry->get('pdo');
-
-$user_img = "";
-/* Query to update user */
-if(isset($_FILES['uploader'])) {
-    if(!empty($_FILES['uploader']['name'])) {
-        $img_name = $_FILES["uploader"]["name"];
-        $user_img = ' ,user_image="'.$_FILES["uploader"]["name"].'"';
-        $fldr = dirname(__FILE__) ."/". $img_name;
-        move_uploaded_file($_FILES['uploader']['tmp_name'], $fldr);
-    }
-}
-else {  
-    if(isset($_REQUEST['UserImage'])) {
-        $user_img = ' ,user_image="'.$_REQUEST["UserImage"].'"';
-    }
-}
-if(isset($_REQUEST["UserName"])) {
-    $update_user_sql = 'UPDATE user SET full_name= "' .$_REQUEST["UserName"].'", email="' .$_REQUEST["UserEmail"].'", user_status="' .$_REQUEST["UserStatus"].'"'.$userimage.' where user_id='.$_REQUEST["userid"];
-    $update_user_result = $dbHost->prepare($update_user_sql);
-    $update_user_result->execute();
-    if($update_user_result->errorCode()!=0) {  die("Update User Query failed"); }
-}
-$select_user_sql = "select * FROM user where user_id=".$_REQUEST["userid"];
-$select_user_result = $pdo->prepare($select_user_sql);
-$select_user_result->execute();
-$select_user_result->setFetchMode(PDO::FETCH_ASSOC); ?>
-  <div id="body">
+<div id="body">
     <form id="form1" name="form1" method="post" action="profile.php" enctype="multipart/form-data">
        <?php while($select_user_row = $select_user_result->fetch()) { ?>
       <div id="middlewide">

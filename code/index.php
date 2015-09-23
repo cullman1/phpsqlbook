@@ -15,7 +15,7 @@ include '../includes/header-chapters.php' ?>
           <tr><td><a href="chapter_09/index.php">Chapter 9</a></td><td>App Design</td></tr>
           <tr><td><a href="chapter_10/index.php">Chapter 10</a></td><td>APIs</td></tr>
           <tr><td><a href="chapter_11/index.php">Chapter 11</a></td><td>Objects</td></tr>
-          <tr><td><a href="chapter_12/index.php">Chapter 12</a></td><td>Objects 2 - social media</td></tr>
+          <tr><td><a href="chapter_12/object/index.php">Chapter 12</a></td><td>Objects 2 - social media</td></tr>
         </table>
 
       </div>

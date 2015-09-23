@@ -11,7 +11,7 @@ require('../classes/registry.php');
   $registry->set('pdo', $pdo);
   $dbHost =  $registry->get('pdo');
   if ($_REQUEST['user_id']=="0") {
-    header('Location:../login/login-user.php');
+    header('Location:../../cmsfull/login/login-user.php');
   } else {    
     if($_REQUEST['liked']=="0") {
       $query = "INSERT INTO article_like (user_id, article_id) VALUES (:userid, :articleid)";

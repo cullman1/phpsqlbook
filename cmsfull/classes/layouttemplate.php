@@ -29,7 +29,6 @@
   $dbhandler = $this->registry->get('DbHandler');   
  if (isset($auth)) {
    $user_id = $auth;
-    
   } else {
    $user_id = "0";
   }
@@ -62,7 +61,7 @@ public function getContent($articleid) {
 
 public function parseTemplate($recordset,$prefix,$pdo) {
  
-$root="http://".$_SERVER['HTTP_HOST']."/".$this->controller;
+$root="http://".$_SERVER['HTTP_HOST']."/cmsfull/";
  
 $string = file_get_contents($root. "/classes/templates/".$prefix."_content.php");  
 
