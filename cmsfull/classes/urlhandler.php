@@ -3,11 +3,9 @@
  private $action;  
  private $parameters="";
  private $registry;
- private $pdo;
     
- public function __construct($pdo) { 
+ public function __construct() { 
     $this->registry = Registry::instance();
-    $this->pdo = $pdo;
     $this->parseUrl();  
   }
 
@@ -56,10 +54,10 @@ public function getParameters() {
   return $this->parameters; 
 }
 public function routeRequest() {
- $this->registry->set('Controller', new Controller($this-> 
-   controller,$this->action,$this->parameters,$this->pdo));
+ $this->registry->set('Controller', new Controller($this->controller,$this->action,$this->parameters));
   $control = $this->registry->get('Controller');
  $control->createPageStructure();
+ 
 }
 
 } ?>

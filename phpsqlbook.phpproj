@@ -45,18 +45,6 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
-    <Compile Include="cms2\classes\configuration.php" />
-    <Compile Include="cms2\classes\controller.php" />
-    <Compile Include="cms2\classes\dbhandler.php" />
-    <Compile Include="cms2\classes\layouttemplate.php" />
-    <Compile Include="cms2\classes\registry.php" />
-    <Compile Include="cms2\classes\templates\content.php" />
-    <Compile Include="cms2\classes\templates\footer.php" />
-    <Compile Include="cms2\classes\templates\header.php" />
-    <Compile Include="cms2\classes\templates\menu.php" />
-    <Compile Include="cms2\classes\templates\search.php" />
-    <Compile Include="cms2\classes\urlhandler.php" />
-    <Compile Include="cms2\pages\index.php" />
     <Compile Include="cmsfull\classes\configuration.php" />
     <Compile Include="cmsfull\classes\controller.php" />
     <Compile Include="cmsfull\classes\dbhandler.php" />
@@ -68,7 +56,6 @@
     <Compile Include="cmsfull\classes\templates\recipes_header.php" />
     <Compile Include="cmsfull\classes\templates\like_content.php" />
     <Compile Include="cmsfull\classes\templates\login_form.php" />
-    <Compile Include="cmsfull\classes\templates\login_bar - Copy.php" />
     <Compile Include="cmsfull\classes\templates\login_bar.php" />
     <Compile Include="cmsfull\classes\templates\menu.php" />
     <Compile Include="cmsfull\classes\templates\profile_form.php" />
@@ -82,6 +69,8 @@
     <Compile Include="cmsfull\pages\index.php" />
     <Compile Include="cmsfull\login\login-user.php" />
     <Compile Include="cmsfull\pages\submit-like.php" />
+    <Compile Include="cmsfull\session1.php" />
+    <Compile Include="cmsfull\session2.php" />
     <Compile Include="code\chapter_07\add_article_amended.php" />
     <Compile Include="code\chapter_07\add_article_document.php" />
     <Compile Include="code\chapter_07\add_article_rich_text.php" />
@@ -380,11 +369,6 @@
     <Folder Include="admin\" />
     <Folder Include="assets\" />
     <Folder Include="classes\" />
-    <Folder Include="cms2\classes\" />
-    <Folder Include="cms2\classes\templates\" />
-    <Folder Include="cms2\css\" />
-    <Folder Include="cms2\js\" />
-    <Folder Include="cms2\pages\" />
     <Folder Include="cmsfull\" />
     <Folder Include="cmsfull\classes\" />
     <Folder Include="cmsfull\classes\templates\" />
@@ -430,7 +414,6 @@
     <Folder Include="includes\" />
     <Folder Include="js\" />
     <Folder Include="login\" />
-    <Folder Include="cms2\" />
     <Folder Include="pages\" />
     <Folder Include="uploads\" />
   </ItemGroup>
@@ -440,7 +423,6 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
-    <Content Include="cms2\.htaccess" />
     <Content Include="cmsfull\.htaccess" />
     <Content Include="cmsfull\css\style1.css" />
     <Content Include="cmsfull\js\bootstrap-wysiwyg.js" />

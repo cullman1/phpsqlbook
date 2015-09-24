@@ -1,5 +1,3 @@
-<?php include_once '../classes/user.php'; 
-session_start();?>
 <!DOCTYPE html>
 <html lang="en">
  <head>
@@ -11,8 +9,8 @@ session_start();?>
   <meta name="author" content="">
   <title>Example CMS</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <link href="../../cmsfull/css/style1.css" rel="stylesheet">
-  <script src="../../cmsfull/js/bootstrap-wysiwyg.js"></script>
+  <link href="<?php echo "http://".$_SERVER['HTTP_HOST']; ?>/cmsfull/css/style1.css" rel="stylesheet">
+  
  </head>
  <body class="home">
   <div class="container containerback">

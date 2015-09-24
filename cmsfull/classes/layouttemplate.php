@@ -13,40 +13,44 @@
      $this->pdo));
   }
 
-  public function getPart($part, $param="") {
- if (isset($_SESSION["user2"])) {
-    $so = $_SESSION["user2"];
-
-   $user_object = unserialize($so);
-   //print_r( $user_object );
-   $auth = $user_object->getAuthenticated(); 
+public function getPart($part, $param="") {
+  if (isset($_SESSION["user2"])) {
+   $so = $_SESSION["user2"];
+    $user_object = unserialize(base64_decode($so));
+    $auth = $user_object->getAuthenticated(); 
   }
   $controller_modifier = $this->controller."_"; 
   switch($part) {
-  case "like":            
-  $controller_modifier = "";
-
-  $dbhandler = $this->registry->get('DbHandler');   
- if (isset($auth)) {
-   $user_id = $auth;
-  } else {
-   $user_id = "0";
-  }
- $this->parseTemplate($dbhandler->getAllLikes($this->pdo, $user_id,$param), "like", $this->pdo);
-  break;
-  case "author":
-  $controller_modifier = "";
-  $dbhandler = $this->registry->get('DbHandler');
-  $this->parseTemplate($dbhandler->getAuthorName($this->pdo,$param),"author",$this->pdo);
-
-  break;
-  default:
-   if ($part=="search"||$part=="menu"||$part=="login_bar"){ 
+   case "like":            
+    $controller_modifier = "";
+    $dbhandler = $this->registry->get('DbHandler');   
+    if (isset($auth)) {
+        $user_id = $auth;
+    } else {
+        $user_id = "0";
+    }
+    $this->parseTemplate($dbhandler->getAllLikes($this->pdo, $user_id,$param), "like", $this->pdo);
+   break;
+   case "author":
+    $controller_modifier = "";
+    $dbhandler = $this->registry->get('DbHandler');
+    $this->parseTemplate($dbhandler->getAuthorName($this->pdo,$param),"author",$this->pdo);
+   break;
+   default:
+    if ($part=="search"||$part=="menu"||$part=="login_bar"){ 
       $controller_modifier = ""; 
     }
-   include("templates/".$controller_modifier.$part.".php"); 
-    break;
-  }
+    if ($this->controller=="login")
+    {
+        if ($part=="header"||$part=="footer") {
+         $controller_modifier = "recipes_"; 
+        }
+    }
+    
+    include("templates/".$controller_modifier.$part.".php"); 
+       
+   break;
+ }
 }
 
 public function getContent($articleid) { 

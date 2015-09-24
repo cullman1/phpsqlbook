@@ -33,6 +33,7 @@ if(isset($_REQUEST['password'])) {
             $user_object = new User( $select_user_row[2],$select_user_row[3],$select_user_row[1]);
             $s =serialize($user_object); 
             $_SESSION["user2"] = $s;
+            echo  $_SESSION["user2"];
             header('Location:../recipes');       
         } else {
             /* Incorrect details */
