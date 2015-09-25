@@ -13,8 +13,6 @@ class Controller {
   private $pdo;
   private $user_object;
 
-
-
   public function __construct($controller,$action, $parameters) { 
     $this->registry = Registry::instance();
     $this->controller=$controller;
@@ -28,47 +26,12 @@ class Controller {
     $this->registry->set('pdo', $this->pdo );
   }
 
-  public function submitLogout() {
-   $this->user_object = new User( "","",0);
-         $_SESSION["user2"]=serialize($this->user_object); 
-  // Unset all of the session variables.
-$_SESSION = array();
-session_write_close();
-setcookie(session_name(),'', time()-3600, '/');
-
-
-/* Redirect */
- header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
-  }
-
-public function submitLogin() {
-  $dbh = $this->registry->get('pdo');
-  $db = $this->registry->get('configfile');
-  if(isset($_POST['password'])) {
-    $passwordToken = sha1($db->getPreSalt() . $_POST['password'] . $db->getAfterSalt());
-    $query = "SELECT Count(*) as CorrectDetails, user_id, full_name, email from user WHERE email ='".$_POST['emailAddress']."' AND password= '".$passwordToken."'" ." AND active= 0";
-    $statement = $dbh->prepare($query);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_BOTH);
-    while($select_user_row = $statement->fetch()) {
-      if ($select_user_row[0]==1) {      
-        $this->user_object = new User( $select_user_row[2],$select_user_row[3],$select_user_row[1]);
-         $_SESSION["user2"]=base64_encode(serialize($this->user_object)); 
-header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
-      
-      } else {
-        /* Incorrect details */
-	    header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/login/login/3');
-      }
-    }
-  }
-}
-
  public function createPageStructure() { 
+  $this->registry->set('LayoutTemplate',  new LayoutTemplate($this->controller,  $this->action, $this->parameters, $this->pdo ));  
+  $layouttemplate = $this->registry->get('LayoutTemplate'); 
   switch($this->controller) {
    case "login":
     $this->page_html = array("header","menu","form","footer");
-
     break;
    case "admin":
     $this->page_html = array("header","menu","article", "footer");
@@ -82,17 +45,21 @@ header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
   switch($this->action) {
    case "failed":
    case "login":
-    $this->submitLogin();
-   
+    $this->submitLogin(); 
     break;
    case "logout":
        $this->submitLogout();
+       break;
+  case "register":
+       $this->submitRegister();
+       break;
+  case "profile":
+       $this->getProfile();
        break;
    case "likes":
        $this->submitLike();
        break;
   }
-
   foreach($this->page_html as $part) { 
    if($part == "article") {
     if($this->parameters[0]!="" && !isset($_GET["search"])) {
@@ -103,16 +70,13 @@ header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
      $this->assemblePage($part,$this->content_html,"list");  
     }   
   } else {
- 
-   $this->registry->set('LayoutTemplate',  new LayoutTemplate($this->controller,  $this->action, $this->parameters, $this->pdo ));  
-   $layouttemplate = $this->registry->get('LayoutTemplate'); 
    $layouttemplate->getPart($part);
   }
  }
 }
 
 public function assemblePage($part, $content, $contenttype) {
- $this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
+ //$this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
  $lt = $this->registry->get('LayoutTemplate');
  $dbh = $this->registry->get('DbHandler');
  $article_ids = array();
@@ -142,7 +106,7 @@ public function assemblePage($part, $content, $contenttype) {
    $lt->getContent($article_ids[$i]);
    } else {
    if ($this->parameters[0]==""||is_numeric($this->parameters[0])||isset($_GET["search"])) {   
-$lt->getPart($content_part, $article_ids[$i]);
+     $lt->getPart($content_part, $article_ids[$i]);
     } else {  
     $result2 = $dbh->getArticleByName($this->pdo,$this->parameters); 
      while ($row=$result2->fetch()) {
@@ -153,6 +117,78 @@ $lt->getPart($content_part, $article_ids[$i]);
    }
   }
  }
+}
+
+//Actions
+
+public function submitLogout() {
+ //Works but not a good way - exploiting a bug to do it. 
+ $this->user_object = new User( "","",0);
+ $_SESSION["user2"]=serialize($this->user_object); 
+ $_SESSION = array();
+ session_write_close();
+ setcookie(session_name(),'', time()-3600, '/');
+ header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
+}
+
+public function submitRegister() {
+$error=-1;
+if (!empty($_POST['password']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['emailAddress']) ) {
+    if (!preg_match("#.*^(?=.{8,50})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_POST['password'])){
+        $error=3;
+    }    else {
+    $query = "SELECT * from user WHERE email = :email";
+    $statement = $dbHost->prepare($query);
+    $statement->bindParam(':email', $_POST['emailAddress']);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $rows = $statement->fetchAll();
+    $num_rows = count($rows);
+	    if($num_rows>0) {
+            $error=1; /* User exists */
+	    }		    else   {
+		    $query2 = "INSERT INTO user (full_name, password, email, role_id, date_joined, , active) VALUES (:name, :password, :email, :role, :date, 0)";
+            $statement2 = $dbHost->prepare($query2);
+            $statement2->bindParam(':name', $_POST['firstName'] . " " . $_POST['lastName'] );
+            $statement2->bindParam(':password', $passwordToken);
+            $statement2->bindParam(':email', $_POST['emailAddress']);
+            $statement2->bindParam(':role', $_POST['role']);
+            $statement2->bindParam(':date', date("Y-m-d H:i:s"));
+            $statement2->execute();
+		    if($statement2->errorCode()!=0) {  
+                /* Insert failed */
+                $error=2;
+            } else {
+  			    /* Insert succeeded */
+                $error=0;
+	        }
+	    }
+    }
+}
+}
+
+public function submitLogin() {
+  $dbh = $this->registry->get('pdo');
+  $db = $this->registry->get('configfile');
+  if(isset($_POST['password'])) {
+    $passwordToken = sha1($db->getPreSalt() . $_POST['password'] . $db->getAfterSalt());
+    $query = "SELECT Count(*) as Count, user_id, full_name, email from user WHERE email = :email AND password= :password AND active= 0";
+    $statement = $dbh->prepare($query);
+     $statement->bindParam(':email', $_POST['emailAddress']);
+  $statement->bindParam(':password',$passwordToken);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_BOTH);
+    while($select_user_row = $statement->fetch()) {
+      if ($select_user_row[0]==1) {      
+        $this->user_object = new User( $select_user_row[2],$select_user_row[3],$select_user_row[1]);
+         $_SESSION["user2"]=base64_encode(serialize($this->user_object)); 
+         header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
+      } else {
+        /* Incorrect details */
+	    header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/login/login/3');
+      }
+    }
+  }
 }
 
 public function submitLike() {
@@ -173,5 +209,33 @@ public function submitLike() {
   }
 }
 
+function getProfile() {
+$user_img = "";
+if(isset($_FILES['uploader'])) {
+ if(!empty($_FILES['uploader']['name'])) {
+  $img_name = $_FILES["uploader"]["name"];
+  $user_img = ' ,user_img="'.$_FILES["uploader"]["name"].'"';
+  $fldr = dirname(__FILE__) ."/". $img_name;
+ move_uploaded_file($_FILES['uploader']['tmp_name'],$fldr);
+  }
+} else {  
+   if(isset($_POST['UserImage'])) {
+     $user_img = ' ,user_img="'.$_POST["UserImage"].'"';
+   }
+}
+if(isset($_POST["UserName"])) {
+ $query = 'UPDATE user SET full_name= :name, email= :email,  
+ user_status= :status, '.$userimg.' where user_id= :userid';
+ $statement = $dbHost->prepare($query);
+ $statement->bindParam(':userid',$_POST["userid"]);
+ $statement->execute();
+ if($statement->errorCode()!=0){die("Query failed"); }
+}
+$query2 = "select * FROM user where user_id= :userid";
+$statement2 = $pdo->prepare($query2);
+$statement->bindParam(':userid',$_POST["userid"]);
+$statement2->execute();
+$statement2->setFetchMode(PDO::FETCH_ASSOC);
+}
 
 } ?>
