@@ -33,6 +33,12 @@ class Controller {
    case "login":
     $this->page_html = array("header","menu","form","footer");
     break;
+   case "register":
+    $this->page_html = array("header","menu","form","footer");
+    break;
+   case "profile":
+    $this->page_html = array("header","menu","form","footer");
+    break;
    case "admin":
     $this->page_html = array("header","menu","article", "footer");
     $this->content_html = array("content");
@@ -50,10 +56,10 @@ class Controller {
    case "logout":
        $this->submitLogout();
        break;
-  case "register":
+  case "add":
        $this->submitRegister();
        break;
-  case "profile":
+  case "view":
        $this->getProfile();
        break;
    case "likes":
@@ -132,22 +138,26 @@ public function submitLogout() {
 }
 
 public function submitRegister() {
+ $dbh = $this->registry->get('pdo');
+  $db = $this->registry->get('configfile');
 $error=-1;
 if (!empty($_POST['password']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['emailAddress']) ) {
     if (!preg_match("#.*^(?=.{8,50})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_POST['password'])){
         $error=3;
     }    else {
     $query = "SELECT * from user WHERE email = :email";
-    $statement = $dbHost->prepare($query);
+    $statement = $dbh->prepare($query);
     $statement->bindParam(':email', $_POST['emailAddress']);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     $rows = $statement->fetchAll();
     $num_rows = count($rows);
 	    if($num_rows>0) {
-            $error=1; /* User exists */
+            $error=0; /* User exists */
+            header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/register/add/'.$error);
 	    }		    else   {
-		    $query2 = "INSERT INTO user (full_name, password, email, role_id, date_joined, , active) VALUES (:name, :password, :email, :role, :date, 0)";
+ $passwordToken = sha1($db->getPreSalt() . $_POST['password'] . $db->getAfterSalt());		    
+$query2 = "INSERT INTO user (full_name, password, email, role_id, date_joined, , active) VALUES (:name, :password, :email, :role, :date, 0)";
             $statement2 = $dbHost->prepare($query2);
             $statement2->bindParam(':name', $_POST['firstName'] . " " . $_POST['lastName'] );
             $statement2->bindParam(':password', $passwordToken);
@@ -158,13 +168,15 @@ if (!empty($_POST['password']) && !empty($_POST['firstName']) && !empty($_POST['
 		    if($statement2->errorCode()!=0) {  
                 /* Insert failed */
                 $error=2;
+                header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/register/add/'.$error);
             } else {
   			    /* Insert succeeded */
-                $error=0;
+                $error=1;
 	        }
 	    }
     }
 }
+
 }
 
 public function submitLogin() {
@@ -210,6 +222,7 @@ public function submitLike() {
 }
 
 function getProfile() {
+  $dbh = $this->registry->get('pdo');
 $user_img = "";
 if(isset($_FILES['uploader'])) {
  if(!empty($_FILES['uploader']['name'])) {
@@ -225,15 +238,15 @@ if(isset($_FILES['uploader'])) {
 }
 if(isset($_POST["UserName"])) {
  $query = 'UPDATE user SET full_name= :name, email= :email,  
- user_status= :status, '.$userimg.' where user_id= :userid';
- $statement = $dbHost->prepare($query);
+ user_status= :status, '.$user_img.' where user_id= :userid';
+ $statement = $dbh->prepare($query);
  $statement->bindParam(':userid',$_POST["userid"]);
  $statement->execute();
  if($statement->errorCode()!=0){die("Query failed"); }
 }
 $query2 = "select * FROM user where user_id= :userid";
-$statement2 = $pdo->prepare($query2);
-$statement->bindParam(':userid',$_POST["userid"]);
+$statement2 = $this->pdo->prepare($query2);
+$statement2->bindParam(':userid',$_POST["userid"]);
 $statement2->execute();
 $statement2->setFetchMode(PDO::FETCH_ASSOC);
 }

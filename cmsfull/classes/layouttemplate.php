@@ -40,7 +40,7 @@ public function getPart($part, $param="") {
     if ($part=="search"||$part=="menu"||$part=="login_bar"){ 
       $controller_modifier = ""; 
     }
-    if ($this->controller=="login")
+    if ($this->controller=="login" || $this->controller=="profile" || $this->controller=="register")
     {
         if ($part=="header"||$part=="footer") {
          $controller_modifier = "recipes_"; 

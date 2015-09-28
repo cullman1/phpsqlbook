@@ -1,6 +1,4 @@
-<?php include '../includes/header-register.php' ?>
-
- <form id="form1" method="post" action="../admin/add-user.php?page=register">
+ <form id="form1" method="post" action="<?php echo "http://".$_SERVER['HTTP_HOST']; ?>/cmsfull/register/add/1">
   <div class="wholeform">
   <br/>
       <div class="col-md-4"><h1>Please register:</h1></div>
@@ -55,5 +53,3 @@
     </div> <!-- /container -->
 
 </form>
-
-<?php include '../includes/footer-site.php' ?>
