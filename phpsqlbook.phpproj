@@ -61,6 +61,7 @@
     <Compile Include="cmsfull\classes\templates\profile_form.php" />
     <Compile Include="cmsfull\classes\templates\register_form.php" />
     <Compile Include="cmsfull\classes\templates\search.php" />
+    <Compile Include="cmsfull\classes\templates\viewprofile_form.php" />
     <Compile Include="cmsfull\classes\urlhandler.php" />
     <Compile Include="cmsfull\classes\user.php" />
     <Compile Include="cmsfull\login\login-user.php" />

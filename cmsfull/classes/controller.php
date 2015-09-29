@@ -59,7 +59,10 @@ class Controller {
   case "add":
        $this->submitRegister();
        break;
-  case "view":
+  case "set":
+       $this->setProfile();
+       break;
+   case "view":
        $this->getProfile();
        break;
    case "likes":
@@ -129,11 +132,12 @@ public function assemblePage($part, $content, $contenttype) {
 
 public function submitLogout() {
  //Works but not a good way - exploiting a bug to do it. 
- $this->user_object = new User( "","",0);
- $_SESSION["user2"]=serialize($this->user_object); 
+ //$this->user_object = new User( "","",0);
+ //$_SESSION["user2"]=serialize($this->user_object); 
  $_SESSION = array();
  session_write_close();
  setcookie(session_name(),'', time()-3600, '/');
+ exit();
  header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
 }
 
@@ -221,7 +225,7 @@ public function submitLike() {
   }
 }
 
-function getProfile() {
+function setProfile() {
   $dbh = $this->registry->get('pdo');
 $user_img = "";
 if(isset($_FILES['uploader'])) {
@@ -237,18 +241,31 @@ if(isset($_FILES['uploader'])) {
    }
 }
 if(isset($_POST["UserName"])) {
- $query = 'UPDATE user SET full_name= :name, email= :email,  
- user_status= :status, '.$user_img.' where user_id= :userid';
+ $query = 'UPDATE user SET full_name= :name, email= :email,  user_status= :status, : where user_id= :userid';
  $statement = $dbh->prepare($query);
  $statement->bindParam(':userid',$_POST["userid"]);
+  $statement->bindParam(':name',$_POST["UserName"]);
+   $statement->bindParam(':email',$_POST["UserEmail"]);
+    $statement->bindParam(':status',$_POST["UserStatus"]);
+    if(isset($_POST['UserImage'])) {
+     $statement->bindParam(':userid', $user_img);
+     }
  $statement->execute();
- if($statement->errorCode()!=0){die("Query failed"); }
 }
 $query2 = "select * FROM user where user_id= :userid";
 $statement2 = $this->pdo->prepare($query2);
 $statement2->bindParam(':userid',$_POST["userid"]);
 $statement2->execute();
 $statement2->setFetchMode(PDO::FETCH_ASSOC);
+}
+
+function getProfile()
+{
+if(isset($_GET["profile"])) {
+      $query ='Select * from user where user_id='.$_GET["profile"];
+     $statement = $this->pdo->prepare($query);
+     $statement->execute(); 
+    }
 }
 
 } ?>

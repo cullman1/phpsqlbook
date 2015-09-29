@@ -1,6 +1,7 @@
 <div>
   <div class="accordion-group">   
     <span class="indent"> Written by: 
-    {{user.full_name}} </span>   
+    <a href="profile/view/{{user.user_id}}">{{user.full_name}}</a>                                                                     
+ </span>   
   </div>
 </div>
