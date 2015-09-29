@@ -58,10 +58,10 @@
     <Compile Include="cmsfull\classes\templates\login_form.php" />
     <Compile Include="cmsfull\classes\templates\login_bar.php" />
     <Compile Include="cmsfull\classes\templates\menu.php" />
-    <Compile Include="cmsfull\classes\templates\profile_form.php" />
+    <Compile Include="cmsfull\classes\templates\profile_update.php" />
     <Compile Include="cmsfull\classes\templates\register_form.php" />
     <Compile Include="cmsfull\classes\templates\search.php" />
-    <Compile Include="cmsfull\classes\templates\viewprofile_form.php" />
+    <Compile Include="cmsfull\classes\templates\profile_status.php" />
     <Compile Include="cmsfull\classes\urlhandler.php" />
     <Compile Include="cmsfull\classes\user.php" />
     <Compile Include="cmsfull\login\login-user.php" />

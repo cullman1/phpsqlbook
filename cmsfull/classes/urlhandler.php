@@ -18,7 +18,12 @@ $p=trim(parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH),"/");
   $parameters = "";
 
     if(sizeof($url_parts)==$i+2) {
+    if(is_numeric($url_parts[$i+1])) {
       $parameters = $url_parts[$i+1];
+      } else {
+        $action = $url_parts[$i+1];
+        $parameters = $url_parts[$i+1];
+      }
     } else if (sizeof($url_parts)==$i+3)  {
       $action = $url_parts[$i+1];
       $parameters = $url_parts[$i+2];

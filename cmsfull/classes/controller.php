@@ -29,6 +29,7 @@ class Controller {
  public function createPageStructure() { 
   $this->registry->set('LayoutTemplate',  new LayoutTemplate($this->controller,  $this->action, $this->parameters, $this->pdo ));  
   $layouttemplate = $this->registry->get('LayoutTemplate'); 
+
   switch($this->controller) {
    case "login":
     $this->page_html = array("header","menu","form","footer");
@@ -37,7 +38,11 @@ class Controller {
     $this->page_html = array("header","menu","form","footer");
     break;
    case "profile":
-    $this->page_html = array("header","menu","form","footer");
+    if ($this->action=="view") {
+       $this->page_html = array("header","menu","status","footer");
+    } else {
+       $this->page_html = array("header","menu","update","footer");
+    }   
     break;
    case "admin":
     $this->page_html = array("header","menu","article", "footer");
@@ -62,9 +67,6 @@ class Controller {
   case "set":
        $this->setProfile();
        break;
-   case "view":
-       $this->getProfile();
-       break;
    case "likes":
        $this->submitLike();
        break;
@@ -85,7 +87,6 @@ class Controller {
 }
 
 public function assemblePage($part, $content, $contenttype) {
- //$this->registry->set('LayoutTemplate', new LayoutTemplate($this->controller, $this->action, $this->parameters, $this->pdo ));  
  $lt = $this->registry->get('LayoutTemplate');
  $dbh = $this->registry->get('DbHandler');
  $article_ids = array();
@@ -119,7 +120,7 @@ public function assemblePage($part, $content, $contenttype) {
     } else {  
     $result2 = $dbh->getArticleByName($this->pdo,$this->parameters); 
      while ($row=$result2->fetch()) {
-     $article_ids[0]=$row["article.article_id"];
+        $article_ids[0]=$row["article.article_id"];
      }          
      $lt->getPart($content_part, $article_ids[0]);
     }
@@ -137,7 +138,6 @@ public function submitLogout() {
  $_SESSION = array();
  session_write_close();
  setcookie(session_name(),'', time()-3600, '/');
- exit();
  header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
 }
 
@@ -162,7 +162,7 @@ if (!empty($_POST['password']) && !empty($_POST['firstName']) && !empty($_POST['
 	    }		    else   {
  $passwordToken = sha1($db->getPreSalt() . $_POST['password'] . $db->getAfterSalt());		    
 $query2 = "INSERT INTO user (full_name, password, email, role_id, date_joined, , active) VALUES (:name, :password, :email, :role, :date, 0)";
-            $statement2 = $dbHost->prepare($query2);
+            $statement2 = $dbh->prepare($query2);
             $statement2->bindParam(':name', $_POST['firstName'] . " " . $_POST['lastName'] );
             $statement2->bindParam(':password', $passwordToken);
             $statement2->bindParam(':email', $_POST['emailAddress']);
@@ -226,7 +226,7 @@ public function submitLike() {
 }
 
 function setProfile() {
-  $dbh = $this->registry->get('pdo');
+   $dbh = $this->registry->get('DbHandler');
 $user_img = "";
 if(isset($_FILES['uploader'])) {
  if(!empty($_FILES['uploader']['name'])) {
@@ -237,35 +237,14 @@ if(isset($_FILES['uploader'])) {
   }
 } else {  
    if(isset($_POST['UserImage'])) {
-     $user_img = ' ,user_img="'.$_POST["UserImage"].'"';
+     $user_img = ' ,user_img=:userimg ';
    }
 }
 if(isset($_POST["UserName"])) {
- $query = 'UPDATE user SET full_name= :name, email= :email,  user_status= :status, : where user_id= :userid';
- $statement = $dbh->prepare($query);
- $statement->bindParam(':userid',$_POST["userid"]);
-  $statement->bindParam(':name',$_POST["UserName"]);
-   $statement->bindParam(':email',$_POST["UserEmail"]);
-    $statement->bindParam(':status',$_POST["UserStatus"]);
-    if(isset($_POST['UserImage'])) {
-     $statement->bindParam(':userid', $user_img);
-     }
- $statement->execute();
+  $dbh->setProfile($this->pdo, $_POST["userid"], $_POST["UserName"], $_POST["UserEmail"], $_POST["UserStatus"], $user_img);
 }
-$query2 = "select * FROM user where user_id= :userid";
-$statement2 = $this->pdo->prepare($query2);
-$statement2->bindParam(':userid',$_POST["userid"]);
-$statement2->execute();
-$statement2->setFetchMode(PDO::FETCH_ASSOC);
 }
 
-function getProfile()
-{
-if(isset($_GET["profile"])) {
-      $query ='Select * from user where user_id='.$_GET["profile"];
-     $statement = $this->pdo->prepare($query);
-     $statement->execute(); 
-    }
-}
+
 
 } ?>

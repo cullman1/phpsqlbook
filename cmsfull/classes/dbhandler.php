@@ -59,5 +59,30 @@ public function getAllLikes($pdo, $user_id,$article_id) {
   return $statement;
 }
 
+public function getProfile($pdo, $user_id) {
+ $query = "select * FROM user where user_id=:userid";
+ $statement = $pdo->prepare($query);
+ $statement->bindParam(':userid',$user_id);
+ $statement->execute();
+ $statement->setFetchMode(PDO::FETCH_ASSOC);
+ return $statement;
+}
+
+public function setProfile($pdo, $id, $name, $email, $status, $img)
+{
+$query = 'UPDATE user SET full_name= :name, email= :email,  user_status= :status'.$img.'  where user_id= :userid';
+ $statement = $pdo->prepare($query);
+ $statement->bindParam(':userid',$id);
+  $statement->bindParam(':name',$name);
+   $statement->bindParam(':email',$email);
+    $statement->bindParam(':status',$status);
+    if(isset($img)) {
+     //$statement->bindParam(':userimg',$img);
+     }
+     $statement->execute();
+      if($statement->errorCode() != 0) { return "1"; }
+      else { return "0";}
+}
+
 
 } ?>

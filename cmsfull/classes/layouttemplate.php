@@ -35,6 +35,12 @@ public function getPart($part, $param="") {
     $controller_modifier = "";
     $dbhandler = $this->registry->get('DbHandler');
     $this->parseTemplate($dbhandler->getAuthorName($this->pdo,$param),"author",$this->pdo);
+    break;
+   case "update":
+   case "status":
+    $controller_modifier = "";
+    $dbhandler = $this->registry->get('DbHandler');
+    $this->parseTemplate($dbhandler->getProfile($this->pdo,$this->parameters[0]),"profile",$this->pdo,$part);
    break;
    default:
     if ($part=="search"||$part=="menu"||$part=="login_bar"){ 
@@ -63,12 +69,9 @@ public function getContent($articleid) {
   }
 }
 
-public function parseTemplate($recordset,$prefix,$pdo) {
- 
+public function parseTemplate($recordset,$prefix,$pdo, $extra="content") {
 $root="http://".$_SERVER['HTTP_HOST']."/cmsfull/";
- 
-$string = file_get_contents($root. "/classes/templates/".$prefix."_content.php");  
-
+$string = file_get_contents($root. "/classes/templates/".$prefix."_". $extra.".php");  
  $regex = '#{{(.*?)}}#';
  $template="";
   preg_match_all($regex, $string, $matches);
