@@ -14,8 +14,7 @@ $p=trim(parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH),"/");
  $i=1;
  $url_parts = explode("/", $p, $i+3);
  $controller = $url_parts[$i];
-  $action = "";
-  $parameters = "";
+  $action = $parameters = "";
 
     if(sizeof($url_parts)==$i+2) {
     if(is_numeric($url_parts[$i+1])) {
@@ -29,6 +28,13 @@ $p=trim(parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH),"/");
       $parameters = $url_parts[$i+2];
     }
  
+    /* Old code if(sizeof($url_parts)==$i+2) {
+      $parameters = $url_parts[$i+1];
+  } else if (sizeof($url_parts)==$i+3) {
+      $action = $url_parts[$i+1];
+      $parameters = $url_parts[$i+2];
+  } */
+
   if (isset($controller)) {
     $this->setController($controller);
   }
