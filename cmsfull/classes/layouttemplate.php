@@ -38,9 +38,11 @@ public function getPart($part, $param="") {
     break;
    case "update":
    case "status":
-    $controller_modifier = "";
+    $controller_modifier = $query = "";
     $dbhandler = $this->registry->get('DbHandler');
-    $this->parseTemplate($dbhandler->getProfile($this->pdo,$this->parameters[0]),"profile",$this->pdo,$part);
+    if ($this->action=="success") {$query="success";}
+        if ($this->action=="fail") {$query="fail";}
+    $this->parseTemplate($dbhandler->getProfile($this->pdo,$this->parameters[0]),"profile",$this->pdo,$part,$query);
    break;
    default:
     if ($part=="search"||$part=="menu"||$part=="login_bar"){ 
@@ -69,9 +71,9 @@ public function getContent($articleid) {
   }
 }
 
-public function parseTemplate($recordset,$prefix,$pdo, $extra="content") {
+public function parseTemplate($recordset,$prefix,$pdo, $extra="content", $query="") {
 $root="http://".$_SERVER['HTTP_HOST']."/cmsfull/";
-$string = file_get_contents($root. "/classes/templates/".$prefix."_". $extra.".php");  
+$string = file_get_contents($root. "/classes/templates/".$prefix."_". $extra.".php?query=".$query);  
  $regex = '#{{(.*?)}}#';
  $template="";
   preg_match_all($regex, $string, $matches);

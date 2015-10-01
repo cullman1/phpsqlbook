@@ -68,21 +68,41 @@ public function getProfile($pdo, $user_id) {
  return $statement;
 }
 
-public function setProfile($pdo, $id, $name, $email, $status, $img)
-{
-$query = 'UPDATE user SET full_name= :name, email= :email,  user_status= :status'.$img.'  where user_id= :userid';
- $statement = $pdo->prepare($query);
- $statement->bindParam(':userid',$id);
+public function setProfile($pdo, $id, $name, $email, $sta, $img) {
+  $query = 'UPDATE user SET full_name= :name, email= :email, status= :status'.$img.' where user_id= :userid';
+  $statement = $pdo->prepare($query);
+  $statement->bindParam(':userid',$id);
   $statement->bindParam(':name',$name);
-   $statement->bindParam(':email',$email);
-    $statement->bindParam(':status',$status);
-    if(isset($img)) {
-     //$statement->bindParam(':userimg',$img);
-     }
-     $statement->execute();
-      if($statement->errorCode() != 0) { return "1"; }
-      else { return "0";}
+  $statement->bindParam(':email',$email);
+  $statement->bindParam(':status',$sta);
+  if ($img!="") {
+    $statement->bindParam(':userimg',$img);
+  }
+  $statement->execute();
+  if($statement->errorCode() != 0) { return ("2"); }
+  else { return ("3");}
 }
 
+function getLogin($pdo, $email, $passwordToken) {
+    $query = "SELECT Count(*) as Count, user_id, full_name, email from user WHERE email = :email AND password= :password AND active= 0";
+    $statement = $pdo->prepare($query);
+    $statement->bindParam(':email', $email);
+    $statement->bindParam(':password',$passwordToken);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_BOTH);
+    return $statement;
+}
+
+function setLike($pdo,$likes, $userid, $articleid) {
+  if($likes=="0") {
+      $query = "INSERT INTO article_like (user_id, article_id) VALUES (:userid, :articleid)";
+    } else {
+      $query = "DELETE FROM article_like WHERE user_id= :userid and article_id= :articleid";
+    }
+    $statement = $pdo->prepare($query);
+    $statement->bindParam(":userid", $userid);
+    $statement->bindParam(":articleid", $articleid);
+    $statement->execute();
+ }
 
 } ?>

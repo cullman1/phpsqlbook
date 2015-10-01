@@ -39,9 +39,9 @@ class Controller {
     break;
    case "profile":
     if ($this->action=="view") {
-       $this->page_html = array("header","menu","status","footer");
+       $this->page_html = array("header","login_bar","menu","status","footer");
     } else {
-       $this->page_html = array("header","menu","update","footer");
+       $this->page_html = array("header","login_bar","menu","update","footer");
     }   
     break;
    case "admin":
@@ -132,9 +132,6 @@ public function assemblePage($part, $content, $contenttype) {
 //Actions
 
 public function submitLogout() {
- //Works but not a good way - exploiting a bug to do it. 
- //$this->user_object = new User( "","",0);
- //$_SESSION["user2"]=serialize($this->user_object); 
  $_SESSION = array();
  session_write_close();
  setcookie(session_name(),'', time()-3600, '/');
@@ -183,20 +180,47 @@ $query2 = "INSERT INTO user (full_name, password, email, role_id, date_joined, ,
 
 }
 
+
+public function submitLike() {
+ $dbh = $this->registry->get('DbHandler');
+  if (!isset($_SESSION["user2"])) {
+    header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/login');
+  } else {    
+   $dbh->setLike($this->pdo,$_REQUEST['liked'],$_REQUEST["user_id"], $_REQUEST["article_id"]);
+   header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
+  }
+}
+
+function setProfile() {
+ $dbh = $this->registry->get('DbHandler');
+ $userImg = "";
+ if(isset($_FILES['FILE'])) {
+  if(!empty($_FILES['FILE']['name'])) {
+   $img_name = $_FILES["FILE"]["name"];
+   $userImg = ' ,user_img="'.$_FILES["FILE"]["name"].'"';
+   $fldr = dirname(__FILE__) ."/assets/". $img_name;
+   move_uploaded_file($_FILES['FILE']['tmp_name'],$fldr);
+  }
+ } 
+ if(isset($_POST["Name"])) {
+  $msg = $dbh->setProfile($this->pdo,$_POST["Id"],$_POST["Name"],$_POST["Email"],$_POST["Status"],$userImg);
+if ($msg=="2") {
+ header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/profile/fail/'.$_POST["Id"]);
+  } else { 
+ header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/profile/success/'.$_POST["Id"]);
+  }
+ }
+}
+
 public function submitLogin() {
-  $dbh = $this->registry->get('pdo');
+  $dbh = $this->registry->get('DbHandler');
   $db = $this->registry->get('configfile');
   if(isset($_POST['password'])) {
     $passwordToken = sha1($db->getPreSalt() . $_POST['password'] . $db->getAfterSalt());
-    $query = "SELECT Count(*) as Count, user_id, full_name, email from user WHERE email = :email AND password= :password AND active= 0";
-    $statement = $dbh->prepare($query);
-     $statement->bindParam(':email', $_POST['emailAddress']);
-  $statement->bindParam(':password',$passwordToken);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_BOTH);
-    while($select_user_row = $statement->fetch()) {
-      if ($select_user_row[0]==1) {      
-        $this->user_object = new User( $select_user_row[2],$select_user_row[3],$select_user_row[1]);
+    $statement =  $dbh->getLogin($this->pdo, $_POST["emailAddress"], $passwordToken);
+    while($row = $statement->fetch()) {
+      if ($row[0]==1) {      
+        $this->user_object = new User( $row[2],$row[3],$row[1]);
          $_SESSION["user2"]=base64_encode(serialize($this->user_object)); 
          header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
       } else {
@@ -207,43 +231,6 @@ public function submitLogin() {
   }
 }
 
-public function submitLike() {
-  if (!isset($_SESSION["user2"])) {
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/login');
-  } else {    
-    if($_REQUEST['liked']=="0") {
-      $query = "INSERT INTO article_like (user_id, article_id) VALUES (:userid, :articleid)";
-    } else {
-      $query = "DELETE FROM article_like WHERE user_id= :userid and article_id= :articleid";
-    }
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(":userid", $_REQUEST["user_id"]);
-    $statement->bindParam(":articleid", $_REQUEST["article_id"]);
-    $statement->execute();
-    if ($statement->errorCode()!=0) {  die("Query failed"); }
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
-  }
-}
-
-function setProfile() {
-   $dbh = $this->registry->get('DbHandler');
-$user_img = "";
-if(isset($_FILES['uploader'])) {
- if(!empty($_FILES['uploader']['name'])) {
-  $img_name = $_FILES["uploader"]["name"];
-  $user_img = ' ,user_img="'.$_FILES["uploader"]["name"].'"';
-  $fldr = dirname(__FILE__) ."/". $img_name;
- move_uploaded_file($_FILES['uploader']['tmp_name'],$fldr);
-  }
-} else {  
-   if(isset($_POST['UserImage'])) {
-     $user_img = ' ,user_img=:userimg ';
-   }
-}
-if(isset($_POST["UserName"])) {
-  $dbh->setProfile($this->pdo, $_POST["userid"], $_POST["UserName"], $_POST["UserEmail"], $_POST["UserStatus"], $user_img);
-}
-}
 
 
 
