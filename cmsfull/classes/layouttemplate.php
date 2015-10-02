@@ -2,15 +2,15 @@
   private $registry;
   private $controller;
   private $pdo;
-  public function __construct($controller, $action, 
-   $parameters ,$pdo) {
+  private $action;
+  private $parameters;
+  public function __construct($controller, $action, $parameters ,$pdo) {
     $this->registry = Registry::instance();
     $this->pdo = $pdo;
     $this->controller = $controller;
     $this->action = $action;
     $this->parameters = $parameters;
-    $this->registry->set('DbHandler',new DbHandler(
-     $this->pdo));
+    $this->registry->set('DbHandler',new DbHandler($this->pdo));
   }
 
 public function getPart($part, $param="") {

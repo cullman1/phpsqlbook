@@ -27,8 +27,8 @@ $p=trim(parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH),"/");
       $action = $url_parts[$i+1];
       $parameters = $url_parts[$i+2];
     }
- 
-    /* Old code if(sizeof($url_parts)==$i+2) {
+
+        /* Old code if(sizeof($url_parts)==$i+2) {
       $parameters = $url_parts[$i+1];
   } else if (sizeof($url_parts)==$i+3) {
       $action = $url_parts[$i+1];

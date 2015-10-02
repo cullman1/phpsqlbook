@@ -8,6 +8,7 @@ class Controller {
   private $registry;
   private $controller;
   private $action;
+  private $parameters;
   private $page_html;
   private $content_html;
   private $pdo;
@@ -31,54 +32,31 @@ class Controller {
   $layouttemplate = $this->registry->get('LayoutTemplate'); 
 
   switch($this->controller) {
-   case "login":
-    $this->page_html = array("header","menu","form","footer");
-    break;
-   case "register":
-    $this->page_html = array("header","menu","form","footer");
-    break;
-   case "profile":
-    if ($this->action=="view") {
-       $this->page_html = array("header","login_bar","menu","status","footer");
-    } else {
-       $this->page_html = array("header","login_bar","menu","update","footer");
-    }   
-    break;
-   case "admin":
-    $this->page_html = array("header","menu","article", "footer");
-    $this->content_html = array("content");
-    break;
+ case "login":
+  $this->page_html = array("header","menu","form","footer");
+  break;
    default:
-    $this->page_html = array("header","login_bar", "search", "menu","article","footer");
-    $this->content_html = array("content", "author", "like");
+    $this->page_html = array("header","search","menu", "article","footer");
+    $this->content_html = array("content");
     break;     
   }
-  switch($this->action) {
-   case "failed":
-   case "login":
-    $this->submitLogin(); 
-    break;
-   case "logout":
-       $this->submitLogout();
-       break;
-  case "add":
-       $this->submitRegister();
-       break;
-  case "set":
-       $this->setProfile();
-       break;
-   case "likes":
-       $this->submitLike();
-       break;
-  }
+ switch($this->action) {
+case "failed":
+ case "login":
+  $this->submitLogin(); 
+  break;
+ case "logout":
+  $this->submitLogout();
+  break;
+ } //empty for moment
   foreach($this->page_html as $part) { 
    if($part == "article") {
     if($this->parameters[0]!="" && !isset($_GET["search"])) {
-     $this->assemblePage($part,$this->content_html,"single");   
+      $this->assemblePage($part,$this->content_html,"single");   
     } else if (isset($_GET["search"])) {
-     $this->assemblePage($part,$this->content_html,"search");  
+      $this->assemblePage($part,$this->content_html,"search");  
     } else {
-     $this->assemblePage($part,$this->content_html,"list");  
+      $this->assemblePage($part,$this->content_html,"list");  
     }   
   } else {
    $layouttemplate->getPart($part);
