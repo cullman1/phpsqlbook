@@ -37,8 +37,7 @@ case "status":
   } else {
    $user_id = "0";
   }
- $this->parseTemplate($dbhandler->getAllLikes($this->pdo, 
-  $user_id,$param),"like", $this->pdo);
+ $this->parseTemplate($dbhandler->getAllLikes($this->pdo, $user_id,$param),"like", $this->pdo);
   break;
   case "author":
   $controller_modifier = "";
@@ -67,17 +66,20 @@ public function getContent($articleid) {
   }
 }
 public function parseTemplate($recordset,$prefix,$pdo, $extra="content", $query="") {
+
  $root="http://".$_SERVER['HTTP_HOST']."/cms/";
- $string = file_get_contents($root. "/classes/templates/".$prefix."_". $extra.".php?query=".$query); 
+  $string = file_get_contents($root. "/classes/templates/".$prefix."_". $extra.".php?query=".$query); 
+ 
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $string, $matches);
   while($row = $recordset->fetch()) {
+
     $template=$string;
-    foreach($matches[0] as $value) {           
+    foreach($matches[0] as $value) {   
+      
       $replace= str_replace("{{","", $value);
       $replace= str_replace("}}","", $replace);
-      $template = str_replace($value,$row[$replace], 
-      $template);  
+      $template = str_replace($value,$row[$replace], $template);  
     }  
     echo $template;        
   }						                    

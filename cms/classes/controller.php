@@ -45,8 +45,8 @@ break;
   }
  switch($this->action) {
  case "set":
-       $return_val = $this->setProfile();
-       break; 
+       $this->setProfile();
+       break;
     case "likes":
        $this->submitLike();
        break;
@@ -87,8 +87,11 @@ $lt = $this->registry->get('Layout');
     }
     break;
    case "search":
-   $result = $dbh->getSearchResults($this->pdo);    
+  
+   $result = $dbh->getSearchResults($this->pdo, $_GET["search"]);    
+  
     while ($row=$result->fetch()) {
+     
      $article_ids[$count]=$row["article.article_id"];
      $count++;
     }

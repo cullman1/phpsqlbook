@@ -60,12 +60,14 @@ public function getAllLikes($pdo, $user_id,$article_id) {
 }
 
 public function getProfile($pdo, $user_id) {
- $query = "select * FROM user where user_id=:userid";
+
+$query = "select * FROM user where user_id=:userid";
  $statement = $pdo->prepare($query);
  $statement->bindParam(':userid',$user_id);
  $statement->execute();
  $statement->setFetchMode(PDO::FETCH_ASSOC);
- return $statement;
+  if($statement->errorCode() != 0) { return ("error"); }
+  else { return("worked");}
 }
 
 public function setProfile($pdo, $id, $name, $email, $sta, $img) {

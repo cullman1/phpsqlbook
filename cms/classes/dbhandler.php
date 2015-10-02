@@ -32,12 +32,12 @@
   $statement->setFetchMode(PDO::FETCH_ASSOC);
   return $statement;
 }
- public function getSearchResults($pdo) {
- $trim_search = trim($_GET["search"]);
+ public function getSearchResults($pdo, $search) {
+ $trim_search = trim($search);
  $searchterm = "AND ((title like '%" .$trim_search. "%')";
   $searchterm .= "OR (content like '%".$trim_search. "%'))";
   $query =  "select article_id, title, content, date_posted  FROM article";
- $query .= "where date_published <= now() " . $searchterm .    "order by article_id DESC";
+ $query .= " where date_published <= now() " . $searchterm .    "order by article_id DESC";
   $statement = $pdo->prepare($query);
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_BOTH); 
@@ -78,7 +78,7 @@ public function getAllLikes($pdo, $user_id,$article_id) {
 public function getProfile($pdo, $user_id) {
  $query = "select * FROM user where user_id= :userid";
  $statement = $pdo->prepare($query);
- $statement->bindParam(':userid',$_POST["userid"]);
+ $statement->bindParam(':userid',$user_id);
  $statement->execute();
  $statement->setFetchMode(PDO::FETCH_ASSOC);
  return $statement;
