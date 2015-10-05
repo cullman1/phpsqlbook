@@ -26,7 +26,7 @@
  $dbh = $this->registry->get('DbHandler');
  $statement= $dbh->getArticleComments($this->pdo,$param);   
  $this->displayComments($statement);
-  break;	
+  break;
   case "update":
 case "status":
   $controller_modifier = $query = "";
@@ -93,7 +93,7 @@ public function parseTemplate($recordset,$prefix,$pdo, $extra="content", $query=
 
 public function displayComments($recordset) {   
  $root="http://".$_SERVER['HTTP_HOST']."/cms";
- $string = file_get_contents($root. "/classes/templates/comments_content.php");
+ $string=file_get_contents($root."/classes/templates/comments_content.php");
  $regex = '#{{(.*?)}}#';
  preg_match_all($regex, $string, $matches);
  $opening_tag = strpos($string, "]]");
@@ -105,25 +105,23 @@ public function displayComments($recordset) {
  $remain = $closing_tag - $opening_tag;
  $sub_temp2 = array();
  $count=0;
-    if (!isset($_SESSION["user2"])) {
+ if (!isset($_SESSION["user2"])) {
      $head_temp= str_replace("Add a comment","", $head_temp);
     }
  while ($row = $recordset->fetch()) {  
-  $sub_temp=substr($string3,$opening_tag+1,$remain-9);
+  $sub_temp=substr($string3,$opening_tag,$remain-9);
   if ($count==0) {
    foreach($matches[0] as $value) {           
-     $replace= str_replace("{{","", $value);
-     $replace= str_replace("}}","", $replace);
+    $replace= str_replace("{{","", $value);
+    $replace= str_replace("}}","", $replace);
    $head_temp=str_replace($value,$row[$replace],$head_temp);
    }  
    echo $head_temp;
   } 
-
   preg_match_all($regex, $sub_temp, $inner_matches);
   foreach($inner_matches[0] as $value) {   
     $replace= str_replace("{{","", $value);
     $replace= str_replace("}}","", $replace);
-   
     $sub_temp=str_replace($value,$row[$replace],$sub_temp);    
     $sub_temp2[$count] = $sub_temp;
   }
@@ -133,5 +131,6 @@ public function displayComments($recordset) {
   echo $sub_temp2[$i];
  }
  echo "</div></div></div>";
- }
+
+}
 } ?>

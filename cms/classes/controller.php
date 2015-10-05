@@ -44,7 +44,7 @@ break;
     break;     
   }
  switch($this->action) {
- case "add_comment":
+  case "add_comment":
        $this->addComment();
        break;
  case "set":
@@ -181,25 +181,25 @@ if(isset($_POST["Name"])) {
 
 public function addComment() {
  $dbh = $this->registry->get('DbHandler');
- if (!isset($_SESSION["user2"])) {
+if (!isset($_SESSION["user2"])) {
    header('Location: /cms/login');
  } else {    
    $commentid=0;
-   if (isset($_POST["commentid"])) {
+  if (isset($_POST["commentid"])) {
      $commentid = $_POST["commentid"];
    }
    $articleid =0;
    if (isset($_POST["articleid2"])) {
-     $articleid = $_POST["articleid2"];
+    $articleid = $_POST["articleid2"];
    } else {
      $articleid  = $this->parameters[0];
    }
-   $so = $_SESSION["user2"];
-   $user_object = unserialize(base64_decode($so));
-   $auth = $user_object->getAuthenticated();
-   $statement = $dbh->insertArticleComment($this->pdo, 
+  $so = $_SESSION["user2"];
+  $user_object = unserialize(base64_decode($so));
+  $auth = $user_object->getAuthenticated();
+  $statement = $dbh->insertArticleComment($this->pdo, 
    $articleid,$auth,$_POST["commentText"],$commentid);	
-   header('Location:/cms/recipes');
+  header('Location:/cms/recipes');
   }	      
 }
 
