@@ -21,6 +21,12 @@
   }
   $controller_modifier = $this->controller."_"; 
   switch($part) {
+  case "comments":
+ $controller_modifier = "";
+ $dbh = $this->registry->get('DbHandler');
+ $statement= $dbh->getArticleComments($this->pdo,$param);   
+ $this->displayComments($statement);
+  break;	
   case "update":
 case "status":
   $controller_modifier = $query = "";
@@ -67,7 +73,7 @@ public function getContent($articleid) {
 }
 public function parseTemplate($recordset,$prefix,$pdo, $extra="content", $query="") {
 
- $root="http://".$_SERVER['HTTP_HOST']."/cms/";
+ $root="http://".$_SERVER['HTTP_HOST']."/cms";
   $string = file_get_contents($root. "/classes/templates/".$prefix."_". $extra.".php?query=".$query); 
  
   $regex = '#{{(.*?)}}#';
@@ -84,4 +90,48 @@ public function parseTemplate($recordset,$prefix,$pdo, $extra="content", $query=
     echo $template;        
   }						                    
 }
+
+public function displayComments($recordset) {   
+ $root="http://".$_SERVER['HTTP_HOST']."/cms";
+ $string = file_get_contents($root. "/classes/templates/comments_content.php");
+ $regex = '#{{(.*?)}}#';
+ preg_match_all($regex, $string, $matches);
+ $opening_tag = strpos($string, "]]");
+ $closing_tag = strpos($string, "]]", $opening_tag+1);    
+ $string1= str_replace("[[for]]","", $string);
+ $string2= str_replace("[[next]]","", $string1);
+ $string3= str_replace("]","", $string2);
+ $head_temp= substr($string3, 0, $opening_tag);
+ $remain = $closing_tag - $opening_tag;
+ $sub_temp2 = array();
+ $count=0;
+    if (!isset($_SESSION["user2"])) {
+     $head_temp= str_replace("Add a comment","", $head_temp);
+    }
+ while ($row = $recordset->fetch()) {  
+  $sub_temp=substr($string3,$opening_tag+1,$remain-9);
+  if ($count==0) {
+   foreach($matches[0] as $value) {           
+     $replace= str_replace("{{","", $value);
+     $replace= str_replace("}}","", $replace);
+   $head_temp=str_replace($value,$row[$replace],$head_temp);
+   }  
+   echo $head_temp;
+  } 
+
+  preg_match_all($regex, $sub_temp, $inner_matches);
+  foreach($inner_matches[0] as $value) {   
+    $replace= str_replace("{{","", $value);
+    $replace= str_replace("}}","", $replace);
+   
+    $sub_temp=str_replace($value,$row[$replace],$sub_temp);    
+    $sub_temp2[$count] = $sub_temp;
+  }
+  $count++;
+ }
+ for ($i=0;$i<$count;$i++) {
+  echo $sub_temp2[$i];
+ }
+ echo "</div></div></div>";
+ }
 } ?>

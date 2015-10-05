@@ -99,4 +99,40 @@ public function setProfile($pdo,$id,$name,$email,$sta,$img){
     else { return "0";}
 }
 
+public function insertArticleComment($pdo,$articleid, $userid, $comment, $commentid) {
+ $query = "INSERT INTO comments (comment, article_id, user_id, comment_date, comment_repliedto_id) VALUES (:comment, :articleid, :userid, :date, :commentid)";
+ //$query2 = "INSERT INTO comments (comment, article_id, user_id, comment_date, comment_repliedto_id) VALUES ('".$comment."','".$articleid."', '".$userid."', '".date("Y-m-d H:i:s")."', '".$commentid."')";
+ $statement = $pdo->prepare($query);
+  $statement->bindParam(':articleid',$articleid);
+ $statement->bindParam(':comment',$comment);
+ $statement->bindParam(':commentid',$commentid);
+ $date = date("Y-m-d H:i:s");
+ $statement->bindParam(':date',$date);
+ $statement->bindParam(':userid',$userid);
+ $statement->execute();
+ return $statement;
+} 
+
+public function getArticleComments($pdo, $articleid) {
+ $query = "select count(*) as ComTotal From comments WHERE article_id = :articleid";
+ $statement = $pdo->prepare($query);
+ $statement->bindParam(':articleid',$articleid);
+ $statement->execute();
+ $statement->setFetchMode(PDO::FETCH_ASSOC);
+ $total=0;
+ while ($row = $statement->fetch()) {
+  $total=$row[".ComTotal"];  
+ }
+ if ($total!=0) {
+  $query="select (select count(*) as ComTotal From comments where article_id=:articleid) as ComTotal,comment,full_name,  comments_id, comment_repliedto_id,comment_date,article_id   FROM comments JOIN user ON comments.user_id = user.user_id   WHERE article_id = :articleid Order by Comments_id desc";
+ } else {
+  $query="select count(*) as ComTotal, comment_repliedto_id,   comments_id,comment, full_name, comment_date, article_id   FROM comments JOIN user ON comments.user_id = user.user_id   WHERE article_id = :articleid Order by Comments_id desc";
+ }   
+  $statement = $pdo->prepare($query);
+  $statement->bindParam(':articleid',$articleid);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_ASSOC);
+  return $statement;
+}
+
 } ?>

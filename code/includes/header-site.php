@@ -60,7 +60,7 @@ $template = $select_template_row["template"];
            if (isset($_SESSION["user2"])) 
             { 
                 $so = $_SESSION["user2"];
-                $user_object = unserialize($so); 
+                $user_object = unserialize(base_64_decode($so)); 
            }?>
             <li>Hello <?php echo $user_object->getFullName(); ?>&nbsp;<a href="../chapter6/logout.php">Logout</a></li>
  <?php } else { ?>
