@@ -197,8 +197,7 @@ if (!isset($_SESSION["user2"])) {
   $so = $_SESSION["user2"];
   $user_object = unserialize(base64_decode($so));
   $auth = $user_object->getAuthenticated();
-  $statement = $dbh->insertArticleComment($this->pdo, 
-   $articleid,$auth,$_POST["commentText"],$commentid);	
+  $dbh->insertArticleComment($this->pdo, $articleid,$auth,$_POST["commentText"],$commentid);	
   header('Location:/cms/recipes');
   }	      
 }

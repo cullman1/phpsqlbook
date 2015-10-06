@@ -115,8 +115,7 @@ public function insertArticleComment($pdo,$articleid,
  return $statement;
 } 
 public function getArticleComments($pdo, $articleid) {
- $query = "select count(*) as ComTotal From comments 
- WHERE article_id = :articleid";
+ $query = "select count(*) as ComTotal From comments WHERE article_id = :articleid";
  $statement = $pdo->prepare($query);
  $statement->bindParam(':articleid',$articleid);
  $statement->execute();
@@ -136,5 +135,16 @@ public function getArticleComments($pdo, $articleid) {
   $statement->setFetchMode(PDO::FETCH_ASSOC);
   return $statement;
 }
+
+public function generateCommentId($pdo, $articleid) {
+  $query= "select article_id, FLOOR(RAND() * 50001) + 1000  As random From article WHERE article_id = :articleid";
+  $statement = $pdo->prepare($query);
+  $statement->bindParam(':articleid',$articleid);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_ASSOC);
+  return $statement;
+}
+
+
 
 } ?>

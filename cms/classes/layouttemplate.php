@@ -4,6 +4,9 @@
   private $pdo;
   private $action;
   private $parameters;
+  private $counter;
+  private $indent;
+
   public function __construct($controller,$action,$params, $pdo) {
     $this->registry = Registry::instance();
     $this->pdo = $pdo;
@@ -15,18 +18,31 @@
 
   public function getPart($part, $param="") {
     if (isset($_SESSION["user2"])) {
-    $so = $_SESSION["user2"];
-   $user_object = unserialize(base64_decode($so));
-   $auth = $user_object->getAuthenticated(); 
-  }
-  $controller_modifier = $this->controller."_"; 
-  switch($part) {
-  case "comments":
- $controller_modifier = "";
- $dbh = $this->registry->get('DbHandler');
- $statement= $dbh->getArticleComments($this->pdo,$param);   
- $this->displayComments($statement);
-  break;
+      $so = $_SESSION["user2"];
+      $user_object = unserialize(base64_decode($so));
+      $auth = $user_object->getAuthenticated(); 
+    }
+    $controller_modifier = $this->controller."_"; 
+    switch($part) {
+      case "comments":
+        $controller_modifier = "";
+        $dbh = $this->registry->get('DbHandler');
+        $statement= $dbh->getArticleComments($this->pdo,$param);   
+        $new = array();  
+        $nestedcomments_row = array();
+        while($row =$statement->fetch()) {
+          $nestedcomments_row[] = $row;
+        }
+        foreach ($nestedcomments_row as $branch) {
+          $new[$branch['comments.comment_repliedto_id']][]=$branch;             
+        }
+        if (isset($new[0])) {
+          $tree = $this->createTree($new, $new[0]); 
+          $this->displayComments($tree);
+        } else {
+          $this->parseTemplate($dbh->generateCommentId($this->pdo, $param),"nocomments", $this->pdo);
+        }
+        break;
   case "update":
 case "status":
   $controller_modifier = $query = "";
@@ -63,6 +79,7 @@ case "status":
     break;
   }
 }
+
 public function getContent($articleid) { 
  $dbhandler = $this->registry->get('DbHandler');  
  if(is_numeric($this->parameters[0]) || $this->parameters[0]=="" || isset($_GET["search"] )) {
@@ -71,18 +88,15 @@ public function getContent($articleid) {
   $this->parseTemplate($dbhandler->getArticleByName($this->pdo, $this->parameters ), $this->controller, $this->pdo);
   }
 }
-public function parseTemplate($recordset,$prefix,$pdo, $extra="content", $query="") {
 
- $root="http://".$_SERVER['HTTP_HOST']."/cms";
+public function parseTemplate($recordset,$prefix,$pdo,$extra="content", $query="") {
+  $root="http://".$_SERVER['HTTP_HOST']."/cms";
   $string = file_get_contents($root. "/classes/templates/".$prefix."_". $extra.".php?query=".$query); 
- 
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $string, $matches);
   while($row = $recordset->fetch()) {
-
     $template=$string;
     foreach($matches[0] as $value) {   
-      
       $replace= str_replace("{{","", $value);
       $replace= str_replace("}}","", $replace);
       $template = str_replace($value,$row[$replace], $template);  
@@ -92,45 +106,80 @@ public function parseTemplate($recordset,$prefix,$pdo, $extra="content", $query=
 }
 
 public function displayComments($recordset) {   
- $root="http://".$_SERVER['HTTP_HOST']."/cms";
- $string=file_get_contents($root."/classes/templates/comments_content.php");
- $regex = '#{{(.*?)}}#';
- preg_match_all($regex, $string, $matches);
- $opening_tag = strpos($string, "]]");
- $closing_tag = strpos($string, "]]", $opening_tag+1);    
- $string1= str_replace("[[for]]","", $string);
- $string2= str_replace("[[next]]","", $string1);
- $string3= str_replace("]","", $string2);
- $head_temp= substr($string3, 0, $opening_tag);
- $remain = $closing_tag - $opening_tag;
- $sub_temp2 = array();
- $count=0;
- if (!isset($_SESSION["user2"])) {
-     $head_temp= str_replace("Add a comment","", $head_temp);
+  $root="http://".$_SERVER['HTTP_HOST']."/cms";
+  $string=file_get_contents($root."/classes/templates/comments_content.php");
+  $regex = '#{{(.*?)}}#';
+  preg_match_all($regex, $string, $matches);
+  $opening_tag = strpos($string, "]]");
+  $closing_tag = strpos($string, "]]", $opening_tag+1);    
+  $string1= str_replace("[[for]]","", $string);
+  $string2= str_replace("[[next]]","", $string1);
+  $string3= str_replace("]","", $string2);
+  $head_temp= substr($string3, 0, $opening_tag);
+  $remain = $closing_tag - $opening_tag;
+  $combined_comments = array();
+  $this->counter=0;
+  foreach ($recordset as $row) {
+    $sub_temp = substr($string3,$opening_tag,$remain-9);
+    if ($this->counter==0) {
+        foreach($matches[0] as $value) {           
+            $replace= str_replace("{{","", $value);
+            $replace= str_replace("}}","", $replace);
+            $head_temp=str_replace($value,$row[$replace],$head_temp);      
+        }  
+        echo $head_temp;
+    }           
+    $combined_comments=$this->recursiveCheck($regex,$sub_temp, $row,$combined_comments);
+  }
+  for ($i=0;$i<$this->counter;$i++) {
+    echo $combined_comments[$i];
+  }
+  echo "</div></div></div>"; 
+}
+
+function createTree(&$list, $parent){
+  $tree = array();
+  foreach ((array) $parent as $key=>$reply) {
+    if (isset($list[$reply['comments.comments_id']])) {
+     $reply['children'] = $this->createTree($list,  $list[$reply['comments.comments_id']]);
     }
- while ($row = $recordset->fetch()) {  
-  $sub_temp=substr($string3,$opening_tag,$remain-9);
-  if ($count==0) {
-   foreach($matches[0] as $value) {           
-    $replace= str_replace("{{","", $value);
-    $replace= str_replace("}}","", $replace);
-   $head_temp=str_replace($value,$row[$replace],$head_temp);
-   }  
-   echo $head_temp;
+    $tree[] = $reply;
   } 
-  preg_match_all($regex, $sub_temp, $inner_matches);
+  return $tree;
+}
+
+public function tagReplace($regex, $sub_temp, $row, $combined_comments) {
+ preg_match_all($regex, $sub_temp, $inner_matches);
   foreach($inner_matches[0] as $value) {   
     $replace= str_replace("{{","", $value);
     $replace= str_replace("}}","", $replace);
     $sub_temp=str_replace($value,$row[$replace],$sub_temp);    
-    $sub_temp2[$count] = $sub_temp;
+    if ($this->indent>0) { 
+     $combined_comments[$this->counter]="<div style='margin-left:".$this->indent."px'>".$sub_temp."</div>"; 
+    } else {
+      $combined_comments[$this->counter] = $sub_temp;
+    }
   }
-  $count++;
- }
- for ($i=0;$i<$count;$i++) {
-  echo $sub_temp2[$i];
- }
- echo "</div></div></div>";
-
+  return $combined_comments; 
 }
+
+public function recursiveCheck($regex, $sub_temp, $row, $combine_comments)    {
+  if (isset($row['children'])) {       
+    $combine_comments=$this->tagReplace($regex, $sub_temp, $row, $combine_comments);
+    $this->counter++;
+    $this->indent+=10;
+    foreach ($row['children'] as $row2) {     
+      $combine_comments = $this->recursiveCheck($regex, $sub_temp,  $row2, $combine_comments);
+    }      
+  } else {      
+    $combine_comments =$this->tagReplace($regex,$sub_temp,  $row, $combine_comments);
+    $this->counter++;
+    $this->indent=0;
+  } 
+     if (!isset($_SESSION["user2"])) {
+      $combine_comments= str_replace("Add a comment","", $combine_comments);
+    }
+  return $combine_comments;
+}
+
 } ?>
