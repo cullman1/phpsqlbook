@@ -40,7 +40,7 @@
           $tree = $this->createTree($new, $new[0]); 
           $this->displayComments($tree);
         } else {
-          $this->parseTemplate($dbh->generateCommentId($this->pdo, $param),"nocomments", $this->pdo);
+          $this->parseTemplate($dbh->generateCommentId2($this->pdo, $param),"nocomments", $this->pdo);
         }
         break;
   case "update":

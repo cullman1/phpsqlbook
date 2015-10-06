@@ -145,6 +145,15 @@ public function generateCommentId($pdo, $articleid) {
   return $statement;
 }
 
+public function generateCommentId2($pdo, $articleid) {
+  $query= "select article_id, uuid() As random From article WHERE article_id = :articleid";
+  $statement = $pdo->prepare($query);
+  $statement->bindParam(':articleid',$articleid);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_ASSOC);
+  return $statement;
+}
+
 
 
 } ?>
