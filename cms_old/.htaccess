@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteRule ^recipes/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^recipes/([^/.]+)/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^recipes/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^login/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^login/([^/.]+)/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^login/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^profile/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^profile/([^/.]+)/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^profile/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^comments/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^comments/([^/.]+)/([^/.]+)/?$ /cms/pages/index.php [NC,L]
+RewriteRule ^comments/?$ /cms/pages/index.php [NC,L]

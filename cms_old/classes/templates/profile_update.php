@@ -20,7 +20,7 @@
  <?php if ($_GET["query"]=="success") {
  echo "<span class='red'>Profile successfully edited</span>";
  } else if ($_GET["query"]=="fail") { 
- echo "<span class='red'>Profile not updated</span>";
+echo "<span class='red'>Profile not updated</span>";
   }  ?>
   <input type="submit" value="Submit" /><br/><br/>
   <a href="/cms/recipes">Return to Main Site</a>
@@ -32,4 +32,4 @@
    filename2 = filename2.replace("C:\\\\","");
    $("#UserImage").val(filename2); });
  </script>
-</form>  
+</form> 

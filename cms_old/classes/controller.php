@@ -18,56 +18,51 @@ class Controller {
   $this->parameters=$params;
   $this->registry->set('configfile', new Configuration());
   $db = $this->registry->get('configfile');
-  $conn="mysql:host=".$db->getServerName().";dbname=".$db->getDatabaseName();
-  $this->pdo=new PDO($conn,$db->getUserName(),
-   $db->getPassword());
+  $conn="mysql:host=".$db->getServerName().";dbname=" .$db->getDatabaseName();
+  $this->pdo=new PDO($conn,$db->getUserName(), $db->getPassword());
   $this->pdo->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES,true);
   $this->registry->set('pdo', $this->pdo );  
  } 
 
  public function createPageStructure() { 
- $this->registry->set('Layout',new LayoutTemplate($this->
-   controller,$this->action,$this->parameters,$this->pdo ));  
+ $this->registry->set('Layout',new LayoutTemplate($this->controller,$this->action,$this->parameters,$this->pdo ));  
  $layouttemplate = $this->registry->get('Layout');    
-switch($this->controller) {
-case "profile":
+ switch($this->controller) {
+ case "profile":
 if ($this->action=="view") {
- $this->page_html = array("header", "login_bar",  
-  "menu","status","footer");
+ $this->page_html = array("header", "login_bar",  "menu","status","footer");
 } else {
- $this->page_html = array("header", "login_bar", 
-  "menu","update","footer");
+ $this->page_html = array("header", "login_bar",  "menu","update","footer");
 }   
 break;
- case "login":
+  case "login":
   $this->page_html = array("header","menu","form","footer");
   break;
- default:
-  $this->page_html = array("header","login_bar", "search", "menu","article","footer");
-$this->content_html = array("content", "author", "like","comments");
-  break;     
-}
-switch($this->action) {
+   default:
+      $this->page_html = array("header","login_bar", "menu", "search", "article","footer");
+      $this->content_html = array("content", "author", "like","comments");
+    break;     
+  }
+ switch($this->action) {
+  case "add_comment":
+       $this->addComment();
+       break;
  case "set":
        $this->setProfile();
        break;
- case "add_comment":
-       $this->addComment();
-       break;
-case "likes":
+    case "likes":
        $this->submitLike();
        break;
- case "failed":
+case "failed":
  case "login":
   $this->submitLogin(); 
   break;
  case "logout":
   $this->submitLogout();
-  break;
-}
+  break; } //empty for moment
  foreach($this->page_html as $part) {
    if($part == "article") {
-  if($this->parameters[0]!="" && !isset($_GET["search"])){
+   if($this->parameters[0]!="" && !isset($_GET["search"])){
     $this->assemblePage($part,$this->content_html,"single");   
     } else if (isset($_GET["search"])) {
      $this->assemblePage($part,$this->content_html,"search");  
@@ -81,7 +76,8 @@ case "likes":
 }
 
 public function assemblePage($part,$content,$contenttype) {
- $lt = $this->registry->get('Layout');
+ 
+$lt = $this->registry->get('Layout');
   $dbh = $this->registry->get('DbHandler');
  $article_ids = array();
   $count=0;
@@ -94,8 +90,11 @@ public function assemblePage($part,$content,$contenttype) {
     }
     break;
    case "search":
- $result=$dbh->getSearchResults($this->pdo,$_GET["search"]);    
+  
+   $result = $dbh->getSearchResults($this->pdo, $_GET["search"]);    
+  
     while ($row=$result->fetch()) {
+     
      $article_ids[$count]=$row["article.article_id"];
      $count++;
     }
@@ -127,10 +126,8 @@ public function submitLogin() {
  $dbh = $this->registry->get('DbHandler');
  $db = $this->registry->get('configfile');
  if(isset($_POST['password'])) {
- $passwordToken = sha1($db->getPreSalt().$_POST['password'].
-  $db->getAfterSalt());
- $statement = $dbh->getLogin($this->pdo,
-  $_POST["emailAddress"], $passwordToken);
+ $passwordToken = sha1($db->getPreSalt().$_POST['password'].  $db->getAfterSalt());
+ $statement = $dbh->getLogin($this->pdo,  $_POST["emailAddress"], $passwordToken);
   while($row = $statement->fetch()) {
   if ($row[0]==1) {      
    $this->user = new User($row[2],$row[3],$row[1]);
@@ -155,8 +152,7 @@ public function submitLike() {
  if (!isset($_SESSION["user2"])) {
    header('Location: /cms/login');
   } else {    
-  $dbh->setLike($this->pdo,$_REQUEST['liked'], 
-    $_REQUEST["user_id"], $_REQUEST["article_id"]);
+  $dbh->setLike($this->pdo,$_REQUEST['liked'],  $_REQUEST["user_id"], $_REQUEST["article_id"]);
    header('Location: /cms/recipes');
   }
 }
@@ -164,12 +160,12 @@ public function submitLike() {
 function setProfile() {
  $dbh = $this->registry->get('DbHandler');
  $userImg = "";
-if(isset($_FILES['FILE'])) {
+ if(isset($_FILES['FILE'])) {
   if(!empty($_FILES['FILE']['name'])) {
    $img_name = $_FILES["FILE"]["name"];
-  $userImg = ' ,image="'.$_FILES["FILE"]["name"].'"';
+   $userImg = ' ,image="'.$_FILES["FILE"]["name"].'"';
    $fldr = dirname(__FILE__) ."/assets/". $img_name;
-  move_uploaded_file($_FILES['FILE']['tmp_name'],$fldr);
+   move_uploaded_file($_FILES['FILE']['tmp_name'],$fldr);
   }
  } 
 if(isset($_POST["Name"])) {
@@ -201,10 +197,10 @@ if (!isset($_SESSION["user2"])) {
   $so = $_SESSION["user2"];
   $user_object = unserialize(base64_decode($so));
   $auth = $user_object->getAuthenticated();
-  $statement = $dbh->insertArticleComment($this->pdo, 
-   $articleid,$auth,$_POST["commentText"],$commentid);	
+  $dbh->insertArticleComment($this->pdo, $articleid,$auth,$_POST["commentText"],$commentid);	
   header('Location:/cms/recipes');
   }	      
 }
+
 
 } ?>
