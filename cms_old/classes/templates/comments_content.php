@@ -10,13 +10,11 @@
 [[for]]
     <div id='collapse{{comments.comments_id}}' >
      <div class="accordion-inner">
-      <div id="commenterbox{{comments.comments_id}}">
-       {{comments.comment}} <br/> 
+      <div id="commenterbox{{comments.comments_id}}">{{comments.comment}} <br/> 
        <span class='small_name'><i> {{user.full_name}}</i></span> - 
        <span class='small_name'> {{comments.comment_date}}</span> 
       </div> 
-         <a onclick="javascript:$('#comment_box{{comments.comments_id}}').toggle();">
-    Add a comment</a>
+         <a onclick="javascript:$('#comment_box{{comments.comments_id}}').toggle();">Add a comment</a>
      <form id="form{{comments.comments_id}}" method="post" action="/cms/comments/add_comment/{{comments.article_id}}">
       <div id="comment_box{{comments.comments_id}}" style="display:none;"><br/>
        <label for="commentText">Comment:</label>

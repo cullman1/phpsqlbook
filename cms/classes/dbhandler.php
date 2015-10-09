@@ -1,10 +1,6 @@
 <?php class DbHandler {   
  public function getArticleById($pdo, $id ) {
-  $query = "select article_id, title, 
-  content, category_name, category_template, full_name, 
-  date_posted, parent_id, role_id FROM article JOIN user ON 
-  article.user_id = user.user_id JOIN category ON article.
-  category_id = category.category_id where article_id= :id";
+  $query = "select article_id, title,   content, category_name, category_template, full_name,   date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where article_id= :id";
   $statement = $pdo->prepare($query);
   $statement->bindParam(":id", $id);
   $statement->execute();
@@ -13,11 +9,7 @@
  }
  public function getArticleByName($pdo, $title) {
   $new_title = str_replace("-"," ", trim($title[0]));
-  $query = "select article_id, title, content, category_ 
-  name, category_template, full_name, date_posted, parent_
-  id, role_id FROM article JOIN user ON article.user_id = 
-  user.user_id JOIN category ON article.category_id = 
-  category.category_id where title=:title";
+  $query = "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where title=:title";
   $statement = $pdo->prepare($query);
   $statement->bindParam(":title", $new_title);
   $statement->execute();
@@ -34,7 +26,7 @@
   return $statement;
 }
  public function getArticleList($pdo) {
- $query= "select article_id, title, content, category_name, category_template, full_name, date_posted, role_id, parent_name, article.parent_id, template FROM article JOIN user ON article.user_id = user.user_id  JOIN parent ON article.parent_id = parent.parent_id JOIN category   ON article.category_id = category.category_id where date_published <= now() order by article_id DESC";
+ $query= "select article_id, title, content, category_name,  full_name, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id  JOIN category  ON article.category_id = category.category_id where date_published <= now() order by article_id DESC";
   $statement = $pdo->prepare($query);
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -139,6 +131,15 @@ $query = "select count(*) as ComTotal From comments  WHERE article_id = :article
  } else {
  $query="select count(*) as ComTotal, comment_repliedto_id,   comments_id,comment, full_name, comment_date, article_id  FROM comments JOIN user ON comments.user_id = user.user_id   WHERE article_id = :articleid Order by Comments_id desc";
  }   
+  $statement = $pdo->prepare($query);
+  $statement->bindParam(':articleid',$articleid);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_ASSOC);
+  return $statement;
+}
+
+public function generateCommentId($pdo, $articleid) {
+  $query= "select article_id, uuid() As random From article WHERE article_id = :articleid";
   $statement = $pdo->prepare($query);
   $statement->bindParam(':articleid',$articleid);
   $statement->execute();

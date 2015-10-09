@@ -82,6 +82,7 @@
     <Compile Include="cms\classes\templates\login_bar.php" />
     <Compile Include="cms\classes\templates\login_form.php" />
     <Compile Include="cms\classes\templates\menu.php" />
+    <Compile Include="cms\classes\templates\nocomments_content.php" />
     <Compile Include="cms\classes\templates\profile_status.php" />
     <Compile Include="cms\classes\templates\recipes_content.php" />
     <Compile Include="cms\classes\templates\recipes_footer.php" />
