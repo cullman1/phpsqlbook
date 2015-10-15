@@ -1,28 +1,30 @@
 <?php 
 require_once('../includes/db_config.php');
 $redirect = '../admin/index.php';
-$valid = array('email' => '', 'password' =>'', 'result'=>'');
+$form_error = array('email' => '', 'password' =>'', 'result'=>'');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-$valid =validate_login_form($dbHost,$valid);
-  if (strlen(implode($valid)) < 1) {
-    $user = get_user($dbHost, $_POST['email'], $_POST['password']);
+  $email      = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);  
+  $password   = filter_input(INPUT_POST, 'password');      
+  $form_error =validate_login_form($form_error, $email,$password);
+  if (strlen(implode($form_error)) < 1) {
+    $user = get_user($dbHost,$email,$password);
     if ($user->CorrectDetails == 1) {
       create_session($user);
       header('Location: '.$redirect);
     }
-    $valid['result'] = '<div class="warning">Login failed</div>';
+    $form_error['result'] = '<div class="warning">Login failed</div>';
   }
 }
 
-function validate_login_form($connection,$valid) {
-  if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL) ) {
-    $valid['email'] = "Please enter a valid email";
+function validate_login_form($form_error, $email,$password) {
+  if (!$email)  {
+    $form_error['email'] = "Please enter a valid email";
   }
-  if (!filter_input(INPUT_POST, 'password') ) {
-    $valid['password'] = "Please enter a password";
+  if (!$password) {
+    $form_error['password'] = "Please enter a password";
   }
-  return $valid;
+  return $form_error;
 }
 
 function get_user($connection, $email, $password) {
@@ -46,10 +48,10 @@ function create_session($user) {
 
 <form method="post" action="../login/login.php">
   <h1>Please login:</h1>
-  <?=$valid['result']; ?>
+  <?=$form_error['result']; ?>
   <label for="emailAddress">Email</label>
-  <input type="email" name="email" placeholder="Email"><?=$valid['email']; ?><br>
+  <input type="email" name="email" placeholder="Email"><?=$form_error['email']; ?><br>
   <label for="password">Password</label>
-  <input type="password" name="password" placeholder="Password"><?=$valid['password']; ?><br>
+  <input type="password" name="password" placeholder="Password"><?=$form_error['password']; ?><br>
   <button type="submit">Login</button>    
 </form>
