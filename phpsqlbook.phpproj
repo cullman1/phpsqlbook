@@ -207,6 +207,7 @@
     <Compile Include="code\chapter_07\image_resizer.php" />
     <Compile Include="code\chapter_07\imagick_check.php" />
     <Compile Include="code\chapter_07\index.php" />
+    <Compile Include="code\chapter_08\admin\index.php" />
     <Compile Include="code\chapter_08\authenticate.php" />
     <Compile Include="code\chapter_08\ban-user.php" />
     <Compile Include="code\chapter_08\commenting.php" />
@@ -217,6 +218,8 @@
     <Compile Include="code\chapter_08\links.php" />
     <Compile Include="code\chapter_08\login-admin2.php" />
     <Compile Include="code\chapter_08\login-user.php" />
+    <Compile Include="code\chapter_08\login\login.php" />
+    <Compile Include="code\chapter_08\login\login.php" />
     <Compile Include="code\chapter_08\logout.php" />
     <Compile Include="code\chapter_08\register4.php" />
     <Compile Include="code\chapter_08\reset-password.php" />
@@ -433,6 +436,8 @@
     <Folder Include="code\chapter_06\" />
     <Folder Include="code\chapter_07\" />
     <Folder Include="code\chapter_08\" />
+    <Folder Include="code\chapter_08\login\" />
+    <Folder Include="code\chapter_08\admin\" />
     <Folder Include="code\chapter_09\" />
     <Folder Include="code\chapter_10\" />
     <Folder Include="code\chapter_11\" />
