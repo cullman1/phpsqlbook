@@ -1,93 +1,71 @@
 <?php
-require_once('../authenticate.php'); 
-
-/* Db Details */
 require_once('../includes/db_config.php');
 
-/* Query SQL Server for selecting articles. */
-$select_articles_sql = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.user_id left outer JOIN category ON article.category_id = category.category_id order by article_id";
-$select_articles_result = $dbHost->prepare($select_articles_sql);
-$select_articles_result->execute();
-$select_articles_result->setFetchMode(PDO::FETCH_ASSOC);
+function get_articles($connection) {
+  $query = "select article_id, title, content, full_name, user.user_id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.user_id  order by article_id";
+  $statement = $connection->prepare($query);
+  $statement->execute();
+    $results = new stdClass();                                   // $results is object
+  $results->count = $statement->rowCount(); 
+  $statement->setFetchMode(PDO::FETCH_OBJ);
 
-/* Query SQL Server for total records data. */
-$select_recordcount_sql = "select Count(*) As TotalRecords FROM article";
-$select_recordcount_result = $dbHost->prepare($select_recordcount_sql);
-$select_recordcount_result->execute();
-$select_recordcount_result->setFetchMode(PDO::FETCH_ASSOC);
+  $results->matches = $statement->fetchAll();  
+  return $results;
+}
 
-$select_recordcount_row = $select_recordcount_result->fetch();
-$totalRecords = $select_recordcount_row["TotalRecords"];
-$recordsVisible =$totalRecords;
-
-include '../includes/header.php' ?>
+function create_pagination($matches, $show = 2, $from = 0) {
+  $pages = ceil($matches / $show);     // Total matches
+  $current = ceil($from / $show);      // Current page
+  $result = NULL;
+  if ($pages > 1) {
+    for ($i = 0; $i < $pages; $i++) {
+      if ($i == ($current)) {
+        $result .= ($i + 1) . '&nbsp;';
+      } else {
+        $result .= '<a href="index.php?show=' . $show;
+        $result .= '&from=' . ($i * $show) . '">' . ($i + 1) . '</a>&nbsp;';
+      }
+    }
+  }
+  return $result;
+} ?>
       <button type="button" class="btn btn-default" onclick="window.location.href='add-article.php';">Add article</button>
-
-      <!-- table of articles -->
       <table class="table table-hover">
         <thead>
           <tr>
             <th>Title</th>
-            <th>Category</th>
             <th>Author</th>
             <th>Date Posted</th>
             <th>Date to Publish</th>
-            <th>Comments</th>
             <th>Publish</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <?php 
-            $startPage = 1;
-            $endPage = $recordsPerPage;
-          if (isset($_REQUEST["page"]))
-          {
-            $startPage = ($_REQUEST["page"] * $recordsPerPage) - $recordsPerPage + 1;
-            $endPage = ($_REQUEST["page"] * $recordsPerPage);
-          }
-          $count=1;
-          while($select_articles_row = $select_articles_result->fetch()) { 
-
-          if (($count>= $startPage) && ($count <= $endPage))
-          { ?>
+         <?php $results = get_articles($dbHost); 
+               $pagination = create_pagination($results->count);
+               echo $pagination;
+               $count=0;
+               foreach ($results->matches as $result) {               
+          $count++; // For each result?>
           <tr>
-            <td><a href="edit-article.php?article_id=<?php echo $select_articles_row['article_id'];?>"><?php echo $select_articles_row['title']; ?></a></td>
-            <td><a href="category-view.php?categoryid=<?php echo $select_articles_row['category_id'];?>"><?php echo $select_articles_row['category_name']; ?></a></td>
-            <td><a href="author-view.php?userid=<?php echo $select_articles_row['user_id'];?>"><?php echo $select_articles_row['full_name']; ?></a></td>
-            <td><?php echo $select_articles_row['date_posted']; ?></td>
-            <?php if ($select_articles_row['date_published']!=null)
-            { ?>
-              <td><?php echo $select_articles_row['date_published']; ?></td>
-            <?php }
-            else
-             { ?>
+            <td><a href="edit-article.php?article_id=<?= $result->article_id; ?>"><?= $result->title ?></a></td>
+            <td><a href="author-view.php?userid=<?= $result->user_id; ?>"><?= $result->full_name; ?></a></td>
+            <td><?= $result->date_posted; ?></td>
+            <?php if ($result->date_published !=null) { ?>
+              <td><?= $result->date_published; ?></td>
+            <?php } else { ?>
               <td>Not Published</td>
          <?php } ?>
-            <td>
-                <?php 
-                /* Query SQL Server for comments count data. */
-              $select_commentscount_sql = "select Count(*) As ArticleComments FROM comments where article_id=".$select_articles_row['article_id'] ;
-                $select_commentscount_result = $dbHost->prepare($select_commentscount_sql);
-                $select_commentscount_result->execute();
-                $select_commentscount_result->setFetchMode(PDO::FETCH_ASSOC);
-                $select_commentscount_row = $select_commentscount_result->fetch();
-                $totalComments = $select_commentscount_row["ArticleComments"];
-                echo $totalComments;
-                ?>
-            </td>
-            <td><a href="publish-data.php?articleid=<?php echo $select_articles_row['article_id']; if ($select_articles_row['date_published']!=null) { echo "&publish=delete";} ?>">    
-            <?php if ($select_articles_row['date_published']==null)
-            { ?><span class="glyphicon glyphicon-plus"></span> <?php } else { ?><span class="glyphicon glyphicon-remove red"></span><?php } ?></a></td>
+            <td><a href="publish-data.php?articleid=<?= $result->article_id; if ($result->date_published!=null) { echo "&publish=delete";} ?>">    
+            <?php if ($result->date_published==null)            { ?>
+               <span class="glyphicon glyphicon-plus"></span> <?php } else { ?><span class="glyphicon glyphicon-remove red"></span><?php } ?></a></td>
       
-            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item <?php echo $select_articles_row['article_id'];?>&#39;);" id="delete1" href="delete-data.php?article_id=<?php echo $select_articles_row['article_id'];?>".><span class="glyphicon glyphicon-remove red"></span></a></td>
-         <?php 
-        }
-         $count = $count+1;
-       } ?>
+            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item<?= $result->article_id;?>&#39;);" id="delete1" href="delete-data.php?article_id=<?= $result->article_id;?>".><span class="glyphicon glyphicon-remove red"></span></a></td>
+
          </tr>
+                <?php }
+echo $pagination;
+ ?>
         </tbody>
       </table>
-<?php include('../includes/pagination.php'); ?>
-
-<?php include '../includes/footer.php' ?>
