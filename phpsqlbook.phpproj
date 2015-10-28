@@ -186,7 +186,7 @@
     <Compile Include="code\chapter_06\insertdata.php" />
     <Compile Include="code\chapter_06\insertform.php" />
     <Compile Include="code\chapter_06\publish-article.php" />
-    <Compile Include="code\chapter_06\register3.php" />
+    <Compile Include="code\chapter_06\register.php" />
     <Compile Include="code\chapter_06\submit-user.php" />
     <Compile Include="code\chapter_06\transactions.php" />
     <Compile Include="code\chapter_06\update-form.php" />
