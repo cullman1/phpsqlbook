@@ -1,3 +1,4 @@
+
 <?php require_once('../includes/db_config.php');
 function get_user($dbHost,$userid) { 
   $query="SELECT * FROM user WHERE user_id =:userid";
@@ -14,12 +15,13 @@ function make_user_active($dbHost,$userid) {
   $statement->execute();
 } 
 
-if (isset($_GET["userid"])) {
-  $user = get_user($dbHost,$_GET["userid"]));
+if (isset($_GET["id"])) { 
+  $statement = get_user($dbHost,$_GET["id"]);
+  while ($user=$statement->fetch()) {
   if ($user["active"]=="0") {
-    make_user_active($dbHost,$_GET["userid"]);
-    echo "Thank you for confirming your email, your account   
-    is now active";
+    make_user_active($dbHost,$_GET["id"]);
+    echo "Thank you for confirming your email, your account   is now active";
+  }
   }
 } else {
   echo "An error has occurred with confirmation.";

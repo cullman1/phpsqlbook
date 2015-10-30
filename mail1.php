@@ -8,7 +8,7 @@ $host = "mail.deciphered.com";
 $username = "chris@deciphered.com";
 $password = "Trecarne_PL145BS";
  
-$headers = array ('From' => 'admin@deciphered.com',
+$headers = array ('From' => 'chris@deciphered.com',
   'To' => $to,
   'Subject' => $subject);
 $smtp = Mail::factory('smtp',

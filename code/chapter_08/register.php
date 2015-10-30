@@ -6,7 +6,8 @@ function mail_confirmation($dbHost,$email,$userid) {
   $to = $email; 
   $subject = "Confirm your email";
   $message = "Click on this link to confirm your email ";
-  $message.="<a href= 'http://test1.phpandmysqlbook.com/login/confirm-email.php?id=" .$userid. "'>here<a>"; 
+  $message.="<a href= 'http://test1.phpandmysqlbook.com/login/confirm-email.php?id=";
+  $message.= $userid. "'>here<a>";
   $headers = "MIME-Version: 1.0" . "\r\n";
   $headers.= "Content-type:text/html;charset=UTF-8" ."\r\n";
   $headers.= 'From: CMS Admin<admin@deciphered.com>'."\r\n"; 
@@ -19,8 +20,7 @@ function  get_existing_user($dbHost, $email) {
     $statement->bindParam(":email",$email);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
-    $rows = $statement->fetchAll();
-    return count($rows);
+    return $statement;
 }
 
 function insert_user($dbHost, $firstName, $lastName, $password, $email, $role, $date) { 
@@ -43,7 +43,8 @@ function insert_user($dbHost, $firstName, $lastName, $password, $email, $role, $
  function validate_form($dbHost, $forename, $lastName, $password, $email, $role) {
    $error = "";
    if (!empty($password) && !empty($forename) && !empty($lastName) && !empty($email) ) {
-     $num_rows = get_existing_user($dbHost, $email);
+     $statement = get_existing_user($dbHost, $email); 
+     $num_rows = $statement->fetchColumn();
         if($num_rows>0) {		
             $error = "<span class='red'>A user with that email address has already been registered!</span>";
         } else {
@@ -60,9 +61,11 @@ function insert_user($dbHost, $firstName, $lastName, $password, $email, $role, $
   }
 
   if (!empty($error) && strpos($error,"span")==0) {
-    $user = get_existing_user($dbHost, $_POST["email"]);
-    mail_confirmation($dbHost, $_POST["email"], $user["user-id"]);
-    echo $error;
+   $statement = get_existing_user($dbHost, $_POST["email"]);
+    while ($user = $statement->fetch()) {
+      mail_confirmation($dbHost, $_POST["email"], $user["user_id"]);
+      echo $error;
+    }
   } else { ?>
  <form id="form1" class="indent" style="width:450px;" method="post" action="register.php">
       <h1>Please register:</h1>
