@@ -221,6 +221,7 @@
     <Compile Include="code\chapter_08\login\login.php" />
     <Compile Include="code\chapter_08\login\login.php" />
     <Compile Include="code\chapter_08\logout.php" />
+    <Compile Include="code\chapter_08\register.php" />
     <Compile Include="code\chapter_08\register4.php" />
     <Compile Include="code\chapter_08\reset-password.php" />
     <Compile Include="code\chapter_08\setcookie.php" />
@@ -366,6 +367,7 @@
     <Compile Include="code\login\profile.php" />
     <Compile Include="emailcheck_revise.php" />
     <Compile Include="code\chapter_06\insertdata_revise.php" />
+    <Compile Include="login\confirm-email.php" />
     <Compile Include="login\forgotten-password.php" />
     <Compile Include="includes\comments-control.php" />
     <Compile Include="includes\comments-list.php" />
@@ -390,6 +392,7 @@
     <Compile Include="login\login-admin.php" />
     <Compile Include="login\logout.php" />
     <Compile Include="login\register.php" />
+    <Compile Include="mail1.php" />
     <Compile Include="pages\add-comment.php" />
     <Compile Include="pages\add-comment-text.php" />
     <Compile Include="pages\article.php" />
