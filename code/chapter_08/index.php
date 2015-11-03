@@ -10,9 +10,9 @@
       <li><a href="hash.php">Hashing Algorithms Example</a></li>
       <li><a href="hash2.php">password_hash Example</a></li>
       <li><a href="login-admin2.php">Forgotten Password Example</a></li>
-      <li><a href="login-admin2.php">Roles Example</a></li>
       <li><a href="user.php">Ban User Example</a></li>
-      <li><a href="commenting.php">Commenting Example</a></li>
+      <li><a href="login-admin2.php">Roles Example</a></li>
+
     </ul>
    </div>
 

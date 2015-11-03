@@ -355,6 +355,7 @@
     <Compile Include="code\includes\header.php" />
     <Compile Include="code\includes\image_insert.php" />
     <Compile Include="code\includes\login-variables.php" />
+    <Compile Include="code\includes\mail1.php" />
     <Compile Include="code\includes\reply-box-parent.php" />
     <Compile Include="code\includes\submit-like.php" />
     <Compile Include="code\includes\table.php" />
