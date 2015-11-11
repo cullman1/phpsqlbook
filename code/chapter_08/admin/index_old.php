@@ -12,17 +12,12 @@ function get_articles($connection) {
   return $results;
  }
 
- function get_pages($results, $query, $paramslist, $show, $from) {
-  $query .= "LIMIT :show ";
-  $query .= "OFFSET :from ";
-  $statement = $results->connection->prepare($query);
-  if (!empty($paramslist)) {
-    foreach ($paramslist as $key=>$value) {
-        $statement->bindParam(':'.$key, $value);    
-    }
-  } 
-  $statement->bindParam(':show', $show, PDO::PARAM_INT);       // Bind items per page
-  $statement->bindParam(':from', $from, PDO::PARAM_INT); 
+ function get_pages($results, $show, $from) {
+  $results->query .= "LIMIT :show ";
+  $results->query .= "OFFSET :from ";
+  $statement=$results->connection->prepare($results->query);
+  $statement->bindParam(':show', $show, PDO::PARAM_INT);  
+  $statement->bindParam(':from', $from, PDO::PARAM_INT);  
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_OBJ);
   $results->matches = $statement->fetchAll();  
@@ -64,15 +59,9 @@ function create_pagination($matches, $show, $from) {
 include '../../includes/header.php'?>
 <?php  $show  = (int)( filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 10 );
                 $from = (int)( filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT)  ? $_GET['from'] : 0 );
-               // $show  = (int) $show;  // In superglobal as string - cast to integer
-               // $from = (int) $from;   // In superglobal as string - cast to integer
-                $query = "select article_id, title, content, full_name, user.user_id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.user_id ";
-                $paramslist = array();
-
-                $results = get_pages(get_records($dbHost, $query, $paramslist), $query, $paramslist, $show,$from); 
-            
- // $results = get_records($dbHost, $query, $paramslist); 
-                $pagination = create_pagination($results->count,$show,$from);
+           
+             $results = get_pages(get_articles($dbHost), $show,$from); 
+$pagination = create_pagination($results->count,$show,$from);
     
                 $count=0; ?>
       <button type="button" class="btn btn-default" onclick="window.location.href='add-article.php';">Add article</button>

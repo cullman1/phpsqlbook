@@ -224,6 +224,7 @@
     <Compile Include="code\chapter_08\register.php" />
     <Compile Include="code\chapter_08\register4.php" />
     <Compile Include="code\chapter_08\reset-password.php" />
+    <Compile Include="code\chapter_08\sendmail.php" />
     <Compile Include="code\chapter_08\setcookie.php" />
     <Compile Include="code\chapter_08\smtp-test.php" />
     <Compile Include="code\chapter_08\user.php" />

@@ -11,7 +11,7 @@ function mail_confirmation($dbHost,$email,$userid) {
   $headers = "MIME-Version: 1.0" . "\r\n";
   $headers.= "Content-type:text/html;charset=UTF-8" ."\r\n";
   $headers.= 'From: CMS Admin<admin@deciphered.com>'."\r\n"; 
-  pear_mail($to, $subject, $message, $headers);
+  mail($to, $subject, $message, $headers);
 } 
 
 function  get_existing_user($dbHost, $email) {
@@ -45,7 +45,7 @@ function insert_user($dbHost, $firstName, $lastName, $password, $email, $role, $
    if (!empty($password) && !empty($forename) && !empty($lastName) && !empty($email) ) {
      $statement = get_existing_user($dbHost, $email); 
      $num_rows = $statement->fetchColumn();
-        if($num_rows>0) {		
+        if($num_rows) {		
             $error = "<span class='red'>A user with that email address has already been registered!</span>";
         } else {
            $error = insert_user($dbHost, $forename, $lastName,$password,$email,$role,date("Y-m-d H:i:s"));
