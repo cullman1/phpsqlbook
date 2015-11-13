@@ -125,7 +125,7 @@
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
-    <Compile Include="admin\publish-data.php" />
+    <Compile Include="code\chapter_08\admin\publish.php" />
     <Compile Include="admin\submit-user.php" />
     <Compile Include="admin\user.php" />
     <Compile Include="classes\email.php" />
@@ -208,6 +208,7 @@
     <Compile Include="code\chapter_07\imagick_check.php" />
     <Compile Include="code\chapter_07\index.php" />
     <Compile Include="code\chapter_08\admin\index.php" />
+    <Compile Include="code\chapter_08\authenticate2.php" />
     <Compile Include="code\chapter_08\authenticate.php" />
     <Compile Include="code\chapter_08\ban-user.php" />
     <Compile Include="code\chapter_08\commenting.php" />

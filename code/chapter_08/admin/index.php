@@ -73,42 +73,37 @@ include '../../includes/header.php'?>
             
  // $results = get_records($dbHost, $query, $paramslist); 
                 $pagination = create_pagination($results->count,$show,$from);
-    
-                $count=0; ?>
-      <button type="button" class="btn btn-default" onclick="window.location.href='add-article.php';">Add article</button>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Date Posted</th>
-            <th>Date to Publish</th>
-            <th>Publish</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-         <?php                           echo "<tr><td>".$pagination ."</td><tr>";
-  foreach ($results->matches as $result) {               
-                 $count++;
-?>
-          <tr>
-            <td><a href="edit-article.php?article_id=<?= $result->article_id; ?>"><?= $result->title ?></a></td>
-            <td><a href="author-view.php?userid=<?= $result->user_id; ?>"><?= $result->full_name; ?></a></td>
-            <td><?= $result->date_posted; ?></td>
-            <?php if ($result->date_published !=null) { ?>
-              <td><?= $result->date_published; ?></td>
-            <?php } else { ?>
-              <td>Not Published</td>
-         <?php } ?>
-            <td><a href="publish-data.php?articleid=<?= $result->article_id; if ($result->date_published!=null) { echo "&publish=delete";} ?>">    
-            <?php if ($result->date_published==null)            { ?>
-               <span class="glyphicon glyphicon-plus"></span> <?php } else { ?><span class="glyphicon glyphicon-remove red"></span><?php } ?></a></td>  
-            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item<?= $result->article_id;?>&#39;);" id="delete1" href="delete-data.php?article_id=<?= $result->article_id;?>".><span class="glyphicon glyphicon-remove red"></span></a></td>
-         </tr>
-                <?php }
- echo "<tr><td>".$pagination ."</td><tr>";
- ?>
-        </tbody>
-      </table>
+   ?>
+<button onclick="window.location.href='add-article.php';">Add article</button>
+<table class="table table-hover">
+ <thead>
+  <tr><th>Title</th><th>Author</th><th>Date Posted</th>
+  <th>Publish Date</th><th>Publish</th><th>Delete</th></tr>
+ </thead>
+ <tbody>
+ <?php echo "<tr><td>".$pagination ."</td><tr>";
+  foreach ($results->matches as $result) { ?>
+  <tr><td><a href="edit.php?id=<?= $result->article_id; ?>">
+  <?= $result->title ?></a></td>
+  <td><a href="view-user.php?id=<?= $result->user_id; ?>">
+  <?= $result->full_name;?></a></td>
+  <td><?= $result->date_posted; ?></td>
+  <?php if ($result->date_published !=null) { ?>
+   <td><?= $result->date_published; ?></td>
+  <?php } else { ?>
+   <td>Not Published</td>
+  <?php } ?>
+  <td><a href="publish.php?id=<?= $result->article_id;  if ($result->date_published!=null) { echo "&publish=delete";} ?>">    
+  <?php if ($result->date_published==null) { ?>
+  <span class="glyphicon glyphicon-plus"></span>
+  <?php } else { ?>
+  <span class="glyphicon glyphicon-remove red"></span>
+  <?php } ?></a></td>  
+  <td><a onclick="javascript:return confirm(&#39;Do you  really want to delete item <?= $result->article_id;?> ? &#39;);" href="delete.php?id=<?= $result->article_id;?>">
+  <span class="glyphicon glyphicon-remove red"></span></a>
+  </td></tr>
+    <?php }
+     echo "<tr><td>".$pagination ."</td><tr>"; ?>
+ </tbody>
+ </table>
       <?php include '../../includes/footer.php' ?>
