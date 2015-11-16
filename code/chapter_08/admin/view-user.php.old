@@ -1,0 +1,73 @@
+<?php
+require_once('authenticate.php'); 
+require_once('../includes/db_config.php');
+
+function get_articles_by_user($connection, $id) {
+  $results = new stdClass();   
+  $results->connection = $connection;                                // $results is object
+  $results->query = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where user.user_id = :id order by article_id  ";
+  $statement = $connection->prepare($results->query);   
+  $statement->bindParam(":id",$id);                // Prepare  
+  $statement->execute();
+  $results->count = $statement->rowCount(); 
+  return $results;
+ }
+
+ function get_pages($results, $query, $paramslist, $show, $from) {
+  $query .= "LIMIT :show ";
+  $query .= "OFFSET :from ";
+  $statement = $results->connection->prepare($query);
+  if (!empty($paramslist)) {
+    foreach ($paramslist as $key=>$value) {
+        $statement->bindParam(':'.$key, $value);    
+    }
+  } 
+  $statement->bindParam(':show', $show, PDO::PARAM_INT);       // Bind items per page
+  $statement->bindParam(':from', $from, PDO::PARAM_INT); 
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);
+  $results->matches = $statement->fetchAll();  
+  return $results;
+  }
+
+/* Query SQL Server for user name. */
+$query = "select full_name from user where user_id= :id";
+$statement2 = $dbHost->prepare($query);
+$statement2->bindParam(":id",$_REQUEST["userid"]);
+$statement2->execute();
+$statement2->setFetchMode(PDO::FETCH_ASSOC);
+$select_user_row = $statement2->fetch();
+$catName = $select_user_row["full_name"];
+include '../includes/header.php' ?>
+<div>User:
+      <button type="button" class="btn btn-default"><?php echo $catName; ?></button>
+</div>
+<!-- table of articles -->
+<table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Published</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+     <?php  $show  = (int)( filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 10 );
+                $from = (int)( filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT)  ? $_GET['from'] : 0 ); 
+                $paramslist = array();
+                $results = get_pages(get_articles_by_user($dbHost,$_GET["id"]), $query, $paramslist, $show,$from); 
+                $pagination = create_pagination($results->count,$show,$from);
+   ?>
+ <?php echo "<tr><td>".$pagination ."</td><tr>"; 
+  foreach ($results->matches as $result) { ?>       
+<tr>
+            <td><a href="edit-article.php?article_id=<?php echo $result['article_id'];?>"><?php echo $result['title']; ?></a></td>
+            <td><?php echo $result['full_name']; ?></td>
+            <td>Published: <?php echo $result['date_posted']; ?></td>
+            <td><a onclick="javascript:return confirm(&#39;Are you sure you want to delete this item 652&#39;);" id="delete1" href="delete-data.php?article_id=<?php echo $result['article_id'];?>".><span class="glyphicon glyphicon-remove"></span></a></td>
+         <?php   } ?>
+      </tr>
+   </tbody>
+</table>
+<?php include '../includes/footer.php' ?>

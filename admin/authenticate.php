@@ -7,6 +7,7 @@ if (isset($_SESSION["user2"]))
                 $so = $_SESSION["user2"];
                 $user_object = unserialize($so);
                 $auth = $user_object->getAuthenticated();
+              
                 if(empty($auth)) 
                 { 
                     

@@ -5,10 +5,11 @@ require_once('authenticate.php');
 require_once('../includes/db_config.php');
 
 /* Query SQL Server for selecting data. */
-$select_article_sql = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where user.user_id = ".$_REQUEST["userid"]." order by article_id";
-$select_article_result = $dbHost->prepare($select_article_sql);
-$select_article_result->execute();
-$select_article_result->setFetchMode(PDO::FETCH_ASSOC);
+$query = "select article_id, title, content, category_name, category.category_id, full_name, user.user_id, date_posted, role_id FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id where user.user_id = :id order by article_id";
+$statement = $dbHost->prepare($query);
+$statement->bindParam(":id",$_REQUEST["userid"]);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_ASSOC);
 
 /* Query SQL Server for total records data. */
 $select_totalrecords_sql = "select Count(*) As TotalRecords FROM article";
@@ -19,11 +20,12 @@ $select_totalrecords_row = $select_totalrecords_result->fetch();
 $totalRecords = $select_totalrecords_row["TotalRecords"];
 
 /* Query SQL Server for user name. */
-$select_user_sql = "select full_name from user where user_id= ".$_REQUEST["userid"];
-$select_user_result = $dbHost->prepare($select_user_sql);
-$select_user_result->execute();
-$select_user_result->setFetchMode(PDO::FETCH_ASSOC);
-$select_user_row = $select_user_result->fetch();
+$query = "select full_name from user where user_id= :id";
+$statement2 = $dbHost->prepare($query);
+$statement2->bindParam(":id",$_REQUEST["userid"]);
+$statement2->execute();
+$statement2->setFetchMode(PDO::FETCH_ASSOC);
+$select_user_row = $statement2->fetch();
 $catName = $select_user_row["full_name"];
 include '../includes/header.php' ?>
 <div>User:
@@ -50,7 +52,7 @@ include '../includes/header.php' ?>
             $endPage = ($_REQUEST["page"] * $recordsPerPage);
           }
           $count=1;
-          while($select_article_row =$select_article_result->fetch()) 
+          while($select_article_row =$statement->fetch()) 
           { 
             if (($count>= $startPage) && ($count <= $endPage))
             { ?>

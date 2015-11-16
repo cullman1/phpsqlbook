@@ -54,7 +54,7 @@ else
             }
 
             /* Query SQL Server for inserting new user. */
-		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined, user_image, active) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$passwordToken."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', '". $name ."', 0)";
+		    $insert_user_sql = "INSERT INTO user (full_name, password, email, role_id, date_joined, image, active) VALUES ('".$_REQUEST['firstName']." ".$_REQUEST['lastName']."', '".$passwordToken."', '".$_REQUEST['emailAddress']."','".$_REQUEST['Role']."', '". date("Y-m-d H:i:s") ."', '". $name ."', 0)";
 	
             $insert_user_result = $dbHost->prepare($insert_user_sql);
             $insert_user_result->execute();
