@@ -30,28 +30,27 @@ if (isset($_GET["publish"])) {
  }
     include ('../includes/header.php');  ?>
     <script type="text/Javascript">
-  function assigncontent() {
+  function addTx() {
    var sHTML = $('#datetimepick').val();  
    $('#content').val(sHTML); }
   </script>
   <h2>Publish article</h2>
-  <form method="post" action="publish.php" onsubmit="assigncontent()">
+  <form method="post" action="publish.php" onsubmit="addTx()">
   <label for="today">Immediately</label>
-  <input type="checkbox" name="pub_now" onchange="if ($('#dtb').css('visibility')== 'hidden') $('#dtb').css('visibility','visible'); else $('#dtb').css('visibility','hidden');"/>
-  <div>or</div>
-  <div>Future Date</div>
-  <div id="datetimepicker" class="input-append date">
+  <input type="checkbox" name="pub_now" onchange="if ($('#dtb').is(':visible')) $('#dtb').hide(); else $('#dtb').show();"/>
+    <div>or<br/>Future Date</div>
+   <div id="dtb" class="input-append date">
    <input id="datetimepick" name="datetimepick" type="text" />
  <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
   </div>
   <script type="text/javascript">
-    $('#datetimepicker').datetimepicker({
+    $('#dtb').datetimepicker({
     format: 'yyyy/MM/dd hh:mm:ss',
     language: 'en-US' });
   </script>
  <br/><input type="submit" name="submit" Value="Publish Article" />
  <input name="id" type="hidden" value="<?php echo $_GET["id"]?>"/>
- <input id="content" name="content" type="hidden" value=""/>
+ <input id="content" name="content" type="hidden" />
 </form>
 
 <?php }   

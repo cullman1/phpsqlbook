@@ -1,21 +1,21 @@
 <?php 
 require_once('../includes/db_config.php');
-$redirect = '../admin/index.php';
 $form_error = array('email' => '', 'password' =>'', 'result'=>'');
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $email      = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);  
+function check_login($dbHost, $form_error) {
+ $email      = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);  
   $password   = filter_input(INPUT_POST, 'password');      
   $form_error =validate_login_form($form_error, $email,$password);
   if (strlen(implode($form_error)) < 1) {
     $user = get_user($dbHost,$email,$password);
-    if ($user->CorrectDetails == 1) {
+    if ($user->exist == 1) {
       create_session($user);
-      header('Location: '.$redirect);
+      header('Location: ../admin/index.php');
     }
     $form_error['result'] = '<div class="warning">Login failed</div>';
   }
 }
+
 
 function validate_login_form($form_error, $email,$password) {
   if (!$email)  {
@@ -28,8 +28,7 @@ function validate_login_form($form_error, $email,$password) {
 }
 
 function get_user($connection, $email, $password) {
-  $query = "SELECT COUNT(*) as CorrectDetails, user_id, full_name, email 
-            FROM user WHERE email =:email AND password= :password";
+  $query = "SELECT COUNT(*) as exist, user_id, full_name, email, role_id FROM user WHERE email =:email AND password= :password";
   $statement = $connection->prepare($query);
   $statement->bindParam(':email',$email);
   $statement->bindParam(':password',$password);
@@ -38,12 +37,22 @@ function get_user($connection, $email, $password) {
   return $user;
 }
 
+
+
+
+
 function create_session($user) {
   session_start();
   $_SESSION['authenticated'] = $user->user_id;
   $_SESSION['username'] = $user->full_name;
   $_SESSION['email'] = $user->email;
+  $_SESSION['role'] = $user->role_id;
 }
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+ check_login($dbHost, $form_error);
+}
+
 ?>
 
 <form method="post" action="../login/login.php">

@@ -85,23 +85,32 @@ include '../../includes/header.php'?>
   foreach ($results->matches as $result) { ?>
   <tr><td><a href="edit.php?id=<?= $result->article_id; ?>">
   <?= $result->title ?></a></td>
-  <td><a href="view-user.php?id=<?= $result->user_id; ?>">
-  <?= $result->full_name;?></a></td>
+  <td>
+<?php if ($_SESSION["role"]=="2") { ?>
+<a href="view-user.php?id=<?= $result->user_id; ?>">
+ <?php } ?>
+  <?= $result->full_name;?><?php if ($_SESSION["role"]=="2") { ?></a> <?php } ?>
+</td>
   <td><?= $result->date_posted; ?></td>
   <?php if ($result->date_published !=null) { ?>
    <td><?= $result->date_published; ?></td>
   <?php } else { ?>
    <td>Not Published</td>
   <?php } ?>
+ 
   <td><a href="publish.php?id=<?= $result->article_id;  if ($result->date_published!=null) { echo "&publish=delete";} ?>">    
   <?php if ($result->date_published==null) { ?>
   <span class="glyphicon glyphicon-plus"></span>
   <?php } else { ?>
   <span class="glyphicon glyphicon-remove red"></span>
   <?php } ?></a></td>  
+   <?php if ($_SESSION["role"]=="2") { ?>
   <td><a onclick="javascript:return confirm(&#39;Do you  really want to delete item <?= $result->article_id;?> ? &#39;);" href="delete.php?id=<?= $result->article_id;?>">
   <span class="glyphicon glyphicon-remove red"></span></a>
-  </td></tr>
+  </td>
+<?php } ?>
+
+</tr>
     <?php }
      echo "<tr><td>".$pagination ."</td><tr>"; ?>
  </tbody>
