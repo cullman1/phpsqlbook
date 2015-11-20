@@ -4,7 +4,7 @@ include '../includes/header-chapters.php' ?>
  
   <div class="col-md-4">
     <ul>
-      <li><a href="file_upload_short.php">File Upload control</a></li>
+      <li><a href="file_upload.php">File Upload control</a></li>
       <li><a href="file_upload_improved_short.php">File Upload control improved version</a></li>
       <li><a href="image.php">Image Short</a></li>
       <li><a href="image_resizer.php">Image resizer - GD</a></li>

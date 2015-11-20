@@ -1,33 +1,29 @@
-<?php       include '../includes/header-register.php' ?>
-    <div id="Status_Post">
-    <?php
-      if(!isset($_FILES['image_upload'])) {
-    ?>
-    <h2 style="margin-left:10px">Upload an Image</h2><br />
-    <form  class="indent" method="post" action="file_upload.php"  enctype="multipart/form-data">
-        <label>File to upload:</label>
-        <input type="file" name="image_upload" /> 
-        <button type="submit" class="button_block spacing btn btn-primary">Submit</button>
-        <input id="Submitted" name="Submitted" type="hidden" value="true"/>
-    </form>
-    <?php 
-      } else {
-      if($_FILES["image_upload"]["name"]!="") {
-          try {
-              $folder = "../uploads/NA.jpg";
-              if (!move_uploaded_file($_FILES['image_upload']['tmp_name'], $folder)) {
-                  throw new Exception('Unable to move file');
-              } 
-          }
-          catch (Exception $ex) {
-              unset($_POST['Submitted']);
-              echo "<span class='red'>".$ex->getMessage()."</span>";
-          }
-          if(isset($_POST['Submitted'])) {
-              echo "<span class='red'>Image successfully uploaded!</span>";
-          }
+<?php       include '../includes/header-register.php';
+
+function file_upload($file) {
+  $msg = "";
+  if ($file['tmp_name'] == "") {
+     $msg = 'Your image did not upload.';
+   } else {
+     $filename = $file['name'];
+     $folder = "../uploads/";
+    if (move_uploaded_file($file['tmp_name']. $folder . $filename)) {
+       $msg = 'Your file ' .  $filename . ' uploaded successfully';
+     } else {
+     $msg = 'Your file ' .  $filename . ' could not be saved.';
       }
-    }
-    ?>
-    </div>
+
+   }
+   return $msg;
+}
+ if(isset($_FILES['image_upload'])) {
+    $msg = file_upload($_FILES['image_upload']);
+    echo $msg;
+ } else { ?>
+<h2>Upload an Image</h2><br />
+    <form method="post" action="file_upload.php"  enctype="multipart/form-data">
+      <label>Upload file: <input type="file" name="image_upload" /></label><br/>
+      <button type="submit" name="Submitted" value="sent">Submit</button>
+    </form>
+<?php } ?>
 <?php include '../includes/footer-site.php' ?>  
