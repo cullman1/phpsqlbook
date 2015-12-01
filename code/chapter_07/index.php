@@ -3,6 +3,7 @@
 include '../includes/header-chapters.php' ?>
  
   <div class="col-md-4">
+    <h3>Chapter 7</h3>
     <ul>
       <li><a href="file_upload.php">File Upload control</a></li>
       <li><a href="file_upload_improved_short.php">File Upload control improved version</a></li>
