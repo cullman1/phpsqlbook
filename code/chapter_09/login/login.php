@@ -1,5 +1,5 @@
 <?php 
-require_once('../includes/db_config.php');
+require_once('../../includes/db_config.php');
 $form_error = array('email' => '', 'password' =>'', 'result'=>'');
 
 function check_login($dbHost, $form_error) {
@@ -10,7 +10,7 @@ function check_login($dbHost, $form_error) {
     $user = get_user($dbHost,$email,$password);
     if ($user->exist == 1) {
       create_session($user);
-      header('Location: ../admin/index.php');
+      header('Location: ../die.php');
     }
 
     $form_error['result'] = '<div class="warning">Login failed</div>';
