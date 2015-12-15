@@ -199,6 +199,8 @@
     <Compile Include="code\chapter_07\file_read.php" />
     <Compile Include="code\chapter_07\file_upload.php" />
     <Compile Include="code\chapter_07\file_upload_improved.php" />
+    <Compile Include="code\chapter_09\exception.php" />
+    <Compile Include="code\chapter_09\exception_handler.php" />
     <Compile Include="code\chapter_09\file_upload_improved.php" />
     <Compile Include="code\chapter_07\file_upload_short.php" />
     <Compile Include="code\chapter_07\form_alt_text.php" />
@@ -231,6 +233,8 @@
     <Compile Include="code\chapter_08\user.php" />
     <Compile Include="code\chapter_09\die.php" />
     <Compile Include="code\chapter_09\log-to-file.php" />
+    <Compile Include="code\chapter_09\login\login.php" />
+    <Compile Include="code\chapter_09\login\logout.php" />
     <Compile Include="code\chapter_09\print_to_screen.php" />
     <Compile Include="code\chapter_10\content.php" />
     <Compile Include="code\chapter_10\footer.php" />
@@ -447,6 +451,7 @@
     <Folder Include="code\chapter_08\" />
     <Folder Include="code\chapter_08\login\" />
     <Folder Include="code\chapter_08\admin\" />
+    <Folder Include="code\chapter_09\login\" />
     <Folder Include="code\chapter_10\" />
     <Folder Include="code\chapter_11\" />
     <Folder Include="code\chapter_12\" />
