@@ -237,6 +237,7 @@
     <Compile Include="code\chapter_09\login\login.php" />
     <Compile Include="code\chapter_09\login\logout.php" />
     <Compile Include="code\chapter_09\PDOException.php" />
+    <Compile Include="code\chapter_09\print_to_buffer.php" />
     <Compile Include="code\chapter_09\print_to_screen.php" />
     <Compile Include="code\chapter_10\content.php" />
     <Compile Include="code\chapter_10\footer.php" />
