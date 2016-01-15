@@ -6,6 +6,7 @@
      <li><a href="die.php">Die Statement example</a></li>
        <li><a href="error-page.php">Error message example</a></li>
               <li><a href="exceptions.php">Exception subtypes example</a></li>
+                <li><a href="throw.php">Throw Exception example</a></li>
        <li><a href="PDOException.php">PDOException example</a></li>
         <li><a href="print_to_screen.php">Debugging with inline statements example</a></li>
          <li><a href="print_to_buffer.php">Print to Buffer example</a></li>

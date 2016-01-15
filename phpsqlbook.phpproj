@@ -239,6 +239,7 @@
     <Compile Include="code\chapter_09\PDOException.php" />
     <Compile Include="code\chapter_09\print_to_buffer.php" />
     <Compile Include="code\chapter_09\print_to_screen.php" />
+    <Compile Include="code\chapter_09\throw.php" />
     <Compile Include="code\chapter_10\content.php" />
     <Compile Include="code\chapter_10\footer.php" />
     <Compile Include="code\chapter_10\header-admin.php" />
