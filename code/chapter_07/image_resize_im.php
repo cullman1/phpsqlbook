@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', TRUE);
- function file_upload($file) {
+function file_upload($file) {
 $copied_image="";
 $resized_image="";   
 foreach($file['tmp_name'] as $key =>$tmp_name) {
@@ -13,7 +13,7 @@ foreach($file['tmp_name'] as $key =>$tmp_name) {
       $filename = $file['name'][$key];
       if(move_uploaded_file($file['tmp_name'][$key],"../uploads/". $filename)) {
       $copied_image = copy_image($filename);
-      $resized_image = resize_image($copied_image, 50, 50);
+    $resized_image = crop_image($copied_image, 50, 50);
          echo 'Your file ' . $filename. ' has uploaded successfully.<br/>';
           echo "<img src='".$resized_image."' />";
       } else {
@@ -79,11 +79,29 @@ function resize_image($path, $width_resize, $height_resize) {
   }
   return "";
 }
+
+function crop_image($path, $width_resize, $height_resize) {
+  $image = new Imagick($path);
+  $height_original = $image->getImageHeight();
+  $width_original = $image->getImageWidth();
+  if ($height_original > $width_original) {
+    $height_original = $width_original;
+  } else {
+    $width_original = $height_original;
+  }
+  $image->cropImage($width_original,$height_original,0,0);
+  $image->thumbnailImage($width_resize, $height_resize);
+  $find_period = strrpos($path, '.');
+  $path = substr_replace($path,"_cropped.gif",$find_period);
+  $image->writeImage($path);
+  return $path;
+}
+
 if(isset($_FILES['image'])) {
   file_upload($_FILES['image']);
 } else { ?>
 <h2>Upload an Image</h2><br />
-  <form method="post" action="image_resize_gd.php"  enctype="multipart/form-data">
+  <form method="post" action="image_resize_im.php"  enctype="multipart/form-data">
    <label>Upload file: <input type="file" name="image[]"  
      accept="image/jpeg, image/png, image/gif" multiple /> </label><br />
     <button type="submit" name="Submitted" value="sent">Submit</button>

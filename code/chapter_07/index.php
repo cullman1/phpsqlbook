@@ -9,7 +9,8 @@ include '../includes/header-chapters.php' ?>
       <li><a href="file_upload_improved_short.php">File Upload control improved version</a></li>
       <li><a href="image.php">Image Short</a></li>
       <li><a href="image_resize_gd.php">Image resizer - GD</a></li>
-      <li><a href="image_cropper.php">Image cropper - ImageMagick</a></li>
+      <li><a href="image_resize_im.php">Image cropper - ImageMagick</a></li>
+         <li><a href="upload_media.php">Save to Db</a></li>
       <li><a href="add_article_short.php">Add article short page</a></li>
       <li><a href="featured-image.php?featured=add">Image Wall example</a></li>
       <li><a href="add_article_amended.php">Add article extended page</a></li>
