@@ -121,6 +121,7 @@
     <Compile Include="code\chapter_06\email-check.php" />
     <Compile Include="code\chapter_06\register.php" />
     <Compile Include="code\chapter_06\transactions.php" />
+    <Compile Include="code\chapter_07\featured_image.php" />
     <Compile Include="code\chapter_08\admin\authenticate.php" />
     <Compile Include="code\chapter_08\admin\publish.php" />
     <Compile Include="code\chapter_08\admin\view-user.php" />

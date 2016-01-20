@@ -11,9 +11,9 @@ include '../includes/header-chapters.php' ?>
       <li><a href="image_resize_gd.php">Image resizer - GD</a></li>
       <li><a href="image_resize_im.php">Image cropper - ImageMagick</a></li>
          <li><a href="upload_media.php">Save to Db</a></li>
-      <li><a href="add_article_short.php">Add article short page</a></li>
-      <li><a href="featured-image.php?featured=add">Image Wall example</a></li>
-      <li><a href="add_article_amended.php">Add article extended page</a></li>
+      <li><a href="add_article.php">Add article page</a></li>
+      <li><a href="featured_image.php?featured=add">Image Wall example</a></li>
+      <li><a href="add_article_image.php">Add article extended page</a></li>
       <li><a href="edit_article_short.php?articleid=87">Basic edit article page</a></li>
       <li><a href="add_article_rich_text.php">Rich Text Editor enhanced Add Article Page</a></li>
       <li><a href="edit_article_rich_text.php?articleid=87">Rich Text Editor enhanced Edit Article Page</a></li>
