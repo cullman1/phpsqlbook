@@ -114,6 +114,7 @@
     <Compile Include="code\chapter_07\add_article_rich_text.php" />
     <Compile Include="code\chapter_07\articles.php" />
     <Compile Include="code\chapter_07\articles2.php" />
+    <Compile Include="code\chapter_07\edit_article.php" />
     <Compile Include="code\chapter_07\edit_article_rich_text.php" />
     <Compile Include="code\chapter_07\edit_article_short.php" />
     <Compile Include="code\chapter_07\featured-image2.php" />

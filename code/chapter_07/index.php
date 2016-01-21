@@ -14,7 +14,7 @@ include '../includes/header-chapters.php' ?>
       <li><a href="add_article.php">Add article page</a></li>
       <li><a href="featured_image.php?featured=add">Image Wall example</a></li>
       <li><a href="add_article_image.php">Add article extended page</a></li>
-      <li><a href="edit_article_short.php?articleid=87">Basic edit article page</a></li>
+      <li><a href="edit_article.php?articleid=87">Basic edit article page</a></li>
       <li><a href="add_article_rich_text.php">Rich Text Editor enhanced Add Article Page</a></li>
       <li><a href="edit_article_rich_text.php?articleid=87">Rich Text Editor enhanced Edit Article Page</a></li>
       <li><a href="multiple.php">Multiple Uploads Page</a></li>
