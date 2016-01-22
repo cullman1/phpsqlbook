@@ -27,23 +27,23 @@
     return $statement->errorCode();
   }
 
-  $article = get_article($dbHost, $_GET["articleid"]); 
+  $article = get_article($dbHost, $_GET["id"]); 
   if (isset($_POST['submit'])) {
-      $update = update_article($dbHost, $_POST['title'],$_POST['content'],$_POST['CategoryId'],$_POST['MediaId'],$_GET['articleid']); 
+      $update = update_article($dbHost, $_POST['title'],$_POST['content'],$_POST['Cat_Id'],$_POST['MediaId'],$_GET['id']); 
       if($update==0) {
-        echo "<span class='red'>Article ". $_GET['articleid']." updated.</span><br/>";
+        echo "<span class='red'>Article ". $_GET['id']." updated.</span><br/>";
       } else {
         echo "<span class='red'>Article update failed.</span><br/>";
       }
   } else {
-  while ($article_row = $article->fetch()) { ?> 
-  <form method="post" action="edit_article.php?articleid=<?= $article_row['article_id']; ?>"enctype="multipart/form-data" >
+  while ($row = $article->fetch()) { ?> 
+  <form method="post" action="edit_article.php?id=<?= $row['article_id']; ?>"enctype="multipart/form-data" >
   <h2>Edit an Article</h2><br /> 
-  <label>Title: <input name="title" type="text" value="<?= $article_row['title']; ?>"/> 
+  <label>Title: <input name="title" type="text" value="<?= $row['title']; ?>"/> 
   </label><br/><br/>
-   <label>Content: <textarea name="content" cols="20" rows=10> <?= $article_row['content']; ?></textarea></label><br/><br/>
+   <label>Content: <textarea name="content" cols="20" rows=10> <?= $row['content']; ?></textarea></label><br/><br/>
     <label>Category: 
-     <select name="CategoryId">
+     <select name="Cat_Id">
      <?php  $category = get_category($dbHost);
       while($cat_row = $category->fetch()) { ?>
         <option value="<?= $cat_row['category_id']; ?>"> <?= $cat_row['category_name']; ?></option> <?php } ?> 
@@ -51,8 +51,8 @@
     <label>Select featured image:
      <img width=50 src="<?php if (isset($_POST['img_name'])) { 
         echo "../uploads/".$_POST['img_name']; } 
-        else {  echo $article_row['file_path']; } ?> "/> 
-      <a class="btn" href="../featured-image.php?featured=edit&articleid=<?= $article_row['article_id']; ?>">Update image</a></label>    <br/><br/>
+        else {  echo $row['file_path']; } ?> "/> 
+      <a class="btn" href="../featured-image.php?pg=edit&id=<?= $row['article_id']; ?>">Update image</a></label>    <br/><br/>
      <button type=submit name="submit" value="submit">Submit Article</button>
     </form>
 <?php } 
