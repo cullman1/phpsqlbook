@@ -1,0 +1,39 @@
+•      Application Design
+One page/two page(?) for submitting to server - same page submission to be favoured for programming sake, two pages submission for teaching sake 
+Folder structure
+Parent pages (articles -> link to templates, different styles, also use different controls like repeater on one, single article on another)
+Templates
+Plugins 
+•     Database design
+Creating a table
+NULL columns
+MySQL Data types
+Need to mention as one or two weird ones, such as no boolean! Have to use bit, which was introduced in MySQL 5.03, or tinyint before that.
+Primary Keys and Foreign keys
+Identity Columns
+Linking table (article id - into media link separate table because of image re-use)
+Group By and Having (moved from chapter 2 - slightly orphaned here, but is more complex than we want to talk about in chapter 2) 
+Normalisation/data redundancy
+Normal forms
+When not to normalise
+Indexes - performance
+Stored procedures
+MySql scheduler - timed stored procedures
+Backing up and restoring database
+•    Designing for Site Management/Maintenance
+.htaccess  compare with Php.ini
+File upload size (it is a big problem) / set size in htaccess or php.ini?
+Memory allocation
+APPLICATION DESIGN 5
+•??URL rewriting
+modrewrite vs index.php
+Article pages given friendly urls
+Disguising of directory structure (several folders deep shown as one)
+FallbackResource 
+Regular expressions
+Slugs?
+•??Security considerations - in a chapter about app/db design, we need to mention security
+Permission levels
+User to user messaging?
+Note about not using .inc files, or files that can be directly downloaded from server!
+Naming conventions 
