@@ -5,16 +5,17 @@ require_once('../classes/user.php');
 
   
 /* Query SQL Server for checking user details. */
-if(isset($_REQUEST['password']))
-{
-    $passwordToken = sha1($preSalt . $_REQUEST['password'] . $afterSalt);
-    $select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, full_name, email from user WHERE email ='".$_REQUEST['emailAddress']."' AND password= '".$passwordToken."'" ." AND active= 0";
-    $select_user_result = $dbHost->prepare($select_user_sql);
-    $select_user_result->execute();
-    $select_user_result->setFetchMode(PDO::FETCH_ASSOC);
+if(isset($_POST['password'])) {
+   $passwordToken = sha1($preSalt. $_POST['password'].$afterSalt);  
+    $select_user_sql = "SELECT Count(*) as CorrectDetails, user_id, full_name, email from user WHERE email =:email AND password= :password AND active= 0";
+    $statement = $dbHost->prepare($select_user_sql);
+$statement->bindParam(":email",$_POST["emailAddress"]);
+$statement->bindParam(":password",$passwordToken);    
+$statement->execute();
+
 
     /* Redirect to original page */
-    while($select_user_row = $select_user_result->fetch()) {
+    while($select_user_row = $statement->fetch()) {
         if ($select_user_row["CorrectDetails"]==1) {
             //require_once('../classes/FileSessionHandler.php');
             session_start();
