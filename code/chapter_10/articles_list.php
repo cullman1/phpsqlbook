@@ -55,10 +55,10 @@ if($num_rows==0){
 
 <?php while($row =$statement->fetch()) {   ?>
 
-<div id="category_container" style="width:200px" class="<?php echo $row['category_template']; ?>">
-      <h3><a href="article-<?php echo $row['article_id']; ?>"><?php echo $row['title']; ?></a></h3>
-      <h5><?php echo date("F j, Y, g:i a", strtotime($row['date_posted'])); ?></h5>
-      <div class="box"><?php echo $row['content']; ?><br/>      </div>
+<div id="category_container" style="width:500px; margin-left:20px;" class="<?= $row['category_template']; ?>">
+      <h3><a href="single_article.php?article_id=<?= $row['article_id']; ?>"><?= $row['title']; ?></a></h3>
+      <h5><?= date("F j, Y, g:i a", strtotime($row['date_posted'])); ?></h5>
+      <div class="box"><?= $row['content']; ?><br/>      </div>
 </div>
   <?php  }
 include 'footer.php' ?>

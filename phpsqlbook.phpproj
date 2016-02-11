@@ -243,6 +243,7 @@
     <Compile Include="code\chapter_09\print_to_buffer.php" />
     <Compile Include="code\chapter_09\print_to_screen.php" />
     <Compile Include="code\chapter_09\throw.php" />
+    <Compile Include="code\chapter_10\articles_list.php" />
     <Compile Include="code\chapter_10\content.php" />
     <Compile Include="code\chapter_10\footer.php" />
     <Compile Include="code\chapter_10\header-admin.php" />
@@ -251,6 +252,7 @@
     <Compile Include="code\chapter_10\login-admin.php" />
     <Compile Include="code\chapter_10\login-user.php" />
     <Compile Include="code\chapter_10\singlearticle.php" />
+    <Compile Include="code\chapter_10\single_article.php" />
     <Compile Include="code\chapter_10\storedproc.php" />
     <Compile Include="code\chapter_10\storedproc2.php" />
     <Compile Include="code\chapter_10\storedproc3.php" />
