@@ -119,6 +119,7 @@
     <Compile Include="code\chapter_07\edit_article_short.php" />
     <Compile Include="code\chapter_07\featured-image2.php" />
     <Compile Include="code\chapter_07\featured-image.php" />
+    <Compile Include="code\chapter_07\image-insert.php" />
     <Compile Include="code\chapter_07\image.php" />
     <Compile Include="code\chapter_07\image_resize_gd.php" />
     <Compile Include="code\chapter_07\upload_media.php" />
@@ -256,6 +257,8 @@
     <Compile Include="code\chapter_10\storedproc.php" />
     <Compile Include="code\chapter_10\storedproc2.php" />
     <Compile Include="code\chapter_10\storedproc3.php" />
+    <Compile Include="code\chapter_10\testeditor2.php" />
+    <Compile Include="code\chapter_10\testeditor.php" />
     <Compile Include="code\chapter_11\curl.php" />
     <Compile Include="code\chapter_11\Facebookexample.php" />
     <Compile Include="code\chapter_11\Facebookresponse.php" />
@@ -528,6 +531,7 @@
     <Content Include="code\chapter_07\names.txt" />
     <Content Include="code\chapter_07\namesonly.txt" />
     <Content Include="code\chapter_07\pansy.gif" />
+    <Content Include="code\chapter_10\tiny.js" />
     <Content Include="code\chapter_11\ajax.html" />
     <Content Include="code\chapter_11\chamomile.txt" />
     <Content Include="code\chapter_11\lavender.txt" />

@@ -5,14 +5,14 @@ require_once('authenticate2.php');
 require_once('../includes/db_config.php');
 include '../includes/header.php';
 
-function get_role($dbHost, $email) {
- $query = "SELECT * from user WHERE email = :email";
- $statement = $dbHost->prepare($query);
+function get_role($dbHost,$email) {
+ $sql="SELECT * from user join role on role_id = role.id WHERE email=:email";
+ $statement = $dbHost->prepare($sql);
  $statement->bindParam(":email", $email);
  $statement->execute();
  $statement->setFetchMode(PDO::FETCH_ASSOC);
  while ($row = $statement->fetch()) {
-  return $row["role_id"];
+  return $row["access_level"];
  }
  return "1";
 }
@@ -20,7 +20,7 @@ function get_role($dbHost, $email) {
 $role = get_role($dbHost, $_SESSION["email"]); 
 echo "<br/><a href='#'>Link 1</a>";
 echo "<br/><a href='#'>Link 2</a>";
-if ($role=="1") {
+if ($role=="9") {
  echo"<br/><a href='#' '>Admin Link 3</a>";
  echo"<br/><a href='#' '>Admin Link 4</a>";
 } 
