@@ -1,21 +1,17 @@
-<?php include '../includes/header-chapters.php' ?>
- 
-  <div class="col-md-4">
-    <h3>Chapter 8</h3>
-    <ul>
-      <li><a href="sendmail.php">Test Sendmail Example</a></li>
-      <li><a href="register.php">Register and Confirm Email Example</a></li>
-      <li><a href="setcookie.php">Set Cookie Remember Me Example</a></li>
-      <li><a href="login/login.php">Login User Example</a></li>
-      <li><a href="admin/index.php">Central Admin Page</a></li>
-      <li><a href="register4.php">Password Policy Example</a></li>
-      <li><a href="hash.php">Hashing Algorithms Example</a></li>
-      <li><a href="hash2.php">password_hash Example</a></li>
-      <li><a href="login-admin2.php">Forgotten Password Example</a></li>
-      <li><a href="admin/view-user.php?id=561ffe6f-7f0e-11e5-8384-005056bd3a43">Ban User Example</a></li>
-       <li><a href="links.php">Roles Example</a></li
+<h1>Chapter 8</h1>
 
-    </ul>
-   </div>
+<a href="html-form.php">HTML Form</a><br>
+<a href="upload-file-show-info.php">Upload file / show info</a><br>
+<a href="upload-file-then-move.php">Upload file then move</a><br>
+<a href="upload-file-save-data-to-database.php">Upload file and save data</a><br>
+<a href="show-image-in-template.php?article_id=32">Article with featured image</a><br>
+<a href="show-all-images-modal.php">Showing all images - media gallery (uses image-gallery.php include)</a><br>
+<a href="article-edit-featured-image.php?action=edit&article_id=30">Edit article - updating a featured image</a><br>
+<a href="article-edit-inline-image.php?action=edit&article_id=30">Edit article - adding inline images</a><br>
+<br>
+<a href="upload-file-check-size.php">Upload file check size</a><br>
+<a href="upload-file-validate-type.php">Upload file validate type</a><br>
+<a href="check-installed-libraries.php">Check installed libraries</a><br>
+<a href="upload-and-resize.php">Upload file and create thumbnail</a><br>
+<a href="upload-file-crop-image.php">Upload file and create cropped thumbnail</a><br>
 
-<?php include '../includes/footer-site.php' ?>

@@ -1,5 +1,5 @@
 <?php 
-require_once('../includes/db_config.php');
+require_once('../../includes/db_config.php');
 $form_error = array('email' => '', 'password' =>'', 'result'=>'');
 
 function check_login($dbHost, $form_error) {
@@ -10,7 +10,7 @@ function check_login($dbHost, $form_error) {
     $user = get_user($dbHost,$email,$password);
     if ($user->exist == 1) {
       create_session($user);
-      header('Location: ../admin/index.php');
+      header('Location: ../die.php');
     }
 
     $form_error['result'] = '<div class="warning">Login failed</div>';
@@ -31,7 +31,7 @@ function validate_login_form($form_error, $email,$password) {
 }
 
 function get_user($connection, $email, $password) {
-  $query = "SELECT COUNT(*) as exist, user_id, full_name, email, access_level FROM user Join role on role_id = role.id WHERE email =:email AND password= :password";
+  $query = "SELECT COUNT(*) as exist, user_id, full_name, email, role_id FROM user WHERE email =:email AND password= :password";
   $statement = $connection->prepare($query);
   $statement->bindParam(':email',$email);
   $statement->bindParam(':password',$password);
@@ -49,7 +49,7 @@ function create_session($user) {
   $_SESSION['authenticated'] = $user->user_id;
   $_SESSION['username'] = $user->full_name;
   $_SESSION['email'] = $user->email;
-  $_SESSION['role'] = $user->access_level;
+  $_SESSION['role'] = $user->role_id;
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {

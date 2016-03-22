@@ -1,18 +1,21 @@
 <?php include '../includes/header-chapters.php' ?>
  
   <div class="col-md-4">
-    <h3>Chapter 9</h3>
+    <h3>Chapter 8</h3>
     <ul>
-     <li><a href="die.php">Die Statement example</a></li>
-       <li><a href="error-page.php">Error message example</a></li>
-              <li><a href="exceptions.php">Exception subtypes example</a></li>
-                <li><a href="throw.php">Throw Exception example</a></li>
-       <li><a href="PDOException.php">PDOException example</a></li>
-        <li><a href="print_to_screen.php">Debugging with inline statements example</a></li>
-         <li><a href="print_to_buffer.php">Print to Buffer example</a></li>
-         <li><a href="log-to-file.php">Log to File example</a></li>
-           <li><a href="file_upload_improved.php">Log to Database example</a></li>
+      <li><a href="sendmail.php">Test Sendmail Example</a></li>
+      <li><a href="register.php">Register and Confirm Email Example</a></li>
+      <li><a href="setcookie.php">Set Cookie Remember Me Example</a></li>
+      <li><a href="login/login.php">Login User Example</a></li>
+      <li><a href="admin/index.php">Central Admin Page</a></li>
+      <li><a href="register4.php">Password Policy Example</a></li>
+      <li><a href="hash.php">Hashing Algorithms Example</a></li>
+      <li><a href="hash2.php">password_hash Example</a></li>
+      <li><a href="login-admin2.php">Forgotten Password Example</a></li>
+      <li><a href="admin/view-user.php?id=561ffe6f-7f0e-11e5-8384-005056bd3a43">Ban User Example</a></li>
+       <li><a href="links.php">Roles Example</a></li
+
     </ul>
-  </div>
+   </div>
 
 <?php include '../includes/footer-site.php' ?>

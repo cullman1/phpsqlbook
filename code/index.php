@@ -10,10 +10,10 @@ include '../includes/header-chapters.php' ?>
           <tr><td><a href="chapter_04/index.php">Chapter 4</a></td><td>Getting Data From a Database</td></tr>
           <tr><td><a href="chapter_05/index.php">Chapter 5</a></td><td>Server-Side Processing</td></tr>
           <tr><td><a href="chapter_06/index.php">Chapter 6</a></td><td>Updating A Database</td></tr>
-          <tr><td><a href="chapter_07/index.php">Chapter 7</a></td><td>Media</td></tr>
-          <tr><td><a href="chapter_08/index.php">Chapter 8</a></td><td>Membership  </td></tr>
-             <tr><td><a href="chapter_09/index.php">Chapter 9</a></td><td>Error Handling</td></tr>
-          <tr><td><a href="chapter_10/index.php">Chapter 10</a></td><td>Database Design</td></tr>
+                 <tr><td><a href="chapter_07/index.php">Chapter 7</a></td><td>Database Design</td></tr>
+          <tr><td><a href="chapter_08/index.php">Chapter 8</a></td><td>Media</td></tr>
+          <tr><td><a href="chapter_09/index.php">Chapter 9</a></td><td>Membership  </td></tr>
+             <tr><td><a href="chapter_10/index.php">Chapter 10</a></td><td>Error Handling</td></tr>
           <tr><td><a href="chapter_11/index.php">Chapter 11</a></td><td>APIs</td></tr>
           <tr><td><a href="chapter_12/index.php">Chapter 12</a></td><td>Objects</td></tr>
           <tr><td><a href="http://test1.phpandmysqlbook.com/cmsfull/recipes">Chapter 13</a></td><td>Building an object based CMS</td></tr>
