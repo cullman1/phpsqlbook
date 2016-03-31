@@ -18,7 +18,7 @@ require_once('../CMS/admin/includes/functions.php');
       <a class="btn btn-default btn-xs" data-toggle="modal" data-target="#imagesModal">
         <i class="icon-picture"></i> launch media gallery</a> <br>
 
-      <?php include('includes/media-gallery.php'); ?>
+      <?php include('includes/image-gallery.php'); ?>
 
     <script src="../CMS/js/jquery-1.12.0.js"></script>
     <script src="../CMS/js/bootstrap.min.js"></script>

@@ -1,37 +1,33 @@
-<!-- IMAGE SELECTOR MODAL -->
 <?php 
-$images = get_images_list();
+  $images = get_images_list();
 ?>
 <div class="modal fade" tabindex="-1" role="dialog" id="imagesModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Select image</h4>
-      </div>
+      <div class="modal-header"><!-- modal header and close button--></div>
       <div class="modal-body">
       <?php 
-      if (isset($images)) {                                     // If you have images
-      foreach ($images as $image) {                             // Loop through them ?>
-        <div class="col-md-3" id="thumbnails" data-insert="">
+      if (isset($images)) {                       // If you have images
+        foreach ($images as $image) {             // Loop through them ?>
           <div class="panel panel-default">
             <div class="panel-heading">
-              <input type="radio" name="featured" value="<?= $image->id; ?>" data-filepath="<?=$image->thumb;?>" data-alt="<?=$image->alt;?>"  class="image-selector" />
-              <?= $image->title; ?><br>
-            </div>
-            <div class="panel-body" style="overflow:auto;">
-              <img src="../CMS/<?= $image->thumb ?>" alt="<?= $image->alt ?>" title="<?= $image->title ?>" /><br>
-            </div>
-          </div>
-        </div>
+              <input type="radio" name="featured" value="<?= $image->id; ?>" 
+                class="image-selector" data-alt="<?=$image->alt;?>"
+                data-filepath="<?= $image->thumb;?>"  />
+                <?= $image->title; ?>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body">
+              <img title="<?= $image->title ?>" alt="<?= $image->alt ?>" 
+                src="<?php if ($image->thumb!=""){echo $image->thumb;}
+                              else {echo "../uploads/holder.jpg";}?>" />           
+           </div><!-- /.panel-body -->
+          </div><!-- /.panel -->
         <?php 
         } // End loop code block
       }  // End if
       ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
+      </div><!-- /.modal-body -->
+      <div class="modal-footer"> <!-- modal footer and close button--></div>
+    </div> <!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

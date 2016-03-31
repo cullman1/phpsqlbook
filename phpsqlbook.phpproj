@@ -114,6 +114,7 @@
     <Compile Include="code\chapter_08\add_article_rich_text.php" />
     <Compile Include="code\chapter_08\articles.php" />
     <Compile Include="code\chapter_08\articles2.php" />
+    <Compile Include="code\chapter_08\basic-upload-file-save-data-to-database.php" />
     <Compile Include="code\chapter_08\edit_article.php" />
     <Compile Include="code\chapter_08\edit_article_rich_text.php" />
     <Compile Include="code\chapter_08\edit_article_short.php" />
@@ -123,6 +124,8 @@
     <Compile Include="code\chapter_08\image-insert.php" />
     <Compile Include="code\chapter_08\image.php" />
     <Compile Include="code\chapter_08\image_resize_gd.php" />
+    <Compile Include="code\chapter_08\includes\image-gallery.php" />
+    <Compile Include="code\chapter_08\includes\database-connnection.php" />
     <Compile Include="code\chapter_08\upload-file-then-move.php" />
     <Compile Include="code\chapter_08\upload_media.php" />
     <Compile Include="code\chapter_08\insertform.php" />
@@ -462,6 +465,8 @@
     <Folder Include="code\chapter_05\" />
     <Folder Include="code\chapter_06\" />
     <Folder Include="code\chapter_08\" />
+    <Folder Include="code\chapter_08\includes\" />
+    <Folder Include="code\chapter_08\login\" />
     <Folder Include="code\chapter_09\" />
     <Folder Include="code\chapter_09\login\" />
     <Folder Include="code\chapter_09\admin\" />

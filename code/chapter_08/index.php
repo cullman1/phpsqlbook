@@ -6,8 +6,8 @@
 <a href="upload-file-save-data-to-database.php">Upload file and save data</a><br>
 <a href="show-image-in-template.php?article_id=32">Article with featured image</a><br>
 <a href="show-all-images-modal.php">Showing all images - media gallery (uses image-gallery.php include)</a><br>
-<a href="article-edit-featured-image.php?action=edit&article_id=30">Edit article - updating a featured image</a><br>
-<a href="article-edit-inline-image.php?action=edit&article_id=30">Edit article - adding inline images</a><br>
+<a href="article-edit-featured-image.php?action=edit&article_id=30">Edit article - updating a featured image (uses image-gallery.php include)</a><br>
+<a href="article-edit-inline-image.php?action=edit&article_id=30">Edit article - adding inline images (uses image-gallery.php include)</a><br>
 <br>
 <a href="upload-file-check-size.php">Upload file check size</a><br>
 <a href="upload-file-validate-type.php">Upload file validate type</a><br>
