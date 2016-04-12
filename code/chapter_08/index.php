@@ -12,6 +12,8 @@
 <a href="upload-file-check-size.php">Upload file check size</a><br>
 <a href="upload-file-validate-type.php">Upload file validate type</a><br>
 <a href="check-installed-libraries.php">Check installed libraries</a><br>
-<a href="upload-and-resize.php">Upload file and create thumbnail</a><br>
-<a href="upload-file-crop-image.php">Upload file and create cropped thumbnail</a><br>
-
+<a href="upload-and-resize.php">Upload file and create thumbnail (GD)</a><br>
+<a href="upload-and-resize-im.php">Upload file and create thumbnail (ImageMagick)</a><br>
+<a href="upload-file-crop-image.php">Upload file and create cropped thumbnail (ImageMagick)</a><br>
+<a href="upload-file-crop-image-gd.php">Upload file and create cropped thumbnail (GD)</a><br>
+<a href="all-media-library.php">Showing all types of media</a><br>
