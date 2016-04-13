@@ -17,3 +17,5 @@
 <a href="upload-file-crop-image.php">Upload file and create cropped thumbnail (ImageMagick)</a><br>
 <a href="upload-file-crop-image-gd.php">Upload file and create cropped thumbnail (GD)</a><br>
 <a href="all-media-library.php">Showing all types of media</a><br>
+<br>
+<a href="gallery-edit.php">Creating and Editing galleries example</a><br>
