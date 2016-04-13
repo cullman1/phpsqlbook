@@ -64,7 +64,7 @@ ini_set('display_errors', TRUE);
       $statement->bindParam(":thumb",    $thumb);
       $statement->execute();
       if($statement->errorCode()==0) {
-        return $filename . ' uploaded successfully';
+          return '<img src="' . $thumb . '"><br/>'. $filename . ' ' . $thumb . ' uploaded successfully';
       } else {
         return 'Information about your file could not be saved.';
       }

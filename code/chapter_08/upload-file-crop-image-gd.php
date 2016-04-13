@@ -127,7 +127,7 @@
       $statement->execute();
  
       if($statement->errorCode()==0) {
-        return $filename . ' ' . $thumb . ' uploaded successfully<br><img src="' . $thumb . '">';
+          return '<img src="' . $thumb . '"><br/>'. $filename . ' ' . $thumb . ' uploaded successfully';
       } else {
         return 'Information about your file could not be saved.';
       }
