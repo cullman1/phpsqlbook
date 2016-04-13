@@ -286,7 +286,7 @@
     <Compile Include="code\chapter_08\image_resize_im.php" />
     <Compile Include="code\chapter_08\imagick_check.php" />
     <Compile Include="code\chapter_08\includes\database-connnection.php" />
-    <Compile Include="code\chapter_08\includes\media-gallery.php" />
+    <Compile Include="code\chapter_08\includes\functions.php" />
     <Compile Include="code\chapter_08\includes\image-gallery.php" />
     <Compile Include="code\chapter_08\index.php" />
     <Compile Include="code\chapter_08\upload-file-save-data-to-database.php" />
