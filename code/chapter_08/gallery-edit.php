@@ -61,9 +61,9 @@ $querystring = '?action=' . $action . '&gallery_id=' . $gallery->id; ?>
           Video</option>
         <option value="3" <?php if ($gallery->mode == 3) { echo 'selected'; } ?> > 
           Audio</option>
-      </select>
-      <input type="submit" value="save media" class="btn btn-primary" />
-    </div>
+      </select><br/>
+      <input type="submit" value="save media" class="btn btn-primary" /><br/>
+    </div><br/>
   </form><br/><br/><br/><br/><br/>
   <?php if (($action == 'create') ||  ($action == 'update')) {       
     foreach ($galleryitems as $galleryitem) { 
