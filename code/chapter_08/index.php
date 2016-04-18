@@ -1,7 +1,7 @@
 <h1>Chapter 8</h1>
 
 <a href="html-form.php">HTML Form</a><br>
-<a href="upload-file-show-info.php">Upload file / show info</a><br>
+<a href="upload-file-show-info2.php">Upload file / show info</a><br>
 <a href="upload-file-then-move.php">Upload file then move</a><br>
 <a href="upload-file-save-data-to-database.php">Upload file and save data</a><br>
 <a href="show-image-in-template.php?article_id=32">Article with featured image</a><br>
