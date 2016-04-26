@@ -35,13 +35,15 @@ $select_singlearticlefull_result->setFetchMode(PDO::FETCH_ASSOC);
 
 
 $row= $select_singlearticle_result->fetch();
-
+$select_template_result = "";
+$template="";
 $parent_id  = $row["parent_id"];
-
-$select_template_sql = "select template from parent where parent_id=".$parent_id;
-$select_template_result = $dbHost->prepare($select_template_sql);
-$select_template_result->execute();
-$select_template_result->setFetchMode(PDO::FETCH_ASSOC);
+if (isset($parent_id)) {
+    $select_template_sql = "select template from parent where parent_id=".$parent_id;
+    $select_template_result = $dbHost->prepare($select_template_sql);
+    $select_template_result->execute();
+    $select_template_result->setFetchMode(PDO::FETCH_ASSOC);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,8 +67,11 @@ $select_template_result->setFetchMode(PDO::FETCH_ASSOC);
   </head>
 
 <?php 
-$select_template_row = $select_template_result->fetch();
-$template = $select_template_row["template"];
+if (isset($parent_id)) {
+
+    $select_template_row = $select_template_result->fetch();
+    $template = $select_template_row["template"];
+}
 ?>
   <body class="<?php echo $template; ?>">
 
