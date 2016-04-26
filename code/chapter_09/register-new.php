@@ -24,7 +24,7 @@ function get_existing_user($email) {
    return $statement;
 }
 
-function insert_user($firstName, $lastName, $password, $email, $role, $date) {     
+function insert_user($firstName, $lastName, $password, $email, $role, $date) { 	    
   $query = "INSERT INTO user (user_id, full_name, password, email, role_id, date_joined, active) VALUES (uuid(), :name, :password, :email,:role,:date,0)";
   $statement = $GLOBALS['connection']->prepare($query);
   $name = $firstName . " " .$lastName;
@@ -38,7 +38,7 @@ function insert_user($firstName, $lastName, $password, $email, $role, $date) {
       return '<div class="error">Error: ' . $statement->errorCode() . '</div>';
   } else {
       return '<div class="success">User successfully registered</div>';
-  }	   
+  }		   
  } 
 
  function validate_form($forename, $lastName, $password, $email, $role) {
