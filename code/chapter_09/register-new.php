@@ -1,4 +1,4 @@
-<?php require_once('../includes/db_config.php');
+<?php require_once('../includes/database-connection.php');
       error_reporting(E_ALL | E_WARNING | E_NOTICE);
       ini_set('display_errors', TRUE);
 require_once('../includes/mail1.php');
@@ -15,7 +15,7 @@ function get_user_by_email($email) {
 
 function insert_user($forename, $surname, $password, $email, $role, $date) {    
     $query = "INSERT INTO user (id,forename,surname,password,email,role_id,joined,active) 
-            VALUES (uuid(),:name,:password,:email,:role,:date,0)";
+            VALUES (uuid(),:forename, :surname,:password,:email,:role,:date,0)";
     $statement = $GLOBALS['connection']->prepare($query);
     $statement->bindParam(":forename", $forename );
     $statement->bindParam(":surname", $surname );
@@ -79,8 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error = validate_form($_POST['forename'], $_POST['surname'],$_POST['password'],
     $_POST['email'],2);
     if ($error=="") {
-        $date = date("Y-m-d H:i:s");
-        $error = insert_user($forename,$surname,$pwd,$email,$role, $date);
+
+        $error = insert_user($_POST["forename"],$_POST["surname"],$_POST["password"],$_POST["email"],2, date("Y-m-d H:i:s"));
     }
 }
 if (!empty($error) && strpos($error,"div")==0) {
