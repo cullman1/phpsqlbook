@@ -1,7 +1,7 @@
 <?php include '../includes/header-chapters.php' ?>
  
   <div class="col-md-4">
-    <h3>Chapter 8</h3>
+    <h3>Chapter 9</h3>
     <ul>
       <li><a href="sendmail.php">Test Sendmail Example</a></li>
       <li><a href="register.php">Register and Confirm Email Example</a></li>

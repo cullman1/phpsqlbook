@@ -31,7 +31,7 @@ function validate_login_form($form_error, $email,$password) {
 }
 
 function get_user($connection, $email, $password) {
-  $query = "SELECT COUNT(*) as exist, user_id, full_name, email, access_level FROM user Join role on role_id = role.id WHERE email =:email AND password= :password";
+  $query = "SELECT COUNT(*) as exist, user.id, forename, surname, email, access_level FROM user Join role on role_id = role.id WHERE email =:email AND password= :password";
   $statement = $connection->prepare($query);
   $statement->bindParam(':email',$email);
   $statement->bindParam(':password',$password);
@@ -46,8 +46,8 @@ function get_user($connection, $email, $password) {
 
 function create_session($user) {
   session_start();
-  $_SESSION['authenticated'] = $user->user_id;
-  $_SESSION['username'] = $user->full_name;
+  $_SESSION['authenticated'] = $user->id;
+  $_SESSION['username'] = $user->forename;
   $_SESSION['email'] = $user->email;
   $_SESSION['role'] = $user->access_level;
 }

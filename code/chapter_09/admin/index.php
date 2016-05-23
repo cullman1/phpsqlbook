@@ -1,11 +1,11 @@
 <?php
 require_once('../includes/db_config.php');
-require_once('../authenticate.php');
+require_once('authenticate.php');
 
 function get_articles($connection) {
   $results = new stdClass();   
   $results->connection = $connection;                                // $results is object
-  $results->query = "select article_id, title, content, full_name, user.user_id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.user_id   ";
+  $results->query = "select article_id, title, content, forename, surname, user.id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.id   ";
   $statement = $connection->prepare($results->query);                   // Prepare  
   $statement->execute();
   $results->count = $statement->rowCount(); 
@@ -66,7 +66,7 @@ include '../../includes/header.php'?>
                 $from = (int)( filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT)  ? $_GET['from'] : 0 );
                // $show  = (int) $show;  // In superglobal as string - cast to integer
                // $from = (int) $from;   // In superglobal as string - cast to integer
-                $query = "select article_id, title, content, full_name, user.user_id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.user_id ";
+                $query = "select article_id, title, content, forename, surname, user.id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.id ";
                 $paramslist = array();
 
                 $results = get_pages(get_records($dbHost, $query, $paramslist), $query, $paramslist, $show,$from); 
@@ -90,7 +90,7 @@ include '../../includes/header.php'?>
     <?php if ($_SESSION["role"]=="9") { ?>
       <a href="view-user.php?id=<?= $result->user_id; ?>">
     <?php } ?>
-    <?= $result->full_name;?><?php if ($_SESSION["role"]=="9") { ?></a> <?php } ?>
+    <?= $result->forename;?><?php if ($_SESSION["role"]=="9") { ?></a> <?php } ?>
   </td>
 
   <td><?= $result->date_posted; ?></td>

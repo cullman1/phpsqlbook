@@ -59,6 +59,7 @@
     <Folder Include="code\chapter_08\includes\" />
     <Folder Include="code\chapter_08\login\" />
     <Folder Include="code\chapter_09\" />
+    <Folder Include="code\chapter_09\admin\" />
     <Folder Include="code\chapter_09\login\" />
     <Folder Include="code\chapter_10\" />
     <Folder Include="code\chapter_11\" />
@@ -291,6 +292,10 @@
     <Compile Include="code\chapter_08\index.php" />
     <Compile Include="code\chapter_08\upload-file-save-data-to-database.php" />
     <Compile Include="code\chapter_08\upload-file-then-move.php" />
+    <Compile Include="code\chapter_09\admin\authenticate.php" />
+    <Compile Include="code\chapter_09\admin\index.php" />
+    <Compile Include="code\chapter_09\admin\publish.php" />
+    <Compile Include="code\chapter_09\admin\view-user.php" />
     <Compile Include="code\chapter_09\authenticate.php" />
     <Compile Include="code\chapter_09\die.php" />
     <Compile Include="code\chapter_09\error-page.php" />
@@ -565,6 +570,7 @@
     <Content Include="code\chapter_07\names.txt" />
     <Content Include="code\chapter_07\namesonly.txt" />
     <Content Include="code\chapter_07\pansy.gif" />
+    <Content Include="code\chapter_09\admin\view-user.php.old" />
     <Content Include="code\chapter_12\images\comments-xl.png" />
     <Content Include="code\chapter_12\images\dropdown_arrow.png" />
     <Content Include="code\chapter_13\images\comments-xl.png" />

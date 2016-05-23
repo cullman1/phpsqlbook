@@ -1,10 +1,13 @@
 <?php 
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 include ('header-content.php');
 require_once ('../includes/db_config.php');
 
 function get_articles($dbHost, $show, $from) {
- $sql = "select * FROM article JOIN user ON article.user_id = user.user_id JOIN category ON article.category_id = category.category_id order by article_id LIMIT :show OFFSET :from ";  
- $statement = $dbHost->prepare($sql);
+ $sql = "select * FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id order by article_id LIMIT :show OFFSET :from ";  
+ echo "SHOW".$show."FROM". $from;
+$statement = $dbHost->prepare($sql);
  $statement->bindParam(':show', $show, PDO::PARAM_INT);      
  $statement->bindParam(':from', $from, PDO::PARAM_INT); 
  $statement->execute();
