@@ -1,5 +1,5 @@
 <?php 
-$select_mediaimages_sql = "select media.media_id, media_title, file_type, file_path, file_thumbnail, file_name, date_uploaded FROM media where file_type='image/jpeg' OR file_type='image/png'";
+$select_mediaimages_sql = "select media.id, title, type, filepath, thumb, filename, date FROM media where type='image/jpeg' OR type='image/png'";
 $select_mediaimages_result = $dbHost->prepare($select_mediaimages_sql);
 $select_mediaimages_result->execute();
 $select_mediaimages_result->setFetchMode(PDO::FETCH_ASSOC);

@@ -5,7 +5,7 @@ require_once('authenticate.php');
 function get_articles($connection) {
   $results = new stdClass();   
   $results->connection = $connection;                                // $results is object
-  $results->query = "select article_id, title, content, forename, surname, user.id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.id   ";
+  $results->query = "select article.id, title, content, forename, surname, user.id, posted, published, role_id FROM article left outer JOIN user ON article.user_id = user.id   ";
   $statement = $connection->prepare($results->query);                   // Prepare  
   $statement->execute();
   $results->count = $statement->rowCount(); 
@@ -66,7 +66,7 @@ include '../../includes/header.php'?>
                 $from = (int)( filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT)  ? $_GET['from'] : 0 );
                // $show  = (int) $show;  // In superglobal as string - cast to integer
                // $from = (int) $from;   // In superglobal as string - cast to integer
-                $query = "select article_id, title, content, forename, surname, user.id, date_posted, date_published, role_id FROM article left outer JOIN user ON article.user_id = user.id ";
+                $query = "select article.id, title, content, forename, surname, user.id, posted, published, role_id FROM article left outer JOIN user ON article.user_id = user.id ";
                 $paramslist = array();
 
                 $results = get_pages(get_records($dbHost, $query, $paramslist), $query, $paramslist, $show,$from); 
@@ -74,7 +74,7 @@ include '../../includes/header.php'?>
  // $results = get_records($dbHost, $query, $paramslist); 
                 $pagination = create_pagination($results->count,$show,$from);
    ?>
-<button onclick="window.location.href='add-article.php';">Add article</button>
+<button onclick="window.location.href='add-article.php';">Add article</button>&nbsp;<button onclick="window.location.href='insert_article_foreign.php';">Add article with foreign key test</button>
 <table class="table table-hover">
  <thead>
   <tr><th>Title</th><th>Author</th><th>Date Posted</th>
@@ -83,7 +83,7 @@ include '../../includes/header.php'?>
  <tbody>
  <?php echo "<tr><td>".$pagination ."</td><tr>";
   foreach ($results->matches as $result) { ?>
-  <tr><td><a href="edit.php?id=<?= $result->article_id; ?>">
+  <tr><td><a href="edit.php?id=<?= $result->id; ?>">
   <?= $result->title ?></a></td>
 
   <td>
@@ -93,16 +93,16 @@ include '../../includes/header.php'?>
     <?= $result->forename;?><?php if ($_SESSION["role"]=="9") { ?></a> <?php } ?>
   </td>
 
-  <td><?= $result->date_posted; ?></td>
+  <td><?= $result->posted; ?></td>
   
-  <?php if ($result->date_published !=null) { ?>
-    <td><?= $result->date_published; ?></td>
+  <?php if ($result->published) { ?>
+    <td><?= $result->published; ?></td>
      <?php } else { ?>
     <td>Not Published</td>
     <?php } ?>
  
-  <td><a href="publish.php?id=<?= $result->article_id;  if ($result->date_published!=null) { echo "&publish=delete";} ?>">    
-  <?php if ($result->date_published==null) { ?>
+  <td><a href="publish.php?id=<?= $result->id;  if ($result->published!=null) { echo "&publish=delete";} ?>">    
+  <?php if ($result->published==null) { ?>
   <span class="glyphicon glyphicon-plus"></span>
   <?php } else { ?>
   <span class="glyphicon glyphicon-remove red"></span>
@@ -111,7 +111,7 @@ include '../../includes/header.php'?>
 
 
    <?php if ($_SESSION["role"]=="9") { ?>
-  <td><a onclick="javascript:return confirm(&#39;Do you  really want to delete item <?= $result->article_id;?> ? &#39;);" href="delete.php?id=<?= $result->article_id;?>">
+  <td><a onclick="javascript:return confirm(&#39;Do you  really want to delete item <?= $result->id;?> ? &#39;);" href="delete.php?id=<?= $result->id;?>">
   <span class="glyphicon glyphicon-remove red"></span></a>
   </td>
 <?php } ?>
