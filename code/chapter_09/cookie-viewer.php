@@ -20,39 +20,46 @@
     document.cookie = name+"="+value+expires+"";
 }
 
-createCookie("thereYouGo","1234", 24);
+
             </script>
         <?php
+       // set default timezone
+//date_default_timezone_set('America/Chicago'); // CDT
 
-        $page=new stdClass();
-$page->name='Home';
-$page->status=1;
-        setcookie("objec",$page,time()+604800);   
+$current_date = date('d/m/Y == H:i:s');
+            echo $current_date."<br/>";
+       
 
-         if (isset($_COOKIE["hereNow"]))
+         if (isset($_COOKIE["Cookie1"]))
         {
-            setcookie("hereNow","9000");
+            echo "Cookie1<br/>";
         }
 
-        if (isset($_COOKIE["thereYouGo"]))
+        if (isset($_COOKIE["Cookie2"]))
         {
-           echo "Hello".$_COOKIE["thereYouGo"];
+           echo "Cookie2<br/>";
         }
-        if (isset($_COOKIE["full_name"]))
+
+           if (isset($_COOKIE["Cookie3"]))
         {
-            echo "<br/>Hello ".$_REQUEST["full_name"].", welcome to our site";
+            echo "Cookie3<br/>";
         }
-        else
+
+        if (isset($_COOKIE["Cookie4"]))
         {
-            if (!empty($_REQUEST["full_name"]))
-            {
-	            echo "<br/>Hello ".$_REQUEST["full_name"].", welcome to our site";
-            }
-            if (isset($_POST["remember_me"]))
-            {
-                setcookie("UserName",$_REQUEST["full_name"],time()+604800);   
-            }
+           echo "Cookie4<br/>";
         }
+
+          if (isset($_COOKIE["SameName"]))
+        {
+           echo "SameName" .  $_COOKIE["SameName"]."<br/>";
+        }
+
+         if (isset($_COOKIE["JavascriptTomorrowExpire"]))
+        {
+            echo "JavascriptTomorrowExpire<br/>";
+        }
+       
         ?>
     </div>
 </div>

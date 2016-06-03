@@ -211,6 +211,8 @@
     <Compile Include="code\chapter_08\file_read.php" />
     <Compile Include="code\chapter_08\file_upload.php" />
     <Compile Include="code\chapter_08\file_upload_improved.php" />
+    <Compile Include="code\chapter_09\JSPHP-cookies.php" />
+    <Compile Include="code\chapter_09\cookie-experiments2.php" />
     <Compile Include="code\chapter_10\exception.php" />
     <Compile Include="code\chapter_10\exceptions.php" />
     <Compile Include="code\chapter_10\exception_handler.php" />

@@ -20,39 +20,35 @@
     document.cookie = name+"="+value+expires+"";
 }
 
-createCookie("thereYouGo","1234", 24);
+createCookie("JavascriptTomorrowExpire","1234", 0.5);
             </script>
         <?php
 
-        $page=new stdClass();
-$page->name='Home';
-$page->status=1;
-        setcookie("objec",$page,time()+604800);   
+              setcookie("tomorrowExpireCodePath","3333", time() + (43200* 1),'code/','test1.phpandmysqlbook.com');
+                setcookie("tomorrowExpireNoPath","5555",time() + (43200* 1),'test1.phpandmysqlbook.com');
+                      setcookie("tomorrowExpireNoExpiry","5535",time() + (1800* 1));
+                     setcookie("tomorrowExpireRootPath","5535",time() + (43200* 1),'/','test1.phpandmysqlbook.com');
 
-         if (isset($_COOKIE["hereNow"]))
+         if (isset($_COOKIE["tomorrowExpireCodePath"]))
         {
-            setcookie("hereNow","9000");
+            echo "tomorrowExpireCodePath";
         }
 
-        if (isset($_COOKIE["thereYouGo"]))
+        if (isset($_COOKIE["tomorrowExpireNoPath"]))
         {
-           echo "Hello".$_COOKIE["thereYouGo"];
+           echo "tomorrowExpireNoPath";
         }
-        if (isset($_COOKIE["full_name"]))
+
+           if (isset($_COOKIE["tomorrowExpireCodePath"]))
         {
-            echo "<br/>Hello ".$_REQUEST["full_name"].", welcome to our site";
+            echo "tomorrowExpireNoExpiry";
         }
-        else
+
+        if (isset($_COOKIE["tomorrowExpireNoPath"]))
         {
-            if (!empty($_REQUEST["full_name"]))
-            {
-	            echo "<br/>Hello ".$_REQUEST["full_name"].", welcome to our site";
-            }
-            if (isset($_POST["remember_me"]))
-            {
-                setcookie("UserName",$_REQUEST["full_name"],time()+604800);   
-            }
+           echo "tomorrowExpireRootPath";
         }
+       
         ?>
     </div>
 </div>

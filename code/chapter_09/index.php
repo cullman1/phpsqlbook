@@ -6,6 +6,8 @@
       <li><a href="sendmail.php">Test Sendmail Example</a></li>
       <li><a href="register.php">Register and Confirm Email Example</a></li>
       <li><a href="setcookie.php">Set Cookie Remember Me Example</a></li>
+       <li><a href="cookie-experiments.php">Cookie Experiments</a></li>
+         <li><a href="cookie-experiments2.php">Domain cookie Experiments</a></li>
       <li><a href="login/login.php">Login User Example</a></li>
       <li><a href="admin/index.php">Central Admin Page</a></li>
       <li><a href="register4.php">Password Policy Example</a></li>
