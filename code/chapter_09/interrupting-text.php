@@ -1,8 +1,9 @@
-<?php setcookie("Cookie1","111", time() + (60* 1),'code/','test1.phpandmysqlbook.com');
+<?php echo "Interrupting text"; 
+setcookie("Cookie1","111", time() + (60* 1),'code/','test1.phpandmysqlbook.com');
                 setcookie("Cookie2","222",time() + (60* 1),'test1.phpandmysqlbook.com');
                    setcookie("Cookie3","333",time() + (60* 1));
                      setcookie("Cookie4","444",time() + (60* 1),'/','test1.phpandmysqlbook.com');
-                     setcookie("Cookie5","555");
+
         echo "Cookies set";
        
         ?>

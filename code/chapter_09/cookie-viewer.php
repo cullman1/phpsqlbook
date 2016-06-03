@@ -50,6 +50,11 @@ $current_date = date('d/m/Y == H:i:s');
            echo "Cookie4<br/>";
         }
 
+           if (isset($_COOKIE["Cookie5"]))
+        {
+           echo "Cookie5 ".$_COOKIE["Cookie5"]."<br/>";
+        }
+
           if (isset($_COOKIE["SameName"]))
         {
            echo "SameName" .  $_COOKIE["SameName"]."<br/>";
