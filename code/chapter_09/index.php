@@ -10,8 +10,12 @@
               <li><a href="cookie-experiments1.php">Cookie Experiments with whitespace at beginning of program</a></li>
                 <li><a href="interrupting-text.php">Adding text before sending cookie</a></li>
          <li><a href="JSPHP-cookies.php">Javascript and PHP cookie Experiments</a></li>
-         <li><a href="cookie-experiments2.php">Domain cookie Experiments</a></li>
+         <li><a href="cookie-experiments2.php">Domain cookie Experiments</a></li><br/>
+                   <li><a href="cookie-set.php">Cookie setter</a></li>
           <li><a href="cookie-viewer.php">Cookie viewer</a></li>
+          <br/>
+           <li><a href="cookie-color-changer.php">Cookie Color Changer</a></li>
+
           <li><a href="session.php">Session Experiements</a></li>
       <li><a href="login/login.php">Login User Example</a></li>
       <li><a href="admin/index.php">Central Admin Page</a></li>
