@@ -335,6 +335,7 @@
     <Compile Include="code\chapter_09\index.php" />
     <Compile Include="code\chapter_09\login\login.php" />
     <Compile Include="code\chapter_09\login\logout.php" />
+    <Compile Include="code\chapter_09\sessions_new.php" />
     <Compile Include="code\chapter_10\articles_list.php" />
     <Compile Include="code\chapter_10\content.php" />
     <Compile Include="code\chapter_10\footer.php" />

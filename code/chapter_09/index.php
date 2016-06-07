@@ -16,7 +16,9 @@
           <br/>
            <li><a href="cookie-color-changer.php">Cookie Color Changer</a></li>
 
-          <li><a href="session.php">Session Experiements</a></li>
+          <li><a href="session.php">Session Experiments</a></li>
+        
+          <li><a href="sessions_new.php">Session Experiments 2</a></li>
       <li><a href="login/login.php">Login User Example</a></li>
       <li><a href="admin/index.php">Central Admin Page</a></li>
       <li><a href="register4.php">Password Policy Example</a></li>
