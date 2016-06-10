@@ -1,5 +1,5 @@
 <style>
 body {
- background:<?=$_POST["changer"] ?>;
+ background:<?=$color ?>;
 } 
 </style>

@@ -14,8 +14,9 @@
                    <li><a href="cookie-set.php">Cookie setter</a></li>
           <li><a href="cookie-viewer.php">Cookie viewer</a></li>
           <br/>
-           <li><a href="cookie-color-changer.php">Cookie Color Changer</a></li>
-
+           <li><a href="cookie-preferences.php">Cookie Example</a></li>
+            <li><a href="session-preferences.php">Session Example</a></li>
+             <br/>
           <li><a href="session.php">Session Experiments</a></li>
         
           <li><a href="sessions_new.php">Session Experiments 2</a></li>
