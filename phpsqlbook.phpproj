@@ -144,6 +144,7 @@
     <Compile Include="code\chapter_09\cookie-services.php" />
     <Compile Include="code\chapter_09\session-include.php" />
     <Compile Include="code\chapter_09\cookie-include.php" />
+    <Compile Include="code\chapter_09\login-menu.php" />
     <Compile Include="code\chapter_09\session-services.php" />
     <Compile Include="code\chapter_09\admin\publish.php" />
     <Compile Include="admin\submit-user.php" />
@@ -252,7 +253,7 @@
     <Compile Include="code\chapter_09\links.php" />
     <Compile Include="code\chapter_09\login-admin2.php" />
     <Compile Include="code\chapter_09\login-user.php" />
-    <Compile Include="code\chapter_09\login\login.php" />
+    <Compile Include="code\chapter_09\login.php" />
     <Compile Include="code\chapter_08\login\login.php" />
     <Compile Include="code\chapter_09\logout.php" />
     <Compile Include="code\chapter_09\register.php" />

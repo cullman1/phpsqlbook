@@ -1,41 +1,43 @@
 <?php
 session_start();
 
-function check_array($currentpage) {
-        $viewed = $_SESSION["viewed"];
-        foreach($viewed as $value=>$row) {
-            if ($row['url'] == $currentpage) {
-                 unset($viewed[$value]);
-            }
-        }  
-        return $viewed;
+$filename      = basename($_SERVER["PHP_SELF"]);
+$title         = str_replace("session-","",$filename);
+$title         = str_replace(".php","",$title);
+$current_page  = array("filename"=>$filename, "title"=>$title);
+
+function create_last_viewed($current_page) {
+  $recently_viewed = array();
+  array_push($recently_viewed, $current_page);
+	return $recently_viewed;
 }
 
-function add_current_page($currentpage, $currenttitle) {
-    $current = array("url"=>$currentpage,"title"=>$currenttitle);
-    if (isset($_SESSION["viewed"])) {
-        //There is an array
-        if (sizeof($_SESSION["viewed"]<4)) {
-            //Less then 3 items so we need to add one
-             array_push($_SESSION['viewed'],$current);
-        } else {
-            //3 items so remove the oldest and add one
-             array_shift($_SESSION['viewed']);
-             array_push($_SESSION['viewed'],$current);
-        }
-    } else {
-        //There is no array so create an array and add item.
-        $_SESSION['viewed'] = array();
-        array_push($_SESSION['viewed'],$current);
+function remove_existing_page($current_page, $recently_viewed) {
+  foreach($recently_viewed as $value=>$page) {           // loop through items and remove it if current one remove it
+    if ($page['filename'] == $current_page['filename']) {
+      unset($recently_viewed[$value]);
     }
+  }  
+	return $recently_viewed;
 }
 
-$page =  basename($_SERVER["PHP_SELF"]);
-$pagename = explode(".", $page);
-$title =  str_replace("session-","",$pagename[0]);
-$title = ucwords($title);
-if (isset($_SESSION["viewed"])) { 
-   $_SESSION["viewed"]=  check_array($page);
+function add_current_page($current_page, $recently_viewed) {
+  if ( sizeof($recently_viewed < 4 ) ) { //Less then 3 items so we need to add one
+    array_push($recently_viewed, $current_page);
+  } else {   //3 items so remove the oldest and add one
+    array_shift($recently_viewed);
+    array_push($recently_viewed, $current_page);
+  }
+	return $recently_viewed;
 }
-add_current_page($page, $title);
+
+if (isset($_SESSION["recently_viewed"])) { 
+$recently_viewed = $_SESSION["recently_viewed"]; 
+   $recently_viewed = remove_existing_page($current_page, $recently_viewed);   
+   $recently_viewed = add_current_page($current_page, $recently_viewed);  
+	 $_SESSION['recently_viewed'] = $recently_viewed;
+} else {
+   $_SESSION['recently_viewed'] = create_last_viewed($current_page);
+}
+
 ?>

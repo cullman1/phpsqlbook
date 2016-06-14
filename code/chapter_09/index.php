@@ -16,11 +16,10 @@
           <br/>
            <li><a href="cookie-preferences.php">Cookie Example</a></li>
             <li><a href="session-preferences.php">Session Example</a></li>
+               <li><a href="login.php">Login User Example</a></li>
              <br/>
-          <li><a href="session.php">Session Experiments</a></li>
-        
-          <li><a href="sessions_new.php">Session Experiments 2</a></li>
-      <li><a href="login/login.php">Login User Example</a></li>
+
+   
       <li><a href="admin/index.php">Central Admin Page</a></li>
       <li><a href="register4.php">Password Policy Example</a></li>
       <li><a href="hash.php">Hashing Algorithms Example</a></li>
