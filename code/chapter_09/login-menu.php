@@ -1,7 +1,10 @@
 <head>
 <script src="https://use.typekit.net/goi2qmp.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
-<title><?=$title ?></title>
+<title>Login</title>
+<style>
+.success {color:red;}
+</style>
 </head>
 <div  style="padding: 10px;float:left;">
     <a class="tk-proxima-nova" href="session-home.php">Home</a> | <a class="tk-proxima-nova" href="session-about.php">About</a> | <a class="tk-proxima-nova" href="session-services.php">Services</a>
@@ -12,6 +15,7 @@
      <?php } else { ?>
     <a class="tk-proxima-nova" href="session-preferences.php"><?= $_SESSION["forename"]; ?></a> 
 		<img src="<?= $_SESSION['image']; ?>"  />
+        <?php }  ?>
 </div>
 <div style="clear:both;"></div>
 <hr/>

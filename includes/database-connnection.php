@@ -1,21 +1,16 @@
 <?php
-/* Set up variables
-$serverName   = "localhost:8889";
-$userName     = "phpbook";
-$password     = "testuser"; 
-$dbName       = "phpbook1";
- */
 /* Set up variables */
-$serverName   = "172.99.96.46";
-$userName     = "387732_phpbook1";
-$password     = "F8sk3j32j2fslsd0"; 
-$dbName       = "387732_phpbook1";
+$serverName   = "mariadb-087.wc1.dfw3.stabletransit.com";
+$userName     = "387732_testuser3";
+$password     = "phpbo^ok3belonG_3r"; 
+$dbName       = "387732_phpbook3";
 
 /* Connect using PDO */
 try {
   $connection = new PDO("mysql:host=$serverName;dbname=$dbName", $userName, $password);
   $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-} catch (PDOException $error) {
+}
+catch (PDOException $error) {
   echo 'Error message: ' . $error->getMessage() . '<br>';
   echo 'File name: ' . $error->getFile() . '<br>';
   echo 'Line number: ' . $error->getLine() . '<br>';

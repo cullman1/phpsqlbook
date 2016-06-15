@@ -1,6 +1,9 @@
 <?php 
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 require_once('../includes/db_config.php');
 require_once('login-menu.php');
+
 $form_error = array('email' => '', 'password' =>'', 'result'=>'');
 
 function check_login($connection, $form_error) {
@@ -59,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   <h1>Please login:</h1>
   <?=$form_error['result']; ?>
   <label for="emailAddress">Email</label>
-  <input type="text" name="email" placeholder="Email"> <?=$form_error['email']; ?><br><br>
+  <input type="text" name="email" placeholder="Email" value=<?= $email; ?> <?=$form_error['email']; ?><br><br>
   <label for="password">Password</label>
   <input type="password" name="password" placeholder="Password"> <?= $form_error['password']; ?><br><br>
   <button type="submit">Login</button>    
