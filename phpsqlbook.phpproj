@@ -142,6 +142,8 @@
     <Compile Include="code\chapter_09\cookie-home.php" />
     <Compile Include="code\chapter_09\recently-viewed.php" />
     <Compile Include="code\chapter_09\cookie-services.php" />
+    <Compile Include="code\chapter_09\register-user2.php" />
+    <Compile Include="code\chapter_09\register-user3.php" />
     <Compile Include="code\chapter_09\register-user.php" />
     <Compile Include="code\chapter_09\session-include.php" />
     <Compile Include="code\chapter_09\cookie-include.php" />

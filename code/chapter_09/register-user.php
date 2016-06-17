@@ -1,6 +1,10 @@
-<?php  require_once('includes/database_connection.php'); 
-include 'login-menu.php';
+<?php  
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
+require_once('includes/database_connection.php'); 
+include ('login-menu.php');
 $form_error = array('email' => '', 'password' =>'', 'forename'=>'', 'surname'=>'', 'confirm'=>'','result'=>'');
+$form_value = array('email' => '', 'password' =>'', 'forename'=>'', 'surname'=>'');
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $forename = filter_input(INPUT_POST, 'forename');
 $surname = filter_input(INPUT_POST, 'surname');
@@ -68,19 +72,19 @@ function insert_user($firstName, $surname, $password, $email) {
   if (($email) && (empty($test_error))) {
     $form_error = register($forename, $surname,$password,$email, $form_error);
   } else { ?>
-   <form id="form1" class="indent" style="width:450px;" method="post" action="register-user.php">
+   <form id="form1" class="indent" style="width:450px;" method="post" action="register-user.php" autocomplete="off">
     <div class="tk-proxima-nova" style="padding-left:10px">
      <?= $form_error["result"]; ?><br/>    
            <label for="forename">First name</label>
-           <input type="text" id="forename" name="forename" placeholder="First name"><?= $form_error["forename"]; ?><br/><br/>
+           <input type="text" id="forename" name="forename" placeholder="First name" value="<?= $form_value["forename"]; ?>"><?= $form_error["forename"]; ?><br/><br/>
            <label for="surname">Last name</label>
-           <input type="text" id="surname"  name="surname" placeholder="Last name"><?= $form_error["surname"]; ?><br/><br/>
+           <input type="text" id="surname"  name="surname" placeholder="Last name" value="<?= $form_value["surname"]; ?>"><?= $form_error["surname"]; ?><br/><br/>
             <label for="email">Email address</label>
-           <input type="email" id="email" name="email" placeholder="Enter email"><?= $form_error["email"]; ?><br/><br/>
+           <input type="email" id="email" name="email" placeholder="Enter email" value="<?= $form_value["email"]; ?>"><?= $form_error["email"]; ?><br/><br/>
            <label for="password">Password</label>
-           <input type="password"  name="password" placeholder="Password"><?= $form_error["password"]; ?><br/><br/>  
+           <input type="password"  name="password" placeholder="Password" autocomplete="new-password"><?= $form_error["password"]; ?><br/><br/>  
            <label for="confirm">Confirm Password</label>
-           <input type="confirm"  name="confirm" placeholder="Confirm Password"><?= $form_error["confirm"]; ?><br/><br/>  
+           <input type="password"  name="confirm" placeholder="Confirm Password" autocomplete="new-password"><?= $form_error["confirm"]; ?><br/><br/>  
            <button type="submit" class="btn btn-default">Register</button>
     </div>
   </form>
