@@ -39,20 +39,41 @@ function get_user_by_email($email) {
    return ($user ? $user : false);
 }
  
-function add_user($forename, $surname, $password, $email) {     
-  $query = "INSERT INTO cms.user (forename, surname, email, password, role_id) VALUES ( :forename, :surname, :email, :password, 2)";
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(":forename", $forename );
-  $statement->bindParam(":surname", $surname );
-  $statement->bindParam(":email",$email);
-  $statement->bindParam(":password",$password);
-  $result = $statement->execute();
-  if( $result == true ) {     
-      return true;
-  } else {
-      return $statement->errorCode();
-  }	   
- } 
+	function hash_password($password) {
+									$pwdToken = "abD!y1" . $password . "d!@gg3";
+									$hash = password_hash($pwdToken); 
+									return $hash;
+							}
+
+function add_user($forename, $surname, $password, $email) {    
+  							$query = "INSERT INTO cms.user (forename, surname, email, role_id) VALUES ( :forename, :surname, :email ,2)";
+  							$statement = $GLOBALS['connection']->prepare($query);
+  							$statement->bindParam(":forename", $forename );
+  							$statement->bindParam(":surname", $surname );
+  							$statement->bindParam(":email",$email);
+  							$result = $statement->execute();
+                            $id = $GLOBALS['connection']->lastInsertId();
+  							if( $result == true ) {     
+      						    add_password($id, $password);
+                                return true;
+  							} else {
+      						    return $statement->errorCode();
+  							}	   
+						  }
+
+                          function add_password($passwordid, $password) {    
+						    $hash = hash_password($password);
+  							$query = "INSERT INTO cms.password (id, hash) VALUES ( :passwordid, :password)";
+  							$statement = $GLOBALS['connection']->prepare($query);
+  							$statement->bindParam(":passwordid", $passwordid );
+  							$statement->bindParam(":password", $hash );
+  							$result = $statement->execute();
+  							if( $result == true ) {     
+      						return true;
+  							} else {
+      						return $statement->errorCode();
+  							}	   
+						  }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $valid = validate_form($forename,$surname,$email,$password,$confirm, $valid);
@@ -75,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <div class='error indent'><?= $message; ?></div>
 <?php if ($show_form == true) { ?>
-  <form id="form1" class="indent" method="post" action="register-user3.php">
+  <form id="form1" class="indent" method="post" action="register-password.php">
     <label for="forename">First name
         <input type="text" id="forename" name="forename" placeholder="First name" value="<?=$forename ?>" /> 
         <div class='error'><?= $valid["forename"]; ?></div>

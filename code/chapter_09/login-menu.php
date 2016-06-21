@@ -4,6 +4,9 @@
 <title>Login</title>
 <style>
 .success {color:red;}
+.error {color:red;}
+label {display:block;padding-bottom:10px;}
+.indent {padding-left:10px; padding-bottom:10px;}
 </style>
 </head>
 <div  style="padding: 10px;float:left;">

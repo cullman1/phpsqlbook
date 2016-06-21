@@ -17,7 +17,9 @@
            <li><a href="cookie-preferences.php">Cookie Example</a></li>
             <li><a href="session-preferences.php">Session Example</a></li>
                <li><a href="login.php">Login User Example</a></li>
-                              <li><a href="register-user2.php">Register User Example</a></li>
+                              <li><a href="register-user3.php">Register User Example</a></li>
+                                    <li><a href="login-password.php">Login User Example - Separate table</a></li>
+                                        <li><a href="register-password.php">Register User Example - Separate table</a></li>
              <br/>
 
    

@@ -51,6 +51,7 @@ function insert_user($firstName, $surname, $password, $email) {
     if ($password != $confirm) {
         $form_error["confirm"] = "<div class='success'>Passwords don't match!</div>";
     } 
+       echo "in function".$form_error["surname"] ."<br/>";
     return $form_error;
   } 
 
@@ -67,6 +68,7 @@ function insert_user($firstName, $surname, $password, $email) {
   
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $form_error = validate_form($form_error, $forename, $surname, $password, $confirm, $email);
+          echo "out of function".$form_error["surname"] ."<br/>";
   } 
   $test_error = array_filter($form_error);
   if (($email) && (empty($test_error))) {
