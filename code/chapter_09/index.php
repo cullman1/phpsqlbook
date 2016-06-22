@@ -18,8 +18,9 @@
             <li><a href="session-preferences.php">Session Example</a></li>
                <li><a href="login.php">Login User Example</a></li>
                               <li><a href="register-user3.php">Register User Example</a></li>
-                                    <li><a href="login-password.php">Login User Example - Separate table</a></li>
-                                        <li><a href="register-password.php">Register User Example - Separate table</a></li>
+                                    <li><a href="login-password.php">Login User Example - Separate password table</a></li>
+                                        <li><a href="register-password.php">Register User Example - Separate password table</a></li>
+            <li><a href="login-role.php">Login User Example - with roles</a></li>
              <br/>
 
    

@@ -2,7 +2,7 @@
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
 require_once('includes/database_connection.php'); 
-include ('login-menu.php');
+
 $show_form = true;
 $message = '';
 $valid = array('forename' => '', 'surname' =>'', 'email' => '', 'password' => '', 'confirm'=>'' );
@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } ?>
 
 <body>
+    <? require_once('login-menu.php'); ?>
 <div class='error indent'><?= $message; ?></div>
 <?php if ($show_form == true) { ?>
   <form id="form1" class="indent" method="post" action="register-user3.php">

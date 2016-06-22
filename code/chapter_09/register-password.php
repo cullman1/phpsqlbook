@@ -2,7 +2,7 @@
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
 require_once('includes/database_connection.php'); 
-include ('login-menu.php');
+
 $show_form = true;
 $message = '';
 $valid = array('forename' => '', 'surname' =>'', 'email' => '', 'password' => '', 'confirm'=>'' );
@@ -31,7 +31,7 @@ function validate_form($forename,$surname,$email,$password,$confirm, $valid){
 }
 
 function get_user_by_email($email) {
-   $query = "SELECT * from cms.user WHERE email = :email";
+   $query = "SELECT * from user WHERE email = :email";
    $statement = $GLOBALS['connection']->prepare($query);
    $statement->bindParam(":email", $email);
    $statement->execute();
@@ -40,13 +40,13 @@ function get_user_by_email($email) {
 }
  
 	function hash_password($password) {
-									$pwdToken = "abD!y1" . $password . "d!@gg3";
-									$hash = password_hash($pwdToken); 
-									return $hash;
+									$pwdToken = sha1("abD!y1" . $password . "d!@gg3");
+									//$hash = password_hash($pwdToken); 
+									return $pwdToken;
 							}
 
 function add_user($forename, $surname, $password, $email) {    
-  							$query = "INSERT INTO cms.user (forename, surname, email, role_id) VALUES ( :forename, :surname, :email ,2)";
+  							$query = "INSERT INTO user (forename, surname, email, role_id) VALUES ( :forename, :surname, :email ,2)";
   							$statement = $GLOBALS['connection']->prepare($query);
   							$statement->bindParam(":forename", $forename );
   							$statement->bindParam(":surname", $surname );
@@ -63,7 +63,7 @@ function add_user($forename, $surname, $password, $email) {
 
                           function add_password($passwordid, $password) {    
 						    $hash = hash_password($password);
-  							$query = "INSERT INTO cms.password (id, hash) VALUES ( :passwordid, :password)";
+  							$query = "INSERT INTO password (id, hash) VALUES ( :passwordid, :password)";
   							$statement = $GLOBALS['connection']->prepare($query);
   							$statement->bindParam(":passwordid", $passwordid );
   							$statement->bindParam(":password", $hash );
@@ -94,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } ?>
 
 <body>
+    <? require_once('login-menu.php'); ?>
 <div class='error indent'><?= $message; ?></div>
 <?php if ($show_form == true) { ?>
   <form id="form1" class="indent" method="post" action="register-password.php">

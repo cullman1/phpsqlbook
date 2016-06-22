@@ -2,7 +2,6 @@
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
 require_once('../includes/db_config.php');
-require_once('login-menu.php');
 
 $form_error = array('email' => '', 'password' =>'', 'result'=>'');
 
@@ -57,6 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <title>Login</title>
 </head>
+<? require_once('login-menu.php'); ?>
 <div class="tk-proxima-nova" style="padding-left:10px;">
 <form method="post" action="login.php">
   <h1>Please login:</h1>

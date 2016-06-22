@@ -333,6 +333,8 @@
     <Compile Include="code\chapter_09\includes\submit-like.php" />
     <Compile Include="code\chapter_09\includes\table.php" />
     <Compile Include="code\chapter_09\index.php" />
+    <Compile Include="code\chapter_09\login-password.php" />
+    <Compile Include="code\chapter_09\login-role.php" />
     <Compile Include="code\chapter_09\login\login.php" />
     <Compile Include="code\chapter_09\login\logout.php" />
     <Compile Include="code\chapter_09\sessions_new.php" />
