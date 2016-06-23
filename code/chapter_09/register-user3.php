@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } ?>
 
 <body>
-    <? require_once('login-menu.php'); ?>
+    <?php require_once('login-menu.php'); ?>
 <div class='error indent'><?= $message; ?></div>
 <?php if ($show_form == true) { ?>
   <form id="form1" class="indent" method="post" action="register-user3.php">

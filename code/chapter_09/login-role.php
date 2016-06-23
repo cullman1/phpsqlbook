@@ -33,7 +33,6 @@ function create_session($user) {
    $_SESSION['forename'] = $user->forename;
    $_SESSION['image'] =($user->image ? $user->image : "default.jpg");
    $_SESSION['tasks'] = get_tasks_by_role($user->role_id);
-   //print_r ($_SESSION['tasks']);
 }
 
 function get_tasks_by_role($roleid) {
@@ -43,7 +42,7 @@ function get_tasks_by_role($roleid) {
     $statement = $GLOBALS['connection']->prepare($query);
     $statement->bindParam(':roleid',$roleid);
     $statement->execute();
-    $task = $statement->fetch(PDO::FETCH_ASSOC);
+    $task = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $task;
 }
 
@@ -64,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   
     if ($user) {
       create_session($user);
-      header('Location: login-home.php');
+      header('Location: article-list-role.php');
     } else {
     $message = 'Login failed';
     }
@@ -76,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <title>Login</title>
 </head>
-<? require_once('login-menu.php'); ?>
+<?php require_once('login-menu.php'); ?>
 <div class="tk-proxima-nova" style="padding-left:10px;">
 <form method="post" action="login-role.php">
   <div class="error"><?=$message; ?></div>

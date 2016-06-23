@@ -96,7 +96,7 @@ function get_article_and_thumb_by_id($id) {
 }
 function get_article_user_category_and_thumb_by_id($id) {  
   $query = 'SELECT article.*, media.filepath, media.alt, 
-       user.forename AS author, user.image,
+       user.name AS author, user.picture,
        category.name FROM article
     LEFT JOIN media ON article.media_id = media.id
     LEFT JOIN user ON article.user_id = user.id
@@ -615,7 +615,7 @@ function get_author_selectbox($id) {
     if ($author['id'] == $id) {
       $selectbox .= ' selected ';
     }
-    $selectbox .= '>' . $author['forename'] . '</option>';
+    $selectbox .= '>' . $author['name'] . '</option>';
   }
   $selectbox .= '</select>';
   return $selectbox;

@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <title>Login</title>
 </head>
-<? require_once('login-menu.php'); ?>
+<?php require_once('login-menu.php'); ?>
 <div class="tk-proxima-nova" style="padding-left:10px;">
 <form method="post" action="login-password.php">
   <div class="error"><?=$message; ?></div>

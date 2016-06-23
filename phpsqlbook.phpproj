@@ -137,9 +137,11 @@
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
+    <Compile Include="code\chapter_09\article-edit.php" />
     <Compile Include="code\chapter_09\cookie-about.php" />
     <Compile Include="code\chapter_09\cookie-menu.php" />
     <Compile Include="code\chapter_09\cookie-home.php" />
+    <Compile Include="code\chapter_09\functions.php" />
     <Compile Include="code\chapter_09\includes\add-comment-text.php" />
     <Compile Include="code\chapter_09\includes\add-comment.php" />
     <Compile Include="code\chapter_09\includes\comments-control.php" />
