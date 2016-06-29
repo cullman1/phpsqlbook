@@ -3,6 +3,7 @@ require_once('includes/database_connection.php');
 require_once('includes/functions.php'); 
 session_start();
 $message = '';
+$publish = '';
 $article_list  = get_article_list();
 $category_list = get_category_list_array(); 
 
@@ -35,11 +36,12 @@ include 'includes/header.php';
   <tr>
     <td><img src="../<?=$article->filepath;?>" alt="<?= $article->alt; ?>" /></td>
     <td><?=$article->title;?></td>
-    <td><?=convert_date($article->published);?></td>
+    <td><?=$article->published;?></td>
     <td><?=$article->name;?></td>
    <?php if (find_task("edit article")) { ?> <td><a href="article-edit.php?action=edit&amp;article_id=<?=$article->id;?>" class="button">edit</a></td>  <?php } ?>
    <?php if (find_task("delete article")) { ?>  <td><a href="article-edit.php?action=delete&amp;article_id=<?=$article->id;?>" class="button confirmation">delete</a></td><?php } ?>
-    <?php if (find_task("publish article")) { ?>  <td><a href="article-publish.php?article_id=<?=$article->id;?>" class="button confirmation">publish</a></td><?php } ?>
+   <?php if (is_null($article->published)) { $publish="publish"; } else { $publish="unpublish"; } ?>    
+   <?php if (find_task("publish article")) { ?>  <td><a href="article-publish.php?action=<?= $publish; ?>&article_id=<?=$article->id;?>" class="button confirmation"><?= $publish; ?></a></td><?php } ?>
   </tr>
     <?php } ?>
 </table>

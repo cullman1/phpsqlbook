@@ -3,9 +3,9 @@ require_once('../includes/mail1.php');
      function send_email($email) {  
  
   $to = $email; 
-  $subject = "Reset Password Link";
+  $subject = "Local Reset Password Link";
   $message = "The link to reset your password is ";
-  $message.="<a href='http://test1.phpandmysqlbook.com/login/reset-password.php?email=".$email."&token=".sha1($email.date('Y/m/d'))."'>here<a>"; 
+  $message.="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?email=".$email."&token=".sha1($email.date('Y/m/d'))."'>here<a>"; 
   $headers = "MIME-Version: 1.0"."\r\n";
   $headers.= "Content-type:text/html;charset=UTF-8"."\r\n";
   $headers.= "From: CMS Admin<admin@deciphered.com>"."\r\n"; 

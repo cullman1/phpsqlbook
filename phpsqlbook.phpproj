@@ -138,6 +138,7 @@
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
     <Compile Include="code\chapter_09\article-edit.php" />
+    <Compile Include="code\chapter_09\article-publish.php" />
     <Compile Include="code\chapter_09\cookie-about.php" />
     <Compile Include="code\chapter_09\cookie-menu.php" />
     <Compile Include="code\chapter_09\cookie-home.php" />
@@ -176,6 +177,7 @@
     <Compile Include="code\chapter_09\login-password.php" />
     <Compile Include="code\chapter_09\recently-viewed.php" />
     <Compile Include="code\chapter_09\cookie-services.php" />
+    <Compile Include="code\chapter_09\register-password-confirm.php" />
     <Compile Include="code\chapter_09\register-user2.php" />
     <Compile Include="code\chapter_09\register-password.php" />
     <Compile Include="code\chapter_09\register-user3.php" />
@@ -297,7 +299,7 @@
     <Compile Include="code\chapter_09\logout.php" />
     <Compile Include="code\chapter_09\register.php" />
     <Compile Include="code\chapter_09\register4.php" />
-    <Compile Include="code\chapter_09\reset-password.php" />
+    <Compile Include="code\chapter_09\reset-password-new.php" />
     <Compile Include="code\chapter_09\sendmail.php" />
     <Compile Include="code\chapter_09\setcookie.php" />
     <Compile Include="code\chapter_09\smtp-test.php" />

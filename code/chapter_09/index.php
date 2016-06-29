@@ -21,6 +21,7 @@
                                     <li><a href="login-password.php">Login User Example - Separate password table</a></li>
                                         <li><a href="register-password.php">Register User Example - Separate password table</a></li>
             <li><a href="login-role.php">Login User Example - with roles</a></li>
+              <li><a href="login-admin2.php">Forgotten Password Example</a></li>
              <br/>
 
    
@@ -28,7 +29,7 @@
       <li><a href="register4.php">Password Policy Example</a></li>
       <li><a href="hash.php">Hashing Algorithms Example</a></li>
       <li><a href="hash2.php">password_hash Example</a></li>
-      <li><a href="login-admin2.php">Forgotten Password Example</a></li>
+    
       <li><a href="admin/view-user.php?id=561ffe6f-7f0e-11e5-8384-005056bd3a43">Ban User Example</a></li>
        <li><a href="links.php">Roles Example</a></li
 
