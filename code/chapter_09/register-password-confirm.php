@@ -75,6 +75,17 @@ function add_user($forename, $surname, $password, $email) {
   							}	   
 						  }
 
+                          function confirm_email($email,$userid) { 
+  $to = $email; 
+  $subject = "Confirm your email";
+  $message = "Click on the link to confirm your email";
+  $message.="<a href='http://test.phpandmysqlbook.com/login/confirm-email.php?id=" . $userid . "'>here<a>";
+  $head ="MIME-Version: 1.0" . "\r\n";
+  $head.="Content-type:text/html;charset=UTF-8"."\r\n";
+  $head.='From: Admin<admin@deciphered.com>'."\r\n";
+  mail($to, $subject, $message, $head);
+} 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $valid = validate_form($forename,$surname,$email,$password,$confirm, $valid);
   $validation_failed = array_filter($valid);
@@ -84,7 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      $user_added = true; 
      $user_added = add_user($forename, $surname, $password, $email);						// Try to add user
     if ($user_added == true) {          // If successful
-		  $message = 'User added';          // Tell user
+		  $message = 'User registered, click on link in email to activate your user account';          // Tell user
+          $user = get_user_by_email($email);
+          $check= confirm_email($email ,$user->id);
 			$show_form = false;
 		} else {                            // Otherwise
 		  $message = 'Unable to add user' . $user_added; // Show error - where is this coming from
@@ -97,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php require_once('login-menu.php'); ?>
 <div class='error indent'><?= $message; ?></div>
 <?php if ($show_form == true) { ?>
-  <form id="form1" class="indent" method="post" action="register-password.php">
+  <form id="form1" class="indent" method="post" action="register-password-confirm.php">
     <label for="forename">First name
         <input type="text" id="forename" name="forename" placeholder="First name" value="<?=$forename ?>" /> 
         <div class='error'><?= $valid["forename"]; ?></div>

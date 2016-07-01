@@ -139,6 +139,7 @@
     <Compile Include="admin\pages.php" />
     <Compile Include="code\chapter_09\article-edit.php" />
     <Compile Include="code\chapter_09\article-publish.php" />
+    <Compile Include="code\chapter_09\confirm-email.php" />
     <Compile Include="code\chapter_09\cookie-about.php" />
     <Compile Include="code\chapter_09\cookie-menu.php" />
     <Compile Include="code\chapter_09\cookie-home.php" />

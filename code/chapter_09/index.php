@@ -22,6 +22,7 @@
                                         <li><a href="register-password.php">Register User Example - Separate password table</a></li>
             <li><a href="login-role.php">Login User Example - with roles</a></li>
               <li><a href="login-admin2.php">Forgotten Password Example</a></li>
+                  <li><a href="register-password-confirm.php">Register with Confirmation example</a></li>
              <br/>
 
    
