@@ -31,7 +31,7 @@ function validate_form($forename,$surname,$email,$password,$confirm, $valid){
 }
 
 function get_user_by_email($email) {
-   $query = "SELECT * from cms.user WHERE email = :email";
+   $query = "SELECT * from user WHERE email = :email";
    $statement = $GLOBALS['connection']->prepare($query);
    $statement->bindParam(":email", $email);
    $statement->execute();
@@ -40,7 +40,7 @@ function get_user_by_email($email) {
 }
  
 function add_user($forename, $surname, $password, $email) {     
-  $query = "INSERT INTO cms.user (forename, surname, email, password, role_id) VALUES ( :forename, :surname, :email, :password, 2)";
+  $query = "INSERT INTO user (forename, surname, email, password, role_id) VALUES ( :forename, :surname, :email, :password, 2)";
   $statement = $GLOBALS['connection']->prepare($query);
   $statement->bindParam(":forename", $forename );
   $statement->bindParam(":surname", $surname );

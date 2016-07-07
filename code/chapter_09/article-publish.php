@@ -4,7 +4,7 @@ ini_set('display_errors', TRUE);
 require_once('includes/database_connection.php'); 
 
 	function unpublish_article($id) {
-              $query = "update article set published = NULL WHERE id= :id";
+              $query = "update article set date_published = NULL WHERE id= :id";
               $statement = $GLOBALS['connection']->prepare($query);
               $statement->bindParam(":id", $id);  
               $statement->execute();
@@ -12,7 +12,7 @@ require_once('includes/database_connection.php');
 
             function publish_article($id){
               $date = date("Y-m-d H:i:s");
-              $query = "update article set published = :date WHERE id= :id";
+              $query = "update article set date_published = :date WHERE id= :id";
               $statement = $GLOBALS['connection']->prepare($query);
               $statement->bindParam(":id", $id);
               $statement->bindParam(":date", $date);
@@ -25,7 +25,7 @@ require_once('includes/database_connection.php');
        if ($publish == "publish") {
              publish_article($id); 
 header('Location: article-list-role.php');
-       } else if ($publish == "unpublish") {
+       } else if ($publish == "remove") {
         unpublish_article($id);
        header('Location: article-list-role.php');
        } ?>

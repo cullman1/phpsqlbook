@@ -48,9 +48,9 @@ function init_gallery() {
 
 // Get article lists
 function get_article_list() { // Return all images as an object
-  $query = 'SELECT article.*, media.filepath, media.alt, category.name
+  $query = 'SELECT article.*, file_path, alt_text, name
             FROM article
-            LEFT JOIN media ON article.media_id = media.id
+            LEFT JOIN media ON article.featured_media_id = media.id
             LEFT JOIN category ON article.category_id = category.id' ;  // Query
   $statement = $GLOBALS['connection']->prepare($query);                 // Prepare
   $statement->execute(); 
@@ -95,10 +95,10 @@ function get_article_and_thumb_by_id($id) {
   return $article;                                         // Return as object
 }
 function get_article_user_category_and_thumb_by_id($id) {  
-  $query = 'SELECT article.*, media.filepath, media.alt, 
-       user.name AS author, user.picture,
+  $query = 'SELECT article.*, media.file_path, media.alt_text, 
+       user.forename AS author, user.image,
        category.name FROM article
-    LEFT JOIN media ON article.media_id = media.id
+    LEFT JOIN media ON article.featured_media_id = media.id
     LEFT JOIN user ON article.user_id = user.id
     LEFT JOIN category ON article.category_id = category.id
     WHERE article.id = :id';
@@ -615,7 +615,7 @@ function get_author_selectbox($id) {
     if ($author['id'] == $id) {
       $selectbox .= ' selected ';
     }
-    $selectbox .= '>' . $author['name'] . '</option>';
+    $selectbox .= '>' . $author['forename'] . '</option>';
   }
   $selectbox .= '</select>';
   return $selectbox;

@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 require_once('includes/database_connection.php'); 
 require_once('includes/functions.php'); 
 $message = '';
@@ -67,21 +69,21 @@ include 'includes/header.php';
 <div class="col-2">
   <form action="<?=$querystring;?>" method="post">
     <label>Title:</label> <input type="text" name="title" value="<?= htmlspecialchars($article->title); ?>"><br>
-    <label>Published:</label>  <?php echo convert_date($article->published) ?><br>
+    <label>Published: <?= isset($article->date_published) ? $article->date_published : "Not published"  ?></label><br>
     <label>Category:</label> <?= $category_selector;?><br>
     <label>Author: </label> <?= $author_selector;?><br>
     <label>Content:</label> <textarea name="content" class="contentbox"><?= htmlspecialchars($article->content); ?></textarea><br>
-    <input type="hidden" id="media_id" name="media_id" value="<?= $article->media_id;?>" />
+    <input type="hidden" id="media_id" name="media_id" value="<?= $article->featured_media_id;?>" />
     <input type="submit" value="save article" class="button save">
 </form>
 </div>
-
+    <?php if (isset ($article->file_path)) { ?>
 <div class="col-2">
   <label>Featured image: 
-  <img src="../<?= $article->filepath;?>" alt="<?= $article->alt;?>" id="featured-image" /><br>
+  <img src="../<?= $article->file_path;?>" alt="<?= $article->alt_text;?>" id="featured-image" /><br>
   <a class="button" id="opener">update image</a><br>
 </div>
-
+    <?php } ?>
 
 </div>
 
@@ -91,11 +93,11 @@ include 'includes/header.php';
     if (isset($images)) {                                     // If you have images
     foreach ($images as $image) {                             // Loop through them ?>
     <div class="media-thumb"><br>
-      <input type="radio" name="featured" value="<?= $image->id; ?>" data-filepath="<?=$image->filepath;?>"
-             <?php if ($image->id == $article->media_id) { echo 'checked'; } ?> class="image" />
-             <?= $image->title; ?><br>
-      <img src="../<?= $image->filepath ?>" alt="<?= $image->alt ?>" 
-           title="<?= $image->title ?>" /><br>
+      <input type="radio" name="featured" value="<?= $image->id; ?>" data-filepath="<?=$image->file_path;?>"
+             <?php if (isset($article->featured_media_id)) { if ($image->id == $article->featured_media_id) { echo 'checked'; } }?> class="image" />
+             <?= $image->media_title; ?>&nbsp;
+      <img width=50 src="<?= $image->file_path ?>" alt="<?= $image->alt_text ?>" 
+           title="<?= $image->media_title ?>" /><br>
     </div>
     <?php 
       }  // End if
