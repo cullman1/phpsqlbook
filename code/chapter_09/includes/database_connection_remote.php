@@ -1,14 +1,19 @@
 <?php
-
-$serverName = "127.0.0.1";
-$userName = "root";
-$password = ""; 
-$databaseName = "cms";
-$dbName       = "cms";
+/* Set up variables
+$serverName   = "localhost:8889";
+$userName     = "phpbook";
+$password     = "testuser"; 
+$dbName       = "phpbook1";
+ */
+/* Set up variables */
+$serverName   = "mysql51-036.wc1.dfw1.stabletransit.com";
+$userName     = "387732_phpbook1";
+$password     = "F8sk3j32j2fslsd0"; 
+$dbName       = "387732_phpbook1";
 
 $GLOBALS["SMTPHost"] = "secure.emailsrvr.com";
 $GLOBALS["Username"] = "test@deciphered.com";  	// username
-$GLOBALS["Password"] = "Trecarne_PL145BS"; 							// password
+$GLOBALS["Password"] = "Trecarne_PL145BS"; 		
 
 /* Connect using PDO */
 try {

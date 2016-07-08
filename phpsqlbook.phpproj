@@ -143,6 +143,7 @@
     <Compile Include="code\chapter_09\cookie-about.php" />
     <Compile Include="code\chapter_09\cookie-menu.php" />
     <Compile Include="code\chapter_09\cookie-home.php" />
+    <Compile Include="code\chapter_09\encryption.php" />
     <Compile Include="code\chapter_09\functions.php" />
     <Compile Include="code\chapter_09\includes\add-comment-text.php" />
     <Compile Include="code\chapter_09\includes\add-comment.php" />

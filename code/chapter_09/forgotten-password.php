@@ -1,31 +1,76 @@
-<?php include '../includes/header.php';
-require_once('../includes/mail1.php');
-     function send_email($email) {  
- 
-  $to = $email; 
-  $subject = "Local Reset Password Link";
-  $message = "The link to reset your password is ";
-  $message.="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?email=".$email."&token=".sha1($email.date('Y/m/d'))."'>here<a>"; 
-  $headers = "MIME-Version: 1.0"."\r\n";
-  $headers.= "Content-type:text/html;charset=UTF-8"."\r\n";
-  $headers.= "From: CMS Admin<admin@deciphered.com>"."\r\n"; 
- 
-  mail($to, $subject, $message, $headers);
-    echo "A password reset link has been sent to that email address.";
- 
- } ?>
+<?php
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
+require_once('includes/database_connection.php'); 
+require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
+
+   $show_form = true;
+   $message = '';
+   $valid = array('email' => '');
+   $email = ( isset($_POST['email']) ? $_POST['email'] : '' ); 
+   $valid['email'] = (filter_var($email,    FILTER_VALIDATE_EMAIL)) ? '' : 'Email invalid or missing';
+
+   function send_system_email($to, $subject, $html) {
+    
+    $mail = new PHPMailer();
+     $mail->IsSMTP();                                      // set mailer to use SMTP
+    $mail->Host = $GLOBALS["SMTPHost"];  // specify main and backup server
+    $mail->SMTPAuth = true;     // turn on SMTP authentication
+    $mail->Username = $GLOBALS["Username"];  // SMTP username
+    $mail->Password = $GLOBALS["Password"]; // SMTP password
+    $mail->AddAddress($to);   
+    $mail->From = "morton@example.org";
+    $mail->FromName = "Morton Example";
+    $mail->IsHTML(true);                                  // set email format to HTML
+
+    $mail->Subject = $subject;
+    $mail->Body    = $html;
+
+    if(!$mail->Send()) {
+        
+        return  false;
+    }
+
+    return true;
+}
+
+function create_iv() {
+  $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND);
+  return $iv;
+}
+
+function encrypt_data($email, $iv) {
+  $token = $email."#".time();
+  $key = 'ThisIsACipherKey';
+  $ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256,$key , $token, MCRYPT_MODE_CBC, $iv);
+  return rawurlencode(base64_encode($ciphertext));
+}
+
+ if ($email){ 
+  $iv =   create_iv();
+  $token = encrypt_data($email, $iv);
+  $iv = rawurlencode(base64_encode($iv));
+  $subject = "Reset Password Link";
+  $message="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?email=". $email ."&token=".$token."&iv=".$iv."'>Reset your password<a>"; 
+  $message_success = send_system_email($email, $subject, $message);
+  if ($message_success == true) {
+    $message = 'A password reset link has been sent to that email address.';
+    $show_form = false;
+  } else {
+	$message =  'Sorry, we could not reset your password at this time';
+  }
+ } 
+ include 'login-menu.php';
+if ($show_form) { ?>
 <form method="post" action="forgotten-password.php">
   <h1>Forgotten Your Password?</h1>
-  <label for="email">Enter Your Email Address:</label> 
-  <input type="text" id="email" name="email" />
+  <label for="email">Enter Your Email Address:
+  <input type="text" id="email" name="email" /></label> 
   <br /><br />
 <input type="submit" name="submit" value="Send Reset Link"/>
- <?php if (!empty($_POST["email"])){ 
-
-  send_email($_POST["email"]); 
-} ?>
 </div>
 </form> 	
-<?php include '../includes/footer.php' ?>
+<?php } ?>
+  <div class="error"><?= $message ?></div>
 
 
