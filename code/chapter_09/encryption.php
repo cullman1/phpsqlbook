@@ -1,6 +1,7 @@
 <?php
-		function create_iv() {
- 						 $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND);
+			function create_iv() {
+						$iv_size 	= mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,MCRYPT_MODE_CBC);
+ 						$iv 			= mcrypt_create_iv($iv_size, MCRYPT_RAND);
   					return $iv;
 					}
 
@@ -17,11 +18,11 @@
 					}
 					
 					$message = "This is our secret message";
-					echo $message ."<br/>";
+					echo "Message: ".$message ."<br/>";
 					$iv = create_iv();
 					$encrypted_message = encrypt_data($message, $iv) ."<br/>";
-					echo $encrypted_message;
+					echo "Encrypted message: ".$encrypted_message;
 					$decrypted_message = decrypt_data($encrypted_message, $iv) ."<br/>";
-					echo $decrypted_message;
+					echo "Decrypted message: ".rtrim($decrypted_message,"\0");
 
 ?>

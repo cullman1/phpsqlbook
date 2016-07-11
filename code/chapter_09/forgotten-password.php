@@ -34,10 +34,11 @@ require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
     return true;
 }
 
-function create_iv() {
-  $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND);
-  return $iv;
-}
+	function create_iv() {
+						$iv_size 	= mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,MCRYPT_MODE_CBC);
+ 						$iv 			= mcrypt_create_iv($iv_size, MCRYPT_RAND);
+  					return $iv;
+					}
 
 function encrypt_data($email, $iv) {
   $token = $email."#".time();
@@ -51,7 +52,7 @@ function encrypt_data($email, $iv) {
   $token = encrypt_data($email, $iv);
   $iv = rawurlencode(base64_encode($iv));
   $subject = "Reset Password Link";
-  $message="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?email=". $email ."&token=".$token."&iv=".$iv."'>Reset your password<a>"; 
+  $message="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?token=".$token."&iv=".$iv."'>Reset your password<a>"; 
   $message_success = send_system_email($email, $subject, $message);
   if ($message_success == true) {
     $message = 'A password reset link has been sent to that email address.';
