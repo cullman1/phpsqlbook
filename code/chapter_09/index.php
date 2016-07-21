@@ -13,6 +13,7 @@
          <li><a href="cookie-experiments2.php">Domain cookie Experiments</a></li><br/>
                    <li><a href="cookie-set.php">Cookie setter</a></li>
           <li><a href="cookie-viewer.php">Cookie viewer</a></li>
+              <li><a href="cookie.php">Cookie New Example</a></li>
           <br/>
            <li><a href="cookie-preferences.php">Cookie Example</a></li>
             <li><a href="session-preferences.php">Session Example</a></li>

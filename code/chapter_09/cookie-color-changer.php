@@ -9,6 +9,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
  } else if (isset($_COOKIE["colorChoice"])) {
        include("style.php");
      } 
+
+
 ?>
 <form name="input_form" method="post" action="cookie-color-changer.php"> 
     <script type="text/javascript">

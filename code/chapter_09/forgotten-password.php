@@ -10,7 +10,7 @@ require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
    $email = ( isset($_POST['email']) ? $_POST['email'] : '' ); 
    $valid['email'] = (filter_var($email,    FILTER_VALIDATE_EMAIL)) ? '' : 'Email invalid or missing';
 
-   function send_system_email($to, $subject, $html) {
+   function send_system_email($to,$from, $from_name,$subject, $html) {
     
     $mail = new PHPMailer();
      $mail->IsSMTP();                                      // set mailer to use SMTP
@@ -19,8 +19,8 @@ require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
     $mail->Username = $GLOBALS["Username"];  // SMTP username
     $mail->Password = $GLOBALS["Password"]; // SMTP password
     $mail->AddAddress($to);   
-    $mail->From = "morton@example.org";
-    $mail->FromName = "Morton Example";
+    $mail->From = $from;
+    $mail->FromName = $from_name;
     $mail->IsHTML(true);                                  // set email format to HTML
 
     $mail->Subject = $subject;
@@ -40,20 +40,22 @@ require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
   					return $iv;
 					}
 
-function encrypt_data($email, $iv) {
-  $token = $email."#".time();
-  $key = 'ThisIsACipherKey';
-  $ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256,$key , $token, MCRYPT_MODE_CBC, $iv);
-  return rawurlencode(base64_encode($ciphertext));
+function encrypt_data($token, $iv) {
+  $key = 'kE8vew3Jmsvd7Fgh';
+  $encrypted_token = mcrypt_encrypt(MCRYPT_RIJNDAEL_256,$key , $token, MCRYPT_MODE_CBC, $iv);
+  return base64_encode($encrypted_token);
 }
 
  if ($email){ 
   $iv =   create_iv();
-  $token = encrypt_data($email, $iv);
+    $token = $email."#".time();
+  $encrypted_token = encrypt_data($token, $iv);
   $iv = rawurlencode(base64_encode($iv));
   $subject = "Reset Password Link";
+  $from = "morton@example.org";
+  $from_name = "Morton Example";
   $message="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?token=".$token."&iv=".$iv."'>Reset your password<a>"; 
-  $message_success = send_system_email($email, $subject, $message);
+  $message_success = send_system_email($email, $from, $from_name, $subject, $message);
   if ($message_success == true) {
     $message = 'A password reset link has been sent to that email address.';
     $show_form = false;

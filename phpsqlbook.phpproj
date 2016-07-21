@@ -109,6 +109,7 @@
     <Compile Include="cms_old\classes\templates\search.php" />
     <Compile Include="cms_old\classes\urlhandler.php" />
     <Compile Include="cms_old\pages\index.php" />
+    <Compile Include="code\chapter_08\about.php" />
     <Compile Include="code\chapter_08\add_article_amended.php" />
     <Compile Include="code\chapter_08\add_article_document.php" />
     <Compile Include="code\chapter_08\add_article_rich_text.php" />
@@ -121,12 +122,17 @@
     <Compile Include="code\chapter_08\edit_article_short.php" />
     <Compile Include="code\chapter_08\featured-image2.php" />
     <Compile Include="code\chapter_08\featured-image.php" />
+    <Compile Include="code\chapter_08\home.php" />
+    <Compile Include="code\chapter_08\preferences.php" />
     <Compile Include="code\chapter_08\html-form.php" />
     <Compile Include="code\chapter_08\image-insert.php" />
     <Compile Include="code\chapter_08\image.php" />
     <Compile Include="code\chapter_08\image_resize_gd.php" />
     <Compile Include="code\chapter_08\includes\image-gallery.php" />
     <Compile Include="code\chapter_08\includes\database-connnection.php" />
+    <Compile Include="code\chapter_08\recently-viewed.php" />
+    <Compile Include="code\chapter_08\services.php" />
+    <Compile Include="code\chapter_08\session-include.php" />
     <Compile Include="code\chapter_08\upload-and-resize-im.php" />
     <Compile Include="code\chapter_08\upload-and-resize.php" />
     <Compile Include="code\chapter_08\upload-file-then-move.php" />
@@ -185,6 +191,7 @@
     <Compile Include="code\chapter_09\register-user3.php" />
     <Compile Include="code\chapter_09\register-user.php" />
     <Compile Include="code\chapter_09\login-home.php" />
+    <Compile Include="code\chapter_09\session-include - Copy.php" />
     <Compile Include="code\chapter_09\session-include.php" />
     <Compile Include="code\chapter_09\cookie-include.php" />
     <Compile Include="code\chapter_09\login-menu.php" />
@@ -270,6 +277,9 @@
     <Compile Include="code\chapter_09\JSPHP-cookies.php" />
     <Compile Include="code\chapter_09\cookie-experiments2.php" />
     <Compile Include="code\chapter_09\session-menu.php" />
+    <Compile Include="code\chapter_08\session-viewer.php" />
+    <Compile Include="code\chapter_08\session-set.php" />
+    <Compile Include="code\chapter_09\session-short.php" />
     <Compile Include="code\chapter_09\session.php" />
     <Compile Include="code\chapter_09\style.php" />
     <Compile Include="code\chapter_09\style1.php" />

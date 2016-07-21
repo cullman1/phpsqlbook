@@ -1,5 +1,5 @@
 <style>
 body {
- background:<?=$_COOKIE["colorChoice"] ?>;
+ background:<?= $color ?>;
 } 
 </style>
