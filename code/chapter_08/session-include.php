@@ -3,7 +3,6 @@ session_start();
 $file    = basename($_SERVER['PHP_SELF']);
 
 function create_history($current) {
-echo" 2";
   $history = array();
   array_push($history, $current);
     return $history;
@@ -12,7 +11,6 @@ echo" 2";
 function remove_existing($file, $history) {
   foreach($history as $value=>$page) {         
     if ($page == $file) {
-    echo" 3";
       unset($history[$value]);
     }
   }  
@@ -22,7 +20,6 @@ function remove_existing($file, $history) {
 function add_current($current, $history) {
   if ( sizeof($history < 3 ) ) { 
     array_push($history, $current);
-    echo" 4";
   } else {   
     array_shift($history);
     array_push($history, $current);
