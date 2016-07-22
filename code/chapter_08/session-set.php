@@ -1,18 +1,20 @@
 <?php
-include 'session-include.php'; 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {  
-  $name  = filter_input(INPUT_POST, 'name', 
-                          FILTER_SANITIZE_STRING);
+session_start();
+session_set_cookie_params(30*60, '/', '',false, true);
+
   $color = filter_input(INPUT_POST, 'color', 
+                          FILTER_SANITIZE_STRING);  
+$name  = filter_input(INPUT_POST, 'name', 
                           FILTER_SANITIZE_STRING);
-  if($name != null){
-    $_SESSION["name"] = $name;
+  if((trim($name) != "") && (trim($color) != "")) {
+   $_SESSION["color"] = $color;    
+   $_SESSION["name"] = $name;
+    header('Location:session-viewer.php');
+  } else {
+  echo "Please enter your name";
   }
-  if ($color != null) {
-    $_SESSION["color"] = $color;
-  }
-  header('Location:session-viewer.php');
-}
+  
+
 ?>
 
 <div>
@@ -30,4 +32,3 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   Name: <input type="text" name="name"  />
   <input type="submit" value="Save" />
 </form>
-<?php include 'recently-viewed.php' ?>

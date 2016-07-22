@@ -18,10 +18,11 @@ function remove_existing($file, $history) {
 }
 
 function add_current($current, $history) {
+echo "SIZE". sizeof($history);
   if ( sizeof($history < 3 ) ) { 
     array_push($history, $current);
   } else {   
-    array_shift($history);
+    array_unshift($history);
     array_push($history, $current);
   }
   return $history;
