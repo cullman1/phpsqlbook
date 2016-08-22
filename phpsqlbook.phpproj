@@ -143,6 +143,7 @@
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
+    <Compile Include="code\chapter_09\admin-home.php" />
     <Compile Include="code\chapter_09\article-edit.php" />
     <Compile Include="code\chapter_09\article-publish.php" />
     <Compile Include="code\chapter_09\confirm-email.php" />
@@ -183,6 +184,7 @@
     <Compile Include="code\chapter_09\includes\submit-like.php" />
     <Compile Include="code\chapter_09\includes\table.php" />
     <Compile Include="code\chapter_09\login-password.php" />
+    <Compile Include="code\chapter_09\login2.php" />
     <Compile Include="code\chapter_09\recently-viewed.php" />
     <Compile Include="code\chapter_09\cookie-services.php" />
     <Compile Include="code\chapter_09\register-password-confirm.php" />
