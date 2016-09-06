@@ -2,6 +2,7 @@
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
     require_once('includes/database_connection.php'); 
+    require_once('includes/functions.php');
     $show_form = true;
     $message = '';
     $valid = array('password' => '', 'confirm'=>'' );
@@ -9,10 +10,9 @@ ini_set('display_errors', TRUE);
     $confirm  = ( isset($_POST['confirm'])  ? $_POST['confirm']  : '' ); 
     $iv = ( isset($_REQUEST['iv']) ? $_REQUEST['iv'] : '' ); 
     $token  = ( isset($_REQUEST['token'])  ? $_REQUEST['token']  : '' ); 
-    $GLOBALS["email"] = '';
 
- function get_user_by_email($email) {
-   $query = "SELECT * from user WHERE email = :email";
+ function get_user_by_email($email, $password) {
+   $query = "SELECT user.id,  forename, surname, email, image FROM user JOIN password on user.id = password.id WHERE email =:email AND hash= :token";
    $statement = $GLOBALS['connection']->prepare($query);
    $statement->bindParam(":email", $email);
    $statement->execute();
@@ -20,83 +20,67 @@ ini_set('display_errors', TRUE);
    return ($user ? $user : false);
 }
 
-function hash_password($password) {
-									$pwdToken = sha1("abD!y1" . $password . "d!@gg3");
-									//$hash = password_hash($pwdToken); 
-									return $pwdToken;
-}
-
-
-
-function set_password($pass, $id){
-  $hash = hash_password($pass);
-  $query ="UPDATE password set hash = :pass WHERE id= :id";
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(":pass", $hash);
-  $statement->bindParam(":id", $id);
-  $statement->execute();
-  if($statement->errorCode() != 0) {  
-    return $statement->errorCode();
+function add_password($password, $id){
+  $options = array("cost" => 10, "salt" => uniqid());
+  $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+  if (password_verify($password, $hash)) {
+    $query ="UPDATE password set hash = :pass WHERE id= :id";
+    $statement = $GLOBALS['connection']->prepare($query);
+    $statement->bindParam(":pass", $hash);
+    $statement->bindParam(":id", $id);
+    $statement->execute();
+    if($statement->errorCode() != 0) {  
+      return $statement->errorCode();
+    }
+    return true;
+  } else {
+    return "Password not updated.";
   }
-  return true;
 }
 
-function validate_form($valid, $password, $confirm, $token, $iv) {
-  $valid['password'] = (filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/"))) ? '': 'Password not strong enough'  );
+function validate_form($valid, $password, $confirm, $email, $token, $iv) {
+  $valid['password'] = (filter_var($password, FILTER_VALIDATE_REGEXP, array("options" =>  array("regexp"=>"/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/"))) ? '' : 'Password not strong');
   $valid['confirm'] = (filter_var($confirm, FILTER_DEFAULT)) ? '' : 'Confirm password';
-$valid['token']    = (filter_var($token,    FILTER_DEFAULT)) ? '' : 'Token invalid';
-$valid['iv']    = (filter_var($iv,    FILTER_DEFAULT)) ? '' : 'IV invalid';
+  $valid['email'] = (filter_var($email, FILTER_VALIDATE_EMAIL)) ? '' : 'Email invalid';
   if ($valid['password'] == '') {
-	  $valid['confirm'] = ($password == $confirm ? '' : 'Passwords do not match' );
-	}
-     if ($valid['token'] == '') {
-	  $valid = validate_token($token, $iv, $valid);
-	}
-      return $valid;
+    $valid['confirm'] = ($password == $confirm ? '' : 'Passwords do not match' );
+  }
+  return $valid;
 }
 
- function validate_token($token, $iv, $valid) {
-   $token2 = base64_decode($token);
-   $iv2 = base64_decode($iv); 
-   $key = 'ThisIsACipherKey';
-   $decrypted_string = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $token2, MCRYPT_MODE_CBC, $iv2);
-   if (strlen($decrypted_string)==0) { 
-     $valid['token']="Token invalid";
-   } else {
-     get_decrypted_data($decrypted_string);
-   }
-   return $valid;
- }
-
- function get_decrypted_data($decrypted_string) { 
- $checker = explode("#" ,$decrypted_string);
- if((time() - $checker[1]) > 8400) {
-        $valid['token']="Token expired";
-        return $valid;
-     } else {
-     $GLOBALS["email"] = $checker[0];
-     }
-
+ function decrypt_token($token, $iv, $valid) {
+  $token   = base64_decode($token);
+  $iv      = base64_decode($iv);
+  $message = openssl_decrypt($token, $method, KEY, OPENSSL_RAW_DATA, $iv);
+  if (strlen($message)!=0) { 
+    $items = explode("#" ,$message);
+    if((time() - $items[1]) <= 8400) {
+      return  $items[0];
+    }
+  }
+  return false;
 }
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $valid = validate_form($valid, $password,$confirm, $token, $iv );
+  $valid = validate_form($valid, $password, $confirm, $token, $iv );
   $validation_failed = array_filter($valid);
   if ($validation_failed == true) {
-    if ($valid['token'] != '') {
-          $message = $valid['token'];
+      $message = 'Please check errors below and resubmit form';
+  } else {
+    $message = decrypt_token($token, $iv, $valid);
+    if ($message) { 
+      $user = get_user_by_email($message);
+      if (add_password($password, $user->id)) {
+        $show_form = false;
+        $message = "Password successfully updated";
+      } else {
+        $message = "Password not updated";
+      } 
     } else {
-        $message = 'Please check errors below and resubmit form';
-    }
-} else {
-      $user = get_user_by_email($GLOBALS["email"]);
-      set_password($password, $user->id);
-      $show_form = false;
-      $message = "Password successfully updated";
-    }
+        $message = "Token invalid";
+    } 
   }
+} 
 ?>
 <body>
 <?php require_once('login-menu.php'); ?>

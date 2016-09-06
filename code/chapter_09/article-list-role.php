@@ -1,4 +1,5 @@
 <?php
+
 require_once('includes/database_connection.php'); 
 require_once('includes/functions.php'); 
 session_start();
@@ -27,12 +28,11 @@ include 'includes/header.php';
   </tr>
   <?php foreach ($article_list as $article) { ?>
   <tr>
-    <td><img src="../<?= $article->file_path ? $article->file_path : '../uploads/blank.png'; ?>" alt="<?= $article->alt_text; ?>" width="20" /></td>
+    <td><img src="../<?= $article->filepath ? $article->filepath : '../uploads/blank.png'; ?>" alt="<?= $article->alt; ?>" width="40" /></td>
     <td><?=$article->title;?></td>
-    <td><?=$article->date_published;?></td>
+    <td><?= !is_null($article->published) ? $article->published  : "not published"; ?></td>
     <td><?=$article->name;?></td>
     <td><a href="article-edit.php?action=edit&amp;article_id=<?=$article->id;?>" class="button confirmation">edit</a></td>
-    <?php is_null($article->date_published) ? $publish="publish" : $publish="remove"; ?><td><a href="article-publish.php?action=<?= $publish; ?>&amp;article_id=<?=$article->id;?>" class="button confirmation"><?= $publish; ?></a></td>
     <?php if (find_task("delete article")) { ?>  <td><a href="article-edit.php?action=delete&amp;article_id=<?=$article->id;?>" class="button confirmation">delete</a></td><?php } ?>
   </tr>
   <?php } ?>

@@ -3,9 +3,14 @@ error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
 require_once('includes/database_connection.php'); 
 require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
-
+define ('KEY', 'kE8vew3Jmsvd7Fgh');
+$GLOBALS["SMTPHost"] = "secure.emailsrvr.com";
+$GLOBALS["Username"] = "test@deciphered.com";  	// username
+$GLOBALS["Password"] = "Trecarne_PL145BS"; 							// password
    $show_form = true;
    $message = '';
+
+     $method = 'AES-128-CBC';
    $valid = array('email' => '');
    $email = ( isset($_POST['email']) ? $_POST['email'] : '' ); 
    $valid['email'] = (filter_var($email,    FILTER_VALIDATE_EMAIL)) ? '' : 'Email invalid or missing';
@@ -27,7 +32,7 @@ require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
     $mail->Body    = $html;
 
     if(!$mail->Send()) {
-        
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
         return  false;
     }
 
@@ -35,21 +40,20 @@ require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
 }
 
 	function create_iv() {
-						$iv_size 	= mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,MCRYPT_MODE_CBC);
- 						$iv 			= mcrypt_create_iv($iv_size, MCRYPT_RAND);
-  					return $iv;
-					}
+				$isItSecure = false;
+  while ($isItSecure == false) {
+    $iv = openssl_random_pseudo_bytes(16, $isItSecure);
+    if ($isItSecure) {
+      return $iv;
+    } 
+  }
 
-function encrypt_data($token, $iv) {
-  $key = 'kE8vew3Jmsvd7Fgh';
-  $encrypted_token = mcrypt_encrypt(MCRYPT_RIJNDAEL_256,$key , $token, MCRYPT_MODE_CBC, $iv);
-  return base64_encode($encrypted_token);
-}
+					}
 
  if ($email){ 
   $iv =   create_iv();
     $token = $email."#".time();
-  $encrypted_token = encrypt_data($token, $iv);
+  $encrypt   = openssl_encrypt($token, $method, KEY, OPENSSL_RAW_DATA, $iv);
   $iv = rawurlencode(base64_encode($iv));
   $subject = "Reset Password Link";
   $from = "morton@example.org";

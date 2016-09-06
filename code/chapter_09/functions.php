@@ -48,7 +48,7 @@ function init_gallery() {
 
 // Get article lists
 function get_article_list() { // Return all images as an object
-  $query = 'SELECT article.*, file_path, alt_text, name
+  $query = 'SELECT article.*, file_pith, alt_text, name
             FROM article
             LEFT JOIN media ON article.featured_media_id = media.id
             LEFT JOIN category ON article.category_id = category.id' ;  // Query

@@ -48,7 +48,7 @@ function init_gallery() {
 
 // Get article lists
 function get_article_list() { // Return all images as an object
-  $query = 'SELECT article.*, filepath, alt, name
+  $query = 'SELECT article.*, media.filepath, media.alt, category.name
             FROM article
             LEFT JOIN media ON article.media_id = media.id
             LEFT JOIN category ON article.category_id = category.id' ;  // Query
@@ -95,10 +95,10 @@ function get_article_and_thumb_by_id($id) {
   return $article;                                         // Return as object
 }
 function get_article_user_category_and_thumb_by_id($id) {  
-  $query = 'SELECT article.*, media.file_path, media.alt_text, 
+  $query = 'SELECT article.*, media.filepath, media.alt, 
        user.forename AS author, user.image,
        category.name FROM article
-    LEFT JOIN media ON article.featured_media_id = media.id
+    LEFT JOIN media ON article.media_id = media.id
     LEFT JOIN user ON article.user_id = user.id
     LEFT JOIN category ON article.category_id = category.id
     WHERE article.id = :id';
@@ -111,7 +111,7 @@ function get_article_user_category_and_thumb_by_id($id) {
 
 // Get media list
 function get_images_list() { 
-  $query = 'SELECT * FROM media WHERE file_type LIKE "image%"'; // Query
+  $query = 'SELECT * FROM media WHERE type LIKE "image%"'; // Query
   $query .= "ORDER BY id DESC ";                           // Query
   $statement = $GLOBALS['connection']->prepare($query);               // Prepare
   $statement->execute();                                   // Execute

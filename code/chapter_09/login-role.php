@@ -17,12 +17,12 @@ function validate_login_form($email,$password, $valid) {
 	function get_user($email, $password) {
       					$query = "SELECT user.id, forename, surname, email, image, role_id FROM user 
 			          JOIN password on user.id = password.id
-	              WHERE email =:email AND hash= :token";
+	              WHERE email =:email AND password= :token";
       					$statement = $GLOBALS['connection']->prepare($query);
       					$statement->bindParam(':email',$email);
-								$hash = hash_password($password);
-
-      					$statement->bindParam(':token', $hash);
+							//	$hash = hash_password($password);
+                            echo "PASSWORD".$password;
+      					$statement->bindParam(':token', $password);
       					$statement->execute();
       					$user = $statement->fetch(PDO::FETCH_OBJ);
       					return ($user ? $user : false);
@@ -35,7 +35,7 @@ function create_session($user) {
    $_SESSION['tasks'] = get_tasks_by_role($user->role_id);
 }
 
-function get_tasks_by_role($roleid) {
+function get_tasks_by_role_id($roleid) {
     $query = "SELECT task.id, task.name FROM task 
 			          JOIN tasks_in_role on task.id = tasks_in_role.task_id
 	              WHERE tasks_in_role.role_id = :roleid";
@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <form method="post" action="login-role.php">
   <div class="error"><?=$message; ?></div>
   <label for="email">Email
-    <input type="text" name="email" placeholder="Email" />  
+    <input type="text" name="email" placeholder="Email" auto />  
     <div class='error'><?=$valid['email']; ?></div>
   </label>
   <label for="password">Password

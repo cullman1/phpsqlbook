@@ -65,7 +65,7 @@
             if (isset($_SESSION['authenticated'])) { ?> 
             <li>Hello <?php echo $_SESSION['username']; ?>&nbsp;<a href="../login/logout.php">Logout</a></li>
     <?php } else { ?>
-    <li><a href="../login/logon.php?page=pages">Login</a></li>
+    <!--<li><a href="../login/logon.php?page=pages">Login</a></li>//-->
     <?php } ?> 
           </ul>
           </ul>
