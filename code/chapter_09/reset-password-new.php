@@ -4,6 +4,8 @@ ini_set('display_errors', TRUE);
     require_once('includes/database_connection.php'); 
     require_once('includes/functions.php');
     $show_form = true;
+    define ('KEY', 'kE8vew3Jmsvd7Fgh');
+    define ('METHOD', 'AES-128-CBC');
     $message = '';
     $valid = array('password' => '', 'confirm'=>'' );
     $password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
@@ -11,8 +13,8 @@ ini_set('display_errors', TRUE);
     $iv = ( isset($_REQUEST['iv']) ? $_REQUEST['iv'] : '' ); 
     $token  = ( isset($_REQUEST['token'])  ? $_REQUEST['token']  : '' ); 
 
- function get_user_by_email($email, $password) {
-   $query = "SELECT user.id,  forename, surname, email, image FROM user JOIN password on user.id = password.id WHERE email =:email AND hash= :token";
+ function get_user_by_email($email) {
+   $query = "SELECT user.id,  forename, surname, email, image FROM user JOIN password on user.id = password.id WHERE email =:email";
    $statement = $GLOBALS['connection']->prepare($query);
    $statement->bindParam(":email", $email);
    $statement->execute();
@@ -21,9 +23,7 @@ ini_set('display_errors', TRUE);
 }
 
 function add_password($password, $id){
-  $options = array("cost" => 10, "salt" => uniqid());
-  $hash = password_hash($password, PASSWORD_BCRYPT, $options);
-  if (password_verify($password, $hash)) {
+  $hash = password_hash($password, PASSWORD_DEFAULT);
     $query ="UPDATE password set hash = :pass WHERE id= :id";
     $statement = $GLOBALS['connection']->prepare($query);
     $statement->bindParam(":pass", $hash);
@@ -33,15 +33,12 @@ function add_password($password, $id){
       return $statement->errorCode();
     }
     return true;
-  } else {
-    return "Password not updated.";
-  }
+ 
 }
 
-function validate_form($valid, $password, $confirm, $email, $token, $iv) {
+function validate_form($valid, $password, $confirm, $token, $iv) {
   $valid['password'] = (filter_var($password, FILTER_VALIDATE_REGEXP, array("options" =>  array("regexp"=>"/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/"))) ? '' : 'Password not strong');
   $valid['confirm'] = (filter_var($confirm, FILTER_DEFAULT)) ? '' : 'Confirm password';
-  $valid['email'] = (filter_var($email, FILTER_VALIDATE_EMAIL)) ? '' : 'Email invalid';
   if ($valid['password'] == '') {
     $valid['confirm'] = ($password == $confirm ? '' : 'Passwords do not match' );
   }
@@ -51,7 +48,7 @@ function validate_form($valid, $password, $confirm, $email, $token, $iv) {
  function decrypt_token($token, $iv, $valid) {
   $token   = base64_decode($token);
   $iv      = base64_decode($iv);
-  $message = openssl_decrypt($token, $method, KEY, OPENSSL_RAW_DATA, $iv);
+  $message = openssl_decrypt($token, METHOD, KEY, OPENSSL_RAW_DATA, $iv);
   if (strlen($message)!=0) { 
     $items = explode("#" ,$message);
     if((time() - $items[1]) <= 8400) {

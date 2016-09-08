@@ -6,9 +6,9 @@ require_once "Mail/mime.php";
 require("../../PHPMailer/PHPMailerAutoload.php");
 function pear_mail($to, $subject, $html, $headers) {
 $host = "mail.deciphered.com";
-$username = "test@deciphered.com";
+$username = "chris@deciphered.com";
 $password = "Trecarne_PL145BS";
-$headers = array ('From' => 'test@deciphered.com','To' => $to, 'Subject' => $subject);
+$headers = array ('From' => 'chris@deciphered.com','To' => $to, 'Subject' => $subject);
   $message = new Mail_mime();
   $message->setHTMLBody($html);
   $smtp = Mail::factory('smtp',
@@ -68,12 +68,9 @@ function phpmailer($to, $subject, $html) {
     $mail->Host = "secure.emailsrvr.com";  // specify main and backup server
     $mail->SMTPAuth = true;     // turn on SMTP authentication
     $mail->Username = "chris@deciphered.com";  // SMTP username
-    // $mail->Username = "test@deciphered.com";  // SMTP username
-        $mail->Password = "CU_Dec23c58y1"; // SMTP password
-//    $mail->Password = "Trecarne_PL145BS"; // SMTP password
+    $mail->Password = "Trecarne_PL145BS"; // SMTP password
     $mail->AddAddress($to);   
-    $mail->From = "morton@example.org";
-    $mail->FromName = "Morton Example";
+    $mail->From = "bob@example.org";
     $mail->IsHTML(true);                                  // set email format to HTML
 
     $mail->Subject = $subject;
@@ -100,7 +97,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $msg = pear_mail($to, $subject, $message);
   }  
   if (isset($_POST["PHPMailer"])) {                                                         
-      $message ="This is a test using PHP Mailer remote " . date("Y-m-d H:i:s");
+      $message ="This is a test using PHP Mailer";
       $msg = phpmailer($to, $subject, $message);
   }  
   if (isset($_POST["mandrillmail"])) {     

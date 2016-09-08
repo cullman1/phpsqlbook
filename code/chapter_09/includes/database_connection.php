@@ -7,8 +7,10 @@ $databaseName = "cms";
 $dbName       = "cms";
 
 $GLOBALS["SMTPHost"] = "secure.emailsrvr.com";
-$GLOBALS["Username"] = "test@deciphered.com";  	// username
-$GLOBALS["Password"] = "Trecarne_PL145BS"; 							// password
+$GLOBALS["Username"] = "chris@deciphered.com"; //"test@deciphered.com";  	// username
+$GLOBALS["Password"] = "CU_Dec23c58y1"; //"Trecarne_PL145BS"; 	
+
+
 
 /* Connect using PDO */
 try {

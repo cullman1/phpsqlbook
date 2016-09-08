@@ -11,7 +11,7 @@ function validate_login ($email,$password, $valid) {
   return $valid;
 }
 
-function get_user_by_email($email, $password) {
+function get_user_by_email_password($email, $password) {
   $query = "SELECT * FROM user WHERE email =:email AND password= :password";
   $statement = $GLOBALS['connection']->prepare($query);
   $statement->bindParam(':email',$email);
@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
  if ($validation_failed == true) {
    $message = 'Please check errors below and resubmit';
  } else {
-   $user = get_user_by_email($email, $password);
+   $user = get_user_by_email_password($email, $password);
    if ($user) {
       create_session($user);
       header('Location: admin-home.php'); 

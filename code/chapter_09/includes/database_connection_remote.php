@@ -12,8 +12,10 @@ $password     = "F8sk3j32j2fslsd0";
 $dbName       = "387732_phpbook1";
 
 $GLOBALS["SMTPHost"] = "secure.emailsrvr.com";
-$GLOBALS["Username"] = "test@deciphered.com";  	// username
-$GLOBALS["Password"] = "Trecarne_PL145BS"; 		
+$GLOBALS["Username"] = "chris@deciphered.com"; //"test@deciphered.com";  	// username
+$GLOBALS["Password"] = "CU_Dec23c58y1"; //"Trecarne_PL145BS"; 		
+
+
 
 /* Connect using PDO */
 try {

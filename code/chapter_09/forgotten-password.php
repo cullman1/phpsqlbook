@@ -4,9 +4,10 @@ ini_set('display_errors', TRUE);
 require_once('includes/database_connection.php'); 
 require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
 define ('KEY', 'kE8vew3Jmsvd7Fgh');
+define ('METHOD', 'AES-128-CBC');
 $GLOBALS["SMTPHost"] = "secure.emailsrvr.com";
-$GLOBALS["Username"] = "test@deciphered.com";  	// username
-$GLOBALS["Password"] = "Trecarne_PL145BS"; 							// password
+$GLOBALS["Username"] = "chris@deciphered.com"; //"test@deciphered.com";  	// username
+$GLOBALS["Password"] = "CU_Dec23c58y1"; //"Trecarne_PL145BS"; 	
    $show_form = true;
    $message = '';
 
@@ -53,12 +54,12 @@ $GLOBALS["Password"] = "Trecarne_PL145BS"; 							// password
  if ($email){ 
   $iv =   create_iv();
     $token = $email."#".time();
-  $encrypt   = openssl_encrypt($token, $method, KEY, OPENSSL_RAW_DATA, $iv);
+  $encrypt   = rawurlencode(base64_encode(openssl_encrypt($token, METHOD, KEY, OPENSSL_RAW_DATA, $iv)));
   $iv = rawurlencode(base64_encode($iv));
   $subject = "Reset Password Link";
   $from = "morton@example.org";
   $from_name = "Morton Example";
-  $message="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?token=".$token."&iv=".$iv."'>Reset your password<a>"; 
+  $message="<a href='http://test1.phpandmysqlbook.com/code/chapter_09/reset-password-new.php?token=".$encrypt."&iv=".$iv."'>Reset your password<a>"; 
   $message_success = send_system_email($email, $from, $from_name, $subject, $message);
   if ($message_success == true) {
     $message = 'A password reset link has been sent to that email address.';
