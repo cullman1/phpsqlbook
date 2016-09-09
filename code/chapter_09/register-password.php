@@ -45,35 +45,23 @@ function get_user_by_email($email) {
 									return $pwdToken;
 							}
 
-function add_user($forename, $surname, $password, $email) {    
-  							$query = "INSERT INTO user (forename, surname, email, role_id) VALUES ( :forename, :surname, :email ,2)";
-  							$statement = $GLOBALS['connection']->prepare($query);
-  							$statement->bindParam(":forename", $forename );
-  							$statement->bindParam(":surname", $surname );
-  							$statement->bindParam(":email",$email);
-  							$result = $statement->execute();
-                            $id = $GLOBALS['connection']->lastInsertId();
-  							if( $result == true ) {     
-      						    add_password($id, $password);
-                                return true;
-  							} else {
-      						    return $statement->errorCode();
-  							}	   
-						  }
+function add_user($forename, $surname, $password, $email) {     
+  $query = "INSERT INTO user (forename, surname, email, password) 
+            VALUES (:forename, :surname, :email, :password)";
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(":forename", $forename );
+  $statement->bindParam(":surname", $surname );
+  $statement->bindParam(":email",$email);
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $statement->bindParam(":password",$hash);
+  $result = $statement->execute();
+  if( $result == true ) {     
+      return true;
+  } else {
+      return $statement->errorCode();
+  }	   
+ }
 
-                          function add_password($passwordid, $password) {    
-						    $hash = hash_password($password);
-  							$query = "INSERT INTO password (id, hash) VALUES ( :passwordid, :password)";
-  							$statement = $GLOBALS['connection']->prepare($query);
-  							$statement->bindParam(":passwordid", $passwordid );
-  							$statement->bindParam(":password", $hash );
-  							$result = $statement->execute();
-  							if( $result == true ) {     
-      						return true;
-  							} else {
-      						return $statement->errorCode();
-  							}	   
-						  }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $valid = validate_form($forename,$surname,$email,$password,$confirm, $valid);

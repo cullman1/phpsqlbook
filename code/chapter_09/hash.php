@@ -1,17 +1,19 @@
-<?php include '../includes/header-register.php' ?>
+
 <?php 
 function hash_password($password) {
   $sha1Passwd = sha1($password);
   $md5Passwd = md5($password);
-  $preSalt = "grF!y1";
-  $afterSalt = "d!@hb3";
-  $saltedPasswd=sha1($preSalt.$password .$afterSalt);            
+  $preSalt = "3RF!y1";
+  $afterSalt = "dd4hb3";
+  $saltedPasswd=sha1($preSalt.$password .$afterSalt);    
+  $hash = password_hash($password, PASSWORD_DEFAULT);        
   echo "Your password was: ".$password."<br/>";  
   echo "The SHA1 encrypted version was:".$sha1Passwd."<br/>";
   echo "The MD5 encrypted version was: ".$md5Passwd."<br/>";
   echo "The salted version was: ".$saltedPasswd."<br/>";  
+  echo "The password hash version was: ".$hash."<br/>";  
 } ?>
-<form name="input_form" method="post" class="indent" style="width:470px;" action="hash.php">
+<form name="input_form" method="post" class="indent"  action="hash.php">
   <h1>Hash</h1>
   <label for="full_name">Enter a Password:</label> 
   <input type="text" id="password" name="password" />
@@ -23,5 +25,3 @@ function hash_password($password) {
     } ?>
 </form>
 
-
-<?php include '../includes/footer-register.php' ?>
