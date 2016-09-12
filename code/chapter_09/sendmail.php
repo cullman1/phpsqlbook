@@ -63,17 +63,18 @@ function send_mail($to,$subject,$message) {
 
 function phpmailer($to, $subject, $html) {
     
-    $mail = new PHPMailer();
+   /* $mail = new PHPMailer();
     $mail->IsSMTP();                                      // set mailer to use SMTP
     $mail->Host = "secure.emailsrvr.com";  // specify main and backup server
     $mail->SMTPAuth = true;     // turn on SMTP authentication
-    $mail->Username = "chris@deciphered.com";  // SMTP username
+    $mail->Username = "chri@deciphered.com";  // SMTP username
     // $mail->Username = "test@deciphered.com";  // SMTP username
         $mail->Password = "CU_Dec23c58y1"; // SMTP password
 //    $mail->Password = "Trecarne_PL145BS"; // SMTP password
     $mail->AddAddress($to);   
     $mail->From = "morton@example.org";
     $mail->FromName = "Morton Example";
+    $mail->SMTPDebug = 0;
     $mail->IsHTML(true);                                  // set email format to HTML
 
     $mail->Subject = $subject;
@@ -84,7 +85,24 @@ function phpmailer($to, $subject, $html) {
         return  "Message not sent, Error: " . $mail->ErrorInfo;
     }
 
-    return "Message has been sent";
+    return "Message has been sent";*/
+
+$mail = new PHPMailer();                               // Create object$mail->IsSMTP();                                       // Set mailer to use SMTP$mail->Host = "secure.emailsrvr.com";  // specify main and backup server$mail->SMTPAuth = true;                                // Turn on SMTP authentication$mail->Username = "chri@deciphered.com";  // SMTP username$mail->Password = "CU_Dec23c58y1"; // SMTP password                    // Password// Who the email is from and to$mail->setFrom('ivy@example.com', 'Ivy Stone');        // From (name optional)$mail->AddAddress('chris@example.com', 'Chris White'); // To   (name optional)$mail->AddAddress('tom@example.com', 'Tom Dee');       // To   (name optional)$mail->AddCC('ann@example.com');                // CC   (name optional)$mail->AddBCC('test@example.com');              // BCC  (name optional)
+
+$text = 'message you want to say';                     // Plain text message
+$html = 'some html' . $text;                           // Add HTML to the message
+$mail->Subject = $subject;                             // Set subject of email
+$mail->msgHTML($html);                                 // Set body to HTML email
+$mail->AltBody = $text;                                // Set plain text version
+$mail->CharSet = 'UTF-8';                                // Set character set
+
+// Attempt to send email
+$mail->SMTPDebug = 1;                                  // Debug option
+if(!$mail->Send()) {                                   // Try to send email
+  return $mail->ErrorInfo;                             // If an error, writes that out
+} else {                                               // Otherwise
+  return 'Email has been sent';                        // Success message
+}
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
