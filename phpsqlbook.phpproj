@@ -193,6 +193,7 @@
     <Compile Include="code\chapter_09\register-user3.php" />
     <Compile Include="code\chapter_09\register-user.php" />
     <Compile Include="code\chapter_09\login-home.php" />
+    <Compile Include="code\chapter_09\send-email.php" />
     <Compile Include="code\chapter_09\session-include - Copy.php" />
     <Compile Include="code\chapter_09\session-include.php" />
     <Compile Include="code\chapter_09\cookie-include.php" />

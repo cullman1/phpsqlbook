@@ -3,7 +3,7 @@ error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
 require_once "Mail.php";
 require_once "Mail/mime.php";
-require("../../PHPMailer/PHPMailerAutoload.php");
+require("../../vendor/PHPMailer/PHPMailerAutoload.php");
 function pear_mail($to, $subject, $html, $headers) {
 $host = "mail.deciphered.com";
 $username = "test@deciphered.com";
@@ -87,7 +87,20 @@ function phpmailer($to, $subject, $html) {
 
     return "Message has been sent";*/
 
-$mail = new PHPMailer();                               // Create object$mail->IsSMTP();                                       // Set mailer to use SMTP$mail->Host = "secure.emailsrvr.com";  // specify main and backup server$mail->SMTPAuth = true;                                // Turn on SMTP authentication$mail->Username = "chri@deciphered.com";  // SMTP username$mail->Password = "CU_Dec23c58y1"; // SMTP password                    // Password// Who the email is from and to$mail->setFrom('ivy@example.com', 'Ivy Stone');        // From (name optional)$mail->AddAddress('chris@example.com', 'Chris White'); // To   (name optional)$mail->AddAddress('tom@example.com', 'Tom Dee');       // To   (name optional)$mail->AddCC('ann@example.com');                // CC   (name optional)$mail->AddBCC('test@example.com');              // BCC  (name optional)
+
+$mail = new PHPMailer();                               // Create object
+$mail->IsSMTP();                                       // Set mailer to use SMTP
+$mail->Host = "secure.emailsrvr.com";  // specify main and backup server
+$mail->SMTPAuth = true;                                // Turn on SMTP authentication
+$mail->Username = "chris@deciphered.com";  // SMTP username
+$mail->Password = "CU_Dec23c58y1"; // SMTP password                    // Password
+
+// Who the email is from and to
+$mail->setFrom('ivy@example.com', 'Ivy Stone');        // From (name optional)
+$mail->AddAddress('chris@example.com', 'Chris White'); // To   (name optional)
+$mail->AddAddress('tom@example.com', 'Tom Dee');       // To   (name optional)
+$mail->AddCC('ann@example.com');                // CC   (name optional)
+$mail->AddBCC('test@example.com');              // BCC  (name optional)
 
 $text = 'message you want to say';                     // Plain text message
 $html = 'some html' . $text;                           // Add HTML to the message
@@ -97,7 +110,7 @@ $mail->AltBody = $text;                                // Set plain text version
 $mail->CharSet = 'UTF-8';                                // Set character set
 
 // Attempt to send email
-$mail->SMTPDebug = 1;                                  // Debug option
+$mail->SMTPDebug = 0;                                  // Debug option
 if(!$mail->Send()) {                                   // Try to send email
   return $mail->ErrorInfo;                             // If an error, writes that out
 } else {                                               // Otherwise
