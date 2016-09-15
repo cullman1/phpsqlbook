@@ -1,10 +1,25 @@
-<?php setcookie("Cookie1","1111", time() + (60* 1),'code/','http://test1.phpandmysqlbook.com');
-          setcookie("Cookie2","2222",time() + (60* 1),'http://test1.phpandmysqlbook.com');
-          $locale = array('timezone' => 'EST', 'language' => 'EN-US', 'currency' => 'USD');
-          setcookie("Cookie3",$locale,time() + (60* 1));
-          setcookie("Cookie4","4444",time() - (60* 1));
-          setcookie("Cookie5","5555");
-					echo "Interrupting text";
-					setcookie("Cookie6","6666");
-          echo "Cookies set";
-        ?>
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $name  = filter_input(INPUT_POST, 'name', 
+                          FILTER_SANITIZE_STRING);
+  $color = filter_input(INPUT_POST, 'color', 
+                          FILTER_SANITIZE_STRING);
+  if($name != null){
+    setcookie('name', $name, time() + (60 * 1), "/");
+  }
+  if ($color != null) {
+    setcookie('color', $color, time() + (60 * 1), "/");
+  }
+  header('Location:cookie-viewer.php');
+}
+?>
+<form method="post" action="cookie-set.php"> 
+  Choose color:
+  <select name="color">
+    <option value="#ccede9">green</option>
+    <option value="#cceefb">blue</option>
+    <option value="#fcdfdb">orange</option>
+  </select>
+  Name: <input type="text" name="name"  />
+  <input type="submit" value="Save" />
+</form>

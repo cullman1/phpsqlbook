@@ -652,4 +652,62 @@ function display_media($media){
   return $displayHTML;
 }
 
+function get_user_by_email($email) {
+  $query = "SELECT * from user WHERE email = :email";
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(":email", $email);
+  $statement->execute();
+  $user =   $statement->fetch(PDO::FETCH_OBJ);
+  return ($user ? $user : false);
+}
+
+function create_iv() {
+  $isItSecure = false;
+  while ($isItSecure == false) {
+    $iv = openssl_random_pseudo_bytes(16, $isItSecure);
+    if ($isItSecure) {
+      return $iv;
+    } 
+  }
+}
+
+function send_email($to, $subject, $message) {
+  $mail = new PHPMailer();                                 // Create object
+  // How the email is going to be sent
+  $mail->IsSMTP();                                         // Set mailer to use SMTP
+  $mail->Host     = 'secure.emailsrvr.com';                    // SMTP server address
+  $mail->SMTPAuth = true;                                  // SMTP authentication on
+  $mail->Username = 'chris@deciphered.com';                   // Username
+  $mail->Password = 'CU_Dec23c58y1';                            // Password
+  // Who the email is from and to
+  $mail->setFrom('test@example.com');                      // From
+  $mail->AddAddress($to);                                  // To
+  // Content of email
+  $mail_header   = '<!DOCTYPE html PUBLIC...';             // Header goes here
+  $mail_footer   = '...</html>';                           // Header goes here
+  $mail->Subject = $subject;                               // Set subject of email
+  $mail->Body    = $mail_header . $message . $mail_footer;   
+  $mail->AltBody = strip_tags($message);                   // Set body to HTML email
+  $mail->CharSet = 'UTF-8';                                // Set character set
+  //$mail->IsHTML(true);                                     // Set email format to HTML
+  // Attempt to send email
+  if(!$mail->Send()) {
+    return false;
+  }
+  return true;
+}
+
+function update_password($password, $id){
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $query = 'UPDATE user set password = :pass WHERE id= :id';
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':pass', $hash);
+  $statement->bindParam(':id', $id);
+  $statement->execute();
+  if($statement->errorCode() != 0) {  
+    return $statement->errorCode();
+  }
+  return true;
+}
+
 ?>

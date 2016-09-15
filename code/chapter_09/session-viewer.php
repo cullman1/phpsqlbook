@@ -1,13 +1,19 @@
 <?php
 session_start();
-$name = $_SESSION["name"] ? $_SESSION["name"] : "" ;
-$color = $_SESSION["color"] ? $_SESSION["color"] : "" ;
-if (isset($color)) {
-       include("style.php");
- }
+session_set_cookie_params(30*60, '/', '', false, true);
+
+$color = isset($_SESSION['color']) 
+           ? $_SESSION['color'] : '';
+$name  = isset($_SESSION['name']) 
+           ? $_SESSION['name'] : '';
+if ($color != '') {
+ echo '<link href="' . $color . '.css" />';
+}
 ?>
+</head>
+<body>
 <div>
- <?php if (!isset($name)) { ?>
+ <?php if ($name == '') { ?>
   <a href="session-set.php">Preferences</a> 
  <?php } else { ?>
   <a href="session-set.php"><?php echo $name; ?></a> 

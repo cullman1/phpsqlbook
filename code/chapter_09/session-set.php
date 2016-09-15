@@ -1,25 +1,25 @@
 <?php
 session_start();
+session_set_cookie_params(30*60, '/', '', false, true);
 if($_SERVER['REQUEST_METHOD'] == 'POST') {  
-  $name  = filter_input(INPUT_POST, 'name', 
-                          FILTER_SANITIZE_STRING);
   $color = filter_input(INPUT_POST, 'color', 
                           FILTER_SANITIZE_STRING);
-  if($name != null){
-    $_SESSION["name"] = $name;
+  $name  = filter_input(INPUT_POST, 'name', 
+                          FILTER_SANITIZE_STRING);
+  if((trim($color) != '') && (trim($name) != '')) {
+    $_SESSION['color'] = $color;
+    $_SESSION['name']  = $name;
+    header('Location:session-viewer.php');
+  } else {
+    echo 'Please enter your name';
   }
-  if ($color != null) {
-    $_SESSION["color"] = $color;
-  }
-  header('Location:session-viewer.php');
 }
 ?>
 <form method="post" action="session-set.php"> 
-  Choose color:
+Choose color scheme:
   <select name="color">
-    <option value="#ccede9">green</option>
-    <option value="#cceefb">blue</option>
-    <option value="#fcdfdb">orange</option>
+    <option value="light">light</option>
+    <option value="dark">dark</option>
   </select>
   Name: <input type="text" name="name"  />
   <input type="submit" value="Save" />

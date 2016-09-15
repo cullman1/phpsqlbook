@@ -652,4 +652,17 @@ function display_media($media){
   return $displayHTML;
 }
 
+function update_password($password, $id){
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $query = 'UPDATE password set hash = :pass WHERE id= :id';
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':pass', $hash);
+  $statement->bindParam(':id', $id);
+  $statement->execute();
+  if($statement->errorCode() != 0) {  
+    return $statement->errorCode();
+  }
+  return true;
+}
+
 ?>

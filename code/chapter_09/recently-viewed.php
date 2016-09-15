@@ -1,18 +1,21 @@
-<div class="tk-proxima-nova" style="float:right;">
-    <h3 class="tk-proxima-nova">Recently Viewed</h3>
-    <br/>
-    <?php if (isset($_SESSION["just_viewed"])) {
-           $reverse = array_reverse($_SESSION["just_viewed"]);
-             $i=1;
-             foreach($reverse as $viewed)  {
-                if ($i!=1) {
-                    echo $viewed["title"] . "<br/>";
-                }
-                $i++;
-             }
-            if ($i==2) {
-                echo "None";
-            } 
-          } 
-       ?>
-</div>
+<?php
+  if (isset($_SESSION['last_viewed'])) {
+    $history = array_reverse($_SESSION['last_viewed']);
+    $items   = count($history);
+  }
+  if ($items > 1) {
+?>
+  <div class="recently-viewed">
+    <h3>Recently Viewed</h3>
+    <?php
+      foreach($history as $item => $file){
+        if ($item != 0) {
+          echo '<a href="' . $file . '">';
+          $page = str_replace('session-', '', $file);
+          echo str_replace('.php', '', $page);
+          echo '</a><br/>';
+        }
+      }
+   ?>
+  </div>
+<?php } ?>
