@@ -6,17 +6,14 @@ $color = isset($_SESSION['color'])
            ? $_SESSION['color'] : '';
 $name  = isset($_SESSION['name']) 
            ? $_SESSION['name'] : '';
-if ($color != '') {
- echo '<link href="' . $color . '.css" />';
-}
 ?>
+ <link rel="stylesheet" href="../css/styles.css" />
 </head>
-<body>
-<div>
- <?php if ($name == '') { ?>
-  <a href="session-set.php">Preferences</a> 
- <?php } else { ?>
-  <a href="session-set.php"><?php echo $name; ?></a> 
- <?php }  ?>
-</div>
+<body class="<?= $color?>">
+  <?php if ($name == '') { ?>
+   <a href="session-set.php">Preferences</a> 
+  <?php } else { ?>
+   <a href="session-set.php"><?php echo $name; ?></a> 
+  <?php }  ?>
 <div>Welcome to the home page</div>
+</body>

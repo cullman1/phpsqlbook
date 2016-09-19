@@ -1,27 +1,18 @@
 <?php
 require_once('../includes/database_connection.php');
-$alert    = array('status'  => '', 'message' => '');
-$email    = (isset($_POST['email']) ? $_POST['email'] : '' ); 
+require_once('../includes/functions.php');
+$alert = array('status'  => '', 'message' => '');
+$email = (isset($_POST['email']) ? $_POST['email'] : '' ); 
 $password = (isset($_POST['password']) ? $_POST['password'] : '' ); 
-$valid    = array('email' => '', 'password' =>'');
+$valid = array('email' => '', 'password' =>'');
 
 function validate_login ($email,$password, $valid) {
-  $valid['email']    = ((filter_var($email,  FILTER_DEFAULT)) ? ''   : 'Add email' );
-  $valid['password'] = ((filter_var($password, FILTER_DEFAULT)) ? '' : 'Add password' );
+  $valid['email'] = (filter_var($email,  FILTER_DEFAULT))? ''   : 'Enter email' ;
+  $valid['password'] = (filter_var($password,  FILTER_DEFAULT))? '' : 'Enter password' ;
   return $valid;
 }
 
-function get_user_by_email_password($email, $password) {
-  $query = 'SELECT * FROM user WHERE email =:email AND password= :password';
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':email',$email);
-  $statement->bindParam(':password',$password);
-  $statement->execute();
-  $user = $statement->fetch(PDO::FETCH_OBJ);
-  return ($user ? $user : false);
-}
-
-function create_basic_session($user) {
+function create_session($user) {
   session_start();
   $_SESSION['forename'] = $user->forename;
   $_SESSION['image'] = ($user->image ? $user->image : "default.jpg");
@@ -35,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
  } else {
    $user=get_user_by_email_password($email, $password);
    if ($user) {
-      create_basic_session($user);
+      create_session($user);
       header('Location: admin-home.php'); 
     } else {
        $alert = array('status'  => 'danger', 
@@ -44,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 } ?>
 
-<form method='post' action='login.php'>
+<form method='post' action='login-cms.php'>
  <span class="<?= $alert['status'] ?>">
   <?= $alert['message'] ?>
  </span><br>

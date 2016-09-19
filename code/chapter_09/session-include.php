@@ -9,9 +9,9 @@ function create_history($current) {
   return $history;
 }
 
-function remove_existing($file, $history) {
+function remove_existing($current, $history) {
   foreach($history as $value=>$page) {         
-    if ($page == $file) {
+    if ($page == $current) {
       unset($history[$value]);
     }
   }  
@@ -19,11 +19,9 @@ function remove_existing($file, $history) {
 }
 
 function add_current($current, $history) {
-  if ( sizeof($history < 4 ) ) { 
-    array_push($history, $current);
-  } else {   
-    array_unshift($history);
-    array_push($history, $current);
+  array_unshift($history, $current); 
+  if (count($history) > 5) { 
+    array_pop($history);
   }
   return $history;
 }

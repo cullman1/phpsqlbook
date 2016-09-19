@@ -7,8 +7,8 @@ function send_email($to, $subject, $message) {
   $mail->IsSMTP();                                       // Set mailer to use SMTP
   $mail->Host     = 'secure.emailsrvr.com';                  // SMTP server address
   $mail->SMTPAuth = true;                                // Turn on SMTP authentication
-  $mail->Username = 'chris@deciphered.com';              // Username
-  $mail->Password = 'CU_Dec23c58y1';                     // Password
+  $mail->Username = 'test@deciphered.com';              // Username
+  $mail->Password = 'Ma8_d3vwjX12j';                     // Password
   // Who the email is from and to
   $mail->setFrom('test@example.com');                    // From
   $mail->AddAddress($to);                                // To

@@ -675,10 +675,10 @@ function send_email($to, $subject, $message) {
   $mail = new PHPMailer();                                 // Create object
   // How the email is going to be sent
   $mail->IsSMTP();                                         // Set mailer to use SMTP
-  $mail->Host     = 'secure.emailsrvr.com';                    // SMTP server address
+  //$mail->Host     = 'secure.emailsrvr.com';                    // SMTP server address
   $mail->SMTPAuth = true;                                  // SMTP authentication on
-  $mail->Username = 'chris@deciphered.com';                   // Username
-  $mail->Password = 'CU_Dec23c58y1';                            // Password
+  //$mail->Username = 'test@deciphered.com';                   // Username
+  //$mail->Password = 'Ma8_d3vwjX12j';                            // Password
   // Who the email is from and to
   $mail->setFrom('test@example.com');                      // From
   $mail->AddAddress($to);                                  // To
@@ -699,9 +699,9 @@ function send_email($to, $subject, $message) {
 
 function update_password($password, $id){
   $hash = password_hash($password, PASSWORD_DEFAULT);
-  $query = 'UPDATE user set password = :pass WHERE id= :id';
+  $query = 'UPDATE user set password = :password WHERE id= :id';
   $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':pass', $hash);
+  $statement->bindParam(':password', $hash);
   $statement->bindParam(':id', $id);
   $statement->execute();
   if($statement->errorCode() != 0) {  

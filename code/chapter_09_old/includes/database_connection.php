@@ -6,9 +6,9 @@ $password = "";
 $databaseName = "cms";
 $dbName       = "cms";
 
-$GLOBALS["SMTPHost"] = "secure.emailsrvr.com";
-$GLOBALS["Username"] = "chris@deciphered.com"; //"test@deciphered.com";  	// username
-$GLOBALS["Password"] = "CU_Dec23c58y1"; //"Trecarne_PL145BS"; 	
+//$GLOBALS["SMTPHost"] = "secure.emailsrvr.com";
+//$GLOBALS["Username"] = "test@deciphered.com"; //"test@deciphered.com";  	// username
+//$GLOBALS["Password"] = "Ma8_d3vwjX12j"; //"Trecarne_PL145BS"; 	
 
 
 

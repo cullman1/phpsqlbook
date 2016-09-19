@@ -5,21 +5,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $color = filter_input(INPUT_POST, 'color', 
                           FILTER_SANITIZE_STRING);
   if($name != null){
-    setcookie('name', $name, time() + (60 * 1), "/");
+    setcookie('name', $name, time() + (60 * 1), '/');
   }
   if ($color != null) {
-    setcookie('color', $color, time() + (60 * 1), "/");
+    setcookie('color', $color, time() + (60 * 1), '/');
   }
   header('Location:cookie-viewer.php');
 }
 ?>
 <form method="post" action="cookie-set.php"> 
-  Choose color:
+  Select color scheme:
   <select name="color">
-    <option value="#ccede9">green</option>
-    <option value="#cceefb">blue</option>
-    <option value="#fcdfdb">orange</option>
-  </select>
-  Name: <input type="text" name="name"  />
+    <option value="dark">dark</option>
+    <option value="light">light</option>
+  </select><br/>
+  Name: <input type="text" name="name"  /><br/>
   <input type="submit" value="Save" />
 </form>

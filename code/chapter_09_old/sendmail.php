@@ -92,8 +92,8 @@ $mail = new PHPMailer();                               // Create object
 $mail->IsSMTP();                                       // Set mailer to use SMTP
 $mail->Host = "secure.emailsrvr.com";  // specify main and backup server
 $mail->SMTPAuth = true;                                // Turn on SMTP authentication
-$mail->Username = "chris@deciphered.com";  // SMTP username
-$mail->Password = "CU_Dec23c58y1"; // SMTP password                    // Password
+$mail->Username = "test@deciphered.com";  // SMTP username
+$mail->Password = "Ma8_d3vwjX12j"; // SMTP password                    // Password
 
 // Who the email is from and to
 $mail->setFrom('ivy@example.com', 'Ivy Stone');        // From (name optional)

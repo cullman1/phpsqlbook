@@ -1,6 +1,6 @@
 <?php
   if (isset($_SESSION['last_viewed'])) {
-    $history = array_reverse($_SESSION['last_viewed']);
+    $history = $_SESSION['last_viewed'];
     $items   = count($history);
   }
   if ($items > 1) {

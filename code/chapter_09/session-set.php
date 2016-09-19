@@ -16,11 +16,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 <form method="post" action="session-set.php"> 
-Choose color scheme:
+Select color scheme:
   <select name="color">
-    <option value="light">light</option>
     <option value="dark">dark</option>
-  </select>
-  Name: <input type="text" name="name"  />
+    <option value="light">light</option>
+  </select><br/>
+  Name: <input type="text" name="name"  /><br/>
   <input type="submit" value="Save" />
 </form>
