@@ -1,15 +1,20 @@
 <style>
 
-.danger { color:red }
+.danger, .error { color:red; }
+label { 
+clear:both; 
+}
+span:after { 
+     content: "\A";
+     white-space: pre; 
+}
 </style>
 <?php
-
 require_once('../includes/database_connection.php');
-require_once('../includes/functions.php');
 $show_form = true;
 $alert = array('status'  => '', 'message' => '');
-$valid = array('forename' => '', 'surname' =>'', 'email' => '', 'password' => '',
- 'confirm' => '');
+$valid = array('forename' => '', 'surname' =>'', 'email' => '', 
+               'password' => '', 'confirm' => '');
 $forename  = ( isset($_POST['forename']) ? $_POST['forename'] : '' ); 
 $surname   = ( isset($_POST['surname'])  ? $_POST['surname']  : '' ); 
 $email     = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
@@ -17,41 +22,49 @@ $password  = ( isset($_POST['password']) ? $_POST['password'] : '' );
 $confirm   = ( isset($_POST['confirm'])  ? $_POST['confirm']  : '' ); 
 
 function validate_form($forename, $surname, $email, $password, $confirm, $valid) {
+  //Forename, surname and email validation check
   $valid['forename'] = (filter_var($forename, FILTER_DEFAULT)) ? ''  : 'Enter forename';
   $valid['surname']  = (filter_var($surname,  FILTER_DEFAULT)) ? ''  : 'Enter surname';
   $valid['email']    = (filter_var($email, FILTER_VALIDATE_EMAIL)) ? '' : 'Enter email';
-  $valid['password'] = (filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=> 
-  array("regexp"=>"/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/"))) ? '': 'Password not valid' );
-  $valid['confirm'] = (filter_var($confirm, FILTER_DEFAULT)) ? '' : 'Confirm password';
+  //Password and Confirm validation check 
+  $valid['password'] = (filter_var($password, FILTER_VALIDATE_REGEXP, array('options'=> 
+  array('regexp'=>"/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/"))) ? '': 'Password not valid' );
+  $valid['confirm']  = (filter_var($confirm, FILTER_DEFAULT)) ? '' : 'Confirm password';
+  //Compare password and confirm controls
   if ($valid['password'] == '') {
     $valid['confirm'] = ($password == $confirm ? '' : 'Passwords do not match' );
   }
+  //If email is valid, check if it is already in database
   if ($valid['email'] == '') {
     $user_exists = get_user_by_email($email);
-    if ($user_exists == true) {
+    if ($user_exists) {
       $valid['email'] = 'User already exists';
     }
   }
   return $valid;
 }
 
+function get_user_by_email($email) {
+  $query = 'SELECT * from user WHERE email = :email';
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':email', $email);
+  $statement->execute();
+  $user =   $statement->fetch(PDO::FETCH_OBJ);
+  return ($user ? $user : false);
+}
 
-
-function add_user_passwordtext($forename, $surname, $password, $email) {     
-  $query = 'INSERT INTO user (forename, surname,  
-  email,  password) VALUES ( :forename, :surname, 
-  :email, :password)';
+function add_user_textpassword($forename, $surname, 
+                  $password, $email) {     
+  $query = 'INSERT INTO user
+    (forename, surname, email, password) 
+    VALUES ( :forename, :surname, :email, :password)';
   $statement = $GLOBALS['connection']->prepare($query);
   $statement->bindParam(':forename', $forename );
   $statement->bindParam(':surname', $surname );
   $statement->bindParam(':email',$email);
   $statement->bindParam(':password',$password);
   $result = $statement->execute();
-  if( $result == true ) {     
-      return true;
-  } else {
-      return $statement->errorCode();
-  }   
+  return (($result == true) ? true : $statement->errorCode()); 
  }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -59,49 +72,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $password, $confirm, $valid);
   $validation_failed = array_filter($valid);
   if ($validation_failed == true) {
-  $alert['status'] = 'danger';    
+    $alert['status']  = 'danger';
     $alert['message'] = 'Please check errors below';
   } else {
-    //Try to add user
-    $user_added = add_user($forename, $surname,  $password, $email);
-    if ($user_added) {    
-$alert['status'] = 'danger';          
-      $alert['message'] = 'User added';        
+    $user_added = add_user_textpassword($forename, 
+      $surname,  $password, $email);	
+    if ($user_added) {      
+    $alert['status']  = 'success';
+    $alert['message'] = 'User added';        
       $show_form = false;
-     } else {    
-$alert['status'] = 'danger';                           
+     } else {                           
+      $alert['status']  = 'danger';
       $alert['message'] = 'Unable to add user'; 
     }
   } 
 }
 ?>
-
 <body>
- <div class='<?= $alert['status'] ?>'><?= $alert['message'] ?></div>
+ <div class="<?= $alert['status'] ?>">
+      <?= $alert['message'] ?></div>
  <?php if ($show_form) { ?>
- <form method='post' action='register.php'>
-   <label for='forename'>First name
-     <input type='text' name='forename' 
-     placeholder="Forename" value="<?=$forename ?>" /> 
-     <span class='<?= $alert['status'] ?>'><?= $valid['forename']; ?></span>
-   </label><br><br>
-   <label for='surname'>Last name
-     <input type='text' name='surname' placeholder='Surname' value='<?=$surname ?>' />
-     <span class='<?= $alert['status'] ?>'><?= $valid['surname']; ?></span>
-   </label><br><br>
-   <label for='email'>Email address
-     <input type='email' name='email' placeholder='Email' value="<?=$email ?>" />
-     <span class='<?= $alert['status'] ?>'><?= $valid['email']; ?></span>
-   </label><br><br>
-   <label for='password'>Password
-     <input type='password' name='password' placeholder='Password'  />
-     <span class='<?= $alert['status'] ?>'><?= $valid['password']; ?></span>
-   </label><br><br>
-   <label for='confirm'>Confirm Password
-     <input type='password'  name='confirm' placeholder='Confirm Password'  />
-     <span class='<?= $alert['status'] ?>'><?= $valid['confirm']; ?></span>
-   </label><br><br>
-   <button type='submit' class='btn btn-default'>Register</button>
+ <form method="post" action="register.php">
+   <label>First name <input type="text" name="forename" 
+          placeholder="Forename" 
+          value="<?=$forename ?>" /></label>
+   <span class="error"><?= $valid['forename'] ?></span>
+   <label>Last name <input type="text" name="surname" 
+          placeholder="Surname" 
+          value="<?=$surname ?>" /></label>
+   <span class="error"><?= $valid['surname'] ?></span>
+   <label>Email address <input type="email" name="email" 
+          placeholder="Email" 
+          value="<?=$email ?>" /></label>
+   <span class="error"><?= $valid['email'] ?></span>
+   <label>Password <input type="password"
+          name="password" 
+          placeholder="Password" /></label>
+   <span class="error"><?= $valid['password'] ?></span>
+   <label>Confirm Password <input type="password"  
+          name="confirm" 
+          placeholder="Confirm Password"  /></label>
+   <span class="error"><?= $valid['confirm'] ?></span>
+   <button type="submit">Register</button>
  </form>
  <?php } ?>
 </body>

@@ -9,14 +9,18 @@ $alert     = array('status'  => '', 'message' => '');
 $email     = ( isset($_POST['email']) ? $_POST['email'] : '' );
 $valid     = (filter_var($email, FILTER_VALIDATE_EMAIL)) ? true : false; 
 // Functions
-function create_iv() {
-  $isItSecure = false;
-  while ($isItSecure == false) {
-    $iv = openssl_random_pseudo_bytes(16, $isItSecure);
-    if ($isItSecure) {
-      return $iv;
-    } 
+
+function add_password($password, $id){
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $query = 'UPDATE user set password = :pass WHERE id= :id';
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':pass', $hash);
+  $statement->bindParam(':id', $id);
+  $statement->execute();
+  if($statement->errorCode() != 0) {  
+    return $statement->errorCode();
   }
+  return true;
 }
 
 // If have valid email, send reset password link

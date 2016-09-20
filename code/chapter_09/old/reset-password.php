@@ -11,13 +11,10 @@ $password  = (isset($_POST['password']) ? $_POST['password'] : '' );
 $confirm   = (isset($_POST['confirm'])  ? $_POST['confirm']  : '' ); 
 $iv        = (isset($_REQUEST['iv'])    ? $_REQUEST['iv']    : '' ); 
 $token     = (isset($_REQUEST['token']) ? $_REQUEST['token'] : '' ); 
-
 // Functions
 function validate_form($password, $confirm) {
   // Does the password have 8 characters, upper and lower cases and digits?
-  $valid  = (filter_var($password, FILTER_VALIDATE_REGEXP, 
-            array('options' => array('regexp'=>'/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/' ))) 
-            ? '' : 'Your password is not strong enough. ');
+  $valid  = (filter_var($password, FILTER_VALIDATE_REGEXP,  array('options' => array('regexp'=>'/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/' )))  ? '' : 'Your password is not strong enough. ');
   // Is the password confirm box empty
   $valid .= (filter_var($confirm, FILTER_DEFAULT)) ? '' : 'Confirm password empty. ';
   // If neither check is positive then compare password to confirm password
@@ -27,8 +24,6 @@ function validate_form($password, $confirm) {
   // Return the result of validation
   return ( ($valid == '') ? true : $valid );
 }
-
-// Functions
 function get_email_from_token($token, $iv, $valid) {
   $token = base64_decode($token);
   $iv    = base64_decode($iv);
@@ -42,21 +37,8 @@ function get_email_from_token($token, $iv, $valid) {
   return false;
 }
 function is_timestamp_valid($timestamp, $seconds) {
-  return ( ( (time() - $timestamp) <= $seconds) ? true : false );
+  return (((time() - $timestamp) <= $seconds) ? true : false );
 }
-
-function update_password($password, $id){
-  $hash = password_hash($password, PASSWORD_DEFAULT);
-  $query = 'UPDATE user set password = :password WHERE id = :id';
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':password', $hash);
-  $statement->bindParam(':id', $id);
-  $statement->execute();
-  if($statement->errorCode() != 0) {  
-    return $statement->errorCode();
-  }
-  return true;
-} 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Set default error message
@@ -64,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $valid = validate_form($password, $confirm);            // Check: is form valid
 
-  if ($valid===true) {                                           // If success
-    $valid = '';
+  if ($valid) {                                       // If success
+
     // Set new default error message
     $alert = array('status' => 'danger', 'message' => 'Password not updated');
 
@@ -103,5 +85,5 @@ if ($show_form == true) { ?>
     <input type="hidden" name="token" value="<?= $token ?>" />
     <input type="hidden" name="iv" value="<?= $iv ?>" />
     <input type="submit" name="submit_button" value="Submit New Password" />
-  </form>			
+  </form>
 <?php } ?>

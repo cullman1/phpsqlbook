@@ -40,8 +40,8 @@ function send_email($to, $subject, $message) {
   $mail->IsSMTP();                                         // Set mailer to use SMTP
   $mail->Host     = 'secure.emailsrvr.com';                    // SMTP server address
   $mail->SMTPAuth = true;                                  // SMTP authentication on
-  $mail->Username = 'placeholder@deciphered.com';                   // Username
-  $mail->Password = 'placeholder';                            // Password
+  $mail->Username = 'test@deciphered.com';                   // Username
+  $mail->Password = 'Ma8_d3vwjX12j';                            // Password
   // Who the email is from and to
   $mail->setFrom('no-reply@example.com');                  // From
   $mail->AddAddress($to);                                  // To
@@ -59,16 +59,6 @@ function send_email($to, $subject, $message) {
     return false;                                          // If it fails return false
   }
   return true;                                             // Otherwise return false
-}
-
-function get_user_by_email_and_password($email, $password) {
-  $query = 'SELECT id, forename, surname, email, image, role_id FROM user 
-            WHERE email =:email AND password= :token';
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':email',$email);
-  $statement->execute();
-  $user = $statement->fetch(PDO::FETCH_OBJ);
-  return (password_verify($password, $user->hash) ? $user : false);
 }
 
 function get_tasks_by_role_id($role_id) {
