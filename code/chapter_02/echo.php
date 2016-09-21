@@ -1,17 +1,15 @@
 <?php
-$username = 'Ivy';
-$cost_per_pack = 5;
+$username = "Ivy";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Variables</title>
+<title>Echo command</title>
 <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-<h1>Seeds</h1>
+<h1>The Seed Store</h1>
 <p>Welcome <?php echo $username; ?></p>
-<p>The cost of your seeds are
-$<?php echo $cost_per_pack; ?> per pack.</p>
+<?php echo '<p class="offer">Offer: 20% off</p>' ?>
 </body>
 </html>
