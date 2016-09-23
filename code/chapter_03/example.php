@@ -1,16 +1,21 @@
 <?php
-include('class_lib.php');
-$tax_rate = 20;
-$basil = new Seed('Basil', 3, 32);
-$chives = new Seed('Chives', 4, 56);
-$parsley = new Seed('Parsley', 3, 14);
+
+define('TAX', 20);
+
+$basil   = Array('name' => 'basil', 'price' => 3, 'stock' => 12);
+$chives  = Array('name' => 'chives', 'price' => 2, 'stock' => 26);
+$parsley = Array('name' => 'parsley', 'price' => 4, 'stock' => 8);
+
 $seeds = array($basil, $chives, $parsley);
-function total($price, $quantity) {
-return $price * $quantity;
+
+function get_stock_value($price, $quantity) {
+  return $price * $quantity;
 }
+
 function get_tax($price, $tax_rate) {
-return ($price / 100) * $tax_rate;
+  return ($price / 100) * $tax_rate;
 }
+
 ?>
 <table>
 <tr>
@@ -26,8 +31,8 @@ echo '<tr>';
 foreach ($seed as $key => $value) {
 echo '<td>' . $value . '</td>';
 }
-echo '<td>$' . total($seed->price, $seed->stock) . '</td>';
-echo '<td>$' . get_tax($seed->price, $tax_rate) . '</td>';
+echo '<td>$' . get_stock_value($seed['price'], $seed['stock']) . '</td>';
+echo '<td>$' . get_tax($seed['price'], TAX) . '</td>';
 echo '</tr>';
 }
 ?>
