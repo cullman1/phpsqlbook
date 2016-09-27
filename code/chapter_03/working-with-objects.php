@@ -13,16 +13,16 @@ $parsley = new Seed('Parsley', 3, 14);
 <th><?php echo $chives->name; ?></th>
 <th><?php echo $parsley->name; ?></th>
 </tr>
-<tr style="background-color:gray;">
+<tr>
 <td>23 June</td>
 <td><?php echo $basil->stock; ?></td>
 <td><?php echo $chives->stock; ?></td>
 <td><?php echo $parsley->stock; ?></td>
 </tr>
 <?php
-$basil->updateStock(3);
-$chives->updateStock(-12);
-$parsley->updateStock(50);
+$basil->setStock(3);
+$chives->setStock(-12);
+$parsley->setStock(50);
 ?>
 <tr>
 <td>24 June</td>
@@ -31,7 +31,7 @@ $parsley->updateStock(50);
 <td><?php echo $parsley->stock; ?></td>
 </tr>
 <?php
-$basil->updateStock(3);
-$chives->updateStock(-12);
-$parsley->updateStock(50);
+$basil->setStock(3);
+$chives->setStock(-12);
+$parsley->setStock(50);
 ?>

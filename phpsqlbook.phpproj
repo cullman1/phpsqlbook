@@ -136,6 +136,7 @@
     <Compile Include="code\chapter_03\function.php" />
     <Compile Include="code\chapter_03\while-loop.php" />
     <Compile Include="code\chapter_03\working-with-objects.php" />
+    <Compile Include="code\chapter_04\empty-constructor.php" />
     <Compile Include="code\chapter_08\about.php" />
     <Compile Include="code\chapter_08\add_article_amended.php" />
     <Compile Include="code\chapter_08\add_article_document.php" />
@@ -277,12 +278,12 @@
     <Compile Include="code\chapter_02_old\string-operator.php" />
     <Compile Include="code\chapter_02_old\switch-statement.php" />
     <Compile Include="code\chapter_02_old\variables.php" />
-    <Compile Include="code\chapter_04\index.php" />
-    <Compile Include="code\chapter_04\maxlogins.php" />
-    <Compile Include="code\chapter_04\multiplerecords.php" />
-    <Compile Include="code\chapter_04\singlerecord.php" />
-    <Compile Include="code\chapter_04\sql-test.php" />
-    <Compile Include="code\chapter_04\user.php" />
+    <Compile Include="code\chapter_04_old\index.php" />
+    <Compile Include="code\chapter_04_old\maxlogins.php" />
+    <Compile Include="code\chapter_04_old\multiplerecords.php" />
+    <Compile Include="code\chapter_04_old\singlerecord.php" />
+    <Compile Include="code\chapter_04_old\sql-test.php" />
+    <Compile Include="code\chapter_04_old\user.php" />
     <Compile Include="code\chapter_05\data-binding.php" />
     <Compile Include="code\chapter_05\get-data.php" />
     <Compile Include="code\chapter_05\index.php" />
@@ -562,6 +563,7 @@
     <Compile Include="pages\search.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
+    <Compile Include="code\chapter_03\testing-access.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\" />
@@ -587,7 +589,7 @@
     <Folder Include="code\chapter_01_old\" />
     <Folder Include="code\chapter_02_old\" />
     <Folder Include="code\chapter_03\" />
-    <Folder Include="code\chapter_04\" />
+    <Folder Include="code\chapter_04_old\" />
     <Folder Include="code\chapter_05\" />
     <Folder Include="code\chapter_06\" />
     <Folder Include="code\chapter_08\" />
@@ -626,6 +628,7 @@
     <Folder Include="code\chapter_10\" />
     <Folder Include="code\chapter_09\" />
     <Folder Include="code\chapter_02\" />
+    <Folder Include="code\chapter_04\" />
     <Folder Include="code\uploads\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
