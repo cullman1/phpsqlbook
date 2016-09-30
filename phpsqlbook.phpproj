@@ -136,7 +136,11 @@
     <Compile Include="code\chapter_03\function.php" />
     <Compile Include="code\chapter_03\while-loop.php" />
     <Compile Include="code\chapter_03\working-with-objects.php" />
-    <Compile Include="code\chapter_04\empty-constructor.php" />
+    <Compile Include="code\chapter_04\class_lib.php" />
+    <Compile Include="code\chapter_04\constructor.php" />
+    <Compile Include="code\chapter_04\example.php" />
+    <Compile Include="code\chapter_04\header-admin.php" />
+    <Compile Include="code\chapter_04\object-array.php" />
     <Compile Include="code\chapter_08\about.php" />
     <Compile Include="code\chapter_08\add_article_amended.php" />
     <Compile Include="code\chapter_08\add_article_document.php" />
