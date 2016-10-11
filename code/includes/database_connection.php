@@ -1,8 +1,8 @@
 <?php
-
+error_reporting(E_ALL & ~E_NOTICE);
 $serverName = "127.0.0.1";
 $userName = "root";
-$password = ""; 
+$password = "abcd"; 
 $databaseName = "cms";
 $dbName       = "cms";
 
@@ -20,5 +20,6 @@ try {
   echo 'Error message: ' . $error->getMessage() . '<br>';
   echo 'File name: ' . $error->getFile() . '<br>';
   echo 'Line number: ' . $error->getLine() . '<br>';
+   echo 'Line number: ' . var_dump($error->getTrace()) . '<br>';
 }
 ?>

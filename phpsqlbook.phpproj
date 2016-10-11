@@ -201,6 +201,9 @@
     <Compile Include="code\chapter_09\session-set.php" />
     <Compile Include="code\chapter_09\session-viewer.php" />
     <Compile Include="code\chapter_11\database-connection.php" />
+    <Compile Include="code\chapter_11\exception_subtype.php" />
+    <Compile Include="code\chapter_11\pdoexception.php" />
+    <Compile Include="code\chapter_11\set_exception.php" />
     <Compile Include="code\chapter_11\test.php" />
     <Compile Include="code\chapter_11\throw.php" />
     <Compile Include="code\includes\config.php" />
