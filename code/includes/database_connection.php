@@ -2,7 +2,7 @@
 error_reporting(E_ALL & ~E_NOTICE);
 $serverName = "127.0.0.1";
 $userName = "root";
-$password = "abcd"; 
+$password = ""; 
 $databaseName = "cms";
 $dbName       = "cms";
 
