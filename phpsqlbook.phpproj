@@ -205,6 +205,7 @@
     <Compile Include="code\chapter_11\debug.php" />
     <Compile Include="code\chapter_11\discount.php" />
     <Compile Include="code\chapter_11\exception_subtype.php" />
+    <Compile Include="code\chapter_11\forbidden-access.php" />
     <Compile Include="code\chapter_11\pdoexception.php" />
     <Compile Include="code\chapter_11\set_exception.php" />
     <Compile Include="code\chapter_11\test.php" />
