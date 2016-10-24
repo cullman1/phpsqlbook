@@ -168,6 +168,7 @@
     <Compile Include="code\chapter_08\upload-and-resize-im.php" />
     <Compile Include="code\chapter_08\upload-and-resize.php" />
     <Compile Include="code\chapter_08\upload-file-then-move.php" />
+    <Compile Include="code\chapter_08\upload-file-validate-type.php" />
     <Compile Include="code\chapter_08\upload_media.php" />
     <Compile Include="code\chapter_08\insertform.php" />
     <Compile Include="code\chapter_08\media_short.php" />
@@ -201,11 +202,12 @@
     <Compile Include="code\chapter_09\session-set.php" />
     <Compile Include="code\chapter_09\session-viewer.php" />
     <Compile Include="code\chapter_11\buffer.php" />
-    <Compile Include="code\chapter_11\database-connection.php" />
+    <Compile Include="code\chapter_11\database-connect.php" />
     <Compile Include="code\chapter_11\debug.php" />
     <Compile Include="code\chapter_11\discount.php" />
     <Compile Include="code\chapter_11\exception_subtype.php" />
     <Compile Include="code\chapter_11\forbidden-access.php" />
+    <Compile Include="code\chapter_11\log_text_file.php" />
     <Compile Include="code\chapter_11\pdoexception.php" />
     <Compile Include="code\chapter_11\set_exception.php" />
     <Compile Include="code\chapter_11\test.php" />

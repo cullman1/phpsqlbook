@@ -1,0 +1,2 @@
+
+2016-10-21 11:47:58 - Line:14 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.usesr' doesn't exist - C:\xampp\htdocs\phpsqlbook\code\chapter_11\log_text_file.php

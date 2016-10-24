@@ -1,4 +1,5 @@
-<?php function checkZipCode($value) {
+<?php
+function checkZipCode($value) {
   try  {
   if(!is_numeric($value) || (empty($value))) {
     throw new InvalidArgumentException('This 
@@ -15,9 +16,7 @@
     header('Location:../error/Length.htm');
   }
   return "Valid entry"; 
-
 }
-
 if (($_SERVER['REQUEST_METHOD']) == 'POST') { 
   echo checkZipCode($_POST["zipcode"]);
 }

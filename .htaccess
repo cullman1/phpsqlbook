@@ -1,5 +1,4 @@
 RewriteEngine On    # Turn on the rewriting engine
-Options -Indexes
 # FallbackResource index.php
 RewriteRule   ^admin/?$ /admin/pages.php        [NC,L]    # Handle requests for admin page
 RewriteRule   ^home/?$ /pages/main.php        [NC,L]    # Handle requests for home page
@@ -15,9 +14,13 @@ RewriteRule   ^category/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC
 RewriteRule   ^category/([^/.]+)//([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
 RewriteRule   ^user/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
 RewriteRule   ^user/([^/.]+)//([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+
 php_value upload_max_filesize 8M
 php_value post_max_size 8M
+Options -Indexes
 ErrorDocument 403 /forbidden-access.php
+
+
 
 
 

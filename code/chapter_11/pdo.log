@@ -1,0 +1,3 @@
+ 
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'error.log' doesn't exist : C:\xampp\htdocs\phpsqlbook\code\chapter_11\database_log.php on line 15
+Illegal file type or size uploaded : database_log.php on line 0
