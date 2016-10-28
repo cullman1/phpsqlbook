@@ -1,11 +1,6 @@
-<ul class="nav navbar-nav navbar-right floatright">   
- <li>
-  <form class="navbar-form navbar-left" role="search" 
-   method="get" action="article">
-    <div class="form-group">
+  <form style="float:right;" class="navbar-form navbar-left" role="search"   method="get" action="article">
+ 
       <input id="search" name="search" type="text" />
-    </div>
-    <input type="submit" name="submit">
+
+    <input type="submit" name="Search" value="Search">
    </form>
- </li>
-</ul>

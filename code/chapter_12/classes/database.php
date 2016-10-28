@@ -1,64 +1,63 @@
-<?php class Database{   
+<?php 
+class Database{   
+  private $serverName = "127.0.0.1";
+  private $userName = "root";
+  private $password = ""; 
+  private $databaseName = "cms";
+  private $dbName       = "cms";
+  private $connection;
 
-private $serverName = "127.0.0.1";
-private $userName = "root";
-private $password = ""; 
-private $databaseName = "cms";
-private $dbName       = "cms";
-private $connection;
-
-
-
- public function __construct() { 
-   /* Connect using PDO */
-try {
-  $this->connection = new PDO("mysql:host=$this->serverName;dbname=$this->dbName", $this->userName, $this->password);
-  $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-  $this->connection->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true);
-} catch (PDOException $error) {
-  echo 'Error message: ' . $error->getMessage() . '<br>';
-  echo 'File name: ' . $error->getFile() . '<br>';
-  echo 'Line number: ' . $error->getLine() . '<br>';
-   echo 'Line number: ' . var_dump($error->getTrace()) . '<br>';
-}
- }
-
-
- public function getArticleById( $id ) {
- $query = "select * FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
-  $statement = $this->connection->prepare($query);
-  $statement->bindParam(":id", $id);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_ASSOC);
-  return $statement; 
+  public function __construct() { 
+    try {
+      $this->connection = new PDO("mysql:host=$this->serverName;dbname=$this->dbName", $this->userName, $this->password);
+      $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+      $this->connection->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true); 
+    } catch (PDOException $error) {
+      echo 'Error message: ' . $error->getMessage() . '<br>';
+      echo 'File name: ' . $error->getFile() . '<br>';
+      echo 'Line number: ' . $error->getLine() . '<br>';
+      echo 'Trace number: ' . var_dump($error->getTrace()) . '<br>';
     }
+  }
 
- public function getArticleByName($title1) {
-  $new_title = str_replace("-"," ", trim($title1));
-  $query = "select * FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id =  category.id where title=:title";
-  $statement = $this->connection->prepare($query);
-  $statement->bindParam(":title", $new_title);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_ASSOC);
-  return $statement;
- }
+  public function get_article_by_id($id) {
+    $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
+    $statement = $this->connection->prepare($query);
+    $statement->bindParam(":id", $id);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    return $statement; 
+  }
 
-  public function getArticleList() {
- $query= "select * FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() ";
- // $query= "select * FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now() order by article.id ASC";
-  $statement = $this->connection->prepare($query);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_ASSOC);
-  return $statement;
-}
+  public function get_article_by_name($title1) {
+    $new_title = str_replace("-"," ", trim($title1));
+    $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id =  category.id where title=:title";
+    $statement = $this->connection->prepare($query);
+    $statement->bindParam(":title", $new_title);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article = $statement->fetchAll();           // Step 4 Get all rows ready to display
+    return $article;
+  }
 
-public function getAuthorName($id) { 
-  $query = "select * FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
+  public function get_article_list_sorted() {
+    $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() ";
+    // $query= "select * FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now() order by article.id ASC";
+    $statement = $this->connection->prepare($query);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
+    return $article_list;
+  }
+
+public function get_author_name($id) { 
+  $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
  $statement = $this->connection->prepare($query);
  $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
  $statement->execute();
- $statement->setFetchMode(PDO::FETCH_ASSOC);
- return $statement;
+ $statement->setFetchMode(PDO::FETCH_OBJ);
+ $author_list = $statement->fetchAll();  
+ return $author_list;
 }
   
  public function getSearchResults() {
@@ -76,14 +75,15 @@ public function getAuthorName($id) {
  }
 
 
-public function getAllLikes($user_id,$article_id) {
+public function get_all_likes($user_id,$article_id) {
   $query = "select distinct :artid as articleid, :userid as userid, (select count(*) as likes FROM article_like where article_id=:artid and user_id=:userid ) as likes_count, (select count(article_id) as likes FROM article_like where article_id=:artid) as likes_total FROM article_like as a right outer join (select id FROM article where id=:artid) as b ON (b.id = a.article_id) where b.id=:artid"; 
   $statement = $this->connection->prepare($query);
   $statement->bindParam(':artid', $article_id);
   $statement->bindParam(':userid',$user_id);
   $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_ASSOC);  
-  return $statement;
+  $statement->setFetchMode(PDO::FETCH_OBJ);  
+  $author_list = $statement->fetchAll();  
+   return $author_list;
 }
 
 public function getProfile($user_id) {
@@ -226,7 +226,7 @@ function get_category_list() {
   return $category_list;
 }
 function get_category_list_array() {
-  $query = 'SELECT id, name FROM category'; // Query
+  $query = 'SELECT id, name, template FROM category'; // Query
   $statement = $this->connection->prepare($query); 
   $statement->execute(); 
   $statement->setFetchMode(PDO::FETCH_ASSOC);   // Step 4 Set fetch mode to array

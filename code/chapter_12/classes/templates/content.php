@@ -1,3 +1,4 @@
+  </header>
 <div class="{{category.template}}">
  <h3><a href="/cmsfull/recipes/{{article.id}}">{{article.title}}</a>   
  </h3>

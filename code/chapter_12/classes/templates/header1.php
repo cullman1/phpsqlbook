@@ -35,5 +35,11 @@ $category_list =  $db->get_category_list_array();
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="../../code/chapter_12/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="/phpsqlbook/code/chapter_12/css/styles.css" />
   <link href='https://fonts.googleapis.com/css?family=Caudex:400,700|Gilda+Display' rel='stylesheet' type='text/css'>
+  </head>
+<body>
+  <header>
+    <h1>the green room</h1>
+    <nav>
+      <a href="index.php">Home</a>

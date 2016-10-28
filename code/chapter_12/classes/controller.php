@@ -19,8 +19,6 @@ class Controller {
     $this->controller=$controller;
     $this->category=$category;
     $this->item=$item;
-    $this->registry->set('configfile', new Configuration());
-    $db = $this->registry->get('configfile');
   }
 
  public function createPageStructure() { 
@@ -41,12 +39,8 @@ class Controller {
        $this->page_html = array("header","login_bar","menu","update","footer");
     }   
     break;
-   case "admin":
-    $this->page_html = array("header","menu","article", "footer");
-    $this->content_html = array("content");
-    break;
    default:
-    $this->page_html = array("header1","login_bar", "search", "menu","article","footer1");
+    $this->page_html = array("header1", "menu",  "login_bar", "search","divider","article","footer1");
     $this->content_html = array("content", "author", "like");
     break;     
   }
@@ -68,7 +62,8 @@ class Controller {
        $this->submitLike();
        break;
   }
-  foreach($this->page_html as $part) { 
+ 
+ foreach($this->page_html as $part) { 
    if($part == "article") {
     if($this->item) {
      $this->assemblePage($part,$this->content_html,"single");   
@@ -86,32 +81,35 @@ public function assemblePage($part, $content, $contenttype) {
   $dbh = $this->registry->get('database');
   $article_ids = array();
   $count=0;
-  if ($this->item=="") {
-    $result = $dbh->getArticleList();    
-    while ($row=$result->fetch()) {
-      $article_ids[$count]=$row["article.id"];
-      $count++;
-    }
-    for($i=0;$i<sizeof($article_ids);$i++) {
-      foreach ($content as $content_part) {
-        if ($content_part == "content") {
-          $lt->getContentById($article_ids[$i]);
-        } 
-       }
-    }
-   // $article_ids[0]=$this->item;
-  } else {
+  
+  foreach ($content as $content_part) {
 
-   foreach ($content as $content_part) {
-    if ($content_part != "content") {
-      $lt->getPart($content_part, $this->item);
-    } else {  
-      $result2 = $dbh->getArticleByName($this->item); 
-      while ($row=$result2->fetch()) {
-        $article_ids[0]=$row["article.id"];
-      }          
-      $lt->getContent($article_ids[0]);
-    }
+     
+      if ($contenttype=="list") {    
+        $result = $dbh->get_article_list_sorted();    
+        foreach ($result as $row) {
+          $article_ids[$count]=$row->{"article.id"};
+          $count++;
+        }
+        for($i=0;$i<sizeof($article_ids);$i++) {
+          foreach ($content as $content_part) {
+            if ($content_part == "content") {
+              $lt->getContentById($article_ids[$i]);
+            } else {
+               $lt->getPart($content_part,$article_ids[$i]);
+            }
+          }
+        }
+      } else {  
+        $result2 = $dbh->get_article_by_name($this->item); 
+        foreach ($result2 as $row) {
+          $article_ids[0]=$row->{'article.id'};
+        } 
+if ($content_part != "content") {
+         $lt->getPart($content_part, $article_ids[0]);
+       } else {         
+        $lt->getContent($article_ids[0]);
+      }
     }
   }
 }

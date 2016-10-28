@@ -220,11 +220,13 @@
     <Compile Include="code\chapter_12\classes\layouttemplate.php" />
     <Compile Include="code\chapter_12\classes\registry.php" />
     <Compile Include="code\chapter_12\classes\templates\authorcontent.php" />
+    <Compile Include="code\chapter_12\classes\templates\divider.php" />
     <Compile Include="code\chapter_12\classes\templates\header1.php" />
     <Compile Include="code\chapter_12\classes\templates\header2.php" />
     <Compile Include="code\chapter_12\classes\templates\likecontent.php" />
     <Compile Include="code\chapter_12\classes\templates\login_bar.php" />
     <Compile Include="code\chapter_12\classes\templates\login_form.php" />
+    <Compile Include="code\chapter_12\classes\templates\menucontent.php" />
     <Compile Include="code\chapter_12\classes\templates\menu.php" />
     <Compile Include="code\chapter_12\classes\templates\profile_status.php" />
     <Compile Include="code\chapter_12\classes\templates\profile_update.php" />
