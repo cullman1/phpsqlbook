@@ -1,1 +1,1 @@
-<a href="category.php?category_id={{category.id}}">{{category.name}}</a> 
+<a href="/phpsqlbook/{{category.name}}">{{category.name}}</a> 

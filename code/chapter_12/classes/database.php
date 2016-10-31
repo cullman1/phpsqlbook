@@ -6,6 +6,8 @@ class Database{
   private $databaseName = "cms";
   private $dbName       = "cms";
   private $connection;
+  private $preSalt = "abD!y1";
+  private $afterSalt = "d!@gg3"; 
 
   public function __construct() { 
     try {
@@ -19,6 +21,13 @@ class Database{
       echo 'Trace number: ' . var_dump($error->getTrace()) . '<br>';
     }
   }
+
+   public function getPreSalt() {
+        return $this->preSalt;
+    }
+    public function getAfterSalt() {
+        return $this->afterSalt;
+    }
 
   public function get_article_by_id($id) {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
@@ -41,7 +50,7 @@ class Database{
   }
 
   public function get_article_list_sorted() {
-    $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() ";
+    $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() order by article.id DESC";
     // $query= "select * FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now() order by article.id ASC";
     $statement = $this->connection->prepare($query);
     $statement->execute();
@@ -112,13 +121,14 @@ public function setProfile( $id, $name, $email, $sta, $img) {
 }
 
 function getLogin( $email, $passwordToken) {
-    $query = "SELECT Count(*) as Count, user_id, full_name, email from user WHERE email = :email AND password= :password AND active= 0";
+    $query = "SELECT user.id, forename, surname, email from user WHERE email = :email AND password= :password AND active= 0";
     $statement = $this->connection->prepare($query);
     $statement->bindParam(':email', $email);
     $statement->bindParam(':password',$passwordToken);
     $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_BOTH);
-    return $statement;
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $user = $statement->fetchAll();  
+    return $user;
 }
 
 function setLike($likes, $userid, $articleid) {
@@ -146,7 +156,7 @@ function get_article_list() { // Return all images as an object
   return $article_list;
 }
 function get_articles_by_category($id) {
-  $query = 'SELECT article.*, media.filepath, media.thumb, media.alt, user.name FROM article
+  $query = 'SELECT article.*, media.filepath, media.thumb, media.alt, user.forename, user.surname FROM article
     LEFT JOIN media ON article.media_id = media.id
     LEFT JOIN user ON article.user_id = user.id ';
   if ($id > 0) {
@@ -159,6 +169,7 @@ function get_articles_by_category($id) {
   $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
   return $article_list;
 }
+
 function get_articles_by_user($id) {
   $query = 'SELECT article.*, media.filepath, media.alt, user.name FROM article
     LEFT JOIN media ON article.media_id = media.id
@@ -244,6 +255,16 @@ function get_category_by_id($id) {
   return $category;                                     // Return object
 }
 
+// Get category
+function get_category_by_name($name) {
+  global $connection;
+  $query = 'SELECT * FROM category WHERE name like :name';     // Query
+  $statement = $this->connection->prepare($query); // Prepare
+  $statement->bindParam(":name", $name);                    // Bind
+  $statement->execute();                                // Execute
+  $category = $statement->fetch(PDO::FETCH_OBJ);        // Fetch as object
+  return $category;                                     // Return object
+}
 // Get users
 function get_user_list() {
   $query = 'SELECT * FROM user';                // Query

@@ -25,8 +25,8 @@
   } 
 
   public function routeRequest() {
-    $this->registry->set('LayoutTemplate', new LayoutTemplate($this->server,$this->category,$this->item));
-    $control = $this->registry->get('LayoutTemplate');
+    $this->registry->set('Layout', new Layout($this->server,$this->category,$this->item));
+    $control = $this->registry->get('Layout');
     $control->createPageStructure();
   }
 

@@ -214,13 +214,14 @@
     <Compile Include="code\chapter_11\throw.php" />
     <Compile Include="code\chapter_12\admin\includes\functions.php" />
     <Compile Include="code\chapter_12\assets\login-variables.php" />
-    <Compile Include="code\chapter_12\classes\configuration.php" />
-    <Compile Include="code\chapter_12\classes\controller.php" />
+    <Compile Include="code\chapter_12\classes\templates\configuration.php" />
+    <Compile Include="code\chapter_12\classes\templates\controller.php" />
     <Compile Include="code\chapter_12\classes\database.php" />
-    <Compile Include="code\chapter_12\classes\layouttemplate.php" />
+    <Compile Include="code\chapter_12\classes\layout.php" />
     <Compile Include="code\chapter_12\classes\registry.php" />
     <Compile Include="code\chapter_12\classes\templates\authorcontent.php" />
     <Compile Include="code\chapter_12\classes\templates\divider.php" />
+    <Compile Include="code\chapter_12\classes\templates\form.php" />
     <Compile Include="code\chapter_12\classes\templates\header1.php" />
     <Compile Include="code\chapter_12\classes\templates\header2.php" />
     <Compile Include="code\chapter_12\classes\templates\likecontent.php" />
@@ -228,6 +229,7 @@
     <Compile Include="code\chapter_12\classes\templates\login_form.php" />
     <Compile Include="code\chapter_12\classes\templates\menucontent.php" />
     <Compile Include="code\chapter_12\classes\templates\menu.php" />
+    <Compile Include="code\chapter_12\classes\templates\message.php" />
     <Compile Include="code\chapter_12\classes\templates\profile_status.php" />
     <Compile Include="code\chapter_12\classes\templates\profile_update.php" />
     <Compile Include="code\chapter_12\classes\templates\content.php" />

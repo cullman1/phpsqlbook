@@ -42,4 +42,4 @@ $category_list =  $db->get_category_list_array();
   <header>
     <h1>the green room</h1>
     <nav>
-      <a href="index.php">Home</a>
+      <a href="\phpsqlbook\Home">Home</a>
