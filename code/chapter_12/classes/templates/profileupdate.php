@@ -17,7 +17,7 @@
  <input id="Role" name="role" type="hidden" value="{{user.role_id}}"/>
  <div id="Status" class="form-group" >
   <input type="submit" value="Submit" /><br/><br/>
-  <a href="/cmsfull/recipes">Return to Main Site</a>
+  <a href="/phpsqlbook/home">Return to Main Site</a>
 
    <?php
 if ($_GET["query"]=="success") {

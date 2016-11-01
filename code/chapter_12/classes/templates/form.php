@@ -1,5 +1,5 @@
 
-<form method="post" action="/phpsqlbook/logincheck/">
+<form method="post" action="/phpsqlbook/login/login/">
   <h1>Please login:</h1>
   <div class="form-group">
    <label for="emailAddress">Email address</label>
@@ -9,7 +9,7 @@
     placeholder="Password">
   </div><br/>
 <button type="submit" class="btn btn-default">Login</button>
-  <div id="Status" ><?php if(isset($this->item)) {
-   echo "<br/<br/><span class='red'>Login failed</span>";
+  <div id="Status" style="color:red;" ><br/><?php if(isset($this->message)) {
+   echo $this->message;
             }   ?></div>
 </form>

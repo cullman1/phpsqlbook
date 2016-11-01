@@ -221,6 +221,7 @@
     <Compile Include="code\chapter_12\classes\registry.php" />
     <Compile Include="code\chapter_12\classes\templates\authorcontent.php" />
     <Compile Include="code\chapter_12\classes\templates\divider.php" />
+    <Compile Include="code\chapter_12\classes\templates\footer1.php" />
     <Compile Include="code\chapter_12\classes\templates\form.php" />
     <Compile Include="code\chapter_12\classes\templates\header1.php" />
     <Compile Include="code\chapter_12\classes\templates\header2.php" />
@@ -230,11 +231,11 @@
     <Compile Include="code\chapter_12\classes\templates\menucontent.php" />
     <Compile Include="code\chapter_12\classes\templates\menu.php" />
     <Compile Include="code\chapter_12\classes\templates\message.php" />
-    <Compile Include="code\chapter_12\classes\templates\profile_status.php" />
-    <Compile Include="code\chapter_12\classes\templates\profile_update.php" />
+    <Compile Include="code\chapter_12\classes\templates\profilestatus.php" />
+    <Compile Include="code\chapter_12\classes\templates\profileupdate.php" />
     <Compile Include="code\chapter_12\classes\templates\content.php" />
     <Compile Include="code\chapter_12\classes\templates\footer.php" />
-    <Compile Include="code\chapter_12\classes\templates\header.php" />
+    <Compile Include="code\chapter_12\classes\templates\header_old.php" />
     <Compile Include="code\chapter_12\classes\templates\register_form.php" />
     <Compile Include="code\chapter_12\classes\templates\search.php" />
     <Compile Include="code\chapter_12\classes\urlrewriter.php" />

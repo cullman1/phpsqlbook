@@ -1,4 +1,4 @@
-  <form style="float:right;" class="navbar-form navbar-left" role="search"   method="get" action="article">
+  <form style="float:right;" class="navbar-form navbar-left" role="search"   method="get" action="\phpsqlbook\search">
  
       <input id="search" name="search" type="text" />
 

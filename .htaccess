@@ -29,7 +29,9 @@ RewriteRule   ^profile/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^register/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^register/([^/.]+)/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^register/?$  code/chapter_12/pages/index.php [NC,L]
-
+RewriteRule   ^search/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^search/([^/.]+)/?$ code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^search/([^/.]+)//([^/.]+)/?$ code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
 
 
 
@@ -42,8 +44,7 @@ RewriteRule   ^pages/article-([^/.]+)/?$ /pages/article.php?articleid=$1        
 RewriteRule   ^article/([^/.]+)/?$ /code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
 RewriteRule   ^article/([^/.]+)/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
 RewriteRule   ^article/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
-RewriteRule   ^search/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
-RewriteRule   ^search/([^/.]+)//([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+
 RewriteRule   ^category/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
 RewriteRule   ^category/([^/.]+)//([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
 RewriteRule   ^user/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page

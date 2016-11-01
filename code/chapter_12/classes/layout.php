@@ -9,6 +9,7 @@ class Layout {
   private $connection;
   private $page_html = array();
   private $content_html = array();
+  private $message;
 
   public function __construct($server, $category, $parameters) {
     $this->registry = Registry::instance();
@@ -20,62 +21,81 @@ class Layout {
   }
 
   public function createPageStructure() { 
+    //Page structure
+    switch($this->category) {
+      case "login":
+        $this->page_html = array("header1","menu","search","divider","form","footer");
+        break;
+      case "register":
+        $this->page_html = array("header1","menu","search","divider","register_form","footer");
+        break;
+      case "About":
+        $this->page_html = array("header1", "menu", "login_bar", "search","divider","article","footer1");
+        $this->content_html = array("content");
+        break;
+      case "profile":
+        if ($this->parameters=="view") {
+          $this->page_html = array("header1","login_bar","menu","status","footer");
+        } else {
+          $this->page_html = array("header1","login_bar","menu","update","footer");
+        }   
+        break;
+      case "search":
+      default:
+        $this->page_html = array("header1", "menu",  "login_bar", "search","divider","article","footer1");
+        $this->content_html = array("content", "author", "like");
+        break;     
+    }
 
-  switch($this->category) {
-   case "login":
-    $this->page_html = array("header1","menu","form","footer");
-    break;
-  case "loginfailed":
-    $this->page_html = array("header1","menu","form","message","footer");
-  case "logincheck":
-    $this->submitLogin(); 
-    break;
-   case "register":
-    $this->page_html = array("header1","menu","form","footer");
-    break;
-   case "profile":
-    if ($this->action=="view") {
-       $this->page_html = array("header","login_bar","menu","status","footer");
-    } else {
-       $this->page_html = array("header","login_bar","menu","update","footer");
-    }   
-    break;
-   default:
-    $this->page_html = array("header1", "menu",  "login_bar", "search","divider","article","footer1");
-    $this->content_html = array("content", "author", "like");
-    break;     
+    //Page action to take
+    switch($this->parameters) {
+        case "failed":
+          $this->message = "Login has failed, please try again!";
+          break;
+        case "password-not-strong-enough":
+          $this->message = "Your password is not strong enough, please try again!";
+          break;
+         case "user-exists":
+          $this->message = "A user with this email address already exists, please try logging in!";
+          break;
+          case "insert-failed":
+          $this->message = "The database was unable to add your details, please try again!";
+          break;
+            case "insert-succeeded":
+          $this->message = "You are now registered!";
+          break;
+        case "login":
+          $this->submitLogin(); 
+          break;
+        case "logout":
+          $this->submitLogout();
+          break;
+        case "add":
+          $this->connection->submitRegister();
+          break;
+        case "view":
+          $result = $this->connection->getProfile($_GET["id"]);
+            $this->getPart("ProfileStatus", $result);
+          break;
+          case "set":
+          $this->connection->setProfile();
+          break;
+        case "likes":
+          $this->submitLike();
+          break;
+     }
+     foreach($this->page_html as $part) { 
+       if($part == "article") {
+         if($this->parameters) {
+           $this->assemblePage($part,$this->content_html,"single");   
+         } else {
+           $this->assemblePage($part,$this->content_html,"list");  
+         }   
+       } else {
+         $this->getPart($part);
+       }
+    }
   }
-  switch($this->parameters) {
-   case "failed":
-   case "login":
-    $this->submitLogin(); 
-    break;
-   case "logout":
-       $this->submitLogout();
-       break;
-  case "add":
-       $this->submitRegister();
-       break;
-  case "set":
-       $this->setProfile();
-       break;
-   case "likes":
-       $this->submitLike();
-       break;
-  }
- 
- foreach($this->page_html as $part) { 
-   if($part == "article") {
-    if($this->parameters) {
-     $this->assemblePage($part,$this->content_html,"single");   
-    } else {
-     $this->assemblePage($part,$this->content_html,"list");  
-    }   
-  } else {
-   $this->getPart($part);
-  }
- }
-}
 
   public function assemblePage($part, $content, $contenttype) {
     $article_ids = array();
@@ -89,6 +109,9 @@ class Layout {
             $result = $this->connection->get_article_list_sorted();    
           } else {
             $result = $this->connection->get_articles_by_category($category->{'category.id'});    
+          }
+          if ($this->category=="search") {
+             $result = $this->connection->get_search_results();   
           }
           foreach ($result as $row) {
             $article_ids[$count]=$row->{"article.id"};
@@ -124,9 +147,10 @@ public function getPart($part, $param="") {
  //   $user_object = unserialize(base64_decode($so));
  //   $auth = $user_object->getAuthenticated(); 
  // }
-   $controller_modifier = "";
+  $controller_modifier = "";
   switch($part) {
-   case "like":            
+   case "like":     
+    $user_id=0;       
     if (isset($auth)) {
         $user_id = $auth;
     } else {
@@ -143,10 +167,10 @@ public function getPart($part, $param="") {
    case "update":
    case "status":
     $controller_modifier = $query = "";
-    if ($this->action=="success") {$query="success";}
-        if ($this->action=="fail") {$query="fail";}
+    if ($this->parameters =="success") {$query="success";}
+        if ($this->parameters=="fail") {$query="fail";}
            echo "profile";
-    $this->parseTemplate($this->connection->getProfile($this->parameters[0]),"profile",$part,$query);
+    $this->parseTemplate($this->connection->getProfile($this->parameters),"profile",$part,$query);
    break;
    default:
      include("templates/".$part.".php");     
@@ -154,30 +178,47 @@ public function getPart($part, $param="") {
  }
 }
 
-public function getContentById($articleid) { 
-  
-  $this->parseTemplate($this->connection->get_article_by_id($articleid), '');
+public function getContentById($articleid,$category) { 
+  if ($category != "search") { $category="";}
+  $this->parseTemplate($this->connection->get_article_by_id($articleid, $category), '');
 }
 
 public function getContent($articleid) { 
-
   $this->parseTemplate($this->connection->get_article_by_name($this->parameters), '');
 }
 
 public function submitLogin() {
   if(isset($_POST['password'])) {
     $passwordToken =  $_POST['password'] ;
-    $result =  $this->connection->getLogin($_POST["emailAddress"], $passwordToken);       
-    foreach($result as $row) {
-        if (isset($row->{'user.id'})) {
-            $this->user_object = new User( $row->{'user.forename'} . ' '. $row->{'user.surname'},$row->{'user.email'},$row->{'user.id'});
-            $_SESSION["user2"]=base64_encode(serialize($this->user_object)); 
-            header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/home/'); 
-         } else {
-            header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/loginfailed/');
-         }
-    }    
+    $user =  $this->connection->get_user_by_email_passwordhash($_POST["emailAddress"], $passwordToken); 
+    if(sizeof($user)!=0) {
+      if (!empty($user->{'user.id'})) {
+        $this->user_object = new User( $user->{'user.forename'} . ' '. $user->{'user.surname'},$user->{'user.email'},$user->{'user.id'});
+        $_SESSION["user2"]=base64_encode(serialize($this->user_object)); 
+        header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/home/'); 
+       } else {
+        header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/login/failed/');
+       }  
+    } else {
+     header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/login/failed/');
+    }
   }
+}
+
+public function submitLike() {
+  if (!isset($_SESSION["user2"])) {
+    header('Location: /phpsqlbook/login/');
+  } else {    
+   $this->connection->setLike($_REQUEST['liked'],$_REQUEST["user_id"], $_REQUEST["article_id"]);
+   header('Location: /phpsqlbook/home/');
+  }
+}
+
+public function submitLogout() {
+ $_SESSION = array();
+ session_write_close();
+ setcookie(session_name(),'', time()-3600, '/');
+ header('Location: /phpsqlbook/home/');
 }
 
 public function parseTemplate($recordset,$prefix, $extra="content", $query="") {
@@ -191,10 +232,12 @@ public function parseTemplate($recordset,$prefix, $extra="content", $query="") {
     foreach($matches[0] as $value) {           
       $replace= str_replace("{{","", $value);
       $replace= str_replace("}}","", $replace);
+
       $template = str_replace($value,$row->{$replace}, $template);  
     }  
   echo $template;  
-  }						                    
+  }	
+                 
 }
 
 } ?>

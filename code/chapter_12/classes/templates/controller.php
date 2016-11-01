@@ -166,15 +166,7 @@ $query2 = "INSERT INTO user (full_name, password, email, role_id, date_joined, ,
 }
 
 
-public function submitLike() {
- $dbh = $this->registry->get('DbHandler');
-  if (!isset($_SESSION["user2"])) {
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/login');
-  } else {    
-   $dbh->setLike($this->pdo,$_REQUEST['liked'],$_REQUEST["user_id"], $_REQUEST["article_id"]);
-   header('Location: http://'.$_SERVER['HTTP_HOST'].'/cmsfull/recipes');
-  }
-}
+
 
 function setProfile() {
  $dbh = $this->registry->get('DbHandler');

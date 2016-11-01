@@ -4,12 +4,10 @@
  private $server;
  private $parameters="";
  private $registry;
- private $article_content;
     
  public function __construct() { 
     $this->registry = Registry::instance();
     $this->parseUrl(0); 
-  //  $this->getContent($this->item); 
   }
 
   private function parseUrl($number_of_parts) {
@@ -28,11 +26,6 @@
     $this->registry->set('Layout', new Layout($this->server,$this->category,$this->item));
     $control = $this->registry->get('Layout');
     $control->createPageStructure();
-  }
-
-  public function getContent($title) { 
-    $db = $this->registry->get('database'); 
-    $this->article_content = $db->get_article_by_name($title);
   }
 
 } ?>

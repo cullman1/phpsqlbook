@@ -29,13 +29,47 @@ class Database{
         return $this->afterSalt;
     }
 
-  public function get_article_by_id($id) {
+function add_user($forename, $surname, $password, $email) {     
+  $query = 'INSERT INTO user (forename, surname, email, password) 
+            VALUES (:forename, :surname, :email, :password)';
+  $statement = $this->connection->prepare($query);
+  $statement->bindParam(':forename', $forename );
+  $statement->bindParam(':surname', $surname );
+  $statement->bindParam(':email',$email);
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $statement->bindParam(':password',$hash);
+  $result = $statement->execute();
+  if( $result == true ) {     
+      return true;
+  } else {
+      return $statement->errorCode();
+  }  
+ }
+
+function get_user_by_email_passwordhash($email, $password) {
+  $query = 'SELECT user.* FROM user WHERE email = :email';
+  $statement = $this->connection->prepare($query);
+  $statement->bindParam(':email',$email);
+  $statement->execute();
+  $user = $statement->fetch(PDO::FETCH_OBJ);
+  if (!$user) { return false; }
+  return (password_verify($password, $user->{'user.password'}) ? $user : false);
+} 
+
+  public function get_article_by_id($id, $category) {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
     $statement = $this->connection->prepare($query);
     $statement->bindParam(":id", $id);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
-    return $statement; 
+    $article_list = $statement->fetchAll(); 
+    if ($category=="search") {
+      $trim_search = trim($_GET["search"]);
+      foreach($article_list as $article) {
+        $article->{'article.content'} = str_replace($trim_search, "<b style='background-color:yellow'>".$trim_search."</b>", $article->{'article.content'}); 
+      }
+    }
+    return $article_list; 
   }
 
   public function get_article_by_name($title1) {
@@ -69,18 +103,17 @@ public function get_author_name($id) {
  return $author_list;
 }
   
- public function getSearchResults() {
+ public function get_search_results() {
  $trim_search = trim($_GET["search"]);
  $searchterm = "AND ((title like '%" .$trim_search. "%')";
-  $searchterm .= "OR (content like '%".$trim_search. "%'))";
-  $query =  "select article_id, title, content, date_posted 
-  FROM article";
- $query .= "where date_published <= now() " . $searchterm .  
-  "order by article_id DESC";
+  $searchterm .= " OR (content like '%".$trim_search. "%'))";
+  $query =  "select article.id, title, content, published FROM article";
+  $query .= " where published <= now() " . $searchterm .   " order by article.id DESC";
   $statement = $this->connection->prepare($query);
   $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_BOTH); 
-  return $statement;
+  $statement->setFetchMode(PDO::FETCH_OBJ); 
+  $article_list = $statement->fetchAll();  
+  return $article_list;
  }
 
 
@@ -96,13 +129,13 @@ public function get_all_likes($user_id,$article_id) {
 }
 
 public function getProfile($user_id) {
-$query = "select * FROM user where user_id=:userid";
+$query = "select user.* FROM user where user.id=:userid";
  $statement = $this->connection->prepare($query);
  $statement->bindParam(':userid',$user_id);
  $statement->execute();
- $statement->setFetchMode(PDO::FETCH_ASSOC);
-  if($statement->errorCode() != 0) { return ("error"); }
-  else { return("worked");}
+ $statement->setFetchMode(PDO::FETCH_OBJ);
+  $author_list = $statement->fetchAll();  
+   return $author_list;
 }
 
 public function setProfile( $id, $name, $email, $sta, $img) {
@@ -540,4 +573,33 @@ function get_related_articles($category_id=0, $article_id=0) {
   return $article_list;
 }
 
-} ?>
+  public function submitRegister() {
+    $error='';
+    if (!empty($_POST['password']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['emailAddress']) ) {
+      if (!preg_match("#.*^(?=.{8,50})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_POST['password'])){
+        $error='password-not-strong-enough';
+      } else {
+        $query = "SELECT * from user WHERE email = :email";
+        $email = $_POST['emailAddress'];
+        $statement = $this->connection->prepare($query);
+        $statement->bindParam(':email',$email);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $rows = $statement->fetchAll();
+        $num_rows = count($rows);
+        if($num_rows>0) {
+          $error='user-exists'; /* User exists */
+        }    else   {   
+          $statement2 = $this->add_user($_POST['firstName'], $_POST['lastName'], $_POST['password'], $_POST['emailAddress']);
+          if($statement2===true) {  
+            $error='insert-succeeded';
+          } else {
+            $error='insert-failed'; 
+          }
+        }
+      }
+      header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/register/'.$error);
+    }
+  }
+}
+?>
