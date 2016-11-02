@@ -22,6 +22,8 @@ class Layout {
 
   public function createPageStructure() { 
     //Page structure
+      $recordset = "";
+
     switch($this->category) {
       case "login":
         $this->page_html = array("header1","menu","search","divider","form","footer");
@@ -29,12 +31,14 @@ class Layout {
       case "register":
         $this->page_html = array("header1","menu","search","divider","register_form","footer");
         break;
+      case "Contact":
       case "About":
         $this->page_html = array("header1", "menu", "login_bar", "search","divider","article","footer1");
         $this->content_html = array("content");
         break;
       case "profile":
         if ($this->parameters=="view") {
+            $recordset = $this->connection->getProfile($_GET["id"]);
           $this->page_html = array("header1","login_bar","menu","status","footer");
         } else {
           $this->page_html = array("header1","login_bar","menu","update","footer");
@@ -74,8 +78,8 @@ class Layout {
           $this->connection->submitRegister();
           break;
         case "view":
-          $result = $this->connection->getProfile($_GET["id"]);
-            $this->getPart("ProfileStatus", $result);
+       //   $result = $this->connection->getProfile($_GET["id"]);
+      //      $this->getPart("ProfileStatus", $result);
           break;
           case "set":
           $this->connection->setProfile();
@@ -92,7 +96,11 @@ class Layout {
            $this->assemblePage($part,$this->content_html,"list");  
          }   
        } else {
-         $this->getPart($part);
+           if (!empty($recordset)) {
+               $this->getPart($part,$recordset);
+           } else {
+               $this->getPart($part);
+           }
        }
     }
   }
@@ -161,7 +169,7 @@ public function getPart($part, $param="") {
    case "author":
     $this->parseTemplate($this->connection->get_author_name($param),"author");
     break;
-    case "menu":
+   case "menu":
     $this->parseTemplate($this->connection->get_category_list($param),"menu");
     break;
    case "update":
@@ -169,8 +177,7 @@ public function getPart($part, $param="") {
     $controller_modifier = $query = "";
     if ($this->parameters =="success") {$query="success";}
         if ($this->parameters=="fail") {$query="fail";}
-           echo "profile";
-    $this->parseTemplate($this->connection->getProfile($this->parameters),"profile",$part,$query);
+    $this->parseTemplate($this->connection->getProfile($_GET["id"]),"profile",$part,$query);
    break;
    default:
      include("templates/".$part.".php");     
