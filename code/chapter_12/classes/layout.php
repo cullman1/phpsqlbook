@@ -37,11 +37,12 @@ class Layout {
         $this->content_html = array("content");
         break;
       case "profile":
-        if ($this->parameters=="view") {
-            $recordset = $this->connection->getProfile($_GET["id"]);
-          $this->page_html = array("header1","login_bar","menu","status","footer");
+          $recordset = $this->connection->getProfile($_GET["id"]);
+        if ($this->parameters!="view") {
+          
+          $this->page_html = array("header1","login_bar","menu","search","divider","status","footer");
         } else {
-          $this->page_html = array("header1","login_bar","menu","update","footer");
+            $this->page_html = array("header1","login_bar","menu","search","divider","update","footer");
         }   
         break;
       case "search":
@@ -81,6 +82,24 @@ class Layout {
        //   $result = $this->connection->getProfile($_GET["id"]);
       //      $this->getPart("ProfileStatus", $result);
           break;
+        case "update":
+            if(isset($_POST['submit'])){
+                $result = $this->connection->setProfile($_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],$_FILES["img"]["name"] );
+               if ($_FILES["img"]['tmp_name'] == '') {
+    echo  'Your image did not upload.';
+  } else {
+    $temporary   = $_FILES["img"]['tmp_name'];
+    $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $_FILES['img']['name'];
+    if (move_uploaded_file($temporary, $destination)) {
+        echo "file saved.";
+    } else {
+     echo 'File could not be saved.';
+    }
+  }
+
+            }
+            //   $this->getPart("ProfileStatus", $result);
+            break;
           case "set":
           $this->connection->setProfile();
           break;

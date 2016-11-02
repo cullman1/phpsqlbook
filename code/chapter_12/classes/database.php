@@ -138,19 +138,29 @@ $query = "select user.* FROM user where user.id=:userid";
    return $author_list;
 }
 
-public function setProfile( $id, $name, $email, $sta, $img) {
-  $query = 'UPDATE user SET full_name= :name, email= :email, status= :status'.$img.' where user_id= :userid';
-  $statement = $this->connection->prepare($query);
-  $statement->bindParam(':userid',$id);
-  $statement->bindParam(':name',$name);
-  $statement->bindParam(':email',$email);
-  $statement->bindParam(':status',$sta);
+public function setProfile( $id, $forename, $surname, $email, $img) {
+  $query = 'UPDATE user SET forename= :forename, surname = :surname, email= :email where user.id= :userid';
   if ($img!="") {
-    $statement->bindParam(':userimg',$img);
+      $query = 'UPDATE user SET forename= :forename, surname = :surname, email= :email, image=:userimg where user.id= :userid';
+      
   }
+  $statement = $this->connection->prepare($query);
+  if ($img!="") {
+      $statement->bindParam(':userimg',$img);
+      
+  }
+  
+  $statement->bindParam(':userid',$id);
+  $statement->bindParam(':forename',$forename);
+  $statement->bindParam(':surname',$surname);
+  $statement->bindParam(':email',$email);
+
   $statement->execute();
-  if($statement->errorCode() != 0) { return ("2"); }
-  else { return ("3");}
+  if( $statement->errorCode() != 00000 ) {     
+      return '<div class="error">Error: ' . $statement->errorCode() . '</div>';
+  } else {
+      return '<div class="success">Profile updated</div>';
+  }
 }
 
 function getLogin( $email, $passwordToken) {

@@ -1,4 +1,4 @@
- <form id="form1" method="post" action="<?php echo "http://".$_SERVER['HTTP_HOST']; ?>/phpsqlbook/register/add">
+ <form id="form1" method="post" action="<?php echo "\phpsqlbook\register\add">
       <h1>Please register:</h1>
            <label for="emailAddress">Email address
            <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Enter email">
