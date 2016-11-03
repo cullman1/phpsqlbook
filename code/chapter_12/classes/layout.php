@@ -1,6 +1,6 @@
 <?php 
-require_once('../classes/user.php');
-
+require_once('user.php');
+require_once('functions.php');
 class Layout {
   private $registry;
   private $server;
@@ -21,9 +21,7 @@ class Layout {
   }
 
   public function createPageStructure() { 
-    //Page structure
-      $recordset = "";
-
+    $recordset = "";
     switch($this->category) {
       case "login":
         $this->page_html = array("header1","menu","search","divider","form","footer");
@@ -39,10 +37,9 @@ class Layout {
       case "profile":
           $recordset = $this->connection->getProfile($_GET["id"]);
         if ($this->parameters!="view") {
-          
           $this->page_html = array("header1","login_bar","menu","search","divider","status","footer");
         } else {
-            $this->page_html = array("header1","login_bar","menu","search","divider","update","footer");
+          $this->page_html = array("header1","login_bar","menu","search","divider","update","footer");
         }   
         break;
       case "search":
@@ -70,35 +67,29 @@ class Layout {
           $this->message = "You are now registered!";
           break;
         case "login":
-          $this->submitLogin(); 
+          submit_login($this->connection); 
           break;
         case "logout":
-          $this->submitLogout();
+          submit_logout();
           break;
         case "add":
           $this->connection->submitRegister();
           break;
-        case "view":
-       //   $result = $this->connection->getProfile($_GET["id"]);
-      //      $this->getPart("ProfileStatus", $result);
-          break;
         case "update":
             if(isset($_POST['submit'])){
-                $result = $this->connection->setProfile($_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],$_FILES["img"]["name"] );
+               $this->connection->setProfile($_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],$_FILES["img"]["name"] );
                if ($_FILES["img"]['tmp_name'] == '') {
-    echo  'Your image did not upload.';
-  } else {
-    $temporary   = $_FILES["img"]['tmp_name'];
-    $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $_FILES['img']['name'];
-    if (move_uploaded_file($temporary, $destination)) {
-        echo "file saved.";
-    } else {
-     echo 'File could not be saved.';
-    }
-  }
-
+                 echo  'Your image did not upload.';
+               } else {
+                 $temporary   = $_FILES["img"]['tmp_name'];
+                 $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $_FILES['img']['name'];
+                 if (move_uploaded_file($temporary, $destination)) {
+                   echo "file saved.";
+                 } else {
+                   echo 'File could not be saved.';
+                 }
+               }
             }
-            //   $this->getPart("ProfileStatus", $result);
             break;
           case "set":
           $this->connection->setProfile();
@@ -213,40 +204,6 @@ public function getContent($articleid) {
   $this->parseTemplate($this->connection->get_article_by_name($this->parameters), '');
 }
 
-public function submitLogin() {
-  if(isset($_POST['password'])) {
-    $passwordToken =  $_POST['password'] ;
-    $user =  $this->connection->get_user_by_email_passwordhash($_POST["emailAddress"], $passwordToken); 
-    if(sizeof($user)!=0) {
-      if (!empty($user->{'user.id'})) {
-        $this->user_object = new User( $user->{'user.forename'} . ' '. $user->{'user.surname'},$user->{'user.email'},$user->{'user.id'});
-        $_SESSION["user2"]=base64_encode(serialize($this->user_object)); 
-        header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/home/'); 
-       } else {
-        header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/login/failed/');
-       }  
-    } else {
-     header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/login/failed/');
-    }
-  }
-}
-
-public function submitLike() {
-  if (!isset($_SESSION["user2"])) {
-    header('Location: /phpsqlbook/login/');
-  } else {    
-   $this->connection->setLike($_REQUEST['liked'],$_REQUEST["user_id"], $_REQUEST["article_id"]);
-   header('Location: /phpsqlbook/home/');
-  }
-}
-
-public function submitLogout() {
- $_SESSION = array();
- session_write_close();
- setcookie(session_name(),'', time()-3600, '/');
- header('Location: /phpsqlbook/home/');
-}
-
 public function parseTemplate($recordset,$prefix, $extra="content", $query="") {
   $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/";
   $string = file_get_contents($root. "/classes/templates/".$prefix. $extra.".php?query=".$query);  
@@ -262,8 +219,7 @@ public function parseTemplate($recordset,$prefix, $extra="content", $query="") {
       $template = str_replace($value,$row->{$replace}, $template);  
     }  
   echo $template;  
-  }	
-                 
+  }	             
 }
 
 } ?>

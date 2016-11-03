@@ -1,5 +1,5 @@
-
-  <?php if (isset($_SESSION["user2"])) {       
+<?php 
+    if (isset($_SESSION["loggedin"])) {       
     $so = $_SESSION["user2"];
     $user = unserialize(base64_decode($so));  ?>
    Hello <?php echo $user->getFullName();?>  

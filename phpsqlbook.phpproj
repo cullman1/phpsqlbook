@@ -182,6 +182,8 @@
     <Compile Include="code\chapter_09\cookie-set.php" />
     <Compile Include="code\chapter_09\cookie-viewer.php" />
     <Compile Include="code\chapter_09\forgotten-password.php" />
+    <Compile Include="code\chapter_09\functions.php" />
+    <Compile Include="code\chapter_09\logout.php" />
     <Compile Include="code\chapter_09\old\forgotten-password.php" />
     <Compile Include="code\chapter_09\login-role.php" />
     <Compile Include="code\chapter_09\login-cms.php" />
@@ -214,6 +216,7 @@
     <Compile Include="code\chapter_11\throw.php" />
     <Compile Include="code\chapter_12\admin\includes\functions.php" />
     <Compile Include="code\chapter_12\assets\login-variables.php" />
+    <Compile Include="code\chapter_12\classes\functions.php" />
     <Compile Include="code\chapter_12\classes\templates\configuration.php" />
     <Compile Include="code\chapter_12\classes\templates\controller.php" />
     <Compile Include="code\chapter_12\classes\database.php" />
