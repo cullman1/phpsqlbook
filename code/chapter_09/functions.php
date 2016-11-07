@@ -1,9 +1,4 @@
 <?php
-function validate_login($email, $password, $valid) {
-  $valid['email']    = ((filter_var($email, FILTER_DEFAULT))    ? '' : 'Enter email');
-  $valid['password'] = ((filter_var($password, FILTER_DEFAULT)) ? '' : 'Add password');
-  return $valid;
-}
 
 function get_user_by_email_password($email, $password) {
   $query = 'SELECT user.* FROM user WHERE email = :email AND password = :password';

@@ -10,6 +10,8 @@ class Layout {
   private $page_html = array();
   private $content_html = array();
   private $message;
+  private $status;
+  private $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'');
 
   public function __construct($server, $category, $parameters) {
     $this->registry = Registry::instance();
@@ -52,22 +54,27 @@ class Layout {
     //Page action to take
     switch($this->parameters) {
         case "failed":
+          $this->status = "alert-danger";
           $this->message = "Login has failed, please try again!";
           break;
         case "password-not-strong-enough":
+          $this->status = "alert-danger";
           $this->message = "Your password is not strong enough, please try again!";
           break;
-         case "user-exists":
+        case "user-exists":
+          $this->status = "alert-danger";
           $this->message = "A user with this email address already exists, please try logging in!";
           break;
-          case "insert-failed":
+        case "insert-failed":
+          $this->status = "alert-danger";
           $this->message = "The database was unable to add your details, please try again!";
           break;
-            case "insert-succeeded":
+        case "insert-succeeded":
+          $this->status = "alert-success";
           $this->message = "You are now registered!";
           break;
-        case "login":
-          submit_login($this->connection); 
+        case "check":
+          submit_login($this->connection, $this->registry); 
           break;
         case "logout":
           submit_logout();

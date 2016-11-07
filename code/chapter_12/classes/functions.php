@@ -1,18 +1,16 @@
 <?php
-
- function submit_login($connection) {
+ function submit_login($connection, $registry) {
     $user =  $connection->get_user_by_email_passwordhash($_POST["emailAddress"], $_POST['password']); 
     if(sizeof($user)!=0) {
       if (!empty($user->{'user.id'})) {
         create_user_session($user);
-        $user1= new User( $user->{'user.forename'} . ' '. $user->{'user.surname'},$user->{'user.email'},$user->{'user.id'});
+        $user1 =  new User($user->{'user.forename'} . ' '. $user->{'user.surname'},$user->{'user.email'},$user->{'user.id'});
         $_SESSION["user2"]=base64_encode(serialize($user1)); 
         header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/home/'); 
         exit;
       } 
-    }
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/login/failed/');
-    exit;
+    } 
+    return 'Login failed, please try again!';
   }
 
 function create_user_session($user) {
@@ -30,7 +28,7 @@ function create_user_session($user) {
   }
 }
 
- function submitLogout() {
+ function submit_logout() {
  $_SESSION = array();
  setcookie(session_name(),'', time()-3600, '/');
  header('Location: /phpsqlbook/home/');

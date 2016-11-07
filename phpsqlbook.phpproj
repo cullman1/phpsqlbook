@@ -183,6 +183,7 @@
     <Compile Include="code\chapter_09\cookie-viewer.php" />
     <Compile Include="code\chapter_09\forgotten-password.php" />
     <Compile Include="code\chapter_09\functions.php" />
+    <Compile Include="code\chapter_09\login - Copy.php" />
     <Compile Include="code\chapter_09\logout.php" />
     <Compile Include="code\chapter_09\old\forgotten-password.php" />
     <Compile Include="code\chapter_09\login-role.php" />
@@ -230,7 +231,6 @@
     <Compile Include="code\chapter_12\classes\templates\header2.php" />
     <Compile Include="code\chapter_12\classes\templates\likecontent.php" />
     <Compile Include="code\chapter_12\classes\templates\login_bar.php" />
-    <Compile Include="code\chapter_12\classes\templates\login_form.php" />
     <Compile Include="code\chapter_12\classes\templates\menucontent.php" />
     <Compile Include="code\chapter_12\classes\templates\menu.php" />
     <Compile Include="code\chapter_12\classes\templates\message.php" />
@@ -243,6 +243,9 @@
     <Compile Include="code\chapter_12\classes\templates\search.php" />
     <Compile Include="code\chapter_12\classes\urlrewriter.php" />
     <Compile Include="code\chapter_12\classes\user.php" />
+    <Compile Include="code\chapter_12\classes\validate.php" />
+    <Compile Include="code\includes\validate.php" />
+    <Compile Include="code\chapter_12\pages\filter.php" />
     <Compile Include="code\chapter_12\pages\index.php" />
     <Compile Include="code\chapter_12\pages\submit-like.php" />
     <Compile Include="code\chapter_12\session1.php" />
