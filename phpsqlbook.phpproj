@@ -754,6 +754,7 @@
     <Content Include="code\chapter_12\assets\Thumbs.db" />
     <Content Include="code\chapter_12\assets\user-thumbnail.jpg" />
     <Content Include="code\chapter_12\css\style1.css" />
+    <Content Include="code\chapter_12\css\styles.css" />
     <Content Include="code\chapter_12\js\bootstrap-wysiwyg.js" />
     <Content Include="code\chapter_12\js\bootstrap.js" />
     <Content Include="code\chapter_12\js\bootstrap.min.js" />

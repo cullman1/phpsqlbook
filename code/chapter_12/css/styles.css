@@ -137,3 +137,11 @@ footer {
 	margin-top: 2em;
 	font-family: 'Gilda Display', serif;
 }
+
+.danger, .error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

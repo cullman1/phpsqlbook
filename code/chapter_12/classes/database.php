@@ -56,7 +56,7 @@ function get_user_by_email_passwordhash($email, $password) {
   return (password_verify($password, $user->{'user.password'}) ? $user : false);
 } 
 
-  public function get_article_by_id($id, $category) {
+  public function get_article_by_id($id, $category, $search='') {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
     $statement = $this->connection->prepare($query);
     $statement->bindParam(":id", $id);
@@ -64,9 +64,9 @@ function get_user_by_email_passwordhash($email, $password) {
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $article_list = $statement->fetchAll(); 
     if ($category=="search") {
-      $trim_search = trim($_GET["search"]);
+      $trim_search = trim($search);
       foreach($article_list as $article) {
-        $article->{'article.content'} = str_replace($trim_search, "<b style='background-color:yellow'>".$trim_search."</b>", $article->{'article.content'}); 
+        $article->{'article.content'} = str_ireplace($trim_search, "<b style='background-color:yellow'>".$trim_search."</b>", $article->{'article.content'}); 
       }
     }
     return $article_list; 
@@ -83,8 +83,9 @@ function get_user_by_email_passwordhash($email, $password) {
     return $article;
   }
 
-  public function get_article_list_sorted() {
+  public function get_article_list_sorted($from, $to) {
     $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() order by article.id DESC";
+     $query .= " limit " . $count . " offset " . ($page * $count);
     // $query= "select * FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now() order by article.id ASC";
     $statement = $this->connection->prepare($query);
     $statement->execute();
@@ -92,6 +93,33 @@ function get_user_by_email_passwordhash($email, $password) {
     $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
     return $article_list;
   }
+
+  function get_articles_by_category($id, $from, $to) {
+  $query = 'SELECT article.*, media.filepath, media.thumb, media.alt, user.forename, user.surname FROM article
+    LEFT JOIN media ON article.media_id = media.id
+    LEFT JOIN user ON article.user_id = user.id ';
+  if ($id > 0) {
+    $query .= 'WHERE article.category_id = :category_id';
+  }
+  $statement = $this->connection->prepare($query);              // Prepare
+  $statement->bindParam(":category_id", $id);               // Bind
+  $statement->execute(); 
+  $statement->setFetchMode(PDO::FETCH_OBJ);   // Step 4 Set fetch mode to array
+  $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
+  return $article_list;
+}
+
+function get_articles_by_user($id) {
+  $query = 'SELECT article.*, media.filepath, media.alt, user.name FROM article
+    LEFT JOIN media ON article.media_id = media.id
+    WHERE user.id = :id';
+  $statement = $this->connection->prepare($query);              // Prepare
+  $statement->bindParam(":id", $id);               // Bind
+  $statement->execute(); 
+  $statement->setFetchMode(PDO::FETCH_OBJ);   // Step 4 Set fetch mode to array
+  $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
+  return $article_list;
+}
 
 public function get_author_name($id) { 
   $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
@@ -103,8 +131,8 @@ public function get_author_name($id) {
  return $author_list;
 }
   
- public function get_search_results() {
- $trim_search = trim($_GET["search"]);
+ public function get_search_results($search) {
+ $trim_search = trim($search);
  $searchterm = "AND ((title like '%" .$trim_search. "%')";
   $searchterm .= " OR (content like '%".$trim_search. "%'))";
   $query =  "select article.id, title, content, published FROM article";
@@ -135,6 +163,16 @@ $query = "select user.* FROM user where user.id=:userid";
  $statement->execute();
  $statement->setFetchMode(PDO::FETCH_OBJ);
   $author_list = $statement->fetchAll();  
+   return $author_list;
+}
+
+public function get_user_by_email($email) {
+  $query = "SELECT * from user WHERE email = :email";
+    $statement = $this->connection->prepare($query);
+    $statement->bindParam(':email',$email);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $author_list = $statement->fetchAll();
    return $author_list;
 }
 
@@ -198,32 +236,7 @@ function get_article_list() { // Return all images as an object
   $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
   return $article_list;
 }
-function get_articles_by_category($id) {
-  $query = 'SELECT article.*, media.filepath, media.thumb, media.alt, user.forename, user.surname FROM article
-    LEFT JOIN media ON article.media_id = media.id
-    LEFT JOIN user ON article.user_id = user.id ';
-  if ($id > 0) {
-    $query .= 'WHERE article.category_id = :category_id';
-  }
-  $statement = $this->connection->prepare($query);              // Prepare
-  $statement->bindParam(":category_id", $id);               // Bind
-  $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ);   // Step 4 Set fetch mode to array
-  $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-  return $article_list;
-}
 
-function get_articles_by_user($id) {
-  $query = 'SELECT article.*, media.filepath, media.alt, user.name FROM article
-    LEFT JOIN media ON article.media_id = media.id
-    WHERE user.id = :id';
-  $statement = $this->connection->prepare($query);              // Prepare
-  $statement->bindParam(":id", $id);               // Bind
-  $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ);   // Step 4 Set fetch mode to array
-  $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-  return $article_list;
-}
 // Get article
 function get_article_and_thumb_by_id($id) {  
   $query = 'SELECT article.*, media.filepath, media.alt FROM article
@@ -583,7 +596,7 @@ function get_related_articles($category_id=0, $article_id=0) {
   return $article_list;
 }
 
-  public function submitRegister() {
+  public function submit_register() {
     $error='';
     if (!empty($_POST['password']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['emailAddress']) ) {
       if (!preg_match("#.*^(?=.{8,50})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_POST['password'])){

@@ -30,8 +30,8 @@ RewriteRule   ^register/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^register/([^/.]+)/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^register/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^search/?$  code/chapter_12/pages/index.php [NC,L]
-RewriteRule   ^search/([^/.]+)/?$ code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
-RewriteRule   ^search/([^/.]+)//([^/.]+)/?$ code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^search/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^search/([^/.]+)/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
 
 
 

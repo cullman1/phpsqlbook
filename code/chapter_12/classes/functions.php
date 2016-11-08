@@ -1,6 +1,6 @@
 <?php
- function submit_login($connection, $registry) {
-    $user =  $connection->get_user_by_email_passwordhash($_POST["emailAddress"], $_POST['password']); 
+ function submit_login($connection, $email, $password) {
+    $user =  $connection->get_user_by_email_passwordhash($email, $password); 
     if(sizeof($user)!=0) {
       if (!empty($user->{'user.id'})) {
         create_user_session($user);
@@ -10,9 +10,25 @@
         exit;
       } 
     } 
-    return 'Login failed, please try again!';
+    return array('status' => 'danger', 'message' =>'Login failed, Please try again');
   }
 
+  function submit_register($connection, $firstName, $lastName, $password, $email) {
+    $alert  =   array('status' => '', 'message' =>'');
+    $statement = $connection->get_user_by_email( $email, $password);
+    if(sizeof($statement)!=0) {
+      $alert  =   array('status' => 'danger', 'message' =>'User exists, please try another email or login');
+    } else   {   
+      $statement2 = $connection->add_user($firstName, $lastName,$password, $email);
+      if($statement2===true) {  
+        $alert  =   array('status' => 'success', 'message' =>'Registration succeeded');
+      } else {
+        $alert  =   array('status' => 'danger', 'message' =>'Registration failed');
+      }
+    }
+    return $alert;
+  }
+ 
 function create_user_session($user) {
   $_SESSION['forename'] = $user->{'user.forename'};
   $_SESSION['image']    = ($user->{'user.image'} ? $user->{'user.image'} : 'default.jpg');
@@ -32,5 +48,22 @@ function create_user_session($user) {
  $_SESSION = array();
  setcookie(session_name(),'', time()-3600, '/');
  header('Location: /phpsqlbook/home/');
+}
+
+function create_pagination($count, $show, $from) {
+  $total_pages  = ceil($count / $show);   // Total matches
+  $current_page = ceil($from / $show);    // Current page
+  $result  = '';
+  if ($total_pages > 1) {
+    for ($i = 0; $i < $total_pages; $i++) {
+      if ($i == ($current_page)) {
+        $result .= ($i + 1) . '&nbsp;';
+      } else {
+        $result .= '<a href="?show=' . $show;
+        $result .= '&from=' . ($i * $show) . '">' . ($i + 1) . '</a>&nbsp;';
+      }
+    }
+  }
+  return $result;
 }
 ?>

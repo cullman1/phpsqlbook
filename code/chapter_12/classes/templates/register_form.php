@@ -1,28 +1,40 @@
- <form id="form1" method="post" action="<?php echo "\phpsqlbook\register\add">
+<?php 
+require_once('../classes/functions.php');
+$message='';
+$email    = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
+$password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
+$error    = array('email' => '', 'password' =>'', 'firstName' => '', 'lastName' =>'');
+$alert  =   array('status' => '', 'message' =>'');
+if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
+  include('../classes/validate.php');
+  $Validate = new Validate();
+  $this->error['email']      = $Validate->isEmail($_POST['emailAddress']);
+  $this->error['password']   = $Validate->isStrongPassword($_POST['password']);
+  $this->error['firstName']  = $Validate->isFirstName($_POST['firstName']);
+  $this->error['lastName']   = $Validate->isLastName($_POST['lastName']);
+  $valid = implode($this->error);
+  if (strlen($valid) > 1 ) {
+    $alert = array('status'  => 'danger', 'message' => 'Please check and resubmit');  
+  } else {
+    $alert = submit_register($this->connection, $_POST['firstName'],$_POST['lastName'],$_POST['password'],$_POST['emailAddress']); 
+  } 
+} 
+?> 
+<form id="form1" method="post" action="\phpsqlbook\register\">
       <h1>Please register:</h1>
+         <span class="<?= $alert['status']; ?>"><?= $alert['message']; ?></span><br><br>
            <label for="emailAddress">Email address
            <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Enter email">
-         </label><br/><br/>
-         <div class="form-group">
+           <span class="error"><?= $this->error['email']; ?></span></label><br/><br/>
            <label for="firstName">First name
-           <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name"></label>
-         <br/><br/>
+           <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name">
+           <span class="error"><?= $this->error['firstName']; ?> </span></label><br/><br/>
            <label for="lastName">Last name
-           <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name"></label>
-       <br/><br/>
+           <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name">
+           <span class="error"><?= $this->error['lastName']; ?></span></label><br/><br/>
            <label for="password">Password
            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-</label>
-<br/><br/>
-
-        <input id="Role" name="Role" type="hidden" value="2">
-              
-         <button type="submit" class="btn btn-default">Register</button>
-         <br/>  <br/>
-          <div id="Status" style="color:red;" ><br/><?php if(isset($this->message)) {
-   echo $this->message;
-            }   ?></div>
-         </div>
-
-
+            <span class="error"><?= $this->error['password']; ?></span></label><br/><br/>
+  <input id="Role" name="Role" type="hidden" value="2">
+  <button type="submit" class="btn btn-default">Register</button>
 </form>

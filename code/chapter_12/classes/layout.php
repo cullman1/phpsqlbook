@@ -12,6 +12,8 @@ class Layout {
   private $message;
   private $status;
   private $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'');
+  private $from      = '';
+  private $to        = '';
 
   public function __construct($server, $category, $parameters) {
     $this->registry = Registry::instance();
@@ -23,6 +25,9 @@ class Layout {
   }
 
   public function createPageStructure() { 
+
+    $this->from = ( isset($_GET['from'])     ? $_GET['from']       : '' );
+    $this->to =  ( isset($_GET['to'])       ? $_GET['to']       : '' );
     $recordset = "";
     switch($this->category) {
       case "login":
@@ -37,7 +42,6 @@ class Layout {
         $this->content_html = array("content");
         break;
       case "profile":
-          $recordset = $this->connection->getProfile($_GET["id"]);
         if ($this->parameters!="view") {
           $this->page_html = array("header1","login_bar","menu","search","divider","status","footer");
         } else {
@@ -53,34 +57,8 @@ class Layout {
 
     //Page action to take
     switch($this->parameters) {
-        case "failed":
-          $this->status = "alert-danger";
-          $this->message = "Login has failed, please try again!";
-          break;
-        case "password-not-strong-enough":
-          $this->status = "alert-danger";
-          $this->message = "Your password is not strong enough, please try again!";
-          break;
-        case "user-exists":
-          $this->status = "alert-danger";
-          $this->message = "A user with this email address already exists, please try logging in!";
-          break;
-        case "insert-failed":
-          $this->status = "alert-danger";
-          $this->message = "The database was unable to add your details, please try again!";
-          break;
-        case "insert-succeeded":
-          $this->status = "alert-success";
-          $this->message = "You are now registered!";
-          break;
-        case "check":
-          submit_login($this->connection, $this->registry); 
-          break;
         case "logout":
           submit_logout();
-          break;
-        case "add":
-          $this->connection->submitRegister();
           break;
         case "update":
             if(isset($_POST['submit'])){
@@ -105,24 +83,23 @@ class Layout {
           $this->submitLike();
           break;
      }
+
      foreach($this->page_html as $part) { 
        if($part == "article") {
-         if($this->parameters) {
-           $this->assemblePage($part,$this->content_html,"single");   
-         } else {
-           $this->assemblePage($part,$this->content_html,"list");  
-         }   
+         if($this->parameters && $this->category !="search") {
+             $this->assemblePage($part,$this->content_html,"single");   
+         } 
+         $this->assemblePage($part,$this->content_html,"list", $this->from, $this->to);   
        } else {
-           if (!empty($recordset)) {
-               $this->getPart($part,$recordset);
-           } else {
-               $this->getPart($part);
-           }
+           if ($this->category=="profile") {
+                $recordset = $this->connection->getProfile($_GET["id"]);
+           } 
+           $this->getPart($part, $recordset);
        }
     }
   }
 
-  public function assemblePage($part, $content, $contenttype) {
+  public function assemblePage($part, $content, $contenttype, $from ='', $to='') {
     $article_ids = array();
     $count=0;
     $result = null;
@@ -131,17 +108,22 @@ class Layout {
         if($content_part=="content") {
           $category = $this->connection->get_category_by_name($this->category);    
           if (isset($category->{'category.id'}) ==0 ) {
-            $result = $this->connection->get_article_list_sorted();    
+            $result = $this->connection->get_article_list_sorted($from, $to);    
           } else {
-            $result = $this->connection->get_articles_by_category($category->{'category.id'});    
+            $result = $this->connection->get_articles_by_category($category->{'category.id'}, $from, $to);    
           }
-          if ($this->category=="search") {
-             $result = $this->connection->get_search_results();   
+
+          if (($this->category=="search") && (isset($this->parameters))) {
+               $result = $this->connection->get_search_results($this->parameters);   
           }
+          
           foreach ($result as $row) {
             $article_ids[$count]=$row->{"article.id"};
             $count++;
           }
+
+             if (sizeof($result)!=0) {
+ 
           for($i=0;$i<sizeof($article_ids);$i++) {
             foreach ($content as $content_part) {
               if ($content_part == "content") {
@@ -151,8 +133,13 @@ class Layout {
               }
             }
           }
+          } else {
+          echo "No articles found";
+          }
+
         }
       } else {  
+
         $result2 = $this->connection->get_article_by_name($this->parameters); 
         foreach ($result2 as $row) {
           $article_ids[0]=$row->{'article.id'};
@@ -167,11 +154,11 @@ class Layout {
   }
 
 public function getPart($part, $param="") {
- // if (isset($_SESSION["user2"])) {
- //  $so = $_SESSION["user2"];
- //   $user_object = unserialize(base64_decode($so));
- //   $auth = $user_object->getAuthenticated(); 
- // }
+  if (isset($_SESSION["user2"])) {
+   $so = $_SESSION["user2"];
+    $user_object = unserialize(base64_decode($so));
+    $auth = $user_object->getAuthenticated(); 
+  }
   $controller_modifier = "";
   switch($part) {
    case "like":     
@@ -203,8 +190,15 @@ public function getPart($part, $param="") {
 }
 
 public function getContentById($articleid,$category) { 
-  if ($category != "search") { $category="";}
-  $this->parseTemplate($this->connection->get_article_by_id($articleid, $category), '');
+$search= '';
+  if ($category != "search") { 
+    $category="";
+  } else { 
+   if(isset($_POST["search"])) {
+    $search = $_POST["search"]; 
+    }
+  }
+  $this->parseTemplate($this->connection->get_article_by_id($articleid, $category, $search), '');
 }
 
 public function getContent($articleid) { 

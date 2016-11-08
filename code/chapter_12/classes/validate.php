@@ -61,6 +61,18 @@ function isArticleContent($article) {
   return $error;
 }
 
+function isFirstName($name) {
+  $error = '';
+  if (($this->stringLength($name, 1, 255)) == FALSE ) {
+    $error = 'You cannot have a blank name.<br>';
+  }
+  return $error;
+}
+
+function isLastName($name) {
+  return $this->isFirstName($name);
+}
+
 function isCategoryName($name) {
   return $this->isArticleTitle($name);
 }
@@ -115,7 +127,7 @@ function isPassword($password) {
   return '';
 }
 
-function isStongPassword($password) {
+function isStrongPassword($password) {
   if( (strlen($password)<8) OR (strlen($password)>32) ) { $error = TRUE; }                    // Less than 8 characters
   if(preg_match_all('/[A-Z]/', $password)<1) { $error = TRUE; } // < 1 x A-Z return FALSE
   if(preg_match_all('/[a-z]/', $password)<1) { $error = TRUE; } // < 1 x a-z return FALSE
