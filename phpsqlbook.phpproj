@@ -606,7 +606,6 @@
     <Compile Include="login\login-admin.php" />
     <Compile Include="login\logout.php" />
     <Compile Include="login\register.php" />
-    <Compile Include="mail1.php" />
     <Compile Include="pages\add-comment.php" />
     <Compile Include="pages\add-comment-text.php" />
     <Compile Include="pages\article.php" />

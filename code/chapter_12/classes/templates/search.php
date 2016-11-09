@@ -6,6 +6,6 @@
 <script type="text/Javascript">
     function assignurl() {
       var action = $('#search').val();
-      $("#form1").attr("action", "/phpsqlbook/search/" + action+ "?from=10&show=10");
+      $("#form1").attr("action", "/phpsqlbook/search/" + action+ "?show=5&from=0");
     }
 </script>

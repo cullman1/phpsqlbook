@@ -56,7 +56,7 @@ function create_pagination($count, $show, $from) {
   $result  = '';
   if ($total_pages > 1) {
     for ($i = 0; $i < $total_pages; $i++) {
-      if ($i == ($current_page)) {
+      if ($i == ($current_page-1)) {
         $result .= ($i + 1) . '&nbsp;';
       } else {
         $result .= '<a href="?show=' . $show;
@@ -64,6 +64,6 @@ function create_pagination($count, $show, $from) {
       }
     }
   }
-  return $result;
+  echo "<br/>" . $result;
 }
 ?>

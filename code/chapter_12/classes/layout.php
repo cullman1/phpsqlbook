@@ -12,8 +12,8 @@ class Layout {
   private $message;
   private $status;
   private $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'');
-  private $from      = '';
-  private $to        = '';
+  private $from;
+  private $to;
 
   public function __construct($server, $category, $parameters) {
     $this->registry = Registry::instance();
@@ -26,8 +26,8 @@ class Layout {
 
   public function createPageStructure() { 
 
-    $this->from = ( isset($_GET['from'])     ? $_GET['from']       : '' );
-    $this->to =  ( isset($_GET['to'])       ? $_GET['to']       : '' );
+    $this->show = ( isset($_GET['show'])     ? $_GET['show']       : '5' );
+    $this->from =  ( isset($_GET['from'])       ? $_GET['from']       : '1' );
     $recordset = "";
     switch($this->category) {
       case "login":
@@ -89,7 +89,7 @@ class Layout {
          if($this->parameters && $this->category !="search") {
              $this->assemblePage($part,$this->content_html,"single");   
          } 
-         $this->assemblePage($part,$this->content_html,"list", $this->from, $this->to);   
+         $this->assemblePage($part,$this->content_html,"list", $this->show, $this->from);   
        } else {
            if ($this->category=="profile") {
                 $recordset = $this->connection->getProfile($_GET["id"]);
@@ -99,26 +99,28 @@ class Layout {
     }
   }
 
-  public function assemblePage($part, $content, $contenttype, $from ='', $to='') {
+  public function assemblePage($part, $content, $contenttype) {
     $article_ids = array();
     $count=0;
+    $row_count = 0;
     $result = null;
     foreach ($content as $content_part) {
       if ($contenttype=="list") {   
         if($content_part=="content") {
           $category = $this->connection->get_category_by_name($this->category);    
           if (isset($category->{'category.id'}) ==0 ) {
-            $result = $this->connection->get_article_list_sorted($from, $to);    
+            $result = $this->connection->get_article_list_sorted($this->show, $this->from);    
           } else {
-            $result = $this->connection->get_articles_by_category($category->{'category.id'}, $from, $to);    
+            $result = $this->connection->get_articles_by_category($category->{'category.id'}, $this->show, $this->from);    
           }
 
           if (($this->category=="search") && (isset($this->parameters))) {
-               $result = $this->connection->get_search_results($this->parameters);   
+               $result = $this->connection->get_search_results($this->parameters, $this->show, $this->from);   
           }
-          
+          $total = 0;
           foreach ($result as $row) {
             $article_ids[$count]=$row->{"article.id"};
+            $total = $row->{"article.count"};
             $count++;
           }
 
@@ -133,6 +135,7 @@ class Layout {
               }
             }
           }
+          echo (create_pagination($total,$this->show,$this->from));
           } else {
           echo "No articles found";
           }
