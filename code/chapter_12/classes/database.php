@@ -83,18 +83,6 @@ function get_user_by_email_passwordhash($email, $password) {
     return $article;
   }
 
-  public function get_article_list_sorted($show, $from) {
-    $query= "select SQL_CALC_FOUND_ROWS article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() order by article.id DESC";
-     $query .= " limit " . $show . " offset " . $from;
-    // $query= "select * FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now() order by article.id ASC";
-    $statement = $this->connection->prepare($query);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-    $article_list=  $this->append_row_count($article_list,$this->connection);
-    return $article_list;
-  }
-
   public function append_row_count($article_list, $connection) {
    $total = $connection->query('SELECT FOUND_ROWS();')->fetch(PDO::FETCH_COLUMN);
     foreach ($article_list as $art) {
@@ -103,20 +91,31 @@ function get_user_by_email_passwordhash($email, $password) {
     return $article_list;
   }
 
+  public function get_article_list_sorted($show, $from) {
+    $query= "select SQL_CALC_FOUND_ROWS article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() order by article.id DESC";
+     $query .= " limit " . $show . " offset " . $from;
+    $statement = $this->connection->prepare($query);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
+    $article_list=  $this->append_row_count($article_list,$this->connection);
+    return $article_list;
+  }
+
   function get_articles_by_category($id, $show, $from) {
-  $query = 'SELECT article.*, media.filepath, media.thumb, media.alt, user.forename, user.surname FROM article
+  $query = 'SELECT SQL_CALC_FOUND_ROWS article.*, media.filepath, media.thumb, media.alt, user.forename, user.surname FROM article
     LEFT JOIN media ON article.media_id = media.id
     LEFT JOIN user ON article.user_id = user.id ';
   if ($id > 0) {
     $query .= 'WHERE article.category_id = :category_id';
   }
-       $query .= " limit " . $show . " offset " . $from;
+  $query .= " limit " . $show . " offset " . $from;
   $statement = $this->connection->prepare($query);              // Prepare
   $statement->bindParam(":category_id", $id);               // Bind
   $statement->execute(); 
   $statement->setFetchMode(PDO::FETCH_OBJ);   // Step 4 Set fetch mode to array
   $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-    $article_list=  $this->append_row_count($article_list,$this->connection);
+  $article_list=  $this->append_row_count($article_list,$this->connection);
   return $article_list;
 }
 
@@ -124,7 +123,7 @@ function get_user_by_email_passwordhash($email, $password) {
  $trim_search = trim($search);
  $searchterm = "AND ((title like '%" .$trim_search. "%')";
   $searchterm .= " OR (content like '%".$trim_search. "%'))";
-  $query =  "select article.id, title, content, published FROM article";
+  $query =  "select SQL_CALC_FOUND_ROWS article.id, title, content, published FROM article";
   $query .= " where published <= now() " . $searchterm .   " order by article.id DESC";
        $query .= " limit " . $show . " offset " . $from;
   $statement = $this->connection->prepare($query);

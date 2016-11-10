@@ -52,16 +52,17 @@ function create_user_session($user) {
 
 function create_pagination($count, $show, $from) {
   $total_pages  = ceil($count / $show);   // Total matches
-  $current_page = ceil($from / $show);    // Current page
+  $current_page = ceil($from / $show) + 1;    // Current page
+
   $result  = '';
   if ($total_pages > 1) {
-    for ($i = 0; $i < $total_pages; $i++) {
-      if ($i == ($current_page-1)) {
-        $result .= ($i + 1) . '&nbsp;';
+    for ($i = 1; $i <= $total_pages; $i++) {
+      if ($i == $current_page) {
+        $result .= $i . '&nbsp;';
       } else {
-        $result .= '<a href="?show=' . $show;
-        $result .= '&from=' . ($i * $show) . '">' . ($i + 1) . '</a>&nbsp;';
-      }
+        $result .= '<u><a href="?show=' . $show;
+        $result .= '&from=' . (($i-1) * $show) . '">' . ($i) . '</a></u>&nbsp;';
+        }
     }
   }
   echo "<br/>" . $result;

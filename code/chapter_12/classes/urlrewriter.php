@@ -24,8 +24,10 @@
 
   public function routeRequest() {
     $this->registry->set('Layout', new Layout($this->server,$this->category,$this->item));
-    $control = $this->registry->get('Layout');
-    $control->createPageStructure();
+    $layout = $this->registry->get('Layout');
+    $layout->createPageStructure();
+    $layout->checkParameters();
+    $layout->chooseSingleOrMultipleArticles();
   }
 
 } ?>

@@ -27,8 +27,8 @@ class Layout {
   public function createPageStructure() { 
 
     $this->show = ( isset($_GET['show'])     ? $_GET['show']       : '5' );
-    $this->from =  ( isset($_GET['from'])       ? $_GET['from']       : '1' );
-    $recordset = "";
+    $this->from =  ( isset($_GET['from'])       ? $_GET['from']       : '0' );
+   
     switch($this->category) {
       case "login":
         $this->page_html = array("header1","menu","search","divider","form","footer");
@@ -54,7 +54,9 @@ class Layout {
         $this->content_html = array("content", "author", "like");
         break;     
     }
+  }
 
+  public function checkParameters() { 
     //Page action to take
     switch($this->parameters) {
         case "logout":
@@ -76,20 +78,23 @@ class Layout {
                }
             }
             break;
-          case "set":
+        case "set":
           $this->connection->setProfile();
           break;
         case "likes":
           $this->submitLike();
           break;
      }
+  }
 
-     foreach($this->page_html as $part) { 
+  public function chooseSingleOrMultipleArticles() {
+    $recordset = "";
+    foreach($this->page_html as $part) { 
        if($part == "article") {
          if($this->parameters && $this->category !="search") {
              $this->assemblePage($part,$this->content_html,"single");   
          } 
-         $this->assemblePage($part,$this->content_html,"list", $this->show, $this->from);   
+         $this->assemblePage($part,$this->content_html,"list", $this->show, $this->from);
        } else {
            if ($this->category=="profile") {
                 $recordset = $this->connection->getProfile($_GET["id"]);
@@ -102,21 +107,34 @@ class Layout {
   public function assemblePage($part, $content, $contenttype) {
     $article_ids = array();
     $count=0;
-    $row_count = 0;
     $result = null;
+    
+    //For each section of the page
     foreach ($content as $content_part) {
-      if ($contenttype=="list") {   
-        if($content_part=="content") {
+
+      //If this is a list of articles
+      if (($contenttype=="list") && ($content_part=="content")) {   
+          
+          //Get the category
           $category = $this->connection->get_category_by_name($this->category);    
-          if (isset($category->{'category.id'}) ==0 ) {
+          
+          //If there's no category present
+          if (isset($category->{'category.id'})==0 ) {
+            
+            //Get all articles
             $result = $this->connection->get_article_list_sorted($this->show, $this->from);    
           } else {
+            
+            //Otherwise just get the articles for that category 
             $result = $this->connection->get_articles_by_category($category->{'category.id'}, $this->show, $this->from);    
           }
 
+          //If this is a search with parameters set in the url (as all searches now are)
           if (($this->category=="search") && (isset($this->parameters))) {
-               $result = $this->connection->get_search_results($this->parameters, $this->show, $this->from);   
+            $result = $this->connection->get_search_results($this->parameters, $this->show, $this->from);   
           }
+         
+          //Grab all the article ids
           $total = 0;
           foreach ($result as $row) {
             $article_ids[$count]=$row->{"article.id"};
@@ -124,36 +142,47 @@ class Layout {
             $count++;
           }
 
-             if (sizeof($result)!=0) {
- 
-          for($i=0;$i<sizeof($article_ids);$i++) {
-            foreach ($content as $content_part) {
-              if ($content_part == "content") {
-                $this->getContentById($article_ids[$i], $this->category);
-              } else {
-                $this->getPart($content_part,$article_ids[$i]);
+          //If we've got more than zero articles
+          if (sizeof($result)!=0) {
+            for($i=0;$i<sizeof($article_ids);$i++) {
+              foreach ($content as $content_part) {
+                if ($content_part == "content") {
+                  //If it's content we need, get the article id, one at a time
+                  $this->getContentById($article_ids[$i], $this->category);
+                } else {
+                  //Otherwise just pull the page part/section we need instead
+                  $this->getPart($content_part,$article_ids[$i]);
+                }
               }
             }
-          }
-          echo (create_pagination($total,$this->show,$this->from));
+
+            //After displaying the list of articles add the paging
+            echo (create_pagination($total,$this->show,$this->from));
+          
           } else {
-          echo "No articles found";
+
+            //There were zero articles returned by our query.
+            echo "No articles found";
           }
+        } else if (($contenttype!="list") && ($content_part=="content")) {  
+          
+          //Otherwise this is a single article and it is content - if it isn't content we don't anything run at all.
+          $result2 = $this->connection->get_article_by_name($this->parameters); 
 
-        }
-      } else {  
+          //To get this article into the same template as a list of articles we need to add it to the first item of our array
+          foreach ($result2 as $row) {
+            $article_ids[0]=$row->{'article.id'};
+          } 
 
-        $result2 = $this->connection->get_article_by_name($this->parameters); 
-        foreach ($result2 as $row) {
-          $article_ids[0]=$row->{'article.id'};
-        } 
-        if ($content_part != "content") {
-          $this->getPart($content_part, $article_ids[0]);
-        } else {         
-          $this->getContent($article_ids[0]);
+          //If it isn't content, then grab a part
+          if ($content_part != "content") {
+            $this->getPart($content_part, $article_ids[0]);
+          } else {         
+            //Otherwise just grab the content once.
+            $this->getContent($article_ids[0]);
+          }
         }
       }
-    }
   }
 
 public function getPart($part, $param="") {
@@ -192,11 +221,14 @@ public function getPart($part, $param="") {
  }
 }
 
-public function getContentById($articleid,$category) { 
-$search= '';
+public function getContentById($articleid, $category) { 
+  $search= '';
   if ($category != "search") { 
     $category="";
   } else { 
+   if(isset($this->parameters)) {
+    $search =$this->parameters; 
+    }
    if(isset($_POST["search"])) {
     $search = $_POST["search"]; 
     }
