@@ -1,17 +1,20 @@
 <?php 
 require_once('../classes/functions.php');
 $message='';
+$firstName    = ( isset($_POST['firstName'])    ? $_POST['firstName']    : '' ); 
+$lastName = ( isset($_POST['lastName']) ? $_POST['lastName'] : '' ); 
 $email    = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
 $password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
-$error    = array('email' => '', 'password' =>'', 'firstName' => '', 'lastName' =>'');
+$this->error    = array('email' => '', 'password' =>'', 'firstName' => '', 'lastName' =>'');
 $alert  =   array('status' => '', 'message' =>'');
+
 if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
   include('../classes/validate.php');
   $Validate = new Validate();
-  $this->error['email']      = $Validate->isEmail($_POST['emailAddress']);
-  $this->error['password']   = $Validate->isStrongPassword($_POST['password']);
-  $this->error['firstName']  = $Validate->isFirstName($_POST['firstName']);
-  $this->error['lastName']   = $Validate->isLastName($_POST['lastName']);
+  $this->error['email']      = $Validate->isEmail($email);
+  $this->error['password']   = $Validate->isStrongPassword($password);
+  $this->error['firstName']  = $Validate->isFirstName($firstName);
+  $this->error['lastName']   = $Validate->isLastName($lastName);
   $valid = implode($this->error);
   if (strlen($valid) > 1 ) {
     $alert = array('status'  => 'danger', 'message' => 'Please check and resubmit');  

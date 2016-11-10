@@ -63,10 +63,10 @@ function get_user_by_email_passwordhash($email, $password) {
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $article_list = $statement->fetchAll(); 
-    if ($category=="search") {
-      $trim_search = trim($search);
+    if (isset($search)) {
+     
       foreach($article_list as $article) {
-        $article->{'article.content'} = str_ireplace($trim_search, "<b style='background-color:yellow'>".$trim_search."</b>", $article->{'article.content'}); 
+        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
       }
     }
     return $article_list; 
@@ -83,13 +83,7 @@ function get_user_by_email_passwordhash($email, $password) {
     return $article;
   }
 
-  public function append_row_count($article_list, $connection) {
-   $total = $connection->query('SELECT FOUND_ROWS();')->fetch(PDO::FETCH_COLUMN);
-    foreach ($article_list as $art) {
-     $art->{"article.count"} = $total;
-    }
-    return $article_list;
-  }
+ 
 
   public function get_article_list_sorted($show, $from) {
     $query= "select SQL_CALC_FOUND_ROWS article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() order by article.id DESC";
@@ -133,6 +127,73 @@ function get_user_by_email_passwordhash($email, $password) {
     $article_list=  $this->append_row_count($article_list,$this->connection);
   return $article_list;
  }
+
+  public function get_article_list($category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0') {
+    $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now()";
+    
+    //search results
+    if (!empty($search)) { 
+      $trim_search = trim($search);
+      $searchterm = " AND ((title like '%" .$trim_search. "%')";
+      $searchterm .= " OR (content like '%".$trim_search. "%'))";
+      $query .= $searchterm;   
+    }
+  
+    //category list
+    if ($category > 0) {
+      $query .= ' AND article.category_id = :id';
+       
+    }
+    
+    //author list
+    if ($author_id > 0) {
+      $query .= ' AND user.id = :id';
+    }
+    
+    //Sort
+    if (!empty($sort)) {
+      $query .= " Order By " . $show . " " . $dir;
+    }
+
+    //Pagination
+    //$query .= " limit " . $show . " offset " . $from;
+    $statement = $this->connection->prepare($query);
+    if ($category > 0) {
+     $statement->bindParam(":id", $category);    
+    }
+     if ($author_id > 0) {
+        $statement->bindParam(":id", $author_id);    
+    }
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
+    $num_rows = count($article_list);
+
+    //Repetition
+    $query .= " limit " . $show . " offset " . $from;
+
+    $statement = $this->connection->prepare($query);
+    if ($category > 0) {
+     $statement->bindParam(":id", $category);    
+    }
+     if ($author_id > 0) {
+        $statement->bindParam(":id", $author_id);    
+    }
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll(); 
+
+    $list=  $this->append_row_count($article_list,$num_rows);
+    return $article_list;
+}
+
+ public function append_row_count($article_list, $num_rows) {
+
+    foreach ($article_list as $art) {
+     $art->{"article.row_count"} = $num_rows;
+     }
+    return $article_list;
+  }
 
 function get_articles_by_user($id) {
   $query = 'SELECT article.*, media.filepath, media.alt, user.name FROM article
@@ -241,7 +302,7 @@ function setLike($likes, $userid, $articleid) {
  }
  //From function.php
  // Get article lists
-function get_article_list() { // Return all images as an object
+function get_article_list2() { // Return all images as an object
   $query = 'SELECT article.*, media.filepath, media.alt, category.name
             FROM article
             LEFT JOIN media ON article.media_id = media.id
@@ -329,8 +390,7 @@ function get_category_by_id($id) {
 
 // Get category
 function get_category_by_name($name) {
-  global $connection;
-  $query = 'SELECT * FROM category WHERE name like :name';     // Query
+  $query = "SELECT coalesce(id, count(category.id)) as count_id, id, name, template FROM category WHERE name like :name";     // Query
   $statement = $this->connection->prepare($query); // Prepare
   $statement->bindParam(":name", $name);                    // Bind
   $statement->execute();                                // Execute

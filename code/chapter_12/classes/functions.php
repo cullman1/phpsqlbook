@@ -50,7 +50,7 @@ function create_user_session($user) {
  header('Location: /phpsqlbook/home/');
 }
 
-function create_pagination($count, $show, $from) {
+function create_pagination($count, $show, $from, $search) {
   $total_pages  = ceil($count / $show);   // Total matches
   $current_page = ceil($from / $show) + 1;    // Current page
 
@@ -61,8 +61,12 @@ function create_pagination($count, $show, $from) {
         $result .= $i . '&nbsp;';
       } else {
         $result .= '<u><a href="?show=' . $show;
-        $result .= '&from=' . (($i-1) * $show) . '">' . ($i) . '</a></u>&nbsp;';
+         if (isset($search)) {
+         $result .= '&search='.$search; 
         }
+        $result .= '&from=' . (($i-1) * $show) . '">' . ($i) . '</a></u>&nbsp;';
+       
+       }
     }
   }
   echo "<br/>" . $result;

@@ -11,6 +11,7 @@ class Layout {
   private $content_html = array();
   private $message;
   private $status;
+  private $search;
   private $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'');
   private $from;
   private $to;
@@ -28,7 +29,7 @@ class Layout {
 
     $this->show = ( isset($_GET['show'])     ? $_GET['show']       : '5' );
     $this->from =  ( isset($_GET['from'])       ? $_GET['from']       : '0' );
-   
+   $this->search =  ( isset($_GET['search'])       ? $_GET['search']       : '' );
     switch($this->category) {
       case "login":
         $this->page_html = array("header1","menu","search","divider","form","footer");
@@ -117,28 +118,15 @@ class Layout {
           
           //Get the category
           $category = $this->connection->get_category_by_name($this->category);    
-          
-          //If there's no category present
-          if (isset($category->{'category.id'})==0 ) {
-            
-            //Get all articles
-            $result = $this->connection->get_article_list_sorted($this->show, $this->from);    
-          } else {
-            
-            //Otherwise just get the articles for that category 
-            $result = $this->connection->get_articles_by_category($category->{'category.id'}, $this->show, $this->from);    
-          }
-
-          //If this is a search with parameters set in the url (as all searches now are)
-          if (($this->category=="search") && (isset($this->parameters))) {
-            $result = $this->connection->get_search_results($this->parameters, $this->show, $this->from);   
-          }
          
+          //Get all articles
+          $result = $this->connection->get_article_list($category->{'.count_id'},$this->show, $this->from,'','',$this->search);    
+        
           //Grab all the article ids
           $total = 0;
           foreach ($result as $row) {
             $article_ids[$count]=$row->{"article.id"};
-            $total = $row->{"article.count"};
+            $total = $row->{"article.row_count"};
             $count++;
           }
 
@@ -147,17 +135,19 @@ class Layout {
             for($i=0;$i<sizeof($article_ids);$i++) {
               foreach ($content as $content_part) {
                 if ($content_part == "content") {
+                  
                   //If it's content we need, get the article id, one at a time
                   $this->getContentById($article_ids[$i], $this->category);
                 } else {
+                  
                   //Otherwise just pull the page part/section we need instead
                   $this->getPart($content_part,$article_ids[$i]);
                 }
               }
             }
-
+     
             //After displaying the list of articles add the paging
-            echo (create_pagination($total,$this->show,$this->from));
+            echo (create_pagination($total,$this->show,$this->from,$this->search));
           
           } else {
 
@@ -165,7 +155,7 @@ class Layout {
             echo "No articles found";
           }
         } else if (($contenttype!="list") && ($content_part=="content")) {  
-          
+ 
           //Otherwise this is a single article and it is content - if it isn't content we don't anything run at all.
           $result2 = $this->connection->get_article_by_name($this->parameters); 
 
@@ -226,11 +216,8 @@ public function getContentById($articleid, $category) {
   if ($category != "search") { 
     $category="";
   } else { 
-   if(isset($this->parameters)) {
-    $search =$this->parameters; 
-    }
-   if(isset($_POST["search"])) {
-    $search = $_POST["search"]; 
+   if(isset($_GET["search"])) {
+    $search = $_GET["search"]; 
     }
   }
   $this->parseTemplate($this->connection->get_article_by_id($articleid, $category, $search), '');
