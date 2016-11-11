@@ -9,7 +9,7 @@ $this->error    = array('email' => '', 'password' =>'', 'firstName' => '', 'last
 $alert  =   array('status' => '', 'message' =>'');
 
 if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
-  include('../classes/validate.php');
+  require_once('../classes/validate.php');
   $Validate = new Validate();
   $this->error['email']      = $Validate->isEmail($email);
   $this->error['password']   = $Validate->isStrongPassword($password);

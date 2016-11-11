@@ -219,7 +219,6 @@
     <Compile Include="code\chapter_12\assets\login-variables.php" />
     <Compile Include="code\chapter_12\classes\functions.php" />
     <Compile Include="code\chapter_12\classes\templates\configuration.php" />
-    <Compile Include="code\chapter_12\classes\templates\controller.php" />
     <Compile Include="code\chapter_12\classes\database.php" />
     <Compile Include="code\chapter_12\classes\layout.php" />
     <Compile Include="code\chapter_12\classes\registry.php" />

@@ -105,6 +105,14 @@ function isMediaFilename($filename) {
   return $error;
 }
 
+function isMediaUpload($filename) {
+  $error ='';
+  if (!isset($filename)) {
+    $error .= 'Your file did not upload successfully.';
+  }
+  return $error;
+}
+
 function isMimetype($mimetype) {
   if(!preg_match('/(image\/jpg|image\/jpeg|image\/png|image\/gif)/i', $mimetype)) {
     return 'You can only upload jpg, jpeg, png, and gif formats.';

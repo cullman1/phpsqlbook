@@ -35,11 +35,11 @@ function create_user_session($user) {
   $_SESSION['loggedin'] = $user->{'user.joined'};
 }
 
- function submitLike() {
+ function submit_like($connection) {
   if (!isset($_SESSION["user2"])) {
     header('Location: /phpsqlbook/login/');
   } else {    
-   $this->connection->setLike($_REQUEST['liked'],$_REQUEST["user_id"], $_REQUEST["article_id"]);
+   $connection->setLike($_GET['liked'],$_GET["user_id"], $_GET["article_id"]);
    header('Location: /phpsqlbook/home/');
   }
 }

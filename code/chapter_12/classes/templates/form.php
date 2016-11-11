@@ -1,9 +1,8 @@
 <?php 
 require_once('../classes/functions.php');
-$message='';
 $alert  =   array('status' => '', 'message' =>'');
 if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
-    include('../classes/validate.php');
+    include_once('../classes/validate.php');
     $Validate = new Validate();
     $this->error['email']     = $Validate->isEmail($_POST["emailAddress"]);
     $this->error['password']  = $Validate->isPassword($_POST["password"]);

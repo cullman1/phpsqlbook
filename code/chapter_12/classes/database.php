@@ -6,8 +6,6 @@ class Database{
   private $databaseName = "cms";
   private $dbName       = "cms";
   private $connection;
-  private $preSalt = "abD!y1";
-  private $afterSalt = "d!@gg3"; 
 
   public function __construct() { 
     try {
@@ -21,13 +19,6 @@ class Database{
       echo 'Trace number: ' . var_dump($error->getTrace()) . '<br>';
     }
   }
-
-   public function getPreSalt() {
-        return $this->preSalt;
-    }
-    public function getAfterSalt() {
-        return $this->afterSalt;
-    }
 
 function add_user($forename, $surname, $password, $email) {     
   $query = 'INSERT INTO user (forename, surname, email, password) 
@@ -56,7 +47,7 @@ function get_user_by_email_passwordhash($email, $password) {
   return (password_verify($password, $user->{'user.password'}) ? $user : false);
 } 
 
-  public function get_article_by_id($id, $category, $search='') {
+  public function get_article_by_id($id, $search='') {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
     $statement = $this->connection->prepare($query);
     $statement->bindParam(":id", $id);
@@ -64,7 +55,6 @@ function get_user_by_email_passwordhash($email, $password) {
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $article_list = $statement->fetchAll(); 
     if (isset($search)) {
-     
       foreach($article_list as $article) {
         $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
       }
@@ -72,142 +62,65 @@ function get_user_by_email_passwordhash($email, $password) {
     return $article_list; 
   }
 
-  public function get_article_by_name($title1) {
-    $new_title = str_replace("-"," ", trim($title1));
-    $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id =  category.id where title=:title";
-    $statement = $this->connection->prepare($query);
-    $statement->bindParam(":title", $new_title);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $article = $statement->fetchAll();           // Step 4 Get all rows ready to display
-    return $article;
-  }
-
- 
-
-  public function get_article_list_sorted($show, $from) {
-    $query= "select SQL_CALC_FOUND_ROWS article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id   where published <= now() order by article.id DESC";
-     $query .= " limit " . $show . " offset " . $from;
-    $statement = $this->connection->prepare($query);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-    $article_list=  $this->append_row_count($article_list,$this->connection);
-    return $article_list;
-  }
-
-  function get_articles_by_category($id, $show, $from) {
-  $query = 'SELECT SQL_CALC_FOUND_ROWS article.*, media.filepath, media.thumb, media.alt, user.forename, user.surname FROM article
-    LEFT JOIN media ON article.media_id = media.id
-    LEFT JOIN user ON article.user_id = user.id ';
-  if ($id > 0) {
-    $query .= 'WHERE article.category_id = :category_id';
-  }
-  $query .= " limit " . $show . " offset " . $from;
-  $statement = $this->connection->prepare($query);              // Prepare
-  $statement->bindParam(":category_id", $id);               // Bind
-  $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ);   // Step 4 Set fetch mode to array
-  $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-  $article_list=  $this->append_row_count($article_list,$this->connection);
-  return $article_list;
-}
-
- public function get_search_results($search, $show, $from) {
- $trim_search = trim($search);
- $searchterm = "AND ((title like '%" .$trim_search. "%')";
-  $searchterm .= " OR (content like '%".$trim_search. "%'))";
-  $query =  "select SQL_CALC_FOUND_ROWS article.id, title, content, published FROM article";
-  $query .= " where published <= now() " . $searchterm .   " order by article.id DESC";
-       $query .= " limit " . $show . " offset " . $from;
-  $statement = $this->connection->prepare($query);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ); 
-  $article_list = $statement->fetchAll();  
-    $article_list=  $this->append_row_count($article_list,$this->connection);
-  return $article_list;
- }
-
-  public function get_article_list($category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0') {
+  public function get_article_list($category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
     $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now()";
     
-    //search results
-    if (!empty($search)) { 
-      $trim_search = trim($search);
-      $searchterm = " AND ((title like '%" .$trim_search. "%')";
-      $searchterm .= " OR (content like '%".$trim_search. "%'))";
-      $query .= $searchterm;   
+    if (!empty($search)) {  //search results
+      $search = trim($search);
+      $searchsql = " AND ((title like '%" .$search. "%')";
+      $searchsql .= " OR (content like '%".$search. "%'))";
+      $query .= $searchsql;   
     }
   
     //category list
-    if ($category > 0) {
+    if (($category > 0) && (!empty($name))) {
+      $query .= ' AND  title=:id';
+    } else if ($category > 0) {
       $query .= ' AND article.category_id = :id';
-       
     }
     
     //author list
     if ($author_id > 0) {
       $query .= ' AND user.id = :id';
     }
-    
+
     //Sort
     if (!empty($sort)) {
       $query .= " Order By " . $show . " " . $dir;
     }
 
-    //Pagination
-    //$query .= " limit " . $show . " offset " . $from;
-    $statement = $this->connection->prepare($query);
-    if ($category > 0) {
-     $statement->bindParam(":id", $category);    
-    }
-     if ($author_id > 0) {
-        $statement->bindParam(":id", $author_id);    
-    }
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-    $num_rows = count($article_list);
-
-    //Repetition
+    //Get total number of articles for count
+    $articles_for_count = $this->bind_parameters($query, $category, $name, $author_id);          
+    $num_rows = count($articles_for_count);
+    
+    //Get actual limited page of articles
     $query .= " limit " . $show . " offset " . $from;
+    $article_list = $this->bind_parameters($query, $category, $name, $author_id);        
+    return $this->append_row_count($article_list,$num_rows);
+}
 
-    $statement = $this->connection->prepare($query);
-    if ($category > 0) {
+public function bind_parameters($query, $category, $name, $author_id) {
+ $statement = $this->connection->prepare($query);
+    if (($category > 0) && (!empty($name))) {
+     $statement->bindParam(":id", $name); 
+    }  else if ($category > 0) {
      $statement->bindParam(":id", $category);    
     }
-     if ($author_id > 0) {
+    if ($author_id > 0) {
         $statement->bindParam(":id", $author_id);    
     }
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
-    $article_list = $statement->fetchAll(); 
-
-    $list=  $this->append_row_count($article_list,$num_rows);
+    $article_list = $statement->fetchAll();  
     return $article_list;
 }
 
- public function append_row_count($article_list, $num_rows) {
-
-    foreach ($article_list as $art) {
-     $art->{"article.row_count"} = $num_rows;
+public function append_row_count($article_list, $num_rows) {
+    foreach ($article_list as $article) {
+     $article->{"article.row_count"} = $num_rows;
      }
     return $article_list;
-  }
-
-function get_articles_by_user($id) {
-  $query = 'SELECT article.*, media.filepath, media.alt, user.name FROM article
-    LEFT JOIN media ON article.media_id = media.id
-    WHERE user.id = :id';
-  $statement = $this->connection->prepare($query);              // Prepare
-  $statement->bindParam(":id", $id);               // Bind
-  $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ);   // Step 4 Set fetch mode to array
-  $article_list = $statement->fetchAll();           // Step 4 Get all rows ready to display
-  return $article_list;
 }
-
-
 
 public function get_author_name($id) { 
   $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
@@ -219,9 +132,6 @@ public function get_author_name($id) {
  return $author_list;
 }
   
-
-
-
 public function get_all_likes($user_id,$article_id) {
   $query = "select distinct :artid as articleid, :userid as userid, (select count(*) as likes FROM article_like where article_id=:artid and user_id=:userid ) as likes_count, (select count(article_id) as likes FROM article_like where article_id=:artid) as likes_total FROM article_like as a right outer join (select id FROM article where id=:artid) as b ON (b.id = a.article_id) where b.id=:artid"; 
   $statement = $this->connection->prepare($query);
@@ -272,9 +182,9 @@ public function setProfile( $id, $forename, $surname, $email, $img) {
 
   $statement->execute();
   if( $statement->errorCode() != 00000 ) {     
-      return '<div class="error">Error: ' . $statement->errorCode() . '</div>';
+        return array('status' => 'danger', 'message' =>'Profile update failed, Please try again');
   } else {
-      return '<div class="success">Profile updated</div>';
+      return array('status' => 'success', 'message' =>'Profile updated');
   }
 }
 
