@@ -143,15 +143,7 @@ public function get_all_likes($user_id,$article_id) {
    return $author_list;
 }
 
-public function getProfile($user_id) {
-$query = "select user.* FROM user where user.id=:userid";
- $statement = $this->connection->prepare($query);
- $statement->bindParam(':userid',$user_id);
- $statement->execute();
- $statement->setFetchMode(PDO::FETCH_OBJ);
-  $author_list = $statement->fetchAll();  
-   return $author_list;
-}
+
 
 public function get_user_by_email($email) {
   $query = "SELECT * from user WHERE email = :email";
@@ -326,12 +318,22 @@ function get_user_list_array() {
 }
 // Get user
 function get_user_by_id($id) {
-  $query = 'SELECT * FROM user WHERE id = :id'; // Query
+  $query = 'SELECT user.* FROM user WHERE user.id = :id'; // Query
   $statement =$this->connection->prepare($query);              // Prepare
   $statement->bindParam(":id", $id);                 // Bind
   $statement->execute();                                  // Execute
-  $user = $statement->fetch(PDO::FETCH_OBJ);                         // Get data
-  return $user;
+  $statement->setFetchMode(PDO::FETCH_OBJ);                         // Get data
+   $user = $statement->fetchAll();   
+  return $this->append_blank_image($user,'blank.png');
+}
+
+public function append_blank_image($user_list, $image) {
+    foreach ($user_list as $user) {
+     if (empty($user->{"user.image"})) {
+     $user->{"user.image"} = $image;
+     }
+     }
+    return $user_list;
 }
 
 // Insert

@@ -2,6 +2,7 @@
 require_once('user.php');
 require_once('validate.php');
 require_once('functions.php');
+
 class Layout {
   private $registry;
   private $server;
@@ -32,7 +33,7 @@ class Layout {
     
     switch($this->category) {
       case "login":
-        $this->page_html = array("header1","menu","login_bar","search","divider","form","footer");
+        $this->page_html = array("header1","menu","login_bar","search","divider","login_form","footer");
         break;
       case "register":
         $this->page_html = array("header1","menu","search","divider","register_form","footer");
@@ -40,19 +41,19 @@ class Layout {
       case "Contact":
       case "About":
         $this->page_html = array("header1", "menu", "login_bar", "search","divider","article","footer1");
-        $this->content_html = array("content");
+        $this->content_html = array("no_date_content");
         break;
       case "profile":
-        if ($this->parameters=="view") {
-          $this->page_html = array("header1","menu","login_bar","search","divider","status","footer");
+        if ($this->parameters=="status") {
+          $this->page_html = array("header1","menu","login_bar","search","divider","profile_status","footer");
         } else {
-          $this->page_html = array("header1","menu","login_bar","search","divider","update","footer");
-        }   
+          $this->page_html = array("header1","menu","login_bar","search","divider","profile_update","footer");
+        }             
         break;
       case "search":
       default:
         $this->page_html = array("header1", "menu",  "login_bar", "search","divider","article","footer1");
-        $this->content_html = array("content", "author", "like");
+        $this->content_html = array("main_content", "author", "like");
         break;     
     }
   }
@@ -62,30 +63,7 @@ class Layout {
     switch($this->parameters) {
         case "logout":
           submit_logout();
-          break;
-        case "update":
-              if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
-               $alert  =   array('status' => '', 'message' =>'');
-    $Validate = new Validate();
-    $this->error['email']     = $Validate->isEmail($_POST["Email"]);
-    $this->error['image']  = $Validate->isMediaUpload($_FILES["img"]['tmp_name']);
-    $this->error['firstName']  = $Validate->isFirstName($_POST["Forename"]);
-    $this->error['lastName']  = $Validate->isLastName($_POST["Surname"]);
-    $valid = implode($this->error);
-    if (strlen($valid) < 1 ) {
-       $alert = $this->connection->setProfile($_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],$_FILES["img"]["name"] ); 
-       $temporary   = $_FILES["img"]['tmp_name'];
-                 $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $_FILES['img']['name'];
-                 if (move_uploaded_file($temporary, $destination)) {
-                   $alert = array("status"=>"success","message"=> "File saved.");
-                 } else {
-                    $alert = array("status"=>"danger","message"=> "File could not be saved.");
-                 }
-                  header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/profile/view?id='.$_POST["Id"]); 
-
-    }
-}
-            break;
+          break;     
         case "likes":
          submit_like($this->connection);
           break;
@@ -93,15 +71,11 @@ class Layout {
   }
 
   public function assemblePage() {
-    $recordset = "";
     foreach($this->page_html as $part) { 
        if($part == "article") {
          $this->assembleArticles($part,$this->content_html);
        } else {
-           if ($this->category=="profile") {
-                $recordset = $this->connection->getProfile($_GET["id"]);
-           } 
-           $this->getPart($part, $recordset);
+           $this->getPart($part);
        }
     }
   }
@@ -115,8 +89,8 @@ class Layout {
     //For each section of the page
     foreach ($content as $content_part) {
 
-      //If this is a list of articles
-      if ($content_part=="content") {   
+      //If this is a content part
+      if (strpos($content_part,"content")) {   
           
         //Get the category
         $category = $this->connection->get_category_by_name($this->category);    
@@ -142,7 +116,7 @@ class Layout {
              foreach ($content as $content_part) {
 
                //If it's content
-              if ($content_part == "content") {
+              if (strpos($content_part,"content")) { 
             
                 //If it's search content we need to pass the search term too.
                 if(isset($_GET["search"])) {
@@ -150,10 +124,10 @@ class Layout {
                  }
 
                  //Now pass the article contents (retrieved by id) and merge it with the template
-                 $this->parseTemplate($this->connection->get_article_by_id($article_ids[$i], $search), '');
+                 $this->parseTemplate($this->connection->get_article_by_id($article_ids[$i], $search), $content_part);
 
               } else {
-                  
+                 
                 //Otherwise, it's not article content just pull the page part template we need instead
                 $this->getPart($content_part,$article_ids[$i]);
               }
@@ -173,44 +147,34 @@ class Layout {
   }
 
   public function getPart($part, $param="") {
+    $user_id="0"; 
     if (isset($_SESSION["user2"])) {
       $so = $_SESSION["user2"];
       $user_object = unserialize(base64_decode($so));
       $auth = $user_object->getAuthenticated(); 
     }
-    
+    if (isset($auth)) {
+       $user_id = $auth;
+    } 
     switch($part) {
-      case "like":     
-        $user_id=0;       
-        if (isset($auth)) {
-          $user_id = $auth;
-        } else {
-         $user_id = "0";
-        }
-        $this->parseTemplate($this->connection->get_all_likes($user_id,$param), "like");
+      case "like":   
+        $this->parseTemplate($this->connection->get_all_likes($user_id,$param), "like_content");
         break;
       case "author":
-        $this->parseTemplate($this->connection->get_author_name($param),"author");
+        $this->parseTemplate($this->connection->get_author_name($param),"author_content");
         break;
       case "menu":
-        $this->parseTemplate($this->connection->get_category_list($param),"menu");
+        $this->parseTemplate($this->connection->get_category_list($param),"menu_content");
         break;
-      case "update":
-      case "status":
-        $query = "";
-        if ($this->parameters =="success") {$query="success";}
-          if ($this->parameters=="fail") {$query="fail";}
-            $this->parseTemplate($this->connection->getProfile($_GET["id"]),"profile",$part,$query);
-          break;
       default:
         include("templates/".$part.".php");     
         break;
     }
   }
 
-public function parseTemplate($recordset,$prefix, $extra="content", $query="") {
+public function parseTemplate($recordset,$prefix) {
   $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/";
-  $string = file_get_contents($root. "/classes/templates/".$prefix. $extra.".php?query=".$query);  
+  $string = file_get_contents($root. "/classes/templates/".$prefix.".php"); 
   $regex = '#{{(.*?)}}#';
   $template="";
   preg_match_all($regex, $string, $matches);
@@ -219,7 +183,6 @@ public function parseTemplate($recordset,$prefix, $extra="content", $query="") {
     foreach($matches[0] as $value) {           
       $replace= str_replace("{{","", $value);
       $replace= str_replace("}}","", $replace);
-
       $template = str_replace($value,$row->{$replace}, $template);  
     }  
   echo $template;  
