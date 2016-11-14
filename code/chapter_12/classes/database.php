@@ -329,10 +329,10 @@ function get_user_by_id($id) {
 
 public function append_blank_image($user_list, $image) {
     foreach ($user_list as $user) {
-     if (empty($user->{"user.image"})) {
-     $user->{"user.image"} = $image;
-     }
-     }
+      if (empty($user->{"user.image"})) {
+        $user->{"user.image"} = $image;
+      }
+    }
     return $user_list;
 }
 

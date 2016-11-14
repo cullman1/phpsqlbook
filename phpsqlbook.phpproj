@@ -229,11 +229,9 @@
     <Compile Include="code\chapter_12\classes\templates\like_content.php" />
     <Compile Include="code\chapter_12\classes\templates\login_bar.php" />
     <Compile Include="code\chapter_12\classes\templates\menu_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\menu.php" />
     <Compile Include="code\chapter_12\classes\templates\profile_status.php" />
     <Compile Include="code\chapter_12\classes\templates\profile_update.php" />
     <Compile Include="code\chapter_12\classes\templates\main_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\footer.php" />
     <Compile Include="code\chapter_12\classes\templates\register_form.php" />
     <Compile Include="code\chapter_12\classes\templates\search.php" />
     <Compile Include="code\chapter_12\classes\urlrewriter.php" />

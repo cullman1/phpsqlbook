@@ -75,7 +75,7 @@ class Layout {
        if($part == "article") {
          $this->assembleArticles($part,$this->content_html);
        } else {
-           $this->getPart($part);
+         $this->getPart($part);
        }
     }
   }

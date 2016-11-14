@@ -40,7 +40,11 @@ function create_user_session($user) {
     header('Location: /phpsqlbook/login/');
   } else {    
    $connection->setLike($_GET['liked'],$_GET["user_id"], $_GET["article_id"]);
-   header('Location: /phpsqlbook/home/');
+   if(isset($_SERVER['HTTP_REFERER'])) {
+     header('Location: '.$_SERVER['HTTP_REFERER']);
+   } else {
+     header('Location: /phpsqlbook/home/');
+   }
   }
 }
 
