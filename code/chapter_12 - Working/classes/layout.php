@@ -33,10 +33,10 @@ class Layout {
     
     switch($this->category) {
       case "login":
-        $this->page_html = array("header1","menu","login_bar","search","divider","login_form","footer1");
+        $this->page_html = array("header1","menu","login_bar","search","divider","login_form","footer");
         break;
       case "register":
-        $this->page_html = array("header1","menu","search","divider","register_form","footer1");
+        $this->page_html = array("header1","menu","search","divider","register_form","footer");
         break;
       case "Contact":
       case "About":
@@ -45,15 +45,15 @@ class Layout {
         break;
       case "profile":
         if ($this->parameters=="status") {
-          $this->page_html = array("header1","menu","login_bar","search","divider","profile_status","footer1");
+          $this->page_html = array("header1","menu","login_bar","search","divider","profile_status","footer");
         } else {
-          $this->page_html = array("header1","menu","login_bar","search","divider","profile_update","footer1");
+          $this->page_html = array("header1","menu","login_bar","search","divider","profile_update","footer");
         }             
         break;
       case "search":
       default:
         $this->page_html = array("header1", "menu",  "login_bar", "search","divider","article","footer1");
-        $this->content_html = array("main_content", "author", "like", "comments");
+        $this->content_html = array("main_content", "author", "like");
         break;     
     }
   }
@@ -65,11 +65,8 @@ class Layout {
           submit_logout();
           break;     
         case "likes":
-          submit_like($this->connection);
+         submit_like($this->connection);
           break;
-        case "add_comment":
-          add_comment($this->connection, $_GET["id"]);
-          break;	
      }
   }
 
@@ -150,10 +147,18 @@ class Layout {
   }
 
   public function getPart($part, $param="") {
-    $user_id=get_user_from_session(); 
+    $user_id="0"; 
+    if (isset($_SESSION["user2"])) {
+      $so = $_SESSION["user2"];
+      $user_object = unserialize(base64_decode($so));
+      $auth = $user_object->getAuthenticated(); 
+    }
+    if (isset($auth)) {
+       $user_id = $auth;
+    } 
     switch($part) {
       case "like":   
-        $this->parseTemplate($this->connection->get_all_likes($user_id, $param), "like_content");
+        $this->parseTemplate($this->connection->get_all_likes($user_id,$param), "like_content");
         break;
       case "author":
         $this->parseTemplate($this->connection->get_author_name($param),"author_content");
@@ -161,10 +166,6 @@ class Layout {
       case "menu":
         $this->parseTemplate($this->connection->get_category_list($param),"menu_content");
         break;
-      case "comments":
-        $result = $this->connection->get_article_comments($param);  
-        display_comments($result, $param);
-        break;   
       default:
         include("templates/".$part.".php");     
         break;

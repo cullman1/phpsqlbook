@@ -122,61 +122,6 @@ public function append_row_count($article_list, $num_rows) {
     return $article_list;
 }
 
-
-
- public function insert_article_comment($articleid, $userid, $comment, $commentid) {
- $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
-           VALUES  (:comment,:articleid, :userid, :date, :commentid)";
- $statement = $this->connection->prepare($query);
- $statement->bindParam(':articleid',$articleid);
- $statement->bindParam(':comment',$comment);
- $statement->bindParam(':commentid',$commentid);
- $date = date("Y-m-d H:i:s");
- $statement->bindParam(':date',$date);
- $statement->bindParam(':userid',$userid);
- $statement->execute();
- if( $statement->errorCode() != 00000 ) {     
-    return '<div class="error">Error: ' . $statement->errorCode() . '</div>';
-  } else {
-    return '<div class="success">Article created</div>';
-  }
-} 
-
-public function append_article_id($article_list, $article_id) {
-    foreach ($article_list as $article) {
-     $article->{"comments.article_id"} = $article_id;
-     }
-    return $article_list;
-}
-
-public function get_article_comments_count($articleid) {
-  $query = "select comments.* From comments WHERE article_id = :articleid";
-  $statement = $this->connection->prepare($query);
-  $statement->bindParam(':articleid',$articleid);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ);
-  $comments_count = $statement->fetchAll();  
-  $num_rows = count($comments_count);
-  return $num_rows;
-}
-
-  public function get_article_comments($articleid) {
-    $total =   $this->get_article_comments_count($articleid);
-    if ($total!=0) {
-      $query="select (select count(*) as ComTotal From comments where article_id=:articleid) as ComTotal,comments.*, user.*  FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";
-    } else {
-      $query="select count(*) as ComTotal, comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";
-    }   
-
-    $statement = $this->connection->prepare($query);
-    $statement->bindParam(':articleid',$articleid);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $comments_list = $statement->fetchAll();
-    $list = $this->append_article_id($comments_list, $articleid);
-    return $list;
-  }
-
 public function get_author_name($id) { 
   $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
  $statement = $this->connection->prepare($query);

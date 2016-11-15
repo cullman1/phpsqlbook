@@ -32,6 +32,9 @@ RewriteRule   ^register/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^search/?$  code/chapter_12/pages/index.php [NC,L]
 RewriteRule   ^search/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
 RewriteRule   ^search/([^/.]+)/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^comments/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^comments/([^/.]+)/([^/.]+)/?$  code/chapter_12//pages/index.php [NC,L]
+RewriteRule   ^comments/?$ code/chapter_12/pages/index.php [NC,L]
 
 
 
