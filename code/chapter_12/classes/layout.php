@@ -15,6 +15,8 @@ class Layout {
   private $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'','firstName'=>'','lastName'=>'', 'image'=>'');
   private $from;
   private $show;
+  private $counter;
+  private $indent;
 
   public function __construct($server, $category, $parameters) {
     $this->registry = Registry::instance();
@@ -97,10 +99,10 @@ class Layout {
           
         //Get the category
         $category = $this->connection->get_category_by_name($this->category);    
-         
+
         //Get all articles
-        $result = $this->connection->get_article_list($category->{'.count_id'},$this->show, $this->from,'','',$this->search, '',urldecode($this->parameters));    
-       
+        $result = $this->connection->get_article_list($category->{'.count_id'},$this->show, $this->from,'','',$this->search, '',str_replace('-',' ',$this->parameters));    
+
         //Grab all the article ids
         $total = 0;
         foreach ($result as $row) {
@@ -163,7 +165,24 @@ class Layout {
         break;
       case "comments":
         $result = $this->connection->get_article_comments($param);  
-        display_comments($result, $param);
+      /*  $this->counter =0;
+        $this->indent = 0;
+        $new = array();  
+        $nestedcomments_row = array();
+  foreach ($result as $row) {
+   $nestedcomments_row[] = $row;
+  }
+ foreach ($nestedcomments_row as $branch) {
+   $new[$branch->{'comments.repliedto_id'}][]=$branch;             
+  }
+ if (isset($new[0])) {
+    $tree = create_tree($new, $new[0]); 
+    display_comments2($tree,$param, $this->counter, $this->indent);
+  } else {
+   $this->parseTemplate($this->connection->generate_comment_id($param),'nocomments_content');
+  }
+
+     */   display_comments($result,$param);
         break;   
       default:
         include("templates/".$part.".php");     

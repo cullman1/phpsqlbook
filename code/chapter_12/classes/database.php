@@ -59,6 +59,7 @@ function get_user_by_email_passwordhash($email, $password) {
         $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
       }
     }
+    $article_list = $this->hyphenate_url($article_list);
     return $article_list; 
   }
 
@@ -95,7 +96,8 @@ function get_user_by_email_passwordhash($email, $password) {
     
     //Get actual limited page of articles
     $query .= " limit " . $show . " offset " . $from;
-    $article_list = $this->bind_parameters($query, $category, $name, $author_id);        
+    $article_list = $this->bind_parameters($query, $category, $name, $author_id);
+    $article_list = $this->hyphenate_url($article_list);
     return $this->append_row_count($article_list,$num_rows);
 }
 
@@ -115,14 +117,19 @@ public function bind_parameters($query, $category, $name, $author_id) {
     return $article_list;
 }
 
+public function hyphenate_url($article_list) {
+    foreach ($article_list as $article) {
+        $article->{"article.title_url"} = str_replace(' ','-', $article->{"article.title"});
+    }
+    return $article_list;
+}
+
 public function append_row_count($article_list, $num_rows) {
     foreach ($article_list as $article) {
      $article->{"article.row_count"} = $num_rows;
      }
     return $article_list;
 }
-
-
 
  public function insert_article_comment($articleid, $userid, $comment, $commentid) {
  $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
@@ -142,32 +149,16 @@ public function append_row_count($article_list, $num_rows) {
   }
 } 
 
-public function append_article_id($article_list, $article_id) {
-    foreach ($article_list as $article) {
-     $article->{"comments.article_id"} = $article_id;
-     }
-    return $article_list;
-}
 
-public function get_article_comments_count($articleid) {
-  $query = "select comments.* From comments WHERE article_id = :articleid";
-  $statement = $this->connection->prepare($query);
-  $statement->bindParam(':articleid',$articleid);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ);
-  $comments_count = $statement->fetchAll();  
-  $num_rows = count($comments_count);
-  return $num_rows;
-}
+
 
   public function get_article_comments($articleid) {
     $total =   $this->get_article_comments_count($articleid);
     if ($total!=0) {
-      $query="select (select count(*) as ComTotal From comments where article_id=:articleid) as ComTotal,comments.*, user.*  FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";
+      $query="select (select count(*) as Total From comments where article_id=:articleid) as Total,comments.*, user.*  FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";
     } else {
-      $query="select count(*) as ComTotal, comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";
+      $query="select count(*) as Total, comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";
     }   
-
     $statement = $this->connection->prepare($query);
     $statement->bindParam(':articleid',$articleid);
     $statement->execute();
@@ -175,6 +166,47 @@ public function get_article_comments_count($articleid) {
     $comments_list = $statement->fetchAll();
     $list = $this->append_article_id($comments_list, $articleid);
     return $list;
+  }
+
+  
+  public function get_article_comments_count($articleid) {
+      $query = "select comments.* From comments WHERE article_id = :articleid";
+      $statement = $this->connection->prepare($query);
+      $statement->bindParam(':articleid',$articleid);
+      $statement->execute();
+      $statement->setFetchMode(PDO::FETCH_OBJ);
+      $comments_count = $statement->fetchAll();  
+      $num_rows = count($comments_count);
+      return $num_rows;
+  }
+
+  public function append_article_id($article_list, $article_id) {
+      foreach ($article_list as $article) {
+          $article->{"comments.article_id"} = $article_id;
+      }
+      return $article_list;
+  }
+
+  public function generate_comment_id($articleid) {
+      $query= "select article.id, uuid() As random From article WHERE article.id = :articleid";
+      $statement = $this->connection->prepare($query);
+      $statement->bindParam(':articleid',$articleid);
+      $statement->execute();
+      $statement->setFetchMode(PDO::FETCH_OBJ);
+      $id_list = $statement->fetchAll();  
+      $random_id = '';
+      foreach ($id_list as $comments) {
+       $random_id =   $comments->{".random"};
+      }
+      $id_list = $this->append_comments_id($id_list, $random_id);
+      return $id_list;
+  }
+
+  public function append_comments_id($article_list, $article_id) {
+      foreach ($article_list as $article) {
+          $article->{"comments.id"} = $article_id;
+      }
+      return $article_list;
   }
 
 public function get_author_name($id) { 

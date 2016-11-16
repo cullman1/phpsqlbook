@@ -25,9 +25,8 @@
   public function routeRequest() {
     $this->registry->set('Layout', new Layout($this->server,$this->category,$this->item));
     $layout = $this->registry->get('Layout');
-     $layout->checkParameters();
+    $layout->checkParameters();
     $layout->createPageStructure();
-   
     $layout->assemblePage();
   }
 

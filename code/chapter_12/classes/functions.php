@@ -88,38 +88,68 @@ function display_comments($recordset, $param) {
   $string1= str_replace("[[for]]","", $string);
   $string2= str_replace("[[next]]","", $string1);
   $string3= str_replace("]","", $string2);
-  $head_temp= substr($string3, 0, $opening_tag);
+  $head= substr($string3, 0, $opening_tag);
   $remain = $closing_tag - $opening_tag;
-  $sub_temp2 = array();
+  $body = array();
   $count=0;
-    foreach ($recordset as $row) {
- 
-  if (!isset($_SESSION["user2"])) {
-     $head_temp= str_replace("Add a comment","",$head_temp);
-  }
-    $sub_temp=substr($string3,$opening_tag+1,$remain-9);
+  foreach ($recordset as $row) {
+    if (!isset($_SESSION["user2"])) {
+     $head= str_replace("Add a comment","",$head);
+    }
+    $cmnt=substr($string3,$opening_tag+1,$remain-9);
     if ($count==0) {
       foreach($matches[0] as $value) {           
         $replace= str_replace("{{","", $value);
         $replace= str_replace("}}","", $replace);
-        $head_temp=str_replace($value,$row->{$replace},$head_temp);
+        $head=str_replace($value,$row->{$replace},$head);
       }  
-    echo $head_temp;
- }
-  preg_match_all($regex, $sub_temp, $inner_matches);
-  foreach($inner_matches[0] as $value) {   
-    $replace= str_replace("{{","", $value);
-    $replace= str_replace("}}","", $replace);
-    $sub_temp=str_replace($value,$row->{$replace},$sub_temp);    
-    $sub_temp2[$count] = $sub_temp;
-  }
-  $count++;
+    echo $head;
+    }
+    preg_match_all($regex, $cmnt, $inner_matches);
+    foreach($inner_matches[0] as $value) {   
+      $replace= str_replace("{{","", $value);
+      $replace= str_replace("}}","", $replace);
+      $cmnt=str_replace($value,$row->{$replace},$cmnt);    
+      $body[$count] = $cmnt;
+    }
+    $count++;
   }
  for ($i=0;$i<$count;$i++) {
-
-  echo $sub_temp2[$i];
+  echo $body[$i];
  }
- echo "<div style='clear:both'></div></div></div></div>";
+ echo "</div></div></div></div>";
+}
+
+function display_comments2($recordset, $counter, $indent) {   
+  $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12";
+  $string=file_get_contents($root."/classes/templates/comments_content.php");
+  $regex = '#{{(.*?)}}#';
+  preg_match_all($regex, $string, $matches);
+  $opening_tag = strpos($string, "[[for]]");
+  $closing_tag = strpos($string, "[[next]]",$opening_tag+1);
+  $string1= str_replace("[[for]]","", $string);
+  $string2= str_replace("[[next]]","", $string1);
+  $string3= str_replace("]","", $string2);
+  $head_temp= substr($string3, 0, $opening_tag);
+  $remain = $closing_tag - $opening_tag;
+  $combined_comments = array();
+  $counter=0;
+  foreach ($recordset as $row) {
+    $sub_temp = substr($string3,$opening_tag+1,$remain-9);
+    if ($counter==0) {
+      foreach($matches[0] as $value) {           
+        $replace= str_replace("{{","", $value);
+        $replace= str_replace("}}","", $replace);
+        $head_temp=str_replace($value,$row->{$replace},$head_temp);      
+      }
+      echo $head_temp;
+    }           
+    $combined_comments=recursive_check($regex, $sub_temp,$row,$combined_comments,$counter, $indent);
+  }
+  for ($i=0;$i<$counter;$i++) {
+    echo $combined_comments[$i];
+  }
+  echo "</div></div></div></div>"; 
 }
 
 
@@ -138,7 +168,6 @@ function display_comments($recordset, $param) {
 
 function add_comment($connection, $parameters) {
   $commentid=0;
-  $articleid =0;
   if (!isset($_SESSION["user2"])) {
     header('Location: /phpsqlbook/login');
    } else {   
@@ -146,13 +175,53 @@ function add_comment($connection, $parameters) {
     if (isset($_POST["commentid"])) {
       $commentid = $_POST["commentid"];
     }
-    if (isset($_POST["articleid2"])) {
-      $articleid = $_POST["articleid2"];
-    } else {
-      $articleid  = $parameters;
-    }
-    $connection->insert_article_comment($articleid, $user_id, $_POST["commentText"], $commentid);	
+    $connection->insert_article_comment($parameters, $user_id, $_POST["commentText"], $commentid);	
     header('Location:/phpsqlbook/home');
   }	      
+}
+
+function create_tree(&$list, $parent){
+  $tree = array();
+  foreach ((array) $parent as $key=>$reply) {
+    if (isset($list[$reply->{'comments.id'}])) {
+      $reply['children'] = create_tree($list, $list[$reply->{'comments.id'}]);
+    }
+    $tree[] = $reply;
+  } 
+  return $tree;
+}
+
+function recursive_check($regex, $sub_temp, $row, $combine_comments, $counter, $indent) {
+ if (isset($row->{'children'})) {       
+    $combine_comments=tag_replace($regex, $sub_temp, $row, $combine_comments, $counter, $indent);
+    $counter++;
+    $indent+=10;
+    foreach ($row['children'] as $row2) {     
+      $combine_comments = recursive_check($regex, $sub_temp,  $row2, $combine_comments, $counter, $indent);
+    }      
+  } else {      
+      $combine_comments =tag_replace($regex,$sub_temp, $row, $combine_comments, $counter, $indent);
+      $counter++;
+      $indent=0;
+  } 
+   if (!isset($_SESSION["user2"])) {
+      $combine_comments= str_replace("Add a comment","",  $combine_comments);
+    }
+  return $combine_comments;
+}
+
+function tag_replace($regex, $sub_temp, $row, $combined_comments,$counter, $indent) {
+  preg_match_all($regex, $sub_temp, $inner_matches);
+  foreach($inner_matches[0] as $value) {   
+    $replace= str_replace("{{","", $value);
+    $replace= str_replace("}}","", $replace);
+   $sub_temp=str_replace($value,$row->{$replace},$sub_temp);    
+   if ($indent > 0) { 
+       $combined_comments[$counter]="<div style='margin-left:".$indent."px'>".$sub_temp."</div>"; 
+    } else {
+        $combined_comments[$counter] = $sub_temp;
+    }
+  }
+  return $combined_comments; 
 }
 ?>

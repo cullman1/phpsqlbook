@@ -25,9 +25,6 @@
             <span class='small_name'><i> {{user.forename}} {{user.surname}}</i></span> 
             <span class='small_name'> {{comments.posted}}</span>
          </div>
-          
-            
-
       </div>
               [[next]]
       
