@@ -35,26 +35,26 @@ class Layout {
     
     switch($this->category) {
       case "login":
-        $this->page_html = array("header1","menu","login_bar","search","divider","login_form","footer1");
+        $this->page_html = array("header","menu","login_bar","search","login_form","footer");
         break;
       case "register":
-        $this->page_html = array("header1","menu","search","divider","register_form","footer1");
+        $this->page_html = array("header","menu","search","register_form","footer");
         break;
       case "Contact":
       case "About":
-        $this->page_html = array("header1", "menu", "login_bar", "search","divider","article","footer1");
+        $this->page_html = array("header", "menu", "login_bar", "search","article","footer");
         $this->content_html = array("no_date_content");
         break;
       case "profile":
         if ($this->parameters=="status") {
-          $this->page_html = array("header1","menu","login_bar","search","divider","profile_status","footer1");
+          $this->page_html = array("header","menu","login_bar","search","profile_status","footer");
         } else {
-          $this->page_html = array("header1","menu","login_bar","search","divider","profile_update","footer1");
+          $this->page_html = array("header","menu","login_bar","search","profile_update","footer");
         }             
         break;
       case "search":
       default:
-        $this->page_html = array("header1", "menu",  "login_bar", "search","divider","article","footer1");
+        $this->page_html = array("header", "menu",  "login_bar", "search","article","footer");
         $this->content_html = array("main_content", "author", "like", "comments");
         break;     
     }
@@ -70,7 +70,7 @@ class Layout {
           submit_like($this->connection);
           break;
         case "add_comment":
-          add_comment($this->connection, $_GET["id"]);
+          add_comment($this->connection, $_GET["id"], $_GET["comment"]);
           break;	
      }
   }
@@ -86,64 +86,44 @@ class Layout {
   }
 
   public function assembleArticles($part, $content) {
-    $article_ids = array();
-    $count=0;
-    $result = null;
-    $search= '';
-
-    //For each section of the page
-    foreach ($content as $content_part) {
-
-      //If this is a content part
-      if (strpos($content_part,"content")) {   
-          
-        //Get the category
-        $category = $this->connection->get_category_by_name($this->category);    
-
-        //Get all articles
-        $result = $this->connection->get_article_list($category->{'.count_id'},$this->show, $this->from,'','',$this->search, '',str_replace('-',' ',$this->parameters));    
-
-        //Grab all the article ids
-        $total = 0;
-        foreach ($result as $row) {
-          $article_ids[$count]=$row->{"article.id"};
-          $total = $row->{"article.row_count"};
-          $count++;
-        }
-
-        //If we've got more than zero articles
-        if (sizeof($result)!=0) { 
-
-          //Go through each article id
-          for($i=0;$i<sizeof($article_ids);$i++) {
-            
-             //Go through each part on the page
-             foreach ($content as $content_part) {
-
-               //If it's content
-              if (strpos($content_part,"content")) { 
-            
-                //If it's search content we need to pass the search term too.
-                if(isset($_GET["search"])) {
-                   $search = $_GET["search"]; 
-                 }
-
-                 //Now pass the article contents (retrieved by id) and merge it with the template
-                 $this->parseTemplate($this->connection->get_article_by_id($article_ids[$i], $search), $content_part);
-
-              } else {
-                 
-                //Otherwise, it's not article content just pull the page part template we need instead
-                $this->getPart($content_part,$article_ids[$i]);
+  $article_ids = array();
+  $count = 0;
+  
+  //For each section of the page
+  foreach ($content as $content_part) {
+    //If this is a part that contains content
+    if (strpos($content_part,"content")) {   
+      //Get the category
+      $category = $this->connection->get_category_by_name($this->category);    
+      //Get all articles
+      $result = $this->connection->get_article_list($category->{'.count_id'}, $this->show, 
+      $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
+      //Grab all the article ids
+      $total = 0;
+      foreach ($result as $row) {
+        $article_ids[$count] = $row->{"article.id"};
+        $total = $row->{"article.row_count"};
+        $count++;
+      }
+      //If we've got more than zero articles
+      if (sizeof($result)!=0) {        
+        //Loop through each article id             
+        for($i=0; $i<sizeof($article_ids); $i++) {  
+          //Loop through each article part
+          foreach ($content as $content_part) {     
+             //If the article part is content
+             if (strpos($content_part,"content")) { 
+               //Now pass the article contents and merge it with the template
+               $this->parseTemplate($this->connection->get_article_by_id($article_ids[$i], $this->search), $content_part);
+             } else {
+               //Otherwise, if it's not article content pull the page part template instead
+               $this->getPart($content_part,$article_ids[$i]);
               }
             }
           }
- 
           //After displaying the list of articles add the paging, if needed
           echo (create_pagination($total,$this->show,$this->from,$this->search));
-          
-        } else {
-
+        } else { 
           //There were zero articles returned by our query.
           echo "No articles found";
         }
@@ -165,7 +145,7 @@ class Layout {
         break;
       case "comments":
         $result = $this->connection->get_article_comments($param);  
-      /*  $this->counter =0;
+        $this->counter =0;
         $this->indent = 0;
         $new = array();  
         $nestedcomments_row = array();
@@ -178,11 +158,11 @@ class Layout {
  if (isset($new[0])) {
     $tree = create_tree($new, $new[0]); 
     display_comments2($tree,$param, $this->counter, $this->indent);
-  } else {
-   $this->parseTemplate($this->connection->generate_comment_id($param),'nocomments_content');
-  }
+  } 
+   else {
+    display_comments($result,$param);
+   }
 
-     */   display_comments($result,$param);
         break;   
       default:
         include("templates/".$part.".php");     

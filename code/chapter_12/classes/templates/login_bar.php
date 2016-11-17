@@ -10,5 +10,5 @@
    <a style="float:right;" href="/phpsqlbook/login">Login</a>&nbsp;
    <a style="float:right;" href="/phpsqlbook/register">Register</a>
     <?php } ?> 
-  
+
  

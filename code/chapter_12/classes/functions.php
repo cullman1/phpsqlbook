@@ -122,7 +122,7 @@ function display_comments($recordset, $param) {
 
 function display_comments2($recordset, $counter, $indent) {   
   $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12";
-  $string=file_get_contents($root."/classes/templates/comments_content.php");
+  $string=file_get_contents($root."/classes/templates/comments_content2.php");
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $string, $matches);
   $opening_tag = strpos($string, "[[for]]");
@@ -145,10 +145,9 @@ function display_comments2($recordset, $counter, $indent) {
       echo $head_temp;
     }           
     $combined_comments=recursive_check($regex, $sub_temp,$row,$combined_comments,$counter, $indent);
+    $counter++;
   }
-  for ($i=0;$i<$counter;$i++) {
-    echo $combined_comments[$i];
-  }
+  
   echo "</div></div></div></div>"; 
 }
 
@@ -166,16 +165,12 @@ function display_comments2($recordset, $counter, $indent) {
   }
 }
 
-function add_comment($connection, $parameters) {
-  $commentid=0;
+function add_comment($connection, $articleid, $commentid) {
   if (!isset($_SESSION["user2"])) {
     header('Location: /phpsqlbook/login');
    } else {   
     $user_id = get_user_from_session(); 
-    if (isset($_POST["commentid"])) {
-      $commentid = $_POST["commentid"];
-    }
-    $connection->insert_article_comment($parameters, $user_id, $_POST["commentText"], $commentid);	
+    $connection->insert_article_comment($articleid, $user_id, $_POST["commentText"], $commentid);
     header('Location:/phpsqlbook/home');
   }	      
 }
@@ -184,7 +179,7 @@ function create_tree(&$list, $parent){
   $tree = array();
   foreach ((array) $parent as $key=>$reply) {
     if (isset($list[$reply->{'comments.id'}])) {
-      $reply['children'] = create_tree($list, $list[$reply->{'comments.id'}]);
+      $reply->{'children'} = create_tree($list, $list[$reply->{'comments.id'}]);
     }
     $tree[] = $reply;
   } 
@@ -194,13 +189,15 @@ function create_tree(&$list, $parent){
 function recursive_check($regex, $sub_temp, $row, $combine_comments, $counter, $indent) {
  if (isset($row->{'children'})) {       
     $combine_comments=tag_replace($regex, $sub_temp, $row, $combine_comments, $counter, $indent);
+      echo $combine_comments[$counter];
     $counter++;
     $indent+=10;
-    foreach ($row['children'] as $row2) {     
-      $combine_comments = recursive_check($regex, $sub_temp,  $row2, $combine_comments, $counter, $indent);
+    foreach ($row->{'children'} as $row2) {    
+      $combine_comments = recursive_check($regex, $sub_temp, $row2, $combine_comments, $counter, $indent);
     }      
   } else {      
       $combine_comments =tag_replace($regex,$sub_temp, $row, $combine_comments, $counter, $indent);
+      echo $combine_comments[$counter];
       $counter++;
       $indent=0;
   } 
@@ -215,13 +212,14 @@ function tag_replace($regex, $sub_temp, $row, $combined_comments,$counter, $inde
   foreach($inner_matches[0] as $value) {   
     $replace= str_replace("{{","", $value);
     $replace= str_replace("}}","", $replace);
-   $sub_temp=str_replace($value,$row->{$replace},$sub_temp);    
-   if ($indent > 0) { 
+    $sub_temp=str_replace($value,$row->{$replace},$sub_temp);  
+    if ($indent > 0) { 
        $combined_comments[$counter]="<div style='margin-left:".$indent."px'>".$sub_temp."</div>"; 
     } else {
         $combined_comments[$counter] = $sub_temp;
     }
   }
+ 
   return $combined_comments; 
 }
 ?>

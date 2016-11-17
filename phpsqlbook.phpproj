@@ -249,14 +249,13 @@
     <Compile Include="code\chapter_12\classes\layout.php" />
     <Compile Include="code\chapter_12\classes\registry.php" />
     <Compile Include="code\chapter_12\classes\templates\author_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\comments_content - Copy.php" />
+    <Compile Include="code\chapter_12\classes\templates\comments_content2.php" />
     <Compile Include="code\chapter_12\classes\templates\comments_content.php" />
     <Compile Include="code\chapter_12\classes\templates\nocomments_content.php" />
     <Compile Include="code\chapter_12\classes\templates\no_date_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\divider.php" />
-    <Compile Include="code\chapter_12\classes\templates\footer1.php" />
+    <Compile Include="code\chapter_12\classes\templates\footer.php" />
     <Compile Include="code\chapter_12\classes\templates\login_form.php" />
-    <Compile Include="code\chapter_12\classes\templates\header1.php" />
+    <Compile Include="code\chapter_12\classes\templates\header.php" />
     <Compile Include="code\chapter_12\classes\templates\like_content.php" />
     <Compile Include="code\chapter_12\classes\templates\login_bar.php" />
     <Compile Include="code\chapter_12\classes\templates\menu_content.php" />

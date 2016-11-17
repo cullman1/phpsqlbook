@@ -28,9 +28,7 @@ switch ($pagetype) {
    default:
       break;
 }
-
 $category_list =  $db->get_category_list_array(); 
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,5 +40,5 @@ $category_list =  $db->get_category_list_array();
 <body>
   <header>
     <h1>the green room</h1>
-    <nav>
+     <nav>
       <a href="\phpsqlbook\Home">Home</a>
