@@ -17,9 +17,9 @@
           </div>
         </form>
         </div><br/> 
-        <div id='collapse{{comments.article_id}}' class="accordion-body collapse">
+        <div id='collapse{{comments.article_id}}' class="accordion-body collapse" style="display:none;">
           [[for]]
-          <div class="accordion-inner" style="display:block;">
+          <div class="accordion-inner">
             <div id="commenterbox{{comments.id}}" style="float:left; ">
               <span class='small_name'>{{comments.comment}}</span> 
               <span class='small_name'><i>{{user.forename}} {{user.surname}}</i></span> 
