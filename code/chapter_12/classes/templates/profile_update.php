@@ -1,5 +1,5 @@
 <?php 
-require_once('../classes/functions.php');
+require_once('../includes/functions.php');
 $alert  =   array('status' => '', 'message' =>'');
 $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'','firstName'=>'','lastName'=>'', 'image'=>'');
  $profile_list = $this->connection->get_user_by_id($_GET["id"]); 

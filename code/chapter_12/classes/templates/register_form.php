@@ -1,5 +1,5 @@
 <?php 
-require_once('../classes/functions.php');
+require_once('../includes/functions.php');
 $message='';
 $firstName    = ( isset($_POST['firstName'])    ? $_POST['firstName']    : '' ); 
 $lastName = ( isset($_POST['lastName']) ? $_POST['lastName'] : '' ); 

@@ -1,7 +1,7 @@
 <?php 
 require_once('user.php');
 require_once('validate.php');
-require_once('functions.php');
+include('../includes/functions.php');
 
 class Layout {
   private $registry;
@@ -145,24 +145,20 @@ class Layout {
         break;
       case "comments":
         $result = $this->connection->get_article_comments($param);  
-        $this->counter =0;
         $this->indent = 0;
         $new = array();  
         $nestedcomments_row = array();
-  foreach ($result as $row) {
-   $nestedcomments_row[] = $row;
-  }
- foreach ($nestedcomments_row as $branch) {
-   $new[$branch->{'comments.repliedto_id'}][]=$branch;             
-  }
- if (isset($new[0])) {
-    $tree = create_tree($new, $new[0]); 
-    display_comments2($tree,$param, $this->counter, $this->indent);
-  } 
-   else {
-    display_comments($result,$param);
-   }
-
+        foreach ($result as $row) {
+          $nestedcomments_row[] = $row;
+          $this->counter = $row->{'.Total'};
+        }
+        foreach ($nestedcomments_row as $branch) {
+          $new[$branch->{'comments.repliedto_id'}][]=$branch;             
+        }
+        if (isset($new[0])) {
+          $result = create_tree($new, $new[0]); 
+        } 
+        display_comments2($result, $this->counter, $this->indent);
         break;   
       default:
         include("templates/".$part.".php");     

@@ -1,5 +1,5 @@
 <?php
-require_once('../admin/includes/functions.php'); 
+require_once('../includes/functions.php'); 
  $db = $this->registry->get('database'); 
 
 $current_article  = (filter_input(INPUT_GET, 'article_id',  FILTER_VALIDATE_INT) ? $_GET['article_id']  : 0); 

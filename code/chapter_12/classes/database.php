@@ -131,7 +131,7 @@ public function append_row_count($article_list, $num_rows) {
     return $article_list;
 }
 
- public function insert_article_comment($articleid, $userid, $comment, $commentid) {
+ public function insert_article_comment($articleid, $userid, $comment, $commentid='0') {
  $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
            VALUES  (:comment,:articleid, :userid, :date, :commentid)";
  $statement = $this->connection->prepare($query);
@@ -141,11 +141,10 @@ public function append_row_count($article_list, $num_rows) {
  $date = date("Y-m-d H:i:s");
  $statement->bindParam(':date',$date);
  $statement->bindParam(':userid',$userid);
- $statement->execute();
- if( $statement->errorCode() != 00000 ) {     
-    return '<div class="error">Error: ' . $statement->errorCode() . '</div>';
+ if ($statement->execute()) {
+    return true;    
   } else {
-    return '<div class="success">Article created</div>';
+    return '<div>Error '. $statement->errorCode() .':' . $statement->errorInfo() .'</div>';  
   }
 } 
 

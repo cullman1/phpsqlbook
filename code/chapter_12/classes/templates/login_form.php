@@ -1,5 +1,5 @@
 <?php 
-require_once('../classes/functions.php');
+require_once('../includes/functions.php');
 $alert  =   array('status' => '', 'message' =>'');
 if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     include_once('../classes/validate.php');
