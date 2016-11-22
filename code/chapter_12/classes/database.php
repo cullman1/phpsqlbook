@@ -75,7 +75,7 @@ function get_user_by_email_passwordhash($email, $password) {
   
     //category list
     if (($category > 0) && (!empty($name))) {
-      $query .= ' AND  title=:id';
+       $query .= ' AND  title=:name AND article.category_id = :id';
     } else if ($category > 0) {
       $query .= ' AND article.category_id = :id';
     }
@@ -104,7 +104,8 @@ function get_user_by_email_passwordhash($email, $password) {
 public function bind_parameters($query, $category, $name, $author_id) {
  $statement = $this->connection->prepare($query);
     if (($category > 0) && (!empty($name))) {
-     $statement->bindParam(":id", $name); 
+       $statement->bindParam(":name", $name); 
+       $statement->bindParam(":id", $category); 
     }  else if ($category > 0) {
      $statement->bindParam(":id", $category);    
     }

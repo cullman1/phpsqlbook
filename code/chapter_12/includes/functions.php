@@ -140,9 +140,11 @@ function display_comments2($recordset, $check, $indent) {
         $head=str_replace($value,$row->{$replace},$head);      
       }
       echo $head;
-    }          
-    $body=recursive_check($regex, $comments,$row,$body,$count, $indent, $check);
-    $count++;
+    }        
+    if( $row->{'.Total'} > 0) {
+      $body=recursive_check($regex, $comments,$row,$body,$count, $indent, $check);
+    }
+    $count++;   
   }
   echo "</div></div></div></div>"; 
 }

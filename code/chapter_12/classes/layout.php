@@ -96,8 +96,7 @@ class Layout {
       //Get the category
       $category = $this->connection->get_category_by_name($this->category);    
       //Get all articles
-      $result = $this->connection->get_article_list($category->{'.count_id'}, $this->show, 
-      $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
+      $result = $this->connection->get_article_list($category->{'.count_id'}, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
       //Grab all the article ids
       $total = 0;
       foreach ($result as $row) {
@@ -125,7 +124,7 @@ class Layout {
           echo (create_pagination($total,$this->show,$this->from,$this->search));
         } else { 
           //There were zero articles returned by our query.
-          echo "No articles found";
+          echo "</nav><div>No articles found</div>";
         }
       }
     }
