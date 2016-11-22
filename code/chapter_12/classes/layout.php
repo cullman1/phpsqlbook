@@ -46,7 +46,7 @@ class Layout {
         $this->content_html = array("no_date_content");
         break;
       case "profile":
-        if ($this->parameters=="status") {
+        if ($this->parameters=="view") {
           $this->page_html = array("header","menu","login_bar","search","profile_status","footer");
         } else {
           $this->page_html = array("header","menu","login_bar","search","profile_update","footer");
