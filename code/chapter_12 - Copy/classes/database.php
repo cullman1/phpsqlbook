@@ -5,7 +5,7 @@ class Database{
   private $password = ""; 
   private $databaseName = "cms";
   private $dbName       = "cms";
-  public $connection;
+  private $connection;
 
   public function __construct() { 
     try {

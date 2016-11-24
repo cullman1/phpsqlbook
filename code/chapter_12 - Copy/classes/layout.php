@@ -1,7 +1,5 @@
 <?php 
 require_once('user.php');
-require_once('article.php');
-require_once('category.php');
 require_once('validate.php');
 include('../includes/functions.php');
 
@@ -90,16 +88,15 @@ class Layout {
   public function assembleArticles($part, $content) {
   $article_ids = array();
   $count = 0;
-
+  
   //For each section of the page
   foreach ($content as $content_part) {
     //If this is a part that contains content
     if (strpos($content_part,"content")) {   
       //Get the category
-      $category = new Category($this->connection, $this->category);    
+      $category = $this->connection->get_category_by_name($this->category);    
       //Get all articles
-       $result = $category->getArticlesByID($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
-      //$result = $this->connection->get_article_list($category->{'.count_id'}, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
+      $result = $this->connection->get_article_list($category->{'.count_id'}, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
       //Grab all the article ids
       $total = 0;
       foreach ($result as $row) {
@@ -146,14 +143,7 @@ class Layout {
         $this->parseTemplate($this->connection->get_category_list($param),"menu_content");
         break;
       case "comments":
-        $rows = $this->connection->get_article_comments($param);  
-  display_comments($rows);   
-
-        break;   
-      default:
-        include("templates/".$part.".php");     
-        break;
-     /*  $total =   $this->get_article_comments_count($articleid);
+       $total =   $this->get_article_comments_count($articleid);
 
         $result = $this->connection->get_article_comments($param);  
         }
@@ -170,9 +160,11 @@ class Layout {
         if (isset($new[0])) {
           $result = create_tree($new, $new[0]); 
         } 
-        display_comments2($result, $this->counter, $this->indent); */
-
-
+        display_comments2($result, $this->counter, $this->indent);
+        break;   
+      default:
+        include("templates/".$part.".php");     
+        break;
     }
   }
 
