@@ -88,13 +88,13 @@ class Category {
 
     //Get total number of articles for count
     $articles_for_count = $this->bind_parameters( $query, $category, $name, $author_id);          
-    $num_rows = count($articles_for_count);
+    $this->articleCount = count($articles_for_count);
 
     //Get actual limited page of articles
     $query .= " limit " . $show . " offset " . $from;
     $article_list = $this->bind_parameters( $query, $category, $name, $author_id);
     $article_list = $this->hyphenate_url($article_list);
-    return $this->append_row_count($article_list,$num_rows);
+    return $article_list;
 }
 
  public function bind_parameters( $query, $category, $name, $author_id) {
@@ -118,13 +118,6 @@ class Category {
     foreach ($article_list as $article) {
         $article->{"article.title_url"} = str_replace(' ','-', $article->{"article.title"});
     }
-    return $article_list;
-}
-
-public function append_row_count($article_list, $num_rows) {
-    foreach ($article_list as $article) {
-     $article->{"article.row_count"} = $num_rows;
-     }
     return $article_list;
 }
 

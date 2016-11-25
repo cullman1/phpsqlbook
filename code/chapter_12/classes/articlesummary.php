@@ -1,20 +1,43 @@
 <?php
 
-class Article {
+class ArticleSummary {
   public  $id;
   public  $title;
   public  $content;
-  private $published;
+  public  $intro;
+  public $published;
+  public $categorytemplate;
+  public $categoryname; 
+  public $articleurl;
   private $category_id;
   private $user_id;
   private $media_id;
-  private $comments_count;
-  private $comments;
+  public $comments_count;
+  public $comments = array();
   private $validated = FALSE;
   private $connection;
 
-  function __construct($id, $name, $template) {}
+  
+  function __construct($database, $id, $title, $intro, $published, $user_id, $categorytemplate, $categoryname) {
+     $this->id 		= $id;
+     $this->title 	= $this->hyphenate_url($title);
+      $this->articleurl 	= $this->hyphenate_url($title);
+      $this->content = $intro;
+      $this->published = $published;
+      $this->categorytemplate = $categorytemplate;
+       $this->categoryname = $categoryname;
+      $this->user_id = $user_id;
+        $this->database = $database;
+      $this->comments_count = $this->getCommentsCount($id);
+  }
 
+  function hyphenate_url($title) {
+
+        $title = str_replace(' ','-', $title);
+   
+    return $title;
+}
+   
   function validate($new = FALSE) {}
 
   function getById($id,  $search='') {
@@ -29,42 +52,39 @@ class Article {
         $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
       }
     }
-    $result = hyphenate_url($article_list);
-    if (isset($result)) {
+
+    if (isset($article_list)) {
       $this->id 		= $result->id;
       $this->name 	= $result->name;
       $this->template = $result->template;
+      $this->articleurl = $this->hyphenate_url($result->title);
     }
     return $article_list; 
 }
 
-public function getComments($articleid) {
+public function getComments() {
     $query="select comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";  
-    $statement = $this->connection->prepare($query);
-    $statement->bindParam(':articleid',$articleid);
+    $statement = $this->database->connection->prepare($query);
+    $statement->bindParam(':articleid',$this->id);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $this->comments = $statement->fetchAll();
+    return $this->comments;
   }
 
   
-  public function getCommentsCount($articleid) {
+  public function getCommentsCount() {
       $query = "select comments.* From comments WHERE article_id = :articleid";
-      $statement = $this->connection->prepare($query);
-      $statement->bindParam(':articleid',$articleid);
+      $statement = $this->database->connection->prepare($query);
+      $statement->bindParam(':articleid',$this->id);
       $statement->execute();
       $statement->setFetchMode(PDO::FETCH_OBJ);
       $comments_count = $statement->fetchAll();  
-      $this->comments_count  = count($comments_count);
+      return count($comments_count);
         
   }
 
-  public function hyphenate_url($article_list) {
-    foreach ($article_list as $article) {
-        $article->{"article.title_url"} = str_replace(' ','-', $article->{"article.title"});
-    }
-    return $article_list;
-}
+
 
 
   function create() {}

@@ -1,6 +1,6 @@
 <?php 
 require_once('user.php');
-require_once('article.php');
+require_once('articlesummary.php');
 require_once('category.php');
 require_once('validate.php');
 include('../includes/functions.php');
@@ -88,9 +88,8 @@ class Layout {
   }
 
   public function assembleArticles($part, $content) {
-  $article_ids = array();
+  $articles = array();
   $count = 0;
-
   //For each section of the page
   foreach ($content as $content_part) {
     //If this is a part that contains content
@@ -99,32 +98,31 @@ class Layout {
       $category = new Category($this->connection, $this->category);    
       //Get all articles
        $result = $category->getArticlesByID($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
-      //$result = $this->connection->get_article_list($category->{'.count_id'}, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
       //Grab all the article ids
-      $total = 0;
       foreach ($result as $row) {
-        $article_ids[$count] = $row->{"article.id"};
-        $total = $row->{"article.row_count"};
+        $article = new ArticleSummary($this->connection,  $row->{"article.id"},  $row->{"article.title"},  $row->{"article.content"}, $row->{"article.published"}, $row->{"article.user_id"}, $category->template,$category->name);
+        $articles[$count] =$article;
         $count++;
       }
       //If we've got more than zero articles
       if (sizeof($result)!=0) {        
         //Loop through each article id             
-        for($i=0; $i<sizeof($article_ids); $i++) {  
+        for($i=0; $i<sizeof($articles); $i++) {  
           //Loop through each article part
           foreach ($content as $content_part) {     
              //If the article part is content
              if (strpos($content_part,"content")) { 
                //Now pass the article contents and merge it with the template
-               $this->parseTemplate($this->connection->get_article_by_id($article_ids[$i], $this->search), $content_part);
+               $this->mergeTemplate($articles[$i], $content_part);
+               //$this->parseTemplate($this->connection->get_article_by_id($articles[$i]->{'id'}, $this->search), $content_part);
              } else {
                //Otherwise, if it's not article content pull the page part template instead
-               $this->getPart($content_part,$article_ids[$i]);
+               $this->getPart($content_part,$articles[$i]->{'id'}, $articles[$i]);
               }
             }
           }
           //After displaying the list of articles add the paging, if needed
-          echo (create_pagination($total,$this->show,$this->from,$this->search));
+          echo (create_pagination($category->articleCount,$this->show,$this->from,$this->search));
         } else { 
           //There were zero articles returned by our query.
           echo "</nav><div>No articles found</div>";
@@ -133,7 +131,7 @@ class Layout {
     }
   }
 
-  public function getPart($part, $param="") {
+  public function getPart($part, $param="",$object="") {
     $user_id=get_user_from_session(); 
     switch($part) {
       case "like":   
@@ -146,9 +144,8 @@ class Layout {
         $this->parseTemplate($this->connection->get_category_list($param),"menu_content");
         break;
       case "comments":
-        $rows = $this->connection->get_article_comments($param);  
-  display_comments($rows);   
-
+        $comments = $object->getComments();
+        display_comments($comments, $object->{'comments_count'});   
         break;   
       default:
         include("templates/".$part.".php");     
@@ -192,5 +189,21 @@ public function parseTemplate($recordset,$prefix) {
   echo $template;  
   }	             
 }
+
+public function mergeTemplate($object,$prefix) {
+  $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/";
+  $string = file_get_contents($root. "/classes/templates/".$prefix.".php"); 
+  $regex = '#{{(.*?)}}#';
+  $template="";
+  preg_match_all($regex, $string, $matches);
+    $template=$string;
+    foreach($matches[0] as $value) {           
+      $replace= str_replace("{{","", $value);
+      $replace= str_replace("}}","", $replace);
+      $template = str_replace($value,$object->{$replace}, $template);  
+    }  
+  echo $template;             
+}
+
 
 } ?>

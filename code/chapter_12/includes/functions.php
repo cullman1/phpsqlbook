@@ -74,7 +74,7 @@ function create_pagination($count, $show, $from, $search) {
   echo "<br/>" . $result;
 }
 
-function display_comments($recordset) {   
+function display_comments($recordset, $commentcount) {   
   $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12";
   $string=file_get_contents($root."/classes/templates/comments_content.php");
   $regex = '#{{(.*?)}}#';
@@ -86,11 +86,14 @@ function display_comments($recordset) {
   $head= substr($string2, 0, $opening_tag);
   $remain = $closing_tag - $opening_tag;
   $body = array();
-  $count=0;
-  foreach ($recordset as $row) {
-    if (!isset($_SESSION["user2"])) {
+  $count=0; 
+  if (!isset($_SESSION["user2"])) {
+  echo "yo";
      $head= str_replace("Add a comment","",$head);
     }
+  foreach ($recordset as $row) {
+     $row->{'comment.commentcount'} = $commentcount;
+    
     $comment=substr($string2,$opening_tag+1,$remain-9);
     if ($count==0) {
       foreach($matches[0] as $value) {           
