@@ -100,7 +100,7 @@ class Layout {
        $result = $category->getArticlesByID($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
       //Grab all the article ids
       foreach ($result as $row) {
-        $article = new ArticleSummary($this->connection,  $row->{"article.id"},  $row->{"article.title"},  $row->{"article.content"}, $row->{"article.published"}, $row->{"article.user_id"}, $category->template,$category->name);
+        $article = new ArticleSummary($this->connection,  $row->{"article.id"},  $row->{"article.title"},  $row->{"article.content"}, $row->{"article.published"}, $row->{"article.user_id"},$row->{"category.template"},$row->{"category.name"});
         $articles[$count] =$article;
         $count++;
       }

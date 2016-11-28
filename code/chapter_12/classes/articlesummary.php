@@ -47,6 +47,7 @@ class ArticleSummary {
     $statement->setFetchMode(PDO::FETCH_OBJ);           // Object
     $article_list = $statement->fetchAll(); 
     if (isset($search)) {
+
       foreach($article_list as $article) {
         $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
       }

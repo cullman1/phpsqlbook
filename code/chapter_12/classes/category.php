@@ -94,6 +94,11 @@ class Category {
     $query .= " limit " . $show . " offset " . $from;
     $article_list = $this->bind_parameters( $query, $category, $name, $author_id);
     $article_list = $this->hyphenate_url($article_list);
+      if ($search!='') {
+      foreach($article_list as $article) {
+        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
+      }
+    }
     return $article_list;
 }
 
