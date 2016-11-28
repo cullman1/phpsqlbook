@@ -132,16 +132,17 @@ public function append_row_count($article_list, $num_rows) {
     return $article_list;
 }
 
- public function insert_article_comment($articleid, $userid, $comment, $commentid='0') {
+ public function insert_article_comment($articleid, $userid, $comment, $commentid=0) {
  $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
            VALUES  (:comment,:articleid, :userid, :date, :commentid)";
  $statement = $this->connection->prepare($query);
+  $statement->bindParam(':comment',$comment);
  $statement->bindParam(':articleid',$articleid);
- $statement->bindParam(':comment',$comment);
- $statement->bindParam(':commentid',$commentid);
+  $statement->bindParam(':userid',$userid);
  $date = date("Y-m-d H:i:s");
  $statement->bindParam(':date',$date);
- $statement->bindParam(':userid',$userid);
+ echo "COMMENTID". $commentid;
+  $statement->bindParam(':commentid',$commentid);
  if ($statement->execute()) {
     return true;    
   } else {

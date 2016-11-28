@@ -28,7 +28,6 @@ class ArticleSummary {
        $this->categoryname = $categoryname;
       $this->user_id = $user_id;
         $this->database = $database;
-      $this->comments_count = $this->getCommentsCount($id);
   }
 
   function hyphenate_url($title) {
@@ -72,16 +71,14 @@ public function getComments() {
     return $this->comments;
   }
 
-  
-  public function getCommentsCount() {
-      $query = "select comments.* From comments WHERE article_id = :articleid";
-      $statement = $this->database->connection->prepare($query);
-      $statement->bindParam(':articleid',$this->id);
-      $statement->execute();
+  public function getCommentHeader() {
+  $query= "select uuid() As new_id From article WHERE id = :articleid";
+  $statement = $this->database->connection->prepare($query);
+  $statement->bindParam(':articleid',$this->id);
+  $statement->execute();
       $statement->setFetchMode(PDO::FETCH_OBJ);
-      $comments_count = $statement->fetchAll();  
-      return count($comments_count);
-        
+      $header = $statement->fetchAll();  
+      return $header;
   }
 
 

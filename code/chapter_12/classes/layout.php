@@ -145,7 +145,13 @@ class Layout {
         break;
       case "comments":
         $comments = $object->getComments();
-        display_comments($comments, $object->{'comments_count'});   
+        $comment_count =  count($comments);
+        if ($comment_count==0) {
+             $comments = $object->getCommentHeader();
+             $comments[0]->{'comments.article_id'} = $object->id;  
+             $comments[0]->{"comments.id"} = $comments[0]->{".new_id"};  
+        }
+        display_comments($comments,$comment_count);   
         break;   
       default:
         include("templates/".$part.".php");     
@@ -190,18 +196,11 @@ public function parseTemplate($recordset,$prefix) {
   }	             
 }
 
-public function mergeTemplate($object,$prefix) {
-  $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/";
-  $string = file_get_contents($root. "/classes/templates/".$prefix.".php"); 
+public function mergeTemplate($data,$prefix) {
+  $template = file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/".$prefix.".php"); 
   $regex = '#{{(.*?)}}#';
-  $template="";
-  preg_match_all($regex, $string, $matches);
-    $template=$string;
-    foreach($matches[0] as $value) {           
-      $replace= str_replace("{{","", $value);
-      $replace= str_replace("}}","", $replace);
-      $template = str_replace($value,$object->{$replace}, $template);  
-    }  
+  preg_match_all($regex, $template, $matches);
+  $template = field_replace($template, $matches[0],$data);  
   echo $template;             
 }
 

@@ -75,8 +75,7 @@ function create_pagination($count, $show, $from, $search) {
 }
 
 function display_comments($recordset, $commentcount) {   
-  $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12";
-  $string=file_get_contents($root."/classes/templates/comments_content.php");
+   $string=file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content.php");
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $string, $matches);
   $opening_tag = strpos($string, "[[for]]");
@@ -84,39 +83,44 @@ function display_comments($recordset, $commentcount) {
   $string1= str_replace("[[for]]","", $string);
   $string2= str_replace("[[next]]","", $string1);
   $head= substr($string2, 0, $opening_tag);
+  preg_match_all($regex, $head, $head_matches);
   $remain = $closing_tag - $opening_tag;
   $body = array();
   $count=0; 
   if (!isset($_SESSION["user2"])) {
-  echo "yo";
      $head= str_replace("Add a comment","",$head);
-    }
+  }
   foreach ($recordset as $row) {
-     $row->{'comment.commentcount'} = $commentcount;
-    
+    $row->{'comment.commentcount'} = $commentcount; 
     $comment=substr($string2,$opening_tag+1,$remain-9);
     if ($count==0) {
-      foreach($matches[0] as $value) {           
-        $replace= str_replace("{{","", $value);
-        $replace= str_replace("}}","", $replace);
-        $head=str_replace($value,$row->{$replace},$head);
-      }  
-    echo $head;
+        $head = field_replace($head, $head_matches[0],$row);       
+        echo $head;
     }
+    if ($commentcount>0) {
     preg_match_all($regex, $comment, $inner_matches);
-    foreach($inner_matches[0] as $value) {   
-      $replace= str_replace("{{","", $value);
-      $replace= str_replace("}}","", $replace);
-      $comment=str_replace($value,$row->{$replace},$comment);    
-      $body[$count] = $comment;
-    }
+    $comment = field_replace($comment, $inner_matches[0],$row); 
+    $body[$count] = $comment;
     $count++;
+    }
   }
  for ($i=0;$i<$count;$i++) {
   echo $body[$i];
  }
  echo "</div></div></div></div>";
 }
+
+function field_replace($body, $matches, $row) {
+      foreach($matches as $value) {         
+        $replace= str_replace("{{","", $value);
+        $replace= str_replace("}}","", $replace);
+        try {
+          $body=str_replace($value,$row->{$replace},$body);
+        } catch (Exception $ex) { echo $ex; }
+      } 
+      return $body; 
+}
+
 
 function display_comments2($recordset, $check, $indent) {   
   $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12";
@@ -137,11 +141,7 @@ function display_comments2($recordset, $check, $indent) {
     }
     $comments = substr($string2,$opening_tag+1,$remain-9);
     if ($count==0) {
-      foreach($matches[0] as $value) {           
-        $replace= str_replace("{{","", $value);
-        $replace= str_replace("}}","", $replace);
-        $head=str_replace($value,$row->{$replace},$head);      
-      }
+      $head = field_replace($head, $matches[0],$row); 
       echo $head;
     }        
     if( $row->{'.Total'} > 0) {
