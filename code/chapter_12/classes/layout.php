@@ -1,7 +1,9 @@
 <?php 
 require_once('user.php');
 require_once('articlesummary.php');
+require_once('articlelist.php');
 require_once('category.php');
+require_once('categorylist.php');
 require_once('validate.php');
 include('../includes/functions.php');
 
@@ -11,8 +13,8 @@ class Layout {
   private $category;
   private $parameters;
   private $connection;
-  private $page_html = array();
-  private $content_html = array();
+  private $single_templates = array();
+  private $repeating_templates = array();
   private $search;
   private $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'','firstName'=>'','lastName'=>'', 'image'=>'');
   private $from;
@@ -37,27 +39,27 @@ class Layout {
     
     switch($this->category) {
       case "login":
-        $this->page_html = array("header","menu","login_bar","search","login_form","footer");
+        $this->single_templates = array("header","menu","login","search","login_form","footer");
         break;
       case "register":
-        $this->page_html = array("header","menu","search","register_form","footer");
+        $this->single_templates = array("header","menu","search","register_form","footer");
         break;
       case "Contact":
       case "About":
-        $this->page_html = array("header", "menu", "login_bar", "search","article","footer");
-        $this->content_html = array("no_date_content");
+        $this->single_templates = array("header", "menu", "login", "search","article","footer");
+        $this->repeating_templates = array("no_date_content");
         break;
       case "profile":
         if ($this->parameters=="view") {
-          $this->page_html = array("header","menu","login_bar","search","profile_status","footer");
+          $this->single_templates = array("header","menu","login","search","profile_status","footer");
         } else {
-          $this->page_html = array("header","menu","login_bar","search","profile_update","footer");
+          $this->single_templates = array("header","menu","login","search","profile_update","footer");
         }             
         break;
       case "search":
       default:
-        $this->page_html = array("header", "menu",  "login_bar", "search","article","footer");
-        $this->content_html = array("main_content", "author", "like", "comments");
+        $this->single_templates = array("header", "menu",  "login", "search","article","footer");
+        $this->repeating_templates = array("main_content", "author", "like", "comments");
         break;     
     }
   }
@@ -78,70 +80,60 @@ class Layout {
   }
 
   public function assemblePage() {
-    foreach($this->page_html as $part) { 
-       if($part == "article") {
-         $this->assembleArticles($part,$this->content_html);
+    foreach($this->single_templates as $template_section) { 
+       if($template_section == "article") {
+         $this->assembleArticles($this->repeating_templates);
        } else {
-         $this->getPart($part);
+         $this->getHTMLTemplate($template_section);
        }
     }
   }
 
-  public function assembleArticles($part, $content) {
-  $articles = array();
-  $count = 0;
-  //For each section of the page
-  foreach ($content as $content_part) {
-    //If this is a part that contains content
-    if (strpos($content_part,"content")) {   
-      //Get the category
-      $category = new Category($this->connection, $this->category);    
-      //Get all articles
-       $result = $category->getArticlesByID($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters));
-      //Grab all the article ids
-      foreach ($result as $row) {
-        $article = new ArticleSummary($this->connection,  $row->{"article.id"},  $row->{"article.title"},  $row->{"article.content"}, $row->{"article.published"}, $row->{"article.user_id"},$row->{"category.template"},$row->{"category.name"});
-        $articles[$count] =$article;
-        $count++;
-      }
-      //If we've got more than zero articles
-      if (sizeof($result)!=0) {        
-        //Loop through each article id             
-        for($i=0; $i<sizeof($articles); $i++) {  
-          //Loop through each article part
-          foreach ($content as $content_part) {     
-             //If the article part is content
-             if (strpos($content_part,"content")) { 
-               //Now pass the article contents and merge it with the template
-               $this->mergeTemplate($articles[$i], $content_part);
-               //$this->parseTemplate($this->connection->get_article_by_id($articles[$i]->{'id'}, $this->search), $content_part);
-             } else {
-               //Otherwise, if it's not article content pull the page part template instead
-               $this->getPart($content_part,$articles[$i]->{'id'}, $articles[$i]);
-              }
-            }
+  public function assembleArticles($templates) {
+    //Get the category
+    $category = new Category($this->connection, $this->category);    
+    //Get all articles
+    $category->articlesList = new ArticleList($this->connection, "generic", $category->getArticles($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters)));
+    //If we've got more than zero articles
+    if (sizeof($category->articlesList->articles)!=0) {        
+      //Loop through each article id             
+      for($i=0; $i<sizeof($category->articlesList->articles); $i++) {  
+        //Loop through each template
+        foreach ($templates as $repeating_template) {   
+          //If the template contains data
+          if (strpos($repeating_template,"content")) { 
+            //Pass the article contents and merge it with the article template
+            $this->mergeData($category->articlesList->articles[$i], $repeating_template);
+          } else {
+           //Otherwise, if article data not required, get only HTML template
+            $this->getHTMLTemplate($repeating_template,$category->articlesList->articles[$i]->{'id'}, $category->articlesList->articles[$i]);
           }
-          //After displaying the list of articles add the paging, if needed
-          echo (create_pagination($category->articleCount,$this->show,$this->from,$this->search));
-        } else { 
-          //There were zero articles returned by our query.
-          echo "</nav><div>No articles found</div>";
         }
       }
+      //After displaying the list of articles add paging, if needed
+      echo (create_pagination($category->articleCount,$this->show,$this->from,$this->search));
+    } else { 
+      //There were zero articles returned by our query.
+      echo "</nav><div>No articles found</div>";
     }
   }
 
-  public function getPart($part, $param="",$object="") {
+  public function getHTMLTemplate($template, $param="",$object="") {
     $user_id=get_user_from_session(); 
-    switch($part) {
+    switch($template) {
       case "like":   
         $this->parseTemplate($this->connection->get_all_likes($user_id, $param), "like_content");
         break;
       case "author":
-        $this->parseTemplate($this->connection->get_author_name($param),"author_content");
+        $blank_user = new User($this->connection);
+        $user = $blank_user->getById($param);
+        $this->mergeData($user[0],"author_content");
         break;
       case "menu":
-        $this->parseTemplate($this->connection->get_category_list($param),"menu_content");
+        $categorylist = new CategoryList($this->connection, $this->connection->get_category_list($param));
+        foreach($categorylist->categories as $category) {
+          $this->mergeData($category,"menu_content");
+        }
         break;
       case "comments":
         $comments = $object->getComments();
@@ -154,7 +146,7 @@ class Layout {
         display_comments($comments,$comment_count);   
         break;   
       default:
-        include("templates/".$part.".php");     
+        include("templates/".$template.".php");     
         break;
      /*  $total =   $this->get_article_comments_count($articleid);
 
@@ -179,9 +171,9 @@ class Layout {
     }
   }
 
-public function parseTemplate($recordset,$prefix) {
+public function parseTemplate($recordset,$file_name) {
   $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/";
-  $string = file_get_contents($root. "/classes/templates/".$prefix.".php"); 
+  $string = file_get_contents($root. "/classes/templates/".$file_name.".php"); 
   $regex = '#{{(.*?)}}#';
   $template="";
   preg_match_all($regex, $string, $matches);
@@ -196,13 +188,24 @@ public function parseTemplate($recordset,$prefix) {
   }	             
 }
 
-public function mergeTemplate($data,$prefix) {
-  $template = file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/".$prefix.".php"); 
+public function mergeData($data, $file_name) {
+  $template = file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/".$file_name.".php"); 
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $template, $matches);
-  $template = field_replace($template, $matches[0],$data);  
+  $template = field_replace($template, $matches[0], $data);  
   echo $template;             
 }
 
+
+function reference($body, $matches, $row) {
+      foreach($matches as $value) {         
+        $replace= str_replace("{{","", $value);
+        $replace= str_replace("}}","", $replace);
+        try {
+          $body=str_replace($value,$row->{$replace},$body);
+        } catch (Exception $ex) { echo $ex; }
+      } 
+      return $body; 
+}
 
 } ?>

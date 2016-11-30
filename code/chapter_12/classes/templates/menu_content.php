@@ -1,2 +1,2 @@
  
-<a href="/phpsqlbook/{{category.name}}">{{category.name}}</a> 
+<a href="/phpsqlbook/{{name}}">{{name}}</a> 

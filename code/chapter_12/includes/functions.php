@@ -3,7 +3,7 @@ function get_user_from_session() {
   if (isset($_SESSION["user2"])) {
       $so = $_SESSION["user2"];
       $user_object = unserialize(base64_decode($so));
-      $auth = $user_object->getAuthenticated(); 
+      $auth = $user_object->authenticated; 
   }
   if (isset($auth)) {
        return $auth;
@@ -16,7 +16,7 @@ function get_user_from_session() {
     if(sizeof($user)!=0) {
       if (!empty($user->{'user.id'})) {
         create_user_session($user);
-        $user1 =  new User($user->{'user.forename'} . ' '. $user->{'user.surname'},$user->{'user.email'},$user->{'user.id'});
+        $user1 =  new User('', $user->{'user.id'}, $user->{'user.forename'} , $user->{'user.surname'},$user->{'user.email'},$user->{'user.password'},$user->{'user.joined'},$user->{'user.image'}, $user->{'user.id'});
         $_SESSION["user2"]=base64_encode(serialize($user1)); 
         header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/home/'); 
         exit;

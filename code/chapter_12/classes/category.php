@@ -3,8 +3,8 @@ class Category {
   public $id=0;			// int
   public $name;		// String
   public $template; 		// String
-  public $articleSummaries;	// Array holding array of article summaries
-  public $articles;		// Array holding array of entire articles
+  public $articleSummaryList;	// Array holding array of article summaries
+  public $articlesList;		// Array holding array of entire articles
   public $articleCount;
   public $validated = false; 	// Is category validated
   public $database;
@@ -40,7 +40,7 @@ class Category {
         $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
       }
     }
-    $result = hyphenate_url($article_list);
+    $result = $this->hyphenate_url($article_list);
     if (isset($result)) {
       $this->id 		= $result->id;
       $this->name 	= $result->name;
@@ -57,52 +57,35 @@ class Category {
    // $this->articleSummaries = … Code to get the article summaries and assign them to the $articleSummaries property … 
   }
 
-  function getArticlesByID($database, $category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
-    $this->database = $database;
-
-    $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now()";
-    
-    if (!empty($search)) {  //search results
-      $search = trim($search);
-      $searchsql = " AND ((title like '%" .$search. "%')";
-      $searchsql .= " OR (content like '%".$search. "%'))";
-      $query .= $searchsql;   
+  function getArticles($database, $category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
+  $this->database = $database;
+    //search list
+    if ((!empty($search)) || ($author_id > 0)) {  //search results
+     $this->articleCount = count($this->getArticlesBySearch('', '', $sort='', $dir='ASC', $search, $author_id));
+     $this->articlesList = $this->getArticlesBySearch($show, $from, $sort='', $dir='ASC', $search, $author_id);
+    } else {
+      $this->articleCount = count($this->getArticlesByCategory('', '', $sort='', $dir='ASC', $category, $name));
+      $this->articlesList =  $this->getArticlesByCategory($show, $from, $sort='', $dir='ASC', $category, $name);
     }
-  
+    return $this->articlesList;
+}
+
+function getArticlesByCategory( $show, $from, $sort='', $dir='ASC', $category = 0, $name='') {
+    $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now()";
     //category list
     if (($category > 0) && (!empty($name))) {
        $query .= ' AND  title=:name AND article.category_id = :id';
     } else if ($category > 0) {
       $query .= ' AND article.category_id = :id';
     }
-    
-    //author list
-    if ($author_id > 0) {
-      $query .= ' AND user.id = :id';
-    }
-
     //Sort
     if (!empty($sort)) {
       $query .= " Order By " . $show . " " . $dir;
     }
-
-    //Get total number of articles for count
-    $articles_for_count = $this->bind_parameters( $query, $category, $name, $author_id);          
-    $this->articleCount = count($articles_for_count);
-
     //Get actual limited page of articles
-    $query .= " limit " . $show . " offset " . $from;
-    $article_list = $this->bind_parameters( $query, $category, $name, $author_id);
-    $article_list = $this->hyphenate_url($article_list);
-      if ($search!='') {
-      foreach($article_list as $article) {
-        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
-      }
+      if (!empty($show)) {
+      $query .= " limit " . $show . " offset " . $from;
     }
-    return $article_list;
-}
-
- public function bind_parameters( $query, $category, $name, $author_id) {
      $statement =$this->database->connection->prepare($query);
     if (($category > 0) && (!empty($name))) {
        $statement->bindParam(":name", $name); 
@@ -110,16 +93,54 @@ class Category {
     }  else if ($category > 0) {
      $statement->bindParam(":id", $category);    
     }
-    if ($author_id > 0) {
-        $statement->bindParam(":id", $author_id);    
-    }
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $article_list = $statement->fetchAll();  
+    $article_list = $this->hyphenate_url($article_list);
     return $article_list;
 }
 
-  public function hyphenate_url($article_list) {
+function getArticlesBySearch($show='', $from='', $sort='', $dir='ASC', $search = '', $author_id='0') {
+    $query= "select article.*, category.* FROM article JOIN user ON user.id = article.user_id JOIN category ON category.id= article.category_id where published <= now()";
+    //search results
+    if (!empty($search)) {  
+      $search2 = "%". trim($search) . "%";
+      $searchsql = " AND ((title like :search)";
+      $searchsql .= " OR (content like :search))";
+      $query .= $searchsql;   
+    }
+    //author list
+    if ($author_id > 0) {
+      $query .= ' AND user.id = :id';
+    }
+    //Sort
+    if (!empty($sort)) {
+      $query .= " Order By " . $show . " " . $dir;
+    }
+    //Get actual limited page of articles
+    if (!empty($show)) {
+      $query .= " limit " . $show . " offset " . $from;
+    }
+    $statement =$this->database->connection->prepare($query);
+    if ($author_id > 0) {
+        $statement->bindParam(":id", $author_id);    
+    }
+     if (!empty($search)) {  
+         $statement->bindParam(":search", $search2);    
+     }
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();  
+    $article_list = $this->hyphenate_url($article_list);
+      if (!empty($search) && !empty($show)) {
+      foreach($article_list as $article) {
+        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
+      }
+    }
+    return $article_list;
+}
+
+public function hyphenate_url($article_list) {
     foreach ($article_list as $article) {
         $article->{"article.title_url"} = str_replace(' ','-', $article->{"article.title"});
     }

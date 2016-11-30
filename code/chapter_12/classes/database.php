@@ -352,7 +352,7 @@ function get_media_by_id($id) {
 
 // Get categories
 function get_category_list() {
-  $query = 'SELECT * FROM category'; // Query
+  $query = 'SELECT category.* FROM category'; // Query
   $statement = $this->connection->prepare($query); 
   $statement->execute(); 
   $statement->setFetchMode(PDO::FETCH_OBJ);     // Step 4 Set fetch mode to array
