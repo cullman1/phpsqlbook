@@ -21,14 +21,16 @@ class Layout {
   private $show;
   private $counter;
   private $indent;
+  private $articlesCount;
 
   public function __construct($server, $category, $parameters) {
-    $this->registry = Registry::instance();
+      $this->registry = Registry::instance();
     $this->server = $server;
     $this->category = $category;
     $this->parameters = $parameters;
     $this->registry->set('database',new Database());
-    $this->connection = $this->registry->get('database');  
+    $this->database = $this->registry->get('database');  
+    $this->connection =  $this->database->connection;
   }
 
   public function createPageStructure() { 
@@ -91,27 +93,28 @@ class Layout {
 
   public function assembleArticles($templates) {
     //Get the category
-    $category = new Category($this->connection, $this->category);    
+    $this->registry->set('category',new Category($this->category));
+    $category = $this->registry->get('category');
     //Get all articles
-    $category->articlesList = new ArticleList($this->connection, "generic", $category->getArticles($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters)));
+    $articlesList = new ArticleList("generic", $this->getArticles($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters)));
     //If we've got more than zero articles
-    if (sizeof($category->articlesList->articles)!=0) {        
+    if (sizeof($articlesList->articles)!=0) {        
       //Loop through each article id             
-      for($i=0; $i<sizeof($category->articlesList->articles); $i++) {  
+      for($i=0; $i<sizeof($articlesList->articles); $i++) {  
         //Loop through each template
         foreach ($templates as $repeating_template) {   
           //If the template contains data
           if (strpos($repeating_template,"content")) { 
             //Pass the article contents and merge it with the article template
-            $this->mergeData($category->articlesList->articles[$i], $repeating_template);
+            $this->mergeData($articlesList->articles[$i], $repeating_template);
           } else {
            //Otherwise, if article data not required, get only HTML template
-            $this->getHTMLTemplate($repeating_template,$category->articlesList->articles[$i]->{'id'}, $category->articlesList->articles[$i]);
+            $this->getHTMLTemplate($repeating_template,$articlesList->articles[$i]->{'id'}, $articlesList->articles[$i]);
           }
         }
       }
       //After displaying the list of articles add paging, if needed
-      echo (create_pagination($category->articleCount,$this->show,$this->from,$this->search));
+      echo (create_pagination($this->articlesCount,$this->show,$this->from,$this->search));
     } else { 
       //There were zero articles returned by our query.
       echo "</nav><div>No articles found</div>";
@@ -122,15 +125,14 @@ class Layout {
     $user_id=get_user_from_session(); 
     switch($template) {
       case "like":   
-        $this->parseTemplate($this->connection->get_all_likes($user_id, $param), "like_content");
+        $this->parseTemplate($this->database->get_all_likes($user_id, $param), "like_content");
         break;
       case "author":
-        $blank_user = new User($this->connection);
-        $user = $blank_user->getById($param);
+        $user = getUserById($this->connection,$param);
         $this->mergeData($user[0],"author_content");
         break;
       case "menu":
-        $categorylist = new CategoryList($this->connection, $this->connection->get_category_list($param));
+        $categorylist = new CategoryList($this->connection, $this->database->get_category_list($param));
         foreach($categorylist->categories as $category) {
           $this->mergeData($category,"menu_content");
         }
@@ -170,6 +172,19 @@ class Layout {
 
     }
   }
+
+  function getArticles($connection, $category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
+    //search list
+    $articlesList = null;
+    if ((!empty($search)) || ($author_id > 0)) {  //search results
+     $this->articlesCount = count(getArticlesBySearch($connection,'', '', $sort='', $dir='ASC', $search, $author_id));
+     $articlesList = getArticlesBySearch($connection,$show, $from, $sort='', $dir='ASC', $search, $author_id);
+    } else {
+      $this->articlesCount = count(getArticlesByCategory($connection,'', '', $sort='', $dir='ASC', $category, $name));
+      $articlesList =  getArticlesByCategory($connection,$show, $from, $sort='', $dir='ASC', $category, $name);
+    }
+    return $articlesList;
+}
 
 public function parseTemplate($recordset,$file_name) {
   $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/";

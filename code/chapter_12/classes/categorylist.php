@@ -7,7 +7,7 @@ class CategoryList {
     $this->database = $database;
     $count = 0;
     foreach($category_list as $row) {
-      $category = new Category($database, $row->{"category.name"});
+      $category = new Category($row->{"category.name"});
       $this->categories[$count] = $category;
       $count++;
     }

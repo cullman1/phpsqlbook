@@ -1,3 +1,0 @@
-[30-Oct-2015 08:38:01 America/Chicago] PHP Warning:  Missing argument 3 for mail_confirmation(), called in /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_08/register.php on line 62 and defined in /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_08/register.php on line 4
-[30-Oct-2015 08:38:01 America/Chicago] PHP Notice:  Undefined variable: userid in /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_08/register.php on line 8
-[30-Oct-2015 08:45:43 America/Chicago] PHP Notice:  Undefined variable: email in /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_08/register.php on line 62

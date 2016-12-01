@@ -8,7 +8,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     $this->error['password']  = $Validate->isPassword($_POST["password"]);
     $valid = implode($this->error);
     if (strlen($valid) < 1 ) {
-       $alert = submit_login($this->connection, $_POST["emailAddress"], $_POST["password"]); 
+       $alert = submit_login($this->database, $_POST["emailAddress"], $_POST["password"]); 
     } 
 } ?>
 

@@ -18,8 +18,11 @@ class ArticleSummary {
   private $connection;
 
   
-  function __construct($database, $id, $title, $intro, $published, $user_id, $categorytemplate, $categoryname) {
-     $this->id 		= $id;
+  function __construct($id, $title, $intro, $published, $user_id, $categorytemplate, $categoryname) {
+    $this->registry = Registry::instance();
+    $this->database = $this->registry->get('database');  
+    $this->connection =  $this->database->connection;    
+ $this->id 		= $id;
      $this->title 	= $this->hyphenate_url($title);
       $this->articleurl 	= $this->hyphenate_url($title);
       $this->content = $intro;
@@ -27,7 +30,6 @@ class ArticleSummary {
       $this->categorytemplate = $categorytemplate;
        $this->categoryname = $categoryname;
       $this->user_id = $user_id;
-        $this->database = $database;
   }
 
   function hyphenate_url($title) {
@@ -64,7 +66,7 @@ class ArticleSummary {
 
 public function getComments() {
     $query="select comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";  
-    $statement = $this->database->connection->prepare($query);
+    $statement = $this->connection->prepare($query);
     $statement->bindParam(':articleid',$this->id);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -74,7 +76,7 @@ public function getComments() {
 
   public function getCommentHeader() {
   $query= "select uuid() As new_id From article WHERE id = :articleid";
-  $statement = $this->database->connection->prepare($query);
+  $statement = $this->connection->prepare($query);
   $statement->bindParam(':articleid',$this->id);
   $statement->execute();
       $statement->setFetchMode(PDO::FETCH_OBJ);

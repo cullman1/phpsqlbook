@@ -1,4 +1,6 @@
 <?php
+require_once('../classes/user.php');
+
 function get_user_from_session() {
   if (isset($_SESSION["user2"])) {
       $so = $_SESSION["user2"];
@@ -222,4 +224,93 @@ function tag_replace($regex, $body, $row, $combined_comments,$counter, $indent) 
   }
   return $combined_comments; 
 }
+
+  
+
+function getArticlesByCategory($connection, $show, $from, $sort='', $dir='ASC', $category = 0, $name='') {
+    $query= "select article.*, category.* FROM article JOIN user ON user.id = user_id JOIN category ON category.id= category_id where published <= now()";
+    //category list
+    if (($category > 0) && (!empty($name))) {
+       $query .= ' AND  title=:name AND category_id = :id';
+    } else if ($category > 0) {
+      $query .= ' AND category_id = :id';
+    }
+    //Sort
+    if (!empty($sort)) {
+      $query .= " Order By " . $show . " " . $dir;
+    }
+    //Get actual limited page of articles
+      if (!empty($show)) {
+      $query .= " limit " . $show . " offset " . $from;
+    }
+     $statement =$connection->prepare($query);
+    if (($category > 0) && (!empty($name))) {
+       $statement->bindParam(":name", $name); 
+       $statement->bindParam(":id", $category); 
+    }  else if ($category > 0) {
+     $statement->bindParam(":id", $category);    
+    }
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();  
+    $article_list = hyphenate_url($article_list);
+    return $article_list;
+}
+
+function getArticlesBySearch($connection, $show='', $from='', $sort='', $dir='ASC', $search = '', $author_id='0') {
+    $query= "select article.*, category.* FROM article JOIN user ON user.id = user_id JOIN category ON category.id= category_id where published <= now()";
+    $search_wildcards = "%". trim($search) . "%";    
+    if (!empty($search)) {  //search results
+      $searchsql = " AND ((title like :search)";
+      $searchsql .= " OR (content like :search))";
+      $query .= $searchsql;   
+    }
+    //author list
+    if ($author_id > 0) {
+      $query .= ' AND user.id = :id';
+    }
+    //Sort
+    if (!empty($sort)) {
+      $query .= " Order By " . $show . " " . $dir;
+    }
+    //Get actual limited page of articles
+    if (!empty($show)) {
+      $query .= " limit " . $show . " offset " . $from;
+    }
+    $statement = $connection->prepare($query);
+    if ($author_id > 0) {
+        $statement->bindParam(":id", $author_id);    
+    }
+     if (!empty($search)) {  
+         $statement->bindParam(":search", $search_wildcards);    
+     }
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();  
+    $article_list = hyphenate_url($article_list);
+      if (!empty($search) && !empty($show)) {
+      foreach($article_list as $article) {
+        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
+      }
+    }
+    return $article_list;
+}
+
+ function hyphenate_url($article_list) {
+    foreach ($article_list as $article) {
+        $article->{"article.title_url"} = str_replace(' ','-', $article->{"article.title"});
+    }
+    return $article_list;
+}
+
+  function getUserById($connection, $id) { 
+  $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
+ $statement = $connection->prepare($query);
+ $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
+ $statement->execute();
+ $statement->setFetchMode(PDO::FETCH_OBJ);
+ $user = $statement->fetchAll();  
+ return $user;
+}
+
 ?>
