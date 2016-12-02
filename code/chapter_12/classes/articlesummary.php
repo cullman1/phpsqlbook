@@ -19,8 +19,8 @@ class ArticleSummary {
 
   
   function __construct($id, $title, $intro, $published, $user_id, $categorytemplate, $categoryname) {
-    $this->registry = Registry::instance();
-    $this->database = $this->registry->get('database');  
+
+    $this->database = Registry::instance()->get('database');   
     $this->connection =  $this->database->connection;    
  $this->id 		= $id;
      $this->title 	= $this->hyphenate_url($title);
@@ -80,12 +80,9 @@ public function getComments() {
   $statement->bindParam(':articleid',$this->id);
   $statement->execute();
       $statement->setFetchMode(PDO::FETCH_OBJ);
-      $header = $statement->fetchAll();  
+      $header = $statement->fetch();  
       return $header;
   }
-
-
-
 
   function create() {}
 

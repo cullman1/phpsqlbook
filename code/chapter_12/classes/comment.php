@@ -4,17 +4,42 @@ class Comment {
   public $comment;		// String
   public $author; 		// String
   public $articleId;	// Array holding array of article summaries
-  public $commentTotal;
+  public $repliedToId;
   public $posted;
   public $validated = false; 	// Is category validated
   public $database;
+  public $articleCount;
   
 
-  function __construct($database, $name) {
-  
+  function __construct ($id, $articleid, $userid=0, $comment=0, $commentid=0) {
+    $this->database =Registry::instance()->get('database');  
+    $this->connection =  $this->database->connection;
+     $this->id       = $id;
+      $this->articleId       = $articleid;
+      $this->author        = $userid;
+      $this->comment      = $comment;
+            $this->repliedToId      = $commentid;
+       $date = date("Y-m-d H:i:s");
+          $this->posted =$date;
   }
 
-  function create() {}
+
+  public function create($articleid, $userid, $date, $comment, $commentid=0) {
+ $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
+           VALUES  (:comment,:articleid, :userid, :date, :commentid)";
+ $statement = $this->connection->prepare($query);
+  $statement->bindParam(':comment',$comment);
+ $statement->bindParam(':articleid',$articleid);
+  $statement->bindParam(':userid',$userid);
+ $statement->bindParam(':date',$date);
+  $statement->bindParam(':commentid',$commentid);
+ if ($statement->execute()) {
+    return true;    
+  } else {
+    return '<div>Error '. $statement->errorCode() .':' . $statement->errorInfo() .'</div>';  
+  }
+} 
+
   function update() {}
   function delete(){}
 
@@ -41,7 +66,6 @@ class Comment {
 
 
 
-  function getCategoryByID() {}
 
   function validate() {}
   }

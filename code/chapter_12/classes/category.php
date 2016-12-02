@@ -9,23 +9,21 @@ class Category {
   public $validated = false; 	// Is category validated
   public $connection;
   public $database;
-  private $registry;
 
   function __construct($name) { 
-    $this->registry = Registry::instance();
-    $this->database = $this->registry->get('database');  
+    $this->database =Registry::instance()->get('database');  
     $this->connection =  $this->database->connection;
-    $query = "SELECT category.id, category.name, category.template FROM category WHERE name LIKE :name";     // Query
+    $query = "SELECT category.id, category.name, category.template FROM category WHERE name like :name";     // Query
     $statement = $this->connection->prepare($query); // Prepare
     $statement->bindParam(":name", $name);                    // Bind
     $statement->execute();                                // Execute
     $statement->setFetchMode(PDO::FETCH_OBJ);
-    $category_list = $statement->fetchAll(); 
-    if (count($category_list)>0) { 
-      $this->id       = $category_list[0]->{"category.id"};
-      $this->name     = $category_list[0]->{"category.name"};
-      $this->template = $category_list[0]->{"category.template"};
-    } 
+    $category = $statement->fetch(); 
+    if($category) {
+      $this->id       = $category->{"category.id"};
+      $this->name     = $category->{"category.name"};
+      $this->template = $category->{"category.template"};
+  }
   }
 
   function create() {}
@@ -53,15 +51,7 @@ class Category {
     return $article_list; 
 }
 
-
-
   function getCategoryByID() {}
-
-  function getArticleSummariesByID() {
-   // $this->articleSummaries = … Code to get the article summaries and assign them to the $articleSummaries property … 
-  }
-
-
 
   function validate() {}
   }

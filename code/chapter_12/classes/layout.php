@@ -4,6 +4,8 @@ require_once('articlesummary.php');
 require_once('articlelist.php');
 require_once('category.php');
 require_once('categorylist.php');
+require_once('commentlist.php');
+require_once('comment.php');
 require_once('validate.php');
 include('../includes/functions.php');
 
@@ -108,8 +110,8 @@ class Layout {
             //Pass the article contents and merge it with the article template
             $this->mergeData($articlesList->articles[$i], $repeating_template);
           } else {
-           //Otherwise, if article data not required, get only HTML template
-            $this->getHTMLTemplate($repeating_template,$articlesList->articles[$i]->{'id'}, $articlesList->articles[$i]);
+           //Otherwise, if article data not required, get HTML template
+            $this->getHTMLTemplate($repeating_template,$articlesList->articles[$i]->{'id'});
           }
         }
       }
@@ -128,8 +130,8 @@ class Layout {
         $this->parseTemplate($this->database->get_all_likes($user_id, $param), "like_content");
         break;
       case "author":
-        $user = getUserById($this->connection,$param);
-        $this->mergeData($user[0],"author_content");
+        $user = getUserByArticleId($this->connection, $param);
+        $this->mergeData($user,"author_content");
         break;
       case "menu":
         $categorylist = new CategoryList($this->connection, $this->database->get_category_list($param));
@@ -138,12 +140,12 @@ class Layout {
         }
         break;
       case "comments":
-        $comments = $object->getComments();
-        $comment_count =  count($comments);
+        $comment_list = getCommentsById($this->connection, $param);
+        $comment_count =  count($comment_list);
+        $comments = new CommentList($comment_list);
         if ($comment_count==0) {
-             $comments = $object->getCommentHeader();
-             $comments[0]->{'comments.article_id'} = $object->id;  
-             $comments[0]->{"comments.id"} = $comments[0]->{".new_id"};  
+             $comment = getCommentHeader($this->connection);
+             $comments = $comments->add($comment->{".new_id"},$param,'','', '');
         }
         display_comments($comments,$comment_count);   
         break;   

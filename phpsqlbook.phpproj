@@ -196,6 +196,7 @@
     <Compile Include="code\chapter_12 - Copy\session1.php" />
     <Compile Include="code\chapter_12 - Copy\session2.php" />
     <Compile Include="code\chapter_12\assets\login-variables.php" />
+    <Compile Include="code\chapter_12\classes\commentlist.php" />
     <Compile Include="code\chapter_12\classes\userlist.php" />
     <Compile Include="code\chapter_12\classes\categorylist.php" />
     <Compile Include="code\chapter_12\classes\articlelist.php" />

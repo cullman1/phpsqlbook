@@ -76,7 +76,7 @@ function create_pagination($count, $show, $from, $search) {
   echo "<br/>" . $result;
 }
 
-function display_comments($recordset, $commentcount) {   
+function display_comments($commentlist, $commentcount) {   
    $string=file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content.php");
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $string, $matches);
@@ -92,20 +92,20 @@ function display_comments($recordset, $commentcount) {
   if (!isset($_SESSION["user2"])) {
      $head= str_replace("Add a comment","",$head);
   }
-  foreach ($recordset as $row) {
-    $row->{'comment.commentcount'} = $commentcount; 
+  foreach ($commentlist->comments as $row) {
+    $row->{'articleCount'} = $commentcount; 
     $comment=substr($string2,$opening_tag+1,$remain-9);
     if ($count==0) {
         $head = field_replace($head, $head_matches[0],$row);       
         echo $head;
     }
     if ($commentcount>0) {
-    preg_match_all($regex, $comment, $inner_matches);
-    $comment = field_replace($comment, $inner_matches[0],$row); 
-    $body[$count] = $comment;
-    $count++;
+      preg_match_all($regex, $comment, $inner_matches);
+      $comment = field_replace($comment, $inner_matches[0],$row); 
+      $body[$count] = $comment;
+      $count++;
     }
-  }
+ }
  for ($i=0;$i<$count;$i++) {
   echo $body[$i];
  }
@@ -154,6 +154,24 @@ function display_comments2($recordset, $check, $indent) {
   echo "</div></div></div></div>"; 
 }
 
+ function getCommentsById($connection, $id) {
+    $query="select comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";  
+    $statement = $connection->prepare($query);
+    $statement->bindParam(':articleid',$id);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $comments = $statement->fetchAll();
+    return $comments;
+  }
+
+    function getCommentHeader($connection) {
+  $query= "select  uuid() As new_id From article";
+  $statement =$connection->prepare($query);
+  $statement->execute();
+      $statement->setFetchMode(PDO::FETCH_OBJ);
+      $header = $statement->fetch();  
+      return $header;
+  }
 
  function submit_like($connection) {
   if (!isset($_SESSION["user2"])) {
@@ -209,6 +227,17 @@ function recursive_check($regex, $body, $row, $combined, $counter, $indent, $che
     }
   return $combined;
 }
+
+  function get_article_by_id($id) {
+    $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
+    $statement = $this->connection->prepare($query);
+    $statement->bindParam(":id", $id);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article = $statement->fetch(); 
+    $article = $this->hyphenate_url($article_list);
+    return $article; 
+  }
 
 function tag_replace($regex, $body, $row, $combined_comments,$counter, $indent) {
   preg_match_all($regex, $body, $inner_matches);
@@ -304,13 +333,32 @@ function getArticlesBySearch($connection, $show='', $from='', $sort='', $dir='AS
 }
 
   function getUserById($connection, $id) { 
-  $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
+  $query = "select user.* FROM user  where id= :user_id";
  $statement = $connection->prepare($query);
- $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
+ $statement->bindValue(':user_id', $id, PDO::PARAM_INT);
  $statement->execute();
  $statement->setFetchMode(PDO::FETCH_OBJ);
- $user = $statement->fetchAll();  
- return $user;
+ $user = $statement->fetch();  
+ return append_blank_image($user,'blank.png');;
+}
+
+ function getUserByArticleId($connection, $id) { 
+   $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
+   $statement = $connection->prepare($query);
+   $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
+   $statement->execute();
+   $statement->setFetchMode(PDO::FETCH_OBJ);
+   $user = $statement->fetch();  
+   return append_blank_image($user,'blank.png');;
+}
+
+ function append_blank_image($user, $image) {
+
+      if (empty($user->{"user.image"})) {
+        $user->{"user.image"} = $image;
+      }
+
+    return $user;
 }
 
 ?>

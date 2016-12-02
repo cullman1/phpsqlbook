@@ -2,7 +2,7 @@
 require_once('../includes/functions.php');
 $alert  =   array('status' => '', 'message' =>'');
 $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'','firstName'=>'','lastName'=>'', 'image'=>'');
- $profile_list = $this->connection->get_user_by_id($_GET["id"]); 
+ $profile = getUserById($this->connection,$_GET["id"]); 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   require_once('../classes/validate.php');
   $Validate = new Validate();
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $this->error['lastName']  = $Validate->isLastName($_POST["Surname"]);
   $valid = implode($this->error);
   if (strlen($valid) < 1 ) {
-    $alert = $this->connection->setProfile($_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],$_FILES["img"]["name"] ); 
+    $alert = setProfile($this->connection,$_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],$_FILES["img"]["name"] ); 
     $temporary   = $_FILES["img"]['tmp_name'];
     $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $_FILES['img']['name'];
     if (move_uploaded_file($temporary, $destination)) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 } 
 ?>
-  <?php foreach ($profile_list as $profile) {  // Loop through categories ?>
+
 <form method="post" action="/phpsqlbook/profile/update?id=<?= $profile->{'user.id'}; ?>" enctype="multipart/form-data">
   <h2>User Profile</h2>
   <div id="Status" style="color:red;" >
@@ -46,6 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <button type="submit" value="submit" class="btn btn-default">Submit</button><br/><br/>
 </form> 
-  <?php } ?>
+
  <a href="/phpsqlbook/home">Return to Main Site</a>
 
