@@ -41,28 +41,6 @@ class ArticleSummary {
    
   function validate($new = FALSE) {}
 
-  function getById($id,  $search='') {
-    $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
-    $statement = $this->connection->prepare($query);          // Prepare
-    $statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
-    $statement->execute();                              // Execute
-    $statement->setFetchMode(PDO::FETCH_OBJ);           // Object
-    $article_list = $statement->fetchAll(); 
-    if (isset($search)) {
-
-      foreach($article_list as $article) {
-        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
-      }
-    }
-
-    if (isset($article_list)) {
-      $this->id 		= $result->id;
-      $this->name 	= $result->name;
-      $this->template = $result->template;
-      $this->articleurl = $this->hyphenate_url($result->title);
-    }
-    return $article_list; 
-}
 
 public function getComments() {
     $query="select comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";  

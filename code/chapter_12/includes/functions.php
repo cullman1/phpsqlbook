@@ -1,5 +1,6 @@
 <?php
 require_once('../classes/user.php');
+require_once('../classes/comment.php');
 
 function get_user_from_session() {
   if (isset($_SESSION["user2"])) {
@@ -18,7 +19,7 @@ function get_user_from_session() {
     if(sizeof($user)!=0) {
       if (!empty($user->{'user.id'})) {
         create_user_session($user);
-        $user1 =  new User('', $user->{'user.id'}, $user->{'user.forename'} , $user->{'user.surname'},$user->{'user.email'},$user->{'user.password'},$user->{'user.joined'},$user->{'user.image'}, $user->{'user.id'});
+        $user1 =  new User($user->{'user.id'}, $user->{'user.forename'} , $user->{'user.surname'},$user->{'user.email'},$user->{'user.password'},$user->{'user.joined'},$user->{'user.image'}, $user->{'user.id'});
         $_SESSION["user2"]=base64_encode(serialize($user1)); 
         header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/home/'); 
         exit;
@@ -164,20 +165,24 @@ function display_comments2($recordset, $check, $indent) {
     return $comments;
   }
 
-    function getCommentHeader($connection) {
-  $query= "select  uuid() As new_id From article";
-  $statement =$connection->prepare($query);
-  $statement->execute();
-      $statement->setFetchMode(PDO::FETCH_OBJ);
-      $header = $statement->fetch();  
-      return $header;
+  function getCommentHeader($connection) {
+    $query= "select  uuid() As new_id From article";
+    $statement =$connection->prepare($query);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $header = $statement->fetch();  
+    return $header;
   }
 
  function submit_like($connection) {
   if (!isset($_SESSION["user2"])) {
     header('Location: /phpsqlbook/login/');
   } else {    
-   $connection->setLike($_GET['liked'],$_GET["user_id"], $_GET["article_id"]);
+    if($_GET['liked']=="0") {
+   setLike($connection, $_GET["user_id"], $_GET["article_id"]); 
+   } else {
+   removeLike($connection,$_GET["user_id"], $_GET["article_id"]); 
+   }
    if(isset($_SERVER['HTTP_REFERER'])) {
      header('Location: '.$_SERVER['HTTP_REFERER']);
    } else {
@@ -186,13 +191,30 @@ function display_comments2($recordset, $check, $indent) {
   }
 }
 
+function setLike($connection, $userid, $articleid) {
+    $query = "INSERT INTO article_like (user_id, article_id) VALUES (:userid, :articleid)";
+    $statement = $connection->prepare($query);
+    $statement->bindParam(":userid", $userid);
+    $statement->bindParam(":articleid", $articleid);
+    $statement->execute();
+ }
+
+ function removeLike($connection,  $userid, $articleid) {
+      $query = "DELETE FROM article_like WHERE user_id= :userid and article_id= :articleid";
+    $statement = $connection->prepare($query);
+    $statement->bindParam(":userid", $userid);
+    $statement->bindParam(":articleid", $articleid);
+    $statement->execute();
+ }
+
 function add_comment($connection, $articleid, $commentid) {
   if (!isset($_SESSION["user2"])) {
     header('Location: /phpsqlbook/login');
    } else {   
     $user_id = get_user_from_session(); 
-    $connection->insert_article_comment($articleid, $user_id, $_POST["commentText"], $commentid);
-    header('Location:/phpsqlbook/home');
+    $comment = new Comment('',$articleid,$user_id,$_POST["commentText"], $commentid);
+    $comment->create();
+    header('Location: '.$_SERVER['HTTP_REFERER']);
   }	      
 }
 
@@ -359,6 +381,35 @@ function getArticlesBySearch($connection, $show='', $from='', $sort='', $dir='AS
       }
 
     return $user;
+}
+
+// Get categories
+function getCategoryList($connection) {
+  $query = 'SELECT category.* FROM category'; // Query
+  $statement = $connection->prepare($query); 
+  $statement->execute(); 
+  $statement->setFetchMode(PDO::FETCH_OBJ);     // Step 4 Set fetch mode to array
+  $category_list = $statement->fetchAll();      // Step 4 Get all rows ready to display
+  return $category_list;
+}
+function getCategoryListArray($connection) {
+  $query = 'SELECT id, name, template FROM category'; // Query
+  $statement = $connection->prepare($query); 
+  $statement->execute(); 
+  $statement->setFetchMode(PDO::FETCH_ASSOC);   // Step 4 Set fetch mode to array
+  $category_list = $statement->fetchAll();      // Step 4 Get all rows ready to display
+  return $category_list;
+}
+
+function getAllLikes($connection, $user_id,$article_id) {
+  $query = "select distinct :artid as articleid, :userid as userid, (select count(*) as likes FROM article_like where article_id=:artid and user_id=:userid ) as likes_count, (select count(article_id) as likes FROM article_like where article_id=:artid) as likes_total FROM article_like as a right outer join (select id FROM article where id=:artid) as b ON (b.id = a.article_id) where b.id=:artid"; 
+  $statement = $connection->prepare($query);
+  $statement->bindParam(':artid', $article_id);
+  $statement->bindParam(':userid',$user_id);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);  
+  $author_list = $statement->fetchAll();  
+   return $author_list;
 }
 
 ?>

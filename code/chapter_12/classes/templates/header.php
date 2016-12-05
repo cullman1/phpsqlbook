@@ -28,7 +28,7 @@ switch ($pagetype) {
    default:
       break;
 }
-$category_list =  $db->get_category_list_array(); 
+$category_list =  getCategoryListArray($db->connection); 
 ?>
 <!DOCTYPE html>
 <html>

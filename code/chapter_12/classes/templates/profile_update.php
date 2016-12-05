@@ -12,15 +12,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $this->error['lastName']  = $Validate->isLastName($_POST["Surname"]);
   $valid = implode($this->error);
   if (strlen($valid) < 1 ) {
-    $alert = setProfile($this->connection,$_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],$_FILES["img"]["name"] ); 
     $temporary   = $_FILES["img"]['tmp_name'];
-    $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $_FILES['img']['name'];
-    if (move_uploaded_file($temporary, $destination)) {
-      $alert = array("status"=>"success","message"=> "File saved.");
-    } else {
-      $alert = array("status"=>"danger","message"=> "File could not be saved.");
-    }
-    header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/profile/status?id='.$_POST["Id"]); 
+    $user = new User($_POST["Id"],$_POST["Forename"],$_POST["Surname"],$_POST["Email"],'','',$_FILES["img"]["name"],'');
+    $result = $user->update();
+    if ($result) {
+      $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $_FILES['img']['name'];
+      if (move_uploaded_file($temporary, $destination)) {
+         $alert = array("status"=>"success","message"=> "File saved.");
+         header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/profile/status?id='.$_POST["Id"]); 
+      } else {  
+       //  $alert = array("status"=>"danger","message"=> "File could not be saved.");
+
+      }  
+    } 
+   
+   
   }
 } 
 ?>

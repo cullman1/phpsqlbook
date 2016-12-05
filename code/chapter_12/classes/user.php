@@ -1,5 +1,5 @@
 <?php
-Class User {
+class User {
  public  $id;
  public  $forename;
  public  $surname;
@@ -7,10 +7,15 @@ Class User {
  public  $password;
  public  $joined;
  public  $image;
+ public $database;
  public $connection;
  public $authenticated;
 
- function __construct($connection, $id ='', $forename = NULL, $surname = NULL, $email = NULL, $password = NULL, $joined = NULL, $image = NULL, $authenticated = NULL) {
+ function __construct($id ='', $forename = NULL, $surname = NULL, $email = NULL, $password = NULL, $joined = NULL, $image = NULL, $authenticated = NULL) {
+  if (is_null($authenticated)) {
+    $this->database = Registry::instance()->get('database');   
+    $this->connection =  $this->database->connection;   
+  }
   $this->id       = ( isset($id)       ? $id       : '');
   $this->forename = ( isset($forename) ? $forename : '');
   $this->surname  = ( isset($surname)  ? $surname  : '');
@@ -19,12 +24,11 @@ Class User {
   $this->joined   = ( isset($joined)   ? $joined   : '');
   $this->image    = ( isset($image)    ? $image    : '');
   $this->authenticated    = ( isset($authenticated)    ? $authenticated    : '');
-  $this->connection = ( isset($connection)       ? $connection       : '');
  }
 
  function create() {
-  $sql = 'INSERT INTO user (forname, surname, email, password) 
-          VALUES (:forname, :surname, :email, :password)';           // SQL
+  $sql = 'INSERT INTO user (forename, surname, email, password) 
+          VALUES (:forename, :surname, :email, :password)';           // SQL
   $statement = $this->connection->prepare($sql);                           // Prepare
   $statement->bindValue(':forename', $this->forename);               // Bind value
   $statement->bindValue(':surname', $this->surname);                 // Bind value
@@ -40,20 +44,27 @@ Class User {
  }
 
  function update() {                           // Connection
-  $sql = 'UPDATE category SET forename = :forename, surname = :surname, email = :email, password = :password, WHERE id = :id';//SQL
+  $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email WHERE id = :id';//SQL
+   if ($this->image !="") {
+      $sql = 'UPDATE user SET forename= :forename, surname = :surname, email= :email, image=:userimg where id= :id';    
+  }
   $statement = $this->connection->prepare($sql);                           // Prepare
   $statement->bindValue(':forename', $this->forename);               // Bind value
   $statement->bindValue(':surname', $this->surname);                 // Bind value
   $statement->bindValue(':email', $this->email);                     // Bind value
-  $statement->bindValue(':password', $this->password);               // Bind value
+  if ($this->image !="") {
+    $statement->bindValue(':userimg', $this->image);               // Bind value
+  }
+   $statement->bindValue(':id', $this->id);   
   try {
    $statement->execute();
    $result = TRUE;
   } catch (PDOException $error) {                                    // Otherwise
-   $result = $statement->errorCode() . ': ' . $statement->errorInfo(); // Error
+   $result = $error->getCode() . ': ' . $error->getMessage(); // Error
   }
   return $result;                                                   // Say succeeded
  }
+
 
  function delete() {
                     // Connection

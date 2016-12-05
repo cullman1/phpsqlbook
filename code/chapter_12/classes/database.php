@@ -165,16 +165,7 @@ public function get_author_name($id) {
  return $author_list;
 }
   
-public function get_all_likes($user_id,$article_id) {
-  $query = "select distinct :artid as articleid, :userid as userid, (select count(*) as likes FROM article_like where article_id=:artid and user_id=:userid ) as likes_count, (select count(article_id) as likes FROM article_like where article_id=:artid) as likes_total FROM article_like as a right outer join (select id FROM article where id=:artid) as b ON (b.id = a.article_id) where b.id=:artid"; 
-  $statement = $this->connection->prepare($query);
-  $statement->bindParam(':artid', $article_id);
-  $statement->bindParam(':userid',$user_id);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ);  
-  $author_list = $statement->fetchAll();  
-   return $author_list;
-}
+
 
 
 
@@ -224,17 +215,7 @@ function getLogin( $email, $passwordToken) {
     return $user;
 }
 
-function setLike($likes, $userid, $articleid) {
-  if($likes=="0") {
-      $query = "INSERT INTO article_like (user_id, article_id) VALUES (:userid, :articleid)";
-    } else {
-      $query = "DELETE FROM article_like WHERE user_id= :userid and article_id= :articleid";
-    }
-    $statement = $this->connection->prepare($query);
-    $statement->bindParam(":userid", $userid);
-    $statement->bindParam(":articleid", $articleid);
-    $statement->execute();
- }
+
  //From function.php
  // Get article lists
 function get_article_list2() { // Return all images as an object
@@ -295,23 +276,7 @@ function get_media_by_id($id) {
   return $media;
 }
 
-// Get categories
-function get_category_list() {
-  $query = 'SELECT category.* FROM category'; // Query
-  $statement = $this->connection->prepare($query); 
-  $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ);     // Step 4 Set fetch mode to array
-  $category_list = $statement->fetchAll();      // Step 4 Get all rows ready to display
-  return $category_list;
-}
-function get_category_list_array() {
-  $query = 'SELECT id, name, template FROM category'; // Query
-  $statement = $this->connection->prepare($query); 
-  $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_ASSOC);   // Step 4 Set fetch mode to array
-  $category_list = $statement->fetchAll();      // Step 4 Get all rows ready to display
-  return $category_list;
-}
+
 // Get category
 function get_category_by_id($id) {
   global $connection;

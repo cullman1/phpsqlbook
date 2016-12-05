@@ -26,7 +26,7 @@ class Layout {
   private $articlesCount;
 
   public function __construct($server, $category, $parameters) {
-      $this->registry = Registry::instance();
+    $this->registry = Registry::instance();
     $this->server = $server;
     $this->category = $category;
     $this->parameters = $parameters;
@@ -36,11 +36,9 @@ class Layout {
   }
 
   public function createPageStructure() { 
-
     $this->show = ( isset($_GET['show'])     ? $_GET['show']       : '5' );
     $this->from =  ( isset($_GET['from'])       ? $_GET['from']       : '0' );
     $this->search =  ( isset($_GET['search'])       ? $_GET['search']       : '' );
-    
     switch($this->category) {
       case "login":
         $this->single_templates = array("header","menu","login","search","login_form","footer");
@@ -127,14 +125,17 @@ class Layout {
     $user_id=get_user_from_session(); 
     switch($template) {
       case "like":   
-        $this->parseTemplate($this->database->get_all_likes($user_id, $param), "like_content");
+        $likes_list = getAllLikes($this->connection, $user_id, $param);
+        foreach($likes_list as $likes) {
+          $this->mergeData($likes,"like_content");
+        }
         break;
       case "author":
         $user = getUserByArticleId($this->connection, $param);
         $this->mergeData($user,"author_content");
         break;
       case "menu":
-        $categorylist = new CategoryList($this->connection, $this->database->get_category_list($param));
+        $categorylist = new CategoryList($this->connection, getCategoryList($this->connection,$param));
         foreach($categorylist->categories as $category) {
           $this->mergeData($category,"menu_content");
         }
@@ -145,7 +146,7 @@ class Layout {
         $comments = new CommentList($comment_list);
         if ($comment_count==0) {
              $comment = getCommentHeader($this->connection);
-             $comments = $comments->add($comment->{".new_id"},$param,'','', '');
+             $comments = $comments->add($comment->{".new_id"},$param,'','', '','');
         }
         display_comments($comments,$comment_count);   
         break;   
@@ -170,8 +171,6 @@ class Layout {
           $result = create_tree($new, $new[0]); 
         } 
         display_comments2($result, $this->counter, $this->indent); */
-
-
     }
   }
 
@@ -188,41 +187,12 @@ class Layout {
     return $articlesList;
 }
 
-public function parseTemplate($recordset,$file_name) {
-  $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/";
-  $string = file_get_contents($root. "/classes/templates/".$file_name.".php"); 
-  $regex = '#{{(.*?)}}#';
-  $template="";
-  preg_match_all($regex, $string, $matches);
-  foreach ($recordset as $row) {
-    $template=$string;
-    foreach($matches[0] as $value) {           
-      $replace= str_replace("{{","", $value);
-      $replace= str_replace("}}","", $replace);
-      $template = str_replace($value,$row->{$replace}, $template);  
-    }  
-  echo $template;  
-  }	             
-}
-
 public function mergeData($data, $file_name) {
   $template = file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/".$file_name.".php"); 
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $template, $matches);
   $template = field_replace($template, $matches[0], $data);  
   echo $template;             
-}
-
-
-function reference($body, $matches, $row) {
-      foreach($matches as $value) {         
-        $replace= str_replace("{{","", $value);
-        $replace= str_replace("}}","", $replace);
-        try {
-          $body=str_replace($value,$row->{$replace},$body);
-        } catch (Exception $ex) { echo $ex; }
-      } 
-      return $body; 
 }
 
 } ?>

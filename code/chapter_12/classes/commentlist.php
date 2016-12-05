@@ -14,9 +14,9 @@ class CommentList {
     }
   }
 
-  public function add($id, $articleid, $userid, $posted, $repliedtoid='0') {
+  public function add($id, $articleid, $userid, $comment, $posted, $repliedtoid='0') {
     $count = sizeof( $this->comments);
-    $this->comments[$count] = new Comment($id,$articleid,$userid, $posted , $repliedtoid  );
+    $this->comments[$count] = new Comment($id,$articleid,$userid, $comment, $posted , $repliedtoid  );
     return $this;
   }
 }

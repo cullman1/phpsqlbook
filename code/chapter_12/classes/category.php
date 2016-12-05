@@ -11,7 +11,8 @@ class Category {
   public $database;
 
   function __construct($name) { 
-    $this->database =Registry::instance()->get('database');  
+    $this->registry =Registry::instance();
+    $this->database = $this->registry->get('database');  
     $this->connection =  $this->database->connection;
     $query = "SELECT category.id, category.name, category.template FROM category WHERE name like :name";     // Query
     $statement = $this->connection->prepare($query); // Prepare
@@ -27,31 +28,10 @@ class Category {
   }
 
   function create() {}
+  
   function update() {}
+
   function delete(){}
-
-   function getById($id,  $search='') {
-    $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
-    $statement = $this->connection->prepare($query);          // Prepare
-    $statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
-    $statement->execute();                              // Execute
-    $statement->setFetchMode(PDO::FETCH_OBJ);           // Object
-    $article_list = $statement->fetchAll(); 
-    if (isset($search)) {
-      foreach($article_list as $article) {
-        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
-      }
-    }
-    $result = $this->hyphenate_url($article_list);
-    if (isset($result)) {
-      $this->id 		= $result->id;
-      $this->name 	= $result->name;
-      $this->template = $result->template;
-    }
-    return $article_list; 
-}
-
-  function getCategoryByID() {}
 
   function validate() {}
   }
