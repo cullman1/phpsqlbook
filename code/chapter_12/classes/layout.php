@@ -76,7 +76,14 @@ class Layout {
           submit_like($this->connection);
           break;
         case "add_comment":
-          add_comment($this->connection, $_GET["id"], $_GET["comment"]);
+            if (!isset($_SESSION["user2"])) {
+              header('Location: /phpsqlbook/login');
+            } else {   
+           $user_id = get_user_from_session(); 
+           $comment = new Comment('',$_GET["id"],$user_id, '', $_POST["commentText"],'', $_GET["comment"]);
+           $comment->create();
+           header('Location: '.$_SERVER['HTTP_REFERER']);
+  }
           break;	
      }
   }
@@ -121,7 +128,7 @@ class Layout {
     }
   }
 
-  public function getHTMLTemplate($template, $param="",$object="") {
+  public function getHTMLTemplate($template, $param="") {
     $user_id=get_user_from_session(); 
     switch($template) {
       case "like":   
@@ -145,7 +152,7 @@ class Layout {
         $comment_count =  count($comment_list);
         $comments = new CommentList($comment_list);
         if ($comment_count==0) {
-             $comment = getCommentHeader($this->connection);
+             $comment = getBlankComment($this->connection);
              $comments = $comments->add($comment->{".new_id"},$param,'','', '','');
         }
         display_comments($comments,$comment_count);   

@@ -8,14 +8,15 @@ class Comment {
   public $posted;
   public $validated = false; 	// Is category validated
   public $database;
-  public $articleCount;
+
   
-  function __construct ($id=0, $articleid, $userid, $comment, $date, $commentid=0) {
+  function __construct ($id=0, $articleid, $userid, $author, $comment, $date, $commentid=0) {
     $this->registry    = Registry::instance();
     $this->database    = $this->registry->get('database');  
     $this->connection  = $this->database->connection;
     $this->id          = $id;
     $this->articleId   = $articleid;
+    $this->author   =    $author;
     $this->userId      = $userid;
     $this->comment     = $comment;
     $this->repliedToId = $commentid;

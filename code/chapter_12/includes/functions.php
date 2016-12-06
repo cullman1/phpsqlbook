@@ -161,17 +161,15 @@ function display_comments2($recordset, $check, $indent) {
     $statement->bindParam(':articleid',$id);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
-    $comments = $statement->fetchAll();
-    return $comments;
+    return $statement->fetchAll();
   }
 
-  function getCommentHeader($connection) {
+  function getBlankComment($connection) {
     $query= "select  uuid() As new_id From article";
     $statement =$connection->prepare($query);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
-    $header = $statement->fetch();  
-    return $header;
+    return $statement->fetch();  
   }
 
  function submit_like($connection) {
@@ -206,17 +204,6 @@ function setLike($connection, $userid, $articleid) {
     $statement->bindParam(":articleid", $articleid);
     $statement->execute();
  }
-
-function add_comment($connection, $articleid, $commentid) {
-  if (!isset($_SESSION["user2"])) {
-    header('Location: /phpsqlbook/login');
-   } else {   
-    $user_id = get_user_from_session(); 
-    $comment = new Comment('',$articleid,$user_id,$_POST["commentText"], $commentid);
-    $comment->create();
-    header('Location: '.$_SERVER['HTTP_REFERER']);
-  }	      
-}
 
 function create_tree(&$list, $parent){
   $tree = array();
