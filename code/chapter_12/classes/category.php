@@ -5,7 +5,6 @@ class Category {
   public $template; 		// String
   public $articleSummaryList;	// Array holding array of article summaries
   public $articlesList;		// Array holding array of entire articles
-  public $articleCount;
   public $validated = false; 	// Is category validated
   public $connection;
   public $database;

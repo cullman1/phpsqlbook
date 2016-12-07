@@ -94,7 +94,7 @@ function display_comments($commentlist, $commentcount) {
      $head= str_replace("Add a comment","",$head);
   }
   foreach ($commentlist->comments as $row) {
-    $row->{'articleCount'} = $commentcount; 
+    $row->{'commentCount'} = $commentcount; 
     $comment=substr($string2,$opening_tag+1,$remain-9);
     if ($count==0) {
         $head = field_replace($head, $head_matches[0],$row);       
@@ -113,6 +113,38 @@ function display_comments($commentlist, $commentcount) {
  echo "</div></div></div></div>";
 }
 
+function display_comments2($commentlist, $commentcount) {   
+    $string=file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content2.php");
+    $regex = '#{{(.*?)}}#';
+    preg_match_all($regex, $string, $matches);
+    $opening_tag = strpos($string, "[[for]]");
+    $closing_tag = strpos($string, "[[next]]",$opening_tag+1);
+    $string1= str_replace("[[for]]","", $string);
+    $string2= str_replace("[[next]]","", $string1);
+    $head= substr($string2, 0, $opening_tag);
+    $remain = $closing_tag - $opening_tag;
+    $body = array();
+    $count=0;
+    $indent=0;
+    if (!isset($_SESSION["user2"])) {
+        $head= str_replace("Add a new comment","",$head);
+    }
+    foreach ($commentlist->comments as $row) { 
+        $row->{'commentCount'} = $commentcount; 
+        $comments = substr($string2,$opening_tag+1,$remain-9);
+        if ($count==0) {
+            $head = field_replace($head, $matches[0],$row); 
+            echo $head;
+        }        
+        if( $commentcount > 0) {
+            $body=recursive_check($regex, $comments,$row,$body,$count,$indent , $commentcount);
+        }
+        $count++;   
+    }
+    echo "</div></div></div></div>"; 
+}
+
+
 function field_replace($body, $matches, $row) {
       foreach($matches as $value) {         
         $replace= str_replace("{{","", $value);
@@ -125,35 +157,7 @@ function field_replace($body, $matches, $row) {
 }
 
 
-function display_comments2($recordset, $check, $indent) {   
-  $root="http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12";
-  $string=file_get_contents($root."/classes/templates/comments_content2.php");
-  $regex = '#{{(.*?)}}#';
-  preg_match_all($regex, $string, $matches);
-  $opening_tag = strpos($string, "[[for]]");
-  $closing_tag = strpos($string, "[[next]]",$opening_tag+1);
-  $string1= str_replace("[[for]]","", $string);
-  $string2= str_replace("[[next]]","", $string1);
-  $head= substr($string2, 0, $opening_tag);
-  $remain = $closing_tag - $opening_tag;
-  $body = array();
-  $count=0;
-  foreach ($recordset as $row) {
-    if (!isset($_SESSION["user2"])) {
-     $head= str_replace("Add a new comment","",$head);
-    }
-    $comments = substr($string2,$opening_tag+1,$remain-9);
-    if ($count==0) {
-      $head = field_replace($head, $matches[0],$row); 
-      echo $head;
-    }        
-    if( $row->{'.Total'} > 0) {
-      $body=recursive_check($regex, $comments,$row,$body,$count, $indent, $check);
-    }
-    $count++;   
-  }
-  echo "</div></div></div></div>"; 
-}
+
 
  function getCommentsById($connection, $id) {
     $query="select comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";  
@@ -209,7 +213,8 @@ function create_tree(&$list, $parent){
   $tree = array();
   foreach ((array) $parent as $key=>$reply) {
     if (isset($list[$reply->{'comments.id'}])) {
-      $reply->{'children'} = create_tree($list, $list[$reply->{'comments.id'}]);
+        echo "HereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHere";
+        $reply->{'children'} = create_tree($list, $list[$reply->{'comments.id'}]);
     }
     $tree[] = $reply;
   } 
@@ -223,7 +228,7 @@ function recursive_check($regex, $body, $row, $combined, $counter, $indent, $che
   }
   echo $combined[$counter];
   $counter++;
-  if (isset($row->{'children'})) {         
+  if (isset($row->{'indent'})) {   
     $indent+=20;
     foreach ($row->{'children'} as $row2) {    
       $combined = recursive_check($regex, $body, $row2, $combined, $counter, $indent, $check);

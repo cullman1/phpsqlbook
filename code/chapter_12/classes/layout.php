@@ -36,9 +36,9 @@ class Layout {
   }
 
   public function createPageStructure() { 
-    $this->show = ( isset($_GET['show'])     ? $_GET['show']       : '5' );
-    $this->from =  ( isset($_GET['from'])       ? $_GET['from']       : '0' );
-    $this->search =  ( isset($_GET['search'])       ? $_GET['search']       : '' );
+    $this->show =   ( isset($_GET['show'])   ? $_GET['show']       : '5');
+    $this->from =   ( isset($_GET['from'])   ? $_GET['from']       : '0');
+    $this->search = ( isset($_GET['search']) ? $_GET['search']     : '' );
     switch($this->category) {
       case "login":
         $this->single_templates = array("header","menu","login","search","login_form","footer");
@@ -68,7 +68,7 @@ class Layout {
 
   public function checkParameters() { 
     //Page action to take
-    switch($this->parameters) {
+      switch($this->parameters) {
         case "logout":
           submit_logout();
           break;     
@@ -76,14 +76,14 @@ class Layout {
           submit_like($this->connection);
           break;
         case "add_comment":
-            if (!isset($_SESSION["user2"])) {
-              header('Location: /phpsqlbook/login');
-            } else {   
-           $user_id = get_user_from_session(); 
-           $comment = new Comment('',$_GET["id"],$user_id, '', $_POST["commentText"],'', $_GET["comment"]);
-           $comment->create();
-           header('Location: '.$_SERVER['HTTP_REFERER']);
-  }
+          if (!isset($_SESSION["user2"])) {
+            header('Location: /phpsqlbook/login');
+          } else {   
+            $user_id = get_user_from_session(); 
+            $comment = new Comment('',$_GET["id"],$user_id, '', $_POST["commentText"],'', $_GET["comment"],'','');
+            $comment->create();
+            header('Location: '.$_SERVER['HTTP_REFERER']);
+          }
           break;	
      }
   }
@@ -148,36 +148,37 @@ class Layout {
         }
         break;
       case "comments":
-        $comment_list = getCommentsById($this->connection, $param);
+       /* $comment_list = getCommentsById($this->connection, $param);
         $comment_count =  count($comment_list);
         $comments = new CommentList($comment_list);
         if ($comment_count==0) {
              $comment = getBlankComment($this->connection);
              $comments = $comments->add($comment->{".new_id"},$param,'','', '','');
         }
-        display_comments($comments,$comment_count);   
+        display_comments($comments,$comment_count); */  
+        $comment_list = getCommentsById($this->connection, $param);
+        $comment_count =  count($comment_list);
+        $comments = new CommentList($comment_list); 
+        $new = array();  
+        $nestedcomments_row = array();
+        foreach ($comment_list as $row) {
+          $nestedcomments_row[] = $row;
+        }
+        foreach ($nestedcomments_row as $branch) {
+                $new[$branch->{'comments.repliedto_id'}][]=$branch;             
+        }
+        if (isset($new[0])) { 
+            $comments = new CommentList(create_tree($new, $new[0]));
+        } 
+        if ($comment_count==0) {
+            $comment = getBlankComment($this->connection);
+            $comments = $comments->add($comment->{".new_id"},$param,'','', '','');
+        }
+        display_comments2($comments, $comment_count); 
         break;   
       default:
         include("templates/".$template.".php");     
         break;
-     /*  $total =   $this->get_article_comments_count($articleid);
-
-        $result = $this->connection->get_article_comments($param);  
-        }
-        $this->indent = 0;
-        $new = array();  
-        $nestedcomments_row = array();
-        foreach ($result as $row) {
-          $nestedcomments_row[] = $row;
-          $this->counter = $row->{'.Total'};
-        }
-        foreach ($nestedcomments_row as $branch) {
-          $new[$branch->{'comments.repliedto_id'}][]=$branch;             
-        }
-        if (isset($new[0])) {
-          $result = create_tree($new, $new[0]); 
-        } 
-        display_comments2($result, $this->counter, $this->indent); */
     }
   }
 

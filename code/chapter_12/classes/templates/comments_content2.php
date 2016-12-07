@@ -1,37 +1,33 @@
-<div style="padding-left:10px;" class="accordion" id="accordion2">
-  <div class="accordion-group">    
-    <div class="accordion-heading" style="float:left; ">
-      <a style="margin-bottom:15px;" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" onclick="javascript:$('#collapse{{comments.article_id}}').toggle();">
-        <img src="/phpsqlbook/code/chapter_12/assets/comments-xl.png" /> Comments: {{.Total}}
-      </a>
-      <input name='articleid' type='hidden' value='{{comments.article_id}}'/>
-    </div>
-    <div id="collapsed{{comments.article_id}}" class="accordion-body collapse" >
-      <div class="accordion-inner">   
-       <u style="margin-left:10px;"><a onclick="javascript:$('#comment_box{{comments.article_id}}').toggle();">Add a new comment</a></u>
-        <form id="form{{comments.id}}" method="post"  action="/phpsqlbook/comments/add_comment?id={{comments.article_id}}&comment=0">
-          <div id="comment_box{{comments.article_id}}" style="display:none;"><br/>
-            <label for="commentText">Comment:</label>
-            <textarea id="commentText{{comments.id}}" name="commentText" class="collapsearea" class="height"/></textarea>
-            <button type="submit" class="btn btn-default">Submit Comment</button>
-          </div>
-        </form>
-        </div><br/> 
-        <div id='collapse{{comments.article_id}}' class="accordion-body collapse" style="display:none;">
+<div style="margin-left:10px"><img src="/phpsqlbook/code/chapter_12/assets/comments-xl.png" /> Comments: {{commentCount}}
+ <a id="link{{id}}" href="#">Add a comment</a>
+ <form id="form{{id}}" method="post"  action="/phpsqlbook/comments/add_comment?id={{articleId}}&comment={{id}}" style="display:none;">
+  <label for="commentText">Comment:</label>
+  <textarea id="Textarea1" name="commentText" class="collapsearea" class="height"/></textarea>
+  <button type="submit" class="btn btn-default">Submit Comment</button>
+ </form>
+ <script>
+     $("#link{{id}}").click(function () {
+         $("#form{{id}}").toggle();
+     });
+</script>
+</div>
           [[for]]
-          <div class="accordion-inner">
-            <div id="commenterbox{{comments.id}}" style="float:left; ">
-              <span class='small_name'>{{comments.comment}}</span> 
-              <span class='small_name'><i>{{user.forename}} {{user.surname}}</i></span> 
-              <span class='small_name'>{{comments.posted}} </span>
+            <div id="commenterbox{{id}}" style="float:left;margin-left:10px; ">
+              <span class='small_name'>{{comment}}</span> 
+              <span class='small_name'><i>{{author}}</i></span> 
+              <span class='small_name'>{{posted}} </span>
             </div>
-           <div >&nbsp;<a style="position:relative;left:10px;" onclick="javascript:$('#comment_box{{comments.id}}').toggle();"><u>Reply to this comment</u></a></div>
-           <form id="form{{comments.id}}" method="post" action="/phpsqlbook/comments/add_comment?id={{comments.article_id}}&comment={{comments.id}}">
-             <div id="comment_box{{comments.id}}" style="display:none;"><br/>
+           <div >&nbsp;<a id="linker{{id}}" href="#" style="position:relative;left:10px;"><u>Reply to a comment</u></a></div>
+           <form id="former{{id}}" method="post" action="/phpsqlbook/comments/add_comment?id={{articleId}}&comment={{id}}" style="display:none;">
+             <div id="comment_box{{id}}" ><br/>
                <label for="commentText">Comment:</label>
-               <textarea id="commentText{{comments.id}}" name="commentText" class="collapsearea height"/></textarea>
+               <textarea id="commentText{{id}}" name="commentText" class="collapsearea height"/></textarea>
                <button type="submit" class="btn btn-default">Submit Comment</button>
              </div>
            </form>
-         </div>
+<script>
+    $("#linker{{id}}").click(function () {
+        $("#former{{id}}").toggle();
+    });
+</script>
          [[next]]
