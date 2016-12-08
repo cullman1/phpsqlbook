@@ -10,7 +10,7 @@ class Comment {
   public $database;
   public $indent;
   
-  function __construct ($id=0, $articleid, $userid, $author, $comment, $date, $commentid=0, $children='', $indent='') {
+  function __construct ($id=0, $articleid, $userid, $author, $comment, $date, $commentid=0, $indent='') {
     $this->registry    = Registry::instance();
     $this->database    = $this->registry->get('database');  
     $this->connection  = $this->database->connection;
@@ -21,7 +21,6 @@ class Comment {
     $this->comment     = $comment;
     $this->repliedToId = $commentid;
     $this->posted      = $date;
-    $this->children  = $children;
     $this->indent = $indent;
   }
 

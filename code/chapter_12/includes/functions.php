@@ -80,7 +80,6 @@ function create_pagination($count, $show, $from, $search) {
 function display_comments($commentlist, $commentcount) {   
    $string=file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content.php");
   $regex = '#{{(.*?)}}#';
-  preg_match_all($regex, $string, $matches);
   $opening_tag = strpos($string, "[[for]]");
   $closing_tag = strpos($string, "[[next]]",$opening_tag+1);     
   $string1= str_replace("[[for]]","", $string);
@@ -116,16 +115,15 @@ function display_comments($commentlist, $commentcount) {
 function display_comments2($commentlist, $commentcount) {   
     $string=file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content2.php");
     $regex = '#{{(.*?)}}#';
-    preg_match_all($regex, $string, $matches);
     $opening_tag = strpos($string, "[[for]]");
     $closing_tag = strpos($string, "[[next]]",$opening_tag+1);
     $string1= str_replace("[[for]]","", $string);
     $string2= str_replace("[[next]]","", $string1);
     $head= substr($string2, 0, $opening_tag);
+    preg_match_all($regex, $head, $head_matches);
     $remain = $closing_tag - $opening_tag;
     $body = array();
     $count=0;
-    $indent=0;
     if (!isset($_SESSION["user2"])) {
         $head= str_replace("Add a new comment","",$head);
     }
@@ -133,17 +131,34 @@ function display_comments2($commentlist, $commentcount) {
         $row->{'commentCount'} = $commentcount; 
         $comments = substr($string2,$opening_tag+1,$remain-9);
         if ($count==0) {
-            $head = field_replace($head, $matches[0],$row); 
+            $head = field_replace($head, $head_matches[0],$row); 
             echo $head;
         }        
         if( $commentcount > 0) {
-            $body=recursive_check($regex, $comments,$row,$body,$count,$indent , $commentcount);
+            $body=show_children($regex, $comments,$row,$body,$count, $row->{'indent'} , $commentcount);
         }
         $count++;   
     }
     echo "</div></div></div></div>"; 
 }
 
+
+function show_children($regex, $body, $row, $combined_comments, $count, $indent) {
+  preg_match_all($regex, $body, $inner_matches);
+  foreach($inner_matches[0] as $value) {   
+    $replace= str_replace("{{","", $value);
+    $replace= str_replace("}}","", $replace);
+    $body=str_replace($value,$row->{$replace},$body);  
+    if ($indent > 0) { 
+       $combined_comments[$count]="<div style='margin-left:".$indent."px'><img src='/phpsqlbook/code/chapter_12/assets/plus.png' style='float:left;width:16px;padding-right:4px;'/>".$body."</div>"; 
+    } else {
+        $combined_comments[$count] = $body;
+    }
+  }
+  echo $combined_comments[$count];
+  $count++;
+  return $combined_comments;
+}
 
 function field_replace($body, $matches, $row) {
       foreach($matches as $value) {         
@@ -213,7 +228,6 @@ function create_tree(&$list, $parent){
   $tree = array();
   foreach ((array) $parent as $key=>$reply) {
     if (isset($list[$reply->{'comments.id'}])) {
-        echo "HereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHereHere";
         $reply->{'children'} = create_tree($list, $list[$reply->{'comments.id'}]);
     }
     $tree[] = $reply;
@@ -221,26 +235,9 @@ function create_tree(&$list, $parent){
   return $tree;
 }
 
-function recursive_check($regex, $body, $row, $combined, $counter, $indent, $check) {
-  $combined= tag_replace($regex, $body, $row, $combined, $counter, $indent);
-  if (!isset($_SESSION["user2"]) || ($check ==0)) {
-    $combined[$counter]= str_replace("Reply to this comment","",$combined[$counter]);
-  }
-  echo $combined[$counter];
-  $counter++;
-  if (isset($row->{'indent'})) {   
-    $indent+=20;
-    foreach ($row->{'children'} as $row2) {    
-      $combined = recursive_check($regex, $body, $row2, $combined, $counter, $indent, $check);
-    }      
-  } else {      
-    $indent=0;
-  } 
-   if (!isset($_SESSION["user2"])) {
-      $combined= str_replace("Add a comment","",  $combined);
-    }
-  return $combined;
-}
+
+
+
 
   function get_article_by_id($id) {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
@@ -253,20 +250,7 @@ function recursive_check($regex, $body, $row, $combined, $counter, $indent, $che
     return $article; 
   }
 
-function tag_replace($regex, $body, $row, $combined_comments,$counter, $indent) {
-  preg_match_all($regex, $body, $inner_matches);
-  foreach($inner_matches[0] as $value) {   
-    $replace= str_replace("{{","", $value);
-    $replace= str_replace("}}","", $replace);
-    $body=str_replace($value,$row->{$replace},$body);  
-    if ($indent > 0) { 
-       $combined_comments[$counter]="<div style='margin-left:".$indent."px'><img src='/phpsqlbook/code/chapter_12/assets/plus.png' style='float:left;width:16px;padding-right:4px;'/>".$body."</div>"; 
-    } else {
-        $combined_comments[$counter] = $body;
-    }
-  }
-  return $combined_comments; 
-}
+
 
   
 

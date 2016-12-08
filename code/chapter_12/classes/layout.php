@@ -80,7 +80,7 @@ class Layout {
             header('Location: /phpsqlbook/login');
           } else {   
             $user_id = get_user_from_session(); 
-            $comment = new Comment('',$_GET["id"],$user_id, '', $_POST["commentText"],'', $_GET["comment"],'','');
+            $comment = new Comment('',$_GET["id"],$user_id, '', $_POST["commentText"],'', $_GET["comment"],'');
             $comment->create();
             header('Location: '.$_SERVER['HTTP_REFERER']);
           }
@@ -148,33 +148,12 @@ class Layout {
         }
         break;
       case "comments":
-       /* $comment_list = getCommentsById($this->connection, $param);
-        $comment_count =  count($comment_list);
-        $comments = new CommentList($comment_list);
-        if ($comment_count==0) {
+        $comments = new CommentList(getCommentsById($this->connection, $param));
+        if ($comments->commentCount==0) {
              $comment = getBlankComment($this->connection);
              $comments = $comments->add($comment->{".new_id"},$param,'','', '','');
         }
-        display_comments($comments,$comment_count); */  
-        $comment_list = getCommentsById($this->connection, $param);
-        $comment_count =  count($comment_list);
-        $comments = new CommentList($comment_list); 
-        $new = array();  
-        $nestedcomments_row = array();
-        foreach ($comment_list as $row) {
-          $nestedcomments_row[] = $row;
-        }
-        foreach ($nestedcomments_row as $branch) {
-                $new[$branch->{'comments.repliedto_id'}][]=$branch;             
-        }
-        if (isset($new[0])) { 
-            $comments = new CommentList(create_tree($new, $new[0]));
-        } 
-        if ($comment_count==0) {
-            $comment = getBlankComment($this->connection);
-            $comments = $comments->add($comment->{".new_id"},$param,'','', '','');
-        }
-        display_comments2($comments, $comment_count); 
+        display_comments2($comments,$comments->commentCount);
         break;   
       default:
         include("templates/".$template.".php");     
