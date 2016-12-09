@@ -142,7 +142,6 @@ function display_comments2($commentlist, $commentcount) {
     echo "</div></div></div></div>"; 
 }
 
-
 function show_children($regex, $body, $row, $combined_comments, $count, $indent) {
   preg_match_all($regex, $body, $inner_matches);
   foreach($inner_matches[0] as $value) {   
