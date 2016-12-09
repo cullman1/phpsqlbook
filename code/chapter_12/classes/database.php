@@ -79,7 +79,7 @@ public function append_row_count($article_list, $num_rows) {
 }
 
  public function insert_article_comment($articleid, $userid, $comment, $commentid=0) {
- $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
+ $query = "INSERT INTO comments (comment, article_id, user_id, posted, replyto_id) 
            VALUES  (:comment,:articleid, :userid, :date, :commentid)";
  $statement = $this->connection->prepare($query);
   $statement->bindParam(':comment',$comment);

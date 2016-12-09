@@ -79,8 +79,7 @@ class Layout {
           if (!isset($_SESSION["user2"])) {
             header('Location: /phpsqlbook/login');
           } else {   
-            $user_id = get_user_from_session(); 
-            $comment = new Comment('',$_GET["id"],$user_id, '', $_POST["commentText"],'', $_GET["comment"],'');
+            $comment = new Comment(0, $_GET["id"], get_user_from_session(), '', $_POST["comment"],'', $_GET["reply"],0);
             $comment->create();
             header('Location: '.$_SERVER['HTTP_REFERER']);
           }

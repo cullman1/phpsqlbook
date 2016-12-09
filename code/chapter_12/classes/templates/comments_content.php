@@ -1,8 +1,8 @@
 <div style="margin-left:10px"><img src="/phpsqlbook/code/chapter_12/assets/comments-xl.png" /> Comments: {{commentCount}}
  <a id="link{{id}}" href="#">Add a comment</a>
- <form id="form{{id}}" method="post"  action="/phpsqlbook/comments/add_comment?id={{articleId}}&comment={{id}}" style="display:none;">
-  <label for="commentText">Comment:</label>
-  <textarea id="commentText{{id}}" name="commentText" class="collapsearea" class="height"/></textarea>
+ <form id="form{{id}}" method="post"  action="/phpsqlbook/comments/add_comment?id={{articleId}}&reply=0" style="display:none;">
+  <label for="comment">Comment:</label>
+  <textarea id="comment{{id}}" name="comment" class="collapsearea" class="height"/></textarea>
   <button type="submit" class="btn btn-default">Submit Comment</button>
  </form>
  <script>

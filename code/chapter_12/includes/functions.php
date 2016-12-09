@@ -156,7 +156,6 @@ function show_children($regex, $body, $row, $combined_comments, $count, $indent)
     }
   }
   echo $combined_comments[$count];
-  $count++;
   return $combined_comments;
 }
 
@@ -223,21 +222,6 @@ function setLike($connection, $userid, $articleid) {
     $statement->bindParam(":articleid", $articleid);
     $statement->execute();
  }
-
-function create_tree(&$list, $parent){
-  $tree = array();
-  foreach ((array) $parent as $key=>$reply) {
-    if (isset($list[$reply->{'comments.id'}])) {
-        $reply->{'children'} = create_tree($list, $list[$reply->{'comments.id'}]);
-    }
-    $tree[] = $reply;
-  } 
-  return $tree;
-}
-
-
-
-
 
   function get_article_by_id($id) {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
