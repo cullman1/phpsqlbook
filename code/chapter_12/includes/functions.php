@@ -1,6 +1,7 @@
 <?php
 require_once('../classes/user.php');
 require_once('../classes/comment.php');
+require_once('../classes/like.php');
 
 function get_user_from_session() {
   if (isset($_SESSION["user2"])) {
@@ -189,38 +190,39 @@ function field_replace($body, $matches, $row) {
     return $statement->fetch();  
   }
 
- function submit_like($connection) {
-  if (!isset($_SESSION["user2"])) {
-    header('Location: /phpsqlbook/login/');
-  } else {    
+function submitLike() {  
+  if (isset($_SESSION["user2"])) {
+    $like = new Like($_GET["article"], $_GET["user"],)
     if($_GET['liked']=="0") {
-   setLike($connection, $_GET["user_id"], $_GET["article_id"]); 
-   } else {
-   removeLike($connection,$_GET["user_id"], $_GET["article_id"]); 
-   }
-   if(isset($_SERVER['HTTP_REFERER'])) {
-     header('Location: '.$_SERVER['HTTP_REFERER']);
-   } else {
-     header('Location: /phpsqlbook/home/');
-   }
+      $like->addLike($_GET["user"], $_GET["article"]);
+    } else {
+      $like->purgeLike($_GET["user"], $_GET["article"]);
+    }
+    if (isset($_SERVER['HTTP_REFERER'])) {
+      header('Location: '.$_SERVER['HTTP_REFERER']);
+    }
+    header('Location: /phpsqlbook/home/');
   }
+  header('Location: /phpsqlbook/login/');
 }
 
-function setLike($connection, $userid, $articleid) {
-    $query = "INSERT INTO article_like (user_id, article_id) VALUES (:userid, :articleid)";
-    $statement = $connection->prepare($query);
-    $statement->bindParam(":userid", $userid);
-    $statement->bindParam(":articleid", $articleid);
-    $statement->execute();
- }
+function addLike($userid, $articleid) { 
+  $sql = "INSERT INTO like (user_id, article_id)  
+          VALUES (:userid, :id)";
+  $statement = $this->connection->prepare($sql);
+  $statement->bindParam(":userid", $userid);
+  $statement->bindParam(":id", $articleid);
+  $statement->execute();
+}
 
- function removeLike($connection,  $userid, $articleid) {
-      $query = "DELETE FROM article_like WHERE user_id= :userid and article_id= :articleid";
-    $statement = $connection->prepare($query);
-    $statement->bindParam(":userid", $userid);
-    $statement->bindParam(":articleid", $articleid);
-    $statement->execute();
- }
+function purgeLike($userid, $articleid) {
+  $sql = "DELETE FROM like WHERE user_id= :userid AND 
+          article_id= :id";
+  $statement = $this->connection->prepare($sql);
+  $statement->bindParam(":userid", $userid);
+  $statement->bindParam(":id", $articleid);
+  $statement->execute();
+}
 
   function get_article_by_id($id) {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
@@ -320,7 +322,7 @@ function getArticlesBySearch($connection, $show='', $from='', $sort='', $dir='AS
  $statement->execute();
  $statement->setFetchMode(PDO::FETCH_OBJ);
  $user = $statement->fetch();  
- return append_blank_image($user,'blank.png');;
+ return append_blank($user,'blank.png');;
 }
 
  function getUserByArticleId($connection, $id) { 
@@ -330,10 +332,10 @@ function getArticlesBySearch($connection, $show='', $from='', $sort='', $dir='AS
    $statement->execute();
    $statement->setFetchMode(PDO::FETCH_OBJ);
    $user = $statement->fetch();  
-   return append_blank_image($user,'blank.png');;
+   return append_blank($user,'blank.png');;
 }
 
- function append_blank_image($user, $image) {
+ function append_blank($user, $image) {
 
       if (empty($user->{"user.image"})) {
         $user->{"user.image"} = $image;
@@ -360,7 +362,7 @@ function getCategoryListArray($connection) {
   return $category_list;
 }
 
-function getAllLikes($connection, $user_id,$article_id) {
+function getAllLikes2($connection, $user_id,$article_id) {
   $query = "select distinct :artid as articleid, :userid as userid, (select count(*) as likes FROM article_like where article_id=:artid and user_id=:userid ) as likes_count, (select count(article_id) as likes FROM article_like where article_id=:artid) as likes_total FROM article_like as a right outer join (select id FROM article where id=:artid) as b ON (b.id = a.article_id) where b.id=:artid"; 
   $statement = $connection->prepare($query);
   $statement->bindParam(':artid', $article_id);
@@ -370,5 +372,40 @@ function getAllLikes($connection, $user_id,$article_id) {
   $author_list = $statement->fetchAll();  
    return $author_list;
 }
+
+function getAllLikes($connection, $user_id,$article_id) {
+  $like = new Like($article_id, $user_id);
+  $like->total= getLikesTotal($article_id);
+  $like->count= getLikesCount($article_id, $user_id);
+  return $like;
+}
+
+function getCount($connection,$article_id, $user_id) {
+  $query = "select count(*) as likes_count FROM article_like where article_id=:artid and user_id=:userid "; 
+  $statement = $connection->prepare($query);
+  $statement->bindParam(':artid', $article_id);
+  $statement->bindParam(':userid',$user_id);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);  
+  return $statement->fetchAll()->{".likes_count"};  
+}
+
+function getTotal($connection, $article_id) {
+  $query = "select count(article_id) as likes_total FROM like where article_id=:artid"; 
+  $statement = $connection->prepare($query);
+  $statement->bindParam(':artid', $article_id);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);  
+ return $statement->fetchAll()->{".likes_total"};  
+
+}
+
+function getAllLikes2($connection, $user_id,$article_id) {
+  $like = new Like($article_id,$user_id);
+  $like->getLikesTotal = getLikesTotal($connection, $article_id);
+  $like->getLikesCount = getLikesCount($connection, $article_id,$user_id);
+  return $like;
+}
+
 
 ?>

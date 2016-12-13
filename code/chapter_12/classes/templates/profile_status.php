@@ -4,7 +4,7 @@ $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','p
  $profile = getUserById($this->connection,$_GET["id"]); 
 ?>
   <h2>User Profile</h2>
-  <div id="Status" style="color:red;" >
+  <div id="Status" style="color:red; display:none;" >
     <span class="<?= $alert['status']; ?>"><?= $alert['message']; ?></span>
   </div>
  <label class="fieldheading">Name: </label><?= $profile->{'user.forename'}; ?> <?= $profile->{'user.surname'}; ?><br/><br/>

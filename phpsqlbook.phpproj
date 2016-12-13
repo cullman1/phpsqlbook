@@ -152,6 +152,7 @@
     <Compile Include="code\chapter_11\test.php" />
     <Compile Include="code\chapter_11\throw.php" />
     <Compile Include="code\chapter_12\assets\login-variables.php" />
+    <Compile Include="code\chapter_12\classes\like.php" />
     <Compile Include="code\chapter_12\classes\commentlist.php" />
     <Compile Include="code\chapter_12\classes\userlist.php" />
     <Compile Include="code\chapter_12\classes\categorylist.php" />

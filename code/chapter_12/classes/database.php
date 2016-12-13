@@ -322,10 +322,10 @@ function get_user_by_id($id) {
   $statement->execute();                                  // Execute
   $statement->setFetchMode(PDO::FETCH_OBJ);                         // Get data
    $user = $statement->fetchAll();   
-  return $this->append_blank_image($user,'blank.png');
+  return $this->append_blank($user,'blank.png');
 }
 
-public function append_blank_image($user_list, $image) {
+public function append_blank($user_list, $image) {
     foreach ($user_list as $user) {
       if (empty($user->{"user.image"})) {
         $user->{"user.image"} = $image;

@@ -61,19 +61,18 @@ class Layout {
       case "search":
       default:
         $this->single_templates = array("header", "menu",  "login", "search","article","footer");
-        $this->repeating_templates = array("main_content", "author", "like", "comments");
+        $this->repeating_templates = array("main_content");
         break;     
     }
   }
 
   public function checkParameters() { 
-    //Page action to take
       switch($this->parameters) {
         case "logout":
           submit_logout();
           break;     
         case "likes":
-          submit_like($this->connection);
+          submitLike($this->connection);
           break;
         case "add_comment":
           if (!isset($_SESSION["user2"])) {
@@ -131,7 +130,7 @@ class Layout {
     $user_id=get_user_from_session(); 
     switch($template) {
       case "like":   
-        $likes_list = getAllLikes($this->connection, $user_id, $param);
+        $likes_list = getAllLikes( $user_id, $param);
         foreach($likes_list as $likes) {
           $this->mergeData($likes,"like_content");
         }
