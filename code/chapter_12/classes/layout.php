@@ -61,7 +61,7 @@ class Layout {
       case "search":
       default:
         $this->single_templates = array("header", "menu",  "login", "search","article","footer");
-        $this->repeating_templates = array("main_content");
+        $this->repeating_templates = array("main_content","like");
         break;     
     }
   }
@@ -72,7 +72,7 @@ class Layout {
           submit_logout();
           break;     
         case "likes":
-          submitLike($this->connection);
+          submitLike();
           break;
         case "add_comment":
           if (!isset($_SESSION["user2"])) {
@@ -98,8 +98,7 @@ class Layout {
 
   public function assembleArticles($templates) {
     //Get the category
-    $this->registry->set('category',new Category($this->category));
-    $category = $this->registry->get('category');
+    $category = new Category($this->category);
     //Get all articles
     $articlesList = new ArticleList("generic", $this->getArticles($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters)));
     //If we've got more than zero articles
@@ -126,30 +125,30 @@ class Layout {
     }
   }
 
-  public function getHTMLTemplate($template, $param="") {
-    $user_id=get_user_from_session(); 
+  public function getHTMLTemplate($template, $articleId="") {
+      $userId=get_user_from_session(); 
     switch($template) {
       case "like":   
-        $likes_list = getAllLikes( $user_id, $param);
-        foreach($likes_list as $likes) {
-          $this->mergeData($likes,"like_content");
-        }
+          $like = new Like($articleId, $userId);
+          $like->setTotal($articleId);
+          $like->setLiked($articleId, $userId);
+        $this->mergeData($like,"like_content");
         break;
       case "author":
-        $user = getUserByArticleId($this->connection, $param);
+          $user = getUserByArticleId($this->connection, $articleId);
         $this->mergeData($user,"author_content");
         break;
       case "menu":
-        $categorylist = new CategoryList($this->connection, getCategoryList($this->connection,$param));
+          $categorylist = new CategoryList(getCategoryList($this->connection,$articleId));
         foreach($categorylist->categories as $category) {
           $this->mergeData($category,"menu_content");
         }
         break;
       case "comments":
-        $comments = new CommentList(getCommentsById($this->connection, $param));
+          $comments = new CommentList(getCommentsById($this->connection, $articleId));
         if ($comments->commentCount==0) {
              $comment = getBlankComment($this->connection);
-             $comments = $comments->add($comment->{".new_id"},$param,'','', '','');
+             $comments = $comments->add($comment->{".new_id"},$articleId,'','', '','');
         }
         display_comments2($comments,$comments->commentCount);
         break;   

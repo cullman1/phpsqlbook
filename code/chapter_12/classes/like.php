@@ -1,38 +1,54 @@
 <?php 
 class Like {
   public $total;
-  public $likedByUser;
+  public $liked;
   public $articleId;
   public $userId;
   public $connection;
 
-  function __construct ($articleid, $userid) {
+  function __construct ($article_id, $user_id) {
     $this->registry   = Registry::instance();
     $this->database   = $this->registry->get('database');
-    $this->connection =  $this->database->connection;
-    $this->articleId  = $articleid;
-    $this->userId     = $userid;
+    $this->connection = $this->database->connection;
+    $this->articleId  = $article_id;
+    $this->userId     = $user_id;
   }
 
-  function getCount() {
-    $query = "SELECT count(*) as likes_count FROM like 
-              WHERE article_id=:id and user_id=:userid"; 
-    $statement = $connection->prepare($query);
-    $statement->bindParam(':id', $this->$article_id);
-    $statement->bindParam(':userid', $this->user_id);
+  function setLiked() {
+    $query = "SELECT count(*) as liked FROM liked WHERE article_id=:articleid and user_id=:userid"; 
+    $statement = $this->connection->prepare($query);
+    $statement->bindParam(':articleid', $this->articleId);
+    $statement->bindParam(':userid', $this->userId);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);  
-    return $statement->fetchAll()->{".likes_count"};  
+    $liked = $statement->fetch();
+    $this->liked = $liked->{'.liked'};
   }
 
-  function getTotal() {
-    $query = "SELECT count(article_id) as likes_total 
-              FROM like WHERE article_id=:id"; 
-    $statement = $connection->prepare($query);
-    $statement->bindParam(':id', $this->$article_id);
+  function setTotal() {
+      $query = "SELECT count(*) as total FROM liked WHERE article_id= :articleid"; 
+    $statement = $this->connection->prepare($query);
+    $statement->bindParam(':articleid', $this->articleId);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);  
-    return $statement->fetchAll()->{".likes_total"};  
+     $liked = $statement->fetch();  
+     $this->total = $liked->{".total"};
+  }
+
+  function add() { 
+      $sql = "INSERT INTO liked (user_id, article_id) VALUES (:userid, :articleid)";
+      $statement = $this->connection->prepare($sql);
+      $statement->bindParam(":userid", $this->userId);
+      $statement->bindParam(":articleid", $this->articleId);
+      $statement->execute();
+  }
+
+  function delete() {
+      $sql = "DELETE FROM liked WHERE user_id= :userid AND article_id= :articleid";
+      $statement = $this->connection->prepare($sql);
+      $statement->bindParam(":userid", $this->userId);
+      $statement->bindParam(":articleid", $this->articleId);
+      $statement->execute();
   }
 } 
 ?>
