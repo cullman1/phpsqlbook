@@ -183,6 +183,7 @@
     <Compile Include="code\chapter_12\classes\urlrewriter.php" />
     <Compile Include="code\chapter_12\classes\user_old.php" />
     <Compile Include="code\chapter_12\classes\validate.php" />
+    <Compile Include="code\chapter_12\pages\index2.php" />
     <Compile Include="code\includes\validate.php" />
     <Compile Include="code\chapter_12\pages\filter.php" />
     <Compile Include="code\chapter_12\pages\index.php" />

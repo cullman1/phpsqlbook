@@ -3,10 +3,8 @@
  private $item;  
  private $server;
  private $parameters="";
- private $registry;
     
  public function __construct() { 
-    $this->registry = Registry::instance();
     $this->parseUrl(0); 
   }
 
@@ -23,8 +21,7 @@
   } 
 
   public function routeRequest() {
-    $this->registry->set('Layout', new Layout($this->server,$this->category,$this->item));
-    $layout = $this->registry->get('Layout');
+    $layout = new Layout($this->server,$this->category,$this->item);
     $layout->checkParameters();
     $layout->createPageStructure();
     $layout->assemblePage();
