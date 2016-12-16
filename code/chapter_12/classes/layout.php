@@ -7,13 +7,15 @@ require_once('categorylist.php');
 require_once('commentlist.php');
 require_once('comment.php');
 require_once('validate.php');
+require_once('registry.php');
+require_once('database.php');
 include('../includes/functions.php');
 
 class Layout {
   private $registry;
   private $server;
   private $category;
-  private $parameters;
+  private $item;
   private $connection;
   private $single_templates = array();
   private $repeating_templates = array();
@@ -25,14 +27,17 @@ class Layout {
   private $indent;
   private $articlesCount;
 
-  public function __construct($server, $category, $parameters) {
+  public function __construct($server, $category, $item) {
     $this->registry = Registry::instance();
     $this->server = $server;
     $this->category = $category;
-    $this->parameters = $parameters;
+    $this->item = $item;
     $this->registry->set('database',new Database());
     $this->database = $this->registry->get('database');  
     $this->connection =  $this->database->connection;
+        $this->checkURL();
+    $this->createPageStructure();
+    $this->assemblePage();
   }
 
   public function createPageStructure() { 
@@ -52,7 +57,7 @@ class Layout {
         $this->repeating_templates = array("no_date_content");
         break;
       case "profile":
-        if ($this->parameters=="view") {
+        if ($this->item=="view") {
           $this->single_templates = array("header","menu","login","search","profile_status","footer");
         } else {
           $this->single_templates = array("header","menu","login","search","profile_update","footer");
@@ -66,8 +71,8 @@ class Layout {
     }
   }
 
-  public function checkParameters() { 
-      switch($this->parameters) {
+  public function checkURL() { 
+      switch($this->item) {
         case "logout":
           submit_logout();
           break;     
@@ -100,7 +105,7 @@ class Layout {
     //Get the category
     $category = new Category($this->category);
     //Get all articles
-    $articlesList = new ArticleList("generic", $this->getArticles($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->parameters)));
+    $articlesList = new ArticleList("generic", $this->getArticles($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->item)));
     //If we've got more than zero articles
     if (sizeof($articlesList->articles)!=0) {        
       //Loop through each article id             

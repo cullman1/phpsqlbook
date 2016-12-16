@@ -14,6 +14,6 @@ $registry = Registry::instance();
 $registry->set('database', new Database());
 
 //Url handling
-$registry->set('urlrewriter', new UrlRewriter());
-$urlhandler = $registry->get('urlrewriter');
-$urlhandler->routeRequest();?>
+$urlhandler =  new UrlRewriter();
+$layout = new Layout($urlhandler->server,$urlhandler->category,$urlhandler->item);
+?>

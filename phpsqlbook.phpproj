@@ -474,7 +474,6 @@
     <Content Include="code\chapter_08\namesonly.txt" />
     <Content Include="code\chapter_08\pansy.gif" />
     <Content Include="code\chapter_07\tiny.js" />
-    <Content Include="code\chapter_12\.htaccess" />
     <Content Include="code\chapter_12\assets\background.jpg" />
     <Content Include="code\chapter_12\assets\clip.jpg" />
     <Content Include="code\chapter_12\assets\clip.png" />
