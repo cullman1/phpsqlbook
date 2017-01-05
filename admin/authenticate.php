@@ -11,13 +11,13 @@ if (isset($_SESSION["user2"]))
                 if(empty($auth)) 
                 { 
                     
-	                header('Location:../login/login-admin.php');
+	                header('Location:../login/logi-admin.php');
                 }
 }
             else
             {
            
-                header('Location:../login/login-admin.php');   
+                header('Location:../login/logi-admin.php');   
             }
 
 /* admin/add-article.php

@@ -80,7 +80,7 @@ class Layout {
           submitLike();
           break;
         case "add_comment":
-          if (!isset($_SESSION["user2"])) {
+          if (!isset($_SESSION["login"])) {
             header('Location: /phpsqlbook/login');
           } else {   
             $comment = new Comment(0, $_GET["id"], get_user_from_session(), '', $_POST["comment"],'', $_GET["reply"],0);
@@ -105,7 +105,7 @@ class Layout {
     //Get the category
     $category = new Category($this->category);
     //Get all articles
-    $articlesList = new ArticleList("generic", $this->getArticles($this->connection, $category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->item)));
+    $articlesList = new ArticleList("generic", $this->getArticles($category->id, $this->show, $this->from, '', '' ,$this->search, '', str_replace('-',' ',$this->item)));
     //If we've got more than zero articles
     if (sizeof($articlesList->articles)!=0) {        
       //Loop through each article id             
@@ -130,30 +130,30 @@ class Layout {
     }
   }
 
-  public function getHTMLTemplate($template, $articleId="") {
+  public function getHTMLTemplate($template, $id="") {
       $userId=get_user_from_session(); 
     switch($template) {
       case "like":   
-          $like = new Like($articleId, $userId);
-          $like->setTotal($articleId);
-          $like->setLiked($articleId, $userId);
+          $like = new Like($id, $userId);
+          $like->setTotal($id);
+          $like->setLiked($id, $userId);
         $this->mergeData($like,"like_content");
         break;
       case "author":
-          $user = getUserByArticleId($this->connection, $articleId);
+          $user = getUserByArticleId($this->connection, $id);
         $this->mergeData($user,"author_content");
         break;
       case "menu":
-          $categorylist = new CategoryList(getCategoryList($this->connection,$articleId));
+          $categorylist = new CategoryList(getCategoryList($this->connection,$id));
         foreach($categorylist->categories as $category) {
           $this->mergeData($category,"menu_content");
         }
         break;
       case "comments":
-          $comments = new CommentList(getCommentsById($this->connection, $articleId));
+          $comments = new CommentList(getCommentsById($this->connection, $id));
         if ($comments->commentCount==0) {
              $comment = getBlankComment($this->connection);
-             $comments = $comments->add($comment->{".new_id"},$articleId,'','', '','');
+             $comments = $comments->add($comment->{".new_id"},$id,'','', '','');
         }
         display_comments2($comments,$comments->commentCount);
         break;   
@@ -163,15 +163,15 @@ class Layout {
     }
   }
 
-  function getArticles($connection, $category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
+  function getArticles($category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
     //search list
     $articlesList = null;
     if ((!empty($search)) || ($author_id > 0)) {  //search results
-     $this->articlesCount = count(getArticlesBySearch($connection,'', '', $sort='', $dir='ASC', $search, $author_id));
-     $articlesList = getArticlesBySearch($connection,$show, $from, $sort='', $dir='ASC', $search, $author_id);
+     $this->articlesCount = count(get_articles_by_search('', '', $sort='', $dir='ASC', $search, $author_id));
+     $articlesList = get_articles_by_search($show, $from, $sort='', $dir='ASC', $search, $author_id);
     } else {
-      $this->articlesCount = count(getArticlesByCategory($connection,'', '', $sort='', $dir='ASC', $category, $name));
-      $articlesList =  getArticlesByCategory($connection,$show, $from, $sort='', $dir='ASC', $category, $name);
+      $this->articlesCount = count(get_articles_by_category('', '', $sort='', $dir='ASC', $category, $name));
+      $articlesList =  get_articles_by_category($show, $from, $sort='', $dir='ASC', $category, $name);
     }
     return $articlesList;
 }

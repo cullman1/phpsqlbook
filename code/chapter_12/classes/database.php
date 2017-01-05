@@ -4,12 +4,11 @@ class Database{
   private $userName = "root";
   private $password = ""; 
   private $databaseName = "cms";
-  private $dbName       = "cms";
   public $connection;
 
   public function __construct() { 
     try {
-      $this->connection = new PDO("mysql:host=$this->serverName;dbname=$this->dbName", $this->userName, $this->password);
+      $this->connection = new PDO("mysql:host=$this->serverName;dbname=$this->databaseName", $this->userName, $this->password);
       $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
       $this->connection->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true); 
     } catch (PDOException $error) {

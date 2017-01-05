@@ -3,12 +3,12 @@ require_once('../includes/functions.php');
 $message='';
 $firstName    = ( isset($_POST['firstName'])    ? $_POST['firstName']    : '' ); 
 $lastName = ( isset($_POST['lastName']) ? $_POST['lastName'] : '' ); 
-$email    = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
+$email    = ( isset($_POST['emailAddress'])    ? $_POST['emailAddress']    : '' ); 
 $password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
 $this->error    = array('email' => '', 'password' =>'', 'firstName' => '', 'lastName' =>'');
 $alert  =   array('status' => '', 'message' =>'');
 
-if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   require_once('../classes/validate.php');
   $Validate = new Validate();
   $this->error['email']      = $Validate->isEmail($email);
@@ -23,7 +23,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
   } 
 } 
 ?> 
-<form id="form1" method="post" action="\phpsqlbook\register\">
+<form id="form1" method="POST" action="\phpsqlbook\register\">
       <h1>Please register:</h1>
          <span class="<?= $alert['status']; ?>"><?= $alert['message']; ?></span><br><br>
            <label for="emailAddress">Email address

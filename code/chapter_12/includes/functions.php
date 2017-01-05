@@ -4,7 +4,7 @@ require_once('../classes/comment.php');
 require_once('../classes/like.php');
 
 function get_user_from_session() {
-  if (isset($_SESSION["user2"])) {
+  if (isset($_SESSION["login"])) {
       $so = $_SESSION["user2"];
       $user_object = unserialize(base64_decode($so));
       $auth = $user_object->authenticated; 
@@ -15,6 +15,18 @@ function get_user_from_session() {
   return "0";
 }
 
+ function get_user_by_email($connection, $email) {
+  $query = "SELECT * from user WHERE email = :email";
+    $statement =$connection->prepare($query);
+    $statement->bindParam(':email',$email);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $author_list = $statement->fetchAll();
+   return $author_list;
+}
+
+
+
  function submit_login($connection, $email, $password) {
     $user =  $connection->get_user_by_email_passwordhash($email, $password); 
     if(sizeof($user)!=0) {
@@ -22,7 +34,12 @@ function get_user_from_session() {
         create_user_session($user);
         $user1 =  new User($user->{'user.id'}, $user->{'user.forename'} , $user->{'user.surname'},$user->{'user.email'},$user->{'user.password'},$user->{'user.joined'},$user->{'user.image'}, $user->{'user.id'});
         $_SESSION["user2"]=base64_encode(serialize($user1)); 
-        header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/home/'); 
+        $_SESSION["login"]=$user->{'user.id'}; 
+        if (isset($_SERVER['HTTP_REFERER'])) {
+              header('Location: /phpsqlbook/admin/');
+        } else {
+              header('Location: /phpsqlbook/home/');
+        }
         exit;
       } 
     } 
@@ -31,11 +48,11 @@ function get_user_from_session() {
 
   function submit_register($connection, $firstName, $lastName, $password, $email) {
     $alert  =   array('status' => '', 'message' =>'');
-    $statement = $connection->get_user_by_email( $email, $password);
+    $statement = get_user_by_email($connection, $email, $password);
     if(sizeof($statement)!=0) {
       $alert  =   array('status' => 'danger', 'message' =>'User exists, please try another email or login');
     } else   {   
-      $statement2 = $connection->add_user($firstName, $lastName,$password, $email);
+      $statement2 = add_user($connection,$firstName, $lastName,$password, $email);
       if($statement2===true) {  
         $alert  =   array('status' => 'success', 'message' =>'Registration succeeded');
       } else {
@@ -90,7 +107,7 @@ function display_comments($commentlist, $commentcount) {
   $remain = $closing_tag - $opening_tag;
   $body = array();
   $count=0; 
-  if (!isset($_SESSION["user2"])) {
+  if (!isset($_SESSION["login"])) {
      $head= str_replace("Add a comment","",$head);
   }
   foreach ($commentlist->comments as $row) {
@@ -125,7 +142,7 @@ function display_comments2($commentlist, $commentcount) {
     $remain = $closing_tag - $opening_tag;
     $body = array();
     $count=0;
-    if (!isset($_SESSION["user2"])) {
+    if (!isset($_SESSION["login"])) {
         $head= str_replace("Add a new comment","",$head);
     }
     foreach ($commentlist->comments as $row) { 
@@ -191,7 +208,7 @@ function field_replace($body, $matches, $row) {
   }
 
   function submitLike() {  
-      if (isset($_SESSION["user2"])) {
+      if (isset($_SESSION["login"])) {
           $like = new Like($_GET["article"], $_GET["user"]);
           if ($_GET['liked']=="0") {
               $like->add();
@@ -208,6 +225,23 @@ function field_replace($body, $matches, $row) {
       }
   }
 
+
+  function add_user($connection, $forename, $surname, $password, $email) {     
+  $query = 'INSERT INTO user (forename, surname, email, password) 
+            VALUES (:forename, :surname, :email, :password)';
+  $statement = $connection->prepare($query);
+  $statement->bindParam(':forename', $forename );
+  $statement->bindParam(':surname', $surname );
+  $statement->bindParam(':email',$email);
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $statement->bindParam(':password',$hash);
+  $result = $statement->execute();
+  if( $result == true ) {     
+      return true;
+  } else {
+      return $statement->errorCode();
+  }  
+ }
 
 function addLike($userid, $articleid) { 
   $sql = "INSERT INTO like (user_id, article_id)  
@@ -238,11 +272,7 @@ function purgeLike($userid, $articleid) {
     return $article; 
   }
 
-
-
-  
-
-function getArticlesByCategory($connection, $show, $from, $sort='', $dir='ASC', $category = 0, $name='') {
+function get_articles_by_category( $show, $from, $sort='', $dir='ASC', $category = 0, $name='') {
     $query= "select article.*, category.* FROM article JOIN user ON user.id = user_id JOIN category ON category.id= category_id where published <= now()";
     //category list
     if (($category > 0) && (!empty($name))) {
@@ -258,7 +288,7 @@ function getArticlesByCategory($connection, $show, $from, $sort='', $dir='ASC', 
       if (!empty($show)) {
       $query .= " limit " . $show . " offset " . $from;
     }
-     $statement =$connection->prepare($query);
+     $statement =$GLOBALS['connection']->prepare($query);
     if (($category > 0) && (!empty($name))) {
        $statement->bindParam(":name", $name); 
        $statement->bindParam(":id", $category); 
@@ -272,7 +302,7 @@ function getArticlesByCategory($connection, $show, $from, $sort='', $dir='ASC', 
     return $article_list;
 }
 
-function getArticlesBySearch($connection, $show='', $from='', $sort='', $dir='ASC', $search = '', $author_id='0') {
+function get_articles_by_search($show='', $from='', $sort='', $dir='ASC', $search = '', $author_id='0') {
     $query= "select article.*, category.* FROM article JOIN user ON user.id = user_id JOIN category ON category.id= category_id where published <= now()";
     $search_wildcards = "%". trim($search) . "%";    
     if (!empty($search)) {  //search results
@@ -292,7 +322,7 @@ function getArticlesBySearch($connection, $show='', $from='', $sort='', $dir='AS
     if (!empty($show)) {
       $query .= " limit " . $show . " offset " . $from;
     }
-    $statement = $connection->prepare($query);
+    $statement = $GLOBALS['connection']->prepare($query);
     if ($author_id > 0) {
         $statement->bindParam(":id", $author_id);    
     }

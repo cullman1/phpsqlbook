@@ -45,7 +45,6 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
-    <Compile Include="cmsfull\login\login-user.php" />
     <Compile Include="code\chapter_02\associative-arrays.php" />
     <Compile Include="code\chapter_02\basic-example.php" />
     <Compile Include="code\chapter_02\comparison-operators.php" />
@@ -151,6 +150,7 @@
     <Compile Include="code\chapter_11\set_exception.php" />
     <Compile Include="code\chapter_11\test.php" />
     <Compile Include="code\chapter_11\throw.php" />
+    <Compile Include="code\chapter_12\admin\index.php" />
     <Compile Include="code\chapter_12\assets\login-variables.php" />
     <Compile Include="code\chapter_12\classes\like.php" />
     <Compile Include="code\chapter_12\classes\commentlist.php" />
@@ -184,6 +184,7 @@
     <Compile Include="code\chapter_12\classes\user_old.php" />
     <Compile Include="code\chapter_12\classes\validate.php" />
     <Compile Include="code\chapter_12\pages\index2.php" />
+    <Compile Include="code\chapter_12\admin\login.php" />
     <Compile Include="code\includes\validate.php" />
     <Compile Include="code\chapter_12\pages\filter.php" />
     <Compile Include="code\chapter_12\pages\index.php" />
@@ -405,8 +406,6 @@
     <Folder Include="admin\" />
     <Folder Include="assets\" />
     <Folder Include="classes\" />
-    <Folder Include="cmsfull\" />
-    <Folder Include="cmsfull\login\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01_old\" />
     <Folder Include="code\chapter_02_old\" />
@@ -426,6 +425,7 @@
     <Folder Include="code\chapter_12\css\" />
     <Folder Include="code\chapter_12\js\" />
     <Folder Include="code\chapter_12\includes\" />
+    <Folder Include="code\chapter_12\admin\" />
     <Folder Include="code\chapter_12\pages\" />
     <Folder Include="code\chapter_api\" />
     <Folder Include="code\chapter_12\" />
