@@ -165,15 +165,15 @@ class Layout {
 
   function getArticles($category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
     //search list
-    $articlesList = null;
+    $list = null;
     if ((!empty($search)) || ($author_id > 0)) {  //search results
      $this->articlesCount = count(get_articles_by_search('', '', $sort='', $dir='ASC', $search, $author_id));
-     $articlesList = get_articles_by_search($show, $from, $sort='', $dir='ASC', $search, $author_id);
+     $list = get_articles_by_search($show, $from, $sort='', $dir='ASC', $search, $author_id);
     } else {
       $this->articlesCount = count(get_articles_by_category('', '', $sort='', $dir='ASC', $category, $name));
-      $articlesList =  get_articles_by_category($show, $from, $sort='', $dir='ASC', $category, $name);
+      $list =  get_articles_by_category($show, $from, $sort='', $dir='ASC', $category, $name);
     }
-    return $articlesList;
+    return $list;
 }
 
 public function mergeData($data, $file_name) {
