@@ -1,0 +1,6 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+RewriteRule ^home/?$ code/chapter_12/pages/index.php [NC,L]  
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(\w+)/?$  code/chapter_12/pages/404.php [L] 

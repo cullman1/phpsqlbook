@@ -16,6 +16,11 @@ class Database{
       echo 'File name: ' . $error->getFile() . '<br>';
       echo 'Line number: ' . $error->getLine() . '<br>';
       echo 'Trace number: ' . var_dump($error->getTrace()) . '<br>';
+       $date = date("Y-m-d H:i:s"); 
+      $text = "\n". $date. " - Line:".$error->getLine()." - " . $error->getTrace() . " : " . 
+      $error->getMessage() ." - ". $error->getFile();
+      error_log($text, 3, "phpcustom.log");
+
     }
   }
 

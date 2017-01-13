@@ -13,7 +13,7 @@ $registry = Registry::instance();
 //Store database object
 $registry->set('database', new Database());
 $database = $registry->get('database');  
-    $GLOBALS['connection']   = $database->connection;
+$GLOBALS['connection'] = $database->connection;
 //Url handling
 $urlhandler =  new UrlRewriter();
 $layout = new Layout($urlhandler->server,$urlhandler->category,$urlhandler->item);

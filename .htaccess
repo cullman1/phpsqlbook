@@ -1,6 +1,64 @@
 RewriteEngine On    # Turn on the rewriting engine
+# FallbackResource index.php
+RewriteRule   ^herbs/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^herbs/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^vegetables/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^vegetables/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^vegetables/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^vegetables/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^home/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^home/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^salads/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^salads/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^contact/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^contact/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^about/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^about/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle requests for admin page
+RewriteRule   ^login/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^login/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^logincheck/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^logincheck/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^loginfailed/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^loginfailed/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^recipes/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^recipes/([^/.]+)/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^recipes/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^profile/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^profile/([^/.]+)/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^profile/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^register/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^register/([^/.]+)/([^/.]+)/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^register/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^search/?$  code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^search/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^search/([^/.]+)/([^/.]+)/?$ code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^comments/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^comments/([^/.]+)/([^/.]+)/?$  code/chapter_12//pages/index.php [NC,L]
+RewriteRule   ^comments/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule   ^admin/([^/.]+)/([^/.]+)/?$  code/chapter_12/admin/index.php [NC,L]
+RewriteRule   ^admin/?$ code/chapter_12/admin/index.php [NC,L]
 
-RewriteRule ^home/?$ code/chapter_12/pages/index.php [NC,L]  
 
-RewriteCond %{REQUEST_FILENAME} !-d 
-RewriteRule ^(\w+)/?$  code/chapter_12/pages/404.php [L] 
+
+
+RewriteRule   ^home/?$ /pages/main.php        [NC,L]    # Handle requests for home page
+RewriteRule   ^article-([^/.]+)/?$ /pages/article.php?articleid=$1        [NC,L]    # Handle requests for article page
+RewriteRule   ^pages/article-([^/.]+)/?$ /pages/article.php?articleid=$1        [NC,L]    # Handle more requests for article page
+
+RewriteRule   ^article/([^/.]+)/?$ /code/chapter_12/pages/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^article/([^/.]+)/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^article/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+
+RewriteRule   ^category/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^category/([^/.]+)//([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^user/([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+RewriteRule   ^user/([^/.]+)//([^/.]+)/?$ /code/chapter_12/object/index.php        [NC,L]    # Handle more requests for article page
+
+php_value upload_max_filesize 8M
+php_value post_max_size 8M
+
+
+
+
+
+
