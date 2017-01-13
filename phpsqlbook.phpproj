@@ -45,9 +45,10 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
-    <Compile Include="cms\check-user.php" />
-    <Compile Include="cms\functions.php" />
-    <Compile Include="cms\login.php" />
+    <Compile Include="cms\classes\urlrewriter.php" />
+    <Compile Include="cms_old\check-user.php" />
+    <Compile Include="cms_old\functions.php" />
+    <Compile Include="cms_old\login.php" />
     <Compile Include="code\chapter_02\associative-arrays.php" />
     <Compile Include="code\chapter_02\basic-example.php" />
     <Compile Include="code\chapter_02\comparison-operators.php" />
@@ -409,7 +410,8 @@
     <Folder Include="admin\" />
     <Folder Include="assets\" />
     <Folder Include="classes\" />
-    <Folder Include="cms\" />
+    <Folder Include="cms\classes\" />
+    <Folder Include="cms_old\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01_old\" />
     <Folder Include="code\chapter_02_old\" />
@@ -458,6 +460,7 @@
     <Folder Include="includes\" />
     <Folder Include="js\" />
     <Folder Include="login\" />
+    <Folder Include="cms\" />
     <Folder Include="pages\" />
     <Folder Include="uploads\" />
   </ItemGroup>
