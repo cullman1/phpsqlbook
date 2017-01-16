@@ -15,6 +15,6 @@ $registry->set('database', new Database());
 $database = $registry->get('database');  
 $GLOBALS['connection'] = $database->connection;
 //Url handling
-$urlhandler =  new UrlRewriter();
-$layout = new Layout($urlhandler->server,$urlhandler->category,$urlhandler->item);
+$urlparts =  new UrlRewriter();
+$layout = new Layout($urlparts->server,$urlparts->category,$urlparts->item);
 ?>

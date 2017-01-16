@@ -46,6 +46,7 @@
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="cms\classes\urlrewriter.php" />
+    <Compile Include="cms\pages\index.php" />
     <Compile Include="cms_old\check-user.php" />
     <Compile Include="cms_old\functions.php" />
     <Compile Include="cms_old\login.php" />
@@ -411,6 +412,7 @@
     <Folder Include="assets\" />
     <Folder Include="classes\" />
     <Folder Include="cms\classes\" />
+    <Folder Include="cms\pages\" />
     <Folder Include="cms_old\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01_old\" />

@@ -12,7 +12,7 @@ class CommentList {
         $nestedcomments_row[] = $row;
      }
      foreach ($nestedcomments_row as $branch) {
-        $new[$branch->{'comments.replyto_id'}][]=$branch;             
+        $new[$branch->{'comments.repliedto_id'}][]=$branch;             
      }
      if (isset($new[0])) { 
         $comment_list = $this->create_tree($new, $new[0]);
@@ -26,12 +26,12 @@ class CommentList {
       if ($this->commentCount>0) {
        foreach ($this->comments as $comment) {
           //Search the array for indentation of previous array
-          if ($comment->id == $reply->{"comments.replyto_id"}) {
+          if ($comment->id == $reply->{"comments.repliedto_id"}) {
              $indent = $comment->indent + 40; //Add an indent
           } 
        }
       }
-      $comment = $this->add($reply->{"comments.id"},$reply->{"comments.article_id"}, $reply->{"comments.user_id"},$reply->{"user.forename"} . " ". $reply->{"user.surname"},$reply->{"comments.comment"} , $reply->{"comments.posted"} , $reply->{"comments.replyto_id"}, $indent);
+      $comment = $this->add($reply->{"comments.id"},$reply->{"comments.article_id"}, $reply->{"comments.user_id"},$reply->{"user.forename"} . " ". $reply->{"user.surname"},$reply->{"comments.comment"} , $reply->{"comments.posted"} , $reply->{"comments.repliedto_id"}, $indent);
       if (isset($list[$reply->{'comments.id'}])) {
         $reply->{'children'} = $this->create_tree($list, $list[$reply->{'comments.id'}]);
       } 

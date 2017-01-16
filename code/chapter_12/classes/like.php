@@ -15,7 +15,8 @@ class Like {
   }
 
   function setLiked() {
-    $query = "SELECT count(*) as liked FROM liked WHERE article_id=:articleid and user_id=:userid"; 
+    $query = "SELECT count(*) as liked FROM liked
+    WHERE article_id=:articleid and user_id=:userid"; 
     $statement = $this->connection->prepare($query);
     $statement->bindParam(':articleid', $this->articleId);
     $statement->bindParam(':userid', $this->userId);

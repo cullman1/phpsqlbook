@@ -9,6 +9,7 @@ class Comment {
   public $validated = false; 	// Is category validated
   public $database;
   public $indent;
+  public $connection;
   
   function __construct ($id=0, $articleid, $userid, $author, $comment, $date, $replyid=0, $indent=0) {
     $this->registry    = Registry::instance();
