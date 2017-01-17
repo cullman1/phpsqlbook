@@ -10,7 +10,7 @@ class ArticleSummary {
   public $categoryname; 
   public $articleurl;
   private $category_id;
-  private $user_id;
+  public $user_id;
   private $media_id;
   public $comments_count;
   public $comments = array();

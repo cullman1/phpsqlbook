@@ -174,3 +174,7 @@ h3 {
     float: left;
     margin-left: 10px;
 }
+
+.pl 
+{ float:left;width:16px;padding-right:4px;
+}

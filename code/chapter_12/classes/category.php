@@ -23,8 +23,11 @@ class Category {
       $this->id       = $category->{"category.id"};
       $this->name     = $category->{"category.name"};
       $this->template = $category->{"category.template"};
+    }
   }
-  }
+
+  
+
 
   function create() {}
   

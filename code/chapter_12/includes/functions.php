@@ -1,7 +1,9 @@
 <?php
 require_once('../classes/user.php');
-require_once('../classes/comment.php');
-require_once('../classes/like.php');
+
+$GLOBALS['connection'] = new PDO("mysql:host=127.0.0.1;dbname=cms", "root", "");
+$GLOBALS['connection']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+$GLOBALS['connection']->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true); 
 
 function get_user_from_session() {
   if (isset($_SESSION["login"])) {
@@ -25,10 +27,21 @@ function get_user_from_session() {
    return $author_list;
 }
 
+ function get_user_by_email_passwordhash($email, $password) {
+     $query = 'SELECT * FROM user WHERE email = :email';
+     $statement = $GLOBALS['connection']->prepare($query);
 
+     $statement->bindParam(':email', $email);
+     $statement->execute();
+     $statement->setFetchMode(PDO::FETCH_OBJ);
+    $user = $statement->fetch();
+   
 
- function submit_login($connection, $email, $password) {
-    $user =  $connection->get_user_by_email_passwordhash($email, $password); 
+     return (password_verify($password, $user->{'user.password'}) ? $user : false);
+ }
+
+ function submit_login($email, $password) {
+     $user =  get_user_by_email_passwordhash($email, $password); 
     if(sizeof($user)!=0) {
       if (!empty($user->{'user.id'})) {
         create_user_session($user);
@@ -36,9 +49,9 @@ function get_user_from_session() {
         $_SESSION["user2"]=base64_encode(serialize($user1)); 
         $_SESSION["login"]=$user->{'user.id'}; 
         if (isset($_SERVER['HTTP_REFERER'])) {
-              header('Location: /phpsqlbook/admin/');
+            header('Location: /phpsqlbook/admin/');
         } else {
-              header('Location: /phpsqlbook/home/');
+            header('Location: /phpsqlbook/home/');
         }
         exit;
       } 
@@ -92,139 +105,92 @@ function create_pagination($count, $show, $from, $search) {
        }
     }
   }
-  echo "<br/>" . $result;
+  return  "<br/>" . $result;
 }
 
-function display_comments($commentlist, $commentcount) {   
-   $string=file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content.php");
-  $regex = '#{{(.*?)}}#';
-  $opening_tag = strpos($string, "[[for]]");
-  $closing_tag = strpos($string, "[[next]]",$opening_tag+1);     
-  $string1= str_replace("[[for]]","", $string);
-  $string2= str_replace("[[next]]","", $string1);
-  $head= substr($string2, 0, $opening_tag);
-  preg_match_all($regex, $head, $head_matches);
-  $remain = $closing_tag - $opening_tag;
-  $body = array();
-  $count=0; 
-  if (!isset($_SESSION["login"])) {
-     $head= str_replace("Add a comment","",$head);
-  }
-  foreach ($commentlist->comments as $row) {
-    $row->{'commentCount'} = $commentcount; 
-    $comment=substr($string2,$opening_tag+1,$remain-9);
-    if ($count==0) {
-        $head = field_replace($head, $head_matches[0],$row);       
-        echo $head;
+function get_articles_by_category( $show, $from, $sort='', 
+$dir='ASC',$category=0, $name='') {
+    $query= "SELECT article.*, category.* FROM article JOIN 
+           user ON user.id = user_id JOIN category ON 
+       category.id= category_id WHERE published <= now()";
+    //If category id not 0 and name present, 
+    //add a clause with id and name to the SQL
+    if (($category > 0) && (!empty($name))) {
+        $query .= ' AND  title=:name AND category_id = :id';
+    } 
+    //Else if only category id not 0, only add id clause
+    else if ($category > 0) {
+        $query .= ' AND category_id = :id';
     }
-    if ($commentcount>0) {
-      preg_match_all($regex, $comment, $inner_matches);
-      $comment = field_replace($comment, $inner_matches[0],$row); 
-      $body[$count] = $comment;
-      $count++;
+    //If sort not add a sort clause
+    if (!empty($sort)) {
+        $query .= " Order By " . $show . " " . $dir;
     }
- }
- for ($i=0;$i<$count;$i++) {
-  echo $body[$i];
- }
- echo "</div></div></div></div>";
+    //Get limited page of articles
+    if (!empty($show)) {
+        $query .= " limit " . $show . " offset " . $from;
+    }
+    $statement = $GLOBALS['connection']->prepare($query);
+    //Get limited page of articles
+    if (($category > 0) && (!empty($name))) {
+        $statement->bindParam(":name", $name); 
+        $statement->bindParam(":id", $category); 
+    }  else if ($category > 0) {
+        $statement->bindParam(":id", $category);    
+    }
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();  
+    return hyphenate_url($article_list);
 }
 
-function display_comments2($commentlist, $commentcount) {   
-    $string=file_get_contents("http://".$_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content2.php");
-    $regex = '#{{(.*?)}}#';
-    $opening_tag = strpos($string, "[[for]]");
-    $closing_tag = strpos($string, "[[next]]",$opening_tag+1);
-    $string1= str_replace("[[for]]","", $string);
-    $string2= str_replace("[[next]]","", $string1);
-    $head= substr($string2, 0, $opening_tag);
-    preg_match_all($regex, $head, $head_matches);
-    $remain = $closing_tag - $opening_tag;
-    $body = array();
-    $count=0;
-    if (!isset($_SESSION["login"])) {
-        $head= str_replace("Add a new comment","",$head);
+function get_articles_by_search($show='', $from='',
+$sort='', $dir='ASC', $search='', $user='0') {
+    $query= "SELECT article.*, category.* FROM article JOIN
+           user ON user.id = user_id JOIN category ON 
+      category.id= category_id where published <= now()";
+    $search_wildcards = "%". trim($search) . "%"; 
+    //If search, and wildcards  
+    if (!empty($search)) {   
+        $searchsql = " AND ((title like :search)";
+        $searchsql .= " OR (content like :search))";
+        $query .= $searchsql;   
     }
-
-    foreach ($commentlist->comments as $row) { 
-        $row->{'commentCount'} = $commentcount; 
-        $comments = substr($string2,$opening_tag+1,$remain-9);
-        if ($count==0) {
-            $head = field_replace($head, $head_matches[0],$row); 
-            echo $head;
-        }        
-        if( $commentcount > 0) {
-            $body=show_children($regex, $comments,$row,$body,$count, $row->{'indent'} , $commentcount);
+    //If user id not 0, add user id clause
+    if ($user > 0) {     
+        $query .= ' AND user.id = :id';
+    }
+    //If sort not empty, add a sort
+    if (!empty($sort)) {    
+        $query .= " Order By " . $show . " " . $dir;
+    }
+    //Get limited page of articles
+    if (!empty($show)) {  
+        $query .= " limit " . $show . " offset " . $from;
+    }
+    $statement =$GLOBALS['connection']->prepare($query);
+    //If user id not 0 bind parameter
+    if ($user > 0) {          
+        $statement->bindParam(":id", $user);    
+    }
+    if (!empty($search)) { 
+        $statement->bindParam(":search", $search_wildcards);
+    }
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $article_list = $statement->fetchAll();  
+    $article_list = hyphenate_url($article_list);
+    //If search not empty, highlight search term
+    if (!empty($search) && !empty($show)) { 
+        foreach($article_list as $article) {
+            $article->{'article.content'} =str_ireplace($search,
+            "<b class='yellow'>".$search."</b>", 
+            $article->{'article.content'}); 
         }
-        $count++;   
     }
-    echo "</div></div></div></div>"; 
+    return $article_list;
 }
 
-function show_children($regex, $body, $row, $combined_comments, $count, $indent) {
-  preg_match_all($regex, $body, $inner_matches);
-  foreach($inner_matches[0] as $value) {   
-    $replace= str_replace("{{","", $value);
-    $replace= str_replace("}}","", $replace);
-    $body=str_replace($value,$row->{$replace},$body);  
-    if ($indent > 0) { 
-       $combined_comments[$count]="<div style='margin-left:".$indent."px'><img src='/phpsqlbook/code/chapter_12/assets/plus.png' style='float:left;width:16px;padding-right:4px;'/>".$body."</div>"; 
-    } else {
-        $combined_comments[$count] = $body;
-    }
-  }
-  echo $combined_comments[$count];
-  return $combined_comments;
-}
-
-function field_replace($body, $matches, $row) {
-      foreach($matches as $value) {         
-        $replace= str_replace("{{","", $value);
-        $replace= str_replace("}}","", $replace);
-        try {
-          $body=str_replace($value,$row->{$replace},$body);
-        } catch (Exception $ex) { echo $ex; }
-      } 
-      return $body; 
-}
-
-
-
-
- function getCommentsById($connection, $id) {
-    $query="select comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";  
-    $statement = $connection->prepare($query);
-    $statement->bindParam(':articleid',$id);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    return $statement->fetchAll();
-  }
-
-  function getBlankComment($connection) {
-    $query= "select  uuid() As new_id From article";
-    $statement =$connection->prepare($query);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    return $statement->fetch();  
-  }
-
-  function submitLike() {  
-      if (isset($_SESSION["login"])) {
-          $like = new Like($_GET["article"], $_GET["user"]);
-          if ($_GET['liked']=="0") {
-              $like->add();
-          } else {
-              $like->delete();
-          }
-          if (isset($_SERVER['HTTP_REFERER'])) {
-              header('Location: '.$_SERVER['HTTP_REFERER']);
-          } else {
-              header('Location: /phpsqlbook/home/');
-          }
-      } else {
-          header('Location: /phpsqlbook/login/');
-      }
-  }
 
 
   function add_user($connection, $forename, $surname, $password, $email) {     
@@ -244,23 +210,7 @@ function field_replace($body, $matches, $row) {
   }  
  }
 
-function addLike($userid, $articleid) { 
-  $sql = "INSERT INTO like (user_id, article_id)  
-          VALUES (:userid, :id)";
-  $statement = $this->connection->prepare($sql);
-  $statement->bindParam(":userid", $userid);
-  $statement->bindParam(":id", $articleid);
-  $statement->execute();
-}
 
-function purgeLike($userid, $articleid) {
-  $sql = "DELETE FROM like WHERE user_id= :userid AND 
-          article_id= :id";
-  $statement = $this->connection->prepare($sql);
-  $statement->bindParam(":userid", $userid);
-  $statement->bindParam(":id", $articleid);
-  $statement->execute();
-}
 
   function get_article_by_id($id) {
     $query = "select article.*, category.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :id";
@@ -273,81 +223,9 @@ function purgeLike($userid, $articleid) {
     return $article; 
   }
 
-function get_articles_by_category( $show, $from, $sort='', $dir='ASC', $category = 0, $name='') {
-    $query= "select article.*, category.* FROM article JOIN user ON user.id = user_id JOIN category ON category.id= category_id where published <= now()";
-    //category list
-    if (($category > 0) && (!empty($name))) {
-       $query .= ' AND  title=:name AND category_id = :id';
-    } else if ($category > 0) {
-      $query .= ' AND category_id = :id';
-    }
-    //Sort
-    if (!empty($sort)) {
-      $query .= " Order By " . $show . " " . $dir;
-    }
-    //Get actual limited page of articles
-      if (!empty($show)) {
-      $query .= " limit " . $show . " offset " . $from;
-    }
-     $statement =$GLOBALS['connection']->prepare($query);
-    if (($category > 0) && (!empty($name))) {
-       $statement->bindParam(":name", $name); 
-       $statement->bindParam(":id", $category); 
-    }  else if ($category > 0) {
-     $statement->bindParam(":id", $category);    
-    }
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $article_list = $statement->fetchAll();  
-    $article_list = hyphenate_url($article_list);
-    return $article_list;
-}
 
-function get_articles_by_search($show='', $from='', $sort='', $dir='ASC', $search = '', $author_id='0') {
-    $query= "select article.*, category.* FROM article JOIN user ON user.id = user_id JOIN category ON category.id= category_id where published <= now()";
-    $search_wildcards = "%". trim($search) . "%";    
-    if (!empty($search)) {  //search results
-      $searchsql = " AND ((title like :search)";
-      $searchsql .= " OR (content like :search))";
-      $query .= $searchsql;   
-    }
-    //author list
-    if ($author_id > 0) {
-      $query .= ' AND user.id = :id';
-    }
-    //Sort
-    if (!empty($sort)) {
-      $query .= " Order By " . $show . " " . $dir;
-    }
-    //Get actual limited page of articles
-    if (!empty($show)) {
-      $query .= " limit " . $show . " offset " . $from;
-    }
-    $statement = $GLOBALS['connection']->prepare($query);
-    if ($author_id > 0) {
-        $statement->bindParam(":id", $author_id);    
-    }
-     if (!empty($search)) {  
-         $statement->bindParam(":search", $search_wildcards);    
-     }
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $article_list = $statement->fetchAll();  
-    $article_list = hyphenate_url($article_list);
-      if (!empty($search) && !empty($show)) {
-      foreach($article_list as $article) {
-        $article->{'article.content'} = str_ireplace($search, "<b style='background-color:yellow'>".$search."</b>", $article->{'article.content'}); 
-      }
-    }
-    return $article_list;
-}
 
- function hyphenate_url($article_list) {
-    foreach ($article_list as $article) {
-        $article->{"article.title_url"} = str_replace(' ','-', $article->{"article.title"});
-    }
-    return $article_list;
-}
+ 
 
   function getUserById($connection, $id) { 
   $query = "select user.* FROM user  where id= :user_id";
@@ -359,15 +237,16 @@ function get_articles_by_search($show='', $from='', $sort='', $dir='ASC', $searc
  return append_blank($user,'blank.png');;
 }
 
- function getUserByArticleId($connection, $id) { 
-   $query = "select article.*, user.* FROM article JOIN user ON article.user_id = user.id JOIN category ON article.category_id = category.id where article.id= :article_id";
-   $statement = $connection->prepare($query);
-   $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
-   $statement->execute();
-   $statement->setFetchMode(PDO::FETCH_OBJ);
-   $user = $statement->fetch();  
-   return append_blank($user,'blank.png');;
-}
+  function getUserByArticleId($id) { 
+      $query = "SELECT article.*, user.* FROM article JOIN user ON article.user_id = user.id  
+   JOIN category ON article.category_id = category.id where article.id= :article_id";
+      $statement = $GLOBALS['connection']->prepare($query);
+      $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
+      $statement->execute();
+      $statement->setFetchMode(PDO::FETCH_OBJ);
+      $user = $statement->fetch();  
+      return append_blank($user,'blank.png');;
+  }
 
  function append_blank($user, $image) {
 
@@ -379,17 +258,18 @@ function get_articles_by_search($show='', $from='', $sort='', $dir='ASC', $searc
 }
 
 // Get categories
-function getCategoryList($connection) {
+function getCategoryList() {
   $query = 'SELECT category.* FROM category'; // Query
-  $statement = $connection->prepare($query); 
+  
+  $statement = $GLOBALS['connection']->prepare($query); 
   $statement->execute(); 
   $statement->setFetchMode(PDO::FETCH_OBJ);     // Step 4 Set fetch mode to array
   $category_list = $statement->fetchAll();      // Step 4 Get all rows ready to display
   return $category_list;
 }
-function getCategoryListArray($connection) {
+function getCategoryListArray() {
   $query = 'SELECT id, name, template FROM category'; // Query
-  $statement = $connection->prepare($query); 
+  $statement = $GLOBALS['connection']->prepare($query); 
   $statement->execute(); 
   $statement->setFetchMode(PDO::FETCH_ASSOC);   // Step 4 Set fetch mode to array
   $category_list = $statement->fetchAll();      // Step 4 Get all rows ready to display
@@ -416,4 +296,109 @@ function getTotal($connection, $article_id) {
 
 }
 
+function get_comments_by_id($id) {
+    $query="SELECT comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id   
+          WHERE article_id = :articleid ORDER BY comments.id DESC";  
+    $statement = $GLOBALS['connection']->prepare($query);
+    $statement->bindParam(':articleid',$id);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    return $statement->fetchAll();
+}
+
+function get_blank_comment() {
+    $query= "SELECT uuid() As new_id FROM article";
+    $statement = $GLOBALS['connection']->prepare($query);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    return $statement->fetch();  
+}
+
+function submit_like() {  
+
+    if (isset($_SESSION["user2"])) {
+
+        $like = new Like($_GET["article"], $_GET["user"]);
+        if ($_GET['liked']=="0") {
+            $like->add();
+        
+        } else {
+            $like->delete();
+    
+        }
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            header('Location: '.$_SERVER['HTTP_REFERER']);
+        } else {
+           header('Location: /phpsqlbook/home/');
+        }
+    } else {
+        header('Location: /phpsqlbook/login/');
+    }
+}
+
+function field_replace($body, $matches, $row) {
+  foreach($matches as $value) {         
+    $replace = str_replace("{{","", $value);
+    $replace = str_replace("}}","", $replace);
+    $body =str_replace($value,$row->{$replace},$body);
+  } 
+  return $body; 
+}
+
+ function hyphenate_url($article_list) {
+  foreach ($article_list as $article) {
+    $article->{"article.title_url"} = str_replace(' ','-',
+                $article->{"article.title"});
+  }
+  return $article_list;
+}
+
+ function display_comments($commentlist, $commentcount) {   
+     $string=file_get_contents("http://". $_SERVER['HTTP_HOST']."/phpsqlbook/code/chapter_12/classes/templates/comments_content.php");
+     $regex = '#{{(.*?)}}#';
+     $opening_tag = strpos($string, "[[for]]");
+     $closing_tag = strpos($string, "[[next]]",$opening_tag+1);     
+     $string1     = str_replace("[[for]]","", $string);
+     $string2     = str_replace("[[next]]","", $string1);
+     $head        = substr($string2, 0, $opening_tag);
+     preg_match_all($regex, $head, $head_matches); //Locate the [[for]] and [[next]] tags
+     $remain      = $closing_tag - $opening_tag;
+     $body        = array();
+     $count = 0;
+     if (!isset($_SESSION["user2"])) {
+         $head = str_replace("Add a comment", "", $head);
+     }
+     //Go through each item in the database
+     foreach ($commentlist->comments as $row) {
+         $row->{'commentCount'} = $commentcount;  
+         $comment = substr($string2,$opening_tag+1,$remain-9);
+         //If this is the first time round, replace the tags up to [[for]] with database values
+         if ($count==0) {
+             $head = field_replace($head, $head_matches[0],$row);       
+             echo $head;
+         }
+         if($commentcount > 0) {
+             $body = show_children($regex, $comment, $row, $body, $count, $row->{'indent'});
+         }
+         $count++;   
+     }
+
+     echo "</div></div></div></div>";//Close the template dynamically as [[next]] ends it.
+ }
+
+ function show_children($regex, $body, $row, $combined_comments, $count, $indent) {
+     preg_match_all($regex, $body, $inner_matches);
+     foreach($inner_matches[0] as $value) {   
+         $replace= str_replace("{{","", $value);
+         $replace= str_replace("}}","", $replace);
+         $body=str_replace($value,$row->{$replace},$body);  
+         if ($indent > 0) { 
+             $combined_comments[$count]="<div style='margin-left:".$indent."px'><img class='pl' src='/phpsqlbook/code/chapter_12/assets/plus.png'/>".$body."</div>"; 
+         } else {
+             $combined_comments[$count] = $body;
+         }
+     }
+     echo $combined_comments[$count];
+     return $combined_comments;
+ }
 ?>

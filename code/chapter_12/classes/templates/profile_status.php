@@ -1,7 +1,7 @@
 <?php 
 $alert  =   array('status' => '', 'message' =>'');
 $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','password'=>'','mimetype'=>'','date'=>'','datetime'=>'','firstName'=>'','lastName'=>'', 'image'=>'');
- $profile = getUserById($this->connection,$_GET["id"]); 
+$profile = getUserById($this->connection,$_GET["id"]); 
 ?>
   <h2>User Profile</h2>
   <div id="Status" style="color:red; display:none;" >
