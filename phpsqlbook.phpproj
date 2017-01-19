@@ -155,34 +155,8 @@
     <Compile Include="code\chapter_11\set_exception.php" />
     <Compile Include="code\chapter_11\test.php" />
     <Compile Include="code\chapter_11\throw.php" />
-    <Compile Include="code\chapter_12\classes\articlelist.php" />
-    <Compile Include="code\chapter_12\classes\articlesummary.php" />
-    <Compile Include="code\chapter_12\classes\category.php" />
-    <Compile Include="code\chapter_12\classes\categorylist.php" />
-    <Compile Include="code\chapter_12\classes\comment.php" />
-    <Compile Include="code\chapter_12\classes\commentlist.php" />
-    <Compile Include="code\chapter_12\classes\database.php" />
-    <Compile Include="code\chapter_12\classes\layout.php" />
-    <Compile Include="code\chapter_12\classes\like.php" />
-    <Compile Include="code\chapter_12\classes\registry.php" />
-    <Compile Include="code\chapter_12\classes\templates\author_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\comments_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\footer.php" />
-    <Compile Include="code\chapter_12\classes\templates\header.php" />
-    <Compile Include="code\chapter_12\classes\templates\like_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\login.php" />
-    <Compile Include="code\chapter_12\classes\templates\login_form.php" />
-    <Compile Include="code\chapter_12\classes\templates\main_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\menu_content.php" />
-    <Compile Include="code\chapter_12\classes\templates\profile_status.php" />
-    <Compile Include="code\chapter_12\classes\templates\profile_update.php" />
-    <Compile Include="code\chapter_12\classes\templates\register_form.php" />
-    <Compile Include="code\chapter_12\classes\templates\search.php" />
     <Compile Include="code\chapter_12\classes\urlrewriter.php" />
-    <Compile Include="code\chapter_12\classes\user.php" />
-    <Compile Include="code\chapter_12\classes\validate.php" />
-    <Compile Include="code\chapter_12\includes\functions.php" />
-    <Compile Include="code\chapter_12\pages\index.php" />
+    <Compile Include="code\chapter_12\index.php" />
     <Compile Include="code\chapter_12_old\admin\index.php" />
     <Compile Include="code\chapter_12_old\assets\login-variables.php" />
     <Compile Include="code\chapter_12_old\classes\like.php" />
@@ -218,6 +192,7 @@
     <Compile Include="code\chapter_12_old\classes\validate.php" />
     <Compile Include="code\chapter_12_old\pages\index2.php" />
     <Compile Include="code\chapter_12_old\admin\login.php" />
+    <Compile Include="code\.htaccess" />
     <Compile Include="code\includes\validate.php" />
     <Compile Include="code\chapter_12_old\pages\filter.php" />
     <Compile Include="code\chapter_12_old\pages\index.php" />
@@ -456,10 +431,6 @@
     <Folder Include="code\chapter_11_old\login\" />
     <Folder Include="code\chapter_07\" />
     <Folder Include="code\chapter_12\classes\" />
-    <Folder Include="code\chapter_12\classes\templates\" />
-    <Folder Include="code\chapter_12\css\" />
-    <Folder Include="code\chapter_12\includes\" />
-    <Folder Include="code\chapter_12\pages\" />
     <Folder Include="code\chapter_12_old\assets\" />
     <Folder Include="code\chapter_12_old\classes\" />
     <Folder Include="code\chapter_12_old\classes\templates\" />
@@ -501,7 +472,7 @@
     <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".htaccess" />
+    <Content Include=".htaccess_old" />
     <Content Include="assets\background.jpg" />
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
@@ -517,8 +488,6 @@
     <Content Include="code\chapter_08\namesonly.txt" />
     <Content Include="code\chapter_08\pansy.gif" />
     <Content Include="code\chapter_07\tiny.js" />
-    <Content Include="code\chapter_12\css\style1.css" />
-    <Content Include="code\chapter_12\css\styles.css" />
     <Content Include="code\chapter_12_old\assets\background.jpg" />
     <Content Include="code\chapter_12_old\assets\clip.jpg" />
     <Content Include="code\chapter_12_old\assets\clip.png" />
