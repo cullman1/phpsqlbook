@@ -19,7 +19,7 @@ function remove_existing($current, $history) {
 }
 
 function add_current($current, $history) {
-  array_unshift($history, $current); 
+  array_unshift($history, $current);
   if (count($history) > 5) { 
     array_pop($history);
   }

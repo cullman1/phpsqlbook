@@ -1,13 +1,13 @@
 <?php 
   include 'session-include.php'; 
   $name = isset($_SESSION['name']) 
-                ? $_SESSION["name"] : '';
+                ? $_SESSION['name'] : '';
 ?>
 <div>
   <a href='session-home.php'>Home</a> | 
   <a href='session-about.php'>About</a> | 
-  <a href='session-services.php'>Services</a>
-   <a href='session-contact.php'>Contact Us</a>
+  <a href='session-services.php'>Services</a> | 
+  <a href='session-contact.php'>Contact</a> | 
 </div>
 <div>
   <?php if ($name==null) { ?>

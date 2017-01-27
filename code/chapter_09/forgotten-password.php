@@ -1,6 +1,8 @@
 <?php
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 require_once('../includes/config.php');
-require_once('../includes/functions.php');
+
 require_once('../includes/database_connection.php');
 require_once('../vendor/PHPMailer/PHPMailerAutoload.php');
 // Check form data
@@ -8,6 +10,35 @@ $show_form = true;
 $alert     = array('status'  => '', 'message' => '');
 $email     = ( isset($_POST['email']) ? $_POST['email'] : '' );
 $valid     = (filter_var($email, FILTER_VALIDATE_EMAIL)) ? true : false; 
+
+function send_email($to, $subject, $message) {
+try {
+  $mail = new PHPMailer(true);                                 // Create object
+  // How the email is going to be sent
+  $mail->IsSMTP();                                         // Set mailer to use SMTP
+    $mail->Host     = 'secure.emailsrvr.com';                    // SMTP server address
+  $mail->SMTPAuth = true;                                  // SMTP authentication on
+  $mail->Username = 'test@deciphered.com';                   // Username
+  $mail->Password = 'Ma8_d3vwjX12j';                            // Password
+  // Who the email is from and to
+  $mail->setFrom('test@deciphered.com');  
+  $mail->AddAddress($to);                                  // To
+  // Content of email
+  $mail_header   = '<!DOCTYPE html PUBLIC...';             // Header goes here
+  $mail_footer   = '...</html>';                           // Header goes here
+  $mail->Subject = $subject;                               // Set subject of email
+  $mail->Body    = $mail_header . $message . $mail_footer; // Set body of HTML email  
+  $mail->AltBody = strip_tags($message);                   // Set plain text body
+  $mail->CharSet = 'UTF-8';                                // Set character set
+  $mail->IsHTML(true);                                    // Set as HTML email
+  $mail->Send();
+} catch (phpmailerException $e) {
+  echo $e->errorMessage(); //Pretty error messages from PHPMailer
+  return false;
+} 
+  return true;                                             // Otherwise return false
+}
+
 // Functions
 function create_iv() {
   $isItSecure = false;
@@ -17,12 +48,22 @@ function create_iv() {
       return $iv;
     } 
   }
-}
+  return false;
+}         // As shown on pXXX
+function get_user_by_email($email) {
+  $query = 'SELECT * from user WHERE email = :email';
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':email', $email);
+  $statement->execute();
+  $user =   $statement->fetch(PDO::FETCH_OBJ);
+  return ($user ? $user : false);
+}  // As shown on pXXX
 
 // If have valid email, send reset password link
 if (($valid) && (get_user_by_email($email) ) ) {
   // Create secure link to reset password page
   $iv      = create_iv();
+  echo "IV".$iv;
   $token   = $email . '#' . time();
   $token   = openssl_encrypt($token, METHOD, KEY, OPENSSL_RAW_DATA, $iv);
   $token   = rawurlencode(base64_encode($token));
@@ -34,6 +75,7 @@ if (($valid) && (get_user_by_email($email) ) ) {
   $message = 'Use this link to reset your password: 
               <a href="' . $link . '">' . $link . '</a>';
   $result  = send_email($email, $subject, $message); 
+
   // Check whether email was sent
   if ($result) { 
     $alert = array('status'  => 'success', 'message' => 'Password reset email sent.');
