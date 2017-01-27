@@ -145,3 +145,32 @@ footer {
 .success {
     color: green;
 }
+
+.left {
+padding-left:10px;
+}
+
+.tleft {
+    text-align:left;
+}
+
+.box {
+    width:800px;
+}
+
+h3 {
+    text-decoration:underline;
+}
+
+.float-right{
+    float:right;
+}
+.lnk {
+    position:relative;
+    left:10px;
+}
+
+.comment-box {
+    float: left;
+    margin-left: 10px;
+}

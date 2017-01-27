@@ -1,0 +1,36 @@
+RewriteEngine On    # Turn on the rewriting engine
+# FallbackResource index.php
+
+RewriteRule ^vegetables/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^vegetables/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^home/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^home/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]  
+RewriteRule ^herbs/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^herbs/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^salads/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^salads/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^login/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^login/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^contact/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^contact/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^about/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^about/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^register/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^register/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^search/?$ code/chapter_12/pages/index.php [NC,L] 
+RewriteRule ^search/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^profile/([^/.]+)/?$ /phpsqlbook/code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^profile/([^/.]+)/([^/.]+)/?$ /phpsqlbook/code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^profile/?$ /phpsqlbook/code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^comments/([^/.]+)/?$ code/chapter_12/pages/index.php [NC,L]
+RewriteRule ^comments/([^/.]+)/([^/.]+)/?$ code/chapter_12/pages/index.php[NC,L]
+RewriteRule ^comments/?$ code/chapter_12/pages/index.php [NC,L]
+
+php_value upload_max_filesize 8M
+php_value post_max_size 8M
+
+
+
+
+
+

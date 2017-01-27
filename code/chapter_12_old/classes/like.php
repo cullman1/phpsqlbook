@@ -15,7 +15,8 @@ class Like {
   }
 
   function setLiked() {
-    $query = "SELECT count(*) as liked FROM liked WHERE article_id=:articleid and user_id=:userid"; 
+    $query = "SELECT count(*) as liked FROM liked
+    WHERE article_id=:articleid and user_id=:userid"; 
     $statement = $this->connection->prepare($query);
     $statement->bindParam(':articleid', $this->articleId);
     $statement->bindParam(':userid', $this->userId);
@@ -23,6 +24,7 @@ class Like {
     $statement->setFetchMode(PDO::FETCH_OBJ);  
     $liked = $statement->fetch();
     $this->liked = $liked->{'.liked'};
+
   }
 
   function setTotal() {
@@ -33,6 +35,7 @@ class Like {
     $statement->setFetchMode(PDO::FETCH_OBJ);  
      $liked = $statement->fetch();  
      $this->total = $liked->{".total"};
+     
   }
 
   function add() { 

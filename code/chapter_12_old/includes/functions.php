@@ -146,6 +146,7 @@ function display_comments2($commentlist, $commentcount) {
     if (!isset($_SESSION["login"])) {
         $head= str_replace("Add a new comment","",$head);
     }
+
     foreach ($commentlist->comments as $row) { 
         $row->{'commentCount'} = $commentcount; 
         $comments = substr($string2,$opening_tag+1,$remain-9);

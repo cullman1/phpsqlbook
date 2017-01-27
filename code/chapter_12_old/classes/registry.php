@@ -2,6 +2,8 @@
 class Registry {    
   private $store = array();
   private static $instance = null;
+
+  private function __construct() {}
     
   public static function instance() {
     if(self::$instance === null) {
@@ -10,7 +12,7 @@ class Registry {
     return self::$instance;
   }
     
-  private function __construct() {}
+  
 
   public function set($key, $value) {
     $this->store[$key] = $value;

@@ -66,7 +66,7 @@ class Layout {
       case "search":
       default:
         $this->single_templates = array("header", "menu",  "login", "search","article","footer");
-        $this->repeating_templates = array("main_content","like");
+        $this->repeating_templates = array("main_content","author","like","comments");
         break;     
     }
   }
