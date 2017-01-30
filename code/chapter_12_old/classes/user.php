@@ -5,25 +5,15 @@ class User {
  public  $surname;
  public  $email;
  public  $password;
- public  $joined;
- public  $image;
- public $database;
- public $connection;
- public $authenticated;
 
- function __construct($id ='', $forename = NULL, $surname = NULL, $email = NULL, $password = NULL, $joined = NULL, $image = NULL, $authenticated = NULL) {
-  if (is_null($authenticated)) {
+ function __construct($id ='', $forename = NULL, $surname = NULL, $email = NULL, $password = NULL) {
     $this->database = Registry::instance()->get('database');   
     $this->connection =  $this->database->connection;   
-  }
   $this->id       = ( isset($id)       ? $id       : '');
   $this->forename = ( isset($forename) ? $forename : '');
   $this->surname  = ( isset($surname)  ? $surname  : '');
   $this->email    = ( isset($email)    ? $email    : '');
   $this->password = ( isset($password) ? $password : '');
-  $this->joined   = ( isset($joined)   ? $joined   : '');
-  $this->image    = ( isset($image)    ? $image    : '');
-  $this->authenticated    = ( isset($authenticated)    ? $authenticated    : '');
  }
 
  function create() {

@@ -16,7 +16,7 @@ $GLOBALS["Password"] = "placeholder"; //"Trecarne_PL145BS";
 try {
   $connection = new PDO("mysql:host=$serverName;dbname=$dbName", $userName, $password);
   $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-  $connection->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true); 
+ // $connection->setAttribute(PDO::ATTR_FETCH_TABLE_NAMES, true); Do it on query by query basis!
 } catch (PDOException $error) {
   echo 'Error message: ' . $error->getMessage() . '<br>';
   echo 'File name: ' . $error->getFile() . '<br>';

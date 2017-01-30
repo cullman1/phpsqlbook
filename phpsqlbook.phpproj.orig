@@ -45,10 +45,6 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
-    <Compile Include="code\chapter_09\forgotten-password.php" />
-    <Compile Include="code\chapter_09\phpmailer.php" />
-    <Compile Include="code\chapter_09\register.php" />
-    <Compile Include="code\chapter_09\reset-password.php" />
     <Compile Include="cms\classes\urlrewriter.php" />
     <Compile Include="cms\pages\index.php" />
     <Compile Include="cms_old\check-user.php" />
@@ -121,42 +117,11 @@
     <Compile Include="admin\new-category.php" />
     <Compile Include="admin\new-user.php" />
     <Compile Include="admin\pages.php" />
-    <Compile Include="code\chapter_09\send-email.php" />
-    <Compile Include="code\classes\articlelist.php" />
-    <Compile Include="code\classes\articlesummary.php" />
-    <Compile Include="code\classes\category.php" />
-    <Compile Include="code\classes\categorylist.php" />
-    <Compile Include="code\classes\comment.php" />
-    <Compile Include="code\classes\commentlist.php" />
-    <Compile Include="code\classes\database.php" />
-    <Compile Include="code\classes\layout.php" />
-    <Compile Include="code\classes\like.php" />
-    <Compile Include="code\classes\registry.php" />
-    <Compile Include="code\classes\templates\author_content.php" />
-    <Compile Include="code\classes\templates\comments_content.php" />
-    <Compile Include="code\classes\templates\comments_content2.php" />
-    <Compile Include="code\classes\templates\footer.php" />
-    <Compile Include="code\classes\templates\header.php" />
-    <Compile Include="code\classes\templates\like_content.php" />
-    <Compile Include="code\classes\templates\login.php" />
-    <Compile Include="code\classes\templates\login_form.php" />
-    <Compile Include="code\classes\templates\main_content.php" />
-    <Compile Include="code\classes\templates\menu_content.php" />
-    <Compile Include="code\classes\templates\no_date_content.php" />
-    <Compile Include="code\classes\templates\profile_status.php" />
-    <Compile Include="code\classes\templates\profile_update.php" />
-    <Compile Include="code\classes\templates\register_form.php" />
-    <Compile Include="code\classes\templates\search.php" />
-    <Compile Include="code\classes\urlrewriter.php" />
-    <Compile Include="code\classes\user.php" />
-    <Compile Include="code\classes\userlist.php" />
-    <Compile Include="code\classes\user_old.php" />
-    <Compile Include="code\classes\validate.php" />
     <Compile Include="code\chapter_09\cookie-set.php" />
     <Compile Include="code\chapter_09\cookie-viewer.php" />
-    <Compile Include="code\chapter_09\forgotten-password_old.php" />
+    <Compile Include="code\chapter_09\forgotten-password.php" />
     <Compile Include="code\chapter_09\recently-viewed.php" />
-    <Compile Include="code\chapter_09\reset-password_old.php" />
+    <Compile Include="code\chapter_09\reset-password.php" />
     <Compile Include="code\chapter_09\session-about.php" />
     <Compile Include="code\chapter_09\session-contact.php" />
     <Compile Include="code\chapter_09\session-home.php" />
@@ -202,7 +167,40 @@
     <Compile Include="code\chapter_11\set_exception.php" />
     <Compile Include="code\chapter_11\test.php" />
     <Compile Include="code\chapter_11\throw.php" />
+<<<<<<< HEAD
     <Compile Include="code\chapter_12\admin\admin-home.php" />
+    <Compile Include="code\chapter_12\admin\index.php" />
+    <Compile Include="code\chapter_12\assets\login-variables.php" />
+    <Compile Include="code\chapter_12\classes\like.php" />
+    <Compile Include="code\chapter_12\classes\commentlist.php" />
+    <Compile Include="code\chapter_12\classes\userlist.php" />
+    <Compile Include="code\chapter_12\classes\categorylist.php" />
+    <Compile Include="code\chapter_12\classes\articlelist.php" />
+    <Compile Include="code\chapter_12\classes\articlesummary.php" />
+    <Compile Include="code\chapter_12\classes\comment.php" />
+    <Compile Include="code\chapter_12\classes\category.php" />
+    <Compile Include="code\chapter_12\classes\templates\comments_content.php" />
+    <Compile Include="code\chapter_12\classes\user.php" />
+    <Compile Include="code\chapter_12\includes\functions.php" />
+    <Compile Include="code\chapter_12\classes\database.php" />
+    <Compile Include="code\chapter_12\classes\layout.php" />
+    <Compile Include="code\chapter_12\classes\registry.php" />
+    <Compile Include="code\chapter_12\classes\templates\author_content.php" />
+    <Compile Include="code\chapter_12\classes\templates\comments_content2.php" />
+    <Compile Include="code\chapter_12\classes\templates\no_date_content.php" />
+    <Compile Include="code\chapter_12\classes\templates\footer.php" />
+    <Compile Include="code\chapter_12\classes\templates\login_form.php" />
+    <Compile Include="code\chapter_12\classes\templates\header.php" />
+    <Compile Include="code\chapter_12\classes\templates\like_content.php" />
+    <Compile Include="code\chapter_12\classes\templates\login.php" />
+    <Compile Include="code\chapter_12\classes\templates\menu_content.php" />
+    <Compile Include="code\chapter_12\classes\templates\profile_status.php" />
+    <Compile Include="code\chapter_12\classes\templates\profile_update.php" />
+    <Compile Include="code\chapter_12\classes\templates\main_content.php" />
+    <Compile Include="code\chapter_12\classes\templates\register_form.php" />
+    <Compile Include="code\chapter_12\classes\templates\search.php" />
+=======
+>>>>>>> d4e6182cfd33ccad6961841c9ca3f1d24771bb1d
     <Compile Include="code\chapter_12\classes\urlrewriter.php" />
     <Compile Include="code\chapter_12\index.php" />
     <Compile Include="code\chapter_12_old\admin\index.php" />
@@ -475,14 +473,10 @@
     <Folder Include="code\chapter_08\" />
     <Folder Include="code\chapter_08\includes\" />
     <Folder Include="code\chapter_08\login\" />
-    <Folder Include="code\classes\" />
-    <Folder Include="code\classes\templates\" />
     <Folder Include="code\chapter_09\css\" />
     <Folder Include="code\chapter_09_old\old\" />
     <Folder Include="code\chapter_11_old\login\" />
     <Folder Include="code\chapter_07\" />
-    <Folder Include="code\chapter_12\" />
-    <Folder Include="code\chapter_12\admin\" />
     <Folder Include="code\chapter_12\classes\" />
     <Folder Include="code\chapter_12_old\assets\" />
     <Folder Include="code\chapter_12_old\classes\" />
@@ -513,7 +507,11 @@
     <Folder Include="code\chapter_02\" />
     <Folder Include="code\chapter_04\" />
     <Folder Include="code\chapter_11\" />
+<<<<<<< HEAD
     <Folder Include="code\chapter_09\" />
+=======
+    <Folder Include="code\chapter_12\" />
+>>>>>>> d4e6182cfd33ccad6961841c9ca3f1d24771bb1d
     <Folder Include="code\uploads\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
@@ -541,7 +539,21 @@
     <Content Include="code\chapter_08\namesonly.txt" />
     <Content Include="code\chapter_08\pansy.gif" />
     <Content Include="code\chapter_07\tiny.js" />
+<<<<<<< HEAD
     <Content Include="code\chapter_09\css\styles.css" />
+    <Content Include="code\chapter_12\assets\background.jpg" />
+    <Content Include="code\chapter_12\assets\clip.jpg" />
+    <Content Include="code\chapter_12\assets\clip.png" />
+    <Content Include="code\chapter_12\assets\comments-xl.png" />
+    <Content Include="code\chapter_12\assets\Thumbs.db" />
+    <Content Include="code\chapter_12\assets\user-thumbnail.jpg" />
+    <Content Include="code\chapter_12\css\style1.css" />
+    <Content Include="code\chapter_12\css\styles.css" />
+    <Content Include="code\chapter_12\js\bootstrap-wysiwyg.js" />
+    <Content Include="code\chapter_12\js\bootstrap.js" />
+    <Content Include="code\chapter_12\js\bootstrap.min.js" />
+=======
+    <Content Include="code\chapter_12_old\assets\background.jpg" />
     <Content Include="code\chapter_12_old\assets\clip.jpg" />
     <Content Include="code\chapter_12_old\assets\clip.png" />
     <Content Include="code\chapter_12_old\assets\comments-xl.png" />
@@ -552,6 +564,7 @@
     <Content Include="code\chapter_12_old\js\bootstrap-wysiwyg.js" />
     <Content Include="code\chapter_12_old\js\bootstrap.js" />
     <Content Include="code\chapter_12_old\js\bootstrap.min.js" />
+>>>>>>> d4e6182cfd33ccad6961841c9ca3f1d24771bb1d
     <Content Include="code\chapter_api\ajax.html" />
     <Content Include="code\chapter_api\chamomile.txt" />
     <Content Include="code\chapter_api\lavender.txt" />
