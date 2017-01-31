@@ -1,5 +1,6 @@
 <?php
 require_once('../includes/database_connection.php');
+require_once('../classes/class_lib.php');
 $show_form = true;
 $alert = array('status'  => '', 'message' => '');
 $valid = array('forename' => '', 'surname' =>'', 'email' => '', 
@@ -10,28 +11,7 @@ $email     = ( isset($_POST['email'])    ? $_POST['email']    : '' );
 $password  = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
 $confirm   = ( isset($_POST['confirm'])  ? $_POST['confirm']  : '' );  
 
-function validate_form($forename, $surname, $email, $password, $confirm, $valid) {
-  //Forename, surname and email validation check
-  $valid['forename'] = (filter_var($forename, FILTER_DEFAULT)) ? ''  : 'Enter forename';
-  $valid['surname']  = (filter_var($surname,  FILTER_DEFAULT)) ? ''  : 'Enter surname';
-  $valid['email']    = (filter_var($email, FILTER_VALIDATE_EMAIL)) ? '' : 'Enter email';
-  //Password and Confirm validation check 
-  $valid['password'] = (filter_var($password, FILTER_VALIDATE_REGEXP, array('options'=> 
-  array('regexp'=>"/^(?=\S*\d)(?=\S*[a-zA-Z])\S{8,}$/"))) ? '': 'Password not valid' );
-  $valid['confirm']  = (filter_var($confirm, FILTER_DEFAULT)) ? '' : 'Confirm password';
-  //Compare password and confirm controls
-  if ($valid['password'] == '') {
-    $valid['confirm'] = ($password == $confirm ? '' : 'Passwords do not match' );
-  }
-  //If email is valid, check if it is already in database
-  if ($valid['email'] == '') {
-    $user_exists = get_user_by_email($email);
-    if ($user_exists) {
-      $valid['email'] = 'User already exists';
-    }
-  }
-  return $valid;
-}
+
 
 function get_user_by_email($email) {} // See Ch 5 pXXX
 
@@ -54,10 +34,15 @@ function add_user_textpassword($forename, $surname,
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $valid = validate_form($forename, $surname, $email,  
-  $password, $confirm, $valid);
-  $validation_failed = array_filter($valid);
-  if ($validation_failed == true) {
+  $Validate = new Validate();
+  $error['forename']      = $Validate->isForename($forename);
+  $error['surname']      = $Validate->isSurname($surname);
+  $error['email']      = $Validate->isEmail($email);
+  $error['password']      = $Validate->isStrongPassword($password);
+  $error['confirm']      = $Validate->isConfirm($confirm);
+  $valid = implode($error);
+  // If have valid email, send reset password link
+  if (strlen($valid)<2)  {
     $alert = array('status' => 'danger', 
     'message' => 'Please check errors below:');
   } else {

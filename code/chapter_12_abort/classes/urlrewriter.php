@@ -1,0 +1,21 @@
+<?php
+class UrlRewriter {
+    public $server;
+    public $category = ''; 
+    public $item = ''; 
+
+    public function __construct() { $this->parseUrl(0); }
+
+    private function parseUrl($offset) {
+        $parts = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH),"/");
+        $url_parts = explode("/", $parts, $offset+3);
+        $this->server = $url_parts[$offset];
+        if (isset($url_parts[$offset+1])) {
+            $this->category = $url_parts[$offset+1];
+        }
+        if (isset($url_parts[$offset+2])) {
+            $this->item =  $url_parts[$offset+2];
+        } 
+    }
+} 
+?>
