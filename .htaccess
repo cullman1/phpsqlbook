@@ -1,0 +1,14 @@
+
+RewriteEngine On    # Turn on the rewriting engine
+RewriteCond %{REQUEST_FILENAME} !\.(css|js|png|jpg|gif)$
+RewriteRule ^(.*)$ index.php [NC,L]
+
+
+php_value upload_max_filesize 8M
+php_value post_max_size 8M
+
+
+
+
+
+
