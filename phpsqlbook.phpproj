@@ -45,8 +45,11 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
+    <Compile Include="code\chapter_09\admin-home.php" />
     <Compile Include="code\chapter_09\forgotten-password-old.php" />
     <Compile Include="code\chapter_09\forgotten-password.php" />
+    <Compile Include="code\chapter_09\login.php" />
+    <Compile Include="code\chapter_09\logout.php" />
     <Compile Include="code\chapter_09\phpmailer.php" />
     <Compile Include="code\chapter_09\register-old.php" />
     <Compile Include="code\chapter_09\register.php" />

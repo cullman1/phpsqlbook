@@ -1,6 +1,9 @@
 <?php
 require_once('../includes/database_connection.php');
 require_once('../classes/class_lib.php');
+require_once('../includes/functions.php');
+// Step 1: Include script and create object
+require('../vendor/PHPMailer/PHPMailerAutoload.php'); 
 $show_form = true;
 $alert = array('status'  => '', 'message' => '');
 $error = array('forename' => '', 'surname' =>'', 'email' => '', 
@@ -11,30 +14,9 @@ $email     = ( isset($_POST['email'])    ? $_POST['email']    : '' );
 $password  = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
 $confirm   = ( isset($_POST['confirm'])  ? $_POST['confirm']  : '' ); 
 
-function get_user_by_email($email) {
-  $query = 'SELECT * from user WHERE email = :email';
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':email', $email);
-  $statement->execute();
-  $statement->bindParam(':email', $email);
-  if ($statement->execute() ) {
-    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');            
-    $user = $statement->fetch();
-  }
-  return ($user ? $user : false);
-}
 
-function add_user_textpassword($forename, $surname, $password, $email) {     
-  $query = 'INSERT INTO user (forename, surname, email, password) 
-    VALUES ( :forename, :surname, :email, :password)';
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':forename', $forename );
-  $statement->bindParam(':surname', $surname );
-  $statement->bindParam(':email',$email);
-  $statement->bindParam(':password',$password);
-  $result = $statement->execute();
-  return (($result == true) ? true : $statement->errorCode());   
- }
+
+
 
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $Validate = new Validate();   // Create validation object
@@ -43,23 +25,31 @@ function add_user_textpassword($forename, $surname, $password, $email) {
   $error['email']    = $Validate->isEmail($email);
   $error['password'] = $Validate->isStrongPassword($password);
   $error['confirm']  = $Validate->isConfirmPassword($password, $confirm);
-  $valid = implode($error);
-  if (strlen($valid)>1)  {  // If the form is valid, then send the reset password link
+  if (strlen(implode($error))>1)  {  // If the form is valid, then send the reset password link
     $alert = array('status' => 'danger', 'message' => 'Please check errors below:');
   } else {
     $user = get_user_by_email($email);
-     $alert = array('status' => 'danger', 'message' => 'User email already exists!');
+    $alert = array('status' => 'danger', 'message' => 'User email already exists!');
     if (!$user) {   
-      $user_added = add_user_textpassword($forename,  $surname,  $password, $email);	
-      if ($user_added) {      
-        $alert = array('status' => 'success', 'message' => 'User added.');   
-        $show_form = false;
+      $user_added = add_user($forename, $surname,  $password, $email);	
+     if ($user_added) {      
+  $subject = 'Registration confirmed';                // From address
+  $message = 'You can now login to the web site with id '. $user->email;       
+  send_email($user->email, $subject, $message);
+  if ($result) {                                     // Sent: store success msg
+    $alert = array('status' => 'success', 'message' => 'User added.');
+  } else {
+    $alert = Array('status'  => 'danger', 'message' => 'User added but unable to 
+                                                        send confirmation email'); 
+  }
+  $show_form = false;
        } else {                           
         $alert = array('status' => 'danger',  'message' => 'Unable to add user.');
        }
     } 
   }
-} ?>
+} 
+?>
 
 <body>
  <div class="<?= $alert['status'] ?>">

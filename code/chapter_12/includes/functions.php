@@ -158,7 +158,7 @@ function create_pagination($count, $show, $from, $search) {
    $statement = $connection->prepare($query);
    $statement->bindValue(':article_id', $id, PDO::PARAM_INT);
    $statement->execute();
-   $statement->setFetchMode(PDO::FETCH_OBJ);
+   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
    $user = $statement->fetch();  
    return append_blank($user,'blank.png');;
 }
