@@ -50,7 +50,13 @@ $confirm   = ( isset($_POST['confirm'])  ? $_POST['confirm']  : '' );
   }
 } 
 ?>
+<style>
+div { clear:both; }
+label{ display:block;
+padding-bottom: 15px;
+width: 25em; }
 
+</style>
 <body>
  <div class="<?= $alert['status'] ?>">
       <?= $alert['message'] ?></div>
