@@ -49,6 +49,7 @@
     <Compile Include="code\chapter_09\admin-home.php" />
     <Compile Include="code\chapter_09\forgotten-password-old.php" />
     <Compile Include="code\chapter_09\forgotten-password.php" />
+    <Compile Include="code\chapter_09\gallery.php" />
     <Compile Include="code\chapter_09\login.php" />
     <Compile Include="code\chapter_09\logout.php" />
     <Compile Include="code\chapter_09\phpmailer.php" />
