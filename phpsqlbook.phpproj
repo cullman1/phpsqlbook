@@ -45,7 +45,9 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
+    <Compile Include="code\chapter_04\class_lib.php" />
     <Compile Include="code\chapter_04\static.php" />
+    <Compile Include="code\chapter_04\working-with-objects.php" />
     <Compile Include="code\chapter_09\admin-home.php" />
     <Compile Include="code\chapter_09\forgotten-password-old.php" />
     <Compile Include="code\chapter_09\forgotten-password.php" />
