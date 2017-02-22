@@ -1,9 +1,10 @@
 <?php
 
 class Account {
-  var $name;
-  var $account;
-  var $balance;
+  public $name;
+  public $account;
+  private $balance;
+  public static $interestRate;
 
   function __construct($name, $account, $balance) { 
    $this->name = $name;
@@ -20,5 +21,11 @@ class Account {
      $this->balance = $this->balance - $amount;
      return $this->balance;
   }
+
+  public static function calcInterest($amount, $rate) {
+    
+    return $amount * $thisrate;
+  }
+
 }
 ?>

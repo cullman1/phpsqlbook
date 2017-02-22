@@ -1,26 +1,32 @@
 <?php
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
+class Account {
+  public $name;
+  public $account;
+  private $balance;
 
-class Calculator {
-
-  public function subtract($digit1, $digit2)  
-  {
-    return $digit1 - $digit2;
+  function __construct($name, $account, $balance) { 
+    $this->name = $name;
+    $this->account = $account;
+    $this->balance = $balance; 
   }
 
-  public static function static_subtract($digit1, 
-  $digit2)  
+  public static function staticInterest($amount, $rate)    
   {
-    return $digit1 - $digit2;
+    return $amount * $rate;
+  }
+
+  public function calcInterest($rate) {
+    return $this->balance * $rate;
   }
 }
 
-echo "Before Object instantiation static calls";
-echo "<br/>STATIC ". Calculator::static_subtract(10,1);
-echo "<br/>NON STATIC ". Calculator::subtract(10,1);
-echo "<br/>After Object instantiation non-static calls";
-$calculator = new Calculator();
-echo "<br/>NON STATIC". $calculator->subtract(10,1);
-echo "<br/>STATIC". $calculator->static_subtract(10,1);
+$balance = 5;
+echo 'Before Object creation STATIC calls<br/>';
+echo 'Interest $' . Account::staticInterest($balance,
+                                            .15);
+
+echo '<br/>After Object creation NONSTATIC calls<br/>';
+$acct = new Account('Ivy Stone', 12345678, $balance);
+echo "Interest $" . $acct->staticInterest($balance, .15);
+echo "<br/>Interest $" . $acct->calcInterest(.15);
 ?>
