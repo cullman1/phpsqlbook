@@ -1,31 +1,55 @@
 <?php
+class User {
+  public $name;
+  private $image;
+  public $accountNumber;
+
+  function __construct($name, $image, $number) { 
+    $this->name = $name;
+    $this->image = $image;
+    $this->accountNumber = $number; 
+  }
+
+  public function getImage(){
+    $image_path = 'images/';
+    return $image_path . $this->image['name'];
+  }
+  public function getAlt(){
+    return $this->image['alt'];
+  }
+  public function setImage($image){
+    $this->image = $image;
+  }
+} 
 
 class Account {
   public $name;
-  public $account;
-  private $balance;
-  public static $interestRate;
+  public $number;
+  protected $balance;
 
-  function __construct($name, $account, $balance) { 
-   $this->name = $name;
-   $this->account = $account;
-   $this->balance = $balance; 
- }
+  function __construct($name, $number, $balance) { 
+    $this->name = $name;
+    $this->number = $number;
+    $this->balance = $balance; 
+  }
 
-  function deposit($amount) {
-    $this->balance = $this->balance + $amount;
+  public static function staticInterest($sum, $rate) {
+    return $sum * $rate;
+  }
+  public function calcInterest($rate) {
+    return $this->balance * $rate;
+  }
+  
+   public function getBalance(){
     return $this->balance;
   }
+}
 
-  function withdraw($amount){
-     $this->balance = $this->balance - $amount;
-     return $this->balance;
+class SavingsAccount extends Account {
+  public static $fee;
+
+  public function getBalance(){
+    return $this->balance - self::$fee;
   }
-
-  public static function calcInterest($amount, $rate) {
-    
-    return $amount * $thisrate;
-  }
-
 }
 ?>

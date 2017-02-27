@@ -1,42 +1,44 @@
 <?php
 include('class_lib.php');
 
-$tax_rate = 20;
+SavingsAccount::$fee = 3;
 
-$basil  = new Seed('Basil', 3, 32);
-$chives = new Seed('Chives', 4, 56);
-$parsley = new Seed('Parsley', 3, 14);
+$image1 = array('name'=>'ivy.jpg','alt'=>'Ivy avatar');
+$user1  = new User('Ivy Stone', $image1, 12345679);
+$account1 = new SavingsAccount('Ivy Stone Savings',12345679,  300);
+$image2 = array('name'=>'morton.jpg','alt'=>'Morton avatar');
+$user2  = new User('Morton Walsh', $image2, 12345678);
+$account2 = new SavingsAccount('Morton Walsh Savings',12345678,  100);
+$image3 = array('name'=>'bernie.jpg','alt'=>'Ivy avatar');
+$user3  = new User('Bernie Day', $image3, 44145872);
+$account3 = new Account('Bernie Day Checking', 44145872,  200);
 
-$seeds = array($basil, $chives, $parsley);
+$users = array($user1, $user2, $user3);
 
-function total($price, $quantity) {
-  return $price * $quantity;
-}
-
-function get_tax($price, $tax_rate) {
-  return ($price / 100) * $tax_rate;
-}
-
+$accounts = array($account1, $account2, $account3);
 ?>
 <table>
   <tr>
-    <th>Product</th>
-    <th>Cost</th>
-    <th>Stock</th>
-    <th>Total value</th>
-    <th>Tax due</th>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Number</th>
+     <th>Balance</th>
   </tr>
   <?php
-    foreach ($seeds as $seed) {
+    foreach ($users as $user) {
       echo '<tr>';
 
-      foreach ($seed as $key => $value) {
+      foreach ($user as $key => $value) {
         echo '<td>' . $value . '</td>';
       }
-
-      echo '<td>$' . total($seed->price, $seed->stock) . '</td>';
-      echo '<td>$' . get_tax($seed->price, $tax_rate) . '</td>';
-    echo '</tr>';
+      echo '<td>' . $user->getImage() . '</td>';
+      
+      foreach ($accounts as $account) {
+       if ($account->number == $user->accountNumber) {
+         echo '<td>$' . $account->getBalance() . '</td>';
+       }
+     }  
+     echo '</tr>';
    }
 ?>
 </table>
