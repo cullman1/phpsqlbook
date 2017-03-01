@@ -1,11 +1,13 @@
 <?php
 include ("class_lib.php");
 
-$sum= 5;
-echo 'Before Object creation STATIC calls<br/>';
-echo 'Interest $' . Account::staticInterest($sum, .15);
-echo '<br/>After Object creation NONSTATIC calls<br/>';
+Account::$high = .22;
+Account::$rate = .15;
+$sum= 7;
+
+echo 'High Interest Static $'. Account::getHigh($sum);
+
 $acct = new Account('Ivy Stone', 12345678, $sum);
-echo "Interest $" . $acct->staticInterest($sum, .15);
-echo "<br/>Interest $" . $acct->calcInterest(.15);
+echo "High Interest NonStatic $". $acct->getHigh($sum);
+echo "Low Interest NonStatic $" . $acct->getInterest();
 ?>

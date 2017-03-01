@@ -49,6 +49,7 @@
     <Compile Include="code\chapter_04\class_lib_old.php" />
     <Compile Include="code\chapter_04\example.php" />
     <Compile Include="code\chapter_04\example_class_lib.php" />
+    <Compile Include="code\chapter_04\extended.php" />
     <Compile Include="code\chapter_04\object.php" />
     <Compile Include="code\chapter_04\static.php" />
     <Compile Include="code\chapter_04\working-with-objects.php" />

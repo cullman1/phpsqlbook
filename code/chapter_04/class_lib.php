@@ -22,29 +22,28 @@ class User {
   }
 } 
 
-class Account {
-  public $name;
+
+
+class Account {   
+ public $name;
   public $number;
-  protected $balance;
+  private $balance;
+  public static $rate;
+  public static $high;
 
   function __construct($name, $number, $balance) { 
     $this->name = $name;
     $this->number = $number;
     $this->balance = $balance; 
   }
+  public static function getHigh($balance) {
+    return $balance * self::$high;
+  }
+  public function getInterest() {
+    return $this->balance * self::$rate;
+  }
 
-  public static function staticInterest($sum, $rate) {
-    return $sum * $rate;
-  }
-  public function calcInterest($rate) {
-    return $this->balance * $rate;
-  }
-  
-   public function getBalance(){
-    return $this->balance;
-  }
 }
-
 class SavingsAccount extends Account {
   public static $fee;
 
@@ -52,4 +51,5 @@ class SavingsAccount extends Account {
     return $this->balance - self::$fee;
   }
 }
+
 ?>
