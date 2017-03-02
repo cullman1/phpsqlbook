@@ -1,13 +1,13 @@
 <?php
 include ("class_lib.php");
 
-Account::$high = .22;
 Account::$rate = .15;
 $sum= 7;
 
-echo 'High Interest Static $'. Account::getHigh($sum);
+echo 'Interest Calculated by Static $' .   
+Account::getInterest($sum);
 
 $acct = new Account('Ivy Stone', 12345678, $sum);
-echo "High Interest NonStatic $". $acct->getHigh($sum);
-echo "Low Interest NonStatic $" . $acct->getInterest();
+echo "<br/>Interest Calculated by Non-Static $" . 
+$acct->getInterest($sum);
 ?>
