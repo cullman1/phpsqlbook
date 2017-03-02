@@ -2,13 +2,7 @@
 class User {
   public $name;
   private $image;
-  public $accountNumber;
 
-  function __construct($name, $image, $number) { 
-    $this->name = $name;
-    $this->image = $image;
-    $this->accountNumber = $number; 
-  }
 
   public function getImage(){
     $image_path = 'images/';
