@@ -27,13 +27,17 @@ class User {
 class Account {
     public $name;
     public $number;
-    private $balance;
+    protected $balance;
     public static $rate;
 
     function __construct($name, $number, $balance) { 
         $this->name = $name;
         $this->number = $number;
         $this->balance = $balance; 
+    }
+
+    public function getBalance(){
+        return $this->balance;
     }
     
     public static function getInterest($sum) {

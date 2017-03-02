@@ -7,5 +7,5 @@ $save = new SavingsAccount('Ivy Saver', 12345678, 100);
 
 
 echo $account->name . " - $" . $account->getBalance();
-echo $save->name . " - $" . $save->getBalance();
+echo '<br>'.$save->name . " - $" . $save->getBalance();
 ?>
