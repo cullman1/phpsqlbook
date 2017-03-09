@@ -24,21 +24,33 @@ class User {
 
 
 
+
 class Account {
-    public $name;
-    public $number;
-    protected $balance;
-    public static $rate;
+  public $name;
+  public $number;
+  private $balance;
+  public static $rate;
 
-    function __construct($name, $number, $balance) { 
-        $this->name = $name;
-        $this->number = $number;
-        $this->balance = $balance; 
-    }
+  function __construct($name, $number, $balance=0) { 
+      $this->name = $name;
+      $this->number = $number;
+      $this->balance = $balance; 
+  }
 
-    public function getBalance(){
-        return $this->balance;
-    }
+  public function getBalance(){
+    return $this->balance;
+  }
+  public function setBalance($amount){
+      $this->balance = $amount;
+  }
+  public function deposit($amount) {
+    $this->balance = $this->balance + $amount;
+    return $this->balance;
+  }
+  public function withdraw($amount){
+     $this->balance = $this->balance - $amount;
+     return $this->balance;
+  }
     
     public static function getInterest($sum) {
         return $sum * self::$rate;
