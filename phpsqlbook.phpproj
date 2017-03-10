@@ -45,6 +45,7 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
+    <Compile Include="code\chapter_04\array.php" />
     <Compile Include="code\chapter_04\class_lib.php" />
     <Compile Include="code\chapter_04\class_lib_old.php" />
     <Compile Include="code\chapter_04\example.php" />
