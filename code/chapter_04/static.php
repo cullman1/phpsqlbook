@@ -1,8 +1,8 @@
 <?php
 include ("class_lib.php");
 
-Account::$rate = .15;
-$sum= 7;
+Account::$rate = .25;
+$sum= 9;
 
 echo 'Interest Calculated by Static $' .   
 Account::getInterest($sum);

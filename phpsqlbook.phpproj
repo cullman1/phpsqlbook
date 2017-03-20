@@ -45,9 +45,14 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
+    <Compile Include="code\chapter_03\chocolate.php" />
+    <Compile Include="code\chapter_03\do-while-loop.php" />
+    <Compile Include="code\chapter_03\includes\footer.php" />
     <Compile Include="code\chapter_03\function-with-array.php" />
+    <Compile Include="code\chapter_03\includes\functions.php" />
     <Compile Include="code\chapter_03\global-and-static-variables.php" />
     <Compile Include="code\chapter_03\global.php" />
+    <Compile Include="code\chapter_03\includes\header.php" />
     <Compile Include="code\chapter_03\multiple-return-values.php" />
     <Compile Include="code\chapter_03\static.php" />
     <Compile Include="code\chapter_04\array.php" />
@@ -495,6 +500,7 @@
     <Folder Include="code\chapter_01_old\" />
     <Folder Include="code\chapter_02_old\" />
     <Folder Include="code\chapter_03\" />
+    <Folder Include="code\chapter_03\includes\" />
     <Folder Include="code\chapter_05\" />
     <Folder Include="code\chapter_06\" />
     <Folder Include="code\chapter_08\" />
