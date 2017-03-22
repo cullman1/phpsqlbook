@@ -1,15 +1,15 @@
 <?php
 // Category names
-$categories = array('herbs', 'vegetables', 'salad');
+$categories = array('toffee', 'mints', 'fudge');
 foreach ($categories as $value) {
 echo $value . ' ';
 }
-// Seeds and prices
+// Candy and prices
 $stock = array(
-'Chives' => 2.99,
-'Basil' => 1.99,
-'Mint' => 3.49);
-foreach ($stock as $seed => $price) {
-echo $seed . ' $' . $price . '<br>';
+'English Toffee' => 2.99,
+'Chewy Mint' => 1.99,
+'Vanilla Fudge' => 3.49);
+foreach ($stock as $candy => $price) {
+echo '<br>' . $candy . ' $' . $price ;
 }
 ?>

@@ -47,6 +47,7 @@
     <Compile Include="admin\index.php" />
     <Compile Include="code\chapter_03\chocolate.php" />
     <Compile Include="code\chapter_03\do-while-loop.php" />
+    <Compile Include="code\chapter_03\for-each-loop-index.php" />
     <Compile Include="code\chapter_03\includes\footer.php" />
     <Compile Include="code\chapter_03\function-with-array.php" />
     <Compile Include="code\chapter_03\includes\functions.php" />
