@@ -1,6 +1,7 @@
-<h1>LOGO</h1>
+<h1>The Candy Store</h1>
 <nav>
-  <a href="">Home</a>
-  <a href="">Seeds</a>
-  <a href="">Contact</a>
+  <a href="index.php">Home</a>
+  <a href="sweets.php">Sweets</a>
+  <a href="about.php">About</a>
+  <a href="contact.php">Contact</a>
 </nav>

@@ -12,4 +12,3 @@ function get_stock_indicator($stock) {
   }
   return 'Out of stock';
 }
-?>

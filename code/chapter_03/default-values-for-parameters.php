@@ -1,10 +1,22 @@
 <?php
-function get_price($price,  $tax = '20',$discount = 0, $new = 0) {
-$tax_rate = 1 + ($tax / 100);
-$total = $price * $tax_rate;
-return $total - $discount;
+function calculate_cost($cost, $quantity, $discount = 0) {
+  $cost = $cost * $quantity;
+  return $cost - $discount;
 }
-echo '$' . get_price(100) . '<br>';
-echo '$' . get_price(100, 15) . '<br>';
-echo '$' . get_price(100, 5, 0) . '<br>';
 ?>
+<!doctype html>
+<html>
+<head>
+  <title>The Candy Store</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <h1>The Candy Store</h1>
+  <p>Chocolates</p>
+  <?php
+    echo '$' . calculate_cost(5, 10, 5) . '<br>';
+    echo '$' . calculate_cost(3, 4) . '<br>';
+    echo '$' . calculate_cost(4, 15, 20) . '<br>';
+  ?>
+</body>
+</html>

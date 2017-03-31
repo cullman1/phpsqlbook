@@ -1,22 +1,25 @@
 <?php
-$category = 'vegetables';
+ $day = 'Monday';
 ?>
 <!DOCTYPE html>
 <html>
-<head>...</head>
+<head>
+  <title>The Candy Store</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 <body>
-<h1>Beet</h1>
-<?php
-switch ($category) {
-case 'vegetables':
-echo '<a href="veg.php">See more veg</a>';
-break;
-case 'fruit':
-echo '<a href="fruit.php">See more fruit</a>';
-break;
-default:
-echo '<a href="seeds.php">See more seeds</a>';
-}
-?>
+  <h1>Offers on  <?php echo $day; ?></h1>
+  <?php
+    switch ($day) {
+      case 'Monday':
+        echo '20% off chocolates';
+        break;
+      case 'Tuesday':
+        echo '20% off mints';
+        break;
+      default:
+        echo 'Buy three packs, get one free';
+    }
+  ?>
 </body>
 </html>

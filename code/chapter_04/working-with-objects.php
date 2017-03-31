@@ -1,43 +1,54 @@
 <?php
-  include('class_lib.php');
-  $acct1 = new Account('Ivy Stone', 33344443, 32);
-  $acct2 = new Account('Tom White', 43161176, 56);
-  $acct3 = new Account('Bernie Day ', 25975383, 14);
+
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
+class Account {
+  public $type;
+  public $number;
+  public $balance;
+
+  function __construct($type, $number, $balance=0) { 
+    $this->type    = $type;
+    $this->number  = $number;
+    $this->balance = $balance; 
+  }
+
+  function deposit($amount) {
+    $this->balance = $this->balance + $amount;
+    return $this->balance;
+  }
+
+  function withdraw($amount){
+     $this->balance = $this->balance - $amount;
+     return $this->balance;
+  }
+}
+
+  $checking = new Account('Checking', '43161176', 32);
+  $savings  = new Account('Savings',  20148896, 756);
 ?>
+<html>
+<h1>Account balances</h1>
 <table>
   <tr>
     <th>Date</th>
-    <th><?php echo $acct1->name; ?></th>
-    <th><?php echo $acct2->name; ?></th>
-    <th><?php echo $acct3->name; ?></th>
+    <th><?php echo $checking->type; ?></th>
+    <th><?php echo $savings->type; ?></th>
   </tr>
   <tr>
     <td>23 June</td>
-    <td>$<?php echo $acct1->balance; ?></td>
-    <td>$<?php echo $acct2->balance; ?></td>
-    <td>$<?php echo $acct3->balance; ?></td>
+    <td>$<?php echo $checking->balance; ?></td>
+   <td>$<?php echo $savings->balance; ?></td>
   </tr>
-  <?php
-    $acct1->withdraw(3);
-    $acct2->deposit(12);
-    $acct3->deposit(7); 
-  ?>
   <tr>
     <td>24 June</td>
-    <td>$<?php echo $acct1->balance; ?></td>
-    <td>$<?php echo $acct2->balance; ?></td>
-    <td>$<?php echo $acct3->balance; ?></td>
+    <td>$<?php echo $checking->deposit('12');  ?></td>
+    <td>$<?php echo $savings->withdraw(100); ?></td>
   </tr>
- <?php
-    $acct1->withdraw(3);
-    $acct2->withdraw(9);
-    $acct3->deposit(7); 
-  ?>
-    <tr>
+  <tr>
     <td>25 June</td>
-    <td>$<?php echo $acct1->balance; ?></td>
-    <td>$<?php echo $acct2->balance; ?></td>
-    <td>$<?php echo $acct3->balance; ?></td>
-  </tr>
-
-  </table>
+    <td>$<?php echo $checking->withdraw(5); ?></td>
+    <td>$<?php echo $savings->deposit(300); ?></td>
+   </tr>
+</table>
+  </html>

@@ -1,16 +1,20 @@
-<?php
-$planting = array(
-'sew' => 'April',
-'harvest' => 'June',
-'light' => 'Full'
-);
+<?php 
+  $nutrition = array(
+    'fat'     => 38,
+    'sugar'   => 51,
+    'salt'    => 0.25
+  );
 ?>
 <!DOCTYPE html>
 <html>
-<head> ... </head>
+<head>
+  <title>Associative Arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 <body>
-<p>Sew <?php echo $planting['sew']; ?></p>
-<p>Harvest <?php echo $planting['harvest']; ?></p>
-<p>Light <?php echo $planting['light']; ?></p>
+ <h1>Nutrition (per 100g)</h1>
+  <p>Fat:   <?php echo $nutrition['fat']; ?>%</p>
+  <p>Sugar: <?php echo $nutrition['sugar']; ?>%</p>
+  <p>Salt:  <?php echo $nutrition['salt']; ?>%</p>
 </body>
 </html>
