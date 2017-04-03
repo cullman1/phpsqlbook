@@ -1,51 +1,79 @@
 <?php
+class Customer { 
+  public $number;  
+  public $forename;
+  public $surname;
+  private $password;
+  public $accounts;
 
-error_reporting(E_ALL | E_WARNING | E_NOTICE);
-ini_set('display_errors', TRUE);
-include('class_lib.php');
+  function __construct($number, $forename, $surname, $password, $accounts) { 
+    $this->number = $number;
+    $this->forename = $forename; 
+    $this->surname = $surname;
+    $this->password = $password; 
+    $this->accounts = $accounts; 
+  } 
 
-function low_stock($stock_number, $stock_warning) {
-  if ($stock_number > $stock_warning) {
-
-    return $stock_number . ' available';
-  } else {
-    return '<span class="red">LOW STOCK only ' . $stock_number . ' left' . '</span>';
+   function getFullName() {
+     $fullName = $this->forename . ' ' . $this->surname;
+     return $fullName;
   }
 }
 
+class Account {
+  public $type;
+  public $number;
+  public $balance;
 
-$pakchoi_image = array('name'=>'pak-choi.jpg','alt'=>'A whole pak choi');
-$chives_image = array('name'=>'chives.jpg','alt'=>'A cutting of chives');
-$dill_image = array('name'=>'dill.jpg','alt'=>'A leafy clump of dill');
-$carrots_image = array('name'=>'carrots.jpg','alt'=>'A bunch of carrots');
+  function __construct($type, $number, $balance=0) { 
+    $this->type    = $type;
+    $this->number  = $number;
+    $this->balance = $balance; 
+  }
 
-$pakchoi = new Seed('Pak Choi', 5, 7, $pakchoi_image);
-$chives = new Seed('Chives', 4, 56, $chives_image);
-$dill = new Seed('Dill', 3, 14, $dill_image);
-$carrots = new Seed('Carrots', 2, 8, $carrots_image);
-$seeds = array($pakchoi, $chives, $dill, $carrots);
+  function deposit($amount) {
+    $this->balance = $this->balance + $amount;
+    return $this->balance;
+  }
 
-include 'header-admin.php'; ?>
-<div style="padding-left:10px;">
-<table >
+  function withdraw($amount){
+     $this->balance = $this->balance - $amount;
+     return $this->balance;
+  }
+
+  function getBalance() {
+     return  $this->balance;
+  }
+}
+
+$checking = new Account('Checking', 12345678, -20);
+$savings  = new Account('Savings',  12345679, 380);
+
+$accounts = array($checking, $savings);
+
+$user = new Customer(12345678, 'Ivy', 'Stone', 'test',
+                 $accounts);
+?>
+
+Name: <?php echo $user->getFullName(); ?>
+<table>
   <tr>
-    <th>Product</th>
-    <th style="text-align:center;">Cost</th>
-    <th style="text-align:left; padding-left:40px;">Stock</th>
-    
+    <th>Account Number</th>
+    <th>Account Type</th>
+    <th>Balance</th>
   </tr>
   <?php
-    foreach ($seeds as $seed) {
+    foreach ($user->accounts as $account) {
       echo '<tr>';
-      echo '<td><img width=100 alt="'. $seed->getImageAlt() . '" title="'. $seed->getImageAlt() . '" src="'. $seed->getImageThumbnail() . '" /><br>'; 
-    
-      foreach ($seed as $property => $value) {
-       echo $property . ': ' . $value . '<br>';
+      echo '<td>' . $account->number . '</td>';
+      echo '<td>' . $account->type . '</td>';
+      $balance = $account->getBalance();
+      if ($balance >= 0) {
+        echo '<td class="credit">'. $balance .'</td>';        
+      } else {
+        echo '<td class="drawn">'. $balance .'</td>';        
       }
-      echo '<td valign=bottom style="text-align:left; padding-left:40px;">$' . $seed->getPrice() . '</td>';
-      echo '<td valign=bottom style="text-align:left; padding-left:40px;">' . low_stock($seed->getStock(), 10) . '</td>';
-    echo '</tr>';
-   }
-?>
+      echo '</tr>';
+    }
+  ?>
 </table>
-</div>
