@@ -21,22 +21,3 @@ class Account {
      return $this->balance;
   }
 }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Objects</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-<h1>Account balance</h1>
-<?php
-$account = new Account(20148896, 'Savings', 80);
-
-echo $account->type . ' account' . '<br>'; 
-echo '$' . $account->getBalance(); 
-echo '<br>';
-echo '$' . $account->deposit(35);
-?>
-</body>
-</html>

@@ -23,6 +23,13 @@ class Account {
 $checking = new Account('Checking', 43161176, 32);
 $savings  = new Account('Savings',  20148896, 756);
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Objects</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <h1>Account balances</h1>
 <table>
   <tr>
@@ -46,3 +53,5 @@ $savings  = new Account('Savings',  20148896, 756);
     <td>$<?php echo $savings->deposit(300); ?></td>
    </tr>
 </table>
+</body>
+</html>
