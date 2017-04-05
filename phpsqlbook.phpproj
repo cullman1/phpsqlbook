@@ -88,6 +88,8 @@
     <Compile Include="code\chapter_04_old\object_old.php" />
     <Compile Include="code\chapter_04_old\static.php" />
     <Compile Include="code\chapter_04_old\working-with-objects.php" />
+    <Compile Include="code\chapter_05\array-updating-functions.php" />
+    <Compile Include="code\chapter_05\string-functions.php" />
     <Compile Include="code\chapter_05\strpos-function.php" />
     <Compile Include="code\chapter_05\test.php" />
     <Compile Include="code\chapter_09\admin-home.php" />
