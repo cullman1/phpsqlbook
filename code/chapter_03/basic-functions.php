@@ -19,11 +19,11 @@
     <h1><?php write_logo(); ?> The Candy Store</h1>
   </header>
   <article>
-    <p>Welcome to the Candy Store</p>
+    <h2>Welcome to the Candy Store</h2>
   </article>
   <footer>
     <?php write_logo(); ?>
     <?php write_copyright_notice(); ?>
-  <footer>
+  </footer>
   </body>
 </html>

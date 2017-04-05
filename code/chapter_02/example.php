@@ -17,7 +17,7 @@
 <html>
   <head>
     <title><?php echo STORE_NAME; ?> Cart</title>              <!-- Show store name -->
-    <style href="css/styles.css"></style>
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <h1><?php echo STORE_NAME; ?> Shopping Basket</h1>         <!-- Show store name -->

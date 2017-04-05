@@ -45,17 +45,26 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
-    <Compile Include="code\chapter_03\chocolate.php" />
-    <Compile Include="code\chapter_03\do-while-loop.php" />
-    <Compile Include="code\chapter_03\for-each-loop-index.php" />
+    <Compile Include="code\chapter_01\index.php" />
+    <Compile Include="code\chapter_01\test.php" />
+    <Compile Include="code\chapter_02\example.php" />
+    <Compile Include="code\chapter_02\index.php" />
+    <Compile Include="code\chapter_02\ternary-operator.php" />
+    <Compile Include="code\chapter_02\updating-variables.php" />
+    <Compile Include="code\chapter_03\basic-functions.php" />
+    <Compile Include="code\chapter_03\basic-return-functions.php" />
+    <Compile Include="code\chapter_03\for-each-loop-values.php" />
+    <Compile Include="code\chapter_03\for-each-loop.php" />
+    <Compile Include="code\chapter_03\for-loop-multiple.php" />
+    <Compile Include="code\chapter_03\global-and-local-scope.php" />
+    <Compile Include="code\chapter_03\include-and-require-files.php" />
     <Compile Include="code\chapter_03\includes\footer.php" />
-    <Compile Include="code\chapter_03\function-with-array.php" />
     <Compile Include="code\chapter_03\includes\functions.php" />
     <Compile Include="code\chapter_03\global-and-static-variables.php" />
-    <Compile Include="code\chapter_03\global.php" />
     <Compile Include="code\chapter_03\includes\header.php" />
-    <Compile Include="code\chapter_03\multiple-return-values.php" />
-    <Compile Include="code\chapter_03\static.php" />
+    <Compile Include="code\chapter_03\index.php" />
+    <Compile Include="code\chapter_03\multiple-returns.php" />
+    <Compile Include="code\chapter_03\multiple-values.php" />
     <Compile Include="code\chapter_04\array.php" />
     <Compile Include="code\chapter_04\classes\Account.php" />
     <Compile Include="code\chapter_04\classes\Customer.php" />
@@ -63,6 +72,7 @@
     <Compile Include="code\chapter_04\includes\class_lib.php" />
     <Compile Include="code\chapter_04\example_class_lib.php" />
     <Compile Include="code\chapter_04\example.php" />
+    <Compile Include="code\chapter_04\index.php" />
     <Compile Include="code\chapter_04\object-in-object.php" />
     <Compile Include="code\chapter_04\working-with-objects.php" />
     <Compile Include="code\chapter_04_old\array.php" />
@@ -97,7 +107,6 @@
     <Compile Include="cms_old\functions.php" />
     <Compile Include="cms_old\login.php" />
     <Compile Include="code\chapter_02\associative-arrays.php" />
-    <Compile Include="code\chapter_02\basic-example.php" />
     <Compile Include="code\chapter_02\comparison-operators.php" />
     <Compile Include="code\chapter_02\constants.php" />
     <Compile Include="code\chapter_02\echo.php" />
@@ -109,20 +118,13 @@
     <Compile Include="code\chapter_02\mathematical-operators.php" />
     <Compile Include="code\chapter_02\string-operator.php" />
     <Compile Include="code\chapter_02\switch-statement.php" />
-    <Compile Include="code\chapter_02\tester.php" />
     <Compile Include="code\chapter_02\variables.php" />
-    <Compile Include="code\chapter_03\class_lib.php" />
     <Compile Include="code\chapter_03\default-values-for-parameters.php" />
     <Compile Include="code\chapter_03\dowhile-loop.php" />
     <Compile Include="code\chapter_03\example.php" />
-    <Compile Include="code\chapter_03\for-each-loop-array.php" />
     <Compile Include="code\chapter_03\for-loop.php" />
-    <Compile Include="code\chapter_03\foreach-object.php" />
     <Compile Include="code\chapter_03\function-with-parameters.php" />
-    <Compile Include="code\chapter_03\function-with-return-values.php" />
-    <Compile Include="code\chapter_03\function.php" />
     <Compile Include="code\chapter_03\while-loop.php" />
-    <Compile Include="code\chapter_03\working-with-objects.php" />
     <Compile Include="code\chapter_08\about.php" />
     <Compile Include="code\chapter_08\add_article_amended.php" />
     <Compile Include="code\chapter_08\add_article_document.php" />
@@ -496,7 +498,6 @@
     <Compile Include="pages\search.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
-    <Compile Include="code\chapter_03\testing-access.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\" />
@@ -506,6 +507,7 @@
     <Folder Include="cms\pages\" />
     <Folder Include="cms_old\" />
     <Folder Include="code\" />
+    <Folder Include="code\chapter_01\" />
     <Folder Include="code\chapter_01_old\" />
     <Folder Include="code\chapter_02_old\" />
     <Folder Include="code\chapter_03\" />

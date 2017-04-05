@@ -22,7 +22,7 @@
     <h1><?php echo create_logo(); ?>The Candy Store</h1>
   </header>
   <article>
-    <p>Welcome to The Candy Store.</p>
+    <h2>Welcome to The Candy Store.</h2>
   </article>
   <footer>
     <?php echo create_logo(); ?>
