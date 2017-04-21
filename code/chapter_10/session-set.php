@@ -1,10 +1,6 @@
 <?php
-  session_start();
-  if (isset($_SESSION["visited"])) {
-    $greeting = 'Welcome back';
-  } else {
-    $_SESSION["visited"] = TRUE;
-    $greeting = 'Hello';
-  }
+         $locale = array('timezone' => 'EST',
+                'language' => 'EN-US',    'currency' => 'USD');
+          $_SESSION = $locale;
+  var_dump($_SESSION);
 ?>
-<h1><?= $greeting; ?></h1>
