@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
 class User {
   public $name;
@@ -19,3 +26,5 @@ class User {
 
 <h1>var_dump()</h1>
 <?php var_dump($user); ?>
+</body>
+</html>

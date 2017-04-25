@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
 $start    = new DateTime('2000-1-1');
 $end      = new DateTime('2001-1-31');
@@ -11,3 +18,5 @@ foreach($period as $occurence) {
     '<br>';
 }
 ?>
+</body>
+</html>

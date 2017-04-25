@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <h1>Order</h1>
 <?php $order = array('notebook', 'pencil', 'scissors',            'eraser', 'ink', 'washi tape');
   sort($order);
@@ -15,3 +22,5 @@
         echo $description . ': ' . $date . '<br>';
   }
 ?>
+</body>
+</html>

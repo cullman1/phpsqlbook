@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
   $user = array('name'   => 'Ivy',
                  'age'    => 10,
@@ -9,3 +16,5 @@
 
 <h1>var_dump()</h1>
 <?php var_dump($user); ?>
+</body>
+</html>

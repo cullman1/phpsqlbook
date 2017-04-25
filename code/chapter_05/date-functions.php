@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
   $now = time();
   echo 'Page created: ';
@@ -12,5 +19,6 @@
   echo $ends_array['year'];
 
 ?>
-...
 <div class="footer">&copy; <?php echo date("Y")?></div>
+</body>
+</html>

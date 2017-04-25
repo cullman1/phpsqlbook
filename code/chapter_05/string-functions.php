@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
   $string = 'Home sweet home';
 ?>
@@ -20,3 +27,5 @@
 <p><?php echo str_ireplace('home', 'house', $string);?></p>
 <h2>Reverse</h2>
 <p><?php echo strrev($string); ?></p>
+</body>
+</html>

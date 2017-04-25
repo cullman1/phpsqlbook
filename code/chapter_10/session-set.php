@@ -2,5 +2,12 @@
          $locale = array('timezone' => 'EST',
                 'language' => 'EN-US',    'currency' => 'USD');
           $_SESSION = $locale;
-  var_dump($_SESSION);
+if (empty($_SESSION["name"]["first"])) {
+         echo "1";                 
+}
+if (!isset($_SESSION["name"]["first"])) {
+                  echo "2";        
+}
+
+
 ?>

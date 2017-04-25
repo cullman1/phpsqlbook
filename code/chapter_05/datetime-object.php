@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
   // Create new DateTime object (defaults to now)
   $now = new DateTime();
@@ -15,3 +22,5 @@
   at 
   <?php echo $expires->format('g:i a'); ?>
 </p>
+</body>
+</html>

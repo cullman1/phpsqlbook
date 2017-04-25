@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <b>Today is:</b>
 <?php
 $calendar_item = new DateTime();
@@ -16,3 +23,5 @@ echo $calendar_item->format('D d M Y, g: i a');
 $calendar_item->modify('+2 hours 45 min');
 echo $calendar_item->format('D d M Y, g: i a');
 ?>
+</body>
+</html>

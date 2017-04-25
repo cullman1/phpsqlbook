@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
   $greetings = array('Hi ', 'Howdy ', 'Hello ', 'Hola ',
                     'Welcome ', 'Ciao ');
@@ -22,3 +29,5 @@
 
 Our top <?php echo count($best_sellers); ?> 
 items today are: <?php echo $text_best_sellers ?><br />
+</body>
+</html>

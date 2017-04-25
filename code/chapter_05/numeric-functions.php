@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
   $number = 9.87654321;
 ?>
@@ -11,3 +18,5 @@
 <b>Random number</h2>      <?php echo mt_rand(0, 10); ?><br>
 <b>Exponential</h2>        <?php echo pow(4,5) ?><br>
 <b>Square root</h2>        <?php echo sqrt(16); ?><br> 
+</body>
+</html>

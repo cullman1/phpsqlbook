@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
 date_default_timezone_set('Europe/London');
 
@@ -22,3 +29,5 @@ $renew_date = strtotime('previous month', $end_date);
 <?php echo date('D d M Y', $renew_date); ?><br>
 <b>Your timezone is: </b>
 <?php echo date_default_timezone_get(); ?>
+</body>
+</html>

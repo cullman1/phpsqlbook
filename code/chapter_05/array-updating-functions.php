@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <h1>Order</h1>
 <?php
   // Create array and show contents as a string
@@ -21,3 +28,5 @@
         echo $description . ': ' . $date . '<br>';
   }
 ?>
+</body>
+</html>

@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Built-in functions, objects and arrays</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 <?php
 $tz_LDN = new DateTimeZone('Europe/London');
 $tz_NYC = new DateTimeZone('America/New_York');
@@ -19,3 +26,5 @@ $location  = $tz_LDN->getLocation();
 echo 'Longitude: ' . $location['longitude'] . '<br>';
 echo 'Latitude: ' . $location['latitude'];
 ?>
+</body>
+</html>
