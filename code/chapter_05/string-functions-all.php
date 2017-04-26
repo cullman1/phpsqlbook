@@ -29,7 +29,7 @@
 </style>
 <body>
   <h1>String functions</h1>
-  <form action="string-functions.php" method="post">
+  <form action="string-functions-all.php" method="post">
     
 <table class="table_syntax">
   <tr>
