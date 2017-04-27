@@ -1,5 +1,7 @@
 <?php
-include 'new-session.php';
+
+echo $_SESSION["name"];
+//include 'new-session.php';
 //echo "<br/>" . $file . "<br/>";
 echo "<br/>Page 1<br/>";
 ?>

@@ -1,5 +1,7 @@
 <?php
   $string  = ( isset($_POST['string']) ? $_POST['string'] : 'Home sweet home' );
+  $start_string = substr($string, 0, 2 );
+  $end_string = substr($string, -2)
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +31,7 @@
 </style>
 <body>
   <h1>String functions</h1>
-  <form action="string-functions.php" method="post">
+  <form action="string-functions-all.php" method="post">
     
 <table class="table_syntax">
   <tr>
@@ -66,53 +68,53 @@
   </tr>
 
   <tr><td colspan="3"><h2>Finding characters:</h2></td></tr>
-
+  
   <tr>
-    <td class="result"><?php echo strpos($string, 'me') ?></td>
-    <td><code class="php">strpos($string, 'me');</code></td>
-    <td>Position of first occurence of a string (case sensitive and zero based)</td>
+    <td class="result"><?php echo strpos($string, $end_string) ?></td>
+    <td><code class="php">strpos($string, '<?php echo $end_string; ?>');</code></td>
+    <td>Position of first occurence of a substring within a string (case sensitive and zero based)</td>
   </tr>
 
   <tr>
-    <td class="result"><?php echo strpos($string, 'me', 5) ?></td>
-    <td><code class="php">strpos($string, 'me', 5);</code></td>
-    <td>Position of first occurence of a string after a specified character position</td>
+    <td class="result"><?php echo strpos($string, $end_string, 5) ?></td>
+    <td><code class="php">strpos($string, '<?php echo $end_string; ?>', 5);</code></td>
+    <td>Position of first occurence of a substring within a string after a specified character position</td>
   </tr>
 
   <tr>
-    <td class="result"><?php echo stripos($string, 'Me', 5) ?></td>
-    <td><code class="php">stripos($string, 'Me', 5);</code></td>
+    <td class="result"><?php echo stripos($string, $end_string, 5) ?></td>
+    <td><code class="php">stripos($string, '<?php echo $end_string; ?>', 5);</code></td>
     <td>Non-case sensitive version of strpos()</td>
   </tr>
 
   <tr>
-    <td class="result"><?php echo strrpos($string, 'me') ?></td>
-    <td><code class="php">strrpos($string, 'me');</code></td>
+    <td class="result"><?php echo strrpos($string, $end_string) ?></td>
+    <td><code class="php">strrpos($string, '<?php echo $end_string; ?>');</code></td>
     <td>Position of last occurence of a string</td>
   </tr>
 
   <tr>
-    <td class="result"><?php echo strripos($string, 'Me') ?></td>
-    <td><code class="php">strripos($string, 'Me');</code></td>
+    <td class="result"><?php echo strripos($string, $end_string) ?></td>
+    <td><code class="php">strripos($string, '<?php echo $end_string; ?>');</code></td>
     <td>Non-case sensitive version of strrpos()</td>
   </tr>
 
   <tr>
-    <td class="result"><?php echo strrchr($string, 'ho') ?></td>
-    <td><code class="php">strrchr($string, 'ho');</code></td>
-    <td>Position of first character in last occurence of a substring</td>
-  </tr>
-
-  <tr>
-    <td class="result"><?php echo strstr($string, 'ho') ?></td>
-    <td><code class="php">strstr($string, 'ho');</code></td>
+    <td class="result"><?php echo strstr($string, $start_string) ?></td>
+    <td><code class="php">strstr($string, '<?php echo $start_string; ?>');</code></td>
     <td>Returns the rest of the string after the first occurrence of a string</td>
   </tr>
 
   <tr>
-    <td class="result"><?php echo stristr($string, 'ho') ?></td>
-    <td><code class="php">stristr($string, 'ho');</code></td>
+    <td class="result"><?php echo stristr($string, $start_string) ?></td>
+    <td><code class="php">stristr($string, '<?php echo $start_string; ?>');</code></td>
     <td>Case insensitive version of strstr()</td>
+  </tr>
+
+   <tr>
+    <td class="result"><?php echo strrchr($string, $start_string) ?></td>
+    <td><code class="php">strrchr($string, '<?php echo $start_string; ?>');</code></td>
+    <td>Returns the rest of the text from the last occurence of a substring</td>
   </tr>
 
 
@@ -175,13 +177,19 @@
   <tr>
     <td class="result"><?php echo ltrim($string, 'Home') ?></td>
     <td><code class="php">ltrim($string, 'Home');</code></td>
-    <td>Second parameter removes additional characters (case-sensitive)</td>
+    <td>Second parameter removes additional characters if they are found at the start of the string (case-sensitive)</td>
   </tr>
 
   <tr>
     <td class="result"><?php echo rtrim($string) ?></td>
     <td><code class="php">rtrim($string);</code></td>
     <td>Removes whitespace from the right-hand side of the string</td>
+  </tr>
+
+    <tr>
+    <td class="result"><?php echo rtrim($string, 'home') ?></td>
+    <td><code class="php">rtrim($string, 'home');</code></td>
+    <td>Second parameter removes additional characters if they are found at the end of the string (case-sensitive)</td>
   </tr>
 
   <tr>
@@ -193,7 +201,7 @@
   <tr>
     <td class="result"><?php echo trim($string, 'home') ?></td>
     <td><code class="php">trim($string, 'home');</code></td>
-    <td>Second parameter removes additional characters (case-sensitive)</td>
+    <td>Second parameter removes additional characters if they are found at the start or end of the string (case-sensitive)</td>
   </tr>
 
 
@@ -214,13 +222,13 @@
   <tr>
     <td class="result"><?php echo strrev($string) ?></td>
     <td><code class="php">strrev($string);</code></td>
-    <td>Reverses the string</td>
+    <td>Reverses the string once</td>
   </tr>
 
   <tr>
     <td class="result"><?php echo str_repeat($string, 2) ?></td>
     <td><code class="php">str_repeat($string, 2);</code></td>
-    <td>Repeats the string</td>
+    <td>Repeats the string a specified number of times</td>
   </tr>
 
 </table>

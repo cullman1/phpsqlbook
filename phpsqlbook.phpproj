@@ -110,6 +110,7 @@
     <Compile Include="code\chapter_05\object-viewer.php" />
     <Compile Include="code\chapter_05\redirect.php" />
     <Compile Include="code\chapter_05\server-superglobal.php" />
+    <Compile Include="code\chapter_05\string-functions-all.php" />
     <Compile Include="code\chapter_05\string-functions.php" />
     <Compile Include="code\chapter_05\strpos-function.php" />
     <Compile Include="code\chapter_05\timestamps-and-timezones.php" />
