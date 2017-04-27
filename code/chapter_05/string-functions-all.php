@@ -1,6 +1,7 @@
 <?php
   $string  = ( isset($_POST['string']) ? $_POST['string'] : 'Home sweet home' );
   $start_string = substr($string, 0, 2 );
+    $start_string_four = substr($string, 0, 4 );
   $end_string = substr($string, -2)
 ?>
 <!DOCTYPE html>
