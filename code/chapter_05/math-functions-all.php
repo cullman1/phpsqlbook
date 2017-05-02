@@ -126,23 +126,23 @@ function includeRound($count1, $dp) {
     <td>The second parameter sets the number of decimal places to round the number to.</td>
   </tr>
   <tr>
-    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
-    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?> );</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant('PHP_ROUND_HALF_UP')); ?></td>
+    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php echo 'PHP_ROUND_HALF_UP' ?> );</code></td>
     <td>The third parameter sets a rounding option.<br>Round half numbers up.</td>
   </tr>
-  <tr>
-    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
-    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?>);</code></td>
+ <tr>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp],  constant('PHP_ROUND_HALF_DOWN')); ?></td>
+    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php echo 'PHP_ROUND_HALF_DOWN' ?>);</code></td>
     <td>Round half numbers down.</td>
   </tr>
   <tr>
-    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
-    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?>);</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp],  constant('PHP_ROUND_HALF_EVEN')); ?></td>
+    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php echo 'PHP_ROUND_HALF_EVEN' ?>);</code></td>
     <td>Round to nearest even number.</td>
   </tr>
   <tr>
-    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
-    <td><code class="php">round($number,  <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?>);</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant('PHP_ROUND_HALF_ODD')); ?></td>
+    <td><code class="php">round($number,  <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php echo 'PHP_ROUND_HALF_ODD' ?>);</code></td>
     <td>Round to nearest odd number.</td>
   </tr>
 
