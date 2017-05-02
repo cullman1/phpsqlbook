@@ -1,7 +1,54 @@
 <?php
+  session_start();
+  error_reporting(E_ALL|E_WARNING|E_NOTICE);
+ini_set('display_errors', TRUE); 
+$count1 = 1;
+$count2 = 2;
+$count3 = 1;
+  $_SESSION = $_POST;
   $number  = ( isset($_POST['number']) ? $_POST['number'] : '1234.567' );
   $round_type =  ( isset($_POST['round_type']) ? $_POST['round_type'] : 'PHP_ROUND_HALF_UP' );
-  $dp =  ( isset($_POST['round_type']) ? $_POST['rount_type'] : 2 );
+  $dp =  ( isset($_POST['dp']) ? $_POST['dp'] : 2 );
+  $dp1 =  ( isset($_POST['dp1']) ? $_POST['dp1'] : $_POST['dp1']=2 );
+  $dp2 =  ( isset($_POST['dp2']) ? $_POST['dp2'] :  $_POST['dp2']=2 );
+  $dp3 =  ( isset($_POST['dp3']) ? $_POST['dp3'] :  $_POST['dp3']=2 );
+  $dp4 =  ( isset($_POST['dp4']) ? $_POST['dp4'] :  $_POST['dp4']=2 );
+  $dp5 =  ( isset($_POST['dp5']) ? $_POST['dp5'] :  $_POST['dp5']=2 );
+    $dp6 =  ( isset($_POST['dp6']) ? $_POST['dp6'] :  $_POST['dp6']=2 );
+       $rando2 =  ( isset($_POST['rando2']) ? $_POST['rando2'] : $_POST['rando2']=100 );
+  $rando1 =  ( isset($_POST['rando1']) ? $_POST['rando1'] : $_POST['rando1']=0 );
+       $rando3 =  ( isset($_POST['rando3']) ? $_POST['rando3'] : $_POST['rando3']=0 );
+            $rando4 =  ( isset($_POST['rando4']) ? $_POST['rando4'] : $_POST['rando4']=100 );
+                   $rando5 =  ( isset($_POST['rando5']) ? $_POST['rando5'] : $_POST['rando5']=4 );
+            $rando6 =  ( isset($_POST['rando6']) ? $_POST['rando6'] : $_POST['rando6']=3 );
+              $rando7 =  ( isset($_POST['rando7']) ? $_POST['rando7'] : $_POST['rando7']=16 );
+  $round_type1 =  ( isset($_POST['round_type1']) ? $_POST['round_type1'] : $_POST['round_type1']='PHP_ROUND_HALF_UP' );
+  $round_type2 =  ( isset($_POST['round_type2']) ? $_POST['round_type2'] :  $_POST['round_type2']='PHP_ROUND_HALF_UP' );
+  $round_type3 =  ( isset($_POST['round_type3']) ? $_POST['round_type3'] :  $_POST['round_type3']='PHP_ROUND_HALF_DOWN' );
+  $round_type4 =  ( isset($_POST['round_type4']) ? $_POST['round_type4'] :  $_POST['round_type4']='PHP_ROUND_HALF_EVEN' );
+  $round_type5 =  ( isset($_POST['round_type5']) ? $_POST['round_type5'] :  $_POST['round_type5']='PHP_ROUND_HALF_ODD' );
+  
+function includeRound($count1, $dp) {
+  $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+   include "$root/phpsqlbook/code/chapter_05/includes/round.php";
+   $count1 = $count1 + 1;
+   return $count1;
+}
+
+  function includeType($count2, $round_type) {
+  $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+    include "$root/phpsqlbook/code/chapter_05/includes/type.php";
+   $count2 = $count2 + 1;
+   return $count2;
+}
+
+ function includeRandom($count3, $round_type) {
+  $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+    include "$root/phpsqlbook/code/chapter_05/includes/random.php";
+   $count3 = $count3 + 1;
+   return $count3;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +79,7 @@
 </style>
 <body>
   <h1>Math functions</h1>
-  <form action="math-functions.php" method="post">
+  <form action="math-functions-all.php" method="post">
     
 <table class="table_syntax">
   <tr>
@@ -74,53 +121,42 @@
     <td>Rounds numbers up or down, this function has two optional parameters (see below).</td>
   </tr>
   <tr>
-    <td class="result"><?php echo round($number, 2); ?></td>
-    <td><code class="php">round($number, 2);</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp]); ?></td>
+    <td><code class="php">round($number,  <?php $count1 = includeRound($count1, $_POST[$dpp]);  ?> );</code></td>
     <td>The second parameter sets the number of decimal places to round the number to.</td>
   </tr>
   <tr>
-    <td class="result"><?php echo round($number, $dp, PHP_ROUND_HALF_UP); ?></td>
-    <td><code class="php">round($number, 2, 
-    <select name="round_type">
-    	<option value="PHP_ROUND_HALF_UP">PHP_ROUND_HALF_UP</option>
-    	<option value="PHP_ROUND_HALF_DOWN">PHP_ROUND_HALF_DOWN</option>
-    	<option value="PHP_ROUND_HALF_EVEN">PHP_ROUND_HALF_EVEN</option>
-    	<option value="PHP_ROUND_HALF_ODD">PHP_ROUND_HALF_ODD</option>
-    </select>
-    );</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
+    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?> );</code></td>
     <td>The third parameter sets a rounding option.<br>Round half numbers up.</td>
   </tr>
   <tr>
-    <td class="result"><?php echo round($number, 2, PHP_ROUND_HALF_UP); ?></td>
-    <td><code class="php">round($number, 2, PHP_ROUND_HALF_UP);</code></td>
-    <td>The third parameter sets a rounding option.<br>Round half numbers up.</td>
-  </tr>
-  <tr>
-    <td class="result"><?php echo round($number, 2, PHP_ROUND_HALF_DOWN); ?></td>
-    <td><code class="php">round($number, 2, PHP_ROUND_HALF_DOWN);</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
+    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?>);</code></td>
     <td>Round half numbers down.</td>
   </tr>
   <tr>
-    <td class="result"><?php echo round($number, 2, PHP_ROUND_HALF_EVEN); ?></td>
-    <td><code class="php">round($number, 2, PHP_ROUND_HALF_EVEN);</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
+    <td><code class="php">round($number,   <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?>);</code></td>
     <td>Round to nearest even number.</td>
   </tr>
   <tr>
-    <td class="result"><?php echo round($number, 2, PHP_ROUND_HALF_ODD); ?></td>
-    <td><code class="php">round($number, 2, PHP_ROUND_HALF_ODD);</code></td>
+    <td class="result"><?php $dpp = 'dp'.$count1; echo round($number, $_POST[$dpp], constant($round_type)); ?></td>
+    <td><code class="php">round($number,  <?php  $count1 = includeRound($count1, $_POST[$dpp]); ?> , <?php $count2=includeType($count2, $round_type); ?>);</code></td>
     <td>Round to nearest odd number.</td>
   </tr>
 
   <tr><td colspan="3"><h2>Random numbers:</h2></td></tr>
 
   <tr>
-    <td class="result"><?php echo mt_rand(0, 100); ?></td>
-    <td><code class="php">mt_rand(0, 100);</code></td>
+
+    <td class="result"><?php $dpp = 'rando'.$count3; $dpt = 'rando'.($count3+1);echo mt_rand($_POST[$dpp] , $_POST[$dpt]);  ?></td>
+    <td><code class="php">mt_rand(<?php $count3 = includeRandom($count3, $_POST[$dpp]);  $count3 = includeRandom($count3, $_POST[$dpt]); ?>);</code></td>
     <td>Generate random number between 0 and 100 (you can substitute min/max numbers).</td>
   </tr>
   <tr>
-    <td class="result"><?php echo rand(0, 100); ?></td>
-    <td><code class="php">rand(0, 100);</code></td>
+    <td class="result"><?php $dpp = 'rando'.$count3; $dpt = 'rando'.($count3+1);echo rand($_POST[$dpp] , $_POST[$dpt]);  ?></td>
+    <td><code class="php">rand(<?php $count3 = includeRandom($count3, $_POST[$dpp]);  $count3 = includeRandom($count3, $_POST[$dpt]); ?>);</code></td>
     <td>An older (not preferred) way to generates a random number between 0 and 100.</td>
   </tr>
 
@@ -138,14 +174,16 @@
   <tr><td colspan="3"><h2>Math:</h2></td></tr>
 
   <tr>
-    <td class="result"><?php echo pow(4, 3); ?></td>
-    <td><code class="php">pow(4, 3);</code></td>
+    <td class="result"><?php $dpp = 'rando'.$count3; $dpt = 'rando'.($count3+1);echo pow($_POST[$dpp] , $_POST[$dpt]);  ?></td>
+    <td><code class="php">pow(<?php $count3 = includeRandom($count3, $_POST[$dpp]);  $count3 = includeRandom($count3, $_POST[$dpt]); ?>);</code></td>
     <td>Exponential expression (can also use ** operator - see pXXX).</td>
   </tr>
   <tr>
-    <td class="result"><?php echo sqrt(16); ?></td>
-    <td><code class="php">sqrt(16);</code></td>
+    <td class="result"><?php $dpp = 'rando'.$count3; echo sqrt($_POST[$dpp]);  ?></td>
+    <td><code class="php">sqrt(<?php $count3 = includeRandom($count3, $_POST[$dpp]);  ?>);</code></td>
     <td>Square root of number.</td>
   </tr>
 
 </table>
+<br/>
+<br/>

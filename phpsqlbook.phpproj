@@ -105,7 +105,11 @@
     <Compile Include="code\chapter_05\home.php" />
     <Compile Include="code\chapter_05\includes\footer.php" />
     <Compile Include="code\chapter_05\includes\header.php" />
+    <Compile Include="code\chapter_05\includes\random.php" />
+    <Compile Include="code\chapter_05\includes\round.php" />
+    <Compile Include="code\chapter_05\includes\type.php" />
     <Compile Include="code\chapter_05\index.php" />
+    <Compile Include="code\chapter_05\math-functions-all.php" />
     <Compile Include="code\chapter_05\numeric-functions.php" />
     <Compile Include="code\chapter_05\object-viewer.php" />
     <Compile Include="code\chapter_05\redirect.php" />
