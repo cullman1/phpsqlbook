@@ -6,4 +6,4 @@ setcookie(session_name(), '', time()-42000, $params['path'], $params['domain'], 
 session_destroy();
 ?>
 History cleared.
-<a href="admin-home.php">Home</a>
+<a href="index.php">Home</a>

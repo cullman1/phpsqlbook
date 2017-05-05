@@ -2,10 +2,10 @@
  ini_set('display_errors', '0');
 
 /* Set up database connection variables */
-$serverName   = "serverName";
-$userName     = "userName";
-$password     = "password";
-$dbName       = "dbName";
+$serverName   = "127.0.0.1";
+$userName     = "root";
+$password     = "";
+$dbName       = "cms";
 
 /* Connect using PDO */
 try {
