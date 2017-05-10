@@ -5,15 +5,19 @@ class User {
   public $surname;
   public $email;
   public $password;
+  public $role_id;
+  public $tasks;
 
   function __construct($id ='', $forename = NULL, $surname = NULL, 
-                       $email = NULL, $password = NULL) {
+                       $email = NULL, $password = NULL, $role_id = 1) {
     $this->id       = ( isset($id)       ? $id       : '');
-    $this->forename = ( isset($forename)  ? $forename : '');
+    $this->forename = ( isset($forename) ? $forename : '');
     $this->surname  = ( isset($surname)  ? $surname  : '');
     $this->email    = ( isset($email)    ? $email    : '');
     $this->password = ( isset($password) ? $password : '');
+    $this->role_id  = $role_id;
   }
+
 
   function create() {
     $connection = $GLOBALS['connection'];                             // Connection
@@ -24,7 +28,7 @@ class User {
     $statement->bindValue(':surname',  $this->surname);               // Bind value
     $statement->bindValue(':email',    $this->email);                 // Bind value
      $hash = password_hash( $this->password, PASSWORD_DEFAULT);
-    $statement->bindParam(':password',$hash);
+    $statement->bindValue(':password',$hash);
     try {
       $statement->execute();                                          // Try to execute
       $result = TRUE;                                                 // Say worked
@@ -34,6 +38,28 @@ class User {
     return $result;                                                    
   }
 
+  public function createToken($purpose) {
+     $connection = $GLOBALS['connection'];                             // Connection
+     $sql = 'select UUID() as id';
+     $statement = $connection->prepare($sql);  
+     $statement->execute();
+     $token = $statement->fetchColumn();
+
+     $sql = 'INSERT INTO token (token, user_id, expires, purpose) 
+                   VALUES (:token, :user_id, :expires, :purpose);';
+     $statement = $connection->prepare($sql);                          // Prepare
+     $statement->bindValue(':token', $token);   
+     $statement->bindValue(':user_id', $this->id);              // Bind value
+     $expires = ((new DateTime())->modify('+24 hours')->format('Y-m-d H:i:s'));
+     $statement->bindValue(':expires',  $expires);               // Bind value
+     $statement->bindValue(':purpose',    $purpose);                 // Bind value
+   try {                                                          // Try block
+    $statement->execute();                                        // Execute
+    return $token;                                             // Worked
+  } catch (PDOException $error) {                                 // Otherwise
+    $result = FALSE;                                              // Error
+  }
+  }
 }
 
 Class Validate {

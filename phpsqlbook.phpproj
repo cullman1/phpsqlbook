@@ -196,6 +196,8 @@
     <Compile Include="code\chapter_09\reset-password.php" />
     <Compile Include="code\chapter_09\send-email.php" />
     <Compile Include="code\chapter_10\admin-home.php" />
+    <Compile Include="code\chapter_10\article-list-role.php" />
+    <Compile Include="code\chapter_10\forgotten-password.php" />
     <Compile Include="code\chapter_10\includes\admin-header.php" />
     <Compile Include="code\chapter_10\includes\check-user.php" />
     <Compile Include="code\chapter_10\includes\class_lib.php" />
@@ -205,7 +207,9 @@
     <Compile Include="code\chapter_10\includes\functions.php" />
     <Compile Include="code\chapter_10\includes\set-session.php" />
     <Compile Include="code\chapter_10\login.php" />
+    <Compile Include="code\chapter_10\openssl.php" />
     <Compile Include="code\chapter_10\register.php" />
+    <Compile Include="code\chapter_10\reset-password.php" />
     <Compile Include="code\chapter_10_old\includes\admin-header.php" />
     <Compile Include="code\chapter_10_old\admin-home.php" />
     <Compile Include="code\chapter_10_old\clear-session.php" />
@@ -349,6 +353,7 @@
     <Compile Include="code\chapter_11\test.php" />
     <Compile Include="code\chapter_11\throw.php" />
     <Compile Include="code\chapter_12\admin\admin-home.php" />
+    <Compile Include="code\chapter_10\includes\config.php" />
     <Compile Include="index.php" />
     <Compile Include="code\chapter_12_old\admin\index.php" />
     <Compile Include="code\chapter_12_old\assets\login-variables.php" />

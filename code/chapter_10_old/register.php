@@ -24,7 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } 
   }
   if ( isset($result) && ( $result === TRUE ) ) {
-    $alert = '<div class="alert alert-success">User added</div>';   
+     $subject = 'Registration confirmed';                      // From address
+  $message = 'Thank you for joining. You can now log in with '. $user->email;       
+  $result = send_email($user->email, $subject, $message);
+  if ($result) {                                            // Sent: store success msg
+    $alert = '<div class="alert alert-success">User added.</div>';
+  } else {
+    $alert = '<div class="alert alert-danger">' . $result . '</div>'; 
+  }
+ 
     $show_form = false;
   }
   if ( isset($result) && ( $result !== TRUE ) ) {

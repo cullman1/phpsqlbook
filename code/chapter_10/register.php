@@ -3,6 +3,7 @@
 require_once('/includes/database-connection.php');
 require_once('/includes/functions.php');
 require_once('/includes/class_lib.php');
+require_once('/vendor/PHPMailer/PHPMailerAutoload.php');  
 $forename  = ( isset($_POST['forename']) ? $_POST['forename'] : '' ); 
 $surname   = ( isset($_POST['surname'])  ? $_POST['surname']  : '' ); 
 $email     = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
