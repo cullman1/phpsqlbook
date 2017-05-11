@@ -60,18 +60,20 @@ function get_user_from_token($token, $purpose) {
     return false;
  }
 
- function update_password($password, $id) {
-   $hash = password_hash($password, PASSWORD_DEFAULT);
-   $sql = 'UPDATE user set password = :password WHERE id = :id';
-   $statement = $GLOBALS['connection']->prepare($sql);
-   $statement->bindParam(':password', $hash);
-   $statement->bindParam(':id', $id);
-   $statement->execute();
-   if($statement->errorCode() != 0) {  
-     return false;
-   }
-   return true;
- } 
+function update_password($password, $id) {
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $sql = 'UPDATE user SET pasword = :password WHERE id = :id';
+  $statement = $GLOBALS['connection']->prepare($sql);
+  $statement->bindParam(':password', $hash);
+  $statement->bindParam(':id', $id);
+  try {
+    $statement->execute();
+    $result = TRUE;
+  } catch (PDOException $error) {
+    $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2]; 
+  }
+  return $result;
+}
 
 function get_user_by_email($email) {
   $sql = 'SELECT * from user WHERE email = :email';

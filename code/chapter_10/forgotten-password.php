@@ -1,10 +1,11 @@
 <?php 
 require_once('/includes/functions.php');
 require_once('/includes/database-connection.php');
-require_once('/vendor/PHPMailer/PHPMailerAutoload.php');
+require_once('../vendor/PHPMailer/PHPMailerAutoload.php');
 require_once('/includes/class_lib.php');
 $show_form = true;
 $alert = '';
+$user = false;
 $email = ( isset($_POST['email']) ? $_POST['email'] : '' );
 $errors    = array('email' => '');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -12,8 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errors['email'] = $Validate->isEmail($email);
   $valid = implode($errors);
   // If have valid email, send reset password link
-  $user = get_user_by_email($email);
-  if ((strlen($valid)<2)  && ($user) ) {  
+ if (!strlen($valid)>0) {  
+    $user = get_user_by_email($email);
+  }
+  if ($user) {
     $token = $user->createToken('password_reset'); 
     $link    = 'http://localhost/phpsqlbook/code/chapter_10/reset-password.php?token=' . $token;
     $from    = 'no-reply@example.org';
@@ -21,14 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message = 'Use this link to reset your password: 
               <a href="' . $link . '">' . $link . '</a>';
     $result  = send_email($email, $subject, $message); 
-    if ($result) { // Check whether email was sent
+    $alert = '<div class="alert alert-success">Password reset email sent and the link is '.$link.'</div>';
+    if ($result  === TRUE) { // Check whether email was sent
       $alert = '<div class="alert alert-success">Password reset email sent and the link is '.$link.'</div>';
       $show_form = false;
     } else {
-      $alert = '<div class="alert alert-danger">Cannot update password.</div>';
+      //$alert = '<div class="alert alert-danger">Cannot update password.</div>';
     }
   } else {
-    $alert = '<div class="alert alert-danger">Password not reset.</div>';
+    $alert = '<div class="alert alert-danger">Check email and try again.</div>';
   }
 } ?>
 <?= $alert ?>

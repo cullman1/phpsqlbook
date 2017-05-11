@@ -209,6 +209,7 @@
     <Compile Include="code\chapter_10\login.php" />
     <Compile Include="code\chapter_10\openssl.php" />
     <Compile Include="code\chapter_10\register.php" />
+    <Compile Include="code\chapter_10\reset-password-old.php" />
     <Compile Include="code\chapter_10\reset-password.php" />
     <Compile Include="code\chapter_10_old\includes\admin-header.php" />
     <Compile Include="code\chapter_10_old\admin-home.php" />
