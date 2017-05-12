@@ -38,28 +38,29 @@ class User {
     return $result;                                                    
   }
 
-  public function createToken($purpose) {
-     $connection = $GLOBALS['connection'];                             // Connection
-     $sql = 'select UUID() as id';
-     $statement = $connection->prepare($sql);  
-     $statement->execute();
-     $token = $statement->fetchColumn();
-
-     $sql = 'INSERT INTO token (token, user_id, expires, purpose) 
-                   VALUES (:token, :user_id, :expires, :purpose);';
-     $statement = $connection->prepare($sql);                          // Prepare
-     $statement->bindValue(':token', $token);   
-     $statement->bindValue(':user_id', $this->id);              // Bind value
-     $expires = ((new DateTime())->modify('+24 hours')->format('Y-m-d H:i:s'));
-     $statement->bindValue(':expires',  $expires);               // Bind value
-     $statement->bindValue(':purpose',    $purpose);                 // Bind value
+ public function createToken($purpose) {
+   $connection = $GLOBALS['connection'];                     // Connect
+   $sql = 'SELECT UUID() as token';                          // Tell DB to create UUID
+   $statement = $connection->prepare($sql);                  // Prepare 
+   $statement->execute();                                    // Execute
+   $token = $statement->fetchColumn();                       // Fetch UUID
+   $expires = time() + (24 * 60 * 60);                       // Expiry time
+   $sql = 'INSERT INTO token (token, user_id, expires, purpose) 
+                  VALUES (:token, :user_id, :expires, :purpose)'; // SQL to add token
+   $statement = $connection->prepare($sql);                       // Prepare
+   $statement->bindValue(':token',   $token);                     // Bind value
+   $statement->bindValue(':user_id', $this->id);                  // Bind value
+   $statement->bindValue(':expires', $expires);                   // Bind value
+   $statement->bindValue(':purpose', $purpose);                   // Bind value
    try {                                                          // Try block
-    $statement->execute();                                        // Execute
-    return $token;                                             // Worked
-  } catch (PDOException $error) {                                 // Otherwise
-    $result = FALSE;                                              // Error
-  }
-  }
+     $statement->execute();                                        // Execute
+     $result = $token;                                             // Worked
+   } catch (PDOException $error) {                                 // Otherwise
+     $result = FALSE;                                              // Error
+   }
+   return $result;                                                 // Return result
+}
+
 }
 
 Class Validate {

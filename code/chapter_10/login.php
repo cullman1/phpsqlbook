@@ -17,9 +17,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   } else {
     $user = get_user_by_email_password($email, $password);
     if ($user) {
-
       create_user_session($user);
-      header('Location: article-list-role.php'); 
+      header('Location: admin-home.php'); 
     } else {
       $alert = '<div class="alert alert-danger">Login failed</span>';
     }

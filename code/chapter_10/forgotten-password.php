@@ -1,19 +1,19 @@
-<?php 
-require_once('/includes/functions.php');
+<?php
 require_once('/includes/database-connection.php');
-require_once('../vendor/PHPMailer/PHPMailerAutoload.php');
+require_once('/includes/functions.php');
 require_once('/includes/class_lib.php');
-$show_form = true;
+require_once('../vendor/PHPMailer/PHPMailerAutoload.php');
+$show_form = TRUE;
 $alert = '';
-$user = false;
+$user = FALSE;
 $email = ( isset($_POST['email']) ? $_POST['email'] : '' );
-$errors    = array('email' => '');
+$errors = array('email' => '');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $Validate = new Validate();
+  $Validate        = new Validate();
   $errors['email'] = $Validate->isEmail($email);
-  $valid = implode($errors);
+  $valid           = implode($errors);
   // If have valid email, send reset password link
- if (!strlen($valid)>0) {  
+  if (!strlen($valid)>0) {  
     $user = get_user_by_email($email);
   }
   if ($user) {
@@ -24,15 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message = 'Use this link to reset your password: 
               <a href="' . $link . '">' . $link . '</a>';
     $result  = send_email($email, $subject, $message); 
-    $alert = '<div class="alert alert-success">Password reset email sent and the link is '.$link.'</div>';
-    if ($result  === TRUE) { // Check whether email was sent
-      $alert = '<div class="alert alert-success">Password reset email sent and the link is '.$link.'</div>';
-      $show_form = false;
+    if ($result === TRUE) { // Check whether email was sent
+      $alert = '<div class="alert alert-success">Password reset email sent.' . $link .'</div>';
+      $show_form = FALSE;
     } else {
-      //$alert = '<div class="alert alert-danger">Cannot update password.</div>';
-    }
+      $alert = '<div class="alert alert-danger">Cannot update password.' . $link .'</div>';
+    } 
   } else {
-    $alert = '<div class="alert alert-danger">Check email and try again.</div>';
+      $alert = '<div class="alert alert-danger">Password reset email not sent.</div>';
   }
 } ?>
 <?= $alert ?>
