@@ -57,7 +57,6 @@
     <Compile Include="cms\templates\main_content.php" />
     <Compile Include="cms\templates\menu_content.php" />
     <Compile Include="cms\templates\no_date_content.php" />
-    <Compile Include="cms\templates\search.php" />
     <Compile Include="code\chapter_01\index.php" />
     <Compile Include="code\chapter_01\test.php" />
     <Compile Include="code\chapter_02\example.php" />

@@ -11,7 +11,7 @@
   <h1>the green room</h1>
    <nav><a href="/">Home</a><?php echo getMenu();  ?>
      <form id=form1 style="float:right;" class="navbar-form navbar-left" role="search"  method="get"action="\phpsqlbook\cms\search">
-      <input id="search" name="search" type="text" />
+      <input id="term" name="term" type="text" />
     <input type="submit">
    </form></nav>
 </header>
