@@ -1,12 +1,12 @@
 <?php
 
-$serverName   = "mariadb-087.wc1.dfw3.stabletransit.com";
-$userName     = "387732_testuser3";
-$password     = "phpbo^ok3belonG_3r"; 
-$dbName       = "387732_phpbook3";
-$GLOBALS['connection'] = new PDO("mysql:".$serverName.";dbname=".$dbName." ", $userName, $password);
+$serverName   = "127.0.0.1";
+$userName     = "root";
+$password     = ""; 
+$dbName       = "cms";
+$GLOBALS['connection'] = new PDO("mysql:host=127.0.0.1;dbname=cms", $userName, $password);
 $GLOBALS['connection']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-require_once('/cms/includes/functions.php'); 
+require_once('/includes/functions.php'); 
 
 class Layout {
   private $registry;
@@ -108,7 +108,7 @@ public function getHTMLTemplate($template,$id=""){
       }
       break;
     default:
-      include("/cms/templates/".$template.".php");     
+      include("/templates/".$template.".php");     
       break;
   }
 }
@@ -149,9 +149,8 @@ public function assembleArticles($templates) {
 }
 
 public function mergeData($data, $file) {
-  $html = file_get_contents("cms/templates/".$file. ".php"); 
-  $html = str_replace("__ROOT" , '/' . $this->server ,
-                      $html);  
+  $html = file_get_contents("templates/".$file. ".php"); 
+  $html = str_replace("__ROOT" , '/' . "phpsqlbook/".$this->server , $html);  
   $regex = '#{{(.*?)}}#';
   preg_match_all($regex, $html, $matches);
   echo field_replace($html, $matches[0], $data);             
@@ -168,13 +167,14 @@ class UrlRewriter {
   public $item = ''; 
 
   public function __construct() { 
-   $this->parseUrl(0); 
+   $this->parseUrl(1); 
   }
 
   private function parseUrl($offset) {
     $parts = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH),"/");
     $url_parts = explode("/", $parts, $offset+3);
     $this->server = $url_parts[$offset];
+
     if (isset($url_parts[$offset+1])) {
       $this->category = $url_parts[$offset+1];
     }
@@ -187,69 +187,85 @@ class UrlRewriter {
 
 class ArticleSummary {
   public  $id;
-  public  $title;
-  public  $content;
-  public  $intro;
-  public $published;
-  public $categorytemplate;
-  public $categoryname; 
-  public $articleurl;
-  private $category_id;
-  private $user_id;
-  private $media_id;
-  public $comments_count;
-  public $comments = array();
-  private $validated = FALSE;
-  private $connection;
+ public  $title;
+ public  $seo_title;
+ public  $content;
+ public  $published;
+ public  $category_id;
+ public  $user_id;
+ public  $media_id;
+ public  $gallery_id;
 
-  
-  function __construct($id, $title, $intro, $published, $user_id, $categorytemplate, $categoryname) {
- 
- $this->id 		= $id;
-     $this->title 	= $this->hyphenate_url($title);
-      $this->articleurl 	= $this->hyphenate_url($title);
-      $this->content = $intro;
-      $this->published = $published;
-      $this->categorytemplate = $categorytemplate;
-       $this->categoryname = $categoryname;
-      $this->user_id = $user_id;
+ function __construct($id ='', $title = NULL, $content = NULL, $published = NULL, $category_id = NULL, $user_id = NULL, $media_id = NULL, $gallery_id = NULL) {
+  $this->id          = ( isset($id)          ? $id          : '');
+  $this->title       = ( isset($title)       ? $title       : '');
+  $this->content     = ( isset($content)     ? $content     : '');
+  $this->published   = ( isset($published)   ? $published   : '');
+  $this->category_id = ( isset($category_id) ? $category_id : '');
+  $this->user_id     = ( isset($user_id)     ? $user_id     : '');
+  $this->media_id    = ( isset($media_id)    ? $media_id    : '');
+  $this->gallery_id  = ( isset($gallery_id)  ? $gallery_id  : '');
+ }
+
+ function create() {
+  $connection = $GLOBALS['connection'];                              // Connection
+  $sql = 'INSERT INTO article (title, seo_title, content, category_id, user_id, media_id, gallery_id) 
+          VALUES (:title, :content, :category_id, :user_id, :media_id, :gallery_id)';
+  $statement = $connection->prepare($sql);                                   // Prepare
+  $statement->bindValue(':title',       $this->title);                       // Bind value
+  $statement->bindValue(':seo_title',   create_slug($this->title));          // Bind value
+  $statement->bindValue(':content',     $this->content);                     // Bind value
+  $statement->bindValue(':category_id', $this->category_id, PDO::PARAM_INT); // Bind value
+  $statement->bindValue(':user_id',     $this->user_id, PDO::PARAM_INT);     // Bind value
+  $statement->bindValue(':media_id',    $this->media_id, PDO::PARAM_INT);    // Bind value
+  $statement->bindValue(':gallery_id',  $this->gallery_id, PDO::PARAM_INT);  // Bind value
+  try {
+   $statement->execute();                                         // Try to execute
+   $result = TRUE;                                                // Say worked if it did
+  } catch (PDOException $error) {                                    // Otherwise
+        $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
   }
+  return $result;                                                    
+ }
 
-  function hyphenate_url($title) {
-
-        $title = str_replace(' ','-', $title);
-   
-    return $title;
-}
-   
-  function validate($new = FALSE) {}
-
-
-public function getComments() {
-    $query="select comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id  WHERE article_id = :articleid Order by comments.id desc";  
-    $statement = $GLOBALS["connection"]->prepare($query);
-    $statement->bindParam(':articleid',$this->id);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $this->comments = $statement->fetchAll();
-    return $this->comments;
+ function update() {
+  $connection = $GLOBALS['connection'];                              // Connection
+  $sql = 'UPDATE article SET title = :title, seo_title = :seo_title, content = :content, published = :published, category_id = :category_id, user_id = :user_id, media_id = :media_id, gallery_id = :gallery_id WHERE id = :id';//SQL
+  $statement = $connection->prepare($sql);                                   // Prepare
+  $statement->bindValue(':id',          $this->id, PDO::PARAM_INT);          // Bind value
+  $statement->bindValue(':title',       $this->title);                       // Bind value
+  $statement->bindValue(':seo_title',   create_slug($this->title));          // Bind value
+  $statement->bindValue(':content',     $this->content);                     // Bind value
+  $statement->bindValue(':published',   $this->published);                   // Bind value
+  $statement->bindValue(':category_id', $this->category_id, PDO::PARAM_INT); // Bind value
+  $statement->bindValue(':user_id',     $this->user_id,     PDO::PARAM_INT); // Bind value
+  $statement->bindValue(':media_id',    $this->media_id,    PDO::PARAM_INT); // Bind value
+  $statement->bindValue(':gallery_id',  $this->gallery_id,  PDO::PARAM_INT); // Bind value
+  try {
+   $statement->execute();
+   $result = TRUE;
+  } catch (PDOException $error) {                                      // Otherwise
+      if ($error->errorInfo[1] == 1062) {                              // If a duplicate
+        $result = 'An article with that title exists - try a different title.'; // Error
+      } else {                                                         // Otherwise
+          $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+      }                                                                // End if/else
   }
+  return $result;                                                      // Say succeeded
+ }
 
-  public function getCommentHeader() {
-  $query= "select uuid() As new_id From article WHERE id = :articleid";
-  $statement = $this->connection->prepare($query);
-  $statement->bindParam(':articleid',$this->id);
-  $statement->execute();
-      $statement->setFetchMode(PDO::FETCH_OBJ);
-      $header = $statement->fetch();  
-      return $header;
+ function delete() {
+  $connection = $GLOBALS['connection'];                              // Connection
+  $sql = 'DELETE FROM article WHERE id = :id';                       // SQL
+  $statement = $connection->prepare($sql);                           // Prepare
+  $statement->bindValue(':id', $this->id, PDO::PARAM_INT);           // Bind ID
+  try {
+   $statement->execute();                                         // If executes
+   return TRUE;                                                   // Say succeeded
+  } catch (PDOException $error) {                                    // Otherwise
+   return $error->errorInfo[1] . ': ' . $error->errorInfo[2];     // Error
   }
-
-  function create() {}
-
-  function update() {}
-
-  function delete() {}
+ }
 }
 class ArticleList {
   public $listName;			// String

@@ -1,3 +1,15 @@
 RewriteEngine On    # Turn on the rewriting engine
-RewriteCond %{REQUEST_FILENAME} !\.(css|js|png|jpg|gif)$
-RewriteRule ^(.*)$ index.php [NC,L]
+RewriteRule ^/?$  index.php [NC,L]
+RewriteRule ^about/?$  article.php?title=about [NC,L]
+RewriteRule ^contact/?$  article.php?title=contact [NC,L]
+RewriteRule ^admin/?$ /admin/$1 [NC,L]
+# Handle requests for http://.../phpsqlbook/admin
+RewriteRule ^search/?$ /search.php?term=$1 [NC,L]
+# Handle requests for http://.../phpsqlbook/search
+RewriteRule ^user/?$ /user.php [NC,L]
+# Handle requests for http://.../phpsqlbook/search
+RewriteRule ^users/?$ /user-list.php [NC,L]
+# Handle requests for http://.../phpsqlbook/search
+RewriteRule ^([^/.]+)/([^/.]+)/?$  article.php?title=$2 [NC,L]
+RewriteRule ^([^/.]+)/?$  article-list.php?title=$1 [NC,L]
+

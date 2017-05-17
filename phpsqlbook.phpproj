@@ -45,8 +45,11 @@
     <Compile Include="admin\image_resize.php" />
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
+    <Compile Include="cms\search.php" />
+    <Compile Include="cms\article-list.php" />
     <Compile Include="cms\includes\class_lib.php" />
     <Compile Include="cms\includes\functions.php" />
+    <Compile Include="cms\article.php" />
     <Compile Include="cms\index.php" />
     <Compile Include="cms\templates\footer.php" />
     <Compile Include="cms\templates\header.php" />
@@ -398,7 +401,6 @@
     <Compile Include="code\chapter_12_old\classes\validate.php" />
     <Compile Include="code\chapter_12_old\pages\index2.php" />
     <Compile Include="code\chapter_12_old\admin\login.php" />
-    <Compile Include="code\.htaccess" />
     <Compile Include="code\includes\validate.php" />
     <Compile Include="code\chapter_12_old\pages\filter.php" />
     <Compile Include="code\chapter_12_old\pages\index.php" />
@@ -685,6 +687,7 @@
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
+    <Content Include="cms\.htaccess" />
     <Content Include="cms\css\style1.css" />
     <Content Include="cms\css\styles.css" />
     <Content Include="code\chapter_08\chamomile.gif" />
