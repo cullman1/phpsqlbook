@@ -688,7 +688,7 @@
     <Content Include="assets\comments-xl.png" />
     <Content Include="cms\.htaccess" />
     <Content Include="cms\css\style1.css" />
-    <Content Include="cms\css\styles.css" />
+    <Content Include="cms\css\style3.css" />
     <Content Include="code\chapter_08\chamomile.gif" />
     <Content Include="code\chapter_08\data-jsonp.js" />
     <Content Include="code\chapter_08\lavender.gif" />

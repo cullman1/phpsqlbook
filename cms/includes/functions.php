@@ -53,7 +53,7 @@ function get_articles_by_category( $show, $from, $sort='', $dir='ASC',$category=
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_OBJ);
   $article_list = $statement->fetchAll();  
-  return hyphenate_url($article_list);
+  return $article_list;
 }
 
 
@@ -135,14 +135,12 @@ $sort='', $dir='ASC', $search='', $user='0') {
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_OBJ);
   $article_list = $statement->fetchAll();  
-  $article_list = hyphenate_url($article_list);
+
   //If search not empty, highlight search term
   if (!empty($search) && !empty($show)) { 
-    foreach($article_list as $article) {
-      $article->content =str_ireplace($search,
-      "<b class='yellow'>".$search."</b>", 
-      $article->content); 
-    }
+      foreach($article_list as $article) {
+          $article->content =str_ireplace($search, '<span class="highlight">' . $search . '</span>',    $article->content); 
+      }
   }
   return $article_list;
 }

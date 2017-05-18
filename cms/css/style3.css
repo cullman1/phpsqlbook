@@ -29,7 +29,7 @@ a {
 }
 
 nav {
-	padding: 1.4em 0 1em 0;
+	padding: 1.3em 0 1em 0;
 	margin-bottom: 1em;
 	border-top: 1px solid #e8e8e8;
 	border-bottom: 1px solid #e8e8e8;
@@ -173,4 +173,10 @@ h3 {
 .comment-box {
     float: left;
     margin-left: 10px;
+}
+
+.highlight {
+    text-decoration: underline;
+    font-weight: bold;
+
 }
