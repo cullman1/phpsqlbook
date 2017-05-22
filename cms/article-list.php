@@ -1,4 +1,6 @@
 <?php 
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 session_start();
 require_once('includes/class_lib.php');
 require_once('includes/functions.php');
@@ -7,9 +9,13 @@ $title = ( isset($_GET['title']) ? $_GET['title'] : '' );
 $show = (int)(filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 5);
 $from = (int)(filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
 getHTMLTemplate('header');
-$articlelist = get_articles_by_category($show,$from,'','','','',$title);
+$wholearticlelist = get_article_list_by_category_name($title);
+$count = sizeof($wholearticlelist);
+$articlelist = get_article_list_by_category_name($title, $show, $from);
 foreach($articlelist as $object) {
     getHTMLTemplate('main_content',$object);  
 }
+$pagination = create_pagination($count,$show,$from);
+echo $pagination;
 getHTMLTemplate('footer');
 ?>

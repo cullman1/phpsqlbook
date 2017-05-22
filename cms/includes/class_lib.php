@@ -6,8 +6,7 @@ $password     = "";
 $dbName       = "cms";
 $GLOBALS['connection'] = new PDO("mysql:host=127.0.0.1;dbname=cms", $userName, $password);
 $GLOBALS['connection']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-require_once('/includes/functions.php'); 
-
+require_once('includes/functions.php');
 class Layout {
   private $registry;
   private $server;
@@ -159,32 +158,6 @@ public function mergeData($data, $file) {
 
 }
 
-
-
-class UrlRewriter {
-  public $server;
-  public $category = ''; 
-  public $item = ''; 
-
-  public function __construct() { 
-   $this->parseUrl(1); 
-  }
-
-  private function parseUrl($offset) {
-    $parts = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH),"/");
-    $url_parts = explode("/", $parts, $offset+3);
-    $this->server = $url_parts[$offset];
-
-    if (isset($url_parts[$offset+1])) {
-      $this->category = $url_parts[$offset+1];
-    }
-    if (isset($url_parts[$offset+2])) {
-      $this->item =  $url_parts[$offset+2];
-    } 
-  }
-}
-
-
 class ArticleSummary {
   public  $id;
  public  $title;
@@ -267,19 +240,10 @@ class ArticleSummary {
   }
  }
 }
-class ArticleList {
-  public $listName;			// String
-  public $articles = array();			// Array holding child objects
 
-  function __construct($listName, $article_list) {
-    $this->listName = $listName;
-    $count = 0;
-    foreach($article_list as $row) {
-      $article = new ArticleSummary($row->{"id"},  $row->{"title"},  $row->{"content"}, $row->{"published"}, $row->{"user_id"},$row->{"template"},$row->{"name"});
-      $this->articles[$count] = $article;
-      $count++;
-    }
-  }
+class ArticleList {
+  public $articles = array();			// Array holding child objects
+  public $count; 
 }
 
 class CategoryList {
