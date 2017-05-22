@@ -82,10 +82,11 @@ function get_article_by_seo_title($seo_title) {
 function get_article_list($show='', $from='') {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname
       FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
+           LEFT JOIN user ON article.user_id = user.id
       WHERE published <= now()';
    $query .= '    ORDER BY article.published ASC';                 // Query
 
@@ -103,10 +104,11 @@ function get_article_list($show='', $from='') {
 function get_article_list_by_category_name($name, $show='', $from='') {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname
       FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
+         LEFT JOIN user ON article.user_id = user.id
       WHERE published <= now()   
       AND category.name=:name 
       ORDER BY article.published ASC';                 // Query
@@ -128,13 +130,13 @@ function get_article_list_by_author_name($forename, $surname, $show='', $from=''
   $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
       media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, user.email
       FROM article
-      LEFT JOIN user ON article.user = user.id
+      LEFT JOIN user ON article.user_id = user.id
+            LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
       WHERE published <= now() 
         AND user.forename=:forename 
   AND user.surname=:surname 
 ORDER BY article.published ASC';                 // Query
-
  //Get limited page of articles
   if (!empty($show)) {
     $query .= " limit " . $show . " offset " . $from;
@@ -148,9 +150,8 @@ ORDER BY article.published ASC';                 // Query
   return $article_list;
 }
 
-
 function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
-  $query= "SELECT article.*, category.* FROM article JOIN
+  $query= "SELECT article.*, category.*, user.* FROM article JOIN
            user ON user.id = user_id JOIN category ON 
       category.id= category_id where published <= now()";
   $search_wildcards = "%". trim($search) . "%"; 
