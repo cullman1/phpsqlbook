@@ -15,7 +15,7 @@ function hyphenate_url($article_list) {
   return $article_list;
 }
 
-function get_articles_by_category( $show, $from, $sort='', $dir='ASC',$category=0, $name='',$category_name) {
+/* old function get_articles_by_category( $show, $from, $sort='', $dir='ASC',$category=0, $name='',$category_name) {
   $query= "SELECT article.*, category.* FROM article JOIN 
            user ON user.id = user_id JOIN category ON 
        category.id= category_id WHERE published <= now()";
@@ -54,8 +54,7 @@ function get_articles_by_category( $show, $from, $sort='', $dir='ASC',$category=
   $statement->setFetchMode(PDO::FETCH_OBJ);
   $article_list = $statement->fetchAll();  
   return $article_list;
-}
-
+} */
 
 function get_article_by_seo_title($seo_title) {
     // This had conflicts for the id colum in article and user
@@ -80,7 +79,7 @@ function get_article_by_seo_title($seo_title) {
     }
 }
 
-function get_article_list_by_category_name($name, $show='', $from='') {
+function get_article_list($show='', $from='') {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
       media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template
@@ -88,9 +87,6 @@ function get_article_list_by_category_name($name, $show='', $from='') {
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
       WHERE published <= now()';
-if ($name!='All') {
-   $query .= '     AND category.name=:name ';
-   }
    $query .= '    ORDER BY article.published ASC';                 // Query
 
  //Get limited page of articles
@@ -98,9 +94,54 @@ if ($name!='All') {
     $query .= " limit " . $show . " offset " . $from;
   }
   $statement = $connection->prepare($query);
-  if (!empty($name)) {
-  $statement->bindValue(':name', $name);  // Bind value from query string
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $article_list = $statement->fetchAll();
+  return $article_list;
+}
+
+function get_article_list_by_category_name($name, $show='', $from='') {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template
+      FROM article
+      LEFT JOIN category ON article.category_id = category.id
+      LEFT JOIN media ON article.media_id = media.id
+      WHERE published <= now()   
+      AND category.name=:name 
+      ORDER BY article.published ASC';                 // Query
+
+ //Get limited page of articles
+  if (!empty($show)) {
+    $query .= " limit " . $show . " offset " . $from;
   }
+  $statement = $connection->prepare($query);
+  $statement->bindValue(':name', $name);  // Bind value from query string
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $article_list = $statement->fetchAll();
+  return $article_list;
+}
+
+function get_article_list_by_author_name($forename, $surname, $show='', $from='') {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, user.email
+      FROM article
+      LEFT JOIN user ON article.user = user.id
+      LEFT JOIN media ON article.media_id = media.id
+      WHERE published <= now() 
+        AND user.forename=:forename 
+  AND user.surname=:surname 
+ORDER BY article.published ASC';                 // Query
+
+ //Get limited page of articles
+  if (!empty($show)) {
+    $query .= " limit " . $show . " offset " . $from;
+  }
+  $statement = $connection->prepare($query);
+  $statement->bindValue(':forename', $forename);  // Bind value from query string
+    $statement->bindValue(':surname', $surname);  // Bind value from query string
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
@@ -108,28 +149,7 @@ if ($name!='All') {
 }
 
 
-
-function getHTMLTemplate($template,$object=""){
-    switch($template) {
-        
-        default:
-            include("templates/".$template.".php");     
-
-            break;
-    }
-}
-
-function getMenu() {
-    $categorylist = new CategoryList(getCategoryList());
-
-    $list = '';
-    foreach($categorylist->categories as $category) {
-        $list .= '<a href="'.$GLOBALS['root'] .$category->name.'">'.$category->name.'</a>';
-    }
-    return $list;
-}
-
-function get_articles_by_search($show='', $from='', $sort='', $dir='ASC', $search='', $user='0') {
+function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
   $query= "SELECT article.*, category.* FROM article JOIN
            user ON user.id = user_id JOIN category ON 
       category.id= category_id where published <= now()";
@@ -171,6 +191,27 @@ function get_articles_by_search($show='', $from='', $sort='', $dir='ASC', $searc
       }
   }
   return $article_list;
+}
+
+
+function getHTMLTemplate($template,$object=""){
+    switch($template) {
+        
+        default:
+            include("templates/".$template.".php");     
+
+            break;
+    }
+}
+
+function getMenu() {
+    $categorylist = new CategoryList(getCategoryList());
+
+    $list = '';
+    foreach($categorylist->categories as $category) {
+        $list .= '<a href="'.$GLOBALS['root'] .$category->name.'">'.$category->name.'</a>';
+    }
+    return $list;
 }
 
 function check_user() {

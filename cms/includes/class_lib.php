@@ -1,11 +1,6 @@
 <?php
 
-$serverName   = "127.0.0.1";
-$userName     = "root";
-$password     = ""; 
-$dbName       = "cms";
-$GLOBALS['connection'] = new PDO("mysql:host=127.0.0.1;dbname=cms", $userName, $password);
-$GLOBALS['connection']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+require_once('includes/database-connection.php');
 require_once('includes/functions.php');
 class Layout {
   private $registry;
@@ -37,9 +32,8 @@ function getArticles($category = 0, $show, $from, $sort='', $dir='ASC', $search 
   $list = null;
   if ((!empty($search)) || ($author_id > 0)) {  
    //search results
-   $this->articlesCount = count(get_articles_by_search('', '', $sort='', $dir='ASC', 
-                                                       $search, $author_id));
-   $list = get_articles_by_search($show, $from, $sort='', $dir='ASC', $search, $author_id);
+   $this->articlesCount = count(get_articles_by_search($search,'', '', $sort='', $dir='ASC',  $author_id));
+   $list = get_articles_by_search($search, $show, $from, $sort='', $dir='ASC',  $author_id);
   } else {
    $this->articlesCount = count(get_articles_by_category('', '', $sort='', $dir='ASC',  
                                                          $category, $name));

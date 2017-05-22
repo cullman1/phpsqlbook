@@ -10,9 +10,9 @@ $show = (int)(filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show
 $from = (int)(filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
 
 getHTMLTemplate('header');
-$wholearticlelist = get_article_list_by_category_name('All');
+$wholearticlelist = get_article_list();
 $count = sizeof($wholearticlelist);
-$articlelist = get_article_list_by_category_name('All', $show,$from);
+$articlelist = get_article_list($show,$from);
 foreach($articlelist as $object) {
     getHTMLTemplate('main_content',$object);  
 }
