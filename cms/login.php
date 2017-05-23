@@ -3,6 +3,7 @@ session_start();
 require_once('includes/database-connection.php');
 require_once('includes/functions.php');
 require_once('includes/class_lib.php');
+$GLOBALS['root'] = "/phpsqlbook/cms/";
 $email    = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
 $password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
 $error    = array('email' => '', 'password' =>'');
@@ -18,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = get_user_by_email_password($email, $password);
     if ($user) {
       create_user_session($user);
-      header('Location: admin-home.php'); 
+      header('Location: /phpsqlbook/cms/Vegetables'); 
     } else {
       $alert = '<div class="alert alert-danger">Login failed</span>';
     }

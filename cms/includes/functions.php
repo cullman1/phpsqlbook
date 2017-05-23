@@ -103,8 +103,8 @@ function get_article_list($show='', $from='') {
 
 function get_article_list_by_category_name($name, $show='', $from='') {
   $connection = $GLOBALS['connection'];
-  $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname
+  $query = 'SELECT article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname,  article.id, article.like_count
       FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
@@ -150,6 +150,24 @@ ORDER BY article.published ASC';                 // Query
   return $article_list;
 }
 
+function get_like_button($user_id, $article_id) {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT *
+      FROM likes
+      WHERE user_id = :user_id and article_id = :article_id';             // Query
+  $statement = $connection->prepare($query);
+    $statement->bindValue(':user_id', $user_id);  // Bind value from query string
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ); // Needs to be ArticleList class
+  $likes = $statement->fetchAll();
+  if ($likes) {
+     return '<a href="/phpsqlbook/cms/unlike">Unlike this article</a>';
+  } else {
+    return '<a href="/phpsqlbook/cms/like">Like this article</a>';
+  }
+}
+
 function add_like_by_article_id($user_id, $article_id) {
   try {
   $GLOBALS['connection']->beginTransaction();  
@@ -172,7 +190,32 @@ function add_like_by_article_id($user_id, $article_id) {
 }
 
 
-  return $article_list;
+  return $statement;
+}
+
+function remove_like_by_article_id($user_id, $article_id) {
+  try {
+  $GLOBALS['connection']->beginTransaction();  
+  $query = 'DELETE FROM liked WHERE user_id= :userid 
+          AND article_id= :articleid';                 // Query
+  $statement = $connection->prepare($query);
+  $statement->bindValue(':user_id', $user_id);  // Bind value from query string
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+  $statement->execute();
+
+  $query='UPDATE article SET like_count = like_count - 1
+        WHERE article_id = :article_id';
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+  $statement = $connection->prepare($query);      
+  $statement->execute();
+  $connection->commit();                                       // Commit transaction
+} catch (PDOException $error) {                                // Failed to update
+   echo 'We were not able to update the article. ' . $error->getMessage();       
+   $connection->rollback();                                    // Roll back all SQL
+}
+
+
+  return $statement;
 }
 
 function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
@@ -238,6 +281,25 @@ function getMenu() {
         $list .= '<a href="'.$GLOBALS['root'] .$category->name.'">'.$category->name.'</a>';
     }
     return $list;
+}
+
+function getLikeTotal($id) {
+      $connection = $GLOBALS['connection'];
+    $query = 'SELECT article.* 
+              FROM article  
+      WHERE article.id=:id';           // Query
+    $statement = $connection->prepare($query);          // Prepare
+    $statement->bindValue(':id', $id);    // Bind value from query string
+    if ($statement->execute() ) {
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
+        $Article = $statement->fetch();
+    }
+ 
+    if ($Article) {
+        return $Article->like_count;
+    } else {
+        return FALSE;
+    }
 }
 
 function check_user() {

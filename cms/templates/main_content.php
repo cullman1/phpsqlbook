@@ -4,7 +4,10 @@
   <h5><?php echo $object->published ?></h5>
   <a href="<?php echo $GLOBALS['root']; ?>author/<?php echo $object->forename ?>-<?php echo $object->surname ?>"><?php echo $object->forename ?> <?php echo $object->surname ?></a><br/><br/>
   <?php } ?>
- <div class="box" style="width:800px;"><?php echo $object->content ?></div>
-  <?php if ($_SESSION != 'general') {  ?>
+ <div class="box" style="width:800px;"><?php echo $object->content ?></div><br/>
+    <?php echo 'Likes: '.getLikeTotal($object->id); ?>  
+<?php if (isset($_SESSION['user_id'])) { ?>
+ <?php echo get_like_button($_SESSION['user_id'], $object->id); ?>  
+  <?php } ?>
 </div>
 <br/>

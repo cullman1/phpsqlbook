@@ -13,7 +13,14 @@
      <form id=form1 style="float:right;" class="navbar-form navbar-left" role="search"  method="get"action="\phpsqlbook\cms\search">
       <input id="term" name="term" type="text" />
     <input type="submit">
-    <a href="/phpsqlbook/cms/admin/">Login</a>
-    <a href="/phpsqlbook/cms/register/">Register</a>
+   <?php 
+    if (isset($_SESSION["user_id"])) {      ?>
+   Hello <?php echo $_SESSION["name"];?>  
+     <a href="/phpsqlbook/cms/profile/update?id=<?php echo $_SESSION["user_id"]; ?>">   Profile</a>&nbsp;   
+    <a href="/phpsqlbook/cms/logout">Logout</a>
+   <?php } else {    ?>             
+   <a href="/phpsqlbook/cms/login">Login</a>&nbsp;
+   <a href="/phpsqlbook/cms/register">Register</a>
+    <?php } ?> 
    </form></nav>
 </header>
