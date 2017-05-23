@@ -80,8 +80,7 @@ function get_article_by_seo_title($seo_title) {
 }
 
 function get_article_list($show='', $from='') {
-  $connection = $GLOBALS['connection'];
-  $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
+  $query = 'SELECT article.id, article.title, article.media_id,article.like_count, article.seo_title,article.content, article.published, category.name,
       media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname
       FROM article
       LEFT JOIN category ON article.category_id = category.id
@@ -94,7 +93,7 @@ function get_article_list($show='', $from='') {
   if (!empty($show)) {
     $query .= " limit " . $show . " offset " . $from;
   }
-  $statement = $connection->prepare($query);
+  $statement = $GLOBALS['connection']->prepare($query);
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
@@ -162,64 +161,65 @@ function get_like_button($user_id, $article_id) {
   $statement->setFetchMode(PDO::FETCH_OBJ); // Needs to be ArticleList class
   $likes = $statement->fetchAll();
   if ($likes) {
-     return '<a href="/phpsqlbook/cms/unlike">Unlike this article</a>';
+     return '<a href="/phpsqlbook/cms/unlike?user_id='.$user_id.'&article_id='.$article_id.'">Unlike this article</a>';
   } else {
-    return '<a href="/phpsqlbook/cms/like">Like this article</a>';
+    return '<a href="/phpsqlbook/cms/like?user_id='.$user_id.'&article_id='.$article_id.'">Like this article</a>';
   }
 }
 
 function add_like_by_article_id($user_id, $article_id) {
   try {
   $GLOBALS['connection']->beginTransaction();  
-  $query = 'INSERT INTO liked (user_id, article_id)  
-          VALUES (:userid, :articleid)';                 // Query
-  $statement = $connection->prepare($query);
+  $query = 'INSERT INTO likes (user_id, article_id)  
+          VALUES (:user_id, :article_id)';                 // Query
+  $statement = $GLOBALS['connection']->prepare($query);
   $statement->bindValue(':user_id', $user_id);  // Bind value from query string
   $statement->bindValue(':article_id', $article_id);  // Bind value from query string
   $statement->execute();
 
   $query='UPDATE article SET like_count = like_count + 1
-        WHERE article_id = :article_id';
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
-  $statement = $connection->prepare($query);      
+        WHERE id = :article_id';
+  $statement = $GLOBALS['connection']->prepare($query);   
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
   $statement->execute();
-  $connection->commit();                                       // Commit transaction
+  $GLOBALS['connection']->commit();                                       // Commit transaction
+  return TRUE;
 } catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to update the article. ' . $error->getMessage();       
-   $connection->rollback();                                    // Roll back all SQL
+   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
+   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
+   return FALSE;
 }
 
 
-  return $statement;
+  
 }
 
 function remove_like_by_article_id($user_id, $article_id) {
   try {
   $GLOBALS['connection']->beginTransaction();  
-  $query = 'DELETE FROM liked WHERE user_id= :userid 
-          AND article_id= :articleid';                 // Query
-  $statement = $connection->prepare($query);
+  $query = 'DELETE FROM likes WHERE user_id= :user_id 
+          AND article_id= :article_id';                 // Query
+$statement = $GLOBALS['connection']->prepare($query);
   $statement->bindValue(':user_id', $user_id);  // Bind value from query string
   $statement->bindValue(':article_id', $article_id);  // Bind value from query string
   $statement->execute();
 
   $query='UPDATE article SET like_count = like_count - 1
-        WHERE article_id = :article_id';
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
-  $statement = $connection->prepare($query);      
+        WHERE id = :article_id';
+  $statement = $GLOBALS['connection']->prepare($query);   
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
   $statement->execute();
-  $connection->commit();                                       // Commit transaction
+  $GLOBALS['connection']->commit();                                       // Commit transaction
+  return TRUE;
 } catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to update the article. ' . $error->getMessage();       
-   $connection->rollback();                                    // Roll back all SQL
+   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
+   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
+   return FALSE;
 }
-
-
-  return $statement;
 }
 
 function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
-  $query= "SELECT article.*, category.*, user.* FROM article JOIN
+  $query= "SELECT  category.*, user.* , article.* FROM article JOIN
            user ON user.id = user_id JOIN category ON 
       category.id= category_id where published <= now()";
   $search_wildcards = "%". trim($search) . "%"; 
@@ -246,6 +246,8 @@ function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC
   if ($user > 0) {          
     $statement->bindParam(":id", $user);    
   }
+
+
   if (!empty($search)) { 
     $statement->bindParam(":search", $search_wildcards);
   }
@@ -261,7 +263,6 @@ function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC
   }
   return $article_list;
 }
-
 
 function getHTMLTemplate($template,$object=""){
     switch($template) {
