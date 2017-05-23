@@ -150,6 +150,31 @@ ORDER BY article.published ASC';                 // Query
   return $article_list;
 }
 
+function add_like_by_article_id($user_id, $article_id) {
+  try {
+  $GLOBALS['connection']->beginTransaction();  
+  $query = 'INSERT INTO liked (user_id, article_id)  
+          VALUES (:userid, :articleid)';                 // Query
+  $statement = $connection->prepare($query);
+  $statement->bindValue(':user_id', $user_id);  // Bind value from query string
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+  $statement->execute();
+
+  $query='UPDATE article SET like_count = like_count + 1
+        WHERE article_id = :article_id';
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+  $statement = $connection->prepare($query);      
+  $statement->execute();
+  $connection->commit();                                       // Commit transaction
+} catch (PDOException $error) {                                // Failed to update
+   echo 'We were not able to update the article. ' . $error->getMessage();       
+   $connection->rollback();                                    // Roll back all SQL
+}
+
+
+  return $article_list;
+}
+
 function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
   $query= "SELECT article.*, category.*, user.* FROM article JOIN
            user ON user.id = user_id JOIN category ON 
@@ -260,5 +285,24 @@ function create_pagination($count, $show, $from, $search='') {
     }
   }
   echo "<br/>" . $result;
+}
+
+function get_user_by_email_password($email, $password) {
+  $query = 'SELECT * FROM user WHERE email = :email';
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':email', $email);
+  if ($statement->execute() ) {
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
+    $user = $statement->fetch();
+  }
+  if (!$user) { 
+    return FALSE; 
+  }
+  return (password_verify($password, $user->password) ? $user : FALSE);
+}
+
+function create_user_session($user) {
+  $_SESSION['name']    = $user->forename;
+  $_SESSION['user_id'] = $user->id;
 }
 ?>

@@ -13,5 +13,7 @@
      <form id=form1 style="float:right;" class="navbar-form navbar-left" role="search"  method="get"action="\phpsqlbook\cms\search">
       <input id="term" name="term" type="text" />
     <input type="submit">
+    <a href="/phpsqlbook/cms/admin/">Login</a>
+    <a href="/phpsqlbook/cms/register/">Register</a>
    </form></nav>
 </header>

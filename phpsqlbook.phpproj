@@ -46,7 +46,10 @@
     <Compile Include="admin\submit-category.php" />
     <Compile Include="admin\index.php" />
     <Compile Include="cms\author.php" />
+    <Compile Include="cms\includes\check-user.php" />
     <Compile Include="cms\includes\database-connection.php" />
+    <Compile Include="cms\admin.php" />
+    <Compile Include="cms\login.php" />
     <Compile Include="cms\search.php" />
     <Compile Include="cms\article-list.php" />
     <Compile Include="cms\includes\class_lib.php" />
