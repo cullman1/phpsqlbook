@@ -15,7 +15,7 @@ include '../includes/header-chapters.php' ?>
           <tr><td><a href="chapter_10/index.php">Chapter 10</a></td><td>Membership  </td></tr>
              <tr><td><a href="chapter_11/index.php">Chapter 11</a></td><td>Errors/Troubleshooting</td></tr>
           <tr><td><a href="chapter_12/index.php">Chapter 12</a></td><td>Creating an Object based CMS</td></tr>
-          <tr><td><a href="http://test1.phpandmysqlbook.com/cmsfull/recipes">Case study</a></td><td>Building an object based CMS</td></tr>
+          <tr><td><a href="http://test1.phpandmysqlbook.com/phpsqlbook/cms/Vegetables">Case study</a></td><td>Building an object based CMS</td></tr>
         </table>
 
       </div>

@@ -180,3 +180,14 @@ h3 {
     font-weight: bold;
 
 }
+
+label {
+display:block;
+position:relative;
+padding-left:120px; /* adjust if necessary */
+padding-top:20px;
+}
+label > span {
+position:absolute;
+left:0;
+}

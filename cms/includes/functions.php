@@ -322,6 +322,17 @@ function getCategoryList() {
   return $category_list;
 }
 
+function get_user_by_email($email) {
+  $sql = 'SELECT * from user WHERE email = :email';
+  $statement = $GLOBALS['connection']->prepare($sql);
+  $statement->bindParam(':email', $email);
+  if ($statement->execute() ) {
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');            
+    $user = $statement->fetch();
+  }
+  return ($user ? $user : FALSE);
+}
+
 function create_slug($title) {
     var_dump($title);
     $title = strtolower($title);

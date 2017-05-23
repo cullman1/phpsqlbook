@@ -16,7 +16,7 @@
    <?php 
     if (isset($_SESSION["user_id"])) {      ?>
    Hello <?php echo $_SESSION["name"];?>  
-     <a href="/phpsqlbook/cms/profile/update?id=<?php echo $_SESSION["user_id"]; ?>">   Profile</a>&nbsp;   
+   <!--  <a href="/phpsqlbook/cms/profile/update?id=<?php $abc= $_SESSION["user_id"]; ?>">   Profile</a>&nbsp;   -->
     <a href="/phpsqlbook/cms/logout">Logout</a>
    <?php } else {    ?>             
    <a href="/phpsqlbook/cms/login">Login</a>&nbsp;
