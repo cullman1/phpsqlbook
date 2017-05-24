@@ -85,6 +85,20 @@ function get_article_list($show='', $from='') {
       return $article_list;
 }
 
+function get_article_count() {
+  $query = 'SELECT count(*) from article
+      LEFT JOIN category ON article.category_id = category.id
+      LEFT JOIN media ON article.media_id = media.id
+      LEFT JOIN user ON article.user_id = user.id
+      WHERE published <= now()
+      ORDER BY article.published ASC';                 // Query
+      $statement = $GLOBALS['connection']->prepare($query);
+      $statement->execute();
+      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+      $count= $statement->fetchColumn();
+      return $count;
+}
+
 function get_article_list_by_category_name($name, $show='', $from='') {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
@@ -107,6 +121,24 @@ function get_article_list_by_category_name($name, $show='', $from='') {
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
+}
+
+function get_article_count_by_category_name($name, $show='', $from='') {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT count(*)
+      FROM article
+      LEFT JOIN category ON article.category_id = category.id
+      LEFT JOIN media ON article.media_id = media.id
+         LEFT JOIN user ON article.user_id = user.id
+      WHERE published <= now()   
+      AND category.name=:name 
+      ORDER BY article.published ASC';                 // Query
+  $statement = $connection->prepare($query);
+  $statement->bindValue(':name', $name);  // Bind value from query string
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $count = $statement->fetchColumn();
+  return $count;
 }
 
 function get_article_list_by_author_name($forename, $surname, $show='', $from='') {
@@ -132,6 +164,106 @@ ORDER BY article.published ASC';                 // Query
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
+}
+
+function get_article_count_by_author_name($forename, $surname, $show='', $from='') {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT count(*) 
+      FROM article
+      LEFT JOIN user ON article.user_id = user.id
+            LEFT JOIN category ON article.category_id = category.id
+      LEFT JOIN media ON article.media_id = media.id
+      WHERE published <= now() 
+        AND user.forename=:forename 
+  AND user.surname=:surname 
+ORDER BY article.published ASC';                 // Query
+  $statement = $connection->prepare($query);
+  $statement->bindValue(':forename', $forename);  // Bind value from query string
+    $statement->bindValue(':surname', $surname);  // Bind value from query string
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $count = $statement->fetchColumn();
+  return $count;
+}
+
+
+
+function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
+  $query= "SELECT  category.*, user.* , article.* FROM article JOIN
+           user ON user.id = user_id JOIN category ON 
+      category.id= category_id where published <= now()";
+  $search_wildcards = "%". trim($search) . "%"; 
+  //If search with wildcards  
+  if (!empty($search)) {   
+    $searchsql = " AND ((title like :search)";
+    $searchsql .= " OR (content like :search))";
+    $query .= $searchsql;   
+  }
+  //If user id not 0, add user id clause
+  if ($user > 0) {     
+    $query .= ' AND user.id = :id';
+  }
+  //If sort not empty, add a sort
+  if (!empty($sort)) {    
+    $query .= " Order By " . $show . " " . $dir;
+  }
+  //Get limited page of articles
+  if (!empty($show)) {  
+    $query .= " limit " . $show . " offset " . $from;
+  }
+  $statement =$GLOBALS['connection']->prepare($query);
+  //If user id not 0 bind parameter
+  if ($user > 0) {          
+    $statement->bindParam(":id", $user);    
+  }
+
+
+  if (!empty($search)) { 
+    $statement->bindParam(":search", $search_wildcards);
+  }
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);
+  $article_list = $statement->fetchAll();  
+
+  //If search not empty, highlight search term
+  if (!empty($search) && !empty($show)) { 
+      foreach($article_list as $article) {
+          $article->content =str_ireplace($search, '<span class="highlight">' . $search . '</span>',    $article->content); 
+      }
+  }
+  return $article_list;
+}
+
+function get_article_count_by_search($search, $user='0') {
+  $query= "SELECT count(*) FROM article JOIN
+           user ON user.id = user_id JOIN category ON 
+      category.id= category_id where published <= now()";
+  $search_wildcards = "%". trim($search) . "%"; 
+  //If search with wildcards  
+  if (!empty($search)) {   
+    $searchsql = " AND ((title like :search)";
+    $searchsql .= " OR (content like :search))";
+    $query .= $searchsql;   
+  }
+  //If user id not 0, add user id clause
+  if ($user > 0) {     
+    $query .= ' AND user.id = :id';
+  }
+ 
+  $statement =$GLOBALS['connection']->prepare($query);
+  //If user id not 0 bind parameter
+  if ($user > 0) {          
+    $statement->bindParam(":id", $user);    
+  }
+
+
+  if (!empty($search)) { 
+    $statement->bindParam(":search", $search_wildcards);
+  }
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);
+  $count = $statement->fetchColumn();  
+  return $count;
 }
 
 function get_like_button($user_id, $article_id) {
@@ -201,52 +333,6 @@ $statement = $GLOBALS['connection']->prepare($query);
    $GLOBALS['connection']->rollback();                                    // Roll back all SQL
    return FALSE;
 }
-}
-
-function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
-  $query= "SELECT  category.*, user.* , article.* FROM article JOIN
-           user ON user.id = user_id JOIN category ON 
-      category.id= category_id where published <= now()";
-  $search_wildcards = "%". trim($search) . "%"; 
-  //If search with wildcards  
-  if (!empty($search)) {   
-    $searchsql = " AND ((title like :search)";
-    $searchsql .= " OR (content like :search))";
-    $query .= $searchsql;   
-  }
-  //If user id not 0, add user id clause
-  if ($user > 0) {     
-    $query .= ' AND user.id = :id';
-  }
-  //If sort not empty, add a sort
-  if (!empty($sort)) {    
-    $query .= " Order By " . $show . " " . $dir;
-  }
-  //Get limited page of articles
-  if (!empty($show)) {  
-    $query .= " limit " . $show . " offset " . $from;
-  }
-  $statement =$GLOBALS['connection']->prepare($query);
-  //If user id not 0 bind parameter
-  if ($user > 0) {          
-    $statement->bindParam(":id", $user);    
-  }
-
-
-  if (!empty($search)) { 
-    $statement->bindParam(":search", $search_wildcards);
-  }
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ);
-  $article_list = $statement->fetchAll();  
-
-  //If search not empty, highlight search term
-  if (!empty($search) && !empty($show)) { 
-      foreach($article_list as $article) {
-          $article->content =str_ireplace($search, '<span class="highlight">' . $search . '</span>',    $article->content); 
-      }
-  }
-  return $article_list;
 }
 
 function get_HTML_template($template,$object=""){

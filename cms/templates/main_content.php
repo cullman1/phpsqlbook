@@ -9,8 +9,8 @@
     <?php echo 'Likes: '.get_like_total($object->id); ?>  
     <div style="float:right; padding-right: 30px;"><?php echo 'Comments: '.get_comment_total($object->id); ?></div>
      <?php } ?>
-<!-- only show if logged in and on article page and not on an about/contact page //-->
-<?php if ( isset($_SESSION['user_id']) && ($object->template != 'general') &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { ?>
+<!-- only show if logged in and not on an about/contact page  -  &&  (basename($_SERVER['PHP_SELF'])=="article.php")//-->
+<?php if ( isset($_SESSION['user_id']) && ($object->template != 'general')) { ?>
  <?php echo get_like_button($_SESSION['user_id'], $object->id); ?>  
   <?php } ?>
 </div>
