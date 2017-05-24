@@ -9,14 +9,14 @@ $title = ( isset($_GET['title']) ? $_GET['title'] : '' );
 $show = (int)(filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 5);
 $from = (int)(filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
 
-getHTMLTemplate('header');
+get_HTML_template('header');
 $wholearticlelist = get_article_list();
 $count = sizeof($wholearticlelist);
 $articlelist = get_article_list($show,$from);
 foreach($articlelist as $object) {
-    getHTMLTemplate('main_content',$object);  
+    get_HTML_template('main_content',$object);  
 }
 $pagination = create_pagination($count,$show,$from);
 echo $pagination;
-getHTMLTemplate('footer');
+get_HTML_template('footer');
 ?>

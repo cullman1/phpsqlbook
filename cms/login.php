@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 } 
-getHTMLTemplate('header');
+get_HTML_template('header');
 ?>
 <form method="post" action="login.php">
  <?= $alert ?>
@@ -35,4 +35,4 @@ getHTMLTemplate('header');
   <span class="error"><?= $error['password']; ?></span></label><br>
  <button type='submit'>Login</button>    
 </form>
- <?= getHTMLTemplate('footer'); ?>
+ <?= get_HTML_template('footer'); ?>

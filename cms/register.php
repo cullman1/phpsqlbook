@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
 }
-getHTMLTemplate('header');
+get_HTML_template('header');
  ?>
 <?= $alert ?>
 <?php if ($show_form) { ?>
@@ -50,4 +50,4 @@ getHTMLTemplate('header');
    <button type="submit">Register</button>
 </form>
 <?php } ?>
- <?= getHTMLTemplate('footer'); ?>
+ <?= get_HTML_template('footer'); ?>

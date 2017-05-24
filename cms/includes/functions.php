@@ -1,19 +1,4 @@
 <?php
-function field_replace($body, $matches, $row) {
-  foreach($matches as $value) {         
-    $replace = str_replace("{{","", $value);
-    $replace = str_replace("}}","", $replace);
-    $body =str_replace($value,$row->{$replace},$body);
-  } 
-  return $body; 
-}
-
-function hyphenate_url($article_list) {
-  foreach ($article_list as $article) {
-    $article->{"article.title_url"} = str_replace(' ','-',  $article->title);
-  }
-  return $article_list;
-}
 
 /* old function get_articles_by_category( $show, $from, $sort='', $dir='ASC',$category=0, $name='',$category_name) {
   $query= "SELECT article.*, category.* FROM article JOIN 
@@ -64,7 +49,7 @@ function get_article_by_seo_title($seo_title) {
       FROM article 
       LEFT JOIN user ON article.user_id = user.id
       LEFT JOIN media ON article.media_id = media.id
-     LEFT JOIN category ON article.category_id = category.id
+      LEFT JOIN category ON article.category_id = category.id
       WHERE article.seo_title=:seo_title';           // Query
     $statement = $connection->prepare($query);          // Prepare
     $statement->bindValue(':seo_title', $seo_title);    // Bind value from query string
@@ -85,19 +70,19 @@ function get_article_list($show='', $from='') {
       FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
-           LEFT JOIN user ON article.user_id = user.id
-      WHERE published <= now()';
-   $query .= '    ORDER BY article.published ASC';                 // Query
+      LEFT JOIN user ON article.user_id = user.id
+      WHERE published <= now()
+      ORDER BY article.published ASC';                 // Query
 
- //Get limited page of articles
-  if (!empty($show)) {
-    $query .= " limit " . $show . " offset " . $from;
-  }
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
-  $article_list = $statement->fetchAll();
-  return $article_list;
+      //Get limited page of articles
+      if (!empty($show)) {
+        $query .= " limit " . $show . " offset " . $from;
+      }
+      $statement = $GLOBALS['connection']->prepare($query);
+      $statement->execute();
+      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+      $article_list = $statement->fetchAll();
+      return $article_list;
 }
 
 function get_article_list_by_category_name($name, $show='', $from='') {
@@ -264,7 +249,7 @@ function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC
   return $article_list;
 }
 
-function getHTMLTemplate($template,$object=""){
+function get_HTML_template($template,$object=""){
     switch($template) {
         
         default:
@@ -274,8 +259,8 @@ function getHTMLTemplate($template,$object=""){
     }
 }
 
-function getMenu() {
-    $categorylist = new CategoryList(getCategoryList());
+function get_menu() {
+    $categorylist = new CategoryList(get_category_list());
 
     $list = '';
     foreach($categorylist->categories as $category) {
@@ -284,7 +269,7 @@ function getMenu() {
     return $list;
 }
 
-function getLikeTotal($id) {
+function get_like_total($id) {
       $connection = $GLOBALS['connection'];
     $query = 'SELECT article.* 
               FROM article  
@@ -311,7 +296,7 @@ function check_user() {
 }
 
 // Get categories
-function getCategoryList() {
+function get_category_list() {
 
   $query = 'SELECT * FROM category'; // Query
   $statement = $GLOBALS["connection"]->prepare($query); 

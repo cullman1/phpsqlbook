@@ -6,7 +6,7 @@
   <?php } ?>
  <div class="box" style="width:800px;"><?php echo $object->content ?></div><br/>
   <?php if ($object->template != 'general') {  ?>
-    <?php echo 'Likes: '.getLikeTotal($object->id); ?>  
+    <?php echo 'Likes: '.get_like_total($object->id); ?>  
      <?php } ?>
 <?php if (isset($_SESSION['user_id']) && ($object->template != 'general')) { ?>
  <?php echo get_like_button($_SESSION['user_id'], $object->id); ?>  

@@ -95,7 +95,7 @@ public function getHTMLTemplate($template,$id=""){
   $userId = check_user(); 
   switch($template) {
     case "menu":
-      $categorylist = new CategoryList(getCategoryList());
+      $categorylist = new CategoryList(get_category_list());
       foreach($categorylist->categories as $category) {
         $this->mergeData($category,"menu_content");
       }
@@ -141,13 +141,6 @@ public function assembleArticles($templates) {
   }
 }
 
-public function mergeData($data, $file) {
-  $html = file_get_contents("templates/".$file. ".php"); 
-  $html = str_replace("__ROOT" , '/' . "phpsqlbook/".$this->server , $html);  
-  $regex = '#{{(.*?)}}#';
-  preg_match_all($regex, $html, $matches);
-  echo field_replace($html, $matches[0], $data);             
-}
 
 
 }
