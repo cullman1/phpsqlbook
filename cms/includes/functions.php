@@ -288,6 +288,25 @@ function get_like_total($id) {
     }
 }
 
+function get_comment_total($id) {
+      $connection = $GLOBALS['connection'];
+    $query = 'SELECT article.* 
+              FROM article  
+      WHERE article.id=:id';           // Query
+    $statement = $connection->prepare($query);          // Prepare
+    $statement->bindValue(':id', $id);    // Bind value from query string
+    if ($statement->execute() ) {
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
+        $Article = $statement->fetch();
+    }
+ 
+    if ($Article) {
+        return $Article->comment_count;
+    } else {
+        return FALSE;
+    }
+}
+
 function check_user() {
  if (!isset($_SESSION['user_id'])) { 
   return "0";
