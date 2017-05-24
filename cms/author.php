@@ -14,6 +14,7 @@ $from = (int)(filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from
 get_HTML_template('header');
 $count = get_article_count_by_author_name($forename,$surname);
 $articlelist = get_article_list_by_author_name($forename,$surname, $show, $from);
+echo '<h3>Articles by: ' . $forename . ' ' . $surname . '</h3>';
 foreach($articlelist as $object) {
     get_HTML_template('main_content',$object);  
 }
