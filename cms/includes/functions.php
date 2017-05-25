@@ -337,12 +337,88 @@ $statement = $GLOBALS['connection']->prepare($query);
 
 function get_HTML_template($template,$object=""){
     switch($template) {
-        
+        case "comments":
+          //Gets the list of comments
+          $comments = new CommentList(get_comments_by_id($id));
+          //If there are no comments
+          if ($comments->commentCount==0) {
+            //We still need to create a form for the article so people can comment on it
+            $comment = get_blank_comment();
+            $comments = $comments->add($comment->{".new_id"}, $id, '', '', '', '');
+          }             
+          //Now display the comments after an article.
+          display_comments($comments,$comments->commentCount, $this->server); 
+          break;
         default:
-            include("templates/".$template.".php");     
-
-            break;
+          include("templates/".$template.".php");    
+          break;
     }
+}
+
+function get_comments_by_id($id) {
+  $query="SELECT comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id   
+          WHERE article_id = :articleid ORDER BY comments.id DESC";  
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':articleid',$id);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);
+  return $statement->fetchAll();
+}
+
+function get_blank_comment() {
+  $query= "SELECT uuid() As new_id FROM article";
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);
+  return $statement->fetch();  
+}
+
+function get_user_list() {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT * FROM user';
+  $statement = $connection->prepare($query); 
+  $statement->execute(); 
+  $statement->setFetchMode(PDO::FETCH_OBJ); 
+  $user_list = $statement->fetchAll();        
+  return $user_list;
+}
+
+function display_comments($commentlist, $commentcount, $server) {   
+  include("templates/comments_content.php");
+  if (!isset($_SESSION["user_id"])) {
+      $head = str_replace("Add a comment", "", $head);
+  }
+  //Go through each item in the database
+  foreach ($commentlist->comments as $row) {
+    $row->{'commentCount'} = $commentcount;  
+    $comment = substr($string2,$opening_tag+1,$remain-9);
+    //If this is the first time round, replace the tags up to [[for]] with database values
+    if ($count==0) {
+      $head = field_replace($head, $head_matches[0],$row);       
+      echo $head;
+    }
+    //For the tags between [[for]] and [[next]] replace each tag with comment data
+    if ($commentcount>0) {
+      preg_match_all($regex, $comment, $inner_matches);
+      $comment = field_replace($comment, $inner_matches[0],$row);     
+      $body[$count] = $comment; 
+      $count++;
+    }
+  }
+  //Display each of the comments
+  for ($i=0; $i<$count; $i++) { 
+    echo $body[$i];
+  }
+}
+
+function get_comments_list($user_id, $article_id) {
+   $comments = new CommentList(get_comments_by_id($article_id));
+   $comments_table = "<table>";
+   foreach ($commentlist->comments as $row) {
+    $row->{'commentCount'} = $commentcount;  
+    echo "";
+  }
+  $comments_table .= "</table>"; 
 }
 
 function get_menu() {

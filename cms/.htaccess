@@ -3,7 +3,7 @@ RewriteRule ^/?$  index.php [NC,L]
 
 RewriteRule ^about/?$    article.php?title=about [NC,L]
 RewriteRule ^contact/?$  article.php?title=contact [NC,L]
-RewriteRule ^admin/?$ admin.php [NC,L]
+RewriteRule ^admin/?$ admin/article.php [NC,L]
 RewriteRule ^login/?$ login.php [NC,L]
 RewriteRule ^register/?$ register.php [NC,L]
 RewriteRule ^logout/?$ logout.php [NC,L]

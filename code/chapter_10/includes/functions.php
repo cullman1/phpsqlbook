@@ -90,7 +90,7 @@ function get_article_list() {
     $connection = $GLOBALS['connection'];
 
     $query = 'SELECT article.id, article.title, article.media_id, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.type
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype
       FROM article
       LEFT JOIN media ON article.media_id = media.id  LEFT JOIN category ON article.category_id = category.id';                   // Query
     $statement = $connection->prepare($query); 

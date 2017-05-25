@@ -13,5 +13,8 @@
 <?php if ( isset($_SESSION['user_id']) && ($object->template != 'general')) { ?>
  <?php echo get_like_button($_SESSION['user_id'], $object->id); ?>  
   <?php } ?>
+  <?php if ( isset($_SESSION['user_id']) && ($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { ?>
+ <?php echo get_comments_list($_SESSION['user_id'], $object->id); ?>  
+  <?php } ?>
 </div>
 <br/>

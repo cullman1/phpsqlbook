@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once('includes/class_lib.php');
+require_once('includes/class-lib.php');
 require_once('includes/functions.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $term = ( isset($_GET['term']) ? $_GET['term'] : '' ); 

@@ -1,7 +1,7 @@
 <?php 
 require_once('includes/database-connection.php');
 require_once('includes/functions.php');
-require_once('includes/class_lib.php');
+require_once('includes/class-lib.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $forename  = ( isset($_POST['forename']) ? $_POST['forename'] : '' ); 
 $surname   = ( isset($_POST['surname'])  ? $_POST['surname']  : '' ); 
