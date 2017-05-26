@@ -102,7 +102,7 @@ function get_article_count() {
 function get_article_list_by_category_name($name, $show='', $from='') {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname,  article.id, article.like_count
+       media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname,  article.id, article.like_count, article.comment_count
       FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
@@ -185,8 +185,6 @@ ORDER BY article.published ASC';                 // Query
   $count = $statement->fetchColumn();
   return $count;
 }
-
-
 
 function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
   $query= "SELECT  category.*, user.* , article.* FROM article JOIN
@@ -338,6 +336,7 @@ function get_HTML_template($template,$object=""){
         case "comments":
           //Gets the list of comments
           $comments = new CommentList(get_comments_by_id($id));
+
           //If there are no comments
           if ($comments->commentCount==0) {
             //We still need to create a form for the article so people can comment on it
@@ -357,10 +356,38 @@ function get_comments_by_id($id) {
   $query="SELECT comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id   
           WHERE article_id = :articleid ORDER BY comments.id DESC";  
   $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':articleid',$id);
-  $statement->execute();
+
+  $statement->bindValue(':articleid',   $id, PDO::PARAM_INT);      // Bind value from query string
+$statement->execute();
+
+   
   $statement->setFetchMode(PDO::FETCH_OBJ);
-  return $statement->fetchAll();
+
+ $commentslist = $statement->fetchAll();                        // Fetch
+
+	if ($commentslist) {
+		return $commentslist;
+
+	} else {
+	    return FALSE;
+     
+    }
+}
+
+function get_user_by_id($id) {
+	$connection = $GLOBALS['connection'];
+	$query = 'SELECT * FROM user WHERE id=:id';             // Query
+	$statement = $connection->prepare($query);              // Prepare
+	$statement->bindValue(':id', $id, PDO::PARAM_INT);      // Bind value from query string
+	if ($statement->execute() ) {
+		$statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User'); // Object
+		$User = $statement->fetch();                        // Fetch
+	}
+	if ($User) {
+		return $User;
+	} else {
+	    return FALSE;
+    }
 }
 
 function get_blank_comment() {
@@ -419,6 +446,20 @@ function get_comments_list( $article_id) {
   }
   $comments_table .= "</table></div>"; 
   return $comments_table;
+}
+
+function get_comments_reply_form($id, $article_id) {
+  $comments_form = '<div><a id="link' . $id . '" href="#">Add a comment</a></div>';
+  $comments_form .= '<form id="form' . $id . '" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0" >';
+  $comments_form .= '<label for="comment">Comment:</label>';
+  $comments_form .= ' <textarea id="comment' . $id . '" name="comment"></textarea>';
+  $comments_form .= '  <button type="submit" >Submit Comment</button>';
+  $comments_form .= ' </form>';
+  $comments_form .= ' <script>';
+  $comments_form .= ' $("#link' . $id . '").click(function() { ';
+  $comments_form .= '  $("#form' . $id . '").toggle(); ';
+  $comments_form .= ' }); </script>';
+  return $comments_form;
 }
 
 function get_menu() {

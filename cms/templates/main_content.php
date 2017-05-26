@@ -20,7 +20,7 @@
   <?php } ?>
 
     <?php if ( isset($_SESSION['user_id']) && ($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { ?>
- <?php echo "YES" . get_comments_reply_form( $object->id); ?>  
+ <?php echo get_comments_reply_form( $_SESSION['user_id'],$object->id); ?>  
   <?php } ?>
 </div>
 <br/>

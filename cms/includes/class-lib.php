@@ -229,31 +229,34 @@ class ArticleSummary {
 }
 
 class Comment {
-  public $id=0;			// int
+
+    public $articleId;	// Array holding array of article summaries
   public $userId;		// String
   public $author; 		// String
-  public $articleId;	// Array holding array of article summaries
-  public $replyToId;
-  public $posted;
-  public $validated = false; 	// Is category validated
-  public $database;
-  public $indent;
-  public $connection;
-  
-  function __construct ($id=0, $articleid, $userid, $author, $comment, $date, $replyid=0, $indent=0) {
+    public $comment;
 
-    $this->id          = $id;
+  public $posted;
+
+    public $replyToId;
+  public $indent;
+
+  
+  function __construct ($articleid, $userid, $author, $comment, $date, $replyid=0, $indent=0) {
+
     $this->articleId   = $articleid;
-    $this->author      = $author;
     $this->userId      = $userid;
+     $this->author      = $author;
     $this->comment     = $comment;
+        $this->posted      = $date;
     $this->replyToId   = $replyid;
-    $this->posted      = $date;
+
     $this->indent = $indent;
   }
 
-  public function create() {
-    $query = "INSERT INTO comments (comment, article_id, user_id, posted, replyto_id) 
+  public function add() {
+        try {
+  $GLOBALS['connection']->beginTransaction();  
+    $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
               VALUES  (:comment,:articleid, :userid, :date, :replyid)";
     $statement = $GLOBALS["connection"]->prepare($query);
     $statement->bindParam(':comment',$this->comment);
@@ -262,11 +265,23 @@ class Comment {
     $date = date("Y-m-d H:i:s");
     $statement->bindParam(':date',$date);
     $statement->bindParam(':replyid',$this->replyToId);
-    if ($statement->execute()) {
-     return true;    
-    } else {
-     return '<div>Error '. $statement->errorCode() .':' . $statement->errorInfo() .'</div>';  
-    }
+$statement->execute();
+   $query='UPDATE article SET comment_count = comment_count + 1
+        WHERE id = :article_id';
+  $statement = $GLOBALS['connection']->prepare($query);   
+  $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
+  $statement->execute();
+  $GLOBALS['connection']->commit();                                       // Commit transaction
+  return TRUE;
+} catch (PDOException $error) {                                // Failed to update
+   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
+   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
+   return FALSE;
+}
+
+   
+
+
   } 
 
   function update() {}
@@ -276,18 +291,19 @@ class Comment {
   function validate() {}
   }
 
-  class CommentList {
+class CommentList {
   public $comments = array();// Array holding child objects
   public $commentCount;
 
   function __construct($comment_list) {   
-  $this->commentCount =0;
-  foreach($comment_list as $comment) {
-   $comment = new Comment($comment->id, $comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->comment,$comment->posted,$comment->repliedto_id);
-   $this->comments[$this->commentCount] = $comment;
-   $this->commentCount++;
+    $this->commentCount =0;
+    if (!empty($comment_list)) {
+    foreach($comment_list as $comment) {
+      $comment = new Comment($comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->comment,$comment->posted);
+      $this->comments[$this->commentCount] = $comment;
+      $this->commentCount++;
    }
-
+   }
    /* $this->commentCount = 0;
      $new = array();  
      $nestedcomments_row = array();
@@ -350,6 +366,7 @@ class CategoryList {
     }
   }
 } 
+
 class Category {
   public $id=0;			// int
   public $name;		// String
@@ -383,7 +400,7 @@ class Category {
   function validate() {}
   }
 
-  class User {
+class User {
   public $id;
   public $forename;
   public $surname;
@@ -447,7 +464,7 @@ class Category {
 
 }
 
-Class Validate {
+class Validate {
 
 	function numberRange($number, $min = 0, $max = 4294967295) {
 	  if ( ($number < $min) or ($number > $max) ) {
