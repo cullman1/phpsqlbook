@@ -307,8 +307,6 @@ function add_like_by_article_id($user_id, $article_id) {
    return FALSE;
 }
 
-
-  
 }
 
 function remove_like_by_article_id($user_id, $article_id) {
@@ -411,14 +409,16 @@ function display_comments($commentlist, $commentcount, $server) {
   }
 }
 
-function get_comments_list($user_id, $article_id) {
-   $comments = new CommentList(get_comments_by_id($article_id));
-   $comments_table = "<table>";
-   foreach ($commentlist->comments as $row) {
-    $row->{'commentCount'} = $commentcount;  
-    echo "";
+function get_comments_list( $article_id) {
+   $commentslist = new CommentList(get_comments_by_id($article_id));
+   $comments_table = '<div><br/><table class="commenterbox" class="comment-box">';
+   foreach ($commentslist->comments as $comment) {
+     $comments_table .= '<tr><td class="small_name">' . $comment->comment . '</td></tr>'; 
+     $comments_table .= '<tr><td class="small_name"><i>' . $comment->author . '</i></td>'; 
+     $comments_table .= '<td class="small_name">' . date("F jS Y g:i a", strtotime($comment->posted)) . '</td></tr><tr><td>&nbsp;</td></tr>';
   }
-  $comments_table .= "</table>"; 
+  $comments_table .= "</table></div>"; 
+  return $comments_table;
 }
 
 function get_menu() {

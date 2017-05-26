@@ -241,9 +241,7 @@ class Comment {
   public $connection;
   
   function __construct ($id=0, $articleid, $userid, $author, $comment, $date, $replyid=0, $indent=0) {
-    $this->registry    = Registry::instance();
-    $this->database    = $this->registry->get('database');  
-    $this->connection  = $this->database->connection;
+
     $this->id          = $id;
     $this->articleId   = $articleid;
     $this->author      = $author;
@@ -257,7 +255,7 @@ class Comment {
   public function create() {
     $query = "INSERT INTO comments (comment, article_id, user_id, posted, replyto_id) 
               VALUES  (:comment,:articleid, :userid, :date, :replyid)";
-    $statement = $this->connection->prepare($query);
+    $statement = $GLOBALS["connection"]->prepare($query);
     $statement->bindParam(':comment',$this->comment);
     $statement->bindParam(':articleid',$this->articleId);
     $statement->bindParam(':userid',$this->userId);
@@ -283,7 +281,14 @@ class Comment {
   public $commentCount;
 
   function __construct($comment_list) {   
-    $this->commentCount = 0;
+  $this->commentCount =0;
+  foreach($comment_list as $comment) {
+   $comment = new Comment($comment->id, $comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->comment,$comment->posted,$comment->repliedto_id);
+   $this->comments[$this->commentCount] = $comment;
+   $this->commentCount++;
+   }
+
+   /* $this->commentCount = 0;
      $new = array();  
      $nestedcomments_row = array();
      foreach ($comment_list as $row) {
@@ -294,7 +299,7 @@ class Comment {
      }
      if (isset($new[0])) { 
         $comment_list = $this->create_tree($new, $new[0]);
-     }
+  }  */ 
   }
 
   function create_tree(&$list, $parent){
@@ -320,7 +325,7 @@ class Comment {
 
   public function add($id, $articleid, $userid, $author, $comment, $posted, $reply='0', $indent='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id,$articleid,$userid, $author, $comment, $posted , $reply ,$indent);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $comment, $posted , $reply ,$indent);
     if ($userid !='') { 
       $this->commentCount++; 
     }

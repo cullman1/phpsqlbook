@@ -91,6 +91,7 @@
     <Compile Include="cms\includes\database-connection.php" />
     <Compile Include="cms\admin.php" />
     <Compile Include="cms\register.php" />
+    <Compile Include="cms\templates\comments_content.php" />
     <Compile Include="cms\unlike.php" />
     <Compile Include="cms\like.php" />
     <Compile Include="cms\login.php" />
