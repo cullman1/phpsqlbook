@@ -269,7 +269,7 @@ $statement->execute();
    $query='UPDATE article SET comment_count = comment_count + 1
         WHERE id = :article_id';
   $statement = $GLOBALS['connection']->prepare($query);   
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
+  $statement->bindValue(':article_id',  $this->articleId);  // Bind value from query string   
   $statement->execute();
   $GLOBALS['connection']->commit();                                       // Commit transaction
   return TRUE;

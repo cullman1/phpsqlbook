@@ -65,8 +65,8 @@ function get_article_by_seo_title($seo_title) {
 }
 
 function get_article_list($show='', $from='') {
-  $query = 'SELECT article.id, article.title, article.media_id,article.like_count, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname
+  $query = 'SELECT article.title, article.media_id,article.like_count, article.seo_title,article.content, article.published, category.name,
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, article.id, article.like_count, article.comment_count
       FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id

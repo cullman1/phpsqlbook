@@ -8,7 +8,6 @@ $GLOBALS['root'] = "/phpsqlbook/cms/";
 $title = ( isset($_GET['title']) ? $_GET['title'] : '' );
 $show = (int)(filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 5);
 $from = (int)(filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
-
 get_HTML_template('header');
 $count = get_article_count();
 $articlelist = get_article_list($show,$from);
