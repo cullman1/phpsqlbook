@@ -335,8 +335,8 @@ function get_HTML_template($template,$object=""){
     switch($template) {
         case "comments":
           //Gets the list of comments
-          $comments = new CommentList(get_comments_by_id($id));
-
+         // $comments = new CommentList(get_comments_by_id($id));
+               $comments = new CommentTree(get_comments_by_id($id));
           //If there are no comments
           if ($comments->commentCount==0) {
             //We still need to create a form for the article so people can comment on it
@@ -353,7 +353,7 @@ function get_HTML_template($template,$object=""){
 }
 
 function get_comments_by_id($id) {
-  $query="SELECT comments.*, user.* FROM comments JOIN user ON comments.user_id = user.id   
+  $query="SELECT  user.*, comments.* FROM comments JOIN user ON comments.user_id = user.id   
           WHERE article_id = :articleid ORDER BY comments.id DESC";  
   $statement = $GLOBALS['connection']->prepare($query);
 
@@ -437,7 +437,8 @@ function display_comments($commentlist, $commentcount, $server) {
 }
 
 function get_comments_list( $article_id) {
-   $commentslist = new CommentList(get_comments_by_id($article_id));
+ //  $commentslist = new CommentList(get_comments_by_id($article_id));
+   $commentslist = new CommentTree(get_comments_by_id($article_id));
    $comments_table = '<div><br/><table class="commenterbox" class="comment-box">';
    foreach ($commentslist->comments as $comment) {
      $comments_table .= '<tr><td class="small_name">' . $comment->comment . '</td></tr>'; 

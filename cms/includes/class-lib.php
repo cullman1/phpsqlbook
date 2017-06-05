@@ -229,7 +229,7 @@ class ArticleSummary {
 }
 
 class Comment {
-
+  public $id;
     public $articleId;	// Array holding array of article summaries
   public $userId;		// String
   public $author; 		// String
@@ -238,19 +238,18 @@ class Comment {
   public $posted;
 
     public $replyToId;
-  public $indent;
+  public $nestingLevel ;
 
   
-  function __construct ($articleid, $userid, $author, $comment, $date, $replyid=0, $indent=0) {
-
+  function __construct ($id, $articleid, $userid, $author, $comment, $date, $replyid=0, $nestinglevel=0) {
+    $this->id = $id;
     $this->articleId   = $articleid;
     $this->userId      = $userid;
-     $this->author      = $author;
+    $this->author      = $author;
     $this->comment     = $comment;
-        $this->posted      = $date;
+    $this->posted      = $date;
     $this->replyToId   = $replyid;
-
-    $this->indent = $indent;
+    $this->nestingLevel = $nestinglevel;
   }
 
   public function add() {
@@ -299,49 +298,67 @@ class CommentList {
     $this->commentCount =0;
     if (!empty($comment_list)) {
     foreach($comment_list as $comment) {
-      $comment = new Comment($comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->comment,$comment->posted);
+      $comment = new Comment($comment->id, $comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->comment,$comment->posted);
       $this->comments[$this->commentCount] = $comment;
       $this->commentCount++;
    }
    }
-   /* $this->commentCount = 0;
+  
+  }
+
+  public function add($id, $articleid, $userid, $author, $comment, $posted, $reply='0', $nestinglevel='0') {
+    $count = sizeof($this->comments);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $comment, $posted , $reply ,$nestinglevel);
+    if ($userid !='') { 
+      $this->commentCount++; 
+    }
+    return $this;
+  }
+}
+
+class CommentTree {
+  public $comments = array();// Array holding child objects
+  public $commentCount;
+
+  function __construct($comment_list) {   
+    $this->commentCount =0;
      $new = array();  
      $nestedcomments_row = array();
      foreach ($comment_list as $row) {
         $nestedcomments_row[] = $row;
      }
      foreach ($nestedcomments_row as $branch) {
-        $new[$branch->{'comments.repliedto_id'}][]=$branch;             
+        $new[$branch->repliedto_id][]=$branch;             
      }
      if (isset($new[0])) { 
         $comment_list = $this->create_tree($new, $new[0]);
-  }  */ 
+  }  
   }
 
   function create_tree(&$list, $parent){
     $tree = array();
-    $indent=0;
+    $nestinglevel=0;
     foreach ((array) $parent as $key=>$reply) {
       if ($this->commentCount>0) {
        foreach ($this->comments as $comment) {
           //Search the array for indentation of previous array
-          if ($comment->id == $reply->{"comments.repliedto_id"}) {
-             $indent = $comment->indent + 40; //Add an indent
+          if ($comment->id == $reply->repliedto_id) {
+             $nestinglevel = $comment->nestingLevel + 1; 
           } 
        }
       }
-      $comment = $this->add($reply->{"comments.id"},$reply->{"comments.article_id"}, $reply->{"comments.user_id"},$reply->{"user.forename"} . " ". $reply->{"user.surname"},$reply->{"comments.comment"} , $reply->{"comments.posted"} , $reply->{"comments.repliedto_id"}, $indent);
-      if (isset($list[$reply->{'comments.id'}])) {
-        $reply->{'children'} = $this->create_tree($list, $list[$reply->{'comments.id'}]);
+      $comment = $this->add($reply->id,$reply->article_id, $reply->user_id,$reply->forename . " ". $reply->surname,$reply->comment , $reply->posted , $reply->repliedto_id, $nestinglevel);
+      if (isset($list[$reply->id])) {
+        $reply->{'children'} = $this->create_tree($list, $list[$reply->id]);
       } 
       $tree[] = $reply;
     } 
     return $tree;
   }
 
-  public function add($id, $articleid, $userid, $author, $comment, $posted, $reply='0', $indent='0') {
+  public function add($id, $articleid, $userid, $author, $comment, $posted, $reply='0', $nestinglevel='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $comment, $posted , $reply ,$indent);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $comment, $posted , $reply ,$nestinglevel);
     if ($userid !='') { 
       $this->commentCount++; 
     }
