@@ -439,13 +439,13 @@ function display_comments($commentlist, $commentcount, $server) {
 function get_comments_list( $article_id) {
  //  $commentslist = new CommentList(get_comments_by_id($article_id));
    $commentslist = new CommentTree(get_comments_by_id($article_id));
-   $comments_table = '<div><br/><table class="commenterbox" class="comment-box">';
+   $comments_table = '<div><ol class="commenterbox children comment-box" style="list-style-type:none">';
    foreach ($commentslist->comments as $comment) {
-     $comments_table .= '<tr><td class="small_name">' . $comment->comment . '</td></tr>'; 
-     $comments_table .= '<tr><td class="small_name"><i>' . $comment->author . '</i></td>'; 
-     $comments_table .= '<td class="small_name">' . date("F jS Y g:i a", strtotime($comment->posted)) . '</td></tr><tr><td>&nbsp;</td></tr>';
+     $comments_table .= '<li class="small_name">' . $comment->comment . '</li>'; 
+     $comments_table .= '<li class="small_name"><i>' . $comment->author . '</i>&nbsp;'; 
+     $comments_table .= date("F jS Y g:i a", strtotime($comment->posted)) . '</li><br/>';
   }
-  $comments_table .= "</table></div>"; 
+  $comments_table .= "</ol></div>"; 
   return $comments_table;
 }
 
