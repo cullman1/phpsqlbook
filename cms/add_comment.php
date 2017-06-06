@@ -9,7 +9,7 @@ $article_id = (int)(filter_input(INPUT_GET, 'article_id', FILTER_VALIDATE_INT) ?
 
 $user = get_user_by_id($_SESSION['user_id']);
 
-$comment = new Comment(0, $article_id, $user->id, $user->forename . ' ' . $user->surname, $_POST["comment"], date("Y-m-d H:i:s"));
+$comment = new Comment(0, $article_id, $user->id, $user->forename . ' ' . $user->surname, $user->image, $_POST["comment"], date("Y-m-d H:i:s"));
 $comment->add();
    header('Location: '.$_SERVER['HTTP_REFERER']);
 

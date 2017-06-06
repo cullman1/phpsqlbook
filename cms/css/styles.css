@@ -171,9 +171,25 @@ h3 {
 }
 
 .comment-box {
-    float: left;
-    margin-left: 10px;
+    /*float: left;
+    margin-left: 10px;*/
+    list-style: none;
+    margin:     0 0 1.5rem;
+    border: 1px solid gray;
+ 
 }
+
+ .comment-box ol.children {
+        list-style:  none;
+        border: 1px solid gray;
+        margin-left: 0;
+    }
+
+   .comment-box .depth-1  { margin-left: 1.5rem !important;   
+        border: 1px solid gray !important; }
+
+      .comment-box .depth-2  { margin-left: 1.5rem !important;   
+        border: 1px solid gray !important; }
 
 .highlight {
     text-decoration: underline;

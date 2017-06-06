@@ -439,11 +439,22 @@ function display_comments($commentlist, $commentcount, $server) {
 function get_comments_list( $article_id) {
  //  $commentslist = new CommentList(get_comments_by_id($article_id));
    $commentslist = new CommentTree(get_comments_by_id($article_id));
-   $comments_table = '<div><ol class="commenterbox children comment-box" style="list-style-type:none">';
+   $comments_table = '<div><ol class="commenterbox comment-box" style="list-style-type:none">';
    foreach ($commentslist->comments as $comment) {
+     $comments_table .= '<ol class="children comment-box';
+     if ($comment->nestingLevel==1) {
+        $comments_table .= ' depth-' . $comment->nestingLevel . '">';
+     } 
+     if ($comment->nestingLevel>1) {
+       $comments_table .= ' depth-' . $comment->nestingLevel . '">';
+       $comments_table .= '<li class="small_name">In reply to: '.  $comment->author .'</li>'; 
+     } 
+      if ($comment->nestingLevel==0) {
+        $comments_table .=  '">';
+     } 
      $comments_table .= '<li class="small_name">' . $comment->comment . '</li>'; 
      $comments_table .= '<li class="small_name"><i>' . $comment->author . '</i>&nbsp;'; 
-     $comments_table .= date("F jS Y g:i a", strtotime($comment->posted)) . '</li><br/>';
+     $comments_table .= date("F jS Y g:i a", strtotime($comment->posted)) . '</li></ol><br/>';
   }
   $comments_table .= "</ol></div>"; 
   return $comments_table;

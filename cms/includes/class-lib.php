@@ -238,14 +238,17 @@ class Comment {
   public $posted;
 
     public $replyToId;
-  public $nestingLevel ;
+  public $nestingLevel;
+    public $userImage;
+    public $replyToName;
 
   
-  function __construct ($id, $articleid, $userid, $author, $comment, $date, $replyid=0, $nestinglevel=0) {
+  function __construct ($id, $articleid, $userid, $author, $authorimage, $comment, $date, $replyid=0, $nestinglevel=0) {
     $this->id = $id;
     $this->articleId   = $articleid;
     $this->userId      = $userid;
     $this->author      = $author;
+    $this->authorImage = $authorimage;
     $this->comment     = $comment;
     $this->posted      = $date;
     $this->replyToId   = $replyid;
@@ -298,7 +301,7 @@ class CommentList {
     $this->commentCount =0;
     if (!empty($comment_list)) {
     foreach($comment_list as $comment) {
-      $comment = new Comment($comment->id, $comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->comment,$comment->posted);
+      $comment = new Comment($comment->id, $comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->image, $comment->comment,$comment->posted);
       $this->comments[$this->commentCount] = $comment;
       $this->commentCount++;
    }
@@ -306,9 +309,9 @@ class CommentList {
   
   }
 
-  public function add($id, $articleid, $userid, $author, $comment, $posted, $reply='0', $nestinglevel='0') {
+  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply='0', $nestinglevel='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $comment, $posted , $reply ,$nestinglevel);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $reply ,$nestinglevel);
     if ($userid !='') { 
       $this->commentCount++; 
     }
@@ -347,7 +350,7 @@ class CommentTree {
           } 
        }
       }
-      $comment = $this->add($reply->id,$reply->article_id, $reply->user_id,$reply->forename . " ". $reply->surname,$reply->comment , $reply->posted , $reply->repliedto_id, $nestinglevel);
+      $comment = $this->add($reply->id,$reply->article_id, $reply->user_id,$reply->forename . " ". $reply->surname, $reply->image,$reply->comment , $reply->posted , $reply->repliedto_id, $nestinglevel);
       if (isset($list[$reply->id])) {
         $reply->{'children'} = $this->create_tree($list, $list[$reply->id]);
       } 
@@ -356,9 +359,9 @@ class CommentTree {
     return $tree;
   }
 
-  public function add($id, $articleid, $userid, $author, $comment, $posted, $reply='0', $nestinglevel='0') {
+  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply='0', $nestinglevel='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $comment, $posted , $reply ,$nestinglevel);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $reply ,$nestinglevel);
     if ($userid !='') { 
       $this->commentCount++; 
     }
