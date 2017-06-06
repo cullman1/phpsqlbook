@@ -439,24 +439,31 @@ function display_comments($commentlist, $commentcount, $server) {
 function get_comments_list( $article_id) {
  //  $commentslist = new CommentList(get_comments_by_id($article_id));
    $commentslist = new CommentTree(get_comments_by_id($article_id));
-   $comments_table = '<div><ol class="commenterbox comment-box" style="list-style-type:none">';
+   $comments_table = '<div class="down"><ol class="commenterbox comment-box" style="list-style-type:none">';
    foreach ($commentslist->comments as $comment) {
-     $comments_table .= '<ol class="children comment-box';
+     $comments_table .= '<ol class="border-box"><ol class="children comment-box';
      if ($comment->nestingLevel==1) {
         $comments_table .= ' depth-' . $comment->nestingLevel . '">';
      } 
-     if ($comment->nestingLevel>1) {
-       $comments_table .= ' depth-' . $comment->nestingLevel . '">';
-       $comments_table .= '<li class="small_name">In reply to: '.  $comment->author .'</li>'; 
-     } 
-      if ($comment->nestingLevel==0) {
+     if ($comment->nestingLevel==0) {
         $comments_table .=  '">';
      } 
-     $comments_table .= '<li class="small_name">' . $comment->comment . '</li>'; 
-     $comments_table .= '<li class="small_name"><i>' . $comment->author . '</i>&nbsp;'; 
-     $comments_table .= date("F jS Y g:i a", strtotime($comment->posted)) . '</li></ol><br/>';
+     if ($comment->nestingLevel>1) {
+       $comments_table .= ' depth-' . $comment->nestingLevel . '">';
+       $comments_table .= '<li class="bold">< In reply to: '.  $comment->author. '</li><br/>'; 
+     }
+     $comments_table .= '<li class="indent"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
+     $comments_table .= '<li class="small_name"><span class="orange">' . $comment->author . '</span><hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
+     if ( isset($_SESSION['user_id'])) { 
+            $comments_table .= get_comments_reply_form($comment->id,$article_id) . '</li>'; 
+          }
+ 
+     $comments_table .=  '<li class="indent"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
   }
-  $comments_table .= "</ol></div>"; 
+  $comments_table .= "</ol></ol></div>"; 
+ //  if ( isset($_SESSION['user_id'])) { 
+ //           $comments_table .= get_comments_reply_form( $_SESSION['user_id'],$article_id); 
+ //         }
   return $comments_table;
 }
 

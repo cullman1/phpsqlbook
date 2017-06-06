@@ -350,6 +350,9 @@ class CommentTree {
           } 
        }
       }
+   if (empty($reply->image)) {
+   $reply->image = "blank.png";
+   } 
       $comment = $this->add($reply->id,$reply->article_id, $reply->user_id,$reply->forename . " ". $reply->surname, $reply->image,$reply->comment , $reply->posted , $reply->repliedto_id, $nestinglevel);
       if (isset($list[$reply->id])) {
         $reply->{'children'} = $this->create_tree($list, $list[$reply->id]);

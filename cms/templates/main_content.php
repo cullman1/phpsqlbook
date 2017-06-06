@@ -9,18 +9,14 @@
     <?php echo 'Likes: '.get_like_total($object->id); ?>  
     <div style="float:right; padding-right: 30px;"><?php echo 'Comments: '.get_comment_total($object->id); ?></div>
      <?php } ?>
-<!-- only show if logged in and not on an about/contact page  //-->
 <?php if ( isset($_SESSION['user_id']) && ($object->template != 'general')) { ?>
  <?php echo get_like_button($_SESSION['user_id'], $object->id); ?>  
   <?php } ?>
 
 
-  <?php if (($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { ?>
- <?php echo get_comments_list($object->id); ?>  
-  <?php } ?>
-
-    <?php if ( isset($_SESSION['user_id']) && ($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { ?>
- <?php echo get_comments_reply_form( $_SESSION['user_id'],$object->id); ?>  
-  <?php } ?>
+  <?php if (($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { 
+          echo get_comments_list($object->id);
+         
+        } ?>
 </div>
 <br/>

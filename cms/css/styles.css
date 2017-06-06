@@ -170,26 +170,70 @@ h3 {
     left:10px;
 }
 
+.bold {
+  font-weight:bold;
+  margin-left:10px;
+}
+
+.orange {
+  color:orange;
+  font-family:Arial;
+  font-weight:bold;
+}
+
+.small_image {
+    float:left;
+    height: 50px;
+    border:1px solid gray;
+    padding: 10px 10px 10px 10px;
+}
+
+.small_name {
+    float:left;
+    margin-left: 5px;
+}
+
 .comment-box {
     /*float: left;
     margin-left: 10px;*/
     list-style: none;
-    margin:     0 0 1.5rem;
-    border: 1px solid gray;
+    margin-bottom: 10px;
+      
+                  
  
+}
+
+.indent {
+margin-top: 10px;
+margin-left: 10px;
+display: block;
+}
+
+.down {
+margin-top: 10px;
+}
+.border-box {
+     border-top:1px solid gray !important; 
+
 }
 
  .comment-box ol.children {
         list-style:  none;
-        border: 1px solid gray;
+
+                    
         margin-left: 0;
     }
 
-   .comment-box .depth-1  { margin-left: 1.5rem !important;   
-        border: 1px solid gray !important; }
+   .comment-box .depth-1  {
+                       
+                            margin-left: 1.5rem !important;   
+        }
 
-      .comment-box .depth-2  { margin-left: 1.5rem !important;   
-        border: 1px solid gray !important; }
+      .comment-box .depth-2  {
+           margin-left: 1.5rem !important;   
+        }
+
+
 
 .highlight {
     text-decoration: underline;
