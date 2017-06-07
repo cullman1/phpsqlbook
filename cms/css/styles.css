@@ -175,7 +175,7 @@ h3 {
   margin-left:10px;
 }
 
-.orange {
+.comment_name {
   color:orange;
   font-family:Arial;
   font-weight:bold;
@@ -198,12 +198,12 @@ h3 {
     margin-left: 10px;*/
     list-style: none;
     margin-bottom: 10px;
-      
+      list-style-type:none;
                   
  
 }
 
-.indent {
+.comment_reply {
 margin-top: 10px;
 margin-left: 10px;
 display: block;

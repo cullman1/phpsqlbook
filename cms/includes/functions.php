@@ -353,7 +353,8 @@ function get_HTML_template($template,$object=""){
 }
 
 function get_comments_by_id($id) {
-  $query="SELECT  user.*, comments.* FROM comments JOIN user ON comments.user_id = user.id   
+  $query="SELECT  user.*, comments.* FROM comments 
+          JOIN user ON comments.user_id = user.id   
           WHERE article_id = :articleid ORDER BY comments.id DESC";  
   $statement = $GLOBALS['connection']->prepare($query);
 
@@ -437,47 +438,45 @@ function display_comments($commentlist, $commentcount, $server) {
 }
 
 function get_comments_list( $article_id) {
- //  $commentslist = new CommentList(get_comments_by_id($article_id));
-   $commentslist = new CommentTree(get_comments_by_id($article_id));
-   $comments_table = '<div class="down"><ol class="commenterbox comment-box" style="list-style-type:none">';
-   foreach ($commentslist->comments as $comment) {
-     $comments_table .= '<ol class="border-box"><ol class="children comment-box';
-     if ($comment->nestingLevel==1) {
-        $comments_table .= ' depth-' . $comment->nestingLevel . '">';
-     } 
-     if ($comment->nestingLevel==0) {
-        $comments_table .=  '">';
-     } 
-     if ($comment->nestingLevel>1) {
-       $comments_table .= ' depth-' . $comment->nestingLevel . '">';
-       $comments_table .= '<li class="bold">< In reply to: '.  $comment->author. '</li><br/>'; 
-     }
-     $comments_table .= '<li class="indent"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
-     $comments_table .= '<li class="small_name"><span class="orange">' . $comment->author . '</span><hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
-     if ( isset($_SESSION['user_id'])) { 
-            $comments_table .= get_comments_reply_form($comment->id,$article_id) . '</li>'; 
-          }
- 
-     $comments_table .=  '<li class="indent"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
+  //  $commentslist = new CommentList(get_comments_by_id($article_id));
+  $commentslist = new CommentTree(get_comments_by_id($article_id));
+  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
+  $previous_commenter = '';
+  foreach ($commentslist->comments as $comment) {
+    $comments_table .= '<ol class="border-box"><ol class="children comment-box';
+    if ($comment->nestingLevel>0) {
+      $comments_table .= ' depth-' . $comment->nestingLevel;
+    } 
+    $comments_table .=  '">';
+    $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
+    $comments_table .= '<li class="small_name"><span class="comment_name">' . $comment->author . '</span>';
+    if ($comment->nestingLevel>1) {
+      $comments_table .= '        < In reply to: ' . $previous_commenter; 
+    }
+    $comments_table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
+    $comments_table .=  '<a class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
+    $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
+    $previous_commenter =  $comment->author;
   }
   $comments_table .= "</ol></ol></div>"; 
- //  if ( isset($_SESSION['user_id'])) { 
- //           $comments_table .= get_comments_reply_form( $_SESSION['user_id'],$article_id); 
- //         }
+  if ( isset($_SESSION['user_id'])) { 
+    $comments_table .= get_comments_reply_form($comment->id,   $_SESSION['name'] , $article_id, $comment->replyToId); 
+  }
   return $comments_table;
 }
 
-function get_comments_reply_form($id, $article_id) {
-  $comments_form = '<div><a id="link' . $id . '" href="#">Add a comment</a></div>';
-  $comments_form .= '<form id="form' . $id . '" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0" >';
-  $comments_form .= '<label for="comment">Comment:</label>';
-  $comments_form .= ' <textarea id="comment' . $id . '" name="comment"></textarea>';
+function get_comments_reply_form($comment_id, $user_name, $article_id, $reply_toid) {
+  $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0&replyto='. $reply_toid . '" >';
+  $comments_form .= '<span>' . $user_name . ' replying to: </span>';
+  $comments_form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
+  $comments_form .= ' <textarea id="comment' . $comment_id . '" name="comment"></textarea><br/>';
   $comments_form .= '  <button type="submit" >Submit Comment</button>';
   $comments_form .= ' </form>';
   $comments_form .= ' <script>';
-  $comments_form .= ' $("#link' . $id . '").click(function() { ';
-  $comments_form .= '  $("#form' . $id . '").toggle(); ';
-  $comments_form .= ' }); </script>';
+  $comments_form .= '  $(".link-form").each(function() { ';
+  $comments_form .= ' $(this).click(function() { ';
+  $comments_form .= '  $("#form-comment").toggle(); ';
+  $comments_form .= ' });   }); </script>';
   return $comments_form;
 }
 
@@ -602,7 +601,7 @@ function get_user_by_email_password($email, $password) {
 }
 
 function create_user_session($user) {
-  $_SESSION['name']    = $user->forename;
+  $_SESSION['name']    = $user->forename . ' ' . $user->surname;
   $_SESSION['user_id'] = $user->id;
 }
 ?>
