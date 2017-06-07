@@ -460,14 +460,14 @@ function get_comments_list( $article_id) {
   }
   $comments_table .= "</ol></ol></div>"; 
   if ( isset($_SESSION['user_id'])) { 
-    $comments_table .= get_comments_reply_form($comment->id,   $_SESSION['name'] , $article_id, $comment->replyToId); 
+    $comments_table .= get_comments_reply_form($comment->id,   $_SESSION['name'] , $article_id); 
   }
   return $comments_table;
 }
 
-function get_comments_reply_form($comment_id, $user_name, $article_id, $reply_toid) {
-  $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0&replyto='. $reply_toid . '" >';
-  $comments_form .= '<span>' . $user_name . ' replying to: </span>';
+function get_comments_reply_form($comment_id, $user_name, $article_id) {
+  $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0&replyto=" >';
+  $comments_form .= '<span class="down">' . $user_name . ' replying to: </span>';
   $comments_form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
   $comments_form .= ' <textarea id="comment' . $comment_id . '" name="comment"></textarea><br/>';
   $comments_form .= '  <button type="submit" >Submit Comment</button>';
@@ -475,6 +475,9 @@ function get_comments_reply_form($comment_id, $user_name, $article_id, $reply_to
   $comments_form .= ' <script>';
   $comments_form .= '  $(".link-form").each(function() { ';
   $comments_form .= ' $(this).click(function() { ';
+  $comments_form .= '  var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0&replyto=";';
+  $comments_form .= '    if (! $("#form-comment").is(":visible")) {   ';
+  $comments_form .= '  $("#form-comment").attr("action", act + event.target.id ); } ';
   $comments_form .= '  $("#form-comment").toggle(); ';
   $comments_form .= ' });   }); </script>';
   return $comments_form;
