@@ -445,7 +445,9 @@ function get_comments_list( $article_id) {
   foreach ($commentslist->comments as $comment) {
     $comments_table .= '<ol class="border-box"><ol class="children comment-box';
     if ($comment->nestingLevel>0) {
-      $comments_table .= ' depth-' . $comment->nestingLevel;
+      $depth = $comment->nestingLevel;
+      if ($depth>2) { $depth=2;  }
+      $comments_table .= ' depth-' . $depth;
     } 
     $comments_table .=  '">';
     $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
@@ -460,13 +462,13 @@ function get_comments_list( $article_id) {
   }
   $comments_table .= "</ol></ol></div>"; 
   if ( isset($_SESSION['user_id'])) { 
-    $comments_table .= get_comments_reply_form($comment->id,   $_SESSION['name'] , $article_id); 
+    $comments_table .= get_comments_reply_form($comment->id,   $_SESSION['name'] , $article_id, $comment->nestingLevel); 
   }
   return $comments_table;
 }
 
-function get_comments_reply_form($comment_id, $user_name, $article_id) {
-  $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0&replyto=" >';
+function get_comments_reply_form($comment_id, $user_name, $article_id, $nesting_level) {
+  $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '" >';
   $comments_form .= '<span class="down">' . $user_name . ' replying to: </span>';
   $comments_form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
   $comments_form .= ' <textarea id="comment' . $comment_id . '" name="comment"></textarea><br/>';
@@ -475,7 +477,7 @@ function get_comments_reply_form($comment_id, $user_name, $article_id) {
   $comments_form .= ' <script>';
   $comments_form .= '  $(".link-form").each(function() { ';
   $comments_form .= ' $(this).click(function() { ';
-  $comments_form .= '  var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&reply=0&replyto=";';
+  $comments_form .= '  var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&replyto=";';
   $comments_form .= '    if (! $("#form-comment").is(":visible")) {   ';
   $comments_form .= '  $("#form-comment").attr("action", act + event.target.id ); } ';
   $comments_form .= '  $("#form-comment").toggle(); ';
