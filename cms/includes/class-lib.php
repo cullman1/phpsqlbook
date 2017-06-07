@@ -327,6 +327,7 @@ class CommentTree {
     $this->commentCount =0;
      $new = array();  
      $nestedcomments_row = array();
+     if ($comment_list) {
      foreach ($comment_list as $row) {
         $nestedcomments_row[] = $row;
      }
@@ -335,7 +336,9 @@ class CommentTree {
      }
      if (isset($new[0])) { 
         $comment_list = $this->create_tree($new, $new[0]);
-  }  
+     }  
+
+     }
   }
 
   function create_tree(&$list, $parent){

@@ -456,18 +456,25 @@ function get_comments_list( $article_id) {
       $comments_table .= '        < In reply to: ' . $previous_commenter; 
     }
     $comments_table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
-    $comments_table .=  '<a class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
+    if (isset($_SESSION["user_id"])) {
+      $comments_table .=  '<a class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
+    }
     $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
     $previous_commenter =  $comment->author;
   }
   $comments_table .= "</ol></ol></div>"; 
   if ( isset($_SESSION['user_id'])) { 
-    $comments_table .= get_comments_reply_form($comment->id,   $_SESSION['name'] , $article_id, $comment->nestingLevel); 
+    if (isset($comment)) {
+      $comments_table .= get_comments_reply_form($comment->id,   $_SESSION['name'] , $article_id, $comment->nestingLevel);
+    } else {
+         $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
+     $comments_table .= get_comments_reply_form(0,   $_SESSION['name'] , $article_id, 0);
+    }
   }
   return $comments_table;
 }
 
-function get_comments_reply_form($comment_id, $user_name, $article_id, $nesting_level) {
+function get_comments_reply_form($comment_id, $user_name, $article_id, $nesting_level=0) {
   $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '" >';
   $comments_form .= '<span class="down">' . $user_name . ' replying to: </span>';
   $comments_form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
