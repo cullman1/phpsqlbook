@@ -337,6 +337,25 @@ function get_user_by_id($id) {
     }
 }
 
+function get_previous_commenter_by_name($id) {
+	$connection = $GLOBALS['connection'];
+	$query = 'SELECT user.id, user.forename, user.surname FROM comments
+            JOIN user ON comments.user_id = user.id   
+              WHERE comments.id=:id';             // Query
+	$statement = $connection->prepare($query);              // Prepare
+	$statement->bindValue(':id', $id, PDO::PARAM_INT);      // Bind value from query string
+	if ($statement->execute() ) {
+		$statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User'); // Object
+		$User = $statement->fetch();                        // Fetch
+	}
+	if ($User) {
+		return $User;
+	} else {
+	    return FALSE;
+    }
+}
+
+
 function get_user_list() {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT * FROM user';
@@ -346,6 +365,8 @@ function get_user_list() {
   $user_list = $statement->fetchAll();        
   return $user_list;
 }
+
+
 
 function get_comments_list( $article_id) {
   $commentslist = new CommentList(get_comments_by_id($article_id));
@@ -368,11 +389,17 @@ function get_comments_list( $article_id) {
 function get_comments_tree( $article_id) {
   //  $commentslist = new CommentList(get_comments_by_id($article_id));
   $commentslist = new CommentTree(get_comments_by_id($article_id));
+
   $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
-  $previous_commenter = '';
+  $previous = '';
   foreach ($commentslist->comments as $comment) {
     $comments_table .= '<ol class="border-box"><ol class="children comment-box';
+     if (($comment->replyToId)!=0) {
+        $commenter = get_previous_commenter_by_name($comment->replyToId);
+        $previous = $commenter->forename . ' ' . $commenter->surname;
+      }
     if ($comment->nestingLevel>0) {
+
       $depth = $comment->nestingLevel;
       if ($depth>2) { $depth=2;  }
         $comments_table .= ' depth-' . $depth;
@@ -381,14 +408,14 @@ function get_comments_tree( $article_id) {
       $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
       $comments_table .= '<li class="small_name"><span class="comment_name">' . $comment->author . '</span>';
       if ($comment->nestingLevel>0) {
-        $comments_table .= '        < In reply to: ' . $previous_commenter; 
+        $comments_table .=  '        < In reply to: ' . $previous; 
       }
       $comments_table .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
       if (isset($_SESSION["user_id"])) {
         $comments_table .=  '<a data-id="' . $comment->author .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
       }
       $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
-      $previous_commenter =  $comment->author;
+   
     }
     $comments_table .= "</ol></ol></div>"; 
     if ( isset($_SESSION['user_id'])) { 

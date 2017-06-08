@@ -32,7 +32,7 @@ get_HTML_template('header');
 <legend>Login</legend>
  <div class="title-error"><?= $alert ?></div>
  <label>Email <input type="text" name="email" placeholder="Email" />  
-  <span class="error"><?= $error['email']; ?></span></label><br>
+  <br/><span class="title-error"><?= $error['email']; ?></span></label><br>
  <label>Password <input type="password" name="password" placeholder="Password" /> 
   <span class="error"><?= $error['password']; ?></span></label><br>
   <button type='submit'>Login</button><br><br>

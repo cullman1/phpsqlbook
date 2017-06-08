@@ -328,16 +328,15 @@ class CommentTree {
      $new = array();  
      $nestedcomments_row = array();
      if ($comment_list) {
-     foreach ($comment_list as $row) {
-        $nestedcomments_row[] = $row;
-     }
-     foreach ($nestedcomments_row as $branch) {
-        $new[$branch->repliedto_id][]=$branch;             
-     }
-     if (isset($new[0])) { 
-        $comment_list = $this->create_tree($new, $new[0]);
-     }  
-
+       foreach ($comment_list as $row) {
+         $nestedcomments_row[] = $row;
+       }
+       foreach ($nestedcomments_row as $branch) {
+         $new[$branch->repliedto_id][]=$branch;             
+       }
+       if (isset($new[0])) { 
+         $comment_list = $this->create_tree($new, $new[0]);
+       }  
      }
   }
 
