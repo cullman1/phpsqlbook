@@ -251,3 +251,34 @@ label > span {
 position:absolute;
 left:0;
 }
+
+.login-form {
+ margin-left: 120px;
+  margin-top: 10px;
+}
+
+.login-form label,  .login-form a {
+ padding-left: 10px;
+}
+
+.login-form button,  .login-form input {
+ margin-left: 10px;
+}
+
+fieldset {
+    width: 500px;
+}
+
+legend {
+    margin-left:10px;
+}
+
+.title-error {
+    margin-left: 10px;
+    color:red;
+}
+
+.link-style {
+    font-weight: bold;
+    text-decoration: underline;
+}

@@ -34,20 +34,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 get_HTML_template('header');
  ?>
-<?= $alert ?>
 <?php if ($show_form) { ?>
-<form method="post" action="register.php">
+<form class="login-form" method="post" action="register.php">
+<fieldset>
+<legend>Register</legend>
+ <div class="title-error"><?= $alert ?></div>
   <label>First name <input type="text" name="forename" value="<?=$forename ?>" />
-  </label> <span class="error"><?= $errors['forename'] ?></span>
+  </label> <span class="title-error"><?= $errors['forename'] ?></span>
   <label>Last name <input type="text" name="surname" value="<?=$surname ?>" />
-  </label> <span class="error"><?= $errors['surname'] ?></span>
+  </label> <span class="title-error"><?= $errors['surname'] ?></span>
   <label>Email address <input type="email" name="email" value="<?=$email ?>" />
-  </label> <span class="error"><?= $errors['email'] ?></span>
+  </label> <span class="title-error"><?= $errors['email'] ?></span>
   <label>Password <input type="password" name="password" />
-  </label> <span class="error"><?= $errors['password'] ?></span>
+  </label> <div class="title-error"><?= $errors['password'] ?></div>
   <label>Confirm Password <input type="password" name="confirm" />
-  </label> <span class="error"><?= $errors['confirm'] ?></span>
-   <button type="submit">Register</button>
+  </label> <span class="title-error"><?= $errors['confirm'] ?></span><br>
+   <button type="submit">Register</button><br><br>
+   </fieldset>
 </form>
 <?php } ?>
  <?= get_HTML_template('footer'); ?>

@@ -21,18 +21,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
       create_user_session($user);
       header('Location: /phpsqlbook/cms/admin'); 
     } else {
-      $alert = '<div class="alert alert-danger">Login failed</span>';
+      $alert = '<div class="alert alert-danger">Login failed</div>';
     }
   }
 } 
 get_HTML_template('header');
 ?>
-<form method="post" action="login.php">
- <?= $alert ?>
+<form class="login-form" method="post" action="login.php">
+<fieldset>
+<legend>Login</legend>
+ <div class="title-error"><?= $alert ?></div>
  <label>Email <input type="text" name="email" placeholder="Email" />  
   <span class="error"><?= $error['email']; ?></span></label><br>
  <label>Password <input type="password" name="password" placeholder="Password" /> 
   <span class="error"><?= $error['password']; ?></span></label><br>
- <button type='submit'>Login</button>    
+  <button type='submit'>Login</button><br><br>
+  <a href="/phpsqlbook/cms/forgotten-password.php">Forgotten your password?</a> <br><br> 
+  </fieldset>
 </form>
- <?= get_HTML_template('footer'); ?>
+ <?php get_HTML_template('footer'); ?>

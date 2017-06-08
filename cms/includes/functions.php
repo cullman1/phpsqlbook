@@ -1,46 +1,5 @@
 <?php
 
-/* old function get_articles_by_category( $show, $from, $sort='', $dir='ASC',$category=0, $name='',$category_name) {
-  $query= "SELECT article.*, category.* FROM article JOIN 
-           user ON user.id = user_id JOIN category ON 
-       category.id= category_id WHERE published <= now()";
-  //If category id not 0 and name present, 
-  //add a clause with id and name to the SQL
-  if (($category > 0) && (!empty($name))) {
-    $query .= ' AND  title=:name';
-  } 
-  //Else if only category id not 0, only add id clause
-  else if ($category > 0) {
-    $query .= ' AND category_id = :id';
-  }
-  //If sort not add a sort clause
-  if (!empty($sort)) {
-    $query .= " Order By " . $show . " " . $dir;
-  }
-
-  if (!empty($category_name)) {
-      $query .= " AND category.name = :id";
-      $category = $category_name;
-   
-  }
-  //Get limited page of articles
-  if (!empty($show)) {
-    $query .= " limit " . $show . " offset " . $from;
-  }
-  $statement = $GLOBALS['connection']->prepare($query);
-  //Get limited page of articles
-  if (($category > 0) && (!empty($name))) {
-     $statement->bindParam(":name", $name); 
-     $statement->bindParam(":id", $category); 
-  }  else if (($category > 0) || (!empty($category_name))) {
-     $statement->bindParam(":id", $category);    
-  }
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ);
-  $article_list = $statement->fetchAll();  
-  return $article_list;
-} */
-
 function get_article_by_seo_title($seo_title) {
     // This had conflicts for the id colum in article and user
     $connection = $GLOBALS['connection'];
@@ -333,19 +292,6 @@ $statement = $GLOBALS['connection']->prepare($query);
 
 function get_HTML_template($template,$object=""){
     switch($template) {
-        case "comments":
-          //Gets the list of comments
-         // $comments = new CommentList(get_comments_by_id($id));
-               $comments = new CommentTree(get_comments_by_id($id));
-          //If there are no comments
-          if ($comments->commentCount==0) {
-            //We still need to create a form for the article so people can comment on it
-            $comment = get_blank_comment();
-            $comments = $comments->add($comment->{".new_id"}, $id, '', '', '', '');
-          }             
-          //Now display the comments after an article.
-          display_comments($comments,$comments->commentCount, $this->server); 
-          break;
         default:
           include("templates/".$template.".php");    
           break;
@@ -391,14 +337,6 @@ function get_user_by_id($id) {
     }
 }
 
-function get_blank_comment() {
-  $query= "SELECT uuid() As new_id FROM article";
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ);
-  return $statement->fetch();  
-}
-
 function get_user_list() {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT * FROM user';
@@ -409,35 +347,25 @@ function get_user_list() {
   return $user_list;
 }
 
-function display_comments($commentlist, $commentcount, $server) {   
-  include("templates/comments_content.php");
-  if (!isset($_SESSION["user_id"])) {
-      $head = str_replace("Add a comment", "", $head);
+function get_comments_list( $article_id) {
+  $commentslist = new CommentList(get_comments_by_id($article_id));
+  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
+  foreach ($commentslist->comments as $comment) {
+    $comments_table .= '<ol class="border-box"><ol class="children comment-box">';
+    $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
+    $comments_table .= '<li class="small_name"><span class="comment_name">' . $comment->author . '</span>';
+    $comments_table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
+    $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
   }
-  //Go through each item in the database
-  foreach ($commentlist->comments as $row) {
-    $row->{'commentCount'} = $commentcount;  
-    $comment = substr($string2,$opening_tag+1,$remain-9);
-    //If this is the first time round, replace the tags up to [[for]] with database values
-    if ($count==0) {
-      $head = field_replace($head, $head_matches[0],$row);       
-      echo $head;
-    }
-    //For the tags between [[for]] and [[next]] replace each tag with comment data
-    if ($commentcount>0) {
-      preg_match_all($regex, $comment, $inner_matches);
-      $comment = field_replace($comment, $inner_matches[0],$row);     
-      $body[$count] = $comment; 
-      $count++;
-    }
+  $comments_table .= "</ol></ol></div>"; 
+  if ( isset($_SESSION['user_id'])) { 
+    $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
+    $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, 0);
   }
-  //Display each of the comments
-  for ($i=0; $i<$count; $i++) { 
-    echo $body[$i];
-  }
+  return $comments_table;
 }
 
-function get_comments_list( $article_id) {
+function get_comments_tree( $article_id) {
   //  $commentslist = new CommentList(get_comments_by_id($article_id));
   $commentslist = new CommentTree(get_comments_by_id($article_id));
   $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
@@ -552,7 +480,6 @@ function check_user() {
 
 // Get categories
 function get_category_list() {
-
   $query = 'SELECT * FROM category'; // Query
   $statement = $GLOBALS["connection"]->prepare($query); 
   $statement->execute(); 
@@ -618,4 +545,35 @@ function create_user_session($user) {
   $_SESSION['name']    = $user->forename . ' ' . $user->surname;
   $_SESSION['user_id'] = $user->id;
 }
+
+function send_email($to, $subject, $message) {
+  try {                                                      // Start a try block
+    // Step 1: Create the object
+    $mail = new PHPMailer(TRUE);                             // Create object
+    // Step 2: How the email is going to be sent
+    $mail->IsSMTP();                                         // Set mailer to use SMTP
+    $mail->Host     = 'smtp.example.com';                    // SMTP server address
+    $mail->SMTPAuth = TRUE;                                  // SMTP authentication on
+    $mail->Username = 'chris@example.com';                   // Username
+    $mail->Password = 'password';                            // Password
+    // Step 3: Who the email is from and to
+    $mail->setFrom('no-reply@example.com');                  // From email address
+    $mail->AddAddress($to);                                  // To email address
+    // Step 4: Content of email  
+    $mail->Subject = $subject;                               // Set subject of email
+    $mail_header   = '<!DOCTYPE html PUBLIC...';             // Header goes here
+    $mail_footer   = '...</html>';                           // Footer goes here
+    $mail->Body    = $mail_header . $message . $mail_footer; // Set body of HTML email  
+    $mail->AltBody = strip_tags($message);                   // Set plain text body
+    $mail->CharSet = 'UTF-8';                                // Set character set
+    $mail->IsHTML(TRUE);                                     // Set as HTML email
+    // Step 5: Attempt to send email                                 
+    $mail->Send();                                     // Send the email
+  } catch (phpmailerException $error) {                // Code to run if failed to send
+    return $error->errorMessage();                     // Return PHPMailer error message
+  } 
+  return TRUE;                                         // Return TRUE because it sent
+}
+
+
 ?>

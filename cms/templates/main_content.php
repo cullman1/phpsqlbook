@@ -15,7 +15,7 @@
 
 
   <?php if (($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { 
-          echo get_comments_list($object->id);
+          echo get_comments_tree($object->id);
          
         } ?>
 </div>

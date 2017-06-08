@@ -248,7 +248,7 @@ class Comment {
     $this->articleId   = $articleid;
     $this->userId      = $userid;
     $this->author      = $author;
-    $this->authorImage = $authorimage;
+    $this->authorImage = ( isset($authorimage)    ? $authorimage    : 'blank.png' ); ;
     $this->comment     = $comment;
     $this->posted      = $date;
     $this->replyToId   = $replyid;
@@ -353,9 +353,6 @@ class CommentTree {
           } 
        }
       }
-   if (empty($reply->image)) {
-   $reply->image = "blank.png";
-   } 
       $comment = $this->add($reply->id,$reply->article_id, $reply->user_id,$reply->forename . " ". $reply->surname, $reply->image,$reply->comment , $reply->posted , $reply->repliedto_id, $nestinglevel);
       if (isset($list[$reply->id])) {
         $reply->{'children'} = $this->create_tree($list, $list[$reply->id]);
@@ -432,23 +429,25 @@ class User {
   public $surname;
   public $email;
   public $password;
+    public $image;
   public $role_id;
   public $tasks;
 
   function __construct($id ='', $forename = NULL, $surname = NULL, 
-                       $email = NULL, $password = NULL, $role_id = 1) {
+                       $email = NULL, $password = NULL,  $image='',$role_id = 1) {
     $this->id       = ( isset($id)       ? $id       : '');
     $this->forename = ( isset($forename) ? $forename : '');
     $this->surname  = ( isset($surname)  ? $surname  : '');
     $this->email    = ( isset($email)    ? $email    : '');
     $this->password = ( isset($password) ? $password : '');
+     $this->image = ( isset($image) ? $image : '');
     $this->role_id  = $role_id;
   }
 
 
   function create() {
     $connection = $GLOBALS['connection'];                             // Connection
-    $sql = 'INSERT INTO user (forename, surname, email, password) 
+    $sql = 'INSERT INTO user (forename, surname, email, password ) 
                    VALUES (:forename, :surname, :email, :password)';
     $statement = $connection->prepare($sql);                          // Prepare
     $statement->bindValue(':forename', $this->forename);              // Bind value
@@ -465,7 +464,21 @@ class User {
     return $result;                                                    
   }
 
- public function createToken($purpose) {
+  function update_password($password) {
+  $hash = password_hash($password, PASSWORD_DEFAULT);
+  $sql = 'UPDATE user SET password = :password WHERE id = :id';
+  $statement = $GLOBALS['connection']->prepare($sql);
+  $statement->bindParam(':password', $hash);
+  $statement->bindParam(':id', $this->id);
+  try {
+    $statement->execute();
+    return TRUE;
+  } catch (PDOException $error) {
+    return FALSE; 
+  }
+}
+
+  function createToken($purpose) {
    $connection = $GLOBALS['connection'];                     // Connect
    $sql = 'SELECT UUID() as token';                          // Tell DB to create UUID
    $statement = $connection->prepare($sql);                  // Prepare 
@@ -488,6 +501,25 @@ class User {
    return $result;                                                 // Return result
 }
 
+  function update() {
+   $connection = $GLOBALS['connection'];                              // Connection
+  $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, image = :image WHERE id = :id';//SQL
+  $statement = $connection->prepare($sql);                                   // Prepare
+  $statement->bindValue(':id',          $this->id, PDO::PARAM_INT);          // Bind value
+  $statement->bindValue(':forename',  $this->forename);                       // Bind value
+  $statement->bindValue(':surname',   $this->surname);          // Bind value
+  $statement->bindValue(':email',     $this->email);                     // Bind value
+  $statement->bindValue(':image',   $this->image);                   // Bind value
+  try {
+   $statement->execute();
+   $result = TRUE;
+  } catch (PDOException $error) {                                      // Otherwise
+                                                   
+          $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+                                                     
+  }
+  return $result;        
+  }
 }
 
 class Validate {
@@ -498,6 +530,14 @@ class Validate {
 	  }
 		return TRUE;
 	}
+
+    function isMediaUpload($filename) {
+  $error ='';
+  if (!isset($filename)) {
+    $error .= 'Your file did not upload successfully.';
+  }
+  return $error;
+}
 
 	function stringLength($string, $min = 0, $max = 255) {
 	  $length = strlen($string);
@@ -747,6 +787,18 @@ class Validate {
 
     function isConfirmPassword($password, $confirm) {
  return ( ($password != $confirm) ? 'Passwords do not match' : '' );
+}
+
+function isFirstName($name) {
+  $error = '';
+  if (($this->stringLength($name, 1, 255)) == FALSE ) {
+    $error = 'You cannot have a blank name.<br>';
+  }
+  return $error;
+}
+
+function isLastName($name) {
+  return $this->isFirstName($name);
 }
 }
 ?>
