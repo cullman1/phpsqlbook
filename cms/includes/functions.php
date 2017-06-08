@@ -380,10 +380,10 @@ function get_comments_tree( $article_id) {
       $comments_table .=  '">';
       $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
       $comments_table .= '<li class="small_name"><span class="comment_name">' . $comment->author . '</span>';
-      if ($comment->nestingLevel>1) {
+      if ($comment->nestingLevel>0) {
         $comments_table .= '        < In reply to: ' . $previous_commenter; 
       }
-      $comments_table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
+      $comments_table .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
       if (isset($_SESSION["user_id"])) {
         $comments_table .=  '<a data-id="' . $comment->author .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
       }
@@ -575,5 +575,33 @@ function send_email($to, $subject, $message) {
   return TRUE;                                         // Return TRUE because it sent
 }
 
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
 
 ?>
