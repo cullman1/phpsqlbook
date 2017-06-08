@@ -387,9 +387,7 @@ function get_comments_list( $article_id) {
 }
 
 function get_comments_tree( $article_id) {
-  //  $commentslist = new CommentList(get_comments_by_id($article_id));
   $commentslist = new CommentTree(get_comments_by_id($article_id));
-
   $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
   $previous = '';
   foreach ($commentslist->comments as $comment) {
@@ -399,7 +397,6 @@ function get_comments_tree( $article_id) {
         $previous = $commenter->forename . ' ' . $commenter->surname;
       }
     if ($comment->nestingLevel>0) {
-
       $depth = $comment->nestingLevel;
       if ($depth>2) { $depth=2;  }
         $comments_table .= ' depth-' . $depth;
@@ -414,7 +411,7 @@ function get_comments_tree( $article_id) {
       if (isset($_SESSION["user_id"])) {
         $comments_table .=  '<a data-id="' . $comment->author .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
       }
-      $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
+      $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
    
     }
     $comments_table .= "</ol></ol></div>"; 
@@ -423,7 +420,6 @@ function get_comments_tree( $article_id) {
       if (isset($comment)) {
         $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->nestingLevel);
       } else {
-      
         $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, 0);
       }
     }
@@ -445,6 +441,8 @@ function get_comments_reply_form($user_name, $article_id, $nesting_level=0) {
   $comments_form .= '    if( $("a:focus").attr("data-id")!=null) { ';
   $comments_form .= '    $("#reply_name").html(" replying to: " + $("a:focus").attr("data-id")); } ';
   $comments_form .= '    $("#form-comment").attr("action", act + event.target.id ); } ';
+  $comments_form .= '    $("#form-comment").appendTo("#com" + event.target.id);  ';
+  //  $comments_form .= '    alert("com" + event.target.id ); ';
   $comments_form .= '    $("#form-comment").toggle(); ';
   $comments_form .= '   });   }); </script>';
   return $comments_form;
