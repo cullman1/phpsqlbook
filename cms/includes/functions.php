@@ -442,7 +442,6 @@ function get_comments_reply_form($user_name, $article_id, $nesting_level=0) {
   $comments_form .= '    $("#reply_name").html(" replying to: " + $("a:focus").attr("data-id")); } ';
   $comments_form .= '    $("#form-comment").attr("action", act + event.target.id ); } ';
   $comments_form .= '    $("#form-comment").appendTo("#com" + event.target.id);  ';
-  //  $comments_form .= '    alert("com" + event.target.id ); ';
   $comments_form .= '    $("#form-comment").toggle(); ';
   $comments_form .= '   });   }); </script>';
   return $comments_form;
