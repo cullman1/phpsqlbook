@@ -234,16 +234,12 @@ class Comment {
   public $userId;		// String
   public $author; 		// String
     public $comment;
-
   public $posted;
-
     public $replyToId;
   public $nestingLevel;
-    public $userImage;
-    public $replyToName;
-
+   public $topLevelParentId;
   
-  function __construct ($id, $articleid, $userid, $author, $authorimage, $comment, $date, $replyid=0, $nestinglevel=0) {
+  function __construct ($id, $articleid, $userid, $author, $authorimage, $comment, $date, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
     $this->id = $id;
     $this->articleId   = $articleid;
     $this->userId      = $userid;
@@ -252,7 +248,9 @@ class Comment {
     $this->comment     = $comment;
     $this->posted      = $date;
     $this->replyToId   = $replyid;
+    $this->topLevelParentId = $toplevelparentid;
     $this->nestingLevel = $nestinglevel;
+    
   }
 
   public function add() {
@@ -301,17 +299,19 @@ class CommentList {
     $this->commentCount =0;
     if (!empty($comment_list)) {
     foreach($comment_list as $comment) {
-      $comment = new Comment($comment->id, $comment->article_id, $comment->user_id, $comment->forename . ' ' . $comment->surname, $comment->image, $comment->comment,$comment->posted);
-      $this->comments[$this->commentCount] = $comment;
+ if ($comment->repliedto_id>0) {
+            $comment->nestinglevel = 1; 
+          }      
+$this->comments[$this->commentCount] = $comment;
       $this->commentCount++;
    }
    }
   
   }
 
-  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply='0', $nestinglevel='0') {
+  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $toplevelparentid='0', $reply='0', $nestinglevel='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $reply ,$nestinglevel);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $toplevelparentid, $reply ,$nestinglevel);
     if ($userid !='') { 
       $this->commentCount++; 
     }

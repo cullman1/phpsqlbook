@@ -301,7 +301,7 @@ function get_HTML_template($template,$object=""){
 function get_comments_by_id($id) {
   $query="SELECT  user.*, comments.* FROM comments 
           JOIN user ON comments.user_id = user.id   
-          WHERE article_id = :articleid ORDER BY comments.id DESC";  
+          WHERE article_id = :articleid ORDER BY comments.id ASC";  
   $statement = $GLOBALS['connection']->prepare($query);
 
   $statement->bindValue(':articleid',   $id, PDO::PARAM_INT);      // Bind value from query string
@@ -386,8 +386,70 @@ function get_comments_list( $article_id) {
   return $comments_table;
 }
 
+function get_comments_array( $article_id) {
+  $commentslist = new CommentList(get_comments_by_id($article_id));
+
+  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
+  $commentslist2 = array();
+  foreach ($commentslist->comments as $comment1) {
+  $comment1->nestinglevel = 0;
+    if ($comment1->repliedto_id > 0) {
+      $comment1->nestinglevel = 1;
+    }
+   if ($comment1->toplevelparent_id == 0) {
+    array_push($commentslist2, $comment1);
+   }
+   $reverse_array = array_reverse($commentslist->comments);
+   foreach ($reverse_array as $comment2) {
+  
+   if ($comment2->toplevelparent_id == $comment1->id) {
+    array_push($commentslist2, $comment2);
+   }
+   
+  }
+  }
+  
+
+  foreach ($commentslist2 as $comment) {
+    $comments_table .= '<ol class="border-box"><ol class="children comment-box ';
+     if (!isset( $comment->image) ) {
+       $comment->image = "blank.png";
+    }
+      if (($comment->repliedto_id)!=0) {
+        $commenter = get_previous_commenter_by_name($comment->repliedto_id);
+        $previous = $commenter->forename . ' ' . $commenter->surname;
+      }
+    if ($comment->nestinglevel>0) {
+      $depth = $comment->nestinglevel;
+      if ($depth>2) { $depth=2;  }
+        $comments_table .= ' depth-' . $depth;
+      }   
+      $comments_table .=  '">';
+      $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->image . '"/></li>'; 
+      $comments_table .= '<li class="small_name"><span class="comment_name">' .  $comment->forename . ' ' . $comment->surname . '</span>';
+      if ($comment->nestinglevel>0) {
+        $comments_table .=  '        < In reply to: ' . $previous; 
+      }
+      $comments_table .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
+      if (isset($_SESSION["user_id"])) {
+        $comments_table .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
+      }
+      $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
+   
+    }
+    $comments_table .= "</ol></ol></div>"; 
+   
+  if ( isset($_SESSION['user_id'])) { 
+    $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
+    $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, $toplevelparentid, 0);
+  }
+  return $comments_table;
+}
+
+
 function get_comments_tree( $article_id) {
   $commentslist = new CommentTree(get_comments_by_id($article_id));
+
   $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
   $previous = '';
   foreach ($commentslist->comments as $comment) {
@@ -426,7 +488,7 @@ function get_comments_tree( $article_id) {
   return $comments_table;
 }
 
-function get_comments_reply_form($user_name, $article_id, $nesting_level=0) {
+function get_comments_reply_form($user_name, $article_id, $toplevelparentid=0, $nesting_level=0) {
   $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '" >';
   $comments_form .= '<span id="reply_first" class="down">' . $user_name . '  <span id="reply_name"></span></span>';
   $comments_form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
@@ -436,7 +498,7 @@ function get_comments_reply_form($user_name, $article_id, $nesting_level=0) {
   $comments_form .= ' <script>';
   $comments_form .= '  $(".link-form").each(function() { ';
   $comments_form .= '   $(this).click(function() { ';
-  $comments_form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&replyto=";';
+  $comments_form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&toplevelparentid='. $toplevelparentid . '"';
   $comments_form .= '   if (! $("#form-comment").is(":visible")) {   ';
   $comments_form .= '    if( $("a:focus").attr("data-id")!=null) { ';
   $comments_form .= '    $("#reply_name").html(" replying to: " + $("a:focus").attr("data-id")); } ';
