@@ -386,32 +386,33 @@ function get_comments_list( $article_id) {
   return $comments_table;
 }
 
-function get_comments_array( $article_id) {
-  $commentslist = new CommentList(get_comments_by_id($article_id));
-
-  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
-  $commentslist2 = array();
-  foreach ($commentslist->comments as $comment1) {
-  $comment1->nestinglevel = 0;
+function sort_array($commentslist, $commentslist2) {
+ foreach ($commentslist->comments as $comment1) {
+    $comment1->nestinglevel = 0;
     if ($comment1->repliedto_id > 0) {
       $comment1->nestinglevel = 1;
     }
    if ($comment1->toplevelparent_id == 0) {
     array_push($commentslist2, $comment1);
    }
-   $reverse_array = array_reverse($commentslist->comments);
-   foreach ($reverse_array as $comment2) {
-  
-   if ($comment2->toplevelparent_id == $comment1->id) {
-    array_push($commentslist2, $comment2);
-   }
-   
+   array_reverse($commentslist->comments);
+   foreach ($commentslist->comments as $comment2) {
+     if ($comment2->toplevelparent_id == $comment1->id) {
+       array_push($commentslist2, $comment2);
+     }
+    }
   }
-  }
-  
+  return $commentslist2;
+}
 
+function get_comments_array( $article_id) {
+  $commentslist = new CommentList(get_comments_by_id($article_id));
+  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
+  $commentslist2 = array();
+  $commentslist2 = sort_array($commentslist, $commentslist2);
   foreach ($commentslist2 as $comment) {
     $comments_table .= '<ol class="border-box"><ol class="children comment-box ';
+      $previous = '';
      if (!isset( $comment->image) ) {
        $comment->image = "blank.png";
     }
@@ -441,7 +442,11 @@ function get_comments_array( $article_id) {
    
   if ( isset($_SESSION['user_id'])) { 
     $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
-    $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, $toplevelparentid, 0);
+    if (isset($comment)) {
+        $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->nestinglevel);
+      } else {
+        $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, 0);
+      }
   }
   return $comments_table;
 }
@@ -478,7 +483,9 @@ function get_comments_tree( $article_id) {
     }
     $comments_table .= "</ol></ol></div>"; 
     if ( isset($_SESSION['user_id'])) { 
+    
         $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
+         $comments_table .= '<ol><li id="comlink0"></li></ol>';
       if (isset($comment)) {
         $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->nestingLevel);
       } else {
@@ -489,7 +496,7 @@ function get_comments_tree( $article_id) {
 }
 
 function get_comments_reply_form($user_name, $article_id, $toplevelparentid=0, $nesting_level=0) {
-  $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '" >';
+  $comments_form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level  . '&toplevelparentid='. $toplevelparentid .  '" >';
   $comments_form .= '<span id="reply_first" class="down">' . $user_name . '  <span id="reply_name"></span></span>';
   $comments_form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
   $comments_form .= ' <textarea id="comment" name="comment"></textarea><br/>';
@@ -498,7 +505,7 @@ function get_comments_reply_form($user_name, $article_id, $toplevelparentid=0, $
   $comments_form .= ' <script>';
   $comments_form .= '  $(".link-form").each(function() { ';
   $comments_form .= '   $(this).click(function() { ';
-  $comments_form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&toplevelparentid='. $toplevelparentid . '"';
+  $comments_form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&toplevelparentid='. $toplevelparentid . '";';
   $comments_form .= '   if (! $("#form-comment").is(":visible")) {   ';
   $comments_form .= '    if( $("a:focus").attr("data-id")!=null) { ';
   $comments_form .= '    $("#reply_name").html(" replying to: " + $("a:focus").attr("data-id")); } ';
