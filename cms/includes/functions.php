@@ -41,7 +41,7 @@ function get_article_list($show='', $from='') {
       }
       $statement = $GLOBALS['connection']->prepare($query);
       $statement->execute();
-      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
       $article_list = $statement->fetchAll();
       return $article_list;
 }
@@ -79,7 +79,7 @@ function get_article_list_by_category_name($name, $show='', $from='') {
   $statement = $connection->prepare($query);
   $statement->bindValue(':name', $name);  // Bind value from query string
   $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
   $article_list = $statement->fetchAll();
   return $article_list;
 }
@@ -122,7 +122,7 @@ ORDER BY article.published ASC';                 // Query
   $statement->bindValue(':forename', $forename);  // Bind value from query string
     $statement->bindValue(':surname', $surname);  // Bind value from query string
   $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
   $article_list = $statement->fetchAll();
   return $article_list;
 }
@@ -142,7 +142,7 @@ ORDER BY article.published ASC';                 // Query
   $statement->bindValue(':forename', $forename);  // Bind value from query string
     $statement->bindValue(':surname', $surname);  // Bind value from query string
   $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
   $count = $statement->fetchColumn();
   return $count;
 }
@@ -181,9 +181,8 @@ function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC
     $statement->bindParam(":search", $search_wildcards);
   }
   $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ);
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
   $article_list = $statement->fetchAll();  
-
   //If search not empty, highlight search term
   if (!empty($search) && !empty($show)) { 
       foreach($article_list as $article) {
@@ -543,7 +542,6 @@ function get_HTML_template($template,$object=""){
 
 function get_menu() {
     $categorylist = new CategoryList(get_category_list());
-
     $list = '';
     foreach($categorylist->categories as $category) {
         $list .= '<a href="'.$GLOBALS['root'] .$category->name.'">'.$category->name.'</a>';

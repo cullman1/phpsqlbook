@@ -1,149 +1,7 @@
 <?php
 
-require_once('includes/database-connection.php');
+
 require_once('includes/functions.php');
-class Layout {
-  private $registry;
-  private $server;
-  private $category;
-  private $item;
-  private $connection;
-  private $single_templates = array();
-  private $repeating_templates = array();
-  private $error = array('id'=>'', 'title'=>'', 
-  'article'=>'','email'=>'', 'password'=>'','date'=>'',
-  'firstName'=>'','lastName'=>'', 'image'=>'');
-  private $from;
-  private $show;
-  private $search;
-
-  public function __construct($server, $category, $item) { 
-    $this->connection =  $GLOBALS["connection"] ; 
-    $this->server = $GLOBALS["website"] = $server;
-    $this->category = $category;
-    $this->item = $item;
-    $this->checkURL();
-    $this->createPageStructure();
-    $this->assemblePage();
-  }
-
-function getArticles($category = 0, $show, $from, $sort='', $dir='ASC', $search = '', $author_id='0', $name='') {
-  //search list
-  $list = null;
-  if ((!empty($search)) || ($author_id > 0)) {  
-   //search results
-   $this->articlesCount = count(get_articles_by_search($search,'', '', $sort='', $dir='ASC',  $author_id));
-   $list = get_articles_by_search($search, $show, $from, $sort='', $dir='ASC',  $author_id);
-  } else {
-   $this->articlesCount = count(get_articles_by_category('', '', $sort='', $dir='ASC',  
-                                                         $category, $name));
-   $list = get_articles_by_category($show, $from, $sort='', $dir='ASC', $category, $name);
-  }
-  return $list;
-}
-
-public function createPageStructure() { 
-  $this->show   = ( isset($_GET['show'])    ? $_GET['show']   : '5' );
-  $this->from   =  ( isset($_GET['from'])   ? $_GET['from']   : '0' );
-  $this->search =  ( isset($_GET['search']) ? $_GET['search'] : '' );
-  switch($this->category) {
-  case "Contact":
-  case "About":
-   $this->single_templates = array("header", "menu", "login", "search","article","footer");
-   $this->repeating_templates = array("no_date_content");
-   break;
-  case "login":
-    $this->single_templates = array("header","menu","search","login_form","footer");
-    break;
-  case "register":
-    $this->single_templates = array("header","menu","search","register_form", "footer");
-    break;
-  case "profile":
-    if ($this->item=="view") {
-      $this->single_templates = array("header","menu","login", "profile_status", "footer");
-    } else {
-      $this->single_templates = array("header","menu","login", "profile_update", "footer");
-    }             
-    break;
-  case "search":
-  default:
-    $this->single_templates = array("header","menu","login","search","article","footer");
-    $this->repeating_templates = array("main_content");
-    break;     
-  }
-}
-
-public function checkURL() { 
-  switch($this->item) {
-        case "logout":
-          submit_logout();
-          break;     	
-  }
-}
-
-public function assemblePage() {
-  foreach($this->single_templates as $template_section) { 
-    if($template_section == "article") {
-      $this->assembleArticles($this->repeating_templates);
-    } else {
-      $this->getHTMLTemplate($template_section);
-    }
-  }
-}
-
-public function getHTMLTemplate($template,$id=""){
-  $userId = check_user(); 
-  switch($template) {
-    case "menu":
-      $categorylist = new CategoryList(get_category_list());
-      foreach($categorylist->categories as $category) {
-        $this->mergeData($category,"menu_content");
-      }
-      break;
-    default:
-      include("/templates/".$template.".php");     
-      break;
-  }
-}
-
-public function assembleArticles($templates) {
-  //Get the category
-  $category = new Category($this->category);
-  //Get all articles
-  $articlesList = new ArticleList("generic",
-   $this->getArticles($category->id, $this->show, 
-                   $this->from, '', '' ,$this->search, '', 
-                   str_replace('-',' ',$this->item)));
-  //If we've got more than zero articles
-  if (sizeof($articlesList->articles)!=0) {              
-    //Loop through each article id
-    for($i=0; $i<sizeof($articlesList->articles); $i++) {
-      //Loop through each template
-      foreach ($templates as $repeating_template) {     
-        //If the template has article data
-        if (strpos($repeating_template,"content")) { 
-          //Now merge data with the article template
-          $this->mergeData($articlesList->articles[$i], 
-                           $repeating_template);
-        } else {
-         //Otherwise, no data,get only HTML template
-         $this->getHTMLTemplate($repeating_template, 
-                $articlesList->articles[$i]->id);
-        }
-      }
-    }
-    //After showing list of articles add paging, if needed
-    echo (create_pagination($this->articlesCount, 
-          $this->show, $this->from, $this->search));
-    } else { 
-    //There were zero articles returned by our query.
-    echo "</nav><div>No articles found</div>";
-  }
-}
-
-
-
-}
 
 class ArticleSummary {
   public  $id;
@@ -228,167 +86,6 @@ class ArticleSummary {
  }
 }
 
-class Comment {
-  public $id;
-    public $articleId;	// Array holding array of article summaries
-  public $userId;		// String
-  public $author; 		// String
-    public $comment;
-  public $posted;
-    public $replyToId;
-  public $nestingLevel;
-   public $topLevelParentId;
-  
-  function __construct ($id, $articleid, $userid, $author, $authorimage, $comment, $date, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
-    $this->id = $id;
-    $this->articleId   = $articleid;
-    $this->userId      = $userid;
-    $this->author      = $author;
-    $this->authorImage = ( isset($authorimage)    ? $authorimage    : 'blank.png' ); ;
-    $this->comment     = $comment;
-    $this->posted      = $date;
-    $this->replyToId   = $replyid;
-    $this->topLevelParentId = $toplevelparentid;
-    $this->nestingLevel = $nestinglevel;
-    
-  }
-
-  public function add() {
-        try {
-  $GLOBALS['connection']->beginTransaction();  
-    $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
-              VALUES  (:comment,:articleid, :userid, :date, :replyid)";
-    $statement = $GLOBALS["connection"]->prepare($query);
-    $statement->bindParam(':comment',$this->comment);
-    $statement->bindParam(':articleid',$this->articleId);
-    $statement->bindParam(':userid',$this->userId);
-    $date = date("Y-m-d H:i:s");
-    $statement->bindParam(':date',$date);
-    $statement->bindParam(':replyid',$this->replyToId);
-$statement->execute();
-   $query='UPDATE article SET comment_count = comment_count + 1
-        WHERE id = :article_id';
-  $statement = $GLOBALS['connection']->prepare($query);   
-  $statement->bindValue(':article_id',  $this->articleId);  // Bind value from query string   
-  $statement->execute();
-  $GLOBALS['connection']->commit();                                       // Commit transaction
-  return TRUE;
-} catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
-   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
-   return FALSE;
-}
-
-   
-
-
-  } 
-
-  function update() {}
-
-  function delete(){}
-
-  function validate() {}
-  }
-
-class CommentList {
-  public $comments = array();// Array holding child objects
-  public $commentCount;
-
-  function __construct($comment_list) {   
-    $this->commentCount =0;
-    if (!empty($comment_list)) {
-    foreach($comment_list as $comment) {
- if ($comment->repliedto_id>0) {
-            $comment->nestinglevel = 1; 
-          }      
-$this->comments[$this->commentCount] = $comment;
-      $this->commentCount++;
-   }
-   }
-  
-  }
-
-  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $toplevelparentid='0', $reply='0', $nestinglevel='0') {
-    $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $toplevelparentid, $reply ,$nestinglevel);
-    if ($userid !='') { 
-      $this->commentCount++; 
-    }
-    return $this;
-  }
-}
-
-class CommentTree {
-  public $comments = array();// Array holding child objects
-  public $commentCount;
-
-  function __construct($comment_list) {   
-    $this->commentCount =0;
-     $new = array();  
-     $nestedcomments_row = array();
-     if ($comment_list) {
-       foreach ($comment_list as $row) {
-         $nestedcomments_row[] = $row;
-       }
-       foreach ($nestedcomments_row as $branch) {
-         $new[$branch->repliedto_id][]=$branch;             
-       }
-       if (isset($new[0])) { 
-         $comment_list = $this->create_tree($new, $new[0]);
-       }  
-     }
-  }
-
-  function create_tree(&$list, $parent){
-    $tree = array();
-    $nestinglevel=0;
-    foreach ((array) $parent as $key=>$reply) {
-      if ($this->commentCount>0) {
-       foreach ($this->comments as $comment) {
-          //Search the array for indentation of previous array
-          if ($comment->id == $reply->repliedto_id) {
-             $nestinglevel = $comment->nestingLevel + 1; 
-          } 
-       }
-      }
-      $comment = $this->add($reply->id,$reply->article_id, $reply->user_id,$reply->forename . " ". $reply->surname, $reply->image,$reply->comment , $reply->posted , $reply->repliedto_id, $nestinglevel);
-      if (isset($list[$reply->id])) {
-        $reply->{'children'} = $this->create_tree($list, $list[$reply->id]);
-      } 
-      $tree[] = $reply;
-    } 
-    return $tree;
-  }
-
-  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply='0', $nestinglevel='0') {
-    $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $reply ,$nestinglevel);
-    if ($userid !='') { 
-      $this->commentCount++; 
-    }
-    return $this;
-  }
-}
-
-class ArticleList {
-  public $articles = array();			// Array holding child objects
-  public $count; 
-}
-
-class CategoryList {
-  public $categories = array();			// Array holding child objects
-
-  function __construct($category_list) {
-    $count = 0;
-    foreach($category_list as $row) {
-      $category = new Category($row->{"name"});
-      $this->categories[$count] = $category;
-      $count++;
-    }
-  }
-} 
-
 class Category {
   public $id=0;			// int
   public $name;		// String
@@ -421,6 +118,19 @@ class Category {
 
   function validate() {}
   }
+
+class CategoryList {
+  public $categories = array();			// Array holding child objects
+
+  function __construct($category_list) {
+    $count = 0;
+    foreach($category_list as $row) {
+      $category = new Category($row->{"name"});
+      $this->categories[$count] = $category;
+      $count++;
+    }
+  }
+} 
 
 class User {
   public $id;
@@ -800,4 +510,96 @@ function isLastName($name) {
   return $this->isFirstName($name);
 }
 }
+
+class Comment {
+  public $id;
+    public $articleId;	// Array holding array of article summaries
+  public $userId;		// String
+  public $author; 		// String
+    public $comment;
+  public $posted;
+    public $replyToId;
+  public $nestingLevel;
+   public $topLevelParentId;
+  
+  function __construct ($id, $articleid, $userid, $author, $authorimage, $comment, $date, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
+    $this->id = $id;
+    $this->articleId   = $articleid;
+    $this->userId      = $userid;
+    $this->author      = $author;
+    $this->authorImage = ( isset($authorimage)    ? $authorimage    : 'blank.png' ); ;
+    $this->comment     = $comment;
+    $this->posted      = $date;
+    $this->replyToId   = $replyid;
+    $this->topLevelParentId = $toplevelparentid;
+    $this->nestingLevel = $nestinglevel;
+    
+  }
+
+  public function add() {
+        try {
+  $GLOBALS['connection']->beginTransaction();  
+    $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
+              VALUES  (:comment,:articleid, :userid, :date, :replyid)";
+    $statement = $GLOBALS["connection"]->prepare($query);
+    $statement->bindParam(':comment',$this->comment);
+    $statement->bindParam(':articleid',$this->articleId);
+    $statement->bindParam(':userid',$this->userId);
+    $date = date("Y-m-d H:i:s");
+    $statement->bindParam(':date',$date);
+    $statement->bindParam(':replyid',$this->replyToId);
+$statement->execute();
+   $query='UPDATE article SET comment_count = comment_count + 1
+        WHERE id = :article_id';
+  $statement = $GLOBALS['connection']->prepare($query);   
+  $statement->bindValue(':article_id',  $this->articleId);  // Bind value from query string   
+  $statement->execute();
+  $GLOBALS['connection']->commit();                                       // Commit transaction
+  return TRUE;
+} catch (PDOException $error) {                                // Failed to update
+   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
+   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
+   return FALSE;
+}
+
+   
+
+
+  } 
+
+  function update() {}
+
+  function delete(){}
+
+  function validate() {}
+  }
+
+class CommentList {
+  public $comments = array();// Array holding child objects
+  public $commentCount;
+
+  function __construct($comment_list) {   
+    $this->commentCount =0;
+    if (!empty($comment_list)) {
+    foreach($comment_list as $comment) {
+ if ($comment->repliedto_id>0) {
+            $comment->nestinglevel = 1; 
+          }      
+$this->comments[$this->commentCount] = $comment;
+      $this->commentCount++;
+   }
+   }
+  
+  }
+
+  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $toplevelparentid='0', $reply='0', $nestinglevel='0') {
+    $count = sizeof($this->comments);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $toplevelparentid, $reply ,$nestinglevel);
+    if ($userid !='') { 
+      $this->commentCount++; 
+    }
+    return $this;
+  }
+}
+
 ?>

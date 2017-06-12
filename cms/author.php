@@ -4,6 +4,7 @@ ini_set('display_errors', TRUE);
 session_start();
 require_once('includes/class-lib.php');
 require_once('includes/functions.php');
+require_once('includes/database-connection.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $name = ( isset($_GET['name']) ? $_GET['name'] : '' );
 $name = explode('-',$name);

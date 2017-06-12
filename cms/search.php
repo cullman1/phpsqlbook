@@ -2,6 +2,7 @@
 session_start();
 require_once('includes/class-lib.php');
 require_once('includes/functions.php');
+require_once('includes/database-connection.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $term = ( isset($_GET['term']) ? $_GET['term'] : '' ); 
 $show = (int)(filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 5);

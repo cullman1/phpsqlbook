@@ -4,7 +4,7 @@ ini_set('display_errors', TRUE);
 require_once('includes/check-user.php');
 require_once('includes/class-lib.php');
 require_once('includes/functions.php');
-
+require_once('includes/database-connection.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 /*$title = ( isset($_GET['title']) ? $_GET['title'] : '' );
 $show = (int)(filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 5);

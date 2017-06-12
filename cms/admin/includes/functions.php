@@ -129,7 +129,7 @@ function get_article_by_title($title) {
 }
 
 function get_article_list($category_id='') { // Should there be a separate by_id() function???
-
+ try {
   $connection = $GLOBALS['connection'];
   $id_present = ((is_numeric($category_id)) ? $category_id : FALSE);
   $query = 'SELECT article.id, article.title, article.media_id, article.published,
@@ -145,10 +145,13 @@ function get_article_list($category_id='') { // Should there be a separate by_id
     $statement->bindValue(':category_id', $category_id, PDO::PARAM_INT);  // Bind value from query string
   }
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ); // Needs to return an articlelist object
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to return an articlelist object
   $article_list = $statement->fetchAll();
- 
   return $article_list;
+  } catch (PDOException $ex) {
+   var_dump($ex);
+  }
+
 }
 
 function get_article_list_by_category_name($seo_name){ 
@@ -163,7 +166,7 @@ function get_article_list_by_category_name($seo_name){
   $statement = $connection->prepare($query); 
   $statement->bindValue(':seo_name', $seo_name);  // Bind value from query string
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
 }
@@ -180,7 +183,7 @@ function get_article_list_by_author_name($seo_name) {
   $statement = $connection->prepare($query); 
   $statement->bindValue(':seo_name', $seo_name);  // Bind value from query string
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
 }
@@ -197,7 +200,7 @@ function get_article_list_by_search_term($search_term) {
   $statement = $connection->prepare($query); 
   $statement->bindValue(':seo_name', $seo_name);  // Bind value from query string
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
 }

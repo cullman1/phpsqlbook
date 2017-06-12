@@ -1,4 +1,5 @@
 <?php
+require_once('../includes/class-lib.php');
 $article_list = get_article_list();
 ?>
 <p><a href="article-create.php" class="btn btn-primary">Add new article</a></p>
