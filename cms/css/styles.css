@@ -282,3 +282,12 @@ legend {
     font-weight: bold;
     text-decoration: underline;
 }
+
+.content-page {
+    padding-left:10px;
+    width:820px;
+}
+
+.comment-total {
+float:right; padding-right: 30px;
+}

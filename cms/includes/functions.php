@@ -292,16 +292,32 @@ function create_user_session($user) {
 
 /* Like functions */
 
+function get_likes_total($id) {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT article.* FROM article  
+            WHERE article.id=:id';           // Query
+  $statement = $connection->prepare($query);          // Prepare
+  $statement->bindValue(':id', $id);    // Bind value from query string
+  if ($statement->execute() ) {
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
+    $Article = $statement->fetch();
+  }
+  if ($Article) {
+    return $Article->like_count;
+  } else {
+    return FALSE;
+  }
+}
+
 function get_like_button($user_id, $article_id) {
   $connection = $GLOBALS['connection'];
-  $query = 'SELECT *
-      FROM likes
-      WHERE user_id = :user_id and article_id = :article_id';             // Query
+  $query = 'SELECT * FROM likes
+      WHERE user_id = :user_id and article_id = :article_id'; 
   $statement = $connection->prepare($query);
-    $statement->bindValue(':user_id', $user_id);  // Bind value from query string
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+    $statement->bindValue(':user_id', $user_id);  
+  $statement->bindValue(':article_id', $article_id);  
   $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_OBJ); 
   $likes = $statement->fetchAll();
   if ($likes) {
      return '<a href="/phpsqlbook/cms/unlike?user_id='.$user_id.'&article_id='.$article_id.'">Unlike this article</a>';
@@ -310,72 +326,50 @@ function get_like_button($user_id, $article_id) {
   }
 }
 
-function add_like_by_article_id($user_id, $article_id) {
+function add_like_by_id($user_id, $article_id) {
   try {
-  $GLOBALS['connection']->beginTransaction();  
-  $query = 'INSERT INTO likes (user_id, article_id)  
+    $GLOBALS['connection']->beginTransaction();  
+    $query = 'INSERT INTO likes (user_id, article_id)  
           VALUES (:user_id, :article_id)';                 // Query
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindValue(':user_id', $user_id);  // Bind value from query string
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
-  $statement->execute();
-
-  $query='UPDATE article SET like_count = like_count + 1
+    $statement = $GLOBALS['connection']->prepare($query);
+    $statement->bindValue(':user_id', $user_id);  // Bind value from query string
+    $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+    $statement->execute();
+    $query='UPDATE article SET like_count = like_count + 1
         WHERE id = :article_id';
-  $statement = $GLOBALS['connection']->prepare($query);   
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
-  $statement->execute();
-  $GLOBALS['connection']->commit();                                       // Commit transaction
-  return TRUE;
-} catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
-   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
-   return FALSE;
+    $statement = $GLOBALS['connection']->prepare($query);   
+    $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
+    $statement->execute();
+    $GLOBALS['connection']->commit();                                       // Commit transaction
+    return TRUE;
+  } catch (PDOException $error) {                                // Failed to update
+    echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
+    $GLOBALS['connection']->rollback();                                    // Roll back all SQL
+    return FALSE;
+  }
 }
 
-}
-
-function remove_like_by_article_id($user_id, $article_id) {
+function remove_like_by_id($user_id, $article_id) {
   try {
-  $GLOBALS['connection']->beginTransaction();  
-  $query = 'DELETE FROM likes WHERE user_id= :user_id 
-          AND article_id= :article_id';                 // Query
-$statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindValue(':user_id', $user_id);  // Bind value from query string
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string
-  $statement->execute();
-
-  $query='UPDATE article SET like_count = like_count - 1
+    $GLOBALS['connection']->beginTransaction();  
+    $query = 'DELETE FROM likes WHERE user_id= :user_id 
+          AND article_id= :article_id';               
+    $statement = $GLOBALS['connection']->prepare($query);
+    $statement->bindValue(':user_id', $user_id);  
+    $statement->bindValue(':article_id', $article_id);  
+    $statement->execute();
+    $query='UPDATE article SET like_count = like_count - 1
         WHERE id = :article_id';
-  $statement = $GLOBALS['connection']->prepare($query);   
-  $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
-  $statement->execute();
-  $GLOBALS['connection']->commit();                                       // Commit transaction
-  return TRUE;
-} catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
-   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
-   return FALSE;
-}
-}
-
-function get_like_total($id) {
-      $connection = $GLOBALS['connection'];
-    $query = 'SELECT article.* 
-              FROM article  
-      WHERE article.id=:id';           // Query
-    $statement = $connection->prepare($query);          // Prepare
-    $statement->bindValue(':id', $id);    // Bind value from query string
-    if ($statement->execute() ) {
-        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
-        $Article = $statement->fetch();
-    }
- 
-    if ($Article) {
-        return $Article->like_count;
-    } else {
-        return FALSE;
-    }
+    $statement = $GLOBALS['connection']->prepare($query);   
+    $statement->bindValue(':article_id', $article_id);  
+    $statement->execute();
+    $GLOBALS['connection']->commit();     
+    return TRUE;
+  } catch (PDOException $error) {                               
+    echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
+    $GLOBALS['connection']->rollback();         
+    return FALSE;
+  }
 }
 
 /* Comments functions */

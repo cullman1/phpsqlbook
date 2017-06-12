@@ -7,6 +7,7 @@ require_once('includes/functions.php');
 require_once('includes/class-lib.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $id    = ( isset($_GET['id'])    ? $_GET['id']    : '' ); 
+$user_id    = ( isset($_SESSION['user_id'])    ? $_SESSION['user_id']    : '0' );
 $email    = ( isset($_POST['Email'])    ? $_POST['Email']    : '' ); 
 $forename    = ( isset($_POST['Forename'])    ? $_POST['Forename']    : '' ); 
 $surname    = ( isset($_POST['Surname'])    ? $_POST['Surname']    : '' ); 
@@ -29,7 +30,7 @@ $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','p
     $user = new User($id,$forename,$surname,$email,'', $files);
     $result = $user->update();
     if ($result) {
-      //$destination = "/mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/phpsqlbook/uploads/" . $files;
+     // $destination = "/mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/phpsqlbook/uploads/" . $files;
       $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $files;
       if (move_uploaded_file($temporary, $destination)) {
         $alert = '<div class="alert alert-success">File saved.</div>';
@@ -42,27 +43,27 @@ $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','p
 } 
 get_HTML_template('header');
 ?>
-<form class="login-form" method="post" enctype="multipart/form-data" action="/phpsqlbook/cms/profile?id=<?php echo $_SESSION["user_id"]; ?>" >
+<form class="login-form" method="post" enctype="multipart/form-data" action="/phpsqlbook/cms/profile?id=<?php echo $user_id; ?>" >
 <fieldset>
   <legend>User Profile</legend>
   <div class="title-error"><?= $alert ?></div>
   <label>User Forename:
-    <input name="Forename" type="text" value="<?= $profile->forename; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
+    <input name="Forename" type="text" value="<?= $profile->forename; ?>"  <?php if ($user_id != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['firstName']; ?></span><br />
   <label>User Surname:
-    <input name="Surname" type="text" value="<?= $profile->surname; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
+    <input name="Surname" type="text" value="<?= $profile->surname; ?>"  <?php if ($user_id != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['lastName']; ?></span><br />
   <label>User Email:
-    <input name="Email" type="text" value="<?= $profile->email; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
+    <input name="Email" type="text" value="<?= $profile->email; ?>"  <?php if ($user_id != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['email']; ?></span><br />
   <label>User Image:
-    <img style="width:200px;" src="/phpsqlbook/uploads/<?= $profile->image; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
+    <img style="width:200px;" src="/phpsqlbook/uploads/<?= $profile->image; ?>"  <?php if ($user_id != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['image']; ?></span><br />
-  <?php if ($_SESSION["user_id"] == $profile->id) { ?>
+  <?php if ($user_id == $profile->id) { ?>
   <label>File:
     <input id="image" name="image" disabled type="text" value="<?= $profile->image; ?>" /></label>
   <br />

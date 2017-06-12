@@ -7,7 +7,7 @@ require_once('includes/class-lib.php');
 require_once('includes/functions.php');
 $user_id = ( isset($_GET['user_id']) ? $_GET['user_id'] : '' ); 
 $article_id = ( isset($_GET['article_id']) ? $_GET['article_id'] : '' ); 
-if (add_like_by_article_id($user_id, $article_id)) {
+if (add_like_by_id($user_id, $article_id)) {
     header('Location: '.$_SERVER['HTTP_REFERER']);
 }
 ?>
