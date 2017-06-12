@@ -43,6 +43,7 @@ function get_article_list($show='', $from='') {
       $statement->execute();
       $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
       $article_list = $statement->fetchAll();
+      var_dump($article_list);
       return $article_list;
 }
 

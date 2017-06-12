@@ -145,7 +145,7 @@ function get_article_list($category_id='') { // Should there be a separate by_id
     $statement->bindValue(':category_id', $category_id, PDO::PARAM_INT);  // Bind value from query string
   }
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to return an articlelist object
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to return an articlelist object
   $article_list = $statement->fetchAll();
   return $article_list;
   } catch (PDOException $ex) {
