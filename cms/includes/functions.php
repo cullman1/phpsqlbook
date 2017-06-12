@@ -1,5 +1,7 @@
 <?php
 
+/* Article functions */
+
 function get_article_by_seo_title($seo_title) {
     // This had conflicts for the id colum in article and user
     $connection = $GLOBALS['connection'];
@@ -223,6 +225,73 @@ function get_article_count_by_search($search, $user='0') {
   return $count;
 }
 
+/* User functions */
+
+function get_user_by_id($id) {
+	$connection = $GLOBALS['connection'];
+	$query = 'SELECT * FROM user WHERE id=:id';             // Query
+	$statement = $connection->prepare($query);              // Prepare
+	$statement->bindValue(':id', $id, PDO::PARAM_INT);      // Bind value from query string
+	if ($statement->execute() ) {
+		$statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User'); // Object
+		$User = $statement->fetch();                        // Fetch
+	}
+	if ($User) {
+		return $User;
+	} else {
+	    return FALSE;
+    }
+}
+
+function get_user_list() {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT * FROM user';
+  $statement = $connection->prepare($query); 
+  $statement->execute(); 
+  $statement->setFetchMode(PDO::FETCH_OBJ); 
+  $user_list = $statement->fetchAll();        
+  return $user_list;
+}
+
+function check_user() {
+ if (!isset($_SESSION['user_id'])) { 
+  return "0";
+ }
+ return $_SESSION['user_id'];
+}
+
+function get_user_by_email($email) {
+  $sql = 'SELECT * from user WHERE email = :email';
+  $statement = $GLOBALS['connection']->prepare($sql);
+  $statement->bindParam(':email', $email);
+  if ($statement->execute() ) {
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');            
+    $user = $statement->fetch();
+  }
+  return ($user ? $user : FALSE);
+}
+
+function get_user_by_email_password($email, $password) {
+  $query = 'SELECT * FROM user WHERE email = :email';
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindParam(':email', $email);
+  if ($statement->execute() ) {
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
+    $user = $statement->fetch();
+  }
+  if (!$user) { 
+    return FALSE; 
+  }
+  return (password_verify($password, $user->password) ? $user : FALSE);
+}
+
+function create_user_session($user) {
+  $_SESSION['name']    = $user->forename . ' ' . $user->surname;
+  $_SESSION['user_id'] = $user->id;
+}
+
+/* Like functions */
+
 function get_like_button($user_id, $article_id) {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT *
@@ -290,51 +359,41 @@ $statement = $GLOBALS['connection']->prepare($query);
 }
 }
 
-function get_HTML_template($template,$object=""){
-    switch($template) {
-        default:
-          include("templates/".$template.".php");    
-          break;
+function get_like_total($id) {
+      $connection = $GLOBALS['connection'];
+    $query = 'SELECT article.* 
+              FROM article  
+      WHERE article.id=:id';           // Query
+    $statement = $connection->prepare($query);          // Prepare
+    $statement->bindValue(':id', $id);    // Bind value from query string
+    if ($statement->execute() ) {
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
+        $Article = $statement->fetch();
+    }
+ 
+    if ($Article) {
+        return $Article->like_count;
+    } else {
+        return FALSE;
     }
 }
+
+/* Comments functions */
 
 function get_comments_by_id($id) {
   $query="SELECT  user.*, comments.* FROM comments 
           JOIN user ON comments.user_id = user.id   
           WHERE article_id = :articleid ORDER BY comments.id ASC";  
   $statement = $GLOBALS['connection']->prepare($query);
-
   $statement->bindValue(':articleid',   $id, PDO::PARAM_INT);      // Bind value from query string
-$statement->execute();
-
-   
+  $statement->execute();
   $statement->setFetchMode(PDO::FETCH_OBJ);
-
- $commentslist = $statement->fetchAll();                        // Fetch
-
-	if ($commentslist) {
-		return $commentslist;
-
-	} else {
-	    return FALSE;
-     
-    }
-}
-
-function get_user_by_id($id) {
-	$connection = $GLOBALS['connection'];
-	$query = 'SELECT * FROM user WHERE id=:id';             // Query
-	$statement = $connection->prepare($query);              // Prepare
-	$statement->bindValue(':id', $id, PDO::PARAM_INT);      // Bind value from query string
-	if ($statement->execute() ) {
-		$statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User'); // Object
-		$User = $statement->fetch();                        // Fetch
-	}
-	if ($User) {
-		return $User;
-	} else {
-	    return FALSE;
-    }
+  $commentslist = $statement->fetchAll();                        // Fetch
+  if ($commentslist) {
+    return $commentslist;
+  } else {
+    return FALSE; 
+  }
 }
 
 function get_previous_commenter_by_name($id) {
@@ -355,19 +414,6 @@ function get_previous_commenter_by_name($id) {
     }
 }
 
-
-function get_user_list() {
-  $connection = $GLOBALS['connection'];
-  $query = 'SELECT * FROM user';
-  $statement = $connection->prepare($query); 
-  $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_OBJ); 
-  $user_list = $statement->fetchAll();        
-  return $user_list;
-}
-
-
-
 function get_comments_list( $article_id) {
   $commentslist = new CommentList(get_comments_by_id($article_id));
   $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
@@ -382,67 +428,6 @@ function get_comments_list( $article_id) {
   if ( isset($_SESSION['user_id'])) { 
     $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
     $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, 0);
-  }
-  return $comments_table;
-}
-
-function sort_array($commentslist, $commentslist2) {
- foreach ($commentslist->comments as $comment1) {
-    $comment1->nestinglevel = 0;
-    if ($comment1->repliedto_id > 0) {
-      $comment1->nestinglevel = 1;
-    }
-   if ($comment1->toplevelparent_id == 0) {
-    array_push($commentslist2, $comment1);
-   }
-   array_reverse($commentslist->comments);
-   foreach ($commentslist->comments as $comment2) {
-     if ($comment2->toplevelparent_id == $comment1->id) {
-       array_push($commentslist2, $comment2);
-     }
-    }
-  }
-  return $commentslist2;
-}
-
-function get_comments_array( $article_id) {
-  $commentslist = new CommentList(get_comments_by_id($article_id));
-  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
-  $commentslist2 = array();
-  $commentslist2 = sort_array($commentslist, $commentslist2);
-  foreach ($commentslist2 as $comment) {
-    $comments_table .= '<ol class="border-box"><ol class="children comment-box ';
-    $previous = '';
-    if (!isset( $comment->image) ) {
-       $comment->image = "blank.png";
-    }
-    if (($comment->repliedto_id)!=0) {
-      $commenter = get_previous_commenter_by_name($comment->repliedto_id);
-      $previous = $commenter->forename . ' ' . $commenter->surname;
-    }
-    if ($comment->nestinglevel>0) {
-      $depth = $comment->nestinglevel;
-      if ($depth>2) { $depth=2;  }
-        $comments_table .= ' depth-' . $depth;
-      }   
-      $comments_table .=  '">';
-      $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->image . '"/></li>'; 
-      $comments_table .= '<li class="small_name"><a class="comment_name" href="/phpsqlbook/cms/profile?id=' . $comment->user_id . '">' .  $comment->forename . ' ' . $comment->surname . '</a>';
-      $comments_table .=  '        < In reply to: ' . $previous; 
-      $comments_table .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
-      if (isset($_SESSION["user_id"])) {
-        $comments_table .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
-      }
-      $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
-    }
-    $comments_table .= "</ol></ol></div>";   
-    if ( isset($_SESSION['user_id'])) { 
-      $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
-      if (isset($comment)) {
-        $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->nestinglevel);
-      } else {
-        $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, 0);
-    }
   }
   return $comments_table;
 }
@@ -468,35 +453,6 @@ function get_comments_reply_form($user_name, $article_id, $toplevelparentid=0, $
   return $comments_form;
 }
 
-function get_menu() {
-    $categorylist = new CategoryList(get_category_list());
-
-    $list = '';
-    foreach($categorylist->categories as $category) {
-        $list .= '<a href="'.$GLOBALS['root'] .$category->name.'">'.$category->name.'</a>';
-    }
-    return $list;
-}
-
-function get_like_total($id) {
-      $connection = $GLOBALS['connection'];
-    $query = 'SELECT article.* 
-              FROM article  
-      WHERE article.id=:id';           // Query
-    $statement = $connection->prepare($query);          // Prepare
-    $statement->bindValue(':id', $id);    // Bind value from query string
-    if ($statement->execute() ) {
-        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
-        $Article = $statement->fetch();
-    }
- 
-    if ($Article) {
-        return $Article->like_count;
-    } else {
-        return FALSE;
-    }
-}
-
 function get_comment_total($id) {
       $connection = $GLOBALS['connection'];
     $query = 'SELECT article.* 
@@ -516,14 +472,91 @@ function get_comment_total($id) {
     }
 }
 
-function check_user() {
- if (!isset($_SESSION['user_id'])) { 
-  return "0";
- }
- return $_SESSION['user_id'];
+function sort_comments_array($commentslist, $commentslist2) {
+ foreach ($commentslist->comments as $comment1) {
+    $comment1->nestinglevel = 0;
+    if ($comment1->repliedto_id > 0) {
+      $comment1->nestinglevel = 1;
+    }
+   if ($comment1->toplevelparent_id == 0) {
+    array_push($commentslist2, $comment1);
+   }
+   array_reverse($commentslist->comments);
+   foreach ($commentslist->comments as $comment2) {
+     if ($comment2->toplevelparent_id == $comment1->id) {
+       array_push($commentslist2, $comment2);
+     }
+    }
+  }
+  return $commentslist2;
 }
 
-// Get categories
+function get_comments_array( $article_id) {
+  $commentslist = new CommentList(get_comments_by_id($article_id));
+  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
+  $commentslist2 = array();
+  $commentslist2 = sort_comments_array($commentslist, $commentslist2);
+  foreach ($commentslist2 as $comment) {
+    $comments_table .= '<ol class="border-box"><ol class="children comment-box ';
+    $previous = '';
+    if (!isset( $comment->image) ) {
+       $comment->image = "blank.png";
+    }
+    if (($comment->repliedto_id)!=0) {
+      $commenter = get_previous_commenter_by_name($comment->repliedto_id);
+      $previous = $commenter->forename . ' ' . $commenter->surname;
+    }
+    if ($comment->nestinglevel>0) {
+      $depth = $comment->nestinglevel;
+      if ($depth>2) { 
+        $depth=2;  
+      }
+      $comments_table .= ' depth-' . $depth;
+    }   
+    $comments_table .=  '">';
+    $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->image . '"/></li>'; 
+    $comments_table .= '<li class="small_name"><a class="comment_name" href="/phpsqlbook/cms/profile?id=' . $comment->user_id . '">' .  $comment->forename . ' ' . $comment->surname . '</a>';
+    if ($comment->nestinglevel>0) {
+      $comments_table .=  '        < In reply to: ' . $previous; 
+    }
+    $comments_table .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
+    if (isset($_SESSION["user_id"])) {
+      $comments_table .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
+    }
+    $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
+  }
+  $comments_table .= "</ol></ol></div>";   
+  if ( isset($_SESSION['user_id'])) { 
+    $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
+    if (isset($comment)) {
+      $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->nestinglevel);
+    } else {
+      $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, 0);
+    }
+  }
+  return $comments_table;
+}
+
+/* Display template sections functions */
+
+function get_HTML_template($template,$object=""){
+    switch($template) {
+        default:
+          include("templates/".$template.".php");    
+          break;
+    }
+}
+
+function get_menu() {
+    $categorylist = new CategoryList(get_category_list());
+
+    $list = '';
+    foreach($categorylist->categories as $category) {
+        $list .= '<a href="'.$GLOBALS['root'] .$category->name.'">'.$category->name.'</a>';
+    }
+    return $list;
+}
+
 function get_category_list() {
   $query = 'SELECT * FROM category'; // Query
   $statement = $GLOBALS["connection"]->prepare($query); 
@@ -532,17 +565,6 @@ function get_category_list() {
   $category_list = $statement->fetchAll();      // Step 4 Get all rows ready to display
 
   return $category_list;
-}
-
-function get_user_by_email($email) {
-  $sql = 'SELECT * from user WHERE email = :email';
-  $statement = $GLOBALS['connection']->prepare($sql);
-  $statement->bindParam(':email', $email);
-  if ($statement->execute() ) {
-    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');            
-    $user = $statement->fetch();
-  }
-  return ($user ? $user : FALSE);
 }
 
 function create_slug($title) {
@@ -572,24 +594,7 @@ function create_pagination($count, $show, $from, $search='') {
   echo "<br/>" . $result;
 }
 
-function get_user_by_email_password($email, $password) {
-  $query = 'SELECT * FROM user WHERE email = :email';
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindParam(':email', $email);
-  if ($statement->execute() ) {
-    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
-    $user = $statement->fetch();
-  }
-  if (!$user) { 
-    return FALSE; 
-  }
-  return (password_verify($password, $user->password) ? $user : FALSE);
-}
-
-function create_user_session($user) {
-  $_SESSION['name']    = $user->forename . ' ' . $user->surname;
-  $_SESSION['user_id'] = $user->id;
-}
+/* Miscellaneous functions // Third party functions */
 
 function send_email($to, $subject, $message) {
   try {                                                      // Start a try block
@@ -647,48 +652,6 @@ function time_elapsed_string($datetime, $full = false) {
 
     if (!$full) $string = array_slice($string, 0, 1);
     return $string ? implode(', ', $string) . ' ago' : 'just now';
-}
-
-function get_comments_tree( $article_id) {
-  $commentslist = new CommentTree(get_comments_by_id($article_id));
-  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
-  $previous = '';
-  foreach ($commentslist->comments as $comment) {
-    $comments_table .= '<ol class="border-box"><ol class="children comment-box';
-     if (($comment->replyToId)!=0) {
-        $commenter = get_previous_commenter_by_name($comment->replyToId);
-        $previous = $commenter->forename . ' ' . $commenter->surname;
-      }
-    if ($comment->nestingLevel>0) {
-      $depth = $comment->nestingLevel;
-      if ($depth>2) { $depth=2;  }
-        $comments_table .= ' depth-' . $depth;
-      }   
-      $comments_table .=  '">';
-      $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
-      $comments_table .= '<li class="small_name"><span class="comment_name">' . $comment->author . '</span>';
-      if ($comment->nestingLevel>0) {
-        $comments_table .=  '        < In reply to: ' . $previous; 
-      }
-      $comments_table .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
-      if (isset($_SESSION["user_id"])) {
-        $comments_table .=  '<a data-id="' . $comment->author .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
-      }
-      $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
-   
-    }
-    $comments_table .= "</ol></ol></div>"; 
-    if ( isset($_SESSION['user_id'])) { 
-    
-        $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
-         $comments_table .= '<ol><li id="comlink0"></li></ol>';
-      if (isset($comment)) {
-        $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->nestingLevel);
-      } else {
-        $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id, 0);
-      }
-    }
-  return $comments_table;
 }
 
 ?>
