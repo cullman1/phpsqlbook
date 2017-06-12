@@ -740,7 +740,6 @@
     <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".htaccess_old" />
     <Content Include="assets\background.jpg" />
     <Content Include="assets\clip.jpg" />
     <Content Include="assets\clip.png" />

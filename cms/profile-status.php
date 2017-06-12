@@ -29,8 +29,8 @@ $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','p
     $user = new User($id,$forename,$surname,$email,'', $files);
     $result = $user->update();
     if ($result) {
-      $destination = "/mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/phpsqlbook/uploads/" . $files;
-      //$destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $files;
+      //$destination = "/mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/phpsqlbook/uploads/" . $files;
+      $destination = "c:\\xampp\htdocs\phpsqlbook\uploads\\" . $files;
       if (move_uploaded_file($temporary, $destination)) {
         $alert = '<div class="alert alert-success">File saved.</div>';
          header('Location: http://'.$_SERVER['HTTP_HOST'].'/phpsqlbook/cms/profile?id='.$id); 
@@ -47,28 +47,29 @@ get_HTML_template('header');
   <legend>User Profile</legend>
   <div class="title-error"><?= $alert ?></div>
   <label>User Forename:
-    <input name="Forename" type="text" value="<?= $profile->forename; ?>" />
+    <input name="Forename" type="text" value="<?= $profile->forename; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['firstName']; ?></span><br />
   <label>User Surname:
-    <input name="Surname" type="text" value="<?= $profile->surname; ?>" />
+    <input name="Surname" type="text" value="<?= $profile->surname; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['lastName']; ?></span><br />
   <label>User Email:
-    <input name="Email" type="text" value="<?= $profile->email; ?>" />
+    <input name="Email" type="text" value="<?= $profile->email; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['email']; ?></span><br />
   <label>User Image:
-    <img style="width:200px;" src="/phpsqlbook/uploads/<?= $profile->image; ?>" />
+    <img style="width:200px;" src="/phpsqlbook/uploads/<?= $profile->image; ?>"  <?php if ($_SESSION["user_id"] != $profile->id) { ?> disabled <?php } ?> />
   </label>
   <span class="title-error"><?= $error['image']; ?></span><br />
+  <?php if ($_SESSION["user_id"] == $profile->id) { ?>
   <label>File:
     <input id="image" name="image" disabled type="text" value="<?= $profile->image; ?>" /></label>
   <br />
 <input name="img" type="file"/><br /><br />
   <input name="Id" type="hidden" value="<?= $profile->id; ?>"/>
-
   <button type="submit" value="submit">Submit</button><br/><br/>
+  <?php } ?>
   </fieldset>
 </form> 
 <?php
