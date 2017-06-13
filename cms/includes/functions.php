@@ -32,17 +32,18 @@ function get_article_list($show='', $from='') {
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
       LEFT JOIN user ON article.user_id = user.id
-      WHERE published <= now()
+      WHERE published <= now() and category.template != "general"
       ORDER BY article.published ASC';                 // Query
-
+  
       //Get limited page of articles
       if (!empty($show)) {
         $query .= " limit " . $show . " offset " . $from;
       }
       $statement = $GLOBALS['connection']->prepare($query);
       $statement->execute();
-      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
+      $statement->setFetchMode(PDO::FETCH_OBJ); 
       $article_list = $statement->fetchAll();
+
       return $article_list;
 }
 

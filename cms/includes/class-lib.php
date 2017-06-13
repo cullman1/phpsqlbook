@@ -1,7 +1,6 @@
 <?php
 
-
-require_once('includes/functions.php');
+//require_once('includes/functions.php');
 
 class ArticleSummary {
   public  $id;
@@ -117,7 +116,7 @@ class Category {
   function delete(){}
 
   function validate() {}
-  }
+  } 
 
 class CategoryList {
   public $categories = array();			// Array holding child objects

@@ -86,12 +86,14 @@ Class Category {
 	public  $id;
 	public  $name;
 	public  $description;
+    public  $template;
 	public  $count;
 
-	function __construct($id ='', $name = NULL, $description = NULL) {
+	function __construct($id ='', $name = NULL, $description = NULL, $template = NULL) {
 		$this->id          = ( isset($id)          ? $id       : '');
 		$this->name        = ( isset($name)        ? $name     : '');
 		$this->description = ( isset($description) ? $description : '');
+        $this->template = ( isset($template) ? $template : '');
 	}
 
 	function create() {
@@ -104,11 +106,12 @@ Class Category {
 			$statement->execute();                                         // Execute SQL
 			$this->id = $connection->lastInsertId();                       // Add id to object
 			$result   = TRUE;                                              // Get id created
-		} catch (PDOException $error) {                                    // Otherwise
+		}
+        catch (PDOException $error) {                                    // Otherwise
             if ($error->errorInfo[1] == 1062) {                            // If it is a duplicate
 	            $result = 'A category with that name exists - try a different name';
             } else {
-      			$result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+                $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
 			}
 		}
 		return $result;                                                   // Say succeeded
@@ -124,11 +127,12 @@ Class Category {
 		try {
 			$statement->execute();
 			$result = TRUE;
-		} catch (PDOException $error) {                                    // Otherwise
+		}
+        catch (PDOException $error) {                                    // Otherwise
             if ($error->errorInfo[1] == 1062) {                            // If it is a duplicate
 	            $result = 'A category with that name exists - try a different name';
             } else {
-	      		$result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+                $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
 			}
 		}
 		return $result;                                                   // Say succeeded
@@ -142,13 +146,14 @@ Class Category {
 		try {
 			$statement->execute();                                         // If executes
 			return TRUE;                                                   // Say succeeded
-		} catch (PDOException $error) {                                    // Otherwise
-     		$result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+		}
+        catch (PDOException $error) {                                    // Otherwise
+            $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
 		}
 	}
 }
 
-Class User {
+/* Class User {
 	public  $id;
 	public  $forename;
 	public  $surname;
@@ -212,7 +217,7 @@ Class User {
      		$result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
 		}
 	}
-}
+} */
 
 Class Media {
 	public  $id;
@@ -444,7 +449,7 @@ Class Gallery {
 	}
 }
 
-Class Validate {
+ Class Validate {
 	function numberRange($number, $min = 0, $max = 4294967295) {
 	  if ( ($number < $min) or ($number > $max) ) {
 	    return FALSE;
