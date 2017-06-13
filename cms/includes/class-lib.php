@@ -538,8 +538,8 @@ class Comment {
   public function add() {
         try {
   $GLOBALS['connection']->beginTransaction();  
-    $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id) 
-              VALUES  (:comment,:articleid, :userid, :date, :replyid)";
+  $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id, toplevelparent_id) 
+              VALUES  (:comment,:articleid, :userid, :date, :replyid, :toplevelparentid)";
     $statement = $GLOBALS["connection"]->prepare($query);
     $statement->bindParam(':comment',$this->comment);
     $statement->bindParam(':articleid',$this->articleId);
@@ -547,6 +547,7 @@ class Comment {
     $date = date("Y-m-d H:i:s");
     $statement->bindParam(':date',$date);
     $statement->bindParam(':replyid',$this->replyToId);
+    $statement->bindParam(':toplevelparentid',$this->topLevelParentId);
 $statement->execute();
    $query='UPDATE article SET comment_count = comment_count + 1
         WHERE id = :article_id';
@@ -591,9 +592,9 @@ $this->comments[$this->commentCount] = $comment;
   
   }
 
-  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $toplevelparentid='0', $reply='0', $nestinglevel='0') {
+  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply='0', $toplevelparentid='0',  $nestinglevel='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted , $toplevelparentid, $reply ,$nestinglevel);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply,  $toplevelparentid, $nestinglevel);
     if ($userid !='') { 
       $this->commentCount++; 
     }
