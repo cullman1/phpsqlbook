@@ -187,7 +187,7 @@ function get_article_list_by_category_name($seo_name){
   $statement = $connection->prepare($query); 
   $statement->bindValue(':seo_name', $seo_name);  // Bind value from query string
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
 }
@@ -204,7 +204,7 @@ function get_article_list_by_author_name($seo_name) {
   $statement = $connection->prepare($query); 
   $statement->bindValue(':seo_name', $seo_name);  // Bind value from query string
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
 }
@@ -221,7 +221,7 @@ function get_article_list_by_search_term($search_term) {
   $statement = $connection->prepare($query); 
   $statement->bindValue(':seo_name', $seo_name);  // Bind value from query string
   $statement->execute(); 
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleList'); // Needs to be ArticleList class
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
   $article_list = $statement->fetchAll();
   return $article_list;
 }
