@@ -458,14 +458,14 @@ class Validate {
 
 
 	function isUser($User) {
-		$errors    = array('id' => '', 'forename' => '', 'surname'=>'', 'email'=>'', 'password'=>'');    // Form errors
+		$errors    = array('id' => '', 'forename' => '', 'surname'=>'', 'email'=>'', 'image'=>'');    // Form errors
 		if ($User->id != 'new') {
 			$errors['id']   = $this->isID($User->id);
 		}
 		$errors['forename'] = $this->isName($User->forename);
 		$errors['surname']  = $this->isName($User->surname);
 		$errors['email']    = $this->isEmail($User->email);
-		$errors['password'] = $this->isPassword($User->password);
+		$errors['image'] = $this->isImage($User->image);
 		return $errors;
 	}
 
@@ -503,6 +503,14 @@ function isFirstName($name) {
     $error = 'You cannot have a blank name.<br>';
   }
   return $error;
+}
+
+function isImage($image) {
+    $error = '';
+    if (($this->stringLength($image, 1, 255)) == FALSE ) {
+        $error = 'You cannot have a blank image.<br>';
+    }
+    return $error;
 }
 
 function isLastName($name) {

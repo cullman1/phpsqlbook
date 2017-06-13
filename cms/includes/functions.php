@@ -233,7 +233,7 @@ function get_user_by_id($id) {
 	$statement = $connection->prepare($query);              // Prepare
 	$statement->bindValue(':id', $id, PDO::PARAM_INT);      // Bind value from query string
 	if ($statement->execute() ) {
-		$statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User'); // Object
+		$statement->setFetchMode(PDO::FETCH_OBJ); // Object
 		$User = $statement->fetch();                        // Fetch
 	}
 	if ($User) {

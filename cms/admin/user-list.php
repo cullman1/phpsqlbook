@@ -1,10 +1,10 @@
 <?php
-require_once('includes/database-connection.php'); 
+require_once('../includes/database-connection.php'); 
 require_once('includes/functions.php'); 
 $message = '';
 $user_list = get_user_list();
 
-include 'includes/header.php';
+include 'includes/admin-header.php';
 ?>
 
 
@@ -30,4 +30,4 @@ include 'includes/header.php';
     <?php } ?>
 </table>
 </div>
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/admin-footer.php'; ?>
