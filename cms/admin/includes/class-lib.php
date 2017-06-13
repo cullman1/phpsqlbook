@@ -38,7 +38,11 @@ Class Article {
 			$statement->execute();                                         // Try to execute
 			$result = TRUE;                                                // Say worked if it did
 		} catch (PDOException $error) {                                    // Otherwise
-      		$result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+            if ($error->errorInfo[1] == 1062) {                              // If a duplicate
+                $result = 'The article title is too similar to a title that already exists - try a different title.'; // Error
+    		} else {                                                         // Otherwise
+      		  $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+		    }            
 		}
 		return $result;                                                    
 	}
@@ -60,7 +64,7 @@ Class Article {
 			$result = TRUE;
 		} catch (PDOException $error) {                                      // Otherwise
 		    if ($error->errorInfo[1] == 1062) {                              // If a duplicate
-    		  $result = 'An article with that title exists - try a different title.'; // Error
+    		  $result = 'The article title is too similar to a title that already exists - try a different title.'; // Error
     		} else {                                                         // Otherwise
       		  $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
 		    }                                                                // End if/else
