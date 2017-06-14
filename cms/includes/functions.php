@@ -85,6 +85,21 @@ function get_article_list_by_category_name($name, $show='', $from='') {
   return $article_list;
 }
 
+/*
+SELECT article.id, article.title,
+
+article.media_id, article.seo_title,article.content, article.published, media.filepath, media.thumb, 
+media.alt, media.mediatype, category.template, user.id, user.forename, user.surname, 
+article.id, article.like_count, article.comment_count, (select likes.user_id from likes where  likes.user_id= 2  and likes.article_id = article.id) as liked
+FROM article
+LEFT JOIN category  ON article.category_id = category.id
+LEFT JOIN media  ON article.media_id = media.id
+LEFT JOIN user   ON article.user_id = user.id 
+WHERE published <= now()   
+AND category.name='Herbs'
+ORDER BY article.published ASC
+ */
+
 function get_article_count_by_category_name($name, $show='', $from='') {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT count(*)

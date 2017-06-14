@@ -4,7 +4,7 @@
   <?php if ( isset($_SESSION['user_id'])) { 
             echo get_like_button($_SESSION['user_id'], $object->id); 
         } else {
-          echo ' <i class="fa fa-heart-o" aria-hidden="true"></i> ';    
+          echo '<i class="fa fa-heart-o" aria-hidden="true"></i>';
         }
         echo  $object->like_count; ?>  
   <div class="comment-total"><?php echo '<i class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; ?></div>

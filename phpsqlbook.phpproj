@@ -710,6 +710,7 @@
     <Content Include="cms\admin\js\bootstrap.min.js" />
     <Content Include="cms\admin\js\npm.js" />
     <Content Include="cms\admin\php-error.log" />
+    <Content Include="cms\admin\tasks.txt" />
     <Content Include="cms\admin\uploads\.DS_Store" />
     <Content Include="cms\admin\uploads\asparagus.jpg" />
     <Content Include="cms\admin\uploads\asparagus_thumbnail.jpg" />
