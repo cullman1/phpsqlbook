@@ -1,7 +1,7 @@
 <?php 
-require_once('includes/database-connection.php');
-require_once('includes/functions.php');
-require_once('includes/class-lib.php');
+require_once('../includes/database-connection.php');
+require_once('../includes/functions.php');
+require_once('../includes/class-lib.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $forename  = ( isset($_POST['forename']) ? $_POST['forename'] : '' ); 
 $surname   = ( isset($_POST['surname'])  ? $_POST['surname']  : '' ); 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
 }
-get_HTML_template('header');
+include '../templates/header.php';
  ?>
 <?php if ($show_form) { ?>
 <form class="login-form" method="post" action="register.php">
@@ -52,5 +52,5 @@ get_HTML_template('header');
    <button type="submit">Register</button><br><br>
    </fieldset>
 </form>
-<?php } ?>
- <?= get_HTML_template('footer'); ?>
+<?php } 
+      include '../templates/footer.php'; ?>

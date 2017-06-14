@@ -86,7 +86,6 @@
     <Compile Include="cms\admin\user-edit.php" />
     <Compile Include="cms\admin\user-list.php" />
     <Compile Include="cms\admin\user.php" />
-    <Compile Include="cms\article-list-old.php" />
     <Compile Include="cms\category.php" />
     <Compile Include="cms\author.php" />
     <Compile Include="cms\forgotten-password.php" />
@@ -96,6 +95,7 @@
     <Compile Include="cms\register.php" />
     <Compile Include="cms\reset-password.php" />
     <Compile Include="cms\profile-status.php" />
+    <Compile Include="cms\templates\author_list_content.php" />
     <Compile Include="cms\templates\article_list_content.php" />
     <Compile Include="cms\unlike.php" />
     <Compile Include="cms\like.php" />

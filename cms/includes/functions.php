@@ -187,7 +187,7 @@ function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC
   //If search not empty, highlight search term
   if (!empty($search) && !empty($show)) { 
       foreach($article_list as $article) {
-          $article->content =str_ireplace($search, '<span class="highlight">' . $search . '</span>',    $article->content); 
+          $article->content =preg_replace('/'.$search.'/i', '<span class="highlight">$0</span>',    $article->content); 
       }
   }
   return $article_list;

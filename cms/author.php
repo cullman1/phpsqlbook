@@ -18,7 +18,7 @@ $articlelist = get_article_list_by_author_name($forename,$surname, $show, $from)
 
 echo '<h3>Articles by: ' . $forename . ' ' . $surname . '</h3>';
 foreach($articlelist as $object) {
-    include 'templates/article_list_content.php'; 
+    include 'templates/author_list_content.php'; 
 }
 $pagination = create_pagination($count,$show,$from);
 echo $pagination;

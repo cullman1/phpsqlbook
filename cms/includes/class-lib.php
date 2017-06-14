@@ -458,7 +458,7 @@ class Validate {
 
 
 	function isUser($User) {
-		$errors    = array('id' => '', 'forename' => '', 'surname'=>'', 'email'=>'', 'image'=>'');    // Form errors
+		$errors    = array('id' => '', 'forename' => '', 'surname'=>'', 'email'=>'', 'image'=>'', 'password'=>'');    // Form errors
 		if ($User->id != 'new') {
 			$errors['id']   = $this->isID($User->id);
 		}
@@ -466,6 +466,7 @@ class Validate {
 		$errors['surname']  = $this->isName($User->surname);
 		$errors['email']    = $this->isEmail($User->email);
 		$errors['image'] = $this->isImage($User->image);
+        $errors['password'] = $this->isPassword($User->password);
 		return $errors;
 	}
 
