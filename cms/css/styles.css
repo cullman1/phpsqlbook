@@ -291,3 +291,8 @@ legend {
 .comment-total {
 float:right; padding-right: 30px;
 }
+
+.heading {
+    text-align:left;
+
+}

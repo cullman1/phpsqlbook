@@ -110,9 +110,11 @@
     <Compile Include="cms\templates\login.php" />
     <Compile Include="cms\logout.php" />
     <Compile Include="cms\templates\main_content.php" />
+    <Compile Include="cms\users\like.php" />
     <Compile Include="cms\users\login.php" />
     <Compile Include="cms\users\logout.php" />
     <Compile Include="cms\users\register.php" />
+    <Compile Include="cms\users\unlike.php" />
     <Compile Include="code\chapter_01\index.php" />
     <Compile Include="code\chapter_01\test.php" />
     <Compile Include="code\chapter_02\example.php" />

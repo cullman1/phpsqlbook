@@ -6,12 +6,14 @@
   <?php } ?>
   <div class="box" style="width:800px;"><?php echo $object->content ?></div><br/>
     <?php if ($object->template != 'general') {  ?>
-      <?php echo 'Likes: '.get_likes_total($object->id); ?>  
-      <div class="comment-total"><?php echo 'Comments: '.get_comment_total($object->id); ?></div>
-    <?php } ?>
-  <?php if ( isset($_SESSION['user_id']) && ($object->template != 'general')) { ?>
+      <?php if ( isset($_SESSION['user_id'])) { ?>
     <?php echo get_like_button($_SESSION['user_id'], $object->id); ?>  
-  <?php } ?>
+  <?php } else {
+            echo '    <i class="fa fa-heart-o" aria-hidden="true"></i>  ';    
+            }?>
+      <?php echo  $object->like_count; ?>  
+  <div class="comment-total"><?php echo '<i class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; ?></div>
+    <?php } ?>
   <?php if (($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { 
     echo get_comments_array($object->id);     
   } ?>

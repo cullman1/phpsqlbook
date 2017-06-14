@@ -320,9 +320,9 @@ function get_like_button($user_id, $article_id) {
   $statement->setFetchMode(PDO::FETCH_OBJ); 
   $likes = $statement->fetchAll();
   if ($likes) {
-     return '<a href="/phpsqlbook/cms/unlike?user_id='.$user_id.'&article_id='.$article_id.'">Unlike this article</a>';
+      return '<a href="/phpsqlbook/cms/unlike?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart" aria-hidden="true"></i></a> ';
   } else {
-    return '<a href="/phpsqlbook/cms/like?user_id='.$user_id.'&article_id='.$article_id.'">Like this article</a>';
+      return '<a href="/phpsqlbook/cms/like?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart-o" aria-hidden="true"></i></a> ';
   }
 }
 

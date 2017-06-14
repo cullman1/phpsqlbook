@@ -5,6 +5,7 @@
  <link rel="stylesheet" type="text/css" href="/phpsqlbook/cms/css/styles.css"/>
  <link href='https://fonts.googleapis.com/css?family=Caudex:400,700|Gilda+Display'   
   rel='stylesheet' type='text/css'>
+    <script src="https://use.fontawesome.com/c59bfa691d.js"></script>
 </head>
 <body>
  <header>
@@ -15,7 +16,6 @@
     <input type="submit">
    <?php 
     if (isset($_SESSION["user_id"])) {      ?>
-  <!--  Hello   -->
    Hello <a class="link-style" href="/phpsqlbook/cms/profile?id=<?php echo $_SESSION["user_id"]; ?>"><?php echo $_SESSION["name"];?></a>&nbsp;  
       <a href="/phpsqlbook/cms/admin">Admin</a>
     <a href="/phpsqlbook/cms/logout">Logout</a>
