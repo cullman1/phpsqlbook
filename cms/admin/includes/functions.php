@@ -196,7 +196,7 @@ function get_article_list_by_author_name($seo_name) {
   $connection = $GLOBALS['connection'];
   $id_present = ( (is_numeric($id)) ? $id : FALSE);
   $query = 'SELECT article.id, article.title, article.media_id, article.published,
-      media.id as media_id, media.filepath, media.thumb, media.alt, media.mediatype
+      media.id as media_id, media.filepath, media.thumb, media.alt, media.mediatype, , article.like_count, article.comment_count
       FROM article
       LEFT JOIN media ON article.media_id = media.id
       WHERE article.seo_name=:seo_name

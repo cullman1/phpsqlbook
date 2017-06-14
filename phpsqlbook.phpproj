@@ -86,7 +86,8 @@
     <Compile Include="cms\admin\user-edit.php" />
     <Compile Include="cms\admin\user-list.php" />
     <Compile Include="cms\admin\user.php" />
-    <Compile Include="cms\article-list.php" />
+    <Compile Include="cms\article-list-old.php" />
+    <Compile Include="cms\category.php" />
     <Compile Include="cms\author.php" />
     <Compile Include="cms\forgotten-password.php" />
     <Compile Include="cms\includes\check-user.php" />
@@ -94,8 +95,8 @@
     <Compile Include="cms\admin.php" />
     <Compile Include="cms\register.php" />
     <Compile Include="cms\reset-password.php" />
-    <Compile Include="cms\templates\comments_content.php" />
     <Compile Include="cms\profile-status.php" />
+    <Compile Include="cms\templates\article_list_content.php" />
     <Compile Include="cms\unlike.php" />
     <Compile Include="cms\like.php" />
     <Compile Include="cms\login.php" />
@@ -109,8 +110,9 @@
     <Compile Include="cms\templates\login.php" />
     <Compile Include="cms\logout.php" />
     <Compile Include="cms\templates\main_content.php" />
-    <Compile Include="cms\templates\menu_content.php" />
-    <Compile Include="cms\templates\no_date_content.php" />
+    <Compile Include="cms\users\login.php" />
+    <Compile Include="cms\users\logout.php" />
+    <Compile Include="cms\users\register.php" />
     <Compile Include="code\chapter_01\index.php" />
     <Compile Include="code\chapter_01\test.php" />
     <Compile Include="code\chapter_02\example.php" />
@@ -418,7 +420,6 @@
     <Compile Include="code\chapter_11\throw.php" />
     <Compile Include="code\chapter_12_older\admin\admin-home.php" />
     <Compile Include="code\chapter_10\includes\config.php" />
-    <Compile Include="index.php" />
     <Compile Include="code\includes\validate.php" />
     <Compile Include="code\includes\config.php" />
     <Compile Include="code\includes\database_connection.php" />
@@ -611,6 +612,7 @@
     <Compile Include="pages\search.php" />
     <Compile Include="pages\sql-test.php" />
     <Compile Include="pages\test-version.php" />
+    <Compile Include="Script1.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\" />
@@ -624,6 +626,7 @@
     <Folder Include="cms\css\" />
     <Folder Include="cms\includes\" />
     <Folder Include="cms\templates\" />
+    <Folder Include="cms\users\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01\" />
     <Folder Include="code\chapter_01_old\" />

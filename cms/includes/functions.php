@@ -106,7 +106,7 @@ function get_article_count_by_category_name($name, $show='', $from='') {
 function get_article_list_by_author_name($forename, $surname, $show='', $from='') {
   $connection = $GLOBALS['connection'];
   $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, user.email
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, user.email, article.like_count, article.comment_count
       FROM article
       LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id
@@ -536,11 +536,11 @@ function get_comments_array( $article_id) {
 /* Display template sections functions */
 
 function get_HTML_template($template,$object=""){
-    switch($template) {
-        default:
+   
+
+    
           include("templates/".$template.".php");    
-          break;
-    }
+         
 }
 
 function get_menu() {
