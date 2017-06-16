@@ -97,8 +97,6 @@
     <Compile Include="cms\profile-status.php" />
     <Compile Include="cms\templates\author_list_content.php" />
     <Compile Include="cms\templates\article_list_content.php" />
-    <Compile Include="cms\unlike.php" />
-    <Compile Include="cms\like.php" />
     <Compile Include="cms\login.php" />
     <Compile Include="cms\search.php" />
     <Compile Include="cms\includes\class-lib.php" />

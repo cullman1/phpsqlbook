@@ -26,16 +26,16 @@ function get_article_by_seo_title($seo_title) {
 }
 
 function get_article_list($show='', $from='') {
-  $query = 'SELECT article.title, article.media_id,article.like_count, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, article.id, article.like_count, article.comment_count
-      FROM article
+  $query = 'SELECT  category.*, media.*, user.*,  article.*';
+  if (isset($_SESSION["user_id"])) {
+    $query .=',(select likes.user_id from likes where  likes.user_id=  ' . $_SESSION["user_id"] .'    and likes.article_id = article.id) as liked ';
+  }     
+  $query .= 'FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
       LEFT JOIN user ON article.user_id = user.id
       WHERE published <= now() and category.template != "general"
       ORDER BY article.published ASC';                 // Query
-  
-      //Get limited page of articles
       if (!empty($show)) {
         $query .= " limit " . $show . " offset " . $from;
       }
@@ -43,7 +43,6 @@ function get_article_list($show='', $from='') {
       $statement->execute();
       $statement->setFetchMode(PDO::FETCH_OBJ); 
       $article_list = $statement->fetchAll();
-
       return $article_list;
 }
 
@@ -63,9 +62,12 @@ function get_article_count() {
 
 function get_article_list_by_category_name($name, $show='', $from='') {
   $connection = $GLOBALS['connection'];
-  $query = 'SELECT article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
-       media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname,  article.id, article.like_count, article.comment_count
-      FROM article
+  $query = 'SELECT  category.*, media.*, user.*,  article.* ';
+ if (isset($_SESSION["user_id"])) {
+     $query .= ',(select likes.user_id from likes where likes.user_id= ' . 
+                $_SESSION["user_id"] .' and likes.article_id = article.id) as liked ';
+  }
+  $query .= 'FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
          LEFT JOIN user ON article.user_id = user.id
@@ -120,9 +122,12 @@ function get_article_count_by_category_name($name, $show='', $from='') {
 
 function get_article_list_by_author_name($forename, $surname, $show='', $from='') {
   $connection = $GLOBALS['connection'];
-  $query = 'SELECT article.id, article.title, article.media_id, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, user.email, article.like_count, article.comment_count
-      FROM article
+   $query = 'SELECT  category.*, media.*, user.*, article.* ';
+ if (isset($_SESSION["user_id"])) {
+     $query .= ',(select likes.user_id from likes where likes.user_id= ' . 
+                $_SESSION["user_id"] .' and likes.article_id = article.id) as liked ';
+  }
+  $query .= 'FROM article
       LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
@@ -164,9 +169,14 @@ ORDER BY article.published ASC';                 // Query
 }
 
 function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC',  $user='0') {
-  $query= "SELECT  category.*, user.* , article.* FROM article JOIN
-           user ON user.id = user_id JOIN category ON 
-      category.id= category_id where published <= now()";
+   $query = 'SELECT  category.*, user.*,  article.* ';
+ if (isset($_SESSION["user_id"])) {
+     $query .= ',(select likes.user_id from likes where likes.user_id= ' . 
+                $_SESSION["user_id"] .' and likes.article_id = article.id) as liked ';
+  }
+  $query .= 'FROM article
+JOIN           user ON user.id = user_id JOIN category ON 
+      category.id= category_id where published <= now()';
   $search_wildcards = "%". trim($search) . "%"; 
   //If search with wildcards  
   if (!empty($search)) {   
@@ -324,20 +334,11 @@ function get_likes_total($id) {
   }
 }
 
-function get_like_button($user_id, $article_id) {
-  $connection = $GLOBALS['connection'];
-  $query = 'SELECT * FROM likes
-      WHERE user_id = :user_id and article_id = :article_id'; 
-  $statement = $connection->prepare($query);
-    $statement->bindValue(':user_id', $user_id);  
-  $statement->bindValue(':article_id', $article_id);  
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_OBJ); 
-  $likes = $statement->fetchAll();
-  if ($likes) {
-      return '<a href="/phpsqlbook/cms/unlike?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart" aria-hidden="true"></i></a> ';
+function get_like_button($likes, $user_id, $article_id) {
+  if (isset($likes)) {
+     return '<a href="/phpsqlbook/cms/unlike?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart" aria-hidden="true"></i></a> ';
   } else {
-      return '<a href="/phpsqlbook/cms/like?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart-o" aria-hidden="true"></i></a> ';
+    return '<a href="/phpsqlbook/cms/like?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart-o" aria-hidden="true"></i></a> ';
   }
 }
 
@@ -355,7 +356,8 @@ function add_like_by_id($user_id, $article_id) {
     $statement = $GLOBALS['connection']->prepare($query);   
     $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
     $statement->execute();
-    $GLOBALS['connection']->commit();                                       // Commit transaction
+    $GLOBALS['connection']->commit(); 
+                                    // Commit transaction
     return TRUE;
   } catch (PDOException $error) {                                // Failed to update
     echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
@@ -378,6 +380,7 @@ function remove_like_by_id($user_id, $article_id) {
     $statement = $GLOBALS['connection']->prepare($query);   
     $statement->bindValue(':article_id', $article_id);  
     $statement->execute();
+     echo 'We were  able to update the article ' ; 
     $GLOBALS['connection']->commit();     
     return TRUE;
   } catch (PDOException $error) {                               

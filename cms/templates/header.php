@@ -24,4 +24,4 @@
    <a href="/phpsqlbook/cms/register">Register</a>
     <?php } ?> 
    </form></nav>
-</header>
+</header><div class="content-page">
