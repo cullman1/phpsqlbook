@@ -437,7 +437,7 @@ function get_comments_list( $article_id) {
     $comments_table .= '<li class="comment_reply"><img class="small_image" src="../../uploads/' . $comment->authorImage . '"/></li>'; 
     $comments_table .= '<li class="small_name"><span class="comment_name">' . $comment->author . '</span>';
     $comments_table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
-    $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li></ol>';
+    $comments_table .=  '<li class="comment_reply class="comment_reply" style="clear:both;"' . $comment->comment . '</li></ol>';
   }
   $comments_table .= "</ol></ol></div>"; 
   if ( isset($_SESSION['user_id'])) { 
@@ -549,7 +549,7 @@ function get_comments_array( $article_id) {
     if (isset($_SESSION["user_id"])) {
       $comments_table .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
     }
-    $comments_table .=  '<li class="comment_reply"><br/><br/><br/><br/>' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
+    $comments_table .=  '<li class="comment_reply" style="clear:both;">' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
   }
   $comments_table .= "</ol></ol></div>";   
   if ( isset($_SESSION['user_id'])) { 
