@@ -459,12 +459,22 @@ function get_comments_reply_form($user_name, $article_id, $toplevelparentid=0, $
   $comments_form .= '   $(this).click(function() { ';
   $comments_form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&toplevelparentid='. $toplevelparentid  . '&replyto=' . '";';
   $comments_form .= '   if (! $("#form-comment").is(":visible")) {   ';
-  $comments_form .= '    if( $("a:focus").attr("data-id")!=null) { ';
+
+  $comments_form .= '    if( $("a:focus").attr("data-id")!=null ) { ';
+       
   $comments_form .= '    $("#reply_name").html(" replying to: " + $("a:focus").attr("data-id")); } ';
-  $comments_form .= '    $("#form-comment").attr("action", act + event.target.id ); } ';
-  $comments_form .= '    $("#form-comment").appendTo("#com" + event.target.id);  ';
+
+  $comments_form .= '    $("#form-comment").attr("action", act + event.target.id );  ';
+  
+   $comments_form .= '    if ( event.target.id == "link0" ) { ';
+       $comments_form .= '    $("#reply_name").html("" );  ';
+        $comments_form .= ' } ';
+  $comments_form .= '    $("#form-comment").appendTo("#com" + event.target.id); } ';
+
+
   $comments_form .= '    $("#form-comment").toggle(); ';
-  $comments_form .= '   });   }); </script>';
+     $comments_form .= ' });   ';
+  $comments_form .= '    }); </script>';
   return $comments_form;
 }
 
@@ -543,7 +553,7 @@ function get_comments_array( $article_id) {
   }
   $comments_table .= "</ol></ol></div>";   
   if ( isset($_SESSION['user_id'])) { 
-    $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
+    $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a><span id="comlink0"></span>';
     if (isset($comment)) {
         $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->toplevelparent_id, $comment->nestinglevel, $comment->repliedto_id);
     } else {

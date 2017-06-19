@@ -302,3 +302,7 @@ legend {
     padding-left: 10px;
     padding-top: 10px;
 }
+
+.content-box {
+display:block;float:left; padding: 10px; 
+}

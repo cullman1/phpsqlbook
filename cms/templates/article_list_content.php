@@ -1,12 +1,9 @@
-<div style="display:block;float:left; padding: 10px;  ">
+<div class="content-box">
 <?php if (!isset( $object->thumb) ) {
 $object->thumb = "uploads/blank_article.png";
 } ?>
   <img src="../<?php echo $object->thumb ?>" />
- 
-
  <h3 class="heading"><a href="<?= $GLOBALS["root"] ?><?= $object->name ?>/<?= $object->seo_title ?>"><?= $object->title ?></a></h3>
-
   <?php if ( isset($_SESSION['user_id'])) { 
             echo get_like_button($object->liked, $_SESSION["user_id"], $object->id); 
         } else {
