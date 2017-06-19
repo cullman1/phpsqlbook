@@ -12,15 +12,15 @@ $forename = $name[0];
 $surname = $name[1];
 $show = (int)(filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 5);
 $from = (int)(filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
-include 'templates/header.php'; 
+include 'includes/header.php'; 
 $count = get_article_count_by_author_name($forename,$surname);
 $articlelist = get_article_list_by_author_name($forename,$surname, $show, $from);
 
 echo '<h3>Articles by: ' . $forename . ' ' . $surname . '</h3>';
 foreach($articlelist as $object) {
-    include 'templates/author_list_content.php'; 
+    include 'includes/author_list_content.php'; 
 }
 $pagination = create_pagination($count,$show,$from);
 echo $pagination;
-include 'templates/footer.php'; 
+include 'includes/footer.php'; 
 ?>

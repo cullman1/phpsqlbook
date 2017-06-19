@@ -569,7 +569,7 @@ function get_HTML_template($template,$object=""){
    
 
     
-          include("templates/".$template.".php");    
+          include("includes/".$template.".php");    
          
 }
 

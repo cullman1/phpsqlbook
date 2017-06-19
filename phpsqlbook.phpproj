@@ -95,19 +95,13 @@
     <Compile Include="cms\register.php" />
     <Compile Include="cms\reset-password.php" />
     <Compile Include="cms\profile-status.php" />
-    <Compile Include="cms\templates\author_list_content.php" />
-    <Compile Include="cms\templates\article_list_content.php" />
     <Compile Include="cms\login.php" />
     <Compile Include="cms\search.php" />
     <Compile Include="cms\includes\class-lib.php" />
     <Compile Include="cms\includes\functions.php" />
     <Compile Include="cms\article.php" />
     <Compile Include="cms\index.php" />
-    <Compile Include="cms\templates\footer.php" />
-    <Compile Include="cms\templates\header.php" />
-    <Compile Include="cms\templates\login.php" />
     <Compile Include="cms\logout.php" />
-    <Compile Include="cms\templates\main_content.php" />
     <Compile Include="cms\users\like.php" />
     <Compile Include="cms\users\login.php" />
     <Compile Include="cms\users\logout.php" />
@@ -625,7 +619,6 @@
     <Folder Include="cms\admin\uploads\" />
     <Folder Include="cms\css\" />
     <Folder Include="cms\includes\" />
-    <Folder Include="cms\templates\" />
     <Folder Include="cms\users\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01\" />

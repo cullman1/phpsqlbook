@@ -10,7 +10,7 @@ RewriteRule ^add_comment/?$ users/add_comment.php?id=$1   [QSA,L]
 RewriteRule ^about/?$    article.php?title=about    [NC,L]
 RewriteRule ^contact/?$  article.php?title=contact    [NC,L]
 RewriteRule ^search/?$ search.php       [QSA,NC,L]
-
+RewriteRule ^profile/?$ users/user.php?id=$1       [QSA,NC,L]
 RewriteRule ^author/([^/.]+)/?$  author.php?name=$1&show=$2&term=$3&to=$4 [QSA,L]
 
 RewriteRule ^[A-z0-9\-]+/([A-z0-9\-]+)/?$   article.php?title=$1     [NC,L]
