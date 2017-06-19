@@ -296,3 +296,9 @@ legend {
     text-align:left;
 
 }
+
+.paginator {
+    clear: both;
+    padding-left: 10px;
+    padding-top: 10px;
+}
