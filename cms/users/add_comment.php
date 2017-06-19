@@ -1,10 +1,10 @@
 <?php
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
-require_once('includes/check-user.php');
-require_once('includes/class-lib.php');
-require_once('includes/functions.php');
-require_once('includes/database-connection.php');
+require_once('../includes/check-user.php');
+require_once('../includes/class-lib.php');
+require_once('../includes/functions.php');
+require_once('../includes/database-connection.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $article_id = (int)(filter_input(INPUT_GET, 'article_id', FILTER_VALIDATE_INT) ? $_GET['article_id'] : '');
 $nesting_level = (int)(filter_input(INPUT_GET, 'nesting_level', FILTER_VALIDATE_INT) ? $_GET['nesting_level'] : '');
