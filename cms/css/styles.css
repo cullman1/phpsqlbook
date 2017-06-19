@@ -204,10 +204,21 @@ h3 {
 }
 
 .comment_reply {
+    clear:both;
 margin-top: 10px;
+
 margin-left: 10px;
 display: block;
 }
+
+ .comment_reply_below {
+    clear:both;
+padding-top: 8px;
+
+margin-left: 10px;
+display: block;
+}
+
 
 .down {
 margin-top: 10px;

@@ -549,7 +549,7 @@ function get_comments_array( $article_id) {
     if (isset($_SESSION["user_id"])) {
       $comments_table .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
     }
-    $comments_table .=  '<li class="comment_reply" style="clear:both;">' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
+    $comments_table .=  '<li class="comment_reply_below">' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
   }
   $comments_table .= "</ol></ol></div>";   
   if ( isset($_SESSION['user_id'])) { 
