@@ -521,27 +521,27 @@ function isLastName($name) {
 
 class Comment {
   public $id;
-    public $articleId;	// Array holding array of article summaries
-  public $userId;		// String
+  public $article_id;	// Array holding array of article summaries
+  public $user_id;		// String
   public $author; 		// String
-    public $comment;
+  public $comment;
   public $posted;
-    public $replyToId;
-  public $nestingLevel;
-   public $topLevelParentId;
+  public $repliedto_id;
   
-  function __construct ($id, $articleid, $userid, $author, $authorimage, $comment, $date, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
+  public $nestingLevel;
+  public $toplevelparent_id;
+  
+  function __construct ($id='', $articleid='', $userid=NULL, $author=NULL, $authorimage=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
     $this->id = $id;
-    $this->articleId   = $articleid;
-    $this->userId      = $userid;
+    $this->article_id   = $articleid;
+    $this->user_id      = $userid;
     $this->author      = $author;
-    $this->authorImage = ( isset($authorimage)    ? $authorimage    : 'blank.png' ); ;
+    $this->image = ( isset($authorimage)    ? $authorimage    : 'blank.png' ); 
     $this->comment     = $comment;
     $this->posted      = $date;
-    $this->replyToId   = $replyid;
-    $this->topLevelParentId = $toplevelparentid;
-    $this->nestingLevel = $nestinglevel;
-    
+    $this->repliedto_id   = $replyid;
+    $this->toplevelparent_id = $toplevelparentid;
+    $this->nestingLevel = $nestinglevel;   
   }
 
   public function add() {
@@ -551,36 +551,26 @@ class Comment {
               VALUES  (:comment,:articleid, :userid, :date, :replyid, :toplevelparentid)";
     $statement = $GLOBALS["connection"]->prepare($query);
     $statement->bindParam(':comment',$this->comment);
-    $statement->bindParam(':articleid',$this->articleId);
-    $statement->bindParam(':userid',$this->userId);
+    $statement->bindParam(':articleid',$this->article_id);
+    $statement->bindParam(':userid',$this->user_id);
     $date = date("Y-m-d H:i:s");
     $statement->bindParam(':date',$date);
-    $statement->bindParam(':replyid',$this->replyToId);
-    $statement->bindParam(':toplevelparentid',$this->topLevelParentId);
-$statement->execute();
+    $statement->bindParam(':replyid',$this->repliedto_id);
+    $statement->bindParam(':toplevelparentid',$this->toplevelparent_id);
+    $statement->execute();
    $query='UPDATE article SET comment_count = comment_count + 1
         WHERE id = :article_id';
   $statement = $GLOBALS['connection']->prepare($query);   
-  $statement->bindValue(':article_id',  $this->articleId);  // Bind value from query string   
+  $statement->bindValue(':article_id',  $this->article_id);  // Bind value from query string   
   $statement->execute();
   $GLOBALS['connection']->commit();                                       // Commit transaction
   return TRUE;
 } catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
+   echo 'We were not able to update the article ' . $error->getMessage();       
    $GLOBALS['connection']->rollback();                                    // Roll back all SQL
    return FALSE;
 }
-
-   
-
-
   } 
-
-  function update() {}
-
-  function delete(){}
-
-  function validate() {}
   }
 
 class CommentList {
@@ -589,16 +579,17 @@ class CommentList {
 
   function __construct($comment_list) {   
     $this->commentCount =0;
+
     if (!empty($comment_list)) {
-    foreach($comment_list as $comment) {
- if ($comment->repliedto_id>0) {
-            $comment->nestinglevel = 1; 
-          }      
-$this->comments[$this->commentCount] = $comment;
-      $this->commentCount++;
-   }
-   }
-  
+      foreach($comment_list as $comment) {
+
+        if ($comment->repliedto_id>0) {
+           $comment->nestinglevel = 1; 
+        }      
+        $this->comments[$this->commentCount] = $comment;
+        $this->commentCount++;
+      }
+    }
   }
 
   public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply='0', $toplevelparentid='0',  $nestinglevel='0') {

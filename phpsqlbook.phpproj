@@ -74,7 +74,6 @@
     <Compile Include="cms\admin\includes\list-galleries.php" />
     <Compile Include="cms\admin\includes\list-user.php" />
     <Compile Include="cms\admin\includes\list-media.php" />
-    <Compile Include="cms\add_comment.php" />
     <Compile Include="cms\admin\index.php" />
     <Compile Include="cms\admin\login.php" />
     <Compile Include="cms\admin\logout.php" />

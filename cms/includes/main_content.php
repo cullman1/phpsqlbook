@@ -15,6 +15,6 @@
   <?= '<i class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; ?>
     <?php } ?>
   <?php if (($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { 
-    echo get_comments_array($object->id);     
+    echo get_comments_list($object->id);     
   } ?>
 </div><br/>
