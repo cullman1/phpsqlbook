@@ -175,7 +175,7 @@ h3 {
   margin-left:10px;
 }
 
-.comment_name {
+.name {
   color:orange;
   font-family:Arial;
   font-weight:bold;
@@ -223,7 +223,7 @@ display: block;
 .down {
 margin-top: 10px;
 }
-.border-box {
+.border {
      border-top:1px solid gray !important; 
 
 }
@@ -296,7 +296,7 @@ legend {
 
 .content-page {
     padding-left:10px;
-    width:820px;
+    width:600px;
 }
 
 .comment-total {

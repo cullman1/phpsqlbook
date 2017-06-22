@@ -379,26 +379,10 @@ $statement->execute();
   }
 }
 
-function get_category_by_id($id) {
-	$connection = $GLOBALS['connection'];
-	$query = 'SELECT * FROM category WHERE id=:id';     // Query
-	$statement = $connection->prepare($query);          // Prepare
-	$statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
-	if ($statement->execute() ) {
-		$statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Category');     // Object   --- do this because of constructor having defaults (see https://www.electrictoolbox.com/php-pdo-fetch-class-gotcha/)
-		$Category = $statement->fetch();                // Fetch
-	}
-	if ($Category) {
-		return $Category;
-	} else {
-	  return FALSE;
-  }
-}
-
 function get_comments_reply_form_short($name, $article_id, $toplevelparentid=0, $nesting_level=0,  $replyto=0) {    
   $form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id  .  '" >';
   $form .= '<span id="reply_first" class="down">' . $name . '  <span id="reply_name"></span></span>';
-  $form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
+  $form .= '<label for="comment">Comment:</label>';
   $form .= ' <textarea id="comment" name="comment"></textarea><br/>';
   $form .= '  <button type="submit" >Submit Comment</button>';
   $form .= ' </form>';
@@ -435,7 +419,7 @@ function get_comments_list($id) {
   $list = new CommentList(get_comments_by_id($id));
   $table = '<div class="down"><ol class="commenterbox comment-box">';
   foreach ($list->comments as $comment) {
-    $table .=  '<ol class="border-box"><ol class="children comment-box">';
+    $table .=  '<ol class="children comment-box border">';
     $table .=  '<li class="comment_reply">';
     if (!isset( $comment->image) ) {
        $comment->image = "blank.png";
@@ -443,11 +427,11 @@ function get_comments_list($id) {
     $table .=  '<img class="thumb" src="../../uploads/' . $comment->image . '"/>';
     $table .=  '</li>'; 
     $table .=  '<li class="small_name">'; 
-    $table .=  '<span class="comment_name">' . $comment->forename . ' ' . $comment->surname . '</span>';
+    $table .=  '<span class="name">' . $comment->forename . ' ' . $comment->surname . '</span>';
     $table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
     $table .=  '<li class="comment_reply_below">' . $comment->comment . '</li></ol>';
   }
-  $table .= "</ol></ol></div>"; 
+  $table .= "</ol></div>"; 
   if (isset($_SESSION['user_id'])) { 
     $table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
     $table .= get_comments_reply_form_short($_SESSION['name'] , $id);
@@ -482,7 +466,7 @@ function get_comments_array( $article_id) {
     }   
     $comments_table .=  '">';
     $comments_table .= '<li class="comment_reply"><img class="thumb" src="../../uploads/' . $comment->image . '"/></li>'; 
-    $comments_table .= '<li class="small_name"><a class="comment_name" href="/phpsqlbook/cms/profile?id=' . $comment->user_id . '">' .  $comment->forename . ' ' . $comment->surname . '</a>';
+    $comments_table .= '<li class="small_name"><a class="name" href="/phpsqlbook/cms/profile?id=' . $comment->user_id . '">' .  $comment->forename . ' ' . $comment->surname . '</a>';
     if ($comment->nestinglevel>0) {
       $comments_table .=  '        < In reply to: ' . $previous; 
     }

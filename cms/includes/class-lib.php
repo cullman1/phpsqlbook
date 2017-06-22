@@ -575,17 +575,15 @@ class Comment {
 
 class CommentList {
   public $comments = array();// Array holding child objects
-  public $commentCount;
+  public $commentCount=0;
 
   function __construct($comment_list) {   
-    $this->commentCount =0;
-
     if (!empty($comment_list)) {
       foreach($comment_list as $comment) {
 
-        if ($comment->repliedto_id>0) {
-           $comment->nestinglevel = 1; 
-        }      
+       // if ($comment->repliedto_id>0) {
+      //     $comment->nestinglevel = 1; 
+      //  }      
         $this->comments[$this->commentCount] = $comment;
         $this->commentCount++;
       }
