@@ -1,0 +1,48 @@
+Currently the get_article_by_title() function is used to collect individual articles from the database and the get_article_list() function is used to collect a list of articles in a category.
+
+When these functions are called, if the user is logged inwe want to show whether that user liked the article or not.
+
+This is done by using a SQL query to look in the likes table to see if there is row that matches this user's id and this article's id. 
+
+To check if the user whose id is 1 likes the article whose id is 2 we could use the following query; it will return the user id if the user did like the article and NULL if the user has not liked the article:
+
+	SELECT likes.user_id FROM likes WHERE likes.user_id=1 AND likes.article_id=2
+
+Instead of running this as a separate query for each article that is being returned from the database, because it only returns a single value, this query can be run as a SQL subquery (a second query that runs within the main query).
+
+Consider the following that contains just the article title, content and publish date as individual columns.
+
+	SELECT title, content, published 
+	FROM article
+	WHERE article_SEO_title = pak_choi
+
+This returns:
+
+        title		content	    published		
+ 	Pak choi	These o...  2017-06-15  
+
+Because the subquery is returning either a single value (the user's id or NULL), it could be added on to the data returned. 
+
+        title		content	    published	liked	
+ 	Pak choi	These o...  2017-06-15  2
+
+To create the new column you use an alias with the subquery, so that it appears in the results, just like an extra column. 
+
+	SELECT title, content, published, (SELECT likes.user_id FROM likes WHERE likes.user_id=1 AND likes.article_id=2) AS liked 
+	FROM article
+	WHERE article_SEO_title = pak_choi
+
+This allows you to retrieve the article, and tell whether or not the user liked in within a single SQL query.
+
+
+This extra SQL subquery is only added to the existing query if the user is logged in. If the user is logged in there will be a value in the $_SESSION superglobal that holds the user's id. So the subquery is only added in if the user is logged in.
+
+SHOW CODE
+
+
+
+
+
+
+
+

@@ -3,8 +3,6 @@
 /* Article functions */
 
 function get_article_by_seo_title($seo_title) {
-    // This had conflicts for the id colum in article and user
-    $connection = $GLOBALS['connection'];
     $query = 'SELECT  category.*, media.*, user.*,  article.*';
   if (isset($_SESSION["user_id"])) {
     $query .=',(select likes.user_id from likes where  likes.user_id=  ' . $_SESSION["user_id"] .'    and likes.article_id = article.id) as liked ';
@@ -14,7 +12,7 @@ function get_article_by_seo_title($seo_title) {
       LEFT JOIN media ON article.media_id = media.id
       LEFT JOIN category ON article.category_id = category.id
       WHERE article.seo_title=:seo_title';           // Query
-    $statement = $connection->prepare($query);          // Prepare
+    $statement = $GLOBALS['connection']->prepare($query);          // Prepare
     $statement->bindValue(':seo_title', $seo_title);    // Bind value from query string
     if ($statement->execute() ) {
         $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
