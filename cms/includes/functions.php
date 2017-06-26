@@ -235,6 +235,25 @@ function get_article_count_by_search($search, $user='0') {
   return $count;
 }
 
+function get_article_url($article_id) {
+    $query = 'SELECT  category.*, article.* FROM article
+      LEFT JOIN user ON article.user_id = user.id
+      LEFT JOIN media ON article.media_id = media.id
+      LEFT JOIN category ON article.category_id = category.id
+      WHERE article.id=:id';           // Query
+    $statement = $GLOBALS['connection']->prepare($query);          // Prepare
+    $statement->bindValue(':id', $article_id);    // Bind value from query string
+    if ($statement->execute() ) {
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
+        $Article = $statement->fetch();
+    }
+    if ($Article) {
+        return $Article->name . '/' . $Article->seo_title;
+    } else {
+        return FALSE;
+    }
+}
+
 /* User functions */
 
 function get_user_by_id($id) {
@@ -302,12 +321,17 @@ function create_user_session($user) {
 
 /* Like functions */
 
-function get_like_button($likes, $user_id, $article_id) {
-  if (isset($likes)) {
-     return '<a href="/phpsqlbook/cms/unlike?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart" aria-hidden="true"></i></a> ';
-  } else {
-    return '<a href="/phpsqlbook/cms/like?user_id='.$user_id.'&article_id='.$article_id.'"><i class="fa fa-heart-o" aria-hidden="true"></i></a> ';
+function get_like_button($likes, $user_id, $article_id, $list='') {
+  $url='';
+  if (!empty($list)) {
+     $url .= '<a href="' . $GLOBALS["root"] . 'like?user_id=' . $user_id . '&article_id=' . $article_id            . '&likes=' . $likes .'">';
+  } 
+  if (isset($likes)) { 
+    $url .= '<i class="fa fa-heart" aria-hidden="true"></i>';
+  } else { 
+    $url .= '<i class="fa fa-heart-o" aria-hidden="true"></i>';
   }
+  return $url;
 }
 
 function add_like_by_id($user_id, $article_id) {

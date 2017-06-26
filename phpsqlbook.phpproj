@@ -92,7 +92,6 @@
     <Compile Include="cms\includes\author_list_content.php" />
     <Compile Include="cms\includes\check-user.php" />
     <Compile Include="cms\includes\database-connection.php" />
-    <Compile Include="cms\admin.php" />
     <Compile Include="cms\includes\footer.php" />
     <Compile Include="cms\includes\header.php" />
     <Compile Include="cms\includes\main_content.php" />
@@ -111,7 +110,6 @@
     <Compile Include="cms\users\login.php" />
     <Compile Include="cms\users\logout.php" />
     <Compile Include="cms\users\register.php" />
-    <Compile Include="cms\users\unlike.php" />
     <Compile Include="cms\users\user.php" />
     <Compile Include="code\chapter_01\index.php" />
     <Compile Include="code\chapter_01\test.php" />

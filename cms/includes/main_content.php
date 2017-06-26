@@ -5,11 +5,11 @@
     <a href="<?= $GLOBALS['root']; ?>author/<?= $object->forename ?>-<?= $object->surname ?>"><?= $object->forename ?> <?= $object->surname ?></a><br/><br/>
   <?php } ?>
  <?php echo $object->content ?><br/><br/>
-    <?php if ($object->template != 'general') {  ?>
-      <?php if ( isset($_SESSION['user_id'])) { ?>
-    <?php  echo get_like_button($object->liked, $_SESSION["user_id"], $object->id);  ?>  
-  <?php } else {
-            echo '    <i class="fa fa-heart-o" aria-hidden="true"></i>  ';    
+    <?php if ($object->template != 'general') { 
+            if ( isset($_SESSION['user_id'])) { 
+              echo get_like_button($object->liked, $_SESSION['user_id'], $object->id,1) . '</a>';
+            } else {
+              echo '    <i class="fa fa-heart-o" aria-hidden="true"></i>  ';    
             }?>
       <?= $object->like_count; ?>  
   <?= '<i class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; ?>
