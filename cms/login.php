@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 } 
-get_HTML_template('header');
+include 'includes/header.php'; 
 ?>
 <form class="login-form" method="post" action="login.php">
 <fieldset>
@@ -39,4 +39,4 @@ get_HTML_template('header');
   <a href="/phpsqlbook/cms/forgotten-password.php">Forgotten your password?</a> <br><br> 
   </fieldset>
 </form>
- <?php get_HTML_template('footer'); ?>
+ <?php include 'includes/footer.php';  ?>

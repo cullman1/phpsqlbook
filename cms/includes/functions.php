@@ -321,15 +321,17 @@ function create_user_session($user) {
 
 /* Like functions */
 
-function get_like_button($likes, $user_id, $article_id, $list='') {
-  $url='';
-  if (!empty($list)) {
-     $url .= '<a href="' . $GLOBALS["root"] . 'like?user_id=' . $user_id . '&article_id=' . $article_id            . '&likes=' . $likes .'">';
-  } 
-  if (isset($likes)) { 
-    $url .= '<i class="fa fa-heart" aria-hidden="true"></i>';
-  } else { 
+function get_like_button($article_id,$likes,$list='', $url='') {
+  if (!isset($likes)) {
+    if (empty($list)) {
+      $url .= '<a href="' . $GLOBALS["root"] . 'like?article_id=' . $article_id . '">';
+    } 
     $url .= '<i class="fa fa-heart-o" aria-hidden="true"></i>';
+  } else {
+    if (empty($list)) {
+      $url .= '<a href="' . $GLOBALS["root"] . 'unlike?article_id=' . $article_id . '">';
+    }
+    $url .= '<i class="fa fa-heart" aria-hidden="true"></i>';
   }
   return $url;
 }
@@ -570,17 +572,7 @@ function sort_comments_array($commentslist, $commentslist2) {
   return $commentslist2;
 }
 
-
-
-/* Display template sections functions */
-
-function get_HTML_template($template,$object=""){
-   
-
-    
-          include("includes/".$template.".php");    
-         
-}
+/* Miscellaneous functions */
 
 function get_menu() {
     $categorylist = new CategoryList(get_category_list());
@@ -628,7 +620,7 @@ function create_pagination($count, $show, $from, $search='') {
   echo "<br/>" . $result . '</div>';
 }
 
-/* Miscellaneous functions // Third party functions */
+/* Third party functions */
 
 function send_email($to, $subject, $message) {
   try {                                                      // Start a try block

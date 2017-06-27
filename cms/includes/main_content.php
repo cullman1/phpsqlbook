@@ -7,7 +7,7 @@
  <?php echo $object->content ?><br/><br/>
     <?php if ($object->template != 'general') { 
             if ( isset($_SESSION['user_id'])) { 
-              echo get_like_button($object->liked, $_SESSION['user_id'], $object->id,1) . '</a>';
+              echo get_like_button( $object->id,$object->liked) . '</a>';
             } else {
               echo '    <i class="fa fa-heart-o" aria-hidden="true"></i>  ';    
             }?>

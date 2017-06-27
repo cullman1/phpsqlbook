@@ -41,7 +41,7 @@ $error = array('id'=>'', 'title'=>'','article'=>'','template'=>'','email'=>'','p
     } 
   }
 } 
-get_HTML_template('header');
+include 'includes/header.php'; 
 ?>
 <form class="login-form" method="post" enctype="multipart/form-data" action="/phpsqlbook/cms/profile?id=<?php echo $user_id; ?>" >
 <fieldset>
@@ -73,6 +73,4 @@ get_HTML_template('header');
   <?php } ?>
   </fieldset>
 </form> 
-<?php
-get_HTML_template('footer');
-?>
+ <?= include 'includes/footer.php';  ?>

@@ -6,7 +6,7 @@
       <h3 style="text-align:left;"><u><a href="<?php echo $GLOBALS["root"]; ?><?php echo $object->name ?>/<?php echo $object->seo_title ?>"><?php echo $object->title ?></a></u>  </h3>
     <?php if ($object->template != 'general') {  ?>
       <?php if ( isset($_SESSION['user_id'])) { ?>
-    <?php echo   get_like_button($object->liked, $_SESSION["user_id"], $object->id); 
+    <?php echo   get_like_button( $object->id,$object->liked,); 
   <?php } else {
             echo '    <i class="fa fa-heart-o" aria-hidden="true"></i>  ';    
             }?>

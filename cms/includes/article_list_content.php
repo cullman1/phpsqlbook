@@ -7,7 +7,7 @@ $object->thumb = "uploads/blank_article.png";
  <?php 
     echo '<a href="' . $GLOBALS["root"] .  $object->name  . '/'. $object->seo_title . '">';
     if ( isset($_SESSION['user_id'])) { 
-      echo get_like_button($object->liked, $object->user_id, $object->id) . '</a> ';
+      echo get_like_button( $object->id,$object->liked,1) . '</a> ';
     } else {
       echo '<i class="fa fa-heart-o" aria-hidden="true"></i></a> ';
     }

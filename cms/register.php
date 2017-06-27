@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
 }
-get_HTML_template('header');
+include 'includes/header.php'; 
  ?>
 <?php if ($show_form) { ?>
 <form class="login-form" method="post" action="register.php">
@@ -53,4 +53,4 @@ get_HTML_template('header');
    </fieldset>
 </form>
 <?php } ?>
- <?= get_HTML_template('footer'); ?>
+ <?= include 'includes/footer.php';  ?>
