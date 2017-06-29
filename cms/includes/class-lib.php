@@ -527,16 +527,15 @@ class Comment {
   public $comment;
   public $posted;
   public $repliedto_id;
-  
   public $nestingLevel;
   public $toplevelparent_id;
   
-  function __construct ($id='', $articleid='', $userid=NULL, $author=NULL, $authorimage=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
+  function __construct ($id='', $articleid='', $userid=NULL, $author=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
     $this->id = $id;
     $this->article_id   = $articleid;
     $this->user_id      = $userid;
     $this->author      = $author;
-    $this->image = ( isset($authorimage)    ? $authorimage    : 'blank.png' ); 
+    $this->image = ( isset($image)    ? $image    : 'blank.png' ); 
     $this->comment     = $comment;
     $this->posted      = $date;
     $this->repliedto_id   = $replyid;

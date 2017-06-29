@@ -11,7 +11,6 @@ $object->thumb = "uploads/blank_article.png";
     } else {
       echo '<i class="fa fa-heart-o" aria-hidden="true"></i></a> ';
     }
-    echo  $object->like_count; 
-  ?>  
-<?= '<a href="' . $GLOBALS["root"] . $object->name . '/'. $object->seo_title.'"><i style="padding-left:90px;" class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; ?>
+    echo  $object->like_count;  ?>  
+<?php echo '<a href="' . $GLOBALS["root"] . $object->name . '/'. $object->seo_title.'#comments"><i class="fa fa-comment-o show" aria-hidden="true"></i> '.$object->comment_count .'</a>'; ?>
 </div>

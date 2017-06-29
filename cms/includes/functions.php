@@ -403,7 +403,7 @@ $statement->execute();
   }
 }
 
-function get_comments_reply_form_short($name, $article_id, $toplevelparentid=0, $nesting_level=0,  $replyto=0) {    
+function get_add_comments_form($name, $article_id, $toplevelparentid=0, $nesting_level=0,  $replyto=0) {    
   $form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id  .  '" >';
   $form .= '<span id="reply_first" class="down">' . $name . '  <span id="reply_name"></span></span>';
   $form .= '<label for="comment">Comment:</label>';
@@ -415,41 +415,20 @@ function get_comments_reply_form_short($name, $article_id, $toplevelparentid=0, 
   $form .= '   $(this).click(function() { ';
   $form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id  . '";';
     $form .= '   if (! $("#form-comment").is(":visible")) {   ';
-
   $form .= '    $("#form-comment").toggle(); } ';
   $form .= ' });   }); </script>';
   return $form;
 }
 
-function get_comment_total($id) {
-    $connection = $GLOBALS['connection'];
-    $query = 'SELECT article.* 
-              FROM article  
-      WHERE article.id=:id';      
-    $statement = $connection->prepare($query);        
-    $statement->bindValue(':id', $id);   
-    if ($statement->execute() ) {
-        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
-        $Article = $statement->fetch();
-    }
-    if ($Article) {
-        return $Article->comment_count;
-    } else {
-        return FALSE;
-    }
-}
-
 function get_comments_list($id) {
   $list = new CommentList(get_comments_by_id($id));
-  $table = '<div class="down"><ol class="commenterbox comment-box">';
+  $table = '<div id="comments" class="down"><ol class="commenterbox comment-box">';
   foreach ($list->comments as $comment) {
-    $table .=  '<ol class="children comment-box border">';
-    $table .=  '<li class="comment_reply">';
+    $table .=  '<ol class="children comment-box border"><li class="comment_reply">';
     if (!isset( $comment->image) ) {
        $comment->image = "blank.png";
     }
-    $table .=  '<img class="thumb" src="../../uploads/' . $comment->image . '"/>';
-    $table .=  '</li>'; 
+    $table .=  '<img class="thumb" src="../../uploads/' . $comment->image . '"/></li>';
     $table .=  '<li class="small_name">'; 
     $table .=  '<span class="name">' . $comment->forename . ' ' . $comment->surname . '</span>';
     $table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
@@ -458,7 +437,7 @@ function get_comments_list($id) {
   $table .= "</ol></div>"; 
   if (isset($_SESSION['user_id'])) { 
     $table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
-    $table .= get_comments_reply_form_short($_SESSION['name'] , $id);
+    $table .= get_add_comments_form($_SESSION['name'] , $id);
   }
   return $table;
 }

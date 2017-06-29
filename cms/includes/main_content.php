@@ -12,8 +12,8 @@
               echo '    <i class="fa fa-heart-o" aria-hidden="true"></i>  ';    
             }?>
       <?= $object->like_count; ?>  
-  <?= '<i class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; ?>
-    <?php } ?>
+  <?php echo '<i class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; 
+ } ?>
   <?php if (($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { 
     echo get_comments_list($object->id);     
   } ?>
