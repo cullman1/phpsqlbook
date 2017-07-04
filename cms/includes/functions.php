@@ -427,10 +427,10 @@ function get_comments_list($id) {
 
 function get_comments_array( $article_id) {
   $comments_list = new CommentList(get_comments_by_id($article_id));
-  $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
+  $box = '<div class="down"><ol class="commenterbox comment-box">';
   $comments_list = sort_comments_array($comments_list, array());
   foreach ($comments_list as $comment) {
-    $comments_table .= '<ol class="border-box"><ol class="children comment-box ';
+    $box .= '<ol class="border-box border"><ol class="children comment-box ';
     $previous = '';
     if (($comment->repliedto_id)!=0) {
       $commenter = get_previous_commenter_by_name($comment->repliedto_id);
@@ -441,36 +441,36 @@ function get_comments_array( $article_id) {
       if ($depth>2) { 
         $depth=2;  
       }
-      $comments_table .= ' depth-' . $depth;
+      $box .= ' depth-' . $depth;
     }   
-    $comments_table .=  '">';
-    $comments_table .= '<li class="comment_reply"><img class="thumb" src="../../uploads/' . $comment->image . '"/></li>'; 
-    $comments_table .= '<li class="small_name"><a class="name" href="/phpsqlbook/cms/profile?id=' . $comment->user_id . '">' .  $comment->forename . ' ' . $comment->surname . '</a>';
+    $box .=  '">';
+    $box .= '<li class="comment_reply"><img class="thumb" src="../../uploads/' . $comment->image . '"/></li>'; 
+    $box .= '<li class="small_name"><a class="name" href="/phpsqlbook/cms/profile?id=' . $comment->user_id . '">' .  $comment->forename . ' ' . $comment->surname . '</a>';
     if ($comment->nestinglevel>0) {
-      $comments_table .=  '        < In reply to: ' . $previous; 
+      $box .=  '        < In reply to: ' . $previous; 
     }
-    $comments_table .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
+    $box .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
     if (isset($_SESSION["user_id"])) {
-      $comments_table .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
+      $box .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
     }
-    $comments_table .=  '<li class="comment_reply_below">' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
+    $box .=  '<li class="comment_reply_below">' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
   }
-  $comments_table .= "</ol></ol></div>";   
+  $box .= "</ol></ol></div>";   
   if ( isset($_SESSION['user_id'])) { 
-    $comments_table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a><span id="comlink0"></span>';
+    $box .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a><span id="comlink0"></span>';
     if (isset($comment)) {
-        $comments_table .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->toplevelparent_id, $comment->nestinglevel, $comment->repliedto_id);
+        $box .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->toplevelparent_id, $comment->nestinglevel, $comment->repliedto_id);
     } else {
-      $comments_table .= get_comments_reply_form($_SESSION['name'] , $article_id);
+      $box .= get_comments_reply_form($_SESSION['name'] , $article_id);
     }
   }
-  return $comments_table;
+  return $box;
 }
 
 function get_comments_reply_form($name, $article_id, $toplevelparentid=0, $nesting_level=0,  $replyto=0) {    
   $form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level  . '&toplevelparentid='. $toplevelparentid  . '&replyto=' .  '" >';
   $form .= '<span id="reply_first" class="down">' . $name . '  <span id="reply_name"></span></span>';
-  $form .= '<label for="comment" style="padding-left:0px">Comment:</label>';
+  $form .= '<label for="comment">Comment:</label>';
   $form .= ' <textarea id="comment" name="comment"></textarea><br/>';
   $form .= '  <button type="submit" >Submit Comment</button>';
   $form .= ' </form>';

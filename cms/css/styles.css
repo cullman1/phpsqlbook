@@ -197,10 +197,7 @@ h3 {
     /*float: left;
     margin-left: 10px;*/
     list-style: none;
-    margin-bottom: 10px;
-      list-style-type:none;
-                  
- 
+    margin-bottom: 10px; 
 }
 
 .comment_reply {
@@ -253,7 +250,7 @@ margin-top: 10px;
 label {
 display:block;
 position:relative;
-padding-left:10px; /* adjust if necessary */
+padding-left:0px; /* adjust if necessary */
 padding-top:20px;
 }
 label > span {
