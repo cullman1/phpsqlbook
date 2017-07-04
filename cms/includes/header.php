@@ -16,7 +16,7 @@
     <input type="submit">
    <?php 
     if (isset($_SESSION["user_id"])) {      ?>
-   Hello <a class="link-style" href="/phpsqlbook/cms/profile?id=<?php echo $_SESSION["user_id"]; ?>"><?php echo $_SESSION["name"];?></a>&nbsp;  
+    <a class="link-style" href="/phpsqlbook/cms/profile?id=<?php echo $_SESSION["user_id"]; ?>"><?php echo $_SESSION["name"];?></a>&nbsp;  
       <a href="/phpsqlbook/cms/admin">Admin</a>
     <a href="/phpsqlbook/cms/logout">Logout</a>
    <?php } else {    ?>             

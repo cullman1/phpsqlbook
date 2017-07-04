@@ -1,7 +1,5 @@
 <?php
 
-//require_once('includes/functions.php');
-
 class ArticleSummary {
   public  $id;
  public  $title;
@@ -526,6 +524,7 @@ class Comment {
   public $author; 		// String
   public $comment;
   public $posted;
+  public $image;
   public $repliedto_id;
   public $nestingLevel;
   public $toplevelparent_id;
@@ -579,7 +578,9 @@ class CommentList {
   function __construct($comment_list) {   
     if (!empty($comment_list)) {
       foreach($comment_list as $comment) {
-
+        if (!isset( $comment->image) ) {
+       $comment->image = "blank.png";
+    }
        // if ($comment->repliedto_id>0) {
       //     $comment->nestinglevel = 1; 
       //  }      
@@ -589,9 +590,9 @@ class CommentList {
     }
   }
 
-  public function add($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply='0', $toplevelparentid='0',  $nestinglevel='0') {
+  public function add($id, $articleid, $userid, $author, $image, $comment, $posted, $reply='0', $toplevelparentid='0',  $nestinglevel='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $authorimage, $comment, $posted, $reply,  $toplevelparentid, $nestinglevel);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $image, $comment, $posted, $reply,  $toplevelparentid, $nestinglevel);
     if ($userid !='') { 
       $this->commentCount++; 
     }

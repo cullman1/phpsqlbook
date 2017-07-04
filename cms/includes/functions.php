@@ -1,6 +1,6 @@
 <?php
 
-/* Article functions */
+/* Article functions (10) */
 
 function get_article_by_seo_title($seo_title) {
     $query = 'SELECT  category.*, media.*, user.*,  article.*';
@@ -48,9 +48,6 @@ function get_article_list($show='', $from='') {
 
 function get_article_count() {
   $query = 'SELECT count(*) from article
-      LEFT JOIN category ON article.category_id = category.id
-      LEFT JOIN media ON article.media_id = media.id
-      LEFT JOIN user ON article.user_id = user.id
       WHERE published <= now()
       ORDER BY article.published ASC';                 // Query
       $statement = $GLOBALS['connection']->prepare($query);
@@ -70,12 +67,10 @@ function get_article_list_by_category_name($name, $show='', $from='') {
   $query .= 'FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
-         LEFT JOIN user ON article.user_id = user.id
+      LEFT JOIN user ON article.user_id = user.id
       WHERE published <= now()   
       AND category.name=:name 
-      ORDER BY article.published ASC';                 // Query
-
- //Get limited page of articles
+      ORDER BY article.published ASC';            
   if (!empty($show)) {
     $query .= " limit " . $show . " offset " . $from;
   }
@@ -92,8 +87,6 @@ function get_article_count_by_category_name($name, $show='', $from='') {
   $query = 'SELECT count(*)
       FROM article
       LEFT JOIN category ON article.category_id = category.id
-      LEFT JOIN media ON article.media_id = media.id
-         LEFT JOIN user ON article.user_id = user.id
       WHERE published <= now()   
       AND category.name=:name 
       ORDER BY article.published ASC';                 // Query
@@ -107,26 +100,23 @@ function get_article_count_by_category_name($name, $show='', $from='') {
 
 function get_article_list_by_author_name($forename, $surname, $show='', $from='') {
   $connection = $GLOBALS['connection'];
-   $query = 'SELECT  category.*, media.*, user.*, article.* ';
- if (isset($_SESSION["user_id"])) {
+  $query = 'SELECT  category.*, media.*, user.*, article.* ';
+  if (isset($_SESSION["user_id"])) {
      $query .= ',(select likes.user_id from likes where likes.user_id= ' . 
                 $_SESSION["user_id"] .' and likes.article_id = article.id) as liked ';
   }
   $query .= 'FROM article
-      LEFT JOIN user ON article.user_id = user.id
-            LEFT JOIN category ON article.category_id = category.id
-      LEFT JOIN media ON article.media_id = media.id
-      WHERE published <= now() 
-        AND user.forename=:forename 
-  AND user.surname=:surname 
-ORDER BY article.published ASC';                 // Query
- //Get limited page of articles
+      JOIN user ON article.user_id = user.id
+      JOIN category ON article.category_id = category.id
+      JOIN media ON article.media_id = media.id
+      WHERE published <= now()  AND user.forename=:forename 
+      AND user.surname=:surname ORDER BY article.published ASC';                 
   if (!empty($show)) {
     $query .= " limit " . $show . " offset " . $from;
   }
   $statement = $connection->prepare($query);
-  $statement->bindValue(':forename', $forename);  // Bind value from query string
-    $statement->bindValue(':surname', $surname);  // Bind value from query string
+  $statement->bindValue(':forename', $forename);  
+  $statement->bindValue(':surname', $surname); 
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
   $article_list = $statement->fetchAll();
@@ -135,18 +125,13 @@ ORDER BY article.published ASC';                 // Query
 
 function get_article_count_by_author_name($forename, $surname, $show='', $from='') {
   $connection = $GLOBALS['connection'];
-  $query = 'SELECT count(*) 
-      FROM article
+  $query = 'SELECT count(*) FROM article
       LEFT JOIN user ON article.user_id = user.id
-            LEFT JOIN category ON article.category_id = category.id
-      LEFT JOIN media ON article.media_id = media.id
-      WHERE published <= now() 
-        AND user.forename=:forename 
-  AND user.surname=:surname 
-ORDER BY article.published ASC';                 // Query
+      WHERE published <= now() AND user.forename=:forename 
+     AND user.surname=:surname  ORDER BY article.published ASC';               
   $statement = $connection->prepare($query);
-  $statement->bindValue(':forename', $forename);  // Bind value from query string
-    $statement->bindValue(':surname', $surname);  // Bind value from query string
+  $statement->bindValue(':forename', $forename);  
+  $statement->bindValue(':surname', $surname); 
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
   $count = $statement->fetchColumn();
@@ -160,8 +145,8 @@ function get_articles_by_search($search, $show='', $from='', $sort='', $dir='ASC
                 $_SESSION["user_id"] .' and likes.article_id = article.id) as liked ';
   }
   $query .= 'FROM article
-JOIN           user ON user.id = user_id JOIN category ON 
-      category.id= category_id where published <= now()';
+             JOIN user ON user.id = user_id 
+             JOIN category ON category.id= category_id where published <= now()';
   $search_wildcards = "%". trim($search) . "%"; 
   //If search with wildcards  
   if (!empty($search)) {   
@@ -224,8 +209,6 @@ function get_article_count_by_search($search, $user='0') {
   if ($user > 0) {          
     $statement->bindParam(":id", $user);    
   }
-
-
   if (!empty($search)) { 
     $statement->bindParam(":search", $search_wildcards);
   }
@@ -248,13 +231,14 @@ function get_article_url($article_id) {
         $Article = $statement->fetch();
     }
     if ($Article) {
-        return $Article->name . '/' . $Article->seo_title;
+    return FALSE;
+      //  return $Article->name . '/' . $Article->seo_title;
     } else {
         return FALSE;
     }
 }
 
-/* User functions */
+/* User functions (6)  */
 
 function get_user_by_id($id) {
 	$connection = $GLOBALS['connection'];
@@ -319,7 +303,7 @@ function create_user_session($user) {
   $_SESSION['user_id'] = $user->id;
 }
 
-/* Like functions */
+/* Like functions (3) */
 
 function get_like_button($article_id,$likes,$list='', $url='') {
   if (!isset($likes)) {
@@ -384,7 +368,7 @@ function remove_like_by_id($user_id, $article_id) {
   }
 }
 
-/* Comments functions */
+/* Comments functions (3) */
 
 function get_comments_by_id($id) {
   $query="SELECT  user.*, comments.* FROM comments 
@@ -425,9 +409,6 @@ function get_comments_list($id) {
   $table = '<div id="comments" class="down"><ol class="commenterbox comment-box">';
   foreach ($list->comments as $comment) {
     $table .=  '<ol class="children comment-box border"><li class="comment_reply">';
-    if (!isset( $comment->image) ) {
-       $comment->image = "blank.png";
-    }
     $table .=  '<img class="thumb" src="../../uploads/' . $comment->image . '"/></li>';
     $table .=  '<li class="small_name">'; 
     $table .=  '<span class="name">' . $comment->forename . ' ' . $comment->surname . '</span>';
@@ -442,20 +423,15 @@ function get_comments_list($id) {
   return $table;
 }
 
-/* Nested comments */
+/* Nested comments (4) */
 
 function get_comments_array( $article_id) {
-  $commentslist = new CommentList(get_comments_by_id($article_id));
-  var_dump($commentslist);
+  $comments_list = new CommentList(get_comments_by_id($article_id));
   $comments_table = '<div class="down"><ol class="commenterbox comment-box">';
-  $commentslist2 = array();
-  $commentslist2 = sort_comments_array($commentslist, $commentslist2);
-  foreach ($commentslist2 as $comment) {
+  $comments_list = sort_comments_array($comments_list, array());
+  foreach ($comments_list as $comment) {
     $comments_table .= '<ol class="border-box"><ol class="children comment-box ';
     $previous = '';
-    if (!isset( $comment->image) ) {
-       $comment->image = "blank.png";
-    }
     if (($comment->repliedto_id)!=0) {
       $commenter = get_previous_commenter_by_name($comment->repliedto_id);
       $previous = $commenter->forename . ' ' . $commenter->surname;
@@ -530,28 +506,28 @@ function get_previous_commenter_by_name($id) {
 	} else {
 	    return FALSE;
     }
-}
+}  
 
-function sort_comments_array($commentslist, $commentslist2) {
- foreach ($commentslist->comments as $comment1) {
+function sort_comments_array($old_list, $new_list) {
+ foreach ($old_list->comments as $comment1) {
     $comment1->nestinglevel = 0;
     if ($comment1->repliedto_id > 0) {
       $comment1->nestinglevel = 1;
     }
    if ($comment1->toplevelparent_id == 0) {
-    array_push($commentslist2, $comment1);
+    array_push($new_list, $comment1);
    }
-   array_reverse($commentslist->comments);
-   foreach ($commentslist->comments as $comment2) {
+   array_reverse($old_list->comments);
+   foreach ($old_list->comments as $comment2) {
      if ($comment2->toplevelparent_id == $comment1->id) {
-       array_push($commentslist2, $comment2);
+       array_push($new_list, $comment2);
      }
     }
   }
-  return $commentslist2;
+  return $new_list;
 }
 
-/* Miscellaneous functions */
+/* Miscellaneous functions (4) */
 
 function get_menu() {
     $categorylist = new CategoryList(get_category_list());
@@ -599,7 +575,7 @@ function create_pagination($count, $show, $from, $search='') {
   echo "<br/>" . $result . '</div>';
 }
 
-/* Third party functions */
+/* Third party functions (2) */
 
 function send_email($to, $subject, $message) {
   try {                                                      // Start a try block

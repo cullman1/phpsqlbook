@@ -206,7 +206,6 @@ h3 {
 .comment_reply {
     clear:both;
 margin-top: 10px;
-
 margin-left: 10px;
 display: block;
 }
@@ -235,14 +234,13 @@ margin-top: 10px;
         margin-left: 0;
     }
 
-   .comment-box .depth-1  {
-                       
-                            margin-left: 1.5rem !important;   
-        }
+.comment-box .depth-1  {
+  margin-left: 1.5rem !important;   
+}
 
-      .comment-box .depth-2  {
-           margin-left: 1.5rem !important;   
-        }
+.comment-box .depth-2  {
+  margin-left: 1.5rem !important;   
+}
 
 
 
@@ -255,7 +253,7 @@ margin-top: 10px;
 label {
 display:block;
 position:relative;
-padding-left:120px; /* adjust if necessary */
+padding-left:10px; /* adjust if necessary */
 padding-top:20px;
 }
 label > span {
@@ -296,7 +294,7 @@ legend {
 
 .content-page {
     padding-left:10px;
-    width:600px;
+    width:820px;
 }
 
 .comment-total {
@@ -322,4 +320,9 @@ display:block;float:left; padding: 10px;
 
 padding-left:90px;
 
+}
+
+link-form {
+    font-weight:bold;
+  margin-left:10px;
 }

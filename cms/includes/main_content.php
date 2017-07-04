@@ -15,6 +15,9 @@
   <?php echo '<i class="fa fa-comment-o" aria-hidden="true"></i> '.$object->comment_count; 
  } ?>
   <?php if (($object->template != 'general')  &&  (basename($_SERVER['PHP_SELF'])=="article.php")) { 
-    echo get_comments_list($object->id);     
+    //Nested comments list
+    echo get_comments_array($object->id);    
+    //Date ordered list
+    //echo get_comments_list($object->id);  
   } ?>
 </div><br/>
