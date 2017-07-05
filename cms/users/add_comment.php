@@ -17,11 +17,9 @@ if (!empty($comment)) {
     if ($toplevelparentid==0 && $reply_to !=0 ) {
         $toplevelparentid = $reply_to;
     }
-
- $comment = new Comment(0, $article_id, $user->id, $user->forename . ' ' . $user->surname, $user->image, $comment , date("Y-m-d H:i:s"),  $reply_to, $toplevelparentid, $nesting_level);
+ $comment = new Comment(0, $article_id, $user->id, $user->forename, $user->surname, $user->image, $comment , date("Y-m-d H:i:s"),  $reply_to, $toplevelparentid, $nesting_level);
  if ($comment->add()) {
- 
- header('Location: '.$_SERVER['HTTP_REFERER']);
+ header('Location: '.$GLOBALS['root'] .  get_article_url($article_id));
  }
 }
 

@@ -521,7 +521,8 @@ class Comment {
   public $id;
   public $article_id;	// Array holding array of article summaries
   public $user_id;		// String
-  public $author; 		// String
+  public $forename; 		// String
+  public $surname;
   public $comment;
   public $posted;
   public $image;
@@ -529,12 +530,13 @@ class Comment {
   public $nestingLevel;
   public $toplevelparent_id;
   
-  function __construct ($id='', $articleid='', $userid=NULL, $author=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
+  function __construct ($id='', $articleid='', $userid=NULL, $forename=NULL,$surname=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
     $this->id = $id;
     $this->article_id   = $articleid;
     $this->user_id      = $userid;
-    $this->author      = $author;
-    $this->image = ( isset($image)    ? $image    : 'blank.png' ); 
+    $this->forename      = $forename;
+    $this->surname      = $surname;
+    $this->image = $image; 
     $this->comment     = $comment;
     $this->posted      = $date;
     $this->repliedto_id   = $replyid;
@@ -564,7 +566,7 @@ class Comment {
   $GLOBALS['connection']->commit();                                       // Commit transaction
   return TRUE;
 } catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to update the article ' . $error->getMessage();       
+   echo 'We were not able to add the comment ' . $error->getMessage();       
    $GLOBALS['connection']->rollback();                                    // Roll back all SQL
    return FALSE;
 }
@@ -578,26 +580,47 @@ class CommentList {
   function __construct($comment_list) {   
     if (!empty($comment_list)) {
       foreach($comment_list as $comment) {
-        if (!isset( $comment->image) ) {
-       $comment->image = "blank.png";
-    }
-       // if ($comment->repliedto_id>0) {
-      //     $comment->nestinglevel = 1; 
-      //  }      
+        if (empty( $comment->image) ) {
+          $comment->image = "blank.png";
+        }    
         $this->comments[$this->commentCount] = $comment;
         $this->commentCount++;
       }
+      $this->comments = $this->sort($this->comments);
     }
   }
 
-  public function add($id, $articleid, $userid, $author, $image, $comment, $posted, $reply='0', $toplevelparentid='0',  $nestinglevel='0') {
+  public function add($id, $articleid, $userid, $forename, $surname, $image, $comment, $posted, $reply='0', $toplevelparentid='0',  $nestinglevel='0') {
     $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $author, $image, $comment, $posted, $reply,  $toplevelparentid, $nestinglevel);
+    $this->comments[$count] = new Comment($id, $articleid, $userid, $forename, $surname,$image, $comment, $posted, $reply,  $toplevelparentid, $nestinglevel);
     if ($userid !='') { 
       $this->commentCount++; 
     }
     return $this;
   }
+
+  function sort($old_list) {
+    $new_list = array();
+    $reverse_list = array_reverse($old_list);
+    foreach ($old_list as $comment1) {
+      $comment1->nestinglevel = 0;
+      if ($comment1->repliedto_id > 0) {
+        $comment1->nestinglevel = 1;
+      }
+      if ($comment1->toplevelparent_id == 0) {
+        array_push($new_list, $comment1);
+      }
+      foreach ($reverse_list as $comment2) {
+        if ($comment2->toplevelparent_id == $comment1->id) {
+          array_push($new_list, $comment2);
+        }
+      }
+    }
+    return $new_list;
+  }
+
+  //End of object
+
 }
 
 ?>

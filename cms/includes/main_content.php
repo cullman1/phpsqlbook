@@ -18,6 +18,6 @@
     //Nested comments list
     echo get_comments_array($object->id);    
     //Date ordered list
-    //echo get_comments_list($object->id);  
+   // echo get_comments_list($object->id);  
   } ?>
 </div><br/>

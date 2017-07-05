@@ -3,7 +3,7 @@
 /* Article functions (10) */
 
 function get_article_by_seo_title($seo_title) {
-    $query = 'SELECT  category.*, media.*, user.*,  article.*';
+    $query = 'SELECT   category.*, media.*, user.id as user_id, user.forename, user.surname, user.email,article.* ';
   if (isset($_SESSION["user_id"])) {
     $query .=',(select likes.user_id from likes where  likes.user_id=  ' . $_SESSION["user_id"] .'    and likes.article_id = article.id) as liked ';
   }     
@@ -371,7 +371,7 @@ function remove_like_by_id($user_id, $article_id) {
 /* Comments functions (3) */
 
 function get_comments_by_id($id) {
-  $query="SELECT  user.*, comments.* FROM comments 
+  $query="SELECT  user.id, user.forename, user.surname, user.image, comments.* FROM comments 
           JOIN user ON comments.user_id = user.id   
           WHERE article_id = :id 
           ORDER BY comments.id ASC";  
@@ -428,8 +428,7 @@ function get_comments_list($id) {
 function get_comments_array( $article_id) {
   $comments_list = new CommentList(get_comments_by_id($article_id));
   $box = '<div class="down"><ol class="commenterbox comment-box">';
-  $comments_list = sort_comments_array($comments_list, array());
-  foreach ($comments_list as $comment) {
+  foreach ($comments_list->comments as $comment) {
     $box .= '<ol class="border-box border"><ol class="children comment-box ';
     $previous = '';
     if (($comment->repliedto_id)!=0) {
@@ -468,7 +467,7 @@ function get_comments_array( $article_id) {
 }
 
 function get_comments_reply_form($name, $article_id, $toplevelparentid=0, $nesting_level=0,  $replyto=0) {    
-  $form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level  . '&toplevelparentid='. $toplevelparentid  . '&replyto=' .  '" >';
+  $form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level  . '&toplevelparentid='. $toplevelparentid  . '&replyto=' . $replyto. '" >';
   $form .= '<span id="reply_first" class="down">' . $name . '  <span id="reply_name"></span></span>';
   $form .= '<label for="comment">Comment:</label>';
   $form .= ' <textarea id="comment" name="comment"></textarea><br/>';
@@ -477,7 +476,7 @@ function get_comments_reply_form($name, $article_id, $toplevelparentid=0, $nesti
   $form .= ' <script>';
   $form .= '  $(".link-form").each(function() { ';
   $form .= '   $(this).click(function() { ';
-  $form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&toplevelparentid='. $toplevelparentid  . '&replyto=' . '";';
+  $form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&toplevelparentid='. $toplevelparentid  . '&replyto=' .$replyto .'";';
   $form .= '   if (! $("#form-comment").is(":visible")) {   ';
   $form .= '    if( $("a:focus").attr("data-id")!=null ) { ';
   $form .= '    $("#reply_name").html(" replying to: " + $("a:focus").attr("data-id")); } ';
@@ -507,25 +506,6 @@ function get_previous_commenter_by_name($id) {
 	    return FALSE;
     }
 }  
-
-function sort_comments_array($old_list, $new_list) {
- foreach ($old_list->comments as $comment1) {
-    $comment1->nestinglevel = 0;
-    if ($comment1->repliedto_id > 0) {
-      $comment1->nestinglevel = 1;
-    }
-   if ($comment1->toplevelparent_id == 0) {
-    array_push($new_list, $comment1);
-   }
-   array_reverse($old_list->comments);
-   foreach ($old_list->comments as $comment2) {
-     if ($comment2->toplevelparent_id == $comment1->id) {
-       array_push($new_list, $comment2);
-     }
-    }
-  }
-  return $new_list;
-}
 
 /* Miscellaneous functions (4) */
 
