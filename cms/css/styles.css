@@ -254,7 +254,7 @@ display: block;
 }
 
 
-.down {
+.comments-list {
 margin-top: 10px;
 }
 .border {
@@ -269,7 +269,7 @@ margin-top: 10px;
         margin-left: 0;
     }
 
- .down .depth-1  {
+.comments-list .depth-1  {
   margin-left: 1.5rem !important;   
 }
 

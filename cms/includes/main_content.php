@@ -16,7 +16,7 @@
 <?php } ?>
   
 <!-- Changed //--> 
-<div id="comments" class="down">
+<div id="comments" class="comments-list">
   <?php
     $comments = get_nested_comments_by_article_id($Article->id);
    if ($comments) {

@@ -231,8 +231,8 @@ function get_article_url($article_id) {
         $Article = $statement->fetch();
     }
     if ($Article) {
-    return FALSE;
-      //  return $Article->name . '/' . $Article->seo_title;
+    //return FALSE;
+        return $Article->name . '/' . $Article->seo_title;
     } else {
         return FALSE;
     }
@@ -358,7 +358,6 @@ function remove_like_by_id($user_id, $article_id) {
     $statement = $GLOBALS['connection']->prepare($query);   
     $statement->bindValue(':article_id', $article_id);  
     $statement->execute();
-     echo 'We were  able to update the article ' ; 
     $GLOBALS['connection']->commit();     
     return TRUE;
   } catch (PDOException $error) {                               
