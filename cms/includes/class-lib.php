@@ -527,10 +527,9 @@ class Comment {
   public $posted;
   public $image;
   public $repliedto_id;
-  public $nestingLevel;
   public $toplevelparent_id;
   
-  function __construct ($id='', $articleid='', $userid=NULL, $forename=NULL,$surname=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0, $nestinglevel=0) {
+  function __construct ($id='', $articleid='', $userid=NULL, $forename=NULL,$surname=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0) {
     $this->id = $id;
     $this->article_id   = $articleid;
     $this->user_id      = $userid;
@@ -541,7 +540,6 @@ class Comment {
     $this->posted      = $date;
     $this->repliedto_id   = $replyid;
     $this->toplevelparent_id = $toplevelparentid;
-    $this->nestingLevel = $nestinglevel;   
   }
 
   public function add() {
@@ -573,54 +571,6 @@ class Comment {
   } 
   }
 
-class CommentList {
-  public $comments = array();// Array holding child objects
-  public $commentCount=0;
 
-  function __construct($comment_list) {   
-    if (!empty($comment_list)) {
-      foreach($comment_list as $comment) {
-        if (empty( $comment->image) ) {
-          $comment->image = "blank.png";
-        }    
-        $this->comments[$this->commentCount] = $comment;
-        $this->commentCount++;
-      }
-      $this->comments = $this->sort($this->comments);
-    }
-  }
-
-  public function add($id, $articleid, $userid, $forename, $surname, $image, $comment, $posted, $reply='0', $toplevelparentid='0',  $nestinglevel='0') {
-    $count = sizeof($this->comments);
-    $this->comments[$count] = new Comment($id, $articleid, $userid, $forename, $surname,$image, $comment, $posted, $reply,  $toplevelparentid, $nestinglevel);
-    if ($userid !='') { 
-      $this->commentCount++; 
-    }
-    return $this;
-  }
-
-  function sort($old_list) {
-    $new_list = array();
-    $reverse_list = array_reverse($old_list);
-    foreach ($old_list as $comment1) {
-      $comment1->nestinglevel = 0;
-      if ($comment1->repliedto_id > 0) {
-        $comment1->nestinglevel = 1;
-      }
-      if ($comment1->toplevelparent_id == 0) {
-        array_push($new_list, $comment1);
-      }
-      foreach ($reverse_list as $comment2) {
-        if ($comment2->toplevelparent_id == $comment1->id) {
-          array_push($new_list, $comment2);
-        }
-      }
-    }
-    return $new_list;
-  }
-
-  //End of object
-
-}
 
 ?>

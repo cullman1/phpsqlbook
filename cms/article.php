@@ -8,7 +8,7 @@ require_once('includes/database-connection.php');
 $GLOBALS['root'] = "/phpsqlbook/cms/";
 $title = ( isset($_GET['title']) ? $_GET['title'] : '' ); 
 include 'includes/header.php'; 
-$object = get_article_by_seo_title($title);
+$Article = get_article_by_seo_title($title);
 include 'includes/main_content.php';  
 include 'includes/footer.php'; 
 ?>

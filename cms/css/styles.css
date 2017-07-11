@@ -170,17 +170,55 @@ h3 {
     left:10px;
 }
 
-.bold {
-  font-weight:bold;
-  margin-left:10px;
+.link-form {
+      font-weight: bold;
+    margin-left: 87px;
+    margin-top: -30px;
+    float: left;
+    clear: both;
+   
+}
+.add-link {
+    margin-left:0px;
 }
 
-.name {
+#form-comment {
+    margin-top:10px;
+margin-left:10px;
+}
+
+#comment {
+    width:300px;
+    height:70px;
+}
+
+.user_name {
   color:orange;
   font-family:Arial;
   font-weight:bold;
+      margin-top: 10px;
+    margin-left: 5px;
+    float: left;
 }
 
+.comment_divider {
+    color: #e7e7e7;
+        background-color: #e7e7e7;
+    background: rgba(239,239,239,1);
+}
+
+.time_elapsed {
+     color:gray;
+     font-family: 'Caudex', serif;
+      font-weight:lighter;
+ font-style:italic;
+}
+
+.reply_to {
+    color: gray;
+     font-family: 'Caudex', serif;
+      font-weight:lighter;
+}
 .thumb {
     float:left;
     height: 50px;
@@ -231,7 +269,7 @@ margin-top: 10px;
         margin-left: 0;
     }
 
-.comment-box .depth-1  {
+ .down .depth-1  {
   margin-left: 1.5rem !important;   
 }
 
@@ -239,7 +277,63 @@ margin-top: 10px;
   margin-left: 1.5rem !important;   
 }
 
+object {
+    position: relative;
+    float: left;
+    height: 50px;
+    width: 50px;
+    border: 1px solid gray;
+    padding: 10px 10px 10px 10px;
 
+}
+object::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+     height: 100%;
+    width: 100%;
+    background: red url('http://test1.phpandmysqlbook.com/phpsqlbook/uploads/blank.png');
+}
+
+img.user_thumb {
+    position:relative;
+    height: 50px;
+    width: 50px;
+    border: 1px solid gray;
+    padding: 10px 10px 10px 10px;
+      position: relative;
+    float: left;
+}
+
+img.user_thumb:before {  
+content: ' ';
+  left: -10px;
+  top:-13px;
+      height:0px;
+  width:0px;
+}
+
+img.user_thumb:after {  
+content: url('http://test1.phpandmysqlbook.com/phpsqlbook/uploads/blank.jpg');
+transform: scale(.555);
+
+      height:52px;
+  width:54px;
+  position:relative;
+  left: -12px;
+  top:-67px;
+  display:inline-block;
+
+}
+
+
+
+
+
+
+
+      
 
 .highlight {
     text-decoration: underline;
@@ -317,9 +411,4 @@ display:block;float:left; padding: 10px;
 
 padding-left:90px;
 
-}
-
-link-form {
-    font-weight:bold;
-  margin-left:10px;
 }

@@ -370,11 +370,34 @@ function remove_like_by_id($user_id, $article_id) {
 
 /* Comments functions (3) */
 
-function get_comments_by_id($id) {
+function get_comments_by_article_id($id) {
   $query="SELECT  user.id, user.forename, user.surname, user.image, comments.* FROM comments 
           JOIN user ON comments.user_id = user.id   
           WHERE article_id = :id 
-          ORDER BY comments.id ASC";  
+          ORDER BY posted ASC";  
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindValue(':id', $id, PDO::PARAM_INT);      
+$statement->execute();
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');     // Object
+    $commentslist = $statement->fetchAll();
+  if ($commentslist) {
+    return $commentslist;
+  } else {
+    return FALSE; 
+  }
+}
+
+function get_nested_comments_by_article_id($id) {
+  $query="SELECT  user.id, user.forename, user.surname, user.image, comments.id, comments.article_id, comments.user_id, comments.posted, comments.comment,
+ comments.toplevelparent_id, comments.repliedto_id, comments.repliedto_id as c1,  (SELECT  user.forename FROM comments 
+         JOIN user ON comments.user_id = user.id   
+            WHERE comments.id = c1 ) as commenterfirst,  (SELECT  user.surname FROM comments 
+                  JOIN user ON comments.user_id = user.id  
+            WHERE comments.id = c1 ) as commenterlast 
+FROM comments 
+JOIN user ON comments.user_id = user.id   
+WHERE article_id = :id 
+ORDER BY posted ASC";  
   $statement = $GLOBALS['connection']->prepare($query);
   $statement->bindValue(':id', $id, PDO::PARAM_INT);      
 $statement->execute();
@@ -405,7 +428,7 @@ function get_add_comments_form($name, $article_id, $toplevelparentid=0, $nesting
 }
 
 function get_comments_list($id) {
-  $list = new CommentList(get_comments_by_id($id));
+  $list = new CommentList(get_comments_by_article_id($id));
   $table = '<div id="comments" class="down"><ol class="commenterbox comment-box">';
   foreach ($list->comments as $comment) {
     $table .=  '<ol class="children comment-box border"><li class="comment_reply">';
@@ -426,8 +449,8 @@ function get_comments_list($id) {
 /* Nested comments (4) */
 
 function get_comments_array( $article_id) {
-  $comments_list = new CommentList(get_comments_by_id($article_id));
-  $box = '<div class="down"><ol class="commenterbox comment-box">';
+  $comments_list = new CommentList(get_comments_by_article_id($article_id));
+  $box = '<div id="comments" class="down"><ol class="commenterbox comment-box">';
   foreach ($comments_list->comments as $comment) {
     $box .= '<ol class="border-box border"><ol class="children comment-box ';
     $previous = '';
@@ -506,6 +529,27 @@ function get_previous_commenter_by_name($id) {
 	    return FALSE;
     }
 }  
+
+function sort_comments($old_list) {
+    $new_list = array();
+    $reverse_list = array_reverse($old_list);
+    foreach ($reverse_list as $comment1) {
+      $comment1->nestinglevel = 0;
+      if ($comment1->repliedto_id > 0) {
+        $comment1->nestinglevel = 1;
+      }
+      if ($comment1->toplevelparent_id == 0) {
+        array_push($new_list, $comment1);
+      }
+      foreach ($old_list as $comment2) {
+        if ($comment2->toplevelparent_id == $comment1->id) {
+          array_push($new_list, $comment2);
+        }
+      }
+    }
+    return $new_list;
+  }
+
 
 /* Miscellaneous functions (4) */
 
@@ -586,11 +630,12 @@ function send_email($to, $subject, $message) {
   return TRUE;                                         // Return TRUE because it sent
 }
 
-function time_elapsed_string($datetime, $full = false) {
-    $now = new DateTime;
-    $ago = new DateTime($datetime);
-    $diff = $now->diff($ago);
+function time_elapsed($datetime) {
 
+    
+    $now = new DateTime;
+    $old_time = new DateTime(date("F jS Y g:i a", strtotime($datetime)));
+    $diff = $now->diff($old_time);
     $diff->w = floor($diff->d / 7);
     $diff->d -= $diff->w * 7;
 
@@ -610,8 +655,7 @@ function time_elapsed_string($datetime, $full = false) {
             unset($string[$k]);
         }
     }
-
-    if (!$full) $string = array_slice($string, 0, 1);
+    $string = array_slice($string, 0, 1);
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 
