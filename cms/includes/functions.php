@@ -533,10 +533,6 @@ function sort_comments($old_list) {
     $new_list = array();
     $reverse_list = array_reverse($old_list);
     foreach ($reverse_list as $comment1) {
-      $comment1->nestinglevel = 0;
-      if ($comment1->repliedto_id > 0) {
-        $comment1->nestinglevel = 1;
-      }
       if ($comment1->toplevelparent_id == 0) {
         array_push($new_list, $comment1);
       }
