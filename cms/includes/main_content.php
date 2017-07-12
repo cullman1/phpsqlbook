@@ -25,17 +25,17 @@
       $reply = (($Comment->repliedto_id)!=0) ? ' depth-1' : '';
       $path = 'http://localhost/phpsqlbook/uploads/' .  $Comment->image;
   ?>
-  <div class="border comment-box <?= $reply ?>">
-    <img class="comment_reply user_thumb" src="<?= $path ?>" type="image/jpg" />
-    <a class="user_name" href="/phpsqlbook/cms/profile?id=<?=  $Comment->user_id ?>"><?= $Comment->forename  ?> <?= $Comment->surname ?>
-    <?php if ($Comment->repliedto_id !=0) { ?>
-      <span class="reply_to"> &lt; In reply to: <?= $Comment->commenterfirst ?> <?= $Comment->commenterlast ?></span>
+  <div class="comment-box <?= $reply ?>">
+    <img class="user_thumb" alt="<?= $Comment->author ?>" src="<?= $path ?>" />
+    <a class="user_name" href="/phpsqlbook/cms/profile?id=<?=  $Comment->user_id ?>"><?= $Comment->author ?>
+    <?php if (!empty($Comment->repliedto_id)) { ?>
+      <span class="reply_to"> &lt; In reply to: <?= $Comment->commentername ?></span>
     <?php } ?>
     <hr class="comment_divider" /><p class="time_elapsed"><?= time_elapsed($Comment->posted) ?> </p></a>
     <?php if (isset($_SESSION["user_id"])) { ?>
-      <a data-id="<?= $Comment->forename  ?> <?= $Comment->surname ?>" class="link-form" id="link<?= $Comment->id ?>" href="#">Reply</a>
+      <a data-id="<?= $Comment->author ?>" class="link-form" id="link<?= $Comment->id ?>" href="#">Reply</a>
     <?php } ?>
-    <span class="comment_reply_below"><?= $Comment->comment ?></span><span id="comlink<?= $Comment->id ?>"></span>
+    <span class="comment-reply-below"><?= $Comment->comment ?></span><span id="comlink<?= $Comment->id ?>"></span>
    </div>
   <?php } 
 } ?>

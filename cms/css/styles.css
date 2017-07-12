@@ -172,8 +172,8 @@ h3 {
 
 .link-form {
       font-weight: bold;
-    margin-left: 87px;
-    margin-top: -30px;
+    margin-left: 77px;
+    margin-top: -20px;
     float: left;
     clear: both;
    
@@ -184,7 +184,6 @@ h3 {
 
 #form-comment {
     margin-top:10px;
-margin-left:10px;
 }
 
 #comment {
@@ -236,6 +235,8 @@ margin-left:10px;
     margin-left: 10px;*/
     list-style: none;
     margin-bottom: 10px; 
+    clear:both;
+       border-top:1px solid gray !important; 
 }
 
 .comment_reply {
@@ -245,11 +246,11 @@ margin-left: 10px;
 display: block;
 }
 
- .comment_reply_below {
+ .comment-reply-below {
     clear:both;
-padding-top: 8px;
+padding-top: 18px;
 
-margin-left: 10px;
+margin-left: 1px;
 display: block;
 }
 
@@ -258,7 +259,7 @@ display: block;
 margin-top: 10px;
 }
 .border {
-     border-top:1px solid gray !important; 
+  
 
 }
 
@@ -277,27 +278,9 @@ margin-top: 10px;
   margin-left: 1.5rem !important;   
 }
 
-object {
-    position: relative;
-    float: left;
-    height: 50px;
-    width: 50px;
-    border: 1px solid gray;
-    padding: 10px 10px 10px 10px;
-
-}
-object::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-     height: 100%;
-    width: 100%;
-    background: red url('http://test1.phpandmysqlbook.com/phpsqlbook/uploads/blank.png');
-}
-
 img.user_thumb {
     position:relative;
+    top:10px;
     height: 50px;
     width: 50px;
     border: 1px solid gray;
@@ -309,9 +292,9 @@ img.user_thumb {
 img.user_thumb:before {  
 content: ' ';
   left: -10px;
-  top:-13px;
-      height:0px;
-  width:0px;
+
+      height:52px;
+  width:54px;
 }
 
 img.user_thumb:after {  
@@ -320,9 +303,9 @@ transform: scale(.555);
 
       height:52px;
   width:54px;
-  position:relative;
-  left: -12px;
-  top:-67px;
+  position:absolute;
+  left: -2px;
+  top:-2px;
   display:inline-block;
 
 }

@@ -370,7 +370,7 @@ function remove_like_by_id($user_id, $article_id) {
 /* Comments functions (3) */
 
 function get_comments_by_article_id($id) {
-  $query="SELECT  user.id, user.forename, user.surname, user.image, comments.* FROM comments 
+  $query="SELECT  user.id, CONCAT(forename, ' ', surname) as author, user.image, comments.* FROM comments 
           JOIN user ON comments.user_id = user.id   
           WHERE article_id = :id 
           ORDER BY posted ASC";  
@@ -387,12 +387,10 @@ $statement->execute();
 }
 
 function get_nested_comments_by_article_id($id) {
-  $query="SELECT  user.id, user.forename, user.surname, user.image, comments.id, comments.article_id, comments.user_id, comments.posted, comments.comment,
- comments.toplevelparent_id, comments.repliedto_id, comments.repliedto_id as c1,  (SELECT  user.forename FROM comments 
+  $query="SELECT  user.id, CONCAT(forename, ' ', surname) as author, user.image, comments.id, comments.article_id, comments.user_id, comments.posted, comments.comment,
+ comments.toplevelparent_id, comments.repliedto_id, comments.repliedto_id as c1,  (SELECT  concat(user.forename, ' ', user.surname) as name FROM comments 
          JOIN user ON comments.user_id = user.id   
-            WHERE comments.id = c1 ) as commenterfirst,  (SELECT  user.surname FROM comments 
-                  JOIN user ON comments.user_id = user.id  
-            WHERE comments.id = c1 ) as commenterlast 
+            WHERE comments.id = c1 ) as commentername
 FROM comments 
 JOIN user ON comments.user_id = user.id   
 WHERE article_id = :id 
@@ -445,89 +443,7 @@ function get_comments_list($id) {
   return $table;
 }
 
-/* Nested comments (4) */
-
-function get_comments_array( $article_id) {
-  $comments_list = new CommentList(get_comments_by_article_id($article_id));
-  $box = '<div id="comments" class="down"><ol class="commenterbox comment-box">';
-  foreach ($comments_list->comments as $comment) {
-    $box .= '<ol class="border-box border"><ol class="children comment-box ';
-    $previous = '';
-    if (($comment->repliedto_id)!=0) {
-      $commenter = get_previous_commenter_by_name($comment->repliedto_id);
-      $previous = $commenter->forename . ' ' . $commenter->surname;
-    }
-    if ($comment->nestinglevel>0) {
-      $depth = $comment->nestinglevel;
-      if ($depth>2) { 
-        $depth=2;  
-      }
-      $box .= ' depth-' . $depth;
-    }   
-    $box .=  '">';
-    $box .= '<li class="comment_reply"><img class="thumb" src="../../uploads/' . $comment->image . '"/></li>'; 
-    $box .= '<li class="small_name"><a class="name" href="/phpsqlbook/cms/profile?id=' . $comment->user_id . '">' .  $comment->forename . ' ' . $comment->surname . '</a>';
-    if ($comment->nestinglevel>0) {
-      $box .=  '        < In reply to: ' . $previous; 
-    }
-    $box .=  '<hr><i>' . time_elapsed_string(date("F jS Y g:i a", strtotime($comment->posted))) . '</i>';
-    if (isset($_SESSION["user_id"])) {
-      $box .=  '<a data-id="' .  $comment->forename . ' ' . $comment->surname .'" class="bold link-form" id="link' . $comment->id . '" href="#">Reply</a>';
-    }
-    $box .=  '<li class="comment_reply_below">' . $comment->comment . '</li><li id="comlink'. $comment->id . '"></li></ol>';
-  }
-  $box .= "</ol></ol></div>";   
-  if ( isset($_SESSION['user_id'])) { 
-    $box .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a><span id="comlink0"></span>';
-    if (isset($comment)) {
-        $box .= get_comments_reply_form( $_SESSION['name'] , $article_id, $comment->toplevelparent_id, $comment->nestinglevel, $comment->repliedto_id);
-    } else {
-      $box .= get_comments_reply_form($_SESSION['name'] , $article_id);
-    }
-  }
-  return $box;
-}
-
-function get_comments_reply_form($name, $article_id, $toplevelparentid=0, $nesting_level=0,  $replyto=0) {    
-  $form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level  . '&toplevelparentid='. $toplevelparentid  . '&replyto=' . $replyto. '" >';
-  $form .= '<span id="reply_first" class="down">' . $name . '  <span id="reply_name"></span></span>';
-  $form .= '<label for="comment">Comment:</label>';
-  $form .= ' <textarea id="comment" name="comment"></textarea><br/>';
-  $form .= '  <button type="submit" >Submit Comment</button>';
-  $form .= ' </form>';
-  $form .= ' <script>';
-  $form .= '  $(".link-form").each(function() { ';
-  $form .= '   $(this).click(function() { ';
-  $form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id . '&nesting_level='. $nesting_level . '&toplevelparentid='. $toplevelparentid  . '&replyto=' .$replyto .'";';
-  $form .= '   if (! $("#form-comment").is(":visible")) {   ';
-  $form .= '    if( $("a:focus").attr("data-id")!=null ) { ';
-  $form .= '    $("#reply_name").html(" replying to: " + $("a:focus").attr("data-id")); } ';
-  $form .= '    $("#form-comment").attr("action", act + event.target.id );  ';
-  $form .= '    if ( event.target.id == "link0" ) { ';
-  $form .= '    $("#reply_name").html("" ); }  ';
-  $form .= '    $("#form-comment").appendTo("#com" + event.target.id); } ';
-  $form .= '    $("#form-comment").toggle(); ';
-  $form .= ' });   }); </script>';
-  return $form;
-}
-
-function get_previous_commenter_by_name($id) {
-	$connection = $GLOBALS['connection'];
-	$query = 'SELECT user.id, user.forename, user.surname FROM comments
-            JOIN user ON comments.user_id = user.id   
-              WHERE comments.id=:id';             // Query
-	$statement = $connection->prepare($query);              // Prepare
-	$statement->bindValue(':id', $id, PDO::PARAM_INT);      // Bind value from query string
-	if ($statement->execute() ) {
-		$statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User'); // Object
-		$User = $statement->fetch();                        // Fetch
-	}
-	if ($User) {
-		return $User;
-	} else {
-	    return FALSE;
-    }
-}  
+/* Nested comments (1) */
 
 function sort_comments($old_list) {
     $new_list = array();
