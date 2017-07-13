@@ -542,14 +542,11 @@ function send_email($to, $subject, $message) {
 }
 
 function time_elapsed($datetime) {
-
-    
     $now = new DateTime;
     $old_time = new DateTime(date("F jS Y g:i a", strtotime($datetime)));
     $diff = $now->diff($old_time);
     $diff->w = floor($diff->d / 7);
     $diff->d -= $diff->w * 7;
-
     $string = array(
         'y' => 'year',
         'm' => 'month',

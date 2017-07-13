@@ -23,7 +23,7 @@
     $comments = sort_comments($comments); 
     foreach ($comments as $Comment) { 
       $reply = (($Comment->repliedto_id)!=0) ? ' depth-1' : '';
-      $path = 'http://localhost/phpsqlbook/uploads/' .  $Comment->image;
+      $path = 'http://'. $_SERVER['HTTP_HOST'] . '/phpsqlbook/uploads/' .  $Comment->image;
   ?>
   <div class="comment-box <?= $reply ?>">
     <img class="user_thumb" alt="<?= $Comment->author ?>" src="<?= $path ?>" />
@@ -70,5 +70,4 @@ $(".link-form").each(function() {
 }); 
 </script>   
  <?php   } ?>
-
 </div><br/>

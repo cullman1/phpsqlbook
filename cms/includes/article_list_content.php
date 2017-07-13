@@ -2,7 +2,7 @@
 <?php if (!isset( $object->thumb) ) {
 $object->thumb = "uploads/blank_article.png";
 } ?>
-  <img src="../<?php echo $object->thumb ?>" />
+  <img alt="<?php echo $object->name ?>" src="../<?php echo $object->thumb ?>" />
  <h3 class="heading"><a href="<?= $GLOBALS["root"] ?><?= $object->name ?>/<?= $object->seo_title ?>"><?= $object->title ?></a></h3>
  <?php 
     echo '<a href="' . $GLOBALS["root"] .  $object->name  . '/'. $object->seo_title . '">';
