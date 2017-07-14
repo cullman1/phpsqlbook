@@ -367,11 +367,11 @@ function remove_like_by_id($user_id, $article_id) {
   }
 }
 
-/* Comments functions (3) */
+/* Comment functions (3) */
 
 function get_comments_by_article_id($id) {
-  $query="SELECT  user.id, CONCAT(forename, ' ', surname) as author, user.image, comments.* FROM comments 
-          JOIN user ON comments.user_id = user.id   
+  $query="SELECT  user.id, CONCAT(forename, ' ', surname) as author, user.image, comment.* FROM comment 
+          JOIN user ON comment.user_id = user.id   
           WHERE article_id = :id 
           ORDER BY posted ASC";  
   $statement = $GLOBALS['connection']->prepare($query);
@@ -387,12 +387,12 @@ $statement->execute();
 }
 
 function get_nested_comments_by_article_id($id) {
-  $query="SELECT  user.id, CONCAT(forename, ' ', surname) as author, user.image, comments.id, comments.article_id, comments.user_id, comments.posted, comments.comment,
- comments.toplevelparent_id, comments.repliedto_id, comments.repliedto_id as c1,  (SELECT  concat(user.forename, ' ', user.surname) as name FROM comments 
-         JOIN user ON comments.user_id = user.id   
-            WHERE comments.id = c1 ) as commentername
-FROM comments 
-JOIN user ON comments.user_id = user.id   
+  $query="SELECT CONCAT(user.forename, ' ', user.surname) as author, user.image, comment.*, comment.reply_to_id as c1,  
+         (SELECT  concat(user.forename, ' ', user.surname) as name FROM comment 
+          JOIN user ON comment.user_id = user.id   
+          WHERE comment.id = c1 ) as reply_to_name
+FROM comment 
+JOIN user ON comment.user_id = user.id   
 WHERE article_id = :id 
 ORDER BY posted ASC";  
   $statement = $GLOBALS['connection']->prepare($query);
@@ -443,17 +443,17 @@ function get_comments_list($id) {
   return $table;
 }
 
-/* Nested comments (1) */
+/* Nested comment (1) */
 
 function sort_comments($old_list) {
     $new_list = array();
     $reverse_list = array_reverse($old_list);
     foreach ($reverse_list as $comment1) {
-      if ($comment1->toplevelparent_id == 0) {
+      if ($comment1->parent_id == 0) {
         array_push($new_list, $comment1);
       }
       foreach ($old_list as $comment2) {
-        if ($comment2->toplevelparent_id == $comment1->id) {
+        if ($comment2->parent_id == $comment1->id) {
           array_push($new_list, $comment2);
         }
       }

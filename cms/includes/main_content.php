@@ -22,14 +22,14 @@
    if ($comments) {
     $comments = sort_comments($comments); 
     foreach ($comments as $Comment) { 
-      $reply = (($Comment->repliedto_id)!=0) ? ' depth-1' : '';
+      $reply = (($Comment->reply_to_id)!=0) ? ' depth-1' : '';
       $path = 'http://'. $_SERVER['HTTP_HOST'] . '/phpsqlbook/uploads/' .  $Comment->image;
   ?>
   <div class="comment-box <?= $reply ?>">
     <img class="user_thumb" alt="<?= $Comment->author ?>" src="<?= $path ?>" />
     <a class="user_name" href="/phpsqlbook/cms/profile?id=<?=  $Comment->user_id ?>"><?= $Comment->author ?>
-    <?php if (!empty($Comment->repliedto_id)) { ?>
-      <span class="reply_to"> &lt; In reply to: <?= $Comment->commentername ?></span>
+    <?php if (!empty($Comment->reply_to_id)) { ?>
+      <span class="reply_to"> &lt; In reply to: <?= $Comment->reply_to_name ?></span>
     <?php } ?>
     <hr class="comment_divider" /><p class="time_elapsed"><?= time_elapsed($Comment->posted) ?> </p></a>
     <?php if (isset($_SESSION["user_id"])) { ?>
@@ -43,8 +43,8 @@
 
 <?php  if ( isset($_SESSION['user_id'])) { ?>
    <br/> <a class="link-form add-link" id="link0" href="#">Add a comment</a><span id="comlink0"></span>
-  <?php       $replyto = (isset($Comment)) ? $Comment->repliedto_id : '0';
-   $parent = (isset($Comment)) ? $Comment->toplevelparent_id: '0';?>
+  <?php       $replyto = (isset($Comment)) ? $Comment->reply_to_id : '0';
+   $parent = (isset($Comment)) ? $Comment->parent_id: '0';?>
 <form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=<?= $Article->id ?>&parent=<?= $parent ?>&reply=<?= $replyto ?>" >
 <span id="reply_name"></span>
 <label for="comment">Comment:</label>

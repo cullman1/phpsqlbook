@@ -526,10 +526,10 @@ class Comment {
   public $comment;
   public $posted;
   public $image;
-  public $repliedto_id;
-  public $toplevelparent_id;
+  public $reply_to_id;
+  public $parent_id;
   
-  function __construct ($id='', $articleid='', $userid=NULL, $forename=NULL,$surname=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $toplevelparentid=0) {
+  function __construct ($id='', $articleid='', $userid=NULL, $forename=NULL,$surname=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $parentid=0) {
     $this->id = $id;
     $this->article_id   = $articleid;
     $this->user_id      = $userid;
@@ -538,23 +538,23 @@ class Comment {
     $this->image = $image; 
     $this->comment     = $comment;
     $this->posted      = $date;
-    $this->repliedto_id   = $replyid;
-    $this->toplevelparent_id = $toplevelparentid;
+    $this->reply_to_id   = $replyid;
+    $this->parent_id = $parentid;
   }
 
   public function add() {
         try {
   $GLOBALS['connection']->beginTransaction();  
-  $query = "INSERT INTO comments (comment, article_id, user_id, posted, repliedto_id, toplevelparent_id) 
-              VALUES  (:comment,:articleid, :userid, :date, :replyid, :toplevelparentid)";
+  $query = "INSERT INTO comment (comment, article_id, user_id, posted, reply_to_id, parent_id) 
+              VALUES  (:comment,:articleid, :userid, :date, :replyid, :parentid)";
     $statement = $GLOBALS["connection"]->prepare($query);
     $statement->bindParam(':comment',$this->comment);
     $statement->bindParam(':articleid',$this->article_id);
     $statement->bindParam(':userid',$this->user_id);
     $date = date("Y-m-d H:i:s");
     $statement->bindParam(':date',$date);
-    $statement->bindParam(':replyid',$this->repliedto_id);
-    $statement->bindParam(':toplevelparentid',$this->toplevelparent_id);
+    $statement->bindParam(':replyid',$this->reply_to_id);
+    $statement->bindParam(':parentid',$this->parent_id);
     $statement->execute();
    $query='UPDATE article SET comment_count = comment_count + 1
         WHERE id = :article_id';

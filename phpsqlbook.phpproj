@@ -24,27 +24,6 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="admin\add-article.php" />
-    <Compile Include="admin\add-user.php" />
-    <Compile Include="admin\admin.php" />
-    <Compile Include="admin\authenticate.php" />
-    <Compile Include="admin\author-view.php" />
-    <Compile Include="admin\ban-user.php" />
-    <Compile Include="admin\categories.php" />
-    <Compile Include="admin\category-view.php" />
-    <Compile Include="admin\comments.php" />
-    <Compile Include="admin\delete-comment.php" />
-    <Compile Include="admin\delete-data.php" />
-    <Compile Include="admin\delete-item.php" />
-    <Compile Include="admin\edit-category.php" />
-    <Compile Include="admin\edit-article.php" />
-    <Compile Include="admin\edit-user.php" />
-    <Compile Include="admin\featured-image.php" />
-    <Compile Include="admin\media.php" />
-    <Compile Include="admin\perform-check.php" />
-    <Compile Include="admin\image_resize.php" />
-    <Compile Include="admin\submit-category.php" />
-    <Compile Include="admin\index.php" />
     <Compile Include="cms\admin\article-create.php" />
     <Compile Include="cms\admin\article-delete.php" />
     <Compile Include="cms\admin\article-update.php" />
@@ -251,10 +230,6 @@
     <Compile Include="code\chapter_08\upload_media.php" />
     <Compile Include="code\chapter_08\insertform.php" />
     <Compile Include="code\chapter_08\media_short.php" />
-    <Compile Include="admin\new-admin.php" />
-    <Compile Include="admin\new-category.php" />
-    <Compile Include="admin\new-user.php" />
-    <Compile Include="admin\pages.php" />
     <Compile Include="code\chapter_09\reset-password.php" />
     <Compile Include="code\chapter_09\send-email.php" />
     <Compile Include="code\chapter_10\admin-home.php" />
@@ -349,8 +324,6 @@
     <Compile Include="code\includes\config.php" />
     <Compile Include="code\includes\database_connection.php" />
     <Compile Include="code\includes\functions.php" />
-    <Compile Include="admin\submit-user.php" />
-    <Compile Include="admin\user.php" />
     <Compile Include="classes\email.php" />
     <Compile Include="classes\FileSessionHandler.php" />
     <Compile Include="classes\FileSessionHandler_old.php" />
@@ -503,7 +476,6 @@
     <Compile Include="code\chapter_06\insertdata_revise.php" />
     <Compile Include="login\confirm-email.php" />
     <Compile Include="login\forgotten-password.php" />
-    <Compile Include="includes\comments-list.php" />
     <Compile Include="includes\db_config.php" />
     <Compile Include="includes\footer.php" />
     <Compile Include="includes\footer-editor.php" />
@@ -540,7 +512,6 @@
     <Compile Include="Script1.php" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="admin\" />
     <Folder Include="assets\" />
     <Folder Include="classes\" />
     <Folder Include="cms\admin\" />
