@@ -5,69 +5,93 @@
     <a href="<?= $GLOBALS['root']; ?>author/<?= $Article->forename ?>-<?= $Article->surname ?>"><?= $Article->forename ?> <?= $Article->surname ?></a><br/><br/>
   <?php } ?>
  <?php echo $Article->content ?><br/><br/>
-    <?php if ($Article->template != 'general') { 
-            if ( isset($_SESSION['user_id'])) { 
-              echo get_like_button( $Article->id,$Article->liked) . '</a>';
-            } else { ?>
-             <i class="fa fa-heart-o" aria-hidden="true"></i>  
-      <?php } ?>
+    <?php 
+if (isset($_SESSION['user_id'])) {        // change to if logged in
+  if ($Article->liked == NULL) {
+    echo'<a href="unlike?id=' . $Article->id . '">';
+    echo '<i class="fa fa-heart-o" aria-hidden="true"></i></a>';
+  } else {
+    echo '<a href="like?id=' . $Article->id . '">';
+    echo '<i class="fa fa-heart" aria-hidden="true"></i></a>';
+  }
+} else {
+    echo '<i class="fa fa-heart-o" aria-hidden="true"></i>';
+}
+?>
       <?= $Article->like_count; ?>  
       <i class="fa fa-comment-o" aria-hidden="true"></i>  <?= $Article->comment_count ?> 
-<?php } ?>
   
-<!-- Changed //--> 
-<div id="comments" class="comments-list">
-  <?php
-    $comments = get_nested_comments_by_article_id($Article->id);
-   if ($comments) {
-    $comments = sort_comments($comments); 
-    foreach ($comments as $Comment) { 
-      $reply = (($Comment->reply_to_id)!=0) ? ' depth-1' : '';
-      $path = 'http://'. $_SERVER['HTTP_HOST'] . '/phpsqlbook/uploads/' .  $Comment->image;
-  ?>
-  <div class="comment-box <?= $reply ?>">
-    <img class="user_thumb" alt="<?= $Comment->author ?>" src="<?= $path ?>" />
-    <a class="user_name" href="/phpsqlbook/cms/profile?id=<?=  $Comment->user_id ?>"><?= $Comment->author ?>
-    <?php if (!empty($Comment->reply_to_id)) { ?>
-      <span class="reply_to"> &lt; In reply to: <?= $Comment->reply_to_name ?></span>
-    <?php } ?>
-    <hr class="comment_divider" /><p class="time_elapsed"><?= time_elapsed($Comment->posted) ?> </p></a>
-    <?php if (isset($_SESSION["user_id"])) { ?>
-      <a data-id="<?= $Comment->author ?>" class="link-form" id="link<?= $Comment->id ?>" href="#">Reply</a>
-    <?php } ?>
-    <span class="comment-reply-below"><?= $Comment->comment ?></span><span id="comlink<?= $Comment->id ?>"></span>
-   </div>
-  <?php } 
-} ?>
+<?php 
+  if (!$Article) {
+    header( "Location: index.php" );
+  } 
+  $logged_in = (isset($_SESSION['user_id']) ? TRUE : FALSE);
+  $comments  = (get_nested_comments_by_article_id($Article->id)) 
+               ? get_nested_comments_by_article_id($Article->id) : array(); 
+  $comments  = sort_comments($comments);
+?>
+
+<div class="comments">
+  <h2>Comments</h2>
+  <?php foreach ($comments as $Comment) {
+ ?>   
+    <div class="comment <?php if ($Comment->reply_to_id) { echo 'reply'; } ?>" 
+         id="comment-<?= $Comment->id ?>"  data-parent="parent-<?= $Comment->parent_id ?>" data-reply_to="reply-<?= $Comment->reply_to_id ?>">
+      <img class="user-thumb" src="../../uploads/<?= $Comment->image ?>" 
+           alt="<?= $Comment->author ?>">
+      <span class="author"><?= $Comment->author ?></span>
+      <?php if ($Comment->reply_to_id) { ?>
+        <span class="reply_to"> &lt; In reply to: <?= $Comment->reply_to_name ?></span>
+      <?php } ?>
+ <br>      <i><?= format_date($Comment->posted) ?></i> <br>
+      <p><?= $Comment->comment ?></p>
+      <br>
+    </div>
+  <?php } ?>
+
+  <?php if ($logged_in) { ?>
+    <form id="form-comment" method="post" action="add_comment?id=<?= $Article->id ?>">
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment"></textarea><br/>
+      <button type="submit" >Submit Comment</button>';
+    </form>
+  <?php } else { ?>
+    <a href="/login/">Log in to add your own comment.</a>
+  <?php } ?>
+
 </div>
 
 <?php  if ( isset($_SESSION['user_id'])) { ?>
-   <br/> <a class="link-form add-link" id="link0" href="#">Add a comment</a><span id="comlink0"></span>
-  <?php       $replyto = (isset($Comment)) ? $Comment->reply_to_id : '0';
-   $parent = (isset($Comment)) ? $Comment->parent_id: '0';?>
-<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=<?= $Article->id ?>&parent=<?= $parent ?>&reply=<?= $replyto ?>" >
-<span id="reply_name"></span>
-<label for="comment">Comment:</label>
- <textarea id="comment" name="comment"></textarea><br/>
- <button type="submit" >Submit Comment</button>
- </form>
 <script>
-$(".link-form").each(function() { 
-  $(this).click(function() { 
-    var act = "/phpsqlbook/cms/add_comment?article_id=<?= $Article->id ?>&parent=<?= $parent ?>&reply=<?= $replyto ?>";
-    if (! $("#form-comment").is(":visible")) {  
-      if( $("a:focus").attr("data-id")!=null ) { 
-        $("#reply_name").html("<?= $_SESSION['name'] ?> > replying to: " + $("a:focus").attr("data-id")); 
-      } 
-      $("#form-comment").attr("action", act + event.target.id ); 
-      if (event.target.id == "link0" ) {
-        $("#reply_name").html("" ); 
-      } 
-      $("#form-comment").appendTo("#com" + event.target.id); 
-    }
-   $("#form-comment").toggle(); 
-  });   
-}); 
-</script>   
- <?php   } ?>
+var form;          // The HTML form to add
+var reply_to_id;   // The post being replied to
+var parent_id;     // The original comment
+var link;          // The link to add after a comment
+var form;          // The form to append
+
+$(".comment").each(function() {
+  comment_id = this.id;
+  reply_to_id = $(this).attr('data-reply_to');
+ 
+  parent_id   = $(this).attr('data-parent');
+  link = "<a href=\"#\" class=\"link-reply\" id=\"" + comment_id + "\" data-reply_to=\"" + reply_to_id + "\" data-parent=\"" + parent_id +  "\">Reply<\/a>";
+  $(this).append(link);
+})
+
+$(".link-reply").on("click", function() {
+  comment_id = this.id;
+  reply_to_id = $(this).attr('data-reply_to');
+  parent_id   = $(this).attr('data-parent');
+  form        = "<form method=\"post\" "; 
+  form       += "action=\"/phpsqlbook/cms/add_comment?id=<?= $Article->id ?>";
+  form       += "&reply_to=" + reply_to_id + "&comment_id=" + comment_id+ "&parent=" + parent_id + "\">";
+  form       += "<label for=\"reply\">Reply:</label>";
+  form       += "<textarea id=\"reply\" name=\"comment\"></textarea><br/>";
+  form       += "<button type=\"submit\" >Submit reply</button>";
+  form       += "</form>";
+  $(this).after(form); 
+$(this).remove();
+});
+</script>
+<?php } ?>
 </div><br/>

@@ -518,28 +518,27 @@ function isLastName($name) {
 }
 
 class Comment {
-  public $id;
-  public $article_id;	// Array holding array of article summaries
-  public $user_id;		// String
-  public $forename; 		// String
-  public $surname;
-  public $comment;
-  public $posted;
-  public $image;
-  public $reply_to_id;
-  public $parent_id;
-  
-  function __construct ($id='', $articleid='', $userid=NULL, $forename=NULL,$surname=NULL, $image=NULL, $comment=NULL, $date=NULL, $replyid=0, $parentid=0) {
+  public $id;                 // Unique number to identify comment
+  public $article_id;         // id of the article the comment is made upon
+  public $user_id;            // id of the user who made the comment
+  public $comment;            // The text of the user's comment
+  public $posted;             // When the comment was written
+  public $reply_to_id;        // Only used for nested comments see pXXX
+  public $parent_id;          // Only used for nested comments see pXXX
+  public $author;             // Name of author
+  public $image;              // Profile picture of author
+
+  function __construct ($id='', $articleid='', $userid=NULL,  
+                        $comment=NULL, $date=NULL, $replyid=0, $parentid=0,  $author=NULL, $image=NULL  ) {
     $this->id = $id;
-    $this->article_id   = $articleid;
-    $this->user_id      = $userid;
-    $this->forename      = $forename;
-    $this->surname      = $surname;
-    $this->image = $image; 
-    $this->comment     = $comment;
-    $this->posted      = $date;
-    $this->reply_to_id   = $replyid;
-    $this->parent_id = $parentid;
+    $this->article_id        = $articleid;
+    $this->user_id           = $userid;
+    $this->comment           = $comment;
+    $this->posted            = $date;
+    $this->reply_to_id       = $replyid;
+    $this->parent_id         = $parentid;
+    $this->author            = $author;
+    $this->image             = $image;
   }
 
   public function add() {

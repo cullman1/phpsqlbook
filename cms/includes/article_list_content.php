@@ -1,16 +1,21 @@
 <div class="content-box">
-<?php if (!isset( $object->thumb) ) {
-$object->thumb = "uploads/blank_article.png";
+<?php if (!isset( $Article->thumb) ) {
+$Article->thumb = "uploads/blank_article.png";
 } ?>
-  <img alt="<?php echo $object->name ?>" src="../<?php echo $object->thumb ?>" />
- <h3 class="heading"><a href="<?= $GLOBALS["root"] ?><?= $object->name ?>/<?= $object->seo_title ?>"><?= $object->title ?></a></h3>
- <?php 
-    echo '<a href="' . $GLOBALS["root"] .  $object->name  . '/'. $object->seo_title . '">';
-    if ( isset($_SESSION['user_id'])) { 
-      echo get_like_button( $object->id,$object->liked,1) . '</a> ';
-    } else {
-      echo '<i class="fa fa-heart-o" aria-hidden="true"></i></a> ';
-    }
-    echo  $object->like_count;  ?>  
-<?php echo '<a href="' . $GLOBALS["root"] . $object->name . '/'. $object->seo_title.'#comments"><i class="fa fa-comment-o show" aria-hidden="true"></i> '.$object->comment_count .'</a>'; ?>
+ <h3 class="heading"><a href="<?= $GLOBALS["root"] ?><?= $Article->name ?>/<?= $Article->seo_title ?>"><?= $Article->title ?></a></h3>
+  <img src="<?= $Article->thumb ?>" 
+           alt="<?= $Article->alt ?>" type="<?= $Article->mediatype ?>"><br>
+      <?php 
+        echo '<i class="fa ';
+        if ( isset($_SESSION['user_id']) && ($Article->liked != NULL) ) { 
+          echo 'fa-heart';
+        } else {
+          echo 'fa-heart-o';
+        }
+        echo  ' aria-hidden="true"></i> '; 
+        echo $Article->like_count;
+      ?>  
+    </a>
+
+<?php echo '<a href="' . $GLOBALS["root"] . $Article->name . '/'. $Article->seo_title.'#comments"><i class="fa fa-comment-o show" aria-hidden="true"></i> '.$Article->comment_count .'</a>'; ?>
 </div>

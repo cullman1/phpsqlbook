@@ -274,11 +274,11 @@ margin-top: 10px;
   margin-left: 1.5rem !important;   
 }
 
-.comment-box .depth-2  {
+.comments .reply  {
   margin-left: 1.5rem !important;   
 }
 
-img.user_thumb {
+img.user-thumb {
     position:relative;
     top:10px;
     height: 50px;
@@ -289,7 +289,7 @@ img.user_thumb {
     float: left;
 }
 
-img.user_thumb:before {  
+img.user-thumb:before {  
 content: ' ';
   left: -10px;
 
@@ -297,7 +297,7 @@ content: ' ';
   width:54px;
 }
 
-img.user_thumb:after {  
+img.user-thumb:after {  
 content: url('http://test1.phpandmysqlbook.com/phpsqlbook/uploads/blank.jpg');
 transform: scale(.555);
 

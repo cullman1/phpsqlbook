@@ -386,6 +386,36 @@ $statement->execute();
   }
 }
 
+function get_parent_id($id) {
+  $query="SELECT * FROM cms.comment where comment.id = :id";  
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindValue(':id', $id, PDO::PARAM_INT);      
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');     // Object
+  $comment = $statement->fetch();
+  if ($comment) {
+    if ($comment->reply_to_id != 0) {
+      return $comment->parent_id;
+    } else {
+      return $comment->id;
+    }
+  } else {
+    return FALSE; 
+  }
+}
+
+function format_date($datetime) {
+    if (!empty($datetime)) {
+	$date = date_create_from_format('Y-m-d H:i:s', $datetime);
+ 
+    return $date->format('F d Y');
+    }
+    else {
+    return "Not published";
+    }
+}
+
+
 function get_nested_comments_by_article_id($id) {
   $query="SELECT CONCAT(user.forename, ' ', user.surname) as author, user.image, comment.*, comment.reply_to_id as c1,  
          (SELECT  concat(user.forename, ' ', user.surname) as name FROM comment 
