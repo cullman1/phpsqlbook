@@ -35,11 +35,11 @@ if ($logged_in) {
 
 <div class="comments">
  <h2>Comments</h2>
-  <?php foreach ($comments as $Comment) { var_dump($Comment); ?>   
+  <?php foreach ($comments as $Comment) {  ?>   
   
     <div class="comment <?php if ($Comment->reply_to) { echo 'reply'; } ?>" 
-         id="comment-<?= $Comment->id ?>" data-reply-to="reply-<?= $Comment->reply_to_id ?>" 
-data-parent="parent-<?= $Comment->parent_id ?>">
+         id="comment-<?= $Comment->id ?>" data-reply-to="reply-<?= $Comment->id ?>" 
+data-parent="parent-<?= ($Comment->parent_id!=0 ? $Comment->parent_id  : $Comment->id )?>">
       <img class="user-thumb" src="../../uploads/<?= $Comment->image ?>" 
            alt="<?= $Comment->author ?>">
       <span class="author"><?= $Comment->author ?></span>
@@ -70,9 +70,9 @@ $('div.comment').each(function() {
 })
 
 $('.link-reply').on('click', function() {
-  comment_id  = $(this).prev().id;
-  reply_to_id = $(this).prev().attr('data-reply-to');
-  parent_id   = $(this).prev().attr('data-parent');
+  comment_id  = $(this).parent().attr('id');
+  reply_to_id =  $(this).parent().attr('data-reply-to');
+  parent_id   = $(this).parent().attr('data-parent');
   form        = '<form method=\"post\" '; 
   form       += 'action=\"/phpsqlbook/cms/add_comment?id=<?= $Article->id ?>';
   form       += '&comment_id=' + comment_id + '&reply_to_id=' + reply_to_id;
