@@ -1,5 +1,5 @@
 RewriteEngine On    # Turn on the rewriting engine
-RewriteRule ^/?$     index.php        [NC,L]
+RewriteRule ^/?$     category.php        [NC,L]
 RewriteRule ^admin/?$   admin/article.php      [NC,L]
 RewriteRule ^login/?$   users/login.php      [NC,L]
 RewriteRule ^register/?$  users/register.php      [NC,L]

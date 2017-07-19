@@ -528,48 +528,51 @@ class Comment {
   public $author;             // Name of author
   public $image;              // Profile picture of author
 
-  function __construct ($id='', $articleid='', $userid=NULL,  
-                        $comment=NULL, $date=NULL, $replyid=0, $parentid=0,  $author=NULL, $image=NULL  ) {
+  function __construct($id='', $article_id='', $user_id=NULL, $comment=NULL, $date=NULL, 
+                        $reply_to_id=0, $parent_id=0, $author=NULL, $image=NULL) {
     $this->id = $id;
-    $this->article_id        = $articleid;
-    $this->user_id           = $userid;
+    $this->article_id        = $article_id;
+    $this->user_id           = $user_id;
     $this->comment           = $comment;
     $this->posted            = $date;
-    $this->reply_to_id       = $replyid;
-    $this->parent_id         = $parentid;
+    $this->reply_to_id       = $reply_to_id;
+    $this->parent_id         = $parent_id;
     $this->author            = $author;
     $this->image             = $image;
   }
 
   public function add() {
-        try {
-  $GLOBALS['connection']->beginTransaction();  
-  $query = "INSERT INTO comment (comment, article_id, user_id, posted, reply_to_id, parent_id) 
-              VALUES  (:comment,:articleid, :userid, :date, :replyid, :parentid)";
-    $statement = $GLOBALS["connection"]->prepare($query);
+  try {
+    $GLOBALS['connection']->beginTransaction();  
+    $query = 'INSERT INTO comment (comment, article_id, user_id, posted, reply_to_id,
+              parent_id) 
+              VALUES  (:comment, :articleid, :userid, :date, :replyid, :parentid)';
+    $statement = $GLOBALS['connection']->prepare($query);
     $statement->bindParam(':comment',$this->comment);
     $statement->bindParam(':articleid',$this->article_id);
     $statement->bindParam(':userid',$this->user_id);
-    $date = date("Y-m-d H:i:s");
+    $date = date('Y-m-d H:i:s');
     $statement->bindParam(':date',$date);
     $statement->bindParam(':replyid',$this->reply_to_id);
     $statement->bindParam(':parentid',$this->parent_id);
+    echo "1";
     $statement->execute();
-   $query='UPDATE article SET comment_count = comment_count + 1
-        WHERE id = :article_id';
-  $statement = $GLOBALS['connection']->prepare($query);   
-  $statement->bindValue(':article_id',  $this->article_id);  // Bind value from query string   
-  $statement->execute();
-  $GLOBALS['connection']->commit();                                       // Commit transaction
-  return TRUE;
-} catch (PDOException $error) {                                // Failed to update
-   echo 'We were not able to add the comment ' . $error->getMessage();       
-   $GLOBALS['connection']->rollback();                                    // Roll back all SQL
-   return FALSE;
-}
-  } 
+        echo "2";
+    $query='UPDATE article SET comment_count = comment_count + 1 WHERE id = :article_id';
+    $statement = $GLOBALS['connection']->prepare($query);   
+    $statement->bindValue(':article_id',  $this->article_id);  
+        echo "3";
+    $statement->execute();
+        echo "4";
+    $GLOBALS['connection']->commit();
+        echo "5";
+    return TRUE;
+  } catch (PDOException $error) {
+    $GLOBALS['connection']->rollback();
+    return 'We were not able to save the comment ' . $error->getMessage();
   }
-
+}
+}
 
 
 ?>

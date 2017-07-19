@@ -2,18 +2,25 @@
 
 /* Article functions (10) */
 
-function get_article_by_seo_title($seo_title) {
-    $query = 'SELECT   category.*, media.*, user.id as user_id, user.forename, user.surname, user.email,article.* ';
-  if (isset($_SESSION["user_id"])) {
-    $query .=',(select likes.user_id from likes where  likes.user_id=  ' . $_SESSION["user_id"] .'    and likes.article_id = article.id) as liked ';
-  }     
+
+
+function get_article_by_seo_title($title) {
+  $query = 'SELECT article.*, category.name, category.seo_name,
+      user.id AS user_id, user.forename, user.surname, user.email, user.image,
+      media.filepath, media.filename, media.alt, media.mediatype, media.thumb '; 
+  if (isset($_SESSION['user_id'])) {
+    $query .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' . 
+                  $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
+                  AS liked ';
+  }
   $query .= 'FROM article
-      LEFT JOIN user ON article.user_id = user.id
-      LEFT JOIN media ON article.media_id = media.id
-      LEFT JOIN category ON article.category_id = category.id
-      WHERE article.seo_title=:seo_title';           // Query
-    $statement = $GLOBALS['connection']->prepare($query);          // Prepare
-    $statement->bindValue(':seo_title', $seo_title);    // Bind value from query string
+    LEFT JOIN user     ON article.user_id     = user.id
+    LEFT JOIN media    ON article.media_id    = media.id
+    LEFT JOIN category ON article.category_id = category.id
+    WHERE article.seo_title=:seo_title';
+
+  $statement = $GLOBALS['connection']->prepare($query);          // Prepare
+    $statement->bindValue(':seo_title', $title);    // Bind value from query string
     if ($statement->execute() ) {
         $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
         $Article = $statement->fetch();
@@ -25,11 +32,32 @@ function get_article_by_seo_title($seo_title) {
     }
 }
 
+function get_article_list_by_category_name($name, $show='', $from='') {
+  $query = 'SELECT article.id, article.title, article.media_id, article.published,
+      media.id as media_id, media.filepath, media.thumb, media.alt, media.mediatype ';
+  if (isset($_SESSION['user_id'])) {
+    $query .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' . 
+                  $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
+                  AS liked ';
+  }
+  $query .= 'FROM article
+    LEFT JOIN category ON article.category_id = category.id
+    LEFT JOIN media    ON article.media_id    = media.id
+    LEFT JOIN user     ON article.user_id     = user.id
+    WHERE published <= now()   
+    AND category.name=:name 
+    ORDER BY article.published ASC'; 
+  // ... rest of code to return article list goes here
+  return $article_list;
+}
+
 function get_article_list($show='', $from='') {
   $query = 'SELECT  category.*, media.*, user.*,  article.*';
-  if (isset($_SESSION["user_id"])) {
-    $query .=',(select likes.user_id from likes where  likes.user_id=  ' . $_SESSION["user_id"] .'    and likes.article_id = article.id) as liked ';
-  }     
+if (isset($_SESSION['user_id'])) {
+    $query .= ', COALESCE ((SELECT 1 FROM likes WHERE likes.user_id=' . 
+                  $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
+                  AS liked ';
+  } 
   $query .= 'FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
@@ -57,30 +85,6 @@ function get_article_count() {
       return $count;
 }
 
-function get_article_list_by_category_name($name, $show='', $from='') {
-  $connection = $GLOBALS['connection'];
-  $query = 'SELECT  category.*, media.*, user.*,  article.* ';
- if (isset($_SESSION["user_id"])) {
-     $query .= ',(select likes.user_id from likes where likes.user_id= ' . 
-                $_SESSION["user_id"] .' and likes.article_id = article.id) as liked ';
-  }
-  $query .= 'FROM article
-      LEFT JOIN category ON article.category_id = category.id
-      LEFT JOIN media ON article.media_id = media.id
-      LEFT JOIN user ON article.user_id = user.id
-      WHERE published <= now()   
-      AND category.name=:name 
-      ORDER BY article.published ASC';            
-  if (!empty($show)) {
-    $query .= " limit " . $show . " offset " . $from;
-  }
-  $statement = $connection->prepare($query);
-  $statement->bindValue(':name', $name);  // Bind value from query string
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); 
-  $article_list = $statement->fetchAll();
-  return $article_list;
-}
 
 function get_article_count_by_category_name($name, $show='', $from='') {
   $connection = $GLOBALS['connection'];
@@ -323,86 +327,64 @@ function get_like_button($article_id,$likes,$list='', $url='') {
 function add_like_by_id($user_id, $article_id) {
   try {
     $GLOBALS['connection']->beginTransaction();  
-    $query = 'INSERT INTO likes (user_id, article_id)  
-          VALUES (:user_id, :article_id)';                 // Query
+    $query = 'INSERT INTO likes (user_id, article_id) VALUES (:user_id, :article_id)';  
     $statement = $GLOBALS['connection']->prepare($query);
-    $statement->bindValue(':user_id', $user_id);  // Bind value from query string
-    $statement->bindValue(':article_id', $article_id);  // Bind value from query string
+    $statement->bindValue(':user_id', $user_id);
+    $statement->bindValue(':article_id', $article_id);
     $statement->execute();
-    $query='UPDATE article SET like_count = like_count + 1
-        WHERE id = :article_id';
-    $statement = $GLOBALS['connection']->prepare($query);   
-    $statement->bindValue(':article_id', $article_id);  // Bind value from query string   
+    $query= 'UPDATE article SET like_count = like_count + 1 WHERE id = :article_id';
+    $statement = $GLOBALS['connection']->prepare($query);
+    $statement->bindValue(':article_id', $article_id);
     $statement->execute();
-    $GLOBALS['connection']->commit(); 
-                                    // Commit transaction
+    $GLOBALS['connection']->commit();
     return TRUE;
-  } catch (PDOException $error) {                                // Failed to update
-    echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
-    $GLOBALS['connection']->rollback();                                    // Roll back all SQL
-    return FALSE;
+  } catch (PDOException $error) {
+    $GLOBALS['connection']->rollback();
+    return 'Article ' .$article_id . ' was not liked. Error: ' . $error->getMessage();
   }
 }
 
 function remove_like_by_id($user_id, $article_id) {
   try {
     $GLOBALS['connection']->beginTransaction();  
-    $query = 'DELETE FROM likes WHERE user_id= :user_id 
-          AND article_id= :article_id';               
+    $query = 'DELETE FROM likes WHERE user_id= :user_id AND article_id= :article_id';               
     $statement = $GLOBALS['connection']->prepare($query);
     $statement->bindValue(':user_id', $user_id);  
     $statement->bindValue(':article_id', $article_id);  
     $statement->execute();
-    $query='UPDATE article SET like_count = like_count - 1
-        WHERE id = :article_id';
+    $query = 'UPDATE article SET like_count = like_count - 1 WHERE id = :article_id';
     $statement = $GLOBALS['connection']->prepare($query);   
     $statement->bindValue(':article_id', $article_id);  
     $statement->execute();
     $GLOBALS['connection']->commit();     
     return TRUE;
   } catch (PDOException $error) {                               
-    echo 'We were not able to update the article ' .$article_id . ' for user '. $user_id. ' ' . $error->getMessage();       
-    $GLOBALS['connection']->rollback();         
-    return FALSE;
+    $GLOBALS['connection']->rollback();
+    return 'Article ' .$article_id . ' was not unliked. Error: ' . $error->getMessage();
   }
 }
 
 /* Comment functions (3) */
 
 function get_comments_by_article_id($id) {
-  $query="SELECT  user.id, CONCAT(forename, ' ', surname) as author, user.image, comment.* FROM comment 
-          JOIN user ON comment.user_id = user.id   
-          WHERE article_id = :id 
-          ORDER BY posted ASC";  
+  $query = 'SELECT  CONCAT(user.forename, " ", user.surname) as author, 
+            user.image,  comment.* FROM comment 
+            JOIN user ON comment.user_id = user.id   
+            WHERE article_id = :id 
+            ORDER BY posted ASC';  
   $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindValue(':id', $id, PDO::PARAM_INT);      
-$statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');     // Object
-    $commentslist = $statement->fetchAll();
-  if ($commentslist) {
-    return $commentslist;
+  $statement->bindValue(':id', $id, PDO::PARAM_INT); 
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');
+  $comments_list = $statement->fetchAll(); 
+  if ($comments_list) {
+    return $comments_list;
   } else {
     return FALSE; 
   }
 }
 
-function get_parent_id($id) {
-  $query="SELECT * FROM cms.comment where comment.id = :id";  
-  $statement = $GLOBALS['connection']->prepare($query);
-  $statement->bindValue(':id', $id, PDO::PARAM_INT);      
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');     // Object
-  $comment = $statement->fetch();
-  if ($comment) {
-    if ($comment->reply_to_id != 0) {
-      return $comment->parent_id;
-    } else {
-      return $comment->id;
-    }
-  } else {
-    return FALSE; 
-  }
-}
+
 
 function format_date($datetime) {
     if (!empty($datetime)) {
@@ -417,14 +399,15 @@ function format_date($datetime) {
 
 
 function get_nested_comments_by_article_id($id) {
-  $query="SELECT CONCAT(user.forename, ' ', user.surname) as author, user.image, comment.*, comment.reply_to_id as c1,  
-         (SELECT  concat(user.forename, ' ', user.surname) as name FROM comment 
+  $query='SELECT  comment.*, 
+CONCAT(user.forename, " ", user.surname) as author, user.image, comment.reply_to_id as reply_to_name,  
+         (SELECT  concat(user.forename, " ", user.surname) as name FROM comment 
           JOIN user ON comment.user_id = user.id   
-          WHERE comment.id = c1 ) as reply_to_name
+          WHERE comment.id = reply_to_name ) as reply_to_name
 FROM comment 
 JOIN user ON comment.user_id = user.id   
 WHERE article_id = :id 
-ORDER BY posted ASC";  
+ORDER BY posted ASC';  
   $statement = $GLOBALS['connection']->prepare($query);
   $statement->bindValue(':id', $id, PDO::PARAM_INT);      
 $statement->execute();
@@ -437,58 +420,45 @@ $statement->execute();
   }
 }
 
-function get_add_comments_form($name, $article_id, $toplevelparentid=0, $nesting_level=0,  $replyto=0) {    
-  $form = '<form id="form-comment" class="bold" method="post" style="display:none;"/action="/phpsqlbook/cms/add_comment?article_id=' . $article_id  .  '" >';
-  $form .= '<span id="reply_first" class="down">' . $name . '  <span id="reply_name"></span></span>';
-  $form .= '<label for="comment">Comment:</label>';
-  $form .= ' <textarea id="comment" name="comment"></textarea><br/>';
-  $form .= '  <button type="submit" >Submit Comment</button>';
-  $form .= ' </form>';
-   $form .= ' <script>';
-  $form .= '  $(".link-form").each(function() { ';
-  $form .= '   $(this).click(function() { ';
-  $form .= '   var act = "/phpsqlbook/cms/add_comment?article_id=' . $article_id  . '";';
-    $form .= '   if (! $("#form-comment").is(":visible")) {   ';
-  $form .= '    $("#form-comment").toggle(); } ';
-  $form .= ' });   }); </script>';
-  return $form;
+function get_comments_and_replies_by_article_id($id) {
+  $query = "SELECT comment.*, comment.reply_to_id as reply_to_copy,
+            CONCAT(user.forename,' ', user. surname) as author, user.image,
+            (SELECT concat(user.forename, ' ', user.surname) FROM user 
+                    JOIN comment ON user.id = comment.user_id
+                    WHERE comment.id = reply_to_copy) as reply_to
+            FROM comment
+            JOIN user ON comment.user_id = user.id 
+            WHERE article_id = :id 
+            ORDER BY posted DESC";  
+  $statement = $GLOBALS['connection']->prepare($query);
+  $statement->bindValue(':id', $id, PDO::PARAM_INT);      
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');          
+  $commentslist = $statement->fetchAll();
+  if ($commentslist) {
+    return $commentslist;
+  } else {
+    return FALSE; 
+  }
 }
 
-function get_comments_list($id) {
-  $list = new CommentList(get_comments_by_article_id($id));
-  $table = '<div id="comments" class="down"><ol class="commenterbox comment-box">';
-  foreach ($list->comments as $comment) {
-    $table .=  '<ol class="children comment-box border"><li class="comment_reply">';
-    $table .=  '<img class="thumb" src="../../uploads/' . $comment->image . '"/></li>';
-    $table .=  '<li class="small_name">'; 
-    $table .=  '<span class="name">' . $comment->forename . ' ' . $comment->surname . '</span>';
-    $table .=  '<hr><i>' . date("F jS Y g:i a", strtotime($comment->posted)) . '</i>';
-    $table .=  '<li class="comment_reply_below">' . $comment->comment . '</li></ol>';
-  }
-  $table .= "</ol></div>"; 
-  if (isset($_SESSION['user_id'])) { 
-    $table .=  '<a class="bold link-form" id="link0" href="#">Add a comment</a>';
-    $table .= get_add_comments_form($_SESSION['name'] , $id);
-  }
-  return $table;
-}
 
 /* Nested comment (1) */
 
-function sort_comments($old_list) {
-    $new_list = array();
-    $reverse_list = array_reverse($old_list);
-    foreach ($reverse_list as $comment1) {
-      if ($comment1->parent_id == 0) {
-        array_push($new_list, $comment1);
-      }
-      foreach ($old_list as $comment2) {
-        if ($comment2->parent_id == $comment1->id) {
-          array_push($new_list, $comment2);
+function sort_comments($comment_list) {
+    $comment_list_reversed = array_reverse($comment_list);
+    $nested_comments       = array();
+    foreach ($comment_list as $comment) {
+      if ($comment->parent_id == 0) {
+        array_push($nested_comments, $comment);
+        foreach ($comment_list_reversed as $reply) {
+          if ($reply->parent_id == $comment->id) {
+            array_push($nested_comments, $reply);
+          }
         }
       }
     }
-    return $new_list;
+    return $nested_comments;
   }
 
 

@@ -30,11 +30,22 @@ include 'includes/header.php';
 
   <?php foreach ($article_list as $Article) { ?>
       <div class="grid_4 article-link">
-        <a href="article.php?category_id=<?= $id ?>&id=<?= $Article->id?>">
-          <img src="<?= $Article->filepath ?>"  
-               alt="<?= $Article->alt ?>" type="<?= $Article->type ?>">
-          <?=$Article->title?>
-        </a>
+       <a href="<?= $Category->seo_name ?>/<?= $Article->seo_title ?>">
+      <img src="<?= $Article->filepath ?>" 
+           alt="<?= $Article->alt ?>" type="<?= $Article->mediatype ?>">
+      <?=$Article->title?><br>
+      <?php
+      if ($logged_in && $Article->liked) {
+        echo '<i class="fa fa-heart"></i>';
+      } else {
+        echo '<i class="fa fa-heart-o"></i>';
+      }
+      echo  $Article->like_count;
+    ?>
+    </a>
+     <a href="<?= $Category->seo_name?>/<?= $Article->seo_title?>#comments">
+    <i class="fa fa-comment-o"></i><?= $Article->comment_count?>
+  </a>
       </div>
   <?php } ?>
 
