@@ -10,7 +10,7 @@
 <body>
  <header>
   <h1>the green room</h1>
-   <nav><a href="/phpsqlbook/cms/">Home</a><?php echo get_menu();  ?>
+   <nav><a href="/phpsqlbook/cms/home">Home</a><?php echo get_menu();  ?>
      <form id=form1 style="float:right;" class="navbar-form navbar-left" role="search"  method="get" action="/phpsqlbook/cms/search">
       <input id="term" name="term" type="text" />
     <input type="submit">

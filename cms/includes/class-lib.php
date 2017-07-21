@@ -14,6 +14,7 @@ class ArticleSummary {
  function __construct($id ='', $title = NULL, $content = NULL, $published = NULL, $category_id = NULL, $user_id = NULL, $media_id = NULL, $gallery_id = NULL) {
   $this->id          = ( isset($id)          ? $id          : '');
   $this->title       = ( isset($title)       ? $title       : '');
+    $this->seo_title       = ( isset($seo_title)       ? $seo_title       : '');
   $this->content     = ( isset($content)     ? $content     : '');
   $this->published   = ( isset($published)   ? $published   : '');
   $this->category_id = ( isset($category_id) ? $category_id : '');
@@ -86,6 +87,7 @@ class ArticleSummary {
 class Category {
   public $id=0;			// int
   public $name;		// String
+   public $seo_name;		// String
   public $template; 		// String
   public $articleSummaryList;	// Array holding array of article summaries
   public $articlesList;		// Array holding array of entire articles
@@ -93,7 +95,7 @@ class Category {
   public $connection;
   public $database;
 
-  function __construct($name) { 
+  function __construct($name='') { 
     $query = "SELECT * FROM category WHERE name like :name";     // Query
     $statement = $GLOBALS["connection"]->prepare($query); // Prepare
     $statement->bindParam(":name", $name);                    // Bind
@@ -103,6 +105,7 @@ class Category {
     if($category) {
       $this->id       = $category->{"id"};
       $this->name     = $category->{"name"};
+         $this->seo_name     = $category->{"seo_name"};
       $this->template = $category->{"template"};
   }
   }

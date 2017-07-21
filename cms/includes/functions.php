@@ -2,8 +2,6 @@
 
 /* Article functions (10) */
 
-
-
 function get_article_by_seo_title($title) {
   $query = 'SELECT article.*, category.name, category.seo_name,
       user.id AS user_id, user.forename, user.surname, user.email, user.image,
@@ -18,7 +16,6 @@ function get_article_by_seo_title($title) {
     LEFT JOIN media    ON article.media_id    = media.id
     LEFT JOIN category ON article.category_id = category.id
     WHERE article.seo_title=:seo_title';
-
   $statement = $GLOBALS['connection']->prepare($query);          // Prepare
     $statement->bindValue(':seo_title', $title);    // Bind value from query string
     if ($statement->execute() ) {
@@ -33,7 +30,7 @@ function get_article_by_seo_title($title) {
 }
 
 function get_article_list_by_category_name($name, $show='', $from='') {
-  $query = 'SELECT article.id, article.title, article.media_id, article.published,
+  $query = 'SELECT article.id, article.title, article.media_id, article.published, article.seo_title,article.like_count, article.comment_count,
       media.id as media_id, media.filepath, media.thumb, media.alt, media.mediatype ';
   if (isset($_SESSION['user_id'])) {
     $query .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' . 
@@ -47,7 +44,15 @@ function get_article_list_by_category_name($name, $show='', $from='') {
     WHERE published <= now()   
     AND category.name=:name 
     ORDER BY article.published ASC'; 
-  // ... rest of code to return article list goes here
+    if (!empty($show)) {
+        $query .= " limit " . $show . " offset " . $from;
+      }
+  $statement = $GLOBALS['connection']->prepare($query);
+   $statement->bindValue(':name', $name);    // Bind value from query string
+
+      $statement->execute();
+      $statement->setFetchMode(PDO::FETCH_OBJ); 
+      $article_list = $statement->fetchAll();
   return $article_list;
 }
 
@@ -101,6 +106,43 @@ function get_article_count_by_category_name($name, $show='', $from='') {
   $count = $statement->fetchColumn();
   return $count;
 }
+
+function get_article_count_by_category_seo_name($name, $show='', $from='') {
+  $connection = $GLOBALS['connection'];
+  $query = 'SELECT count(*)
+      FROM article
+      LEFT JOIN category ON article.category_id = category.id
+      WHERE published <= now()   
+      AND category.name=:name 
+      ORDER BY article.published ASC';                 // Query
+  $statement = $connection->prepare($query);
+  $statement->bindValue(':name', $name);  // Bind value from query string
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary'); // Needs to be ArticleList class
+  $count = $statement->fetchColumn();
+  return $count;
+}
+
+function get_category_by_seo_name($seo_name) {
+  $connection = $GLOBALS['connection'];
+    $query = 'SELECT category.description, category.name, category.seo_name
+      FROM article
+      LEFT JOIN category ON article.category_id = category.id
+      WHERE published <= now()   
+      AND category.name=:seo_name';            // Query
+  $statement = $connection->prepare($query);          // Prepare
+  $statement->bindValue(':seo_name', $seo_name);    // Bind value from query string
+  if ($statement->execute() ) {
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Category');
+    $Category = $statement->fetch();
+  }
+  if ($Category) {
+    return $Category;
+  } else {
+    return FALSE;
+  }
+}
+
 
 function get_article_list_by_author_name($forename, $surname, $show='', $from='') {
   $connection = $GLOBALS['connection'];
@@ -223,23 +265,20 @@ function get_article_count_by_search($search, $user='0') {
 }
 
 function get_article_url($article_id) {
-    $query = 'SELECT  category.*, article.* FROM article
-      LEFT JOIN user ON article.user_id = user.id
-      LEFT JOIN media ON article.media_id = media.id
-      LEFT JOIN category ON article.category_id = category.id
-      WHERE article.id=:id';           // Query
-    $statement = $GLOBALS['connection']->prepare($query);          // Prepare
-    $statement->bindValue(':id', $article_id);    // Bind value from query string
-    if ($statement->execute() ) {
-        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'ArticleSummary');     // Object
-        $Article = $statement->fetch();
-    }
-    if ($Article) {
-    //return FALSE;
-        return $Article->name . '/' . $Article->seo_title;
-    } else {
-        return FALSE;
-    }
+  $query = 'SELECT category.seo_name, article.seo_title FROM article
+            LEFT JOIN category ON article.category_id = category.id
+            WHERE article.id=:id';
+  $statement = $GLOBALS['connection']->prepare($query);          
+  $statement->bindValue(':id', $article_id);    
+  if ($statement->execute() ) {
+    $statement->setFetchMode(PDO::FETCH_OBJ);     
+    $titles = $statement->fetch();
+  }
+  if ($titles) {
+    return $titles->seo_name . '/' . $titles->seo_title;
+  } else {
+    return FALSE;
+  }
 }
 
 /* User functions (6)  */
@@ -307,22 +346,7 @@ function create_user_session($user) {
   $_SESSION['user_id'] = $user->id;
 }
 
-/* Like functions (3) */
-
-function get_like_button($article_id,$likes,$list='', $url='') {
-  if (!isset($likes)) {
-    if (empty($list)) {
-      $url .= '<a href="' . $GLOBALS["root"] . 'like?article_id=' . $article_id . '">';
-    } 
-    $url .= '<i class="fa fa-heart-o" aria-hidden="true"></i>';
-  } else {
-    if (empty($list)) {
-      $url .= '<a href="' . $GLOBALS["root"] . 'unlike?article_id=' . $article_id . '">';
-    }
-    $url .= '<i class="fa fa-heart" aria-hidden="true"></i>';
-  }
-  return $url;
-}
+/* Like functions (2) */
 
 function add_like_by_id($user_id, $article_id) {
   try {
@@ -364,7 +388,7 @@ function remove_like_by_id($user_id, $article_id) {
   }
 }
 
-/* Comment functions (3) */
+/* Comment functions (1) */
 
 function get_comments_by_article_id($id) {
   $query = 'SELECT  CONCAT(user.forename, " ", user.surname) as author, 
@@ -384,19 +408,7 @@ function get_comments_by_article_id($id) {
   }
 }
 
-
-
-function format_date($datetime) {
-    if (!empty($datetime)) {
-	$date = date_create_from_format('Y-m-d H:i:s', $datetime);
- 
-    return $date->format('F d Y');
-    }
-    else {
-    return "Not published";
-    }
-}
-
+/* Nested comments (3) */
 
 function get_nested_comments_by_article_id($id) {
   $query='SELECT  comment.*, 
@@ -421,29 +433,27 @@ $statement->execute();
 }
 
 function get_comments_and_replies_by_article_id($id) {
-  $query = "SELECT comment.*, comment.reply_to_id as reply_to_copy,
-            CONCAT(user.forename,' ', user. surname) as author, user.image,
-            (SELECT concat(user.forename, ' ', user.surname) FROM user 
+  $query = 'SELECT comment.*, comment.reply_to_id AS reply_to_copy,
+            CONCAT(user.forename, " ", user.surname) AS author, user.image, 
+            (SELECT CONCAT(user.forename, " ", user.surname) FROM user 
                     JOIN comment ON user.id = comment.user_id
-                    WHERE comment.id = reply_to_copy) as reply_to
+                    WHERE comment.id = reply_to_copy) 
+            AS reply_to
             FROM comment
             JOIN user ON comment.user_id = user.id 
             WHERE article_id = :id 
-            ORDER BY posted DESC";  
+            ORDER BY posted DESC';
   $statement = $GLOBALS['connection']->prepare($query);
   $statement->bindValue(':id', $id, PDO::PARAM_INT);      
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');          
-  $commentslist = $statement->fetchAll();
-  if ($commentslist) {
-    return $commentslist;
+  $comments_list = $statement->fetchAll();
+  if ($comments_list) {
+    return $comments_list;
   } else {
     return FALSE; 
   }
 }
-
-
-/* Nested comment (1) */
 
 function sort_comments($comment_list) {
     $comment_list_reversed = array_reverse($comment_list);
@@ -462,7 +472,7 @@ function sort_comments($comment_list) {
   }
 
 
-/* Miscellaneous functions (4) */
+/* Miscellaneous functions (5) */
 
 function get_menu() {
     $categorylist = new CategoryList(get_category_list());
@@ -471,6 +481,17 @@ function get_menu() {
         $list .= '<a href="'.$GLOBALS['root'] .$category->name.'">'.$category->name.'</a>';
     }
     return $list;
+}
+
+function format_date($datetime) {
+    if (!empty($datetime)) {
+	$date = date_create_from_format('Y-m-d H:i:s', $datetime);
+ 
+    return $date->format('F d Y');
+    }
+    else {
+    return "Not published";
+    }
 }
 
 function get_category_list() {

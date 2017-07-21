@@ -1,10 +1,2 @@
-[11-Dec-2015 06:25:42 America/Chicago] PHP Warning:  error_log(phpcustom.log): failed to open stream: Permission denied in /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php on line 7
-2015-12-11 06:37:07 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table '387732_phpbook1.User' doesn't exist - /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php
-2015-12-11 06:41:19 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table '387732_phpbook1.User' doesn't exist - /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php
 
-2015-12-11 06:46:02 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table '387732_phpbook1.User' doesn't exist - /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php
-2015-12-11 06:46:02 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table '387732_phpbook1.User' doesn't exist - /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php
-2015-12-11 06:46:03 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table '387732_phpbook1.User' doesn't exist - /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php
-2015-12-11 06:46:59 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table '387732_phpbook1.User' doesn't exist - /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php
-
-2015-12-11 06:47:00 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table '387732_phpbook1.User' doesn't exist - /mnt/stor1-wc1-dfw1/387732/test1.phpandmysqlbook.com/web/content/code/chapter_09/log-to-file.php
+2016-10-21 11:47:58 - Line:14 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.usesr' doesn't exist - C:\xampp\htdocs\phpsqlbook\code\chapter_11\log_text_file.php
