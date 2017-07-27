@@ -23,6 +23,18 @@ class ArticleSummary {
   $this->gallery_id  = ( isset($gallery_id)  ? $gallery_id  : '');
  }
 
+ function __construct($id ='', $title = NULL, $content = NULL, $published = NULL, $category_id = NULL, $user_id = NULL, $media_id = NULL, $gallery_id = NULL) {
+     $this->id          = ( isset($id)          ? $id          : '');
+     $this->title       = ( isset($title)       ? $title       : '');
+     $this->seo_title       = ( isset($seo_title)       ? $seo_title       : '');
+     $this->content     = ( isset($content)     ? $content     : '');
+     $this->published   = ( isset($published)   ? $published   : '');
+     $this->category_id = ( isset($category_id) ? $category_id : '');
+     $this->user_id     = ( isset($user_id)     ? $user_id     : '');
+     $this->media_id    = ( isset($media_id)    ? $media_id    : '');
+     $this->gallery_id  = ( isset($gallery_id)  ? $gallery_id  : '');
+ }
+
  function create() {
   $connection = $GLOBALS['connection'];                              // Connection
   $sql = 'INSERT INTO article (title, seo_title, content, category_id, user_id, media_id, gallery_id) 
