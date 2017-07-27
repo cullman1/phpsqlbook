@@ -1,0 +1,45 @@
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 18:43:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 18:59:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:01:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:01:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP Stack trace:
+[25-Jul-2017 19:03:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0

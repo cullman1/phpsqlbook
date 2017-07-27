@@ -401,6 +401,7 @@ function get_comments_by_article_id($id) {
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');
   $comments_list = $statement->fetchAll(); 
+
   if ($comments_list) {
     return $comments_list;
   } else {
@@ -448,6 +449,7 @@ function get_comments_and_replies_by_article_id($id) {
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');          
   $comments_list = $statement->fetchAll();
+    var_dump($comments_list);
   if ($comments_list) {
     return $comments_list;
   } else {

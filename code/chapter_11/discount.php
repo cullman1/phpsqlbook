@@ -4,6 +4,8 @@
 ini_set("display_errors","1");
 error_reporting(E_ERROR | E_WARNING | E_NOTICE);
 
+
+
 function show_prices($products, $prices) {
     $count = 0;
     foreach ($products as $item) { 

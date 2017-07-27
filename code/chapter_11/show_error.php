@@ -4,7 +4,7 @@
   function divide_by_two($value) {
     return $value/2;
   }
-  $abc = new ABC();
+ // $abc = new ABC();
     
   echo $result->describe;
   $comment = false;

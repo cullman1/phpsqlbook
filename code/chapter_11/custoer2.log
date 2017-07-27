@@ -1,0 +1,6 @@
+
+2017-07-25 17:00:51 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.usersdf' doesn't exist - C:\xampp\htdocs\phpsqlbook\code\chapter_11\log_text_file.php
+2017-07-25 17:00:52 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.usersdf' doesn't exist - C:\xampp\htdocs\phpsqlbook\code\chapter_11\log_text_file.php
+2017-07-25 17:00:53 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.usersdf' doesn't exist - C:\xampp\htdocs\phpsqlbook\code\chapter_11\log_text_file.php
+2017-07-25 17:00:54 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.usersdf' doesn't exist - C:\xampp\htdocs\phpsqlbook\code\chapter_11\log_text_file.php
+2017-07-25 17:00:54 - Line:17 - 42S02 : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'cms.usersdf' doesn't exist - C:\xampp\htdocs\phpsqlbook\code\chapter_11\log_text_file.php

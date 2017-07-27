@@ -24,6 +24,7 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="cms\404.php" />
     <Compile Include="cms\admin\article-create.php" />
     <Compile Include="cms\admin\article-delete.php" />
     <Compile Include="cms\admin\article-update.php" />
@@ -67,6 +68,7 @@
     <Compile Include="cms\category.php" />
     <Compile Include="cms\author.php" />
     <Compile Include="cms\forgotten-password.php" />
+    <Compile Include="cms\includes\404.php" />
     <Compile Include="cms\includes\article_list_content.php" />
     <Compile Include="cms\includes\author_list_content.php" />
     <Compile Include="cms\includes\check-user.php" />
@@ -311,6 +313,10 @@
     <Compile Include="code\chapter_09_old\session-set.php" />
     <Compile Include="code\chapter_09_old\session-viewer.php" />
     <Compile Include="code\chapter_11\discount.php" />
+    <Compile Include="code\chapter_11\log_text_file.php" />
+    <Compile Include="code\chapter_11\parse-error-1.php" />
+    <Compile Include="code\chapter_11\parse-error-2.php" />
+    <Compile Include="code\chapter_11\check.php" />
     <Compile Include="code\chapter_11\show_error.php" />
     <Compile Include="code\chapter_11_old\buffer.php" />
     <Compile Include="code\chapter_11_old\database-connect.php" />
