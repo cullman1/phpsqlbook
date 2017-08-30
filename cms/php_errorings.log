@@ -43,3 +43,261 @@
 [25-Jul-2017 19:03:24 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
 [25-Jul-2017 19:03:24 Europe/Berlin] PHP Stack trace:
 [25-Jul-2017 19:03:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:58:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 15:59:38 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP Stack trace:
+[27-Jul-2017 16:00:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 22
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP Stack trace:
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP Notice:  Undefined index: connection in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 500
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP Stack trace:
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   4. get_category_list() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 500
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP Stack trace:
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[22-Aug-2017 11:01:46 Europe/Berlin] PHP   4. get_category_list() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 22
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP Notice:  Undefined index: connection in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 500
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   4. get_category_list() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 500
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:22:18 Europe/Berlin] PHP   4. get_category_list() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP Notice:  Undefined index: connection in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 500
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   4. get_category_list() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 500
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:09 Europe/Berlin] PHP   4. get_category_list() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$template in C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php on line 109
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   4. CategoryList->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   5. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php:128
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$template in C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php on line 109
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   4. CategoryList->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   5. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php:128
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$template in C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php on line 109
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   4. CategoryList->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   5. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php:128
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$template in C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php on line 109
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   4. CategoryList->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   5. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php:128
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$template in C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php on line 109
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   4. CategoryList->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   5. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php:128
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$template in C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php on line 109
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   3. get_menu() C:\xampp\htdocs\phpsqlbook\cms\includes\header.php:13
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   4. CategoryList->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:479
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   5. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\includes\class-lib.php:128
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined variable: article_list in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined variable: count in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined variable: show in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Notice:  Undefined variable: from in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 515
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 516
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:24:25 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Undefined variable: article_list in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Undefined variable: count in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Undefined variable: show in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Notice:  Undefined variable: from in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 515
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 516
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:05 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Undefined variable: article_list in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Undefined variable: count in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Undefined variable: show in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Notice:  Undefined variable: from in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 515
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 516
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Stack trace:
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[30-Aug-2017 14:28:58 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'published' in 'where clause'' in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:87
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php(87): PDOStatement->execute()
+#1 C:\xampp\htdocs\phpsqlbook\cms\index.php(13): get_article_count()
+#2 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 87
+[30-Aug-2017 14:33:12 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'published' in 'where clause'' in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:87
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php(87): PDOStatement->execute()
+#1 C:\xampp\htdocs\phpsqlbook\cms\index.php(13): get_article_count()
+#2 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 87
+[30-Aug-2017 14:33:16 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'published' in 'where clause'' in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:87
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php(87): PDOStatement->execute()
+#1 C:\xampp\htdocs\phpsqlbook\cms\index.php(13): get_article_count()
+#2 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 87
+[30-Aug-2017 14:35:13 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'category.template' in 'where clause'' in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:76
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php(76): PDOStatement->execute()
+#1 C:\xampp\htdocs\phpsqlbook\cms\index.php(14): get_article_list(12, 0)
+#2 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 76

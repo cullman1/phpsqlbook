@@ -13,14 +13,14 @@ if (isset($_GET['name'])) {
   $from  = (int)(filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
   $name = ( isset($_GET['name']) ? $_GET['name'] : '' );
   $Category    = get_category_by_seo_name($name);                 // Get category
-
+  if (!isset($Category)) { $Category = new Category('Vegetables');} 
   $count       = get_article_count_by_category_seo_name($title);  // Get article count
   $article_list = get_article_list_by_category_name($Category->name, $show, $from);   // Get list of articles
 
 }
 
-if ( (!$Category) OR (empty($article_list)) ) {
-  //header( 'Location: index.php' );
+if ((empty($Category)) OR (empty($article_list)))  {
+  header( 'Location: index.php' );
 }
 
 include 'includes/header.php'; 

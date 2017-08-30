@@ -685,7 +685,6 @@ Class Gallery {
 		$errors['forename'] = $this->isName($User->forename);
 		$errors['surname']  = $this->isName($User->surname);
 		$errors['email']    = $this->isEmail($User->email);
-		$errors['image'] = $this->isImage($User->image);
         $errors['password'] = $this->isPassword($User->password);
 		return $errors;
 	}

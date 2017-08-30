@@ -1,0 +1,68 @@
+[21-Aug-2017 16:23:13 Europe/Berlin] PHP Fatal error:  Call to undefined method user::getFullName() in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 14
+[21-Aug-2017 16:23:13 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:23:13 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[21-Aug-2017 16:24:27 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 18
+[21-Aug-2017 16:24:27 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:24:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0
+[21-Aug-2017 16:24:27 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 18
+[21-Aug-2017 16:24:27 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:24:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0
+[21-Aug-2017 16:24:37 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[21-Aug-2017 16:24:37 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:24:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[21-Aug-2017 16:24:37 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[21-Aug-2017 16:24:37 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:24:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[21-Aug-2017 16:25:00 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[21-Aug-2017 16:25:00 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:25:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[21-Aug-2017 16:25:00 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[21-Aug-2017 16:25:00 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:25:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[21-Aug-2017 16:27:59 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-list.php on line 18
+[21-Aug-2017 16:27:59 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:27:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-list.php:0
+[21-Aug-2017 16:27:59 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-list.php on line 18
+[21-Aug-2017 16:27:59 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 16:27:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-list.php:0
+[22-Aug-2017 11:10:02 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\example.php on line 25
+[22-Aug-2017 11:10:02 Europe/Berlin] PHP Stack trace:
+[22-Aug-2017 11:10:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\example.php:0
+[22-Aug-2017 11:10:02 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\example.php on line 25
+[22-Aug-2017 11:10:02 Europe/Berlin] PHP Stack trace:
+[22-Aug-2017 11:10:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\example.php:0
+[23-Aug-2017 12:37:46 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[23-Aug-2017 12:37:46 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:37:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:37:46 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[23-Aug-2017 12:37:46 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:37:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:12 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 5
+[23-Aug-2017 12:38:12 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:12 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:12 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 5
+[23-Aug-2017 12:38:12 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:12 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:14 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 5
+[23-Aug-2017 12:38:14 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:14 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:14 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 5
+[23-Aug-2017 12:38:14 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:14 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:24 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[23-Aug-2017 12:38:24 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:24 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[23-Aug-2017 12:38:24 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:27 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[23-Aug-2017 12:38:27 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 12:38:27 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php on line 18
+[23-Aug-2017 12:38:27 Europe/Berlin] PHP Stack trace:
+[23-Aug-2017 12:38:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user-object.php:0
+[23-Aug-2017 14:03:37 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'user'' in C:\xampp\htdocs\phpsqlbook\code\chapter_06\left-join.php:10
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\code\chapter_06\left-join.php(10): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_06\left-join.php on line 10

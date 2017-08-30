@@ -1,5 +1,4 @@
 RewriteEngine On    # Turn on the rewriting engine
-ErrorDocument 404  /404.php
 RewriteRule ^/?$     category.php        [NC,L]
 RewriteRule ^admin/?$   admin/article.php      [NC,L]
 RewriteRule ^login/?$   users/login.php      [NC,L]
@@ -15,4 +14,6 @@ RewriteRule ^search/?$ search.php       [QSA,NC,L]
 RewriteRule ^home/?$ index.php       [QSA,NC,L]
 RewriteRule ^profile/?$ users/user.php?id=$1       [QSA,NC,L]
 RewriteRule ^author/([^/.]+)/?$  author.php?name=$1&show=$2&term=$3&to=$4 [QSA,L]
+
 RewriteRule ^[A-z0-9\-]+/([A-z0-9\-]+)/?$   article.php?title=$1     [NC,L]
+RewriteRule ^([A-z0-9\-]+)/?$    category.php?name=$1     [NC,QSA,L]

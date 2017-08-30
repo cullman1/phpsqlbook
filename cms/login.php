@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ALL | E_WARNING | E_NOTICE);
+ini_set('display_errors', TRUE);
 require_once('includes/database-connection.php');
 require_once('includes/functions.php');
 require_once('includes/class-lib.php');

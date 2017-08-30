@@ -1,0 +1,18 @@
+[21-Aug-2017 14:24:15 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 5
+[21-Aug-2017 14:24:15 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 14:24:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0
+[21-Aug-2017 14:24:15 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 5
+[21-Aug-2017 14:24:15 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 14:24:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0
+[21-Aug-2017 14:32:19 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 5
+[21-Aug-2017 14:32:19 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 14:32:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0
+[21-Aug-2017 14:32:19 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 5
+[21-Aug-2017 14:32:19 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 14:32:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0
+[21-Aug-2017 14:32:32 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 18
+[21-Aug-2017 14:32:32 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 14:32:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0
+[21-Aug-2017 14:32:32 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php on line 18
+[21-Aug-2017 14:32:32 Europe/Berlin] PHP Stack trace:
+[21-Aug-2017 14:32:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_06\user.php:0

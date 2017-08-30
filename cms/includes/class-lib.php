@@ -23,18 +23,6 @@ class ArticleSummary {
   $this->gallery_id  = ( isset($gallery_id)  ? $gallery_id  : '');
  }
 
- function __construct($id ='', $title = NULL, $content = NULL, $published = NULL, $category_id = NULL, $user_id = NULL, $media_id = NULL, $gallery_id = NULL) {
-     $this->id          = ( isset($id)          ? $id          : '');
-     $this->title       = ( isset($title)       ? $title       : '');
-     $this->seo_title       = ( isset($seo_title)       ? $seo_title       : '');
-     $this->content     = ( isset($content)     ? $content     : '');
-     $this->published   = ( isset($published)   ? $published   : '');
-     $this->category_id = ( isset($category_id) ? $category_id : '');
-     $this->user_id     = ( isset($user_id)     ? $user_id     : '');
-     $this->media_id    = ( isset($media_id)    ? $media_id    : '');
-     $this->gallery_id  = ( isset($gallery_id)  ? $gallery_id  : '');
- }
-
  function create() {
   $connection = $GLOBALS['connection'];                              // Connection
   $sql = 'INSERT INTO article (title, seo_title, content, category_id, user_id, media_id, gallery_id) 
@@ -100,10 +88,8 @@ class Category {
   public $id=0;			// int
   public $name;		// String
    public $seo_name;		// String
-  public $template; 		// String
-  public $articleSummaryList;	// Array holding array of article summaries
-  public $articlesList;		// Array holding array of entire articles
-  public $validated = false; 	// Is category validated
+  public $navigation; 		// String
+  public $description; 	// Is category validated
   public $connection;
   public $database;
 
@@ -115,10 +101,11 @@ class Category {
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $category = $statement->fetch(); 
     if($category) {
-      $this->id       = $category->{"id"};
-      $this->name     = $category->{"name"};
-         $this->seo_name     = $category->{"seo_name"};
-      $this->template = $category->{"template"};
+      $this->id       = $category->id;
+      $this->name     = $category->name;
+            $this->description     = $category->description;
+         $this->seo_name     = $category->seo_name;
+      $this->navigation = $category->navigation;
   }
   }
 
@@ -128,7 +115,6 @@ class Category {
 
   function delete(){}
 
-  function validate() {}
   } 
 
 class CategoryList {
@@ -150,7 +136,7 @@ class User {
   public $surname;
   public $email;
   public $password;
-    public $image;
+  public $image;
   public $role_id;
   public $tasks;
 
@@ -478,7 +464,6 @@ class Validate {
 		$errors['forename'] = $this->isName($User->forename);
 		$errors['surname']  = $this->isName($User->surname);
 		$errors['email']    = $this->isEmail($User->email);
-		$errors['image'] = $this->isImage($User->image);
         $errors['password'] = $this->isPassword($User->password);
 		return $errors;
 	}

@@ -1,0 +1,1198 @@
+[24-Aug-2017 12:40:49 Europe/Berlin] PHP Warning:  require_once(includes/db-connection.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 2
+[24-Aug-2017 12:40:49 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:40:49 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:40:49 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/db-connection.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 2
+[24-Aug-2017 12:40:49 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:40:49 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:42:53 Europe/Berlin] PHP Warning:  require_once(includes/db-connection.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 2
+[24-Aug-2017 12:42:53 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:42:53 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:42:53 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/db-connection.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 2
+[24-Aug-2017 12:42:53 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:42:53 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:42:54 Europe/Berlin] PHP Warning:  require_once(includes/db-connection.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 2
+[24-Aug-2017 12:42:54 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:42:54 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:42:54 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/db-connection.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 2
+[24-Aug-2017 12:42:54 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:42:54 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:43:08 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'media.type' in 'field list'' in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:21
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php(21): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 21
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 29
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 33
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 33
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 35
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:45:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 32
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 38
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:47:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 32
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 38
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:13 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$type in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:49:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:50:00 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:50:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:50:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:50:00 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:50:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:50:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 32
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 36
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 38
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:50:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 12:51:22 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 18
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Warning:  PDOStatement::fetch() expects parameter 2 to be long, string given in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 16
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:16
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 26
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 37
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:51:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Warning:  PDOStatement::fetch() expects parameter 2 to be long, string given in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 16
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:16
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 26
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 37
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Warning:  PDOStatement::fetch() expects parameter 2 to be long, string given in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 16
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:16
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 26
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 37
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:53:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:54:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 26
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 37
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:55:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 26
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 37
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 26
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 30
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 33
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 37
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:56:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:57:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 27
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 31
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 32
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 34
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 35
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 38
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 39
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 40
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 41
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 12:58:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:13:28 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 117
+[24-Aug-2017 13:13:28 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:13:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:13:28 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 117
+[24-Aug-2017 13:13:28 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:13:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 33
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 39
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:37:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:37:17 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:37:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:37:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:37:17 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:37:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:37:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:38:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:39:06 Europe/Berlin] PHP Parse error:  syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 39
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP Fatal error:  Cannot use object of type stdClass as array in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 39
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:39:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 37
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 43
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 44
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php on line 45
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\category-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 113
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 117
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 117
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 118
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 120
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 120
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 121
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 121
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 124
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 125
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 126
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 127
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 127
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:46 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 117
+[24-Aug-2017 13:42:46 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[24-Aug-2017 13:42:46 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php on line 117
+[24-Aug-2017 13:42:46 Europe/Berlin] PHP Stack trace:
+[24-Aug-2017 13:42:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\article-1.php:0
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 45
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 46
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:28:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 45
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 46
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:29:14 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:42 Europe/Berlin] PHP Notice:  Use of undefined constant forename - assumed 'forename' in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:29:42 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:29:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:42 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:29:42 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP Notice:  Object of class User could not be converted to int in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP Catchable fatal error:  Object of class User could not be converted to string in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:29:43 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP Notice:  Use of undefined constant forename - assumed 'forename' in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP Notice:  Object of class User could not be converted to int in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP Catchable fatal error:  Object of class User could not be converted to string in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:02 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP Notice:  Use of undefined constant forename - assumed 'forename' in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP Notice:  Object of class User could not be converted to int in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP Catchable fatal error:  Object of class User could not be converted to string in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:32:03 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP Notice:  Undefined property: User::$surname in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP Notice:  Undefined property: User::$surname in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP Notice:  Undefined property: User::$surname in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP Notice:  Undefined property: User::$surname in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:34:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP Notice:  Undefined property: User::$surname in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 39
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:35:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:35:19 Europe/Berlin] PHP Notice:  Undefined property: User::$surname in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:35:19 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:35:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:35:19 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:35:19 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:35:22 Europe/Berlin] PHP Notice:  Undefined property: User::$surname in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 11
+[25-Aug-2017 17:35:22 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 17:35:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 17:35:22 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 17:35:22 Europe/Berlin] PHP   3. User->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 18:01:07 Europe/Berlin] PHP Warning:  PDOStatement::fetch() expects parameter 2 to be long, string given in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 26
+[25-Aug-2017 18:01:07 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 18:01:07 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 18:01:07 Europe/Berlin] PHP   2. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:26
+[25-Aug-2017 18:01:07 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 47
+[25-Aug-2017 18:01:07 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 18:01:07 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 18:01:25 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 47
+[25-Aug-2017 18:01:25 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 18:01:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 18:02:54 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 44
+[25-Aug-2017 18:02:54 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 18:02:54 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[25-Aug-2017 18:02:55 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 44
+[25-Aug-2017 18:02:55 Europe/Berlin] PHP Stack trace:
+[25-Aug-2017 18:02:55 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
