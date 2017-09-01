@@ -301,3 +301,464 @@ Stack trace:
 #1 C:\xampp\htdocs\phpsqlbook\cms\index.php(14): get_article_list(12, 0)
 #2 {main}
   thrown in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 76
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 31
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Undefined variable: Category in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 32
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Undefined variable: article_list in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 34
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Undefined variable: count in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Undefined variable: show in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Notice:  Undefined variable: from in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 59
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 515
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Warning:  Division by zero in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 516
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[01-Sep-2017 13:49:44 Europe/Berlin] PHP   2. create_pagination() C:\xampp\htdocs\phpsqlbook\cms\category.php:59
+[01-Sep-2017 14:15:40 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:15:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:15:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:15:40 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:15:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:15:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:17:30 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:17:30 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:17:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:17:30 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:17:30 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:17:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:17:32 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:17:32 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:17:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:17:32 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:17:32 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:17:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:17:33 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:17:33 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:17:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:17:33 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:17:33 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:17:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:18:54 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:18:54 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:18:54 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:18:54 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:18:54 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:18:54 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:18:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:00 Europe/Berlin] PHP Warning:  require_once(includes/config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:19:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:19:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:00 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'includes/config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 3
+[01-Sep-2017 14:19:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:19:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 17
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 17
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:19:32 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:20
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:11 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 20
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 20
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:39 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:22
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 20
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 20
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:20:40 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:22
+[01-Sep-2017 14:21:02 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+' in C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php:20
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php(20): PDO->__construct('mysql:host=loca...', 'phpbook', 'testuser')
+#1 C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php(29): CMS->getPDO()
+#2 C:\xampp\htdocs\phpsqlbook\cms\view-category.php(7): CMS->getCategoryManager()
+#3 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php on line 20
+[01-Sep-2017 14:22:04 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+' in C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php:20
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php(20): PDO->__construct('mysql:host=loca...', 'phpbook', 'testuser')
+#1 C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php(29): CMS->getPDO()
+#2 C:\xampp\htdocs\phpsqlbook\cms\view-category.php(7): CMS->getCategoryManager()
+#3 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms\classes\service\CMS.php on line 20
+[01-Sep-2017 14:22:10 Europe/Berlin] PHP Fatal error:  Call to undefined function remove_letter() in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 13
+[01-Sep-2017 14:22:10 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:22:10 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:10
+[01-Sep-2017 14:22:10 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:22:10 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:22:33 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:22:33 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:22:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:22:33 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:22
+[01-Sep-2017 14:22:59 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:22:59 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:22:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:22:59 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:23:44 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:23:44 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:23:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:23:44 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:23:46 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:23:46 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:23:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:23:46 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:23:47 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:23:47 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:23:47 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:23:47 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:23:48 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:23:48 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:23:48 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:23:48 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:24:03 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:24:03 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:24:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:24:03 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:24:17 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:24:17 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:24:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:24:17 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:24:18 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:24:18 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:24:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:24:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:24:26 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:24:26 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:24:26 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:24:26 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:25:22 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:25:22 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:25:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:25:22 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:25:27 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:25:27 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:25:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:25:27 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:25:28 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:25:28 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:25:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:25:28 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:25:29 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:25:29 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:25:29 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:25:29 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Warning:  Missing argument 1 for Category::__construct() in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Warning:  Missing argument 2 for Category::__construct() in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Warning:  Missing argument 3 for Category::__construct() in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Warning:  Missing argument 4 for Category::__construct() in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Notice:  Undefined variable: id in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 10
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Notice:  Undefined variable: name in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 11
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Notice:  Undefined variable: description in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 12
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Notice:  Undefined variable: description in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 13
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Notice:  Undefined variable: navigation in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 14
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:00 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Notice:  Undefined variable: id in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 10
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Notice:  Undefined variable: name in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 11
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Notice:  Undefined variable: description in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 12
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Notice:  Undefined variable: description in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 13
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Notice:  Undefined variable: navigation in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 14
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:10 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Notice:  Undefined variable: id in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 10
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Notice:  Undefined variable: name in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 11
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Notice:  Undefined variable: description in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 12
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Notice:  Undefined variable: description in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 13
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Notice:  Undefined variable: navigation in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 14
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:11 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP Notice:  Undefined variable: description in C:\xampp\htdocs\phpsqlbook\cms\classes\model\Category.php on line 11
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP   2. CategoryManager->getCategoryById() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:9
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP   3. PDOStatement->fetch() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP   4. Category->__construct() C:\xampp\htdocs\phpsqlbook\cms\classes\service\CategoryManager.php:46
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:28 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:26:43 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:26:43 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:26:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:26:43 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:27:05 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:27:05 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:27:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:27:05 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:27:40 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:27:40 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:27:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:27:40 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:27:59 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:27:59 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:27:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:27:59 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:28:45 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:28:45 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:28:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:28:45 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:29:05 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:29:05 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:29:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:29:05 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:29:23 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:29:23 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:29:23 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:29:23 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:23
+[01-Sep-2017 14:29:28 Europe/Berlin] PHP Fatal error:  Call to undefined function get_menu() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 13
+[01-Sep-2017 14:29:28 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:29:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:29:28 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 25
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(includes/article-summary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/article-summary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 34
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:54 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 25
+[01-Sep-2017 14:44:54 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:44:54 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:44:54 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[01-Sep-2017 14:46:15 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 25
+[01-Sep-2017 14:46:15 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:46:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:46:15 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[01-Sep-2017 14:46:17 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 25
+[01-Sep-2017 14:46:17 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:46:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:46:17 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[01-Sep-2017 14:46:51 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 26
+[01-Sep-2017 14:46:51 Europe/Berlin] PHP Stack trace:
+[01-Sep-2017 14:46:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[01-Sep-2017 14:46:51 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21

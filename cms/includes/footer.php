@@ -1,4 +1,7 @@
-</div><footer> &copy; <?= date('Y') ?> </footer>
-<script src="<?=  'http://'.$_SERVER['HTTP_HOST'] ?>/phpsqlbook/cms/js/bootstrap.min.js"></script>
-</body>
+    <footer class="text-muted">
+      <div class="container">
+        <p>&copy; 2017</p>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -94,12 +94,6 @@ class Category {
   public $database;
 
   function __construct($name='') { 
-    $query = "SELECT * FROM category WHERE name like :name";     // Query
-    $statement = $GLOBALS["connection"]->prepare($query); // Prepare
-    $statement->bindParam(":name", $name);                    // Bind
-    $statement->execute();                                // Execute
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $category = $statement->fetch(); 
     if($category) {
       $this->id       = $category->id;
       $this->name     = $category->name;

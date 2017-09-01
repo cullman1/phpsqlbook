@@ -1,27 +1,33 @@
+<?php
+$current_page    = basename($_SERVER["SCRIPT_FILENAME"], '.php');
+$categoryManager = $cms->getCategoryManager();
+$category_list   = $categoryManager->getNavigationCategories();
+?>
 <!DOCTYPE html>
 <html>
-<head>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
- <link rel="stylesheet" type="text/css" href="/phpsqlbook/cms/css/styles.css"/>
- <link href="https://fonts.googleapis.com/css?family=Caudex:400,700%7CGilda+Display" rel="stylesheet" type="text/css">
-    <script src="https://use.fontawesome.com/c59bfa691d.js"></script>
-    <title>Example CMS</title>
-</head>
-<body>
- <header>
-  <h1>the green room</h1>
-   <nav><a href="/phpsqlbook/cms/home">Home</a><?php echo get_menu();  ?>
-     <form id=form1 style="float:right;" class="navbar-form navbar-left" role="search"  method="get" action="/phpsqlbook/cms/search">
-      <input id="term" name="term" type="text" />
-    <input type="submit">
-   <?php 
-    if (isset($_SESSION["user_id"])) {      ?>
-    <a class="link-style" href="/phpsqlbook/cms/profile?id=<?php echo $_SESSION["user_id"]; ?>"><?php echo $_SESSION["name"];?></a>&nbsp;  
-      <a href="/phpsqlbook/cms/admin">Admin</a>
-    <a href="/phpsqlbook/cms/logout">Logout</a>
-   <?php } else {    ?>             
-   <a href="/phpsqlbook/cms/login">Login</a>&nbsp;
-   <a href="/phpsqlbook/cms/register">Register</a>
-    <?php } ?> 
-   </form></nav>
-</header><div class="content-page">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><?= $page_title ?></title>
+    <meta name="description" value=" <?= $meta_description ?>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/cms/">Creative Folk</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <?php
+          foreach ($category_list as $category_link) {
+            echo '<a href="view-category.php?id=' . $category_link->id . '"  class="nav-item nav-link">' . $category_link->name . '</a>';
+          }
+          ?>
+          <a href="view-article.php?id=13" class="nav-item nav-link">About</a>
+          <a href="view-article.php?id=14" class="nav-item nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
