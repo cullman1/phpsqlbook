@@ -2,30 +2,33 @@
 session_start();
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
-require_once('includes/database-connection.php');
-require_once('includes/functions.php');
-require_once('includes/class-lib.php');
-$GLOBALS['root'] = "/phpsqlbook/cms/";
+require_once('/includes/config.php');
+require_once('/classes/service/Validate.php');
+
+$cms                = new CMS($database_config);
+$userManager    = $cms->getUserManager();
 $email    = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
 $password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
-$error    = array('email' => '', 'password' =>'');
-$alert    = '';
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $Validate = new Validate();
-  $error['email']     = $Validate->isEmail($email);
-  $error['password']  = $Validate->isPasswordLogin($password);
-  $valid = implode($error);
-  if (strlen($valid) > 0 ) {
-    $alert = '<div class="alert alert-danger">Please check your login details</div>';
-  } else {
-    $user = get_user_by_email_password($email, $password);
-    if ($user) {
-      create_user_session($user);
-      header('Location: /phpsqlbook/cms/admin'); 
+$alert  = '';          // Create as one - I think at this point
+$error = array('email' => '', 'password'=>'');             // Form errors
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $error['email']     = (Validate::isEmail($_POST["email"])  ? 'Please enter a valid email address.'    : '');
+    $error['password']  = (Validate::isPassword($_POST["password"]) ? 'Your password must contain 1 uppercase letter, 1 lowercase letter, 
+            and a number. It must be between 8 and 32 characters.'    : '');
+    $valid = implode($error);
+    if (strlen($valid) > 0 ) {
+      $alert = '<div class="alert alert-danger">Please check your login details</div>';
     } else {
-      $alert = '<div class="alert alert-danger">Login failed</div>';
+      $user = $userManager->get_user_by_email_password($email, $password);
+      if ($user) {
+        $userManager->create_user_session($user);
+        header('Location: http://localhost/phpsqlbook/cms/admin/'); 
+      } else {
+        $alert = '<div class="alert alert-danger">Login failed</span>';
     }
   }
+
 } 
 include 'includes/header.php'; 
 ?>

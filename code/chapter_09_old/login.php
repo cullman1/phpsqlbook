@@ -1,13 +1,13 @@
 <?php
 session_start();
 require_once('../includes/database_connection.php');
-require_once('functions.php');
+require_once('../includes/functions.php');
 $email    = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
 $password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
 $error    = array('email' => '', 'password' =>'');
 $alert  =   array('status' => '', 'message' =>'');
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  include('../includes/validate.php');
+  include('../classes/validate.php');
   $Validate = new Validate();
   $error['email']     = $Validate->isEmail($email);
   $error['password']  = $Validate->isPassword($password);
@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (strlen($valid) > 0 ) {
     $alert = array('status'  => 'danger', 'message' => 'Please check and resubmit');  
   } else {
-    $user=get_user_by_email_password($email, $password);
+    $user=get_user_by_email_passwordhash($email, $password);
     if ($user) {
       create_user_session($user);
       header('Location: admin-home.php'); 

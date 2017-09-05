@@ -6,7 +6,7 @@ $color = isset($_SESSION['color'])
            ? $_SESSION['color'] : '';
 $name  = isset($_SESSION['name']) 
            ? $_SESSION['name'] : '';
-?>
+?>...
  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body class="<?= $color?>">
@@ -16,4 +16,3 @@ $name  = isset($_SESSION['name'])
    <a href="session-set.php"><?php echo $name; ?></a> 
   <?php }  ?>
 <div>Welcome to the home page</div>
-</body>

@@ -156,12 +156,12 @@ function get_article_by_title($title) {
 
 function get_article_list($show='', $from='') {
     $query = 'SELECT article.title, article.media_id,article.like_count, article.seo_title,article.content, article.published, category.name,
-      media.id, media.filepath, media.thumb, media.alt, media.mediatype, category.template, user.forename, user.surname, article.id, article.like_count, article.comment_count
+      media.id, media.filepath, media.thumb, media.alt, media.mediatype,  user.forename, user.surname, article.id, article.like_count, article.comment_count
       FROM article
       LEFT JOIN category ON article.category_id = category.id
       LEFT JOIN media ON article.media_id = media.id
       LEFT JOIN user ON article.user_id = user.id
-      WHERE published <= now() and category.template != "general"
+      WHERE published < 1 
       ORDER BY article.published ASC';                 // Query
     
     //Get limited page of articles

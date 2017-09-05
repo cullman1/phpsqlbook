@@ -79,29 +79,4 @@ class ArticleManager{
     return $article;
   }
 
-   function get_search_count($term) {
-    $pdo = $this->pdo;                                // Database connection
-    $query =  "SELECT COUNT(*) FROM article ";
-    $query .= "WHERE ((title LIKE :term) OR (content LIKE :term)) "; // Query
-    $like_term = '%' . $term . '%';                     // Add wildcards to search term
-    $statement = $pdo->prepare($query);          // Prepare 
-    $statement->bindParam(':term', $like_term);         // Bind search term
-    $statement->execute();                              // Execute
-    return $statement->fetchColumn();                   // Return count from function
-  }
-
-  function search_articles($term) {
-    $pdo = $this->pdo;                               // Database connection
-    $query =  "SELECT id, title, content FROM article ";
-    $query .= "WHERE ((title LIKE :term) OR (content LIKE :term)) ";
-    $query .= "ORDER BY id DESC ";                      // Query
-    $like_term = '%' . $term . '%';                     // Add wildcards to search term
-    $statement = $pdo->prepare($query);          // Prepare 
-    $statement->bindParam(':term', $like_term);         // Bind search term
-    $statement->execute();                              // Execute
-    $statement->setFetchMode(PDO::FETCH_CLASS, 'Article');           
-    return $statement->fetchAll();                      // Return matches in database
-  }
-
-
 }

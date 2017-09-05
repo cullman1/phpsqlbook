@@ -12,7 +12,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) ) {  // If check passes
 }
 
 if (empty($category)) {
-   // header( "Location: page-not-found.php" );
+    header( "Location: page-not-found.php" );
 }
 
 $page_title       .= $category->name;

@@ -14,12 +14,11 @@ if (!isset($_SESSION["loggedin"])) {
     <a href="login.php">Login</a> 
   <?php } else { ?>
     <a href="prefer.php">
-      <?= $_SESSION["forename"]; ?> 
+      <?= $_SESSION['forename']; ?> 
     </a> 
-    <img src="<?= $_SESSION["image"]; ?>" />
+    <img src="<?= $_SESSION['image']; ?>" />
     <a href="logout.php">Logout</a>
   <?php }  ?>
 </div>
-<div class='menu'></div>
-<hr/>
-<div>Welcome to the home page!</div>
+<div class='menu'></div><hr/>
+<div>Welcome to the admin page!</div>

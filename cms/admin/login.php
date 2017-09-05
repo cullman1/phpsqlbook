@@ -1,15 +1,17 @@
 <?php
-require_once('../includes/database-connection.php');
-require_once('../includes/class-lib.php');
-require_once('../includes/functions.php');
+require_once('/includes/config.php');
+require_once('/includes/classes/service/Validate.php');
 
+$cms                = new CMS($database_config);
+$userManager    = $cms->getUserManager();
+$email    = ( isset($_POST['email'])    ? $_POST['email']    : '' ); 
+$password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
 $alert  = array('status' => '', 'message' =>'');          // Create as one - I think at this point
 $errors = array('email' => '', 'password'=>'');             // Form errors
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $Validate = new Validate();
-    $errors['email']     = $Validate->isEmail($_POST["email"]);
-    $errors['password']  = $Validate->isPassword($_POST["password"]);
+    $errors['email']     = Validate::isEmail($_POST["email"]);
+    $errors['password']  = Validate::isPassword($_POST["password"]);
     $valid = implode($errors);
     if (strlen($valid) < 1 ) {
        $alert = submit_login($_POST["email"], $_POST["password"]); 

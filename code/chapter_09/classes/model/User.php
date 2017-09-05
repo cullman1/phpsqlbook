@@ -5,7 +5,7 @@ class User
   public  $forename;
   public  $surname;
   private $email;
-  public $password;
+  private $password;
   public  $joined;
   public  $image;
 

@@ -762,3 +762,220 @@ Stack trace:
 [01-Sep-2017 14:46:51 Europe/Berlin] PHP Stack trace:
 [01-Sep-2017 14:46:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
 [01-Sep-2017 14:46:51 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP Notice:  Undefined variable: connection in C:\xampp\htdocs\phpsqlbook\cms\classes\service\ArticleManager.php on line 87
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-search.php:0
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP   2. ArticleManager->get_search_count() C:\xampp\htdocs\phpsqlbook\cms\view-search.php:8
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\cms\classes\service\ArticleManager.php on line 87
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-search.php:0
+[05-Sep-2017 11:44:00 Europe/Berlin] PHP   2. ArticleManager->get_search_count() C:\xampp\htdocs\phpsqlbook\cms\view-search.php:8
+[05-Sep-2017 11:49:48 Europe/Berlin] PHP Fatal error:  Call to undefined function clean() in C:\xampp\htdocs\phpsqlbook\cms\view-search.php on line 12
+[05-Sep-2017 11:49:48 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 11:49:48 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-search.php:0
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\login.php:30
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:23:41 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\login.php:30
+[05-Sep-2017 13:27:12 Europe/Berlin] PHP Warning:  require_once(/includes/classes/service/Validate.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 6
+[05-Sep-2017 13:27:12 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:27:12 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:27:12 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '/includes/classes/service/Validate.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 6
+[05-Sep-2017 13:27:12 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:27:12 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:27:37 Europe/Berlin] PHP Warning:  require_once(/classes/service/Validate.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 6
+[05-Sep-2017 13:27:37 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:27:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:27:37 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '/classes/service/Validate.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 6
+[05-Sep-2017 13:27:37 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:27:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP Notice:  Array to string conversion in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 28
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 30
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 32
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:27:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:28:33 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 30
+[05-Sep-2017 13:28:33 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:28:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:28:33 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 32
+[05-Sep-2017 13:28:33 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:28:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:02 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 30
+[05-Sep-2017 13:29:02 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:02 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 32
+[05-Sep-2017 13:29:02 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:04 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 30
+[05-Sep-2017 13:29:04 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:04 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 32
+[05-Sep-2017 13:29:04 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:05 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 30
+[05-Sep-2017 13:29:05 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:05 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 32
+[05-Sep-2017 13:29:05 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:06 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 30
+[05-Sep-2017 13:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:06 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 32
+[05-Sep-2017 13:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:07 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 30
+[05-Sep-2017 13:29:07 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:07 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:29:07 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 32
+[05-Sep-2017 13:29:07 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:29:07 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:31:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\category.php on line 18
+[05-Sep-2017 13:31:08 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:31:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[05-Sep-2017 13:31:08 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'article.create' in 'order clause'' in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php:53
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php(53): PDOStatement->execute()
+#1 C:\xampp\htdocs\phpsqlbook\cms\category.php(18): get_article_list_by_category_name(NULL, 8, 0)
+#2 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms\includes\functions.php on line 53
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Notice:  Use of undefined constant FASLE - assumed 'FASLE' in C:\xampp\htdocs\phpsqlbook\cms\classes\service\Validate.php on line 34
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP   2. Validate::isPassword() C:\xampp\htdocs\phpsqlbook\cms\login.php:17
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Notice:  Undefined variable: errors in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 18
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Warning:  implode(): Argument must be an array in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 18
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP   2. implode() C:\xampp\htdocs\phpsqlbook\cms\login.php:18
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Fatal error:  Call to undefined function submit_login() in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 20
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:31:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP Notice:  Undefined variable: errors in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 18
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP Warning:  implode(): Argument must be an array in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 18
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP   2. implode() C:\xampp\htdocs\phpsqlbook\cms\login.php:18
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP Fatal error:  Call to undefined function submit_login() in C:\xampp\htdocs\phpsqlbook\cms\login.php on line 20
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:39:28 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP Notice:  Undefined index: connection in C:\xampp\htdocs\phpsqlbook\cms\classes\service\UserManager.php on line 30
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP   2. UserManager->get_user_by_email_password() C:\xampp\htdocs\phpsqlbook\cms\login.php:22
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\cms\classes\service\UserManager.php on line 30
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 13:39:49 Europe/Berlin] PHP   2. UserManager->get_user_by_email_password() C:\xampp\htdocs\phpsqlbook\cms\login.php:22
+[05-Sep-2017 18:09:31 Europe/Berlin] PHP Fatal error:  Cannot access private property User::$password in C:\xampp\htdocs\phpsqlbook\cms\classes\service\UserManager.php on line 40
+[05-Sep-2017 18:09:31 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:09:31 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\login.php:0
+[05-Sep-2017 18:09:31 Europe/Berlin] PHP   2. UserManager->get_user_by_email_password() C:\xampp\htdocs\phpsqlbook\cms\login.php:23
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:28:56 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:29:06 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 18
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Notice:  Undefined variable: category in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms\view-category.php on line 19
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:0
+[05-Sep-2017 18:32:22 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\view-category.php:21
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:32:24 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\category.php:0
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\category.php:26
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:35:15 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:36:03 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP Notice:  Undefined variable: cms in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP Fatal error:  Call to a member function getCategoryManager() on null in C:\xampp\htdocs\phpsqlbook\cms\includes\header.php on line 3
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP Stack trace:
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\index.php:0
+[05-Sep-2017 18:36:53 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms\index.php:12
