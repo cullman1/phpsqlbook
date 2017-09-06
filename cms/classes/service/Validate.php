@@ -7,7 +7,7 @@ const MEDIATYPE_png = 'image/png';
 const MEDIATYPE_gif = 'image/gif';
 
   public static function isNumber($number, $min = 0, $max = 4294967295) {
-    if ( (!filter_var($id, FILTER_VALIDATE_INT)) or (($number < $min) or ($number > $max)) ) {
+      if ( (!filter_var($number, FILTER_VALIDATE_INT)) or (($number < $min) or ($number > $max)) ) {
       return FALSE;
     }
     return TRUE;
@@ -15,7 +15,7 @@ const MEDIATYPE_gif = 'image/gif';
 
   public static function isText($string, $min = 0, $max = 30000){
     $length = strlen($string);
-    if (($length < $min) or ($length > $max)) {
+    if (($length <= $min) or ($length >= $max)) {
       return FALSE;
     }
     return TRUE;
@@ -37,6 +37,10 @@ const MEDIATYPE_gif = 'image/gif';
       return FALSE;
     }
     return TRUE;
+  }
+
+  public static function isConfirmPassword($password, $confirm) {
+      return ( ($password != $confirm) ? FALSE : TRUE ); 
   }
 
   public static function isDate($date_array) {

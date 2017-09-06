@@ -13,8 +13,8 @@ $alert  = '';          // Create as one - I think at this point
 $error = array('email' => '', 'password'=>'');             // Form errors
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $error['email']     = (Validate::isEmail($_POST["email"])  ? 'Please enter a valid email address.'    : '');
-    $error['password']  = (Validate::isPassword($_POST["password"]) ? 'Your password must contain 1 uppercase letter, 1 lowercase letter, 
+    $error['email']     = (Validate::isEmail($email)  ? 'Please enter a valid email address.'    : '');
+    $error['password']  = (Validate::isPassword($password) ? 'Your password must contain 1 uppercase letter, 1 lowercase letter, 
             and a number. It must be between 8 and 32 characters.'    : '');
     $valid = implode($error);
     if (strlen($valid) > 0 ) {

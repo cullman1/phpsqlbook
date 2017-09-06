@@ -87,7 +87,11 @@ class ArticleManager{
     $statement = $pdo->prepare($query);          // Prepare 
     $statement->bindParam(':term', $like_term);         // Bind search term
     $statement->execute();                              // Execute
-    return $statement->fetchColumn();                   // Return count from function
+    $article_count = $statement->fetchColumn();         // Return count from function
+    if (!$article_count) {
+        return null;
+    }
+    return $article_count;                  // Return count from function
   }
 
   function search_articles($term) {
@@ -100,8 +104,13 @@ class ArticleManager{
     $statement->bindParam(':term', $like_term);         // Bind search term
     $statement->execute();                              // Execute
     $statement->setFetchMode(PDO::FETCH_CLASS, 'Article');           
-    return $statement->fetchAll();                      // Return matches in database
-  }
+    $article_list = $statement->fetchAll();             // Return matches in database
+    if (!$article_list) {
+      return null;
+    }
+    return $article_list;
+  }                     // Return matches in database
+  
 
 
 }

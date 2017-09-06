@@ -45,4 +45,37 @@ function create_user_session($user) {
   $_SESSION['user_id'] = $user->id;
 }
 
+function create($forename, $surname, $email, $password) {
+    $pdo = $this->pdo;                             // Connection
+    $sql = 'INSERT INTO user (forename, surname, email, password) 
+                   VALUES (:forename, :surname, :email, :password)';
+    $statement = $pdo->prepare($sql);                          // Prepare
+    $statement->bindValue(':forename', $forename);              // Bind value
+    $statement->bindValue(':surname',  $surname);               // Bind value
+    $statement->bindValue(':email',    $email);                 // Bind value
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $statement->bindValue(':password', $hash);                        // Bind value
+    try {
+        $statement->execute();                                          // Try to execute
+        $result = TRUE;                                                 // Say it worked
+    }
+    catch (PDOException $error) {                                   // Otherwise
+        $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];   // Error
+    }
+    return $result;                                                    
+}
+
+function get_user_by_email($email) {
+    $pdo = $this->pdo;
+    $sql = 'SELECT * from user WHERE email = :email';
+    $statement = $pdo->prepare($sql);
+    $statement->bindParam(':email', $email);
+    if ($statement->execute() ) {
+      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');            
+      $user = $statement->fetch();
+    }
+    return ($user ? $user : FALSE);
+  }
+
+
 }
