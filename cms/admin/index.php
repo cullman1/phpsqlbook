@@ -1,5 +1,5 @@
 <?php
-require_once('includes/check-user.php');                            // Is logged in
+                        // Is logged in
 include('includes/admin-header.php'); 
 ?>
 

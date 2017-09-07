@@ -4,6 +4,7 @@ class UserManager
 {
 
   private $pdo;
+  const role_admin = 2;
 
   public function __construct($pdo)
   {
@@ -40,10 +41,7 @@ class UserManager
   return (password_verify($password, $user->password) ? $user : FALSE);
 }
 
-function create_user_session($user) {
-  $_SESSION['name']    = $user->forename;
-  $_SESSION['user_id'] = $user->id;
-}
+
 
 function create($forename, $surname, $email, $password) {
     $pdo = $this->pdo;                             // Connection
@@ -77,5 +75,55 @@ function get_user_by_email($email) {
     return ($user ? $user : FALSE);
   }
 
+public function get_tasks($role_id) {
+    $pdo = $this->pdo;
+    $query = 'SELECT task.name FROM task 
+              JOIN tasks_in_role ON task.id = tasks_in_role.task_id              
+              WHERE tasks_in_role.role_id = :roleid';
+    $statement = $pdo->prepare($query);
+    $statement->bindParam(':roleid', $role_id);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $tasks = $statement->fetchAll();
+    if (!$tasks) {
+        return null;
+    }
+    return $tasks;
+}
+
+public function get_logged_in_user() {
+
+    if (!isset($_SESSION['user_id'])) { 
+        header('Location: /phpsqlbook/cms/login');
+    }
+    return $this->getUserById($_SESSION['user_id']);
+}
+
+
+function create_user_session($user) {
+    session_start();
+    $_SESSION['name']    = $user->forename;
+    $_SESSION['user_id'] = $user->id;
+    $_SESSION['role']    = 2;
+}
+
+public function is_logged_in() {
+    if (session_status() ==2)  {
+        session_start();
+        return (isset($_SESSION['user_id']) ? TRUE : FALSE);  
+    } 
+    return FALSE;
+}
+
+public function is_admin() {
+    if (session_status()==2)  {
+        session_start();
+        if ((isset($_SESSION['role'])) && $_SESSION['role'] == 2 ) {
+                return TRUE;
+        }
+    } 
+   
+    header('Location: /phpsqlbook/cms/login');
+}
 
 }

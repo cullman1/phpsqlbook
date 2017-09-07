@@ -17,5 +17,6 @@
     <li<?php if (strpos($current_page, 'user') !== false) { echo ' class="active"'; }  ?>><a href="user.php">users</a></li>
     <li<?php if (strpos($current_page, 'media') !== false) { echo ' class="active"'; }  ?>><a href="media.php">media</a></li>
     <li<?php if (strpos($current_page, 'gallery') !== false) { echo ' class="active"'; }  ?>><a href="gallery.php">galleries</a></li>
+        <li><a href="logout.php">logout</a></li> 
   </ul>
 </nav>

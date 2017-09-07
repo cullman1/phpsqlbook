@@ -1,9 +1,8 @@
 <?php
-session_start();
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
-require_once('/includes/config.php');
-require_once('/classes/service/Validate.php');
+require_once('config.php');
+require_once('classes/service/Validate.php');
 
 $cms                = new CMS($database_config);
 $userManager    = $cms->getUserManager();
@@ -22,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       $user = $userManager->get_user_by_email_password($email, $password);
       if ($user) {
+
         $userManager->create_user_session($user);
         header('Location: http://localhost/phpsqlbook/cms/admin/'); 
       } else {

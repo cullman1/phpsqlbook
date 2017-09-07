@@ -1,6 +1,6 @@
 <?php
-require_once('/includes/config.php');
-require_once('/includes/classes/service/Validate.php');
+require_once('config.php');
+require_once('classes/service/Validate.php');
 
 $cms                = new CMS($database_config);
 $userManager    = $cms->getUserManager();

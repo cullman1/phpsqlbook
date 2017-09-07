@@ -26,8 +26,7 @@ $category_list   = $categoryManager->getNavigationCategories();
             echo '<a href="view-category.php?id=' . $category_link->id . '"  class="nav-item nav-link">' . $category_link->name . '</a>';
           }
           ?>
-          <a href="view-article.php?id=13" class="nav-item nav-link">About</a>
-          <a href="view-article.php?id=14" class="nav-item nav-link">Contact</a>
         </div>
       </div>
+     <!-- <div style="float:right;"> <a href="login" class="nav-item nav-link">Login</a></div>//-->
     </nav>

@@ -43,7 +43,7 @@ function get_article_list_by_category_name($name, $show='', $from='') {
     LEFT JOIN user     ON article.user_id     = user.id
     WHERE published =1  
     AND category.name=:name 
-    ORDER BY article.create ASC'; 
+    ORDER BY article.created ASC'; 
     if (!empty($show)) {
         $query .= " limit " . $show . " offset " . $from;
       }

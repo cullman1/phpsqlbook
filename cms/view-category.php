@@ -1,6 +1,6 @@
 <?php
 
-require_once 'includes/config.php';
+require_once 'config.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id']) ) {  // If check passes
     $cms                = new CMS($database_config);

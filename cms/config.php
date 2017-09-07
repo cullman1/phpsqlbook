@@ -2,9 +2,8 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-define( 'ROOT_DIR', $_SERVER['DOCUMENT_ROOT'] );
 
-require_once ROOT_DIR.'/classes/model/Article.php';
+require_once 'classes/model/Article.php';
 require_once 'classes/model/ArticleSummary.php';
 require_once 'classes/model/Category.php';
 require_once 'classes/model/User.php';

@@ -82,7 +82,7 @@
     <Compile Include="cms\includes\article_list_content.php" />
     <Compile Include="cms\includes\author_list_content.php" />
     <Compile Include="cms\includes\check-user.php" />
-    <Compile Include="cms\includes\config.php" />
+    <Compile Include="cms\config.php" />
     <Compile Include="cms\includes\database-connection.php" />
     <Compile Include="cms\includes\footer.php" />
     <Compile Include="cms\includes\footer_old.php" />
@@ -96,7 +96,7 @@
     <Compile Include="code\chapter_09\classes\service\Validate.php" />
     <Compile Include="cms\register_old.php" />
     <Compile Include="cms\reset-password.php" />
-    <Compile Include="cms\login.php" />
+    <Compile Include="cms\login_old.php" />
     <Compile Include="cms\search.php" />
     <Compile Include="cms\includes\class-lib.php" />
     <Compile Include="cms\includes\functions.php" />

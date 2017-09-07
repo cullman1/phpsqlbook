@@ -1,5 +1,5 @@
 <?php
-require_once('includes/config.php');                    // Include database connection
+require_once('config.php');                    // Include database connection
 $cms                = new CMS($database_config);
 $articleManager    = $cms->getArticleManager();
 $term = ( isset($_GET['term']) ? $_GET['term'] : ''); // Get search term or blank string
