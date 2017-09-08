@@ -5,7 +5,7 @@ class User
   public  $forename;
   public  $surname;
   public $email;
-  public $password;
+  private $password;
   public  $joined;
   public  $image;
   public $role_id;
@@ -25,6 +25,10 @@ class User
 
   public function getFullName(){
     return $this->forename . ' ' . $this->surname;
+  }
+
+  public function getPassword() {
+      return $this->password;
   }
 
   public function has_permission($task) {

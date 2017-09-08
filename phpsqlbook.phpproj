@@ -91,12 +91,17 @@
     <Compile Include="cms\includes\main_content.php" />
     <Compile Include="cms\includes\user-form.php" />
     <Compile Include="cms\login.php" />
+    <Compile Include="cms\members\forgotten-password.php" />
+    <Compile Include="cms\members\login.php" />
+    <Compile Include="cms\members\logout.php" />
+    <Compile Include="cms\members\register.php" />
+    <Compile Include="cms\members\reset-password.php" />
+    <Compile Include="cms\page-not-found.php" />
     <Compile Include="cms\register.php" />
     <Compile Include="cms\view-search.php" />
     <Compile Include="code\chapter_09\classes\service\Validate.php" />
     <Compile Include="cms\register_old.php" />
     <Compile Include="cms\reset-password.php" />
-    <Compile Include="cms\login_old.php" />
     <Compile Include="cms\search.php" />
     <Compile Include="cms\includes\class-lib.php" />
     <Compile Include="cms\includes\functions.php" />
@@ -623,6 +628,7 @@
     <Folder Include="cms\classes\service\" />
     <Folder Include="cms\css\" />
     <Folder Include="cms\includes\" />
+    <Folder Include="cms\members\" />
     <Folder Include="cms\users\" />
     <Folder Include="code\" />
     <Folder Include="code\chapter_01\" />

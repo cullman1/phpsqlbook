@@ -27,7 +27,7 @@ class UserManager
     return $user;
   }
 
-  function get_user_by_email_password($email, $password) {
+  public function get_user_by_email_password($email, $password) {
    $pdo = $this->pdo;
   $query = 'SELECT * FROM user WHERE email = :email';
   $statement = $pdo->prepare($query);
@@ -39,7 +39,7 @@ class UserManager
   if (!$user) { 
     return FALSE; 
   }
-  return (password_verify($password, $user->password) ? $user : FALSE);
+  return (password_verify($password, $user->getPassword()) ? $user : FALSE);
 }
 
 
@@ -91,15 +91,6 @@ public function get_tasks($role_id) {
     }
     return $tasks;
 }
-
-public function get_logged_in_user() {
-
-    if (!isset($_SESSION['user_id'])) { 
-        header('Location: /phpsqlbook/cms/login');
-    }
-    return $this->getUserById($_SESSION['user_id']);
-}
-
 
 function create_user_session($user) {
     if (session_status() == PHP_SESSION_NONE) {

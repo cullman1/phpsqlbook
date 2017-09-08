@@ -22,10 +22,7 @@ const MEDIATYPE_gif = 'image/gif';
   }
 
   public static function isEmail($email) {
-     if ( ( filter_var($email, FILTER_VALIDATE_EMAIL))) {
-       return FALSE;
-    }
-    return TRUE;
+     return filter_var($email, FILTER_VALIDATE_EMAIL);
   }
 
   public static function isPassword($password) {
@@ -33,7 +30,7 @@ const MEDIATYPE_gif = 'image/gif';
     if(preg_match_all('/[A-Z]/', $password)<1) {  echo"2";$error = TRUE; } // < 1 x A-Z return FALSE
     if(preg_match_all('/[a-z]/', $password)<1) {  echo"3";$error = TRUE; } // < 1 x a-z return FALSE
     if(preg_match_all('/\d/', $password)<1)    {  echo"4";$error = TRUE; } // < 1 x 0-9 return FALSE
-    if (!isset($error)) {
+    if (isset($error)) {
       return FALSE;
     }
     return TRUE;
