@@ -9,6 +9,6 @@ setcookie(session_name(), '', time()-2400,
             $param['secure'], $param['httponly']);
 
 session_destroy();
-      header('Location: /phpsqlbook/cms/Vegetables'); 
+      header('Location: /phpsqlbook/cms/index.php'); 
 ?>
 

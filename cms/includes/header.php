@@ -28,5 +28,10 @@ $category_list   = $categoryManager->getNavigationCategories();
           ?>
         </div>
       </div>
-     <!-- <div style="float:right;"> <a href="login" class="nav-item nav-link">Login</a></div>//-->
+        <?php if ($is_logged_in) { ?>
+          <div style="float:right;">  <?= $_SESSION["name"] ?></div>
+          <div style="float:right;"> <a href="logout.php" class="nav-item nav-link">Logout</a></div>
+        <?php  } else { ?>
+          <div style="float:right;"> <a href="login" class="nav-item nav-link">Login</a></div>
+        <?php } ?>
     </nav>

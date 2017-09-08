@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       $user = $userManager->get_user_by_email_password($email, $password);
       if ($user) {
-
         $userManager->create_user_session($user);
         header('Location: http://localhost/phpsqlbook/cms/admin/'); 
       } else {

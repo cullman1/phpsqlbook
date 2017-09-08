@@ -1,9 +1,7 @@
 <?php            
 require_once('../config.php');  // Functions
-$cms                = new CMS($database_config);
-$userManager    = $cms->getUserManager();
-$logged_in = $userManager->is_admin();
 
+$logged_in = $userManager->redirectNonAdmin();
 
 include('includes/admin-header.php'); 
 ?>

@@ -55,7 +55,6 @@
     <Compile Include="cms\admin\includes\list-user.php" />
     <Compile Include="cms\admin\includes\list-media.php" />
     <Compile Include="cms\admin\index.php" />
-    <Compile Include="cms\admin\login.php" />
     <Compile Include="cms\admin\logout.php" />
     <Compile Include="cms\admin\media-create.php" />
     <Compile Include="cms\admin\media-delete.php" />
@@ -91,6 +90,7 @@
     <Compile Include="cms\includes\main_content - Copy.php" />
     <Compile Include="cms\includes\main_content.php" />
     <Compile Include="cms\includes\user-form.php" />
+    <Compile Include="cms\login.php" />
     <Compile Include="cms\register.php" />
     <Compile Include="cms\view-search.php" />
     <Compile Include="code\chapter_09\classes\service\Validate.php" />

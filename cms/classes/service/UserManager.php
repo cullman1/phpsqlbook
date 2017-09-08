@@ -4,6 +4,7 @@ class UserManager
 {
 
   private $pdo;
+  const role_user = 1;
   const role_admin = 2;
 
   public function __construct($pdo)
@@ -101,29 +102,30 @@ public function get_logged_in_user() {
 
 
 function create_user_session($user) {
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $_SESSION['name']    = $user->forename;
     $_SESSION['user_id'] = $user->id;
-    $_SESSION['role']    = 2;
+    $_SESSION['role']    = $user->role_id;
 }
 
-public function is_logged_in() {
-    if (session_status() ==2)  {
-        session_start();
-        return (isset($_SESSION['user_id']) ? TRUE : FALSE);  
-    } 
-    return FALSE;
+public function isLoggedIn() {
+  session_start();
+  return (isset($_SESSION['user_id']) ? TRUE : FALSE);  
 }
 
-public function is_admin() {
-    if (session_status()==2)  {
-        session_start();
-        if ((isset($_SESSION['role'])) && $_SESSION['role'] == 2 ) {
-                return TRUE;
+public function redirectNonAdmin() {
+    if (!isset($_SESSION['role'])) {
+        header('Location: /phpsqlbook/cms/login');
+        exit;
+    } else {
+        if ($_SESSION['role'] != self::role_admin ) {
+            header('Location: /phpsqlbook/cms/404');
+            exit;
         }
-    } 
-   
-    header('Location: /phpsqlbook/cms/login');
+    }
 }
 
 }
+
