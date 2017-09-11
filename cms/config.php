@@ -19,11 +19,14 @@ $database_config = array (
     'username' => 'root',
     'password' => ''
 );
+
 $cms                = new CMS($database_config);
 $articleManager    = $cms->getArticleManager();
 $categoryManager    = $cms->getCategoryManager();
 $userManager    = $cms->getUserManager();
 $is_logged_in = $userManager->isLoggedIn();
 
-$page_title       = 'Creative Folk ';
+$site_name        = 'Creative Folk';
+$page_title       = $site_name . ' ';
 $meta_description = 'An agency for creatives';
+define('ROOT','/phpsqlbook/cms/');

@@ -34,4 +34,5 @@ class User
   public function has_permission($task) {
       return in_array($task, $_SESSION['tasks']);
   }
+
 }

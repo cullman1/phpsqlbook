@@ -24,7 +24,6 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="cms\404.php" />
     <Compile Include="cms\admin\article-create.php" />
     <Compile Include="cms\admin\article-delete.php" />
     <Compile Include="cms\admin\article-update.php" />
@@ -64,7 +63,6 @@
     <Compile Include="cms\admin\user-edit.php" />
     <Compile Include="cms\admin\user-list.php" />
     <Compile Include="cms\admin\user.php" />
-    <Compile Include="cms\category.php" />
     <Compile Include="cms\author.php" />
     <Compile Include="cms\classes\model\Article.php" />
     <Compile Include="cms\classes\model\ArticleSummary.php" />
@@ -75,39 +73,27 @@
     <Compile Include="cms\classes\service\CMS.php" />
     <Compile Include="cms\classes\service\UserManager.php" />
     <Compile Include="cms\classes\service\Validate.php" />
-    <Compile Include="cms\forgotten-password.php" />
-    <Compile Include="cms\includes\404.php" />
     <Compile Include="cms\includes\article-summary.php" />
     <Compile Include="cms\includes\article_list_content.php" />
     <Compile Include="cms\includes\author_list_content.php" />
     <Compile Include="cms\includes\check-user.php" />
     <Compile Include="cms\config.php" />
-    <Compile Include="cms\includes\database-connection.php" />
     <Compile Include="cms\includes\footer.php" />
-    <Compile Include="cms\includes\footer_old.php" />
     <Compile Include="cms\includes\header.php" />
-    <Compile Include="cms\includes\header_old.php" />
-    <Compile Include="cms\includes\main_content - Copy.php" />
     <Compile Include="cms\includes\main_content.php" />
     <Compile Include="cms\includes\user-form.php" />
-    <Compile Include="cms\login.php" />
     <Compile Include="cms\members\forgotten-password.php" />
     <Compile Include="cms\members\login.php" />
     <Compile Include="cms\members\logout.php" />
     <Compile Include="cms\members\register.php" />
     <Compile Include="cms\members\reset-password.php" />
     <Compile Include="cms\page-not-found.php" />
-    <Compile Include="cms\register.php" />
     <Compile Include="cms\view-search.php" />
     <Compile Include="code\chapter_09\classes\service\Validate.php" />
-    <Compile Include="cms\register_old.php" />
-    <Compile Include="cms\reset-password.php" />
     <Compile Include="cms\search.php" />
     <Compile Include="cms\includes\class-lib.php" />
     <Compile Include="cms\includes\functions.php" />
-    <Compile Include="cms\article.php" />
     <Compile Include="cms\index.php" />
-    <Compile Include="cms\logout.php" />
     <Compile Include="cms\users\add_comment - Copy.php" />
     <Compile Include="cms\users\add_comment.php" />
     <Compile Include="cms\users\like.php" />

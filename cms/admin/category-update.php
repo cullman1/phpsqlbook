@@ -1,73 +1,55 @@
 <?php
-require_once('includes/check-user.php');                            // Is logged in
-require_once('../includes/database-connection.php');                // DB Connection
-require_once('includes/class-lib.php');                          // Classes
-require_once('includes/functions.php');                          // Functions
+require_once '../classes/config.php';
+require_once '../classes/service/Validate.php';
 
-$id           = ( isset($_GET['id'])           ? $_GET['id']           : ''); // Get values
-$name         = ( isset($_POST['name'])        ? $_POST['name']        : ''); // Get values
-$description  = ( isset($_POST['description']) ? $_POST['description'] : ''); // Get values
-$errors       = array('name'=>'', 'description'=>'');                      // Form errors
-$alert        = '';                                                     // Status messages
-$show_form    = TRUE;                                                   // Show or hide form
+$cms             = new CMS($database_config);
+$categoryManager = $cms->getCategoryManager();
+$category        = new Category();
 
+$errors          = array('id' => '', 'name'=>'', 'description'=>'');         // Form errors
+$alert           = '';                                                       // Status messages
 
-if (filter_var($id, FILTER_VALIDATE_INT) != FALSE) { // Got a number? Create a category object using function
-  $Category  = get_category_by_id($id);
+$id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
+$name        = (isset($_POST['name'])        ? $_POST['name']        : '');  // Get values
+$description = (isset($_POST['description']) ? $_POST['description'] : '');  // Get values
+$update      = isset($_POST['create']);
+
+if (!$update) {
+  $category = $categoryManager->getCategoryById($id);
+  if (!$category) {
+    $alert = '<div class="alert alert-danger">Category not found</div>';
+  }
 }
-if (!$Category) {  // Did you get a Category object
-  $alert = '<div class="alert error">Cannot find category</div>';
-}
 
-if (isset($_POST['update'])) {                                       // Submitted - load category data
-  $Category->id       = $id;                                         // Set properties using form data
-  $Category->name     = $name;                                       // Set properties using form data
-  $Category->description = $description;                             // Set properties using form data
+if ($update) {
+  $errors['id']          = (Validate::isNumber($id, 1, 4060)        ? '' : 'Not a valid id');
+  $errors['name']        = (Validate::isText($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9');
+  $errors['description'] = (Validate::isText($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters');
 
-  $Validate = new Validate();                                        // Create Validation object
-  $errors   = $Validate->isCategory($Category);                      // Validate the object
-
-  if (strlen(implode($errors)) < 1) {
-    $result = $Category->update();
-  } else {
-    $alert = '<div class="alert alert-danger">Check form and try again</div>';
+  if (strlen(implode($errors)) < 1) {                          // If data valid
+    $category = new Category($id, $name, $description);        // Create Category object
+    $result   = $categoryManager->update($category);           // Add category to database
+  } else {                                                     // Otherwise
+    $alert    = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   }
 
-  if (isset($result) && ($result == TRUE)) {
+  if (isset($result) && ($result === TRUE) ) {                 // Tried to create and it worked
     $alert = '<div class="alert alert-success">Category updated</div>';
-    $show_form = FALSE;
   }
-  if (isset($result) && ($result != TRUE)) {
-    $alert = '<div class="alert alert-danger">Error: ' . $result . '</div>';
+  if (isset($result) && ($result !== TRUE) ) {                 // Tried to create and it failed
+    $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
-
 }
 
-include('includes/admin-header.php'); 
+include 'includes/header.php';
 ?>
 
-<h2>Edit category</h2>
+  <h2>Update category</h2>
+  <?= $alert ?>
 
-<?= $alert ?>
+  <form action="category-update.php?id=<?php echo $id ?>" method="post">
+    <?php include 'includes/category-form.php'; ?>
+    <input type="submit" name="create" value="save" class="btn btn-primary" >
+  </form>
 
-<?php if ($show_form == TRUE) { ?>
-
-<form action="category-update.php?id=<?= $Category->id ?>" method="post">
-  <div class="form-group">
-    <label for="title">Name: </label>
-    <input type="text" name="name" value="<?= $Category->name ?>" class="form-control">
-    <span class="errors"><?= $errors['name'] ?></span>
-  </div>
-  <div class="form-group">
-    <label for="description">Description: </label>
-    <textarea name="description" id="description" class="form-control"><?= $Category->description ?></textarea>
-    <span class="errors"><?= $errors['description'] ?></span>
-  </div>
-  <input type="submit" name="update" value="save" class="btn btn-default">
-</form>
-
-<?php } else { 
-  include('includes/list-categories.php'); 
-}
-  include('includes/admin-footer.php');
-?>
+<?php include 'includes/footer.php'; ?>

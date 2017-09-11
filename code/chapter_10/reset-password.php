@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Has form been submitted?
   $alert = '<div class="alert alert-danger">Password not updated.</div>'; 
 
   if (strlen($valid) < 1) {
-    $user = get_user_from_token($token, 'password_reset');           // Get user
+    $user = $userManager->getUserFromToken($token, 'password_reset');           // Get user
   }
   if (!empty($user)) {                                                // If found user
-    $updated = update_password($password, $user->id);
+    $updated = $userManager->updatePassword($password, $user->id);
   }
   if (!empty($updated)) {
-    send_email($user->email, $subject, $message);                // Send email
+    $userManager->sendEmail($user->email, $subject, $message);                // Send email
     $alert = '<div class="alert alert-success">Password updated.</div>';         
     $show_form = FALSE;                                          // Hide form 
   }

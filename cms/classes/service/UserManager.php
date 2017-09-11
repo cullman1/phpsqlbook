@@ -118,5 +118,99 @@ public function redirectNonAdmin() {
     }
 }
 
+function getUserFromToken($token, $purpose) {
+    $pdo = $this->pdo;
+    $sql = 'SELECT * from user
+           JOIN token ON id = user_id 
+           WHERE (token = :token AND purpose = :purpose)';
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(':token', $token);
+    $statement->bindValue(':purpose', $purpose);
+    $statement->execute();
+    if($statement->errorCode() != 0) {  
+        return $statement->errorCode();
+    } else {
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');               
+        $user = $statement->fetch();
+        $expires = new DateTime($user->expires);
+        $now = (new DateTime())->format('Y-m-d H:i:s');
+        if($now<$expires) {
+            return $user;
+        }   
+    }
+    return false;
+}
+
+public function createToken($userId, $purpose) {
+    $pdo = $this->pdo;                     // Connect
+    $sql = 'SELECT UUID() as token';                          // Tell DB to create UUID
+    $statement = $pdo->prepare($sql);                  // Prepare 
+    $statement->execute();                                    // Execute
+    $token = $statement->fetchColumn();                       // Fetch UUID
+    $expires = date("Y-m-d H:i:s", strtotime('+23 hours'));                       // Expiry time
+    $sql = 'INSERT INTO token (token, user_id, expires, purpose) 
+                 VALUES (:token, :user_id, :expires, :purpose)'; // SQL to add token
+    $statement = $pdo->prepare($sql);                       // Prepare
+    $statement->bindValue(':token',   $token);                     // Bind value
+    $statement->bindValue(':user_id', $userId);                  // Bind value
+    $statement->bindValue(':expires', $expires);                   // Bind value
+    $statement->bindValue(':purpose', $purpose);                   // Bind value
+    try {                                                          // Try block
+        $statement->execute();                                        // Execute
+        $result = $token;                                             // Worked
+    }
+    catch (PDOException $error) {                                 // Otherwise
+        $result = FALSE;                                              // Error
+    }
+    return $result;                                                 // Return result
+}
+
+function sendEmail($to, $subject, $message) {
+    try {                                                      // Start a try block
+        // Step 1: Create the object
+        $mail = new PHPMailer(TRUE);                             // Create object
+        // Step 2: How the email is going to be sent
+        $mail->IsSMTP();                                         // Set mailer to use SMTP
+        $mail->Host     = 'smtp.example.com';                    // SMTP server address
+        $mail->SMTPAuth = TRUE;                                  // SMTP authentication on
+        $mail->Username = 'chris@example.com';                   // Username
+        $mail->Password = 'password';                            // Password
+        // Step 3: Who the email is from and to
+        $mail->setFrom('no-reply@example.com');                  // From email address
+        $mail->AddAddress($to);                                  // To email address
+        // Step 4: Content of email  
+        $mail->Subject = $subject;                               // Set subject of email
+        $mail_header   = '<!DOCTYPE html PUBLIC...';             // Header goes here
+        $mail_footer   = '...</html>';                           // Footer goes here
+        $mail->Body    = $mail_header . $message . $mail_footer; // Set body of HTML email  
+        $mail->AltBody = strip_tags($message);                   // Set plain text body
+        $mail->CharSet = 'UTF-8';                                // Set character set
+        $mail->IsHTML(TRUE);                                     // Set as HTML email
+        // Step 5: Attempt to send email                                 
+        $mail->Send();                                     // Send the email
+    }
+    catch (phpmailerException $error) {                // Code to run if failed to send
+        return $error->errorMessage();                     // Return PHPMailer error message
+    } 
+    return TRUE;                                         // Return TRUE because it sent
+}
+
+function updatePassword($userId,$password) {
+    $pdo = $this->pdo;
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $sql = 'UPDATE user SET password = :password WHERE id = :id';
+    $statement = $pdo->prepare($sql);
+    $statement->bindParam(':password', $hash);
+    $statement->bindParam(':id', $userId);
+    try {
+        $statement->execute();
+        return TRUE;
+    }
+    catch (PDOException $error) {
+        return FALSE; 
+    }
+}
+
+
 }
 
