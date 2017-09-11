@@ -14,4 +14,6 @@ class Article{
   public  $media_filepath;
   public  $media_alt;
   public  $published;
+  public  $like_count;
+  public $liked;
 }

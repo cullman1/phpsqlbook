@@ -18,10 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error['password'] = (Validate::isPassword($password) ? '' : 'Please enter a valid password.'); 
     $error['confirm'] = (Validate::isConfirmPassword($password, $confirm)? '' : 'Please make sure passwords match.'); 
     if (strlen(implode($error)) < 1) {
-        if (!empty($userManager->get_user_by_email($email))) {
+        if (!empty($userManager->getUserByEmail($email))) {
             $alert = '<div class="alert alert-danger">That email is already in use</div>';
         } else {
-            $result = $userManager->create($forename, $surname, $email, $password);
+            $user = new User(0,$forename, $surname, $email, $password);
+            $result = $userManager->create($user);
         } 
     }
 

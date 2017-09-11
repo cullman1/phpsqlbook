@@ -1,18 +1,16 @@
 <?php
 
 class Category{
-  public  $id;
-  public  $name;
-  public  $description;
-  public  $navigation;
+    public  $id;
+    public  $name;
+    public  $description;
+    public  $navigation;
+    public  $seo_name;
 
-    public function __construct( ) {
-       $this->description = $this->remove_letter($this->description) ;
-   }
-
-   private function remove_letter($word) { 
-     $word = str_replace("e", "", $word);
-     return $word;
-}
-
+    public function __construct($id = NULL, $name = NULL, $description = NULL, $navigation = NULL) {
+        $this->id          = $id;
+        $this->name        = $name;
+        $this->description = $description;
+        $this->navigation  = $navigation;
+    }
 }

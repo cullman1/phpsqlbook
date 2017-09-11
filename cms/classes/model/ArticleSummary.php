@@ -11,7 +11,9 @@ class ArticleSummary {
   public $thumb;
   public $thumb_alt;
   public $published;
-
+  public  $like_count;
+  public $liked;
+  public $seo_title;
    function __construct() { 
 
    }

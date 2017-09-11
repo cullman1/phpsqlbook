@@ -14,9 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (strlen($valid) > 0 ) {
       $alert = '<div class="alert alert-danger">Please check your login details</div>';
     } else {
-      $user = $userManager->get_user_by_email_password($email, $password);
+      $user = $userManager->getUserByEmailPassword($email, $password);
       if ($user) {
-        $userManager->create_user_session($user);
+        $userManager->createUserSession($user);
         header('Location: http://localhost/phpsqlbook/cms/admin/'); 
       } else {
         $alert = '<div class="alert alert-danger">Login failed</span>';

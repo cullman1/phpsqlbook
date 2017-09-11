@@ -12,6 +12,7 @@ $category_list   = $categoryManager->getNavigationCategories();
     <meta name="description" value=" <?= $meta_description ?>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/css/styles.css" />
+        <script src="https://use.fontawesome.com/3409469903.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,11 +24,9 @@ $category_list   = $categoryManager->getNavigationCategories();
         <div class="navbar-nav">
           <?php
           foreach ($category_list as $category_link) {
-              echo '<a href="' . ROOT . 'view-category.php?id=' . $category_link->id . '"  class="nav-item nav-link">' . $category_link->name . '</a>';
+              echo '<a href="' . ROOT . $category_link->seo_name . '"    class="nav-item nav-link">' . $category_link->name . '</a>';
           }
           ?>
-          <a href="<?= ROOT ?>view-article.php?id=13" class="nav-item nav-link">About</a>
-          <a href="<?= ROOT ?>view-article.php?id=14" class="nav-item nav-link">Contact</a>
 
           <?php if ($is_logged_in) { ?>
             <span class="nav-item">Hello <?= $_SESSION["name"] ?></span>

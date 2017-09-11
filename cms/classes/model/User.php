@@ -11,7 +11,7 @@ class User
   public $role_id;
   public $tasks;
 
-  function __construct($id ='', $forename = NULL, $surname = NULL, $email = NULL, 
+  function __construct($id = NULL, $forename = NULL, $surname = NULL, $email = NULL, 
                        $password = NULL, $joined = NULL, $image = NULL,  $role_id = 1) {
     $this->id = $id;
     $this->forename  = $forename;

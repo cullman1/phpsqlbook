@@ -63,7 +63,6 @@
     <Compile Include="cms\admin\user-edit.php" />
     <Compile Include="cms\admin\user-list.php" />
     <Compile Include="cms\admin\user.php" />
-    <Compile Include="cms\author.php" />
     <Compile Include="cms\classes\model\Article.php" />
     <Compile Include="cms\classes\model\ArticleSummary.php" />
     <Compile Include="cms\classes\model\Category.php" />
@@ -76,7 +75,6 @@
     <Compile Include="cms\includes\article-summary.php" />
     <Compile Include="cms\includes\article_list_content.php" />
     <Compile Include="cms\includes\author_list_content.php" />
-    <Compile Include="cms\includes\check-user.php" />
     <Compile Include="cms\config.php" />
     <Compile Include="cms\includes\footer.php" />
     <Compile Include="cms\includes\header.php" />
@@ -85,9 +83,12 @@
     <Compile Include="cms\members\forgotten-password.php" />
     <Compile Include="cms\members\login.php" />
     <Compile Include="cms\members\logout.php" />
+    <Compile Include="cms\members\members.php" />
     <Compile Include="cms\members\register.php" />
     <Compile Include="cms\members\reset-password.php" />
     <Compile Include="cms\page-not-found.php" />
+    <Compile Include="cms\view-article.php" />
+    <Compile Include="cms\view-category.php" />
     <Compile Include="cms\view-search.php" />
     <Compile Include="code\chapter_09\classes\service\Validate.php" />
     <Compile Include="cms\search.php" />
@@ -96,12 +97,9 @@
     <Compile Include="cms\index.php" />
     <Compile Include="cms\users\add_comment - Copy.php" />
     <Compile Include="cms\users\add_comment.php" />
-    <Compile Include="cms\users\like.php" />
-    <Compile Include="cms\users\login.php" />
-    <Compile Include="cms\users\logout.php" />
-    <Compile Include="cms\users\register.php" />
+    <Compile Include="cms\members\like.php" />
     <Compile Include="cms\users\user.php" />
-    <Compile Include="cms\view-category.php" />
+    <Compile Include="cms\view-category_old.php" />
     <Compile Include="code\chapter_01\index.php" />
     <Compile Include="code\chapter_01\test.php" />
     <Compile Include="code\chapter_02\example.php" />
@@ -356,11 +354,6 @@
     <Compile Include="code\includes\config.php" />
     <Compile Include="code\includes\database_connection.php" />
     <Compile Include="code\includes\functions.php" />
-    <Compile Include="classes\email.php" />
-    <Compile Include="classes\FileSessionHandler.php" />
-    <Compile Include="classes\FileSessionHandler_old.php" />
-    <Compile Include="classes\registry.php" />
-    <Compile Include="classes\user.php" />
     <Compile Include="code\chapter_01_old\index.php" />
     <Compile Include="code\chapter_02_old\arrays.php" />
     <Compile Include="code\chapter_02_old\associative-arrays.php" />
@@ -532,7 +525,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\" />
-    <Folder Include="classes\" />
     <Folder Include="cms\admin\" />
     <Folder Include="cms\admin\css\" />
     <Folder Include="cms\admin\includes\" />
@@ -683,6 +675,7 @@
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
     <Content Include="cms\.htaccess" />
+    <Content Include="cms\.htaccess_old" />
     <Content Include="cms\admin\.DS_Store" />
     <Content Include="cms\admin\css\admin.css" />
     <Content Include="cms\admin\css\styles.css" />

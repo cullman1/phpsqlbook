@@ -27,7 +27,7 @@ class UserManager
     return $user;
   }
 
-  public function get_user_by_email_password($email, $password) {
+  public function getUserByEmailPassword($email, $password) {
    $pdo = $this->pdo;
   $query = 'SELECT * FROM user WHERE email = :email';
   $statement = $pdo->prepare($query);
@@ -42,17 +42,15 @@ class UserManager
   return (password_verify($password, $user->getPassword()) ? $user : FALSE);
 }
 
-
-
-function create($forename, $surname, $email, $password) {
+function create($user) {
     $pdo = $this->pdo;                             // Connection
     $sql = 'INSERT INTO user (forename, surname, email, password) 
                    VALUES (:forename, :surname, :email, :password)';
     $statement = $pdo->prepare($sql);                          // Prepare
-    $statement->bindValue(':forename', $forename);              // Bind value
-    $statement->bindValue(':surname',  $surname);               // Bind value
-    $statement->bindValue(':email',    $email);                 // Bind value
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $statement->bindValue(':forename', $user->forename);              // Bind value
+    $statement->bindValue(':surname',  $user->surname);               // Bind value
+    $statement->bindValue(':email',    $user->email);                 // Bind value
+    $hash = password_hash($user->password, PASSWORD_DEFAULT);
     $statement->bindValue(':password', $hash);                        // Bind value
     try {
         $statement->execute();                                          // Try to execute
@@ -64,7 +62,7 @@ function create($forename, $surname, $email, $password) {
     return $result;                                                    
 }
 
-function get_user_by_email($email) {
+function getUserByEmail($email) {
     $pdo = $this->pdo;
     $sql = 'SELECT * from user WHERE email = :email';
     $statement = $pdo->prepare($sql);
@@ -76,23 +74,7 @@ function get_user_by_email($email) {
     return ($user ? $user : FALSE);
   }
 
-public function get_tasks($role_id) {
-    $pdo = $this->pdo;
-    $query = 'SELECT task.name FROM task 
-              JOIN tasks_in_role ON task.id = tasks_in_role.task_id              
-              WHERE tasks_in_role.role_id = :roleid';
-    $statement = $pdo->prepare($query);
-    $statement->bindParam(':roleid', $role_id);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_ASSOC);
-    $tasks = $statement->fetchAll();
-    if (!$tasks) {
-        return null;
-    }
-    return $tasks;
-}
-
-function create_user_session($user) {
+function createUserSession($user) {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -102,17 +84,19 @@ function create_user_session($user) {
 }
 
 public function isLoggedIn() {
-  session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
   return (isset($_SESSION['user_id']) ? TRUE : FALSE);  
 }
 
 public function redirectNonAdmin() {
     if (!isset($_SESSION['role'])) {
-        header('Location: /phpsqlbook/cms/login');
+        header('Location: /members/login.php');
         exit;
     } else {
-        if ($_SESSION['role'] != self::role_admin ) {
-            header('Location: /phpsqlbook/cms/404');
+        if ($_SESSION['role'] != self::role_admin) {
+            header('Location: ../page-not-found.php');
             exit;
         }
     }
@@ -210,7 +194,6 @@ function updatePassword($userId,$password) {
         return FALSE; 
     }
 }
-
 
 }
 

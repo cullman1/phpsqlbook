@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $error['email']    = (Validate::isEmail($email) ? '' : 'Please enter a valid email.'); 
 
   if (strlen(implode($error)) < 1) {
-      $user = $userManager->get_user_by_email($email);
+      $user = $userManager->getUserByEmail($email);
   }
   if ($user) {
     $token = $userManager->createToken($user->id,'password_reset'); 
