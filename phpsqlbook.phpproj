@@ -86,7 +86,6 @@
     <Compile Include="cms\members\forgotten-password.php" />
     <Compile Include="cms\members\login.php" />
     <Compile Include="cms\members\logout.php" />
-    <Compile Include="cms\members\members.php" />
     <Compile Include="cms\members\register.php" />
     <Compile Include="cms\members\reset-password.php" />
     <Compile Include="cms\page-not-found.php" />
@@ -102,7 +101,6 @@
     <Compile Include="cms\users\add_comment.php" />
     <Compile Include="cms\members\like.php" />
     <Compile Include="cms\users\user.php" />
-    <Compile Include="cms\view-category_old.php" />
     <Compile Include="code\chapter_01\index.php" />
     <Compile Include="code\chapter_01\test.php" />
     <Compile Include="code\chapter_02\example.php" />
