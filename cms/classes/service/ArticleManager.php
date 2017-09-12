@@ -35,7 +35,7 @@ class ArticleManager{
 
     public function getArticleSummariesByCategoryId($id){
         $pdo = $this->pdo;
-        $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.media_id, article.published,
+        $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.media_id, article.published, article.like_count, article.comment_count,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id as category_id, category.name AS category,
             media.id as media_id, media.thumb, media.alt AS thumb_alt
@@ -59,10 +59,10 @@ class ArticleManager{
 
     public function getArticleSummariesByCategorySeoName($title, $show='', $from='0'){
         $pdo = $this->pdo;
-        $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.media_id, article.published,
+        $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.media_id, article.published,article.seo_title,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id as category_id, category.name AS category,
-            media.id as media_id, media.filepath, media.thumb, media.alt, media.mediatype ';
+            media.id as media_id, media.filepath, media.thumb, media.alt, media.mediatype, article.like_count, article.comment_count ';
         if (isset($_SESSION['user_id'])) {
             $sql .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' . 
                           $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
@@ -114,9 +114,9 @@ class ArticleManager{
 
     public function getArticleBySeoTitle($seo_title) {
         $pdo = $this->pdo;
-        $sql = 'SELECT article.*, user.id AS user_id, user.forename, user.surname, 
-              user.email, user.image, media.filepath, media.filename, media.alt, 
-              media.mediatype, media.thumb'; 
+        $sql = 'SELECT article.*, user.id AS user_id, COALESCE(user.forename, user.surname) as author, 
+              user.email, user.image, media.filepath, media.filename, media.alt, category.name as category,
+              media.mediatype, media.thumb '; 
            if (isset($_SESSION['user_id'])) {
                $sql .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' . 
                   $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
@@ -125,6 +125,7 @@ class ArticleManager{
            $sql .= 'FROM article
       LEFT JOIN user ON article.user_id = user.id
       LEFT JOIN media ON article.media_id = media.id
+ LEFT JOIN category ON article.category_id = category.id
       WHERE article.seo_title=:seo_title';            // Query
            $statement = $pdo->prepare($sql);          // Prepare
         $statement->bindValue(':seo_title', $seo_title);    // Bind value from query string
@@ -323,6 +324,56 @@ class ArticleManager{
             return $titles->seo_name . '/' . $titles->seo_title;
         } else {
             return FALSE;
+        }
+    }
+
+    public function addComment($comment) {
+        $pdo = $this->pdo;
+        try {
+            $pdo->beginTransaction();                   // Begin transaction
+            $sql = 'INSERT INTO comment (comment, article_id, user_id, posted, reply_to_id, parent_id) 
+              VALUES  (:comment, :article_id, :user_id, :date, :reply_to_id, :parent_id)';
+            $statement = $pdo->prepare($sql);         // Connection + prepare
+            $statement->bindParam(':comment',$comment->comment);             // Bind parameter
+            $statement->bindParam(':article_id',$comment->article_id);       // Bind parameter
+            $statement->bindParam(':user_id',$comment->user_id);             // Bind parameter
+            $date = date('Y-m-d H:i:s');                                  // Set date + time
+            $statement->bindParam(':date',$date);                         // Bind date + time
+            $statement->bindParam(':reply_to_id',$comment->reply_to_id);     // Bind parameter
+            $statement->bindParam(':parent_id',$comment->parent_id);         // Bind parameter
+            $statement->execute();                                        // Execute query
+            $sql='UPDATE article SET comment_count = comment_count + 1 WHERE id = :article_id';
+            $statement = $pdo->prepare($sql);         // Connect + prepare
+            $statement->bindValue(':article_id',  $comment->article_id);     // Bind parameter 
+            $statement->execute();                                        // Execute query
+            $pdo->commit();                             // Commit changes
+            return TRUE;                                                  // Return TRUE
+        }
+        catch (PDOException $error) {                                 // If an error
+            $pdo->rollback();    
+            echo $error;
+            // Undo changes
+            return $error;           // Return error
+        }
+    }
+
+    public function getCommentsByArticleId($id) {
+        $pdo = $this->pdo;
+        $sql = 'SELECT comment.*, 
+            CONCAT(user.forename, " ", user.surname) as author, user.image 
+            FROM comment 
+            JOIN user ON comment.user_id = user.id   
+            WHERE article_id = :id 
+            ORDER BY posted ASC';  
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT); 
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');
+        $comments_list = $statement->fetchAll(); 
+        if ($comments_list) {
+            return $comments_list;
+        } else {
+            return FALSE; 
         }
     }
 

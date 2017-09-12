@@ -12,6 +12,7 @@ require_once 'classes/service/Validate.php';
 require_once 'classes/model/Article.php';
 require_once 'classes/model/ArticleSummary.php';
 require_once 'classes/model/Category.php';
+require_once 'classes/model/Comment.php';
 require_once 'classes/model/User.php';
 
 $database_config = array (

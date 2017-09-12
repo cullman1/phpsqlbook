@@ -7,7 +7,7 @@ if (isset($_GET['name'])) {
     $show  = (filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 3);
     $from  = (filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
     $category     = $categoryManager->getCategoryBySeoName($name);                 // Get category
-    $count        = $articleManager->getArticleCountByCategorySeoName($category->seo_name);   // Get article count
+    $count        = $articleManager->getArticleCountByCategorySeoName($category->name);   // Get article count
     $article_list = $articleManager->getArticleSummariesByCategorySeoName($name, $show, $from); // articles
 }
 
