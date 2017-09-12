@@ -377,4 +377,44 @@ class ArticleManager{
         }
     }
 
+    function getCommentsAndRepliesByArticleId($id) {
+        $pdo = $this->pdo;
+        $sql = 'SELECT comment.*, comment.reply_to_id AS reply_to_copy,
+            CONCAT(user.forename, " ", user.surname) AS author, user.image, 
+            (SELECT CONCAT(user.forename, " ", user.surname) FROM user 
+                    JOIN comment ON user.id = comment.user_id
+                    WHERE comment.id = reply_to_copy) 
+            AS reply_to
+            FROM comment
+            JOIN user ON comment.user_id = user.id 
+            WHERE article_id = :id 
+            ORDER BY posted DESC';
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);      
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');          
+        $comments_list = $statement->fetchAll();
+        if ($comments_list) {
+            return $comments_list;
+        } else {
+            return FALSE; 
+        }
+    }
+
+    function sortComments($comment_list) {
+        $comment_list_reversed = array_reverse($comment_list);
+        $nested_comments       = array();
+        foreach ($comment_list as $comment) {
+            if ($comment->parent_id == 0) {
+                array_push($nested_comments, $comment);
+                foreach ($comment_list_reversed as $reply) {
+                    if ($reply->parent_id == $comment->id) {
+                        array_push($nested_comments, $reply);
+                    }
+                }
+            }
+        }
+        return $nested_comments;
+    }
+
 }

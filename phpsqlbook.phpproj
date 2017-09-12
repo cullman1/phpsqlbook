@@ -81,6 +81,7 @@
     <Compile Include="cms\includes\header.php" />
     <Compile Include="cms\includes\main_content.php" />
     <Compile Include="cms\includes\user-form.php" />
+    <Compile Include="cms\members\add-comment-reply.php" />
     <Compile Include="cms\members\add-comment.php" />
     <Compile Include="cms\members\forgotten-password.php" />
     <Compile Include="cms\members\login.php" />
