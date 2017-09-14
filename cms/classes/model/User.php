@@ -6,20 +6,16 @@ class User
   public  $surname;
   public $email;
   private $password;
-  public  $joined;
-  public  $image;
   public $role_id;
-  public $tasks;
+  public $joined;
 
   function __construct($id = NULL, $forename = NULL, $surname = NULL, $email = NULL, 
-                       $password = NULL, $joined = NULL, $image = NULL,  $role_id = 1) {
+                       $password = NULL, $role_id = NULL) {
     $this->id = $id;
     $this->forename  = $forename;
     $this->surname = $surname;
-    $this->email = $image;
+    $this->email = $email;
     $this->password  = $password;
-    $this->joined  = $joined;
-    $this->image = $image;
     $this->role_id  = $role_id;
   } 
 

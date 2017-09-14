@@ -50,7 +50,7 @@ function create($user) {
     $statement->bindValue(':forename', $user->forename);              // Bind value
     $statement->bindValue(':surname',  $user->surname);               // Bind value
     $statement->bindValue(':email',    $user->email);                 // Bind value
-    $hash = password_hash($user->password, PASSWORD_DEFAULT);
+    $hash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
     $statement->bindValue(':password', $hash);                        // Bind value
     try {
         $statement->execute();                                          // Try to execute

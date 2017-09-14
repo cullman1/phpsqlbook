@@ -1,0 +1,6 @@
+[13-Sep-2017 14:16:06 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file in C:\xampp\htdocs\phpsqlbook\cms\members\register.php on line 55
+[13-Sep-2017 14:16:31 Europe/Berlin] PHP Parse error:  syntax error, unexpected end of file in C:\xampp\htdocs\phpsqlbook\cms\members\register.php on line 55
+[13-Sep-2017 14:19:38 Europe/Berlin] PHP Fatal error:  Cannot access private property User::$password in C:\xampp\htdocs\phpsqlbook\cms\classes\service\UserManager.php on line 53
+[13-Sep-2017 14:19:38 Europe/Berlin] PHP Stack trace:
+[13-Sep-2017 14:19:38 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms\members\register.php:0
+[13-Sep-2017 14:19:38 Europe/Berlin] PHP   2. UserManager->create() C:\xampp\htdocs\phpsqlbook\cms\members\register.php:25
