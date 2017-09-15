@@ -1,0 +1,501 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost:8889
+-- Generation Time: Sep 15, 2017 at 05:33 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `phpbook4`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `article`
+--
+
+CREATE TABLE `article` (
+  `id` int(11) NOT NULL,
+  `title` varchar(254) NOT NULL,
+  `content` text NOT NULL,
+  `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `category_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `media_id` int(11) NOT NULL,
+  `like_count` int(11) DEFAULT '0',
+  `comment_count` int(11) DEFAULT '0',
+  `seo_title` varchar(254) DEFAULT NULL,
+  `summary` varchar(999) DEFAULT NULL,
+  `published` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id`, `title`, `content`, `created`, `category_id`, `user_id`, `media_id`, `like_count`, `comment_count`, `seo_title`, `summary`, `published`) VALUES
+(20, 'Thyme', 'An aromatic herb used for seasoning cheese, egg, beef, veal and poultry dishes. Retains its flavour during cooking - ideal for stews and casseroles. In herbalism used as an antispetic. \r\n\r\nHardy perennial. \r\n\r\nHeight 23-25cm (9-12").', '2016-02-29 23:32:49', 2, 1, 35, 1, 17, 'thyme', NULL, 1),
+(21, 'Tarragon', '<p>This Russian Tarragon is commonly used for flavouring vinegars, pickles, mustards and sauces.</p>', '2016-02-20 23:32:49', 11, 2, 34, 1, 6, 'tarragon', 'Summary goes here', 1),
+(22, 'Rosemary', 'Fragrant leaves used for flavouring soups, stews, fish or meat dishes and cooked vegetables. (Germination is very slow). A weak infusion is reputed to relieve headaches. \r\n\r\nHardy perennial. \r\n\r\nHeight 120-150cm (4-5'').', '2016-02-29 23:34:51', 2, 1, 33, 1, 0, 'rosemary', NULL, 1),
+(23, 'Parsley', 'A high yielding parsley producing flat, dark green leaves of excellent flavour. Ideal for use in salads or cooking.', '2016-02-29 23:34:51', 2, 1, 32, 1, 0, 'parsley', NULL, 1),
+(24, 'Mint', 'Perennial, and can be grown successfully from seed. Useful in sauces and jellies, and subtly improves the flavour of peas, beans, carrots, beetroot, potatoes and spinach. \r\n\r\nHardy perennial.', '2016-02-29 23:36:46', 2, 1, 31, 1, 0, 'mint', NULL, 1),
+(25, 'Dill', 'Use the leave for soups, stews and sauces and the seeds for pickles, cheese spreads and salad dressing. An aid to indigestion. \r\n\r\nHardy annual.\r\n\r\nHeight 60-90cm (2-3'').', '2016-02-29 23:38:46', 2, 1, 38, 0, 1, 'dill', NULL, 1),
+(26, 'Coriander', 'Also known as Chinese Parsley. Leaves give a piquant flavour used sparingly on poultry and fish dishes. Also used in Chinese and Latin American cooking. Seeds from plants are used to give a spicy flavour to soups, stews and curries. \r\n\r\nAnnual. \r\n\r\nHeight 38-60cm (15-24").', '2016-02-29 23:34:51', 2, 1, 52, 0, 0, 'coriander', NULL, 1),
+(27, 'Chives', 'The chive leaves have a mild onion flavour and are excellent for salads and spreads or for us with cheese or egg dishes. An aid to digestion. \r\n\r\nPerennial. \r\n\r\nHeight 23cm (9").', '2016-02-29 23:34:51', 2, 1, 36, 0, 0, 'chives', NULL, 1),
+(28, 'Sweetcorn', 'The best sweet corn for early maturity in indifferent summers. The cobs are some 18cm (7") long and close-packed with sugary kernels of creamy-yellow. Recommended for deep freezing. \r\n\r\nSow singly in pots April-May in a warm greenhouse/frame. \r\n\r\nPlant out 35cm (14") apart late May-early June after hardening off. \r\n\r\nPlant in blocks to assist pollination and increase cob production. \r\n\r\nHarvest August-September.', '2016-02-29 23:58:46', 1, 3, 51, 2, 15, 'sweetcorn', NULL, 1),
+(29, 'Peas', 'Producing a very heavy crop of well-filled, dark-green pods. One of the best peas for sucessional sowings. Resistant to mildew. \r\n\r\nRecommended for deep freezing. \r\n\r\nHeight 45-60cm (1Â½-2''). \r\n\r\nEarly Peas - usually ready for use 11-14 weeks after sowing.', '2016-02-29 23:59:25', 1, 2, 50, 3, 8, 'peas', NULL, 1),
+(30, 'Pak choi', 'Equally attractive in its way to Rubi, with deep green leaves and contrasting white stems. Use the leaves in salads and the leaves and stems in stir fry dishes. Also good harvested as â€˜babyâ€™ leaves. A slow to bolt selection.', '2016-02-29 23:59:53', 1, 2, 49, 1, 4, 'pak-choi', NULL, 1),
+(31, 'Lollo rosso', 'Lorem ipsum', '2016-03-01 00:01:59', 11, 3, 48, 0, 1, 'lollo-rosso-lettuce', NULL, 1),
+(32, 'Iceberg lettuce', 'Lorem ipsum', '2016-03-01 00:02:21', 11, 3, 47, 0, 0, 'iceberg-lettuce', NULL, 1),
+(33, 'Gem lettuce', 'Lorem ipsum', '2016-03-01 00:02:45', 11, 3, 46, 1, 0, 'gem-lettuce', NULL, 1),
+(34, 'Cress', 'Cress', '2016-03-01 00:02:59', 11, 3, 45, 0, 0, 'cress', NULL, 1),
+(35, 'Chilli pepper', 'Red and hot', '2016-03-01 00:03:25', 2, 1, 44, 0, 0, 'chili-pepper', NULL, 1),
+(36, 'Cauliflower', 'Caulimeflowerthemthings', '2016-03-01 00:03:48', 1, 2, 43, 0, 1, 'cauliflower', NULL, 1),
+(37, 'Carrots', 'Ready for using as snowmens noses', '2016-03-01 00:04:11', 1, 2, 42, 1, 0, 'carrots', NULL, 1),
+(38, 'Capsicum', 'Red and yellow and green and round peppers or capsicums go', '2016-03-01 00:04:41', 1, 2, 41, 0, 0, 'capsicum', NULL, 1),
+(39, 'Broccoli', 'The greenest of the green broccoli', '2016-03-01 00:05:06', 1, 2, 40, 0, 2, 'broccoli', NULL, 1),
+(40, 'Asparagus', 'These asparagus come as crowns to be planted in the ground', '2016-03-01 00:05:35', 1, 2, 39, 1, 0, 'asparagus', NULL, 1),
+(135, 'About', 'This is where we write about the company', '2016-03-01 00:05:35', 12, 1, 0, 0, 0, 'about ', NULL, 1),
+(145, 'Contact', 'This is where you find out how to contact the company', '2016-06-24 14:51:59', 14, 3, 0, 0, 0, 'contact', NULL, 1),
+(147, 'test', '<p>test</p>', '2017-09-14 17:02:34', 18, 2, 0, 0, 0, 'test', 'test', 1),
+(148, 'Woody Nightshade', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:06:07', 2, 1, 0, 0, 0, 'woody-nightshade', 'Book cover design', 1),
+(149, 'The Ice Palace', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:07:43', 2, 2, 0, 0, 0, 'the-ice-palace', 'Book cover design', 1),
+(150, 'Systemic', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:08:43', 2, 1, 0, 0, 0, 'systemic', 'Flyer design', 1),
+(151, 'Polite society poster', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:16:02', 2, 1, 0, 0, 0, 'polite-society-poster', 'Poster design', 1),
+(152, 'Polite society business cards', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:16:49', 2, 1, 0, 1, 0, 'polite-society-business-cards', 'Business cards design', 1),
+(153, 'Chimney Press', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:19:42', 11, 1, 0, 0, 0, 'chimney-press', 'Logo design', 1),
+(154, 'Polite Society Stamp', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:23:22', 11, 1, 0, 1, 1, 'polite-society-stamp', 'Branding stamp', 1),
+(155, 'Faces in the Water', '<p><span style="font-family: ''Open Sans'', Arial, sans-serif; text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nisl eu quam venenatis elementum. Integer mollis euismod suscipit. Donec ac nisi tellus. Mauris sed tortor mattis tortor posuere consectetur non eu tortor. Nunc volutpat rhoncus odio id aliquam. Nulla facilisi.&nbsp;</span></p>', '2017-09-15 14:28:13', 2, 1, 0, 1, 1, 'faces-in-the-water', 'Book cover design', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `articleimages`
+--
+
+CREATE TABLE `articleimages` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `media_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `articleimages`
+--
+
+INSERT INTO `articleimages` (`id`, `article_id`, `media_id`) VALUES
+(1, 2, 31),
+(3, 2, 32),
+(37, 57, 90),
+(38, 57, 91),
+(39, 61, 92),
+(40, 146, 53),
+(41, 147, 54),
+(42, 147, 55),
+(43, 148, 56),
+(44, 149, 57),
+(45, 150, 58),
+(46, 150, 59),
+(47, 151, 60),
+(48, 152, 61),
+(49, 153, 62),
+(50, 154, 63),
+(51, 155, 64);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `seo_name` varchar(45) DEFAULT NULL,
+  `navigation` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `description`, `seo_name`, `navigation`) VALUES
+(1, 'Digital', '<p>Web and app design</p>', 'digital', 1),
+(2, 'Print', '<p>Print design</p>', 'print', 1),
+(11, 'Illustration', '<p>Illustration&nbsp;and&nbsp;lettering</p>', 'illustration', 1),
+(18, 'Photography', '<p>Portrait, product and interior photography</p>', 'photography', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
+  `comment` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `article_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `posted` datetime DEFAULT NULL,
+  `reply_to_id` int(11) NOT NULL DEFAULT '0',
+  `parent_id` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `comment`, `article_id`, `user_id`, `posted`, `reply_to_id`, `parent_id`) VALUES
+(4, 'Testing new', 28, 56, '2016-11-15 18:13:29', 0, 0),
+(5, 'Peas 1', 29, 56, '2016-11-17 16:45:55', 0, 0),
+(6, 'Sweetcorn testing', 28, 56, '2016-11-17 17:04:36', 0, 0),
+(7, 'Peas 2', 29, 1, '2016-11-17 17:07:57', 0, 0),
+(8, 'Peas 3', 29, 75, '2016-11-17 17:09:41', 0, 0),
+(11, 'New Sweetcorn Fourth', 28, 56, '2016-11-18 12:12:43', 0, 0),
+(12, 'Peas 4', 29, 69, '2016-11-18 13:42:55', 0, 0),
+(13, 'Test', 36, 56, '2016-11-18 15:30:01', 0, 0),
+(14, 'Replying to sweetcorning testing', 28, 1, '2016-10-13 17:17:07', 6, 6),
+(16, 'Try new', 38, 56, '2016-11-18 17:17:41', 0, 0),
+(17, 'New comment pak choi', 30, 56, '2016-11-22 18:48:50', 0, 0),
+(18, 'Fifth comment', 28, 50, '2016-11-28 18:24:12', 0, 0),
+(78, 'Lollo Rosso comment', 31, 56, '2016-12-06 13:03:14', 0, 0),
+(79, 'Also replying to sweetcorn testing', 28, 56, '2016-12-08 13:51:09', 6, 6),
+(80, 'Replying to also replying', 28, 2, '2016-12-08 13:51:32', 79, 6),
+(81, 'Gem lettuce', 33, 56, '2016-12-08 16:34:49', 0, 0),
+(90, 'New Thyme comment', 20, 56, '2016-12-09 13:28:40', 0, 0),
+(91, 'Reply to thyme', 20, 56, '2016-12-09 13:28:52', 90, 90),
+(92, 'Second thyme thread', 20, 56, '2016-12-09 13:29:06', 0, 0),
+(93, 'New comment 2', 28, 56, '2017-01-23 13:05:23', 0, 0),
+(94, 'Second pak choi', 30, 69, '2017-05-26 18:23:54', 0, 0),
+(95, 'Third pak choi', 30, 69, '2017-05-26 18:27:27', 0, 0),
+(96, 'Next', 28, 69, '2017-05-26 18:47:29', 0, 0),
+(97, 'Fourth comment', 30, 69, '2017-06-05 17:18:08', 0, 0),
+(98, 'reply to reply to thyme', 20, 69, '2017-06-07 14:28:55', 91, 90),
+(103, 'Third reply to reply', 20, 69, '2017-06-07 14:45:35', 98, 90),
+(107, 'New comment', 28, 69, '2017-06-08 19:07:42', 0, 0),
+(108, 'Tarragon is quite aniseedy.', 21, 69, '2017-06-12 12:23:47', 0, 0),
+(109, 'Second comment', 21, 69, '2017-06-21 13:04:42', 0, 0),
+(110, 'Third comment', 21, 69, '2017-06-21 17:25:10', 0, 0),
+(112, 'Reply to Peas 5', 29, 69, '2017-07-05 13:29:58', 12, 12),
+(113, 'New broccoli comment', 39, 69, '2017-07-11 15:06:17', 0, 0),
+(114, 'Reply to broccoli', 39, 69, '2017-07-11 15:06:41', 113, 113),
+(115, 'Reply to new comment 2', 28, 69, '2017-07-14 18:02:09', 93, 93),
+(116, 'Reply to reply to new comment 2', 28, 69, '2017-07-14 18:02:32', 115, 115),
+(117, 'Reply to new sweetcorn fourth', 28, 69, '2017-07-14 18:04:50', 11, 11),
+(118, 'abc', 28, 69, '2017-07-14 18:06:35', 96, 96),
+(119, 'abc', 28, 69, '2017-07-14 18:07:37', 96, 96),
+(120, 'Replying to new comment', 28, 69, '2017-07-14 18:10:27', 107, 107),
+(160, 'gfd', 20, 69, '2017-07-17 18:33:03', 92, 92),
+(161, 'abc', 20, 69, '2017-07-17 18:33:09', 160, 92),
+(162, 'New comment', 25, 69, '2017-07-19 14:26:29', 0, 0),
+(170, 'Reply to third', 21, 69, '2017-07-19 17:49:13', 110, 110),
+(172, 'reply to reply to third', 21, 69, '2017-07-19 19:31:45', 170, 110),
+(173, 'reply to peas 3', 29, 69, '2017-07-21 14:51:43', 8, 8),
+(174, 'A new comment', 29, 69, '2017-07-21 14:54:50', 0, 0),
+(175, 'reply to peas 2', 29, 69, '2017-07-21 16:45:09', 7, 7),
+(176, 'Reply to lollo rosso', 31, 69, '2017-09-14 17:09:13', 78, 78),
+(177, 'Test comment', 154, 69, '2017-09-15 17:18:33', 0, 0),
+(178, 'This is a comment', 155, 69, '2017-09-15 17:24:12', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `article_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`article_id`, `user_id`) VALUES
+(0, 69),
+(20, 69),
+(21, 69),
+(22, 69),
+(23, 69),
+(24, 69),
+(25, 56),
+(28, 56),
+(28, 69),
+(28, 77),
+(29, 56),
+(29, 69),
+(29, 77),
+(30, 77),
+(31, 56),
+(33, 82),
+(37, 69),
+(40, 69),
+(152, 69),
+(154, 69),
+(155, 69);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `media`
+--
+
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `alt` varchar(1000) NOT NULL,
+  `created` varchar(255) NOT NULL,
+  `filename` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `title`, `alt`, `created`, `filename`) VALUES
+(31, 'Mint pot', 'Mint plant in pot', '2016-03-01 00:29:24', 'mint-pot.jpg'),
+(32, 'Parsley pot', 'Flat leaf parsley plant in pot', '2016-03-01 00:29:44', 'parsley-pot.jpg'),
+(33, 'Rosemary plant', 'Rosemary plant in pot', '2016-03-01 00:30:12', 'rosemary-pot.jpg'),
+(34, 'Tarragon plant', 'Tarragon plant in pot', '2016-03-01 00:30:25', 'tarragon-pot.jpg'),
+(35, 'Thyme pot', 'Thyme plant in pot', '2016-03-01 00:30:41', 'thyme-pot.jpg'),
+(36, 'Chives', 'chives', '2016-03-01 00:37:44', 'chives.jpg'),
+(38, 'Dill', 'dill', '2016-03-01 00:38:10', 'dill.jpg'),
+(39, 'Asparagus', 'Asparagus stems', '2016-03-01 00:55:17', 'asparagus.jpg'),
+(40, 'Broccoli', 'Broccoli florets', '2016-03-01 00:55:39', 'broccoli.jpg'),
+(41, 'Capsicum', 'Capsicum', '2016-03-01 00:55:49', 'capsicum.jpg'),
+(42, 'Carrots', 'Carrots', '2016-03-01 00:55:58', 'carrots.jpg'),
+(43, 'Cauliflower', 'Cauliflower', '2016-03-01 00:56:11', 'cauliflower.jpg'),
+(44, 'Chilli pepper', 'Chilli pepper', '2016-03-01 00:56:23', 'chilli-pepper.jpg'),
+(45, 'Cress', 'Cress', '2016-03-01 00:56:37', 'cress.jpg'),
+(46, 'Gem lettuce', 'Gem lettuce', '2016-03-01 00:56:49', 'gem-lettuce.jpg'),
+(47, 'Iceberg lettuce', 'Iceberg lettuce', '2016-03-01 00:57:03', 'iceberg-lettuce.jpg'),
+(48, 'Lollo rosso ', 'Lollo rosso ', '2016-03-01 00:57:15', 'lollo-rosso.jpg'),
+(49, 'Pak choi', 'Pak choi', '2016-03-01 00:57:28', 'pak-choi.jpg'),
+(50, 'Peas', 'Peas in pod', '2016-03-01 00:57:40', 'peas.jpg'),
+(51, 'Sweetcorn', 'Sweetcorn', '2016-03-01 00:57:50', 'sweetcorn.jpg'),
+(52, 'Coriander', 'coriander', '2016-03-01 01:55:24', 'coriander.jpg'),
+(53, 'test', 'test', '', 'courtyard.jpg'),
+(54, 'test', 'test', '', 'grey-boxes.jpg'),
+(55, 'pinboard', 'pinboard', '', 'pinboard.jpg'),
+(56, 'Woody Nightshade cover', 'Book cover for Woody Nightshade', '', 'woody-nightshade.jpg'),
+(57, 'The Ice Palace', 'Book cover design', '', 'the-ice-palace.jpg'),
+(58, 'Systemic outer page', 'Flyer design', '', 'systemic-outer.jpg'),
+(59, 'Systemic inner page', 'Flyer design', '', 'systemic-inner.jpg'),
+(60, 'Polite society business cards', 'Business cards design', '', 'polite-society-poster.jpg'),
+(61, 'Polite society business cards', 'Business card design', '', 'polite-society-cards.jpg'),
+(62, 'Chimney Press', 'Logo design', '', 'chimney-press-logo.png'),
+(63, 'Polite society stamp', 'Hand stamp', '', 'polite-society-stamp.jpg'),
+(64, 'Faces in the water', 'Book cover design', '', 'faces-in-the-water.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'user'),
+(2, 'publisher'),
+(3, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `token`
+--
+
+CREATE TABLE `token` (
+  `token` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `expires` timestamp NULL DEFAULT NULL,
+  `purpose` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `token`
+--
+
+INSERT INTO `token` (`token`, `user_id`, `expires`, `purpose`) VALUES
+('0e2bec1c-36fb-11e7-bb94-408d5cc4740c', 69, '2017-05-13 11:09:16', 'password_reset'),
+('177fc563-3638-11e7-b54f-408d5cc4740c', 69, '2017-05-12 11:53:39', 'password_reset'),
+('262220d4-3598-11e7-8cc0-408d5cc4740c', 69, '2017-05-11 16:48:44', 'password_reset'),
+('2b571838-359b-11e7-8cc0-408d5cc4740c', 69, '2017-05-11 17:10:22', 'password_reset'),
+('2bfea932-359a-11e7-8cc0-408d5cc4740c', 69, '0000-00-00 00:00:00', 'password_reset'),
+('3c07d261-359b-11e7-8cc0-408d5cc4740c', 69, '2017-05-11 17:10:50', 'password_reset'),
+('50809701-4c39-11e7-a8eb-408d5cc4740c', 51, '0000-00-00 00:00:00', 'password_reset'),
+('5ce95e0e-363b-11e7-b54f-408d5cc4740c', 69, '2017-05-12 12:17:04', 'password_reset'),
+('5db3bdea-9890-11e7-a1cc-408d5cc4740c', 69, '2017-09-14 14:30:08', 'password_reset'),
+('6b51462a-4c39-11e7-a8eb-408d5cc4740c', 51, '0000-00-00 00:00:00', 'password_reset'),
+('6c9f1a0b-3596-11e7-8cc0-408d5cc4740c', 69, '2017-05-11 16:36:24', 'password_reset'),
+('7bd96fbe-9890-11e7-a1cc-408d5cc4740c', 69, '2017-09-14 14:30:59', 'password_reset'),
+('7c2a1a66-3637-11e7-b54f-408d5cc4740c', 69, '2017-05-12 11:49:19', 'password_reset'),
+('8292535c-3637-11e7-b54f-408d5cc4740c', 69, '2017-05-12 11:49:29', 'password_reset'),
+('8d98030e-3599-11e7-8cc0-408d5cc4740c', 69, '2017-05-11 16:58:47', 'password_reset'),
+('9f25c364-9890-11e7-a1cc-408d5cc4740c', 69, '2017-09-14 14:31:58', 'password_reset'),
+('ad7dff42-3593-11e7-8cc0-408d5cc4740c', 69, '2017-05-11 16:16:44', 'password_reset'),
+('c1b23f74-9890-11e7-a1cc-408d5cc4740c', 69, '2017-09-14 14:32:56', 'password_reset'),
+('c73fc905-36fa-11e7-bb94-408d5cc4740c', 69, '2017-05-13 11:07:17', 'password_reset'),
+('d334b8f0-9890-11e7-a1cc-408d5cc4740c', 69, '2017-09-14 14:33:26', 'password_reset'),
+('da4810ab-9890-11e7-a1cc-408d5cc4740c', 69, '2017-09-14 14:33:37', 'password_reset'),
+('e4e47570-9890-11e7-a1cc-408d5cc4740c', 69, '2017-09-14 14:33:55', 'password_reset'),
+('f92cac6e-36fa-11e7-bb94-408d5cc4740c', 69, '2017-05-13 11:08:40', 'password_reset');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `forename` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT '1',
+  `surname` varchar(255) DEFAULT NULL,
+  `joined` varchar(32) DEFAULT NULL,
+  `seo_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `forename`, `email`, `password`, `role`, `surname`, `joined`, `seo_name`) VALUES
+(1, 'Ivy ', 'ivy@example.org', '$2y$10$UgGrXUL9i0q.duDPqMc8pOZLSaPTULTZabGX70eT4ZrIL11RJLljG', 2, 'Stone', '16-02-2015', 'ivy_stone'),
+(2, 'Chris', 'chris@example.com', '$2y$10$UgGrXUL9i0q.duDPqMc8pOZLSaPTULTZabGX70eT4ZrIL11RJLljG', 1, 'White', '12-01-2016', 'chris_white'),
+(3, 'Chris', 'chris@newtest.com', 'fb7b55745b6e5c4d03f8a285f1e1603618e94d20', 2, 'Ullman', '18-06-2014', 'chris_ullman1'),
+(51, 'Chris', 'chris@deciphered.com', '$2y$10$7FoZYWiBNAzM/ppB0ZKKq.CkfiBC1EFpcMjv7awU/ecjrpONPdkTW', 1, 'Ullman', NULL, 'chris_ullman2'),
+(56, 'Suede', 'chris@malmo.org', 'fb7b55745b6e5c4d03f8a285f1e1603618e94d20', 2, 'Malmo', NULL, NULL),
+(64, 'Jon', 'jon@deciphered.com', '$2y$10$dnw2OnehupOVMaXcCs60ZeEQapIrnXDAhbqlKXeOPLgvStR5N35Vy', 1, 'Duckett', NULL, NULL),
+(69, 'Chris', 'chrisullman@btinternet.com', '$2y$10$UgGrXUL9i0q.duDPqMc8pOZLSaPTULTZabGX70eT4ZrIL11RJLljG', 2, 'Ullman', NULL, 'chris_ullman'),
+(75, 'Morgan', 'chrisullman@cuasp.co.uk', '$2y$10$llEaoz18QsfobWhMOpEMEegGktbo1OC8r/4na26ICAzIy/V4hHcR.', 1, 'Walsh', NULL, NULL),
+(77, 'Chris', 'chrisullman@tiscali.co.uk', '$2y$10$Ct5Nh4j3k3mdDfpCfhkqf.y7vMHZnNfpo0PjxZvZwbci/I2SiQ0mm', 1, 'Ullman', NULL, 'chris_ullman4'),
+(78, 'Chris', 'chris@new.co.uk', '$2y$10$1jaI7GqUNAkh3/KPyJMccexe2DLN/V6WUVPpYx58ulsA7KvPrj3le', 1, 'New', NULL, NULL),
+(80, 'Bob', 'bob@test.com', '$2y$10$/nf9j1/y.m/j7rFQR5R81uc4wt3pvs4naiPqxPHWaIW.To2fpfgJu', 1, 'Test', '15-09-2017', NULL),
+(81, 'Tim', 'tim@test.com', '$2y$10$5APLIFjht08lPbbRNjX0juJKAx60AfEsdUBhnWAri1frYkVMNF0La', 1, 'Test', '15-09-2017', 'tim_test'),
+(82, 'Jim', 'jim@test.com', '$2y$10$TTy/gGhEzCCIydsI7lZz/uXkKn2FxzJ44YqwMIGeAXomJ.w7nHrQG', 1, 'Test', '15-09-2017', 'jim-test');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `article`
+--
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`,`media_id`),
+  ADD UNIQUE KEY `title` (`title`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_2` (`id`);
+
+--
+-- Indexes for table `articleimages`
+--
+ALTER TABLE `articleimages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`article_id`,`user_id`);
+
+--
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `token`
+--
+ALTER TABLE `token`
+  ADD PRIMARY KEY (`token`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `role_id` (`role`),
+  ADD KEY `name` (`forename`),
+  ADD KEY `name_2` (`forename`,`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=156;
+--
+-- AUTO_INCREMENT for table `articleimages`
+--
+ALTER TABLE `articleimages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=179;
+--
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=83;

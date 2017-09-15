@@ -2,9 +2,7 @@
     <a href="<?= ROOT ?><?= $category->seo_name ?>/<?= $article->seo_title ?>"><img class="card-img-top" src="uploads/<?= $article->thumb ?>" alt="<?= $article->thumb_alt ?>">
     <div class="card-body text-center">
       <h5 class="card-title"><?= $article->title?></h5>
-       
         </a>
-   
       <p><?= $article->category ?> by <?= $article->author?></p>
       <p><?= $article->summary ?></p>
         <?php
