@@ -13,44 +13,12 @@ class UserManager
   public function getUserById($id)
   {
     $pdo = $this->pdo;
-    $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined, user.role, user.seo_name, user.image FROM user WHERE id = :id';
+    $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined, user.role, user.seo_name FROM user WHERE id = :id';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':id', $id, PDO::PARAM_INT);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
     $user = $statement->fetch();
-    if (!$user) {
-      return null;
-    }
-    return $user;
-  }
-
-
-   public function getUsersCount()
-  {
-    $pdo = $this->pdo;
-    $sql = 'SELECT COUNT(*) FROM user';
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
-    $user = $statement->fetchColumn();
-    if (!$user) {
-      return null;
-    }
-    return $user;
-  }
-
-  public function getUsers($show='9', $from='0')
-  {
-    $pdo = $this->pdo;
-    $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined, user.role, user.seo_name, user.image FROM user';
-      if (!empty($show)) {             // If value given for $show add 
-            $sql .= " LIMIT " . $show . " OFFSET " . $from;
-        }
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
-    $user = $statement->fetchAll();
     if (!$user) {
       return null;
     }
@@ -102,15 +70,16 @@ class UserManager
     $seo_name = Utilities::createSlug($user->getFullName());
 
     $pdo  = $this->pdo;
-    $sql  = 'INSERT INTO user (forename,  surname,  email,  password,  joined,  seo_name) 
-		                  VALUES (:forename, :surname, :email, :password, :joined, :seo_name)'; // SQL
-    $statement = $pdo->prepare($sql);                                  // Prepare
-    $statement->bindValue(':forename', $user->forename);               // Bind value
-    $statement->bindValue(':surname',  $user->surname);                // Bind value
-    $statement->bindValue(':email',    $user->email);                  // Bind value
-    $statement->bindValue(':password', $hash);                         // Bind value
-    $statement->bindValue(':joined',   date('d-m-Y'));          // Bind value
-    $statement->bindValue(':seo_name', $seo_name); // Bind value
+    $sql  = 'INSERT INTO user (forename,  surname,  email,  password,  joined,  seo_name,  profile_image) 
+		                  VALUES (:forename, :surname, :email, :password, :joined, :seo_name, :profile_image)'; // SQL
+    $statement = $pdo->prepare($sql);                              // Prepare
+    $statement->bindValue(':forename',      $user->forename);      // Bind value
+    $statement->bindValue(':surname',       $user->surname);       // Bind value
+    $statement->bindValue(':email',         $user->email);         // Bind value
+    $statement->bindValue(':password',      $hash);                // Bind value
+    $statement->bindValue(':joined',        date('d-m-Y')); // Bind value
+    $statement->bindValue(':seo_name',      $seo_name);            // Bind value
+    $statement->bindValue(':profile_image', $user->profile_image); // Bind value
 
     try {
       $statement->execute();
@@ -123,14 +92,18 @@ class UserManager
   }
 
   public function update($user){
+    $seo_name = Utilities::createSlug($user->getFullName());
+
     $pdo = $this->pdo;
-    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, password = :password WHERE id = :id';         //SQL
-    $statement = $pdo->prepare($sql);                          // Prepare
-    $statement->bindValue(':id', $user->id, PDO::PARAM_INT);   // Bind value
-    $statement->bindValue(':forename', $user->forename);       // Bind value
-    $statement->bindValue(':surname',  $user->surname);        // Bind value
-    $statement->bindValue(':email',    $user->email);          // Bind value
-    $statement->bindValue(':password', $user->getPassword());  // Bind value
+    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, password = :password, seo_name = :seo_name, profile_image = :profile_image WHERE id = :id';         //SQL
+    $statement = $pdo->prepare($sql);                              // Prepare
+    $statement->bindValue(':id', $user->id, PDO::PARAM_INT);       // Bind value
+    $statement->bindValue(':forename',      $user->forename);      // Bind value
+    $statement->bindValue(':surname',       $user->surname);       // Bind value
+    $statement->bindValue(':email',         $user->email);         // Bind value
+    $statement->bindValue(':password',      $user->getPassword()); // Bind value
+    $statement->bindValue(':seo_name',      $seo_name);            // Bind value
+    $statement->bindValue(':profile_image', $user->profile_image); // Bind value
     try {
       $statement->execute();
       $result = TRUE;
@@ -171,6 +144,35 @@ class UserManager
     }
   }
 
+  public function getUsersCount() {
+    $pdo = $this->pdo;
+    $sql = 'SELECT COUNT(*) FROM user';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
+    $user = $statement->fetchColumn();
+    if (!$user) {
+      return null;
+    }
+    return $user;
+  }
+
+  public function getUsers($show='9', $from='0') {
+    $pdo = $this->pdo;
+    $sql = 'SELECT id, forename, surname, email, joined, role, seo_name, profile_image FROM user ORDER BY id DESC';
+    if (!empty($show)) {             // If value given for $show add
+      $sql .= " LIMIT " . $show . " OFFSET " . $from;
+    }
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
+    $user_list = $statement->fetchAll();
+    if (!$user_list) {
+      return null;
+    }
+    return $user_list;
+  }
+
   public function createUserSession($user) {
     if (session_status() == PHP_SESSION_NONE) {
       session_start();
@@ -200,6 +202,19 @@ class UserManager
       session_start();
     }
     return ( isset($_SESSION['user_id']) ? TRUE : FALSE);
+  }
+
+  public function isCurrentUser($seo_name) {
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
+    $my_profile = FALSE;
+    if ( isset($_SESSION['user_id'])){
+      if ($_SESSION['seo_name'] == $seo_name) {
+        $my_profile = TRUE;
+      }
+    }
+    return $my_profile;
   }
 
   public function redirectNonAdmin() {
@@ -307,6 +322,5 @@ class UserManager
         return FALSE; 
     }
 }
-
 
 }

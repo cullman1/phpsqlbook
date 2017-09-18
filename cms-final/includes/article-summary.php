@@ -5,8 +5,8 @@
     <div class="card-body text-center">
       <a href="<?= ROOT ?><?= $article->seo_category ?>/<?= $article->seo_title ?>">
         <h5 class="card-title"><?= $article->title?></h5>
-        <p><?= $article->summary ?></p>
       </a>
+      <p><?= $article->summary ?></p>
       <p>
         Posted in <a href="<?= ROOT ?><?= $article->seo_category ?>"><?= $article->category ?></a>
         by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= $article->author?></a>
@@ -26,6 +26,11 @@
         <div class="col">
           <div class="text-right"><i class="fa fa-comment-o"></i> <?= $article->comment_count ?></div>
         </div>
+      </div>
+      <div class="row">
+        <?php if ($my_profile) {
+          echo '<div class="col"><a href="' . ROOT . 'users/update/' . $article->seo_title .'" class="btn btn-primary">edit</a></div>';
+        } ?>
       </div>
     </div>
   </div>

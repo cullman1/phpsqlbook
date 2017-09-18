@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $user = $userManager->getUserByEmailPassword($email, $password);
       if ($user) {
         $userManager->createUserSession($user);
-        header('Location: index.php');
+        header('Location:  '. ROOT .'index.php');
       } else {
         $alert = '<div class="alert alert-danger">Login failed</div>';
     }
@@ -42,7 +42,7 @@ include dirname(__DIR__) . '/includes/header.php';
         <input type="password" name="password" placeholder="Password" class="form-control" /><br>
         <div class="error"><?= $error['password']; ?></div>
         <button type="submit" class="btn btn-primary">Login</button><br>
-        <a href="forgotten-password.php" class="card-link">Forgotten your password?</a> <br>
+        <a href="<?= ROOT ?>users/forgotten-password.php" class="card-link">Forgotten your password?</a> <br>
       </form>
     </div>
 

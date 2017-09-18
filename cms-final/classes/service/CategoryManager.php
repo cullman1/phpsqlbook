@@ -128,5 +128,4 @@ class CategoryManager
         return $category;
     }
 
-
 }

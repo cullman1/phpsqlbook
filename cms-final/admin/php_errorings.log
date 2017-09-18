@@ -1,0 +1,3 @@
+[18-Sep-2017 19:10:55 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 44
+[18-Sep-2017 19:10:55 Europe/Berlin] PHP Stack trace:
+[18-Sep-2017 19:10:55 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0

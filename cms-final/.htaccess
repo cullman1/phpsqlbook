@@ -4,11 +4,11 @@ RewriteEngine On                       # Turn on the rewriting engine
 RewriteRule ^/?$     		           index.php        	            [NC,L]
 
 # Pages in the main navigation
-RewriteRule ^about/?$    	           view-article.php?title=about 	[NC,L]
-RewriteRule ^contact/?$  	           view-article.php?title=contact   [NC,L]
+RewriteRule ^about/?$    	           view-article.php?title=about&info=true 	[NC,L]
+RewriteRule ^contact/?$  	           view-article.php?title=contact&info=true   [NC,L]
 
 # Admin pages are ignored
-RewriteRule ^admin/?$   	           admin/articles.php      	        [NC,L]
+RewriteRule ^admin/?$   	           admin/articles.php               [NC,L]
 RewriteRule ^admin/([A-z0-9\-\.]+)/?$  admin/$1                         [NC,L]
 
 # Membership pages
@@ -19,17 +19,20 @@ RewriteRule ^lost-password/?$          users/logout.php      	        [NC,L]
 RewriteRule ^reset-password/?$   	   users/reset-password.php         [NC,L]
 
 # Likes and comments
-RewriteRule ^like/?$   		           users/like.php      		    [NC,L,QSA]
-RewriteRule ^unlike/?$   	           users/like.php     	        [NC,L,QSA]
-RewriteRule ^add_comment/?$            users/add-comment.php?id=$1    [NC,L,QSA]
-RewriteRule ^add_comment_reply/?$      users/add-comment-reply.php?id=$1  [NC,L,QSA]
+RewriteRule ^like/?$   		           users/like.php      		         [NC,L,QSA]
+RewriteRule ^unlike/?$   	           users/like.php     	             [NC,L,QSA]
+RewriteRule ^add_comment/?$            users/add-comment.php?id=$1       [NC,L,QSA]
+RewriteRule ^add_comment_reply/?$      users/add-comment-reply.php?id=$1 [NC,L,QSA]
 
 # Search
-RewriteRule ^search/?$ 		           search.php 		                [NC,L,QSA]
+RewriteRule ^search/?$ 		           search.php 		                  [NC,L,QSA]
 
 # Member profiles
-RewriteRule ^users/?$  	               users/user-list.php              [NC,L,QSA]
-RewriteRule ^users/([A-z0-9\-]+)/?$    view-user.php?name=$1           [NC,L,QSA]
+RewriteRule ^users/?$  	                   users/user-list.php            [NC,L,QSA]
+RewriteRule ^users/([A-z0-9\-]+)/?$        view-user.php?name=$1          [NC,L,QSA]
+RewriteRule ^user-update/([A-z0-9\-]+)/?$  users/user-update.php?name=$1  [NC,L]
+RewriteRule ^users/create/upload.php?action=new             [NC,L]
+RewriteRule ^users/update/([A-z0-9\-]+)/?$ upload.php?action=update&seo_title=$1             [NC,L]
 
 # Category pages
 RewriteRule ^([A-z0-9\-]+)/?$    	   view-category.php?name=$1        [NC,L,QSA]

@@ -51,7 +51,7 @@ include 'includes/header.php';
   <h2>Edit user</h2>
 <?= $alert ?>
 
-  <form action="user.php?id=<?=$id?>" method="POST">
+  <form action="user.php?id=<?=$id?>" method="POST" >
     <div class="form-group">
       <label for="forename">Forename: </label>
       <input name="forename" id="forename" value="<?= $user->forename ?>" class="form-control">

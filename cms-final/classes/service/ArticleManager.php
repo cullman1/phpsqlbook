@@ -62,7 +62,7 @@ class ArticleManager{
   public function getArticleBySeoTitle($seo_title) {
     $pdo = $this->pdo;
     $sql = 'SELECT article.*, 
-        user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author,  
+        CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user, 
         category.id AS category_id, category.name AS category ';
         if (isset($_SESSION['user_id'])) {
         $sql .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' .
@@ -95,7 +95,7 @@ class ArticleManager{
             LEFT JOIN category ON article.category_id = category.id 
             LEFT JOIN media ON article.media_id = media.id 
             AND article.published = TRUE
-            ORDER BY article.created';
+            ORDER BY article.created DESC';
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
@@ -153,6 +153,7 @@ class ArticleManager{
             LEFT JOIN media ON media.id = articleimages.media_id
 
             WHERE article.user_id=:user_id
+            AND category.navigation = TRUE
             AND article.published = TRUE
             GROUP BY id
             ORDER BY article.created DESC';
@@ -195,7 +196,7 @@ class ArticleManager{
     $statement = $pdo->prepare($sql);                                               // Prepare
     $statement->bindValue(':id',          $article->id, PDO::PARAM_INT);            // Bind value
     $statement->bindValue(':title',       $article->title);                         // Bind value
-    $statement->bindValue(':seo_title',   $this->create_slug($article->title));
+    $statement->bindValue(':seo_title',   Utilities::createSlug($article->title));
     $statement->bindValue(':summary',     $article->summary);                        // Bind value
     $statement->bindValue(':content',     $article->content);                       // Bind value
     $statement->bindValue(':category_id', $article->category_id, PDO::PARAM_INT);   // Bind value
@@ -323,8 +324,6 @@ class ArticleManager{
     return 'Could not create thumbnail.';
   }
 
-
-
   public function getArticleCountByCategorySeoName($name) {
    $pdo  = $this->pdo;
    $sql = 'SELECT COUNT(*) FROM category 
@@ -368,8 +367,6 @@ class ArticleManager{
         }
         return $article_list;
     }
-
-
 
   public function addLikeById($user_id, $article_id) {
   $pdo = $this->pdo;

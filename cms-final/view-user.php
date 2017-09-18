@@ -3,7 +3,8 @@
 require_once 'config.php';
 
 if (isset($_GET['name'])) {  // If check passes
-    $user = $userManager->getUserBySeoName($_GET['name']);
+    $user       = $userManager->getUserBySeoName($_GET['name']);
+    $my_profile = $userManager->isCurrentUser($_GET['name']);
 }
 
 if (empty($user)) {
@@ -23,10 +24,14 @@ include 'includes/header.php'; ?>
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading"><?= $user->getFullName() ?></h1>
-      <img src="uploads/users/<?= $user->image ?>" alt="<?= $user->getFullName() ?>" class="rounded-circle" style="max-width: 100px" />
+      <img src="<?= ROOT ?>uploads/thumb/<?= $user->profile_image ?>" alt="<?= $user->getFullName() ?>" class="rounded-circle" style="max-width: 100px" />
       <p class="lead text-muted">Joined: <?= $user->joined ?></p>
     </div>
   </section>
+
+  <?php if ($my_profile) {
+    echo '<a href="' . ROOT . 'users/create/" class="btn btn-primary">upload work</a>';
+  } ?>
 
   <div class="container">
     <div class="row">

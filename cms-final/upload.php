@@ -1,16 +1,17 @@
 <?php
-require_once '../config.php';
+require_once 'config.php';
 
+// is logged in otherwise redirect
 $userManager->redirectNonAdmin();
 
-$user_list     = $userManager->getAllUsers();
 $category_list = $categoryManager->getAllCategories();
 
 // Get data
-$id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
-$action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
+$seo_title   = (isset($_GET['seo_title'])  ? $_GET['seo_title'] : ''); // Get values
+$action      = (isset($_GET['action']) ? $_GET['action'] : 'create'); // Get values
 
 // article data
+$id            = ( isset($_POST['id'])          ? $_POST['id']          : ''); // Get values
 $title         = ( isset($_POST['title'])       ? $_POST['title']       : ''); // Get values
 $summary       = ( isset($_POST['summary'])     ? $_POST['summary']     : ''); // Get values
 $content       = ( isset($_POST['content'])     ? $_POST['content']     : ''); // Get values
@@ -32,7 +33,7 @@ $uploadedfile  = FALSE;        // Was image uploaded
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing category to edit
-  $article = ($id == '' ? $article : $articleManager->getArticleById($id)); // Do you load a category
+  $article = ($seo_title == '' ? $article : $articleManager->getArticleBySeoTitle($seo_title)); // Do you load a category
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
   }
@@ -114,11 +115,12 @@ include 'includes/header.php';
   <h2 class="display-4 mt-4 mb-3"><?=$action?> article</h2>
   <?= $alert ?>
 
-  <form action="article.php?id=<?=$article->id?>&action=<?=$action?>" method="post" enctype="multipart/form-data">
+  <form action="<?=ROOT?>users/<?=$action?>/<?=$seo_title?>" method="post" enctype="multipart/form-data">
 
     <div class="row">
       <div class="col-8">
 
+        <input name="id" value="<?= $article->id ?>" type="hidden">
         <div class="form-group">
           <label for="title">Title: </label>
           <input name="title" id="title" value="<?= $article->title ?>" class="form-control">
@@ -149,19 +151,7 @@ include 'includes/header.php';
           <span class="errors"><?= $errors['category_id'] ?></span>
         </div>
 
-        <div class="form-group">
-          <label for="user_id">Author: </label>
-          <select name="user_id" id="user_id" class="form-control">
-            <?php foreach ($user_list as $user) { ?>
-            <option value="<?= $user->id ?>"
-              <?php if ($article->user_id == $user->id) {
-                echo 'selected';
-              }?>
-            ><?= $user->getFullName(); ?></option>
-            <?php }?>
-          </select>
-          <span class="errors"><?= $errors['user_id'] ?></span>
-        </div>
+        <input type="hidden" name="user_id" value="<?= $article->user_id ?>">
 
         <div class="form-group">
           <label for="published" class="form-check-label">
@@ -189,7 +179,7 @@ include 'includes/header.php';
         </div>
 
         <?php foreach ($article_images as $image) {
-          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . $image->alt . '" /><br><br>';
+          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . $image->alt . '" /><br><br>';
         } ?>
 
       </div><!-- /col -->

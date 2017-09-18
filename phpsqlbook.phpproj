@@ -42,6 +42,7 @@
     <Compile Include="cms-final\classes\model\Comment.php" />
     <Compile Include="cms-final\classes\model\Media.php" />
     <Compile Include="cms-final\classes\model\User.php" />
+    <Compile Include="cms-final\classes\service\MediaManager.php" />
     <Compile Include="cms-final\classes\service\ArticleManager.php" />
     <Compile Include="cms-final\classes\service\CategoryManager.php" />
     <Compile Include="cms-final\classes\service\CMS.php" />
@@ -894,7 +895,6 @@
     <Content Include="cms-final\admin\lib\tinymce\js\tinymce\tinymce.min.js" />
     <Content Include="cms-final\admin\lib\tinymce\LICENSE.TXT" />
     <Content Include="cms-final\css\styles.css" />
-    <Content Include="cms-final\phpbook4 sql dump.txt" />
     <Content Include="cms-final\uploads\amazon-author-page.png" />
     <Content Include="cms-final\uploads\asparagus.jpg" />
     <Content Include="cms-final\uploads\asparagus_thumbnail.jpg" />

@@ -20,9 +20,9 @@
 
           <?php if ($is_logged_in) { ?>
             <span class="nav-item">Hello <?= $_SESSION["name"] ?></span>
-            <a class="nav-item nav-link" href="<?= ROOT ?>members/logout.php">Logout</a></a>
+            <a class="nav-item nav-link" href="<?= ROOT ?>users/logout.php">Logout</a></a>
           <?php  } else { ?>
-            <a href="<?= ROOT ?>members/login.php">Login</a>
+            <a href="<?= ROOT ?>users/login.php">Login</a>
           <?php } ?>
 
         </div>
