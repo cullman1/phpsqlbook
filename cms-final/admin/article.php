@@ -37,11 +37,14 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
   }
 } else {
+if (empty($_POST)) {
+    $errors['file'] = 'File too large to upload';
+  }
   $errors['title']    = (Validate::isText($title, 1, 64)      ? '' : 'Not a valid title');
   $errors['summary']  = (Validate::isText($summary, 1, 160)   ? '' : 'Not a valid summary');
   $errors['content']  = (Validate::isText($summary, 1, 2000)  ? '' : 'Not valid content');
-
-  $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
+ 
+  $uploadedfile = (!empty($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
   if ($uploadedfile) {
     $filename    = $_FILES['file']['name'];
     $mediatype   = $_FILES['file']['type'];
@@ -57,7 +60,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $errors['file'] .= (Validate::isAllowedFilename($filename)                ? '' : 'Not a valid filename<br>');
     $errors['file'] .= (Validate::isAllowedExtension($filename)               ? '' : 'Not a valid file extension<br>');
     $errors['file'] .= (Validate::isAllowedMediaType($mediatype)              ? '' : 'Not a valid media type<br>');
-    $errors['file'] .= (Validate::isWithinFileSize($filesize, 1000000)   ? '' : 'File too large<br>');
+                                                               
+    $errors['file'] .= (Validate::isWithinFileSize($filesize, 20971520)  ? '' : 'File too large - max size 20mb<br>');
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
 
@@ -110,8 +114,8 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
 
 include 'includes/header.php';
 ?>
-
-  <h2 class="display-4 mt-4 mb-3"><?=$action?> article</h2>
+<section>
+  <h2 class="display-4 mb-4"><?=$action?> article</h2>
   <?= $alert ?>
 
   <form action="article.php?id=<?=$article->id?>&action=<?=$action?>" method="post" enctype="multipart/form-data">
@@ -197,5 +201,5 @@ include 'includes/header.php';
     <input type="submit" name="create" value="save" class="btn btn-primary">
 
   </form>
-
+</section>
 <?php include 'includes/footer.php'; ?>

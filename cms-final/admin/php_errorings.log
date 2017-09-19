@@ -1,3 +1,39 @@
 [18-Sep-2017 19:10:55 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 44
 [18-Sep-2017 19:10:55 Europe/Berlin] PHP Stack trace:
 [18-Sep-2017 19:10:55 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:08:57 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 44
+[19-Sep-2017 12:08:57 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:08:57 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:11:47 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 43
+[19-Sep-2017 12:11:47 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:11:47 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:11:47 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 46
+[19-Sep-2017 12:11:47 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:11:47 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:13:24 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 43
+[19-Sep-2017 12:13:24 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:13:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:13:24 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 46
+[19-Sep-2017 12:13:24 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:13:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:14:03 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 45
+[19-Sep-2017 12:14:03 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:14:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 47
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 48
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 49
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 50
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:14:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:34:35 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 44
+[19-Sep-2017 12:34:35 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:34:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[19-Sep-2017 12:37:52 Europe/Berlin] PHP Notice:  Undefined index: file in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 44
+[19-Sep-2017 12:37:52 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 12:37:52 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0

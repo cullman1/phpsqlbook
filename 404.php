@@ -1,1 +1,1 @@
-<?php var_dump($_SERVER);?>
+<?php phpinfo();?>

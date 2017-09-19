@@ -62,6 +62,7 @@ class Validate {
   }
 
   public static function isAllowedExtension($filename) {       // Check file extension
+    $filename = strtolower($filename);
     if (!preg_match('/.(jpg|jpeg|png|gif)$/', $filename) ) {    // If not file extension
       return FALSE;
     }
