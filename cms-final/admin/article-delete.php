@@ -18,8 +18,8 @@ if (isset($result) && ($result != TRUE)) {
 
 include 'includes/header.php';
 ?>
-
-  <h2>Delete article</h2>
-  <?= $alert ?>
-
+  <section>
+    <h2>Delete article</h2>
+    <?= $alert ?>
+  </section>
 <?php include 'includes/footer.php'; ?>

@@ -21,12 +21,11 @@ $meta_description = $category->description;
 include 'includes/header.php'; ?>
 
   <section class="jumbotron text-center">
-    <div class="container">
       <h1 class="jumbotron-heading"><?= $category->name ?></h1>
       <p class="lead text-muted"><?= $category->description ?></p>
-    </div>
   </section>
 
+<section>
   <div class="container">
     <div class="row">
     <?php
@@ -36,6 +35,7 @@ include 'includes/header.php'; ?>
     ?>
    </div>
   </div>
+</section>
 
 <?php  echo Utilities::createPagination($count, $show, $from);
  include 'includes/footer.php'; ?>

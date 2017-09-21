@@ -63,43 +63,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 include '../includes/header.php';
 
 ?>
-<h1>Register</h1>
-<?=$alert;?>
+  <div class="container mt-4 mb-4">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-4">
 
-<?php if ($show_form === TRUE) { ?>
-  <form action="" method="POST" enctype="multipart/form-data">
-  <div class="form-group">
-    <label for="forename">Forename: </label>
-    <input name="forename" id="forename" value="<?= $forename ?>" class="form-control">
-    <span class="errors"><?= $errors['forename'] ?></span>
+        <h4>Register</h4>
+        <?=$alert;?>
+
+        <?php if ($show_form === TRUE) { ?>
+          <form action="" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="forename">Forename: </label>
+              <input name="forename" id="forename" value="<?= $forename ?>" class="form-control">
+              <span class="errors"><?= $errors['forename'] ?></span>
+            </div>
+            <div class="form-group">
+              <label for="surname">Surname: </label>
+              <input name="surname" id="surname" value="<?= $surname ?>" class="form-control">
+              <span class="errors"><?= $errors['surname'] ?></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email: </label>
+              <input type="email" name="email" id="email" value="<?= $email ?>" class="form-control">
+              <span class="errors"><?= $errors['email'] ?></span>
+            </div>
+            <div class="form-group">
+              <label for="password">Password: </label>
+              <input type="password" name="password" id="password" value="<?= $password ?>" class="form-control">
+              <span class="errors"><?= $errors['password'] ?></span>
+            </div>
+            <div class="form-group">
+              <label for="password">Confirm password: </label>
+              <input type="password" name="confirm" id="confirm" value="<?= $confirm ?>" class="form-control">
+              <span class="errors"><?= $errors['confirm'] ?></span>
+            </div>
+            <div class="form-group">
+              <label for="file">Upload file: </label>
+              <input type="file" name="file" accept="image/*" id="file"  />
+              <span class="errors"><?= $errors['file'] ?></span>
+            </div>
+            <input type="submit" name="create" value="save" class="btn btn-default">
+          </form>
+        <?php } ?>
+
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="surname">Surname: </label>
-    <input name="surname" id="surname" value="<?= $surname ?>" class="form-control">
-    <span class="errors"><?= $errors['surname'] ?></span>
-  </div>
-  <div class="form-group">
-    <label for="email">Email: </label>
-    <input type="email" name="email" id="email" value="<?= $email ?>" class="form-control">
-    <span class="errors"><?= $errors['email'] ?></span>
-  </div>
-  <div class="form-group">
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password" value="<?= $password ?>" class="form-control">
-    <span class="errors"><?= $errors['password'] ?></span>
-  </div>
-  <div class="form-group">
-    <label for="password">Confirm password: </label>
-    <input type="password" name="confirm" id="confirm" value="<?= $confirm ?>" class="form-control">
-    <span class="errors"><?= $errors['confirm'] ?></span>
-  </div>
-  <div class="form-group">
-    <label for="file">Upload file: </label>
-    <input type="file" name="file" accept="image/*" id="file"  />
-    <span class="errors"><?= $errors['file'] ?></span>
-  </div>
-  <input type="submit" name="create" value="save" class="btn btn-default">
-</form>
-<?php } ?>
 
 <?php include '../includes/footer.php'; ?>

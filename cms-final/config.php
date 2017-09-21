@@ -35,5 +35,8 @@ $site_name        = 'Creative Folk';
 $page_title       = $site_name . ' ';
 $meta_description = 'An agency for creatives';
 
+mb_internal_encoding('UTF-8');
+mb_http_output('UTF-8');
+
 define('ROOT', '/phpsqlbook/cms-final/');
 define('UPLOAD_DIR', 'uploads/');

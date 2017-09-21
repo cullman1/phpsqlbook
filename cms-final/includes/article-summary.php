@@ -1,4 +1,4 @@
-  <div class="card" style="width:20rem; margin: 0.4rem;">
+  <div class="card article-summary">
    <a href="<?= ROOT ?><?= $article->seo_category ?>/<?= $article->seo_title ?>">
     <img class="card-img-top" src="<?= ROOT ?>uploads/<?= $article->filename ?>" alt="<?= $article->alt ?>">
    </a>

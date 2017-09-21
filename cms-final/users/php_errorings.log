@@ -1,0 +1,8 @@
+[19-Sep-2017 16:22:36 Europe/Berlin] PHP Parse error:  syntax error, unexpected ',', expecting variable (T_VARIABLE) in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\MediaManager.php on line 91
+[19-Sep-2017 16:22:36 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 16:22:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\login.php:0
+[19-Sep-2017 16:22:36 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\cms-final\users\login.php:2
+[19-Sep-2017 16:22:40 Europe/Berlin] PHP Parse error:  syntax error, unexpected ',', expecting variable (T_VARIABLE) in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\MediaManager.php on line 91
+[19-Sep-2017 16:22:40 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 16:22:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
+[19-Sep-2017 16:22:40 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:2

@@ -11,17 +11,17 @@ $id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
 $action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
 
 // article data
-$title         = ( isset($_POST['title'])       ? $_POST['title']       : ''); // Get values
-$summary       = ( isset($_POST['summary'])     ? $_POST['summary']     : ''); // Get values
-$content       = ( isset($_POST['content'])     ? $_POST['content']     : ''); // Get values
+$title         = ( isset($_POST['title'])       ? trim(($_POST['title']))       : ''); // Get values
+$summary       = ( isset($_POST['summary'])     ? trim(($_POST['summary']))     : ''); // Get values
+$content       = ( isset($_POST['content'])     ? trim(($_POST['content']))     : ''); // Get values
 $published     = ( isset($_POST['published'])   ? $_POST['published']   : ''); // Get values
 $user_id       = ( isset($_POST['user_id'])     ? $_POST['user_id']     : ''); // Get values
 $category_id   = ( isset($_POST['category_id']) ? $_POST['category_id'] : ''); // Get values
 $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
 
 // image data
-$imagetitle    = ( isset($_POST['imagetitle'] ) ? $_POST['imagetitle']  : '');
-$alt           = ( isset($_POST['alt'] )        ? $_POST['alt']         : '');
+$imagetitle    = ( isset($_POST['imagetitle'] ) ? trim(($_POST['imagetitle']))  : '');
+$alt           = ( isset($_POST['alt'] )        ? trim(($_POST['alt']))         : '');
 $media         = new Media('', $imagetitle, $alt, '');              // Create Media object
 
 $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'', 'imagetitle'=>'', 'alt'=>'');   // Form errors
@@ -31,20 +31,20 @@ $uploadedfile  = FALSE;        // Was image uploaded
 
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
-  // No - show a blank category to create or an existing category to edit
+  // No - show a blank category to create or an existing article to edit
   $article = ($id == '' ? $article : $articleManager->getArticleById($id)); // Do you load a category
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
   }
 } else {
-if (empty($_POST)) {
+  if (empty($_POST)) {
     $errors['file'] = 'File too large to upload';
   }
   $errors['title']    = (Validate::isText($title, 1, 64)      ? '' : 'Not a valid title');
   $errors['summary']  = (Validate::isText($summary, 1, 160)   ? '' : 'Not a valid summary');
   $errors['content']  = (Validate::isText($summary, 1, 2000)  ? '' : 'Not valid content');
- 
-  $uploadedfile = (!empty($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
+
+  $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
   if ($uploadedfile) {
     $filename    = $_FILES['file']['name'];
     $mediatype   = $_FILES['file']['type'];
@@ -60,7 +60,6 @@ if (empty($_POST)) {
     $errors['file'] .= (Validate::isAllowedFilename($filename)                ? '' : 'Not a valid filename<br>');
     $errors['file'] .= (Validate::isAllowedExtension($filename)               ? '' : 'Not a valid file extension<br>');
     $errors['file'] .= (Validate::isAllowedMediaType($mediatype)              ? '' : 'Not a valid media type<br>');
-                                                               
     $errors['file'] .= (Validate::isWithinFileSize($filesize, 20971520)  ? '' : 'File too large - max size 20mb<br>');
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
@@ -70,27 +69,20 @@ if (empty($_POST)) {
   } else {                                                                       // Otherwise
     if ($action === 'create') {
       $result  = $articleManager->create($article);      // Add article to database
-      if ($uploadedfile) {
-        $moveresult  = $mediaManager->moveImage($filename, $temporary);         // Move image
-        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
-        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
-        if ($moveresult != TRUE || $imageresult !=TRUE || $thumbresult != TRUE) {
-          $result .= $moveresult .  $imageresult . $thumbresult; // Add the error to result
-        }
-      }
     }
     if ($action === 'update') {
-      $result  = $articleManager->update($article);      // Add article to database
-      if ($uploadedfile) {
-        $moveresult  = $mediaManager->moveImage($filename, $temporary);         // Move image
-        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
-        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
-        if ($moveresult != TRUE || $imageresult !=TRUE || $thumbresult != TRUE) {
-          $result .= $moveresult .  $imageresult . $thumbresult; // Add the error to result
-        }
+      $result = $articleManager->update($article);      // Add article to database
+    }
+    if ($uploadedfile && isset($result) && ($result === TRUE)) {
+      $moveresult   = $mediaManager->moveImage($filename, $temporary);         // Move image
+      $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
+     // $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
+      $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
+      if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
+        $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
+       header("Location: autocrop.php?img=".$filename."&w=600&h=360");
       }
     }
-
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
@@ -104,7 +96,7 @@ if (empty($_POST)) {
 
 }
 
-// Get existing images (has to happen after page has been updated
+// Get existing images (has to happen after page has been updated)
 if (isset($article->id) && is_numeric($article->id) ) {  // If check passes
   $article_images = $articleManager->getArticleImages($article->id);
 }
@@ -125,17 +117,17 @@ include 'includes/header.php';
 
         <div class="form-group">
           <label for="title">Title: </label>
-          <input name="title" id="title" value="<?= $article->title ?>" class="form-control">
+          <input name="title" id="title" value="<?=  htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
           <span class="errors"><?= $errors['title'] ?></span>
         </div>
         <div class="form-group">
           <label for="summary">Summary: </label>
-          <textarea name="summary" id="summary" class="form-control"><?= $article->summary ?></textarea>
+          <textarea name="summary" id="summary" class="form-control"><?=  htmlentities($article->summary, ENT_QUOTES, 'UTF-8') ?></textarea>
           <span class="errors"><?= $errors['summary'] ?></span>
         </div>
         <div class="form-group">
           <label for="content">Content: </label>
-          <textarea name="content" id="content" class="form-control"><?= $article->content ?></textarea>
+          <textarea name="content" id="content" class="form-control"><?=  htmlentities($article->content, ENT_QUOTES, 'UTF-8') ?></textarea>
           <span class="errors"><?= $errors['content'] ?></span>
         </div>
 
@@ -183,17 +175,17 @@ include 'includes/header.php';
         </div>
         <div class="form-group">
           <label for="title">Title:</label>
-          <input type="text" name="imagetitle" value="<?= $imagetitle ?>" id="title" /></label>
+          <input type="text" name="imagetitle" value="<?= htmlentities($imagetitle, ENT_QUOTES, 'UTF-8') ?>" id="title" /></label>
           <span class="errors"><?= $errors['imagetitle'] ?></span>
         </div>
         <div class="form-group">
           <label for="alt">Alt text:</label>
-          <input type="text" name="alt" id="alt" value="<?= $alt ?>" /></label>
+          <input type="text" name="alt" id="alt" value="<?= htmlentities($alt, ENT_QUOTES, 'UTF-8') ?>" /></label>
           <span class="errors"><?= $errors['alt'] ?></span>
         </div>
 
         <?php foreach ($article_images as $image) {
-          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . $image->alt . '" /><br><br>';
+          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" /><br><br>';
         } ?>
 
       </div><!-- /col -->

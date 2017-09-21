@@ -1,0 +1,174 @@
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 7
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 13:47:58 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:7
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 7
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 13:48:45 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:7
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 7
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 13:48:47 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:7
+[21-Sep-2017 14:24:16 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:16 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:16 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:38 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:38 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:38 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:38 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:40 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:41 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:41 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:41 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:42 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:43 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:24:44 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:24:44 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:24:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:24:44 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 6
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:06 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:6
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 6
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:08 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:6
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 6
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:32 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:6
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP Notice:  iconv(): Detected an incomplete multibyte character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 6
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:25:33 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:6
+[21-Sep-2017 14:28:54 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 14:28:54 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:28:54 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:28:54 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:5
+[21-Sep-2017 14:30:13 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 9
+[21-Sep-2017 14:30:13 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:30:13 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:30:13 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:9
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 9
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:9
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 9
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:30:15 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:9
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 9
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:9
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 9
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:30:16 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:9
+[21-Sep-2017 14:30:17 Europe/Berlin] PHP Notice:  iconv(): Detected an illegal character in input string in C:\xampp\htdocs\phpsqlbook\404.php on line 9
+[21-Sep-2017 14:30:17 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 14:30:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 14:30:17 Europe/Berlin] PHP   2. iconv() C:\xampp\htdocs\phpsqlbook\404.php:9
+[21-Sep-2017 16:15:45 Europe/Berlin] PHP Fatal error:  Call to undefined function transliterator_transliterate() in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:15:45 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:15:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:17:45 Europe/Berlin] PHP Fatal error:  Class 'Transliterator' not found in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:17:45 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:17:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:19:29 Europe/Berlin] PHP Fatal error:  Class 'Transliterator' not found in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:19:29 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:19:29 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:19:32 Europe/Berlin] PHP Fatal error:  Class 'Transliterator' not found in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:19:32 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:19:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:21:31 Europe/Berlin] PHP Fatal error:  Class 'Transliterator' not found in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:21:31 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:21:31 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:21:39 Europe/Berlin] PHP Fatal error:  Call to private Transliterator::__construct() from invalid context in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:21:39 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:21:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:22:01 Europe/Berlin] PHP Fatal error:  Non-static method Transliterator::transliterate() cannot be called statically in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:22:01 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:22:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:22:56 Europe/Berlin] PHP Fatal error:  Call to private Transliterator::__construct() from invalid context in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:22:56 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:22:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP Notice:  Undefined variable: s in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP Notice:  Undefined variable: object in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP Fatal error:  Call to a member function transliterate() on null in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:23:29 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:23:41 Europe/Berlin] PHP Notice:  Undefined variable: object in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 16:23:41 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:23:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:23:41 Europe/Berlin] PHP Fatal error:  Call to a member function transliterate() on null in C:\xampp\htdocs\phpsqlbook\404.php on line 5
+[21-Sep-2017 16:23:41 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:23:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:28:16 Europe/Berlin] PHP Warning:  transliterator_transliterate(): Could not create transliterator with ID &quot;UTF-8-ISO-8859-1&quot; (transliterator_create: unable to open ICU transliterator with id &quot;UTF-8-ISO-8859-1&quot;: U_INVALID_ID) in C:\xampp\htdocs\phpsqlbook\404.php on line 3
+[21-Sep-2017 16:28:16 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:28:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0
+[21-Sep-2017 16:28:16 Europe/Berlin] PHP   2. transliterator_transliterate() C:\xampp\htdocs\phpsqlbook\404.php:3
+[21-Sep-2017 16:30:41 Europe/Berlin] PHP Notice:  Undefined variable: encSupplChar in C:\xampp\htdocs\phpsqlbook\404.php on line 8
+[21-Sep-2017 16:30:41 Europe/Berlin] PHP Stack trace:
+[21-Sep-2017 16:30:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\404.php:0

@@ -17,7 +17,6 @@ if (empty($article)) {
 $info  = (isset($_GET['info']) ? 'info' : '');                 // Is it an info page
 
 if (!(isset($article_images)) || sizeof($article_images)<1) {
-
   $article_images = array(new Media());
 }
 

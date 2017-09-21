@@ -61,6 +61,7 @@ class Validate {
     return TRUE;
   }
 
+
   public static function isAllowedExtension($filename) {       // Check file extension
     $filename = strtolower($filename);
     if (!preg_match('/.(jpg|jpeg|png|gif)$/', $filename) ) {    // If not file extension
@@ -69,9 +70,12 @@ class Validate {
     return TRUE;                                               // Return error
   }
 
-  public static function isAllowedMediaType($mediatype) {      // Check media type
+  public static function isAllowedMediaType($file) {      // Check media type
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $fileContents = file_get_contents($_FILES['some_name']['tmp_name']);
+    $mimeType = $finfo->buffer($fileContents);   
     $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
-    if (!in_array($mediatype, $allowedmedia_types)) {          // If type is in list
+    if (!in_array($mimeType, $allowedmedia_types)) {          // If type is in list
       return FALSE;                                            // Blank error message
     }
     return TRUE;
@@ -86,6 +90,7 @@ class Validate {
 
   // This is in article manager too at the moment..
   public static function sanitizeFileName($file) {                         // Clean file name
+    $file = transliterator_transliterate("Latin-ASCII", $file);
     $file = preg_replace('([\~,;])',       '-', $file);    // Replace \ , ; with -
     $file = preg_replace('([^\w\d\-_~.])',  '', $file);    // Remove unwanted characters
     return $file;                                          // Return cleaned name

@@ -111,8 +111,8 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
 
 include 'includes/header.php';
 ?>
-
-  <h2 class="display-4 mt-4 mb-3"><?=$action?> article</h2>
+<section>
+  <h2 class="display-4 mt-4 mb-3"><?=$action?> work</h2>
   <?= $alert ?>
 
   <form action="<?=ROOT?>users/<?=$action?>/<?=$seo_title?>" method="post" enctype="multipart/form-data">
@@ -187,5 +187,17 @@ include 'includes/header.php';
     <input type="submit" name="create" value="save" class="btn btn-primary">
 
   </form>
-
+</section>
 <?php include 'includes/footer.php'; ?>
+<script src="<?=ROOT?>admin/lib/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+  $(function() {
+    if ($('#content').length){
+      tinymce.init({
+        selector: '#content',
+        toolbar: 'styleselect, formatselect, bold, italic, alignleft, aligncenter, alignright, alignjustify, bullist, numlist, blockquote',
+        plugins: "code"
+      });
+    }
+  });
+</script>

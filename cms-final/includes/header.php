@@ -1,6 +1,6 @@
 <?php
-//$current_page    = basename($_SERVER["SCRIPT_FILENAME"], '.php');
-$current_page = $_SERVER['REQUEST_URI'];
+//$current_page    = basename($_SERVER["SCRIPT_FILENAME"], 'system-info.php');
+$current_page    = $_SERVER['REQUEST_URI'];
 $categoryManager = $cms->getCategoryManager();
 $category_list   = $categoryManager->getNavigationCategories();
 
@@ -31,7 +31,7 @@ function highlight_nav($section, $url) {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <ul class="navbar-nav">
           <?php
           foreach ($category_list as $category_link) {
            echo '<a href="' . ROOT . $category_link->seo_name . '" class="nav-item nav-link ' . highlight_nav($section, $category_link->name) . '">' . $category_link->name . '</a>';
@@ -39,19 +39,19 @@ function highlight_nav($section, $url) {
           ?>
           <a href="<?= ROOT ?>about" class="nav-item nav-link <?= highlight_nav($section, 'about')?>">About</a>
           <a href="<?= ROOT ?>contact" class="nav-item nav-link <?= highlight_nav($section, 'contact')?>">Contact</a>
-          <ul class="justify-content-end">
-          <?php if ($is_logged_in) { ?>
-            <li><a href="<?= ROOT ?>users/<?= $_SESSION['seo_name'] ?>" class="nav-item nav-link"><?= $_SESSION['name'] ?>'s page</a></li>
+        </ul>
+        <ul class="navbar-nav user-nav">
+        <?php if ($is_logged_in) { ?>
+            <li><a href="<?= ROOT ?>users/<?= $_SESSION['seo_name'] ?>" class="nav-item nav-link"><?= $_SESSION['name'] ?>'s profile</a></li>
             <?php if ($_SESSION['role']==2 ) { ?>
-              <li><a class="nav-item nav-link" href="<?= ROOT ?>/admin">Admin</a></li>
+              <li><a class="nav-item nav-link" href="<?= ROOT ?>admin">Admin</a></li>
             <?php } ?>
             <li><a href="<?= ROOT ?>users/logout.php" class="nav-item nav-link" >Logout</a></li>
           <?php  } else { ?>
             <li><a href="<?= ROOT ?>login"  class="nav-item nav-link">Login</a></li>
             <li><a href="<?= ROOT ?>register"  class="nav-item nav-link">Register</a></li>
           <?php } ?>
-          </ul>
-        </div>
+        </ul>
       </div>
     </nav>
   <?php

@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $user = $userManager->getUserByEmailPassword($email, $password);
       if ($user) {
         $userManager->createUserSession($user);
-        header('Location:  '. ROOT .'index.php');
+        header('Location: ' . ROOT . 'index.php');
       } else {
         $alert = '<div class="alert alert-danger">Login failed</div>';
     }
@@ -29,23 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include dirname(__DIR__) . '/includes/header.php';
 
 ?>
-  <div class="container">
+    <div class="container mt-4 mb-4">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-4">
 
-    <div class="card" style="width: 20rem;">
-      <form class="login-form" method="post" action="">
-        <h4 class="card-title">Login</h4>
-        <?= $alert ?>
-        <label for="email">Email</label><br>
-        <input type="text" name="email" id="email" placeholder="Email" class="form-control" /><br>
-        <div class="title-error"><?= $error['email']; ?></div>
-        <label for="password">Password</label><br>
-        <input type="password" name="password" placeholder="Password" class="form-control" /><br>
-        <div class="error"><?= $error['password']; ?></div>
-        <button type="submit" class="btn btn-primary">Login</button><br>
-        <a href="<?= ROOT ?>users/forgotten-password.php" class="card-link">Forgotten your password?</a> <br>
-      </form>
+          <form class="login-form" method="post" action="">
+            <h4 class="card-title">Login</h4>
+            <?= $alert ?>
+            <label for="email">Email</label><br>
+            <input type="text" name="email" id="email" placeholder="Email" class="form-control" /><br>
+            <div class="title-error"><?= $error['email']; ?></div>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Password" class="form-control" /><br>
+            <div class="error"><?= $error['password']; ?></div>
+            <button type="submit" class="btn btn-primary">Login</button><br>
+            <a href="<?= ROOT ?>users/forgotten-password.php" class="card-link">Forgotten your password?</a> <br>
+          </form>
+        </div>
+      </div>
     </div>
-
-  </div>
 
 <?php include '../includes/footer.php';  ?>

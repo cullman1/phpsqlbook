@@ -8,3 +8,13 @@
 [19-Sep-2017 13:27:23 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\upload-file-crop-image-gd.php:0
 [19-Sep-2017 13:27:23 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\code\chapter_08\upload-file-crop-image-gd.php:2
 [19-Sep-2017 13:27:23 Europe/Berlin] PHP   3. PDO->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\database-connnection.php:10
+[19-Sep-2017 14:05:17 Europe/Berlin] PHP Warning:  PDO::__construct(): php_network_getaddresses: getaddrinfo failed: No such host is known.  in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\database-connnection.php on line 10
+[19-Sep-2017 14:05:18 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 14:05:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\upload-file-crop-image.php:0
+[19-Sep-2017 14:05:18 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\code\chapter_08\upload-file-crop-image.php:2
+[19-Sep-2017 14:05:18 Europe/Berlin] PHP   3. PDO->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\database-connnection.php:10
+[19-Sep-2017 14:16:19 Europe/Berlin] PHP Warning:  PDO::__construct(): php_network_getaddresses: getaddrinfo failed: No such host is known.  in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\database-connnection.php on line 10
+[19-Sep-2017 14:16:19 Europe/Berlin] PHP Stack trace:
+[19-Sep-2017 14:16:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\upload-file-crop-image.php:0
+[19-Sep-2017 14:16:19 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\code\chapter_08\upload-file-crop-image.php:2
+[19-Sep-2017 14:16:19 Europe/Berlin] PHP   3. PDO->__construct() C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\database-connnection.php:10

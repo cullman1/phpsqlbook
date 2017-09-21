@@ -19,7 +19,11 @@ if (isset($result) && ($result != TRUE)) {
 include 'includes/header.php';
 ?>
 
+<section>
+
   <h2>Delete user</h2>
   <?= $alert ?>
+
+</section>
 
 <?php include 'includes/footer.php'; ?>

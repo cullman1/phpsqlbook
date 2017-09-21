@@ -26,12 +26,11 @@ include 'includes/header.php'; ?>
       <h1 class="jumbotron-heading"><?= $user->getFullName() ?></h1>
       <img src="<?= ROOT ?>uploads/thumb/<?= $user->profile_image ?>" alt="<?= $user->getFullName() ?>" class="rounded-circle" style="max-width: 100px" />
       <p class="lead text-muted">Joined: <?= $user->joined ?></p>
+      <?php if ($my_profile) {
+        echo '<a href="' . ROOT . 'users/create/" class="btn btn-primary">upload work</a>';
+      } ?>
     </div>
   </section>
-
-  <?php if ($my_profile) {
-    echo '<a href="' . ROOT . 'users/create/" class="btn btn-primary">upload work</a>';
-  } ?>
 
   <div class="container">
     <div class="row">

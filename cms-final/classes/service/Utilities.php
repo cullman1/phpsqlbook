@@ -9,8 +9,9 @@
 class Utilities
 {
   public static function createSlug($text) {
-    $text = strtolower($text);
+    $text = mb_strtolower($text);
     $text = trim($text);
+    $text = transliterator_transliterate("Latin-ASCII", $text);
     $text = preg_replace('/[^A-z0-9 ]+/', '', $text);
     $text = preg_replace('/ /', '-', $text);
     return $text;

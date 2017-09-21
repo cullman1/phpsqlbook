@@ -8,15 +8,15 @@ include 'includes/header.php';
 <?php
 
 if(!extension_loaded('gd')){
-  echo '<h4>gd not installed</h4>';
+  echo '<div class="alert alert-danger" role="alert">gd not installed</div>';
 } else {
-  echo '<h4>gd installed</h4>';
+  echo '<div class="alert alert-success" role="alert">gd installed</div>';
 }
 
 if (!extension_loaded('imagick')) {
-  echo '<h4>imagick not installed</h4>';
+  echo '<div class="alert alert-danger" role="alert">imagemagik not installed</div>';
 } else {
-  echo '<h4>imagick installed</h4>';
+  echo '<div class="alert alert-success" role="alert">imagemagik installed</div>';
 }
 
 phpinfo();

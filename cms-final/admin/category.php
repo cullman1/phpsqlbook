@@ -50,6 +50,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
 include 'includes/header.php';
 ?>
 
+<section>
+
   <h2><?=$action?> category</h2>
   <?= $alert ?>
 
@@ -73,7 +75,9 @@ include 'includes/header.php';
           ?>
       >
     </div>
-    <input type="submit" name="submit" value="save" class="btn btn-default">
+    <input type="submit" name="submit" value="save" class="btn btn-primary">
   </form>
+
+</section>
 
 <?php include 'includes/footer.php'; ?>

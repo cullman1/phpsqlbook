@@ -1708,7 +1708,7 @@ class PHPMailer
             $lang_path = dirname(__FILE__). DIRECTORY_SEPARATOR . 'language'. DIRECTORY_SEPARATOR;
         }
         $foundlang = true;
-        $lang_file = $lang_path . 'phpmailer.lang-' . $langcode . '.php';
+        $lang_file = $lang_path . 'phpmailer.lang-' . $langcode . 'system-info.php';
         // There is no English translation file
         if ($langcode != 'en') {
             // Make sure language file path is readable

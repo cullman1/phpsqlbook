@@ -48,8 +48,10 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
 include 'includes/header.php';
 ?>
 
+<section>
+
   <h2>Edit user</h2>
-<?= $alert ?>
+  <?= $alert ?>
 
   <form action="user.php?id=<?=$id?>" method="POST" >
     <div class="form-group">
@@ -74,7 +76,9 @@ include 'includes/header.php';
         <option value="2" <?php if ($user->role == '2') { echo 'selected'; } ?>>Administrator</option>
       </select>
     </div>
-    <input type="submit" name="create" value="save" class="btn btn-default">
+    <input type="submit" name="create" value="save" class="btn btn-primary">
   </form>
+
+</section>
 
 <?php include 'includes/footer.php'; ?>

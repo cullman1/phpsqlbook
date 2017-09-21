@@ -45,9 +45,53 @@ class MediaManager {
     return $result;
   }
 
-  public function createThumbnailGD($filename, $new_width, $new_height) {
+  public function resizeImage($filename, $new_width, $thumb = NULL) {
     $current_image  = '../' . UPLOAD_DIR . $filename;            // Path to current image
-    $thumbpath      = '../' . UPLOAD_DIR . 'thumb/' . $filename; // Path to thumbnail
+    if ($thumb != TRUE) {
+      $save_location = $current_image;
+    } else {
+      $save_location = '../' . UPLOAD_DIR . 'thumb/' . $filename;
+    }
+    $image_details  = getimagesize($current_image);              // Get file information
+    $file_type      = $image_details['mime'];                    // Get image type
+    $current_width  = $image_details[0];                         // Get width
+    $current_height = $image_details[1];                         // Get height
+    $ratio          = $current_width / $current_height;          // Get ratio of image
+    $new_height   = $new_width / $ratio;                       // Set new height
+
+    switch($file_type) {
+      case 'image/gif':
+        $current_image = imagecreatefromgif($current_image);            // Current image
+        $new_image     = imagecreatetruecolor($new_width, $new_height); // New blank image
+        imagecopyresampled($new_image, $current_image, 0,0,0,0, $new_width, $new_height,
+            $current_width, $current_height);            // Resize image
+        imagegif($new_image, $save_location);                               // Save image
+        return TRUE;
+      case 'image/png':
+        $current_image = imagecreatefrompng($current_image);            // Current image
+        $new_image     = imagecreatetruecolor($new_width, $new_height); // New blank image
+        imagecopyresampled($new_image, $current_image, 0,0,0,0, $new_width, $new_height,
+            $current_width, $current_height);            // Resize image
+        imagepng($new_image, $save_location);                               // Save image
+        return TRUE;
+      default:
+        $current_image = imagecreatefromjpeg($current_image);           // Current image
+        $new_image     = imagecreatetruecolor($new_width, $new_height); // New blank image
+        imagecopyresampled($new_image, $current_image, 0,0,0,0, $new_width, $new_height,
+            $current_width, $current_height);            // Resize image
+        imagejpeg($new_image, $save_location);                              // Save image
+        return TRUE;
+    }
+    return 'Could not create thumbnail.';
+  }
+
+  public function resizeImageOG($filename, $new_width, $new_height, $thumb = NULL) {
+    $current_image  = '../' . UPLOAD_DIR . $filename;            // Path to current image
+    if ($thumb != TRUE) {
+      $save_location = $current_image;
+    } else {
+      $save_location = '../' . UPLOAD_DIR . 'thumb/' . $filename;
+    }
     $image_details  = getimagesize($current_image);              // Get file information
     $file_type      = $image_details['mime'];                    // Get image type
     $current_width  = $image_details[0];                         // Get width
@@ -67,21 +111,21 @@ class MediaManager {
         $new_image     = imagecreatetruecolor($new_width, $new_height); // New blank image
         imagecopyresampled($new_image, $current_image, 0,0,0,0, $new_width, $new_height,
             $current_width, $current_height);            // Resize image
-        imagegif($new_image, $thumbpath);                               // Save image
+        imagegif($new_image, $save_location);                               // Save image
         return TRUE;
       case 'image/png':
         $current_image = imagecreatefrompng($current_image);            // Current image
         $new_image     = imagecreatetruecolor($new_width, $new_height); // New blank image
         imagecopyresampled($new_image, $current_image, 0,0,0,0, $new_width, $new_height,
             $current_width, $current_height);            // Resize image
-        imagepng($new_image, $thumbpath);                               // Save image
+        imagepng($new_image, $save_location);                               // Save image
         return TRUE;
       default:
         $current_image = imagecreatefromjpeg($current_image);           // Current image
         $new_image     = imagecreatetruecolor($new_width, $new_height); // New blank image
         imagecopyresampled($new_image, $current_image, 0,0,0,0, $new_width, $new_height,
             $current_width, $current_height);            // Resize image
-        imagejpeg($new_image, $thumbpath);                              // Save image
+        imagejpeg($new_image, $save_location);                              // Save image
         return TRUE;
     }
     return 'Could not create thumbnail.';
