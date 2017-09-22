@@ -11,7 +11,7 @@ $comment    = filter_var($comment, FILTER_SANITIZE_STRING);
 $reply_to_id = filter_var($reply_to_id, FILTER_SANITIZE_URL);
 $parent_id   = filter_var($parent_id,   FILTER_SANITIZE_URL);
 
-if ((strlen($comment)>0) && (strlen($comment)<2000)) {
+if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {
     $comment = new Comment(0, $article_id, $user_id, $comment, $created,
                          $reply_to_id, $parent_id);
     $result   = $articleManager->addComment($comment);

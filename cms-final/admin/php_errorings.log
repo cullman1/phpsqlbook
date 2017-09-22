@@ -3729,3 +3729,36 @@ Stack trace:
 [20-Sep-2017 17:26:27 Europe/Berlin] PHP   2. get_img_visual_center() C:\xampp\htdocs\phpsqlbook\cms-final\admin\autocrop.php:140
 [20-Sep-2017 17:26:27 Europe/Berlin] PHP   3. analyse_block() C:\xampp\htdocs\phpsqlbook\cms-final\admin\autocrop.php:34
 [21-Sep-2017 13:31:04 Europe/Berlin] PHP Parse error:  syntax error, unexpected ':' in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 14
+[22-Sep-2017 11:25:35 Europe/Berlin] PHP Fatal error:  Class 'finfo' not found in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 74
+[22-Sep-2017 11:25:35 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:25:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[22-Sep-2017 11:25:35 Europe/Berlin] PHP   2. Validate::isAllowedMediaType() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:62
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP Notice:  Undefined index: some_name in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 75
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP   2. Validate::isAllowedMediaType() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:62
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP Warning:  file_get_contents(): Filename cannot be empty in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 75
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP   2. Validate::isAllowedMediaType() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:62
+[22-Sep-2017 11:28:05 Europe/Berlin] PHP   3. file_get_contents() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:75
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP Notice:  Undefined index: some_name in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 75
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP   2. Validate::isAllowedMediaType() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:62
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP Warning:  file_get_contents(): Filename cannot be empty in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 75
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP   2. Validate::isAllowedMediaType() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:62
+[22-Sep-2017 11:28:27 Europe/Berlin] PHP   3. file_get_contents() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:75
+[22-Sep-2017 11:30:41 Europe/Berlin] PHP Notice:  Undefined variable: resizeresult in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 81
+[22-Sep-2017 11:30:41 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:30:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[22-Sep-2017 11:30:41 Europe/Berlin] PHP Notice:  Undefined variable: resizeresult in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 82
+[22-Sep-2017 11:30:41 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:30:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[22-Sep-2017 11:31:11 Europe/Berlin] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\phpsqlbook\cms-final\admin\autocrop.php on line 79
+[22-Sep-2017 11:31:11 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:31:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\autocrop.php:0
+[22-Sep-2017 11:31:11 Europe/Berlin] PHP   2. get_img_visual_center() C:\xampp\htdocs\phpsqlbook\cms-final\admin\autocrop.php:140
+[22-Sep-2017 11:31:11 Europe/Berlin] PHP   3. analyse_block() C:\xampp\htdocs\phpsqlbook\cms-final\admin\autocrop.php:34

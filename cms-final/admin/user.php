@@ -29,7 +29,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   $errors['email']    = (Validate::isEmail($email)                    ? '' : 'Not a valid email address');
   $errors['role']     = (Validate::isNumber($role, 1, 2)    ? '' : 'Please select a role');
 
-  if (strlen(implode($errors)) > 0) {                  // If data valid
+  if (mb_strlen(implode($errors)) > 0) {                  // If data valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                             // Otherwise
     $result = $userManager->adminupdate($user);             // Add user to database

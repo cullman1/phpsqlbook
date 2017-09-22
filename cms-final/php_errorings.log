@@ -633,3 +633,378 @@ Stack trace:
 [21-Sep-2017 18:00:10 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 32
 [21-Sep-2017 18:00:10 Europe/Berlin] PHP Stack trace:
 [21-Sep-2017 18:00:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 10
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 11
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 18
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 19
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 24
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 25
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 32
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 10
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 11
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 18
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 19
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 24
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 25
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 32
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:21:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 8
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 9
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 24
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 30
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 59
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 63
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 71
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 73
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 77
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 87
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 119
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 8
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 9
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 24
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 30
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 59
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 63
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 71
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 73
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 77
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 87
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 119
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:22:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 8
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 9
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 24
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 30
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 59
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 63
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 71
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 73
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 77
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 87
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 119
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:23:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 8
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 9
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 24
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 30
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 59
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 63
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 71
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 73
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 77
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 87
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 119
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 10
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 11
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 18
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 19
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 24
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 25
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 32
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:05 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 10
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 11
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 18
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 19
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 24
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 25
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 32
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:24:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 10
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 11
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 18
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 19
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 24
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 25
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php on line 32
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:47:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-category.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 8
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 9
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 24
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 30
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 59
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 63
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 71
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 73
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 77
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 87
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 119
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP Stack trace:
+[22-Sep-2017 11:58:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0

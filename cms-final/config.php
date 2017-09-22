@@ -18,7 +18,7 @@ require_once 'classes/model/Media.php';
 require_once 'classes/model/User.php';
 
 $database_config = array (
-    'dsn' => 'mysql:host=localhost:3306;dbname=phpbook4',
+    'dsn' => 'mysql:host=localhost:3306;dbname=phpbook4;charset=utf8mb4',
     'username' => 'root',
     'password' => ''
 );

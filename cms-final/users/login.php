@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             and a number. It must be between 8 and 32 characters.\'');
     $valid = implode($error);
 
-    if (strlen($valid) > 0 ) {
+    if (mb_strlen($valid) > 0 ) {
       $alert = '<div class="alert alert-danger">Please check your login details</div>';
     } else {
       $user = $userManager->getUserByEmailPassword($email, $password);

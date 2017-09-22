@@ -59,12 +59,12 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $errors['alt']   = (Validate::isText($alt, 1, 256)             ? '' : 'Title should be letters A-z and numbers 0-9');
     $errors['file'] .= (Validate::isAllowedFilename($filename)                ? '' : 'Not a valid filename<br>');
     $errors['file'] .= (Validate::isAllowedExtension($filename)               ? '' : 'Not a valid file extension<br>');
-    $errors['file'] .= (Validate::isAllowedMediaType($mediatype)              ? '' : 'Not a valid media type<br>');
+    $errors['file'] .= (Validate::isAllowedMediaType($temporary)              ? '' : 'Not a valid media type<br>');
     $errors['file'] .= (Validate::isWithinFileSize($filesize, 20971520)  ? '' : 'File too large - max size 20mb<br>');
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
 
-  if (strlen(implode($errors)) > 0) {                                            // If data not valid
+  if (mb_strlen(implode($errors)) > 0) {                                            // If data not valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                                       // Otherwise
     if ($action === 'create') {
@@ -76,11 +76,10 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     if ($uploadedfile && isset($result) && ($result === TRUE)) {
       $moveresult   = $mediaManager->moveImage($filename, $temporary);         // Move image
       $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
-     // $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
+      $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
       $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
       if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
         $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
-       header("Location: autocrop.php?img=".$filename."&w=600&h=360");
       }
     }
   }

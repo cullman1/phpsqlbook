@@ -26,7 +26,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   $errors['name']        = (Validate::isText($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9');
   $errors['description'] = (Validate::isText($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters');
 
-  if (strlen(implode($errors)) > 0) {                          // If data valid
+  if (mb_strlen(implode($errors)) > 0) {                          // If data valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                     // Otherwise
     if ($action === 'create') {

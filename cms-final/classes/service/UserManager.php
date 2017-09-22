@@ -236,7 +236,7 @@ class UserManager
     $statement = $pdo->prepare($sql);                  // Prepare 
     $statement->execute();                                    // Execute
     $token = $statement->fetchColumn();                       // Fetch UUID
-    $expires = date("Y-m-d H:i:s", strtotime('+23 hours'));                       // Expiry time
+    $expires = date("Y-m-d H:i:s", strtotime('+23 hours'));                       // Expiry time - no mbr equivalent
     $sql = 'INSERT INTO token (token, user_id, expires, purpose) 
                  VALUES (:token, :user_id, :expires, :purpose)'; // SQL to add token
     $statement = $pdo->prepare($sql);                       // Prepare

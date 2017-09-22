@@ -6,7 +6,7 @@ $comment    = (filter_input(INPUT_POST, 'comment') ? $_POST['comment'] : '');
 $user_id    = $_SESSION['user_id'];
 $created    = date('Y-m-d H:i:s');
 $comment    = filter_var($comment, FILTER_SANITIZE_STRING);
-if ((strlen($comment)>0) && (strlen($comment)<2000)) {
+if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {
     $comment  = new Comment(0, $article_id, $user_id, $comment, $created);
     $result   = $articleManager->addComment($comment);
 } else {

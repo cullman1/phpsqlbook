@@ -29,12 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($uploadedfile) {
       $errors['file'] .= (Validate::isAllowedFilename($filename) ? '' : 'Not a valid filename<br>');
       $errors['file'] .= (Validate::isAllowedExtension($filename) ? '' : 'Not a valid file extension<br>');
-      $errors['file'] .= (Validate::isAllowedMediaType($mediatype) ? '' : 'Not a valid media type<br>');
+      $errors['file'] .= (Validate::isAllowedMediaType($temporary) ? '' : 'Not a valid media type<br>');
       $errors['file'] .= (Validate::isWithinFileSize($filesize, 1000000) ? '' : 'File too large<br>');
       $errors['file'] .= (!file_exists('../uploads/' . $filename) ? '' : 'A file with that name already exists.');
     }
 
-    if (strlen(implode($errors)) < 1) {
+    if (mb_strlen(implode($errors)) < 1) {
         if (!empty($userManager->getUserByEmail($email))) {
             $alert = '<div class="alert alert-danger">That email is already in use</div>';
         } else {

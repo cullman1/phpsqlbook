@@ -8,7 +8,7 @@ preg_match('/^\/cms-final\/([A-z0-9\-]+)/i', $current_page, $section);
 $section = (isset($section[1]) ? $section[1] : '');
 
 function highlight_nav($section, $url) {
-  return (strtolower($section) == strtolower($url) ? 'active' : '');
+  return (mb_strtolower($section) == mb_strtolower($url) ? 'active' : '');
 }
 
 ?>

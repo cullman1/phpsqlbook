@@ -10,7 +10,7 @@ class Validate {
   }
 
   public static function isText($string, $min = 0, $max = 30000){
-    $length = strlen($string);
+    $length = mb_strlen($string);
     if (($length <= $min) or ($length >= $max)) {
       return FALSE;
     }
@@ -26,7 +26,7 @@ class Validate {
   }
 
   public static function isPassword($password) {
-    if( (strlen($password)<8) OR (strlen($password)>32) ) { $error = TRUE; }                    // Less than 8 characters
+    if( (mb_strlen($password)<8) OR (mb_strlen($password)>32) ) { $error = TRUE; }                    // Less than 8 characters
     if(preg_match_all('/[A-Z]/', $password)<1) { $error = TRUE; } // < 1 x A-Z return FALSE
     if(preg_match_all('/[a-z]/', $password)<1) { $error = TRUE; } // < 1 x a-z return FALSE
     if(preg_match_all('/\d/', $password)<1)    { $error = TRUE; } // < 1 x 0-9 return FALSE
@@ -63,7 +63,7 @@ class Validate {
 
 
   public static function isAllowedExtension($filename) {       // Check file extension
-    $filename = strtolower($filename);
+    $filename = mb_strtolower($filename);
     if (!preg_match('/.(jpg|jpeg|png|gif)$/', $filename) ) {    // If not file extension
       return FALSE;
     }
@@ -71,8 +71,9 @@ class Validate {
   }
 
   public static function isAllowedMediaType($file) {      // Check media type
+    //Must include extension=php_fileinfo.dll first in php.ini   
     $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $fileContents = file_get_contents($_FILES['some_name']['tmp_name']);
+    $fileContents = file_get_contents($file);
     $mimeType = $finfo->buffer($fileContents);   
     $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
     if (!in_array($mimeType, $allowedmedia_types)) {          // If type is in list
