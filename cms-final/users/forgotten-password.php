@@ -2,7 +2,7 @@
 error_reporting(E_ALL | E_WARNING | E_NOTICE);
 ini_set('display_errors', TRUE);
 require_once('../config.php');
-require_once('../vendor/PHPMailer/PHPMailerAutoload.php');
+require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
 
 $show_form = TRUE;
 $alert = '';

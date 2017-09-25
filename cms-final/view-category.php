@@ -21,8 +21,8 @@ $meta_description = $category->description;
 include 'includes/header.php'; ?>
 
   <section class="jumbotron text-center">
-      <h1 class="jumbotron-heading"><?= $category->name ?></h1>
-      <p class="lead text-muted"><?= $category->description ?></p>
+      <h1 class="jumbotron-heading"><?=  htmlentities($category->name, ENT_QUOTES, 'UTF-8') ?></h1>
+      <p class="lead text-muted"><?=  htmlspecialchars_decode($category->description) ?></p>
   </section>
 
 <section>

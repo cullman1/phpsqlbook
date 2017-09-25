@@ -550,6 +550,10 @@
     <Folder Include="cms-final\classes\service\" />
     <Folder Include="cms-final\css\" />
     <Folder Include="cms-final\includes\" />
+    <Folder Include="cms-final\lib\" />
+    <Folder Include="cms-final\lib\croppie\" />
+    <Folder Include="cms-final\lib\jquery\" />
+    <Folder Include="cms-final\lib\photoviewer\" />
     <Folder Include="cms-final\uploads\" />
     <Folder Include="cms-final\uploads\thumb\" />
     <Folder Include="cms-final\uploads\users\" />
@@ -714,6 +718,13 @@
     <Content Include="cms-final\admin\lib\tinymce\js\tinymce\tinymce.min.js" />
     <Content Include="cms-final\admin\lib\tinymce\LICENSE.TXT" />
     <Content Include="cms-final\css\styles.css" />
+    <Content Include="cms-final\lib\croppie\croppie.css" />
+    <Content Include="cms-final\lib\croppie\croppie.js" />
+    <Content Include="cms-final\lib\croppie\croppie.min.js" />
+    <Content Include="cms-final\lib\jquery\croppie.js" />
+    <Content Include="cms-final\lib\jquery\croppie.min.js" />
+    <Content Include="cms-final\lib\jquery\jquery-1.12.4.min.js" />
+    <Content Include="cms-final\lib\photoviewer\photo-viewer.js" />
     <Content Include="cms-final\uploads\amazon-author-page.png" />
     <Content Include="cms-final\uploads\asparagus.jpg" />
     <Content Include="cms-final\uploads\asparagus_thumbnail.jpg" />

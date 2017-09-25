@@ -17,6 +17,28 @@ class Validate {
     return TRUE;
   }
 
+   public static function isName($string, $min = 0, $max = 100){
+     $result = preg_replace('/<[^>]*>/', '',  $string); 
+     $length = mb_strlen($string);
+    if (($length <= $min) or ($length >= $max) or ($result != $string )) {
+      return FALSE;
+    }
+    return TRUE;
+  }
+
+  public static function isAllowedHTML($string){
+    $allowed = array('<b>','<i>', '<p>', '<hn>','</b>','</i>', '</p>', '</hn>');
+    $safe = array('&lt;b&gt;','&lt;i&gt;', '&lt;p&gt;', '&lt;hn&gt;','&lt;/b&gt;','&lt;/i&gt;', '&lt;/p&gt;', '&lt;/hn&gt;');
+     foreach ($allowed as $tag ) {
+       //$string 
+     }
+
+    if (($result != $string )) {
+      return FALSE;
+    }
+    return TRUE;
+  }
+
   public static function isChecked($value) {
     return ($value == 'on' ? TRUE : FALSE);
   }
@@ -91,10 +113,16 @@ class Validate {
 
   // This is in article manager too at the moment..
   public static function sanitizeFileName($file) {                         // Clean file name
-    $file = transliterator_transliterate("Latin-ASCII", $file);
+    $file = transliterator_transliterate("Latin-ASCII", $file); //Do we transliterate?
     $file = preg_replace('([\~,;])',       '-', $file);    // Replace \ , ; with -
     $file = preg_replace('([^\w\d\-_~.])',  '', $file);    // Remove unwanted characters
     return $file;                                          // Return cleaned name
+  }
+
+  public static function sanitizeName($name) {                         // Clean file name
+    $name = preg_replace('([\~,;])',       '-', $file);    // Replace \ , ; with -
+    $name = preg_replace('([^\w\d\-_~.])',  '', $file);    // Remove unwanted characters
+    return $name;                                          // Return cleaned name
   }
 
 }

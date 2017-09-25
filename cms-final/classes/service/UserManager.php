@@ -177,7 +177,7 @@ class UserManager
     if (session_status() == PHP_SESSION_NONE) {
       session_start();
     }
-    $_SESSION['name']     = $user->forename;
+    $_SESSION['name']     = htmlspecialchars($user->forename);
     $_SESSION['seo_name'] = $user->seo_name;
     $_SESSION['user_id']  = $user->id;
     $_SESSION['role']     = $user->role;

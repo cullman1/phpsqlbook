@@ -1,6 +1,6 @@
 <?php
 require_once('../config.php');
-require_once('../vendor/PHPMailer/PHPMailerAutoload.php');
+require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
 
 $password  = (isset($_POST['password']) ? $_POST['password'] : '' ); 
 $confirm   = (isset($_POST['confirm'])  ? $_POST['confirm']  : '' ); 

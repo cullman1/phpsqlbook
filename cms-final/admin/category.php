@@ -23,7 +23,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $alert = '<div class="alert alert-danger">Category not found</div>';
   }
 } else {  // The form was posted so validate the data and try to update
-  $errors['name']        = (Validate::isText($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9');
+  $errors['name']        = (Validate::isName($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9 and contain no HTML tags');
   $errors['description'] = (Validate::isText($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters');
 
   if (mb_strlen(implode($errors)) > 0) {                          // If data valid
@@ -58,12 +58,12 @@ include 'includes/header.php';
   <form action="category.php?id=<?=$category->id?>&action=<?=$action?>" method="post">
     <div class="form-group">
       <label for="name">Name: </label>
-      <input name="name" id="name" value="<?= $category->name ?>" class="form-control">
+      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
       <span class="errors"><?= $errors['name'] ?></span>
     </div>
     <div class="form-group">
       <label for="description">Description: </label>
-      <textarea name="description" id="description" class="form-control"><?= $category->description ?></textarea>
+      <textarea name="description" id="description" class="form-control"><?=  htmlspecialchars_decode($category->description) ?></textarea>
       <span class="errors"><?= $errors['description'] ?></span>
     </div>
     <div class="form-group">
