@@ -12,10 +12,8 @@ $surname     = ( isset($_POST['surname'])  ? $_POST['surname']  : ''); // Get va
 $email       = ( isset($_POST['email'])    ? $_POST['email']    : ''); // Get values
 $role        = ( isset($_POST['role'])     ? $_POST['role']     : '');  // Get values
 $user        = new User($id, $forename, $surname, $email, '', $role);
-
 $errors      = array('forename' => '', 'surname'=>'', 'email'=>'', 'role'=>'');   // Form errors
 $alert       = '';                                           // Status messages
-
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing user to edit
@@ -24,8 +22,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $alert = '<div class="alert alert-danger">User not found</div>';
   }
 } else {  // The form was posted so validate the data and try to update
-  $errors['forename'] = (Validate::isText($forename, 1, 64) ? '' : 'Not a valid name');
-  $errors['surname']  = (Validate::isText($surname, 1, 64)  ? '' : 'Not a valid name');
+  $errors['forename'] = (Validate::isName($forename, 1, 64) ? '' : 'Not a valid name');
+  $errors['surname']  = (Validate::isName($surname, 1, 64)  ? '' : 'Not a valid name');
   $errors['email']    = (Validate::isEmail($email)                    ? '' : 'Not a valid email address');
   $errors['role']     = (Validate::isNumber($role, 1, 2)    ? '' : 'Please select a role');
 

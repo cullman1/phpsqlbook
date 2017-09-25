@@ -42,7 +42,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   }
   $errors['title']    = (Validate::isName($title, 1, 64)      ? '' : 'Not a valid title');
   $errors['summary']  = (Validate::isName($summary, 1, 160)   ? '' : 'Not a valid summary');
-  $errors['content']  = (Validate::isText($summary, 1, 2000)  ? '' : 'Not valid content');
+  $errors['content']  = (Validate::isAllowedHTML($content, 1, 2000)  ? '' : 'Not valid content');
 
   $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
   if ($uploadedfile) {
@@ -55,7 +55,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $media->filename = $filename;
 
     // Validate file information
-    $errors['imagetitle'] = (Validate::isName($name, 1, 256)       ? '' : 'Title should be letters A-z and numbers 0-9 and contain no HTML tags');
+    $errors['imagetitle'] = (Validate::isName($imagetitle, 1, 256)       ? '' : 'Title should be letters A-z and numbers 0-9 and contain no HTML tags');
     $errors['alt']   = (Validate::isName($alt, 1, 256)             ? '' : 'Title should be letters A-z and numbers 0-9');
     $errors['file'] .= (Validate::isAllowedFilename($filename)                ? '' : 'Not a valid filename<br>');
     $errors['file'] .= (Validate::isAllowedExtension($filename)               ? '' : 'Not a valid file extension<br>');

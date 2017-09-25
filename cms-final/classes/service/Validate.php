@@ -26,13 +26,8 @@ class Validate {
     return TRUE;
   }
 
-  public static function isAllowedHTML($string){
-    $allowed = array('<b>','<i>', '<p>', '<hn>','</b>','</i>', '</p>', '</hn>');
-    $safe = array('&lt;b&gt;','&lt;i&gt;', '&lt;p&gt;', '&lt;hn&gt;','&lt;/b&gt;','&lt;/i&gt;', '&lt;/p&gt;', '&lt;/hn&gt;');
-     foreach ($allowed as $tag ) {
-       //$string 
-     }
-
+  public static function isAllowedHTML($string) {
+    $result = strip_tags($string,'<p><em><strong><hn><blockquote>');
     if (($result != $string )) {
       return FALSE;
     }

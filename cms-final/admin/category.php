@@ -24,7 +24,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   }
 } else {  // The form was posted so validate the data and try to update
   $errors['name']        = (Validate::isName($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9 and contain no HTML tags');
-  $errors['description'] = (Validate::isText($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters');
+  $errors['description'] = (Validate::isAllowedHTML($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters and only contain allowed HTML tags.');
 
   if (mb_strlen(implode($errors)) > 0) {                          // If data valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error

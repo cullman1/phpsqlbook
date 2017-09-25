@@ -114,14 +114,16 @@ class UserManager
   }
 
   public function adminupdate($user){
+    $seo_name = Utilities::createSlug($user->getFullName());
     $pdo = $this->pdo;
-    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, role = :role WHERE id = :id';         //SQL
+    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, seo_name = :seo_name, role = :role WHERE id = :id';         //SQL
     $statement = $pdo->prepare($sql);                                // Prepare
     $statement->bindValue(':id', $user->id, PDO::PARAM_INT);         // Bind value
     $statement->bindValue(':forename', $user->forename);             // Bind value
     $statement->bindValue(':surname',  $user->surname);              // Bind value
     $statement->bindValue(':email',    $user->email);                // Bind value
     $statement->bindValue(':role',     $user->role, PDO::PARAM_INT); // Bind value
+     $statement->bindValue(':seo_name',      $seo_name);            // Bind value
     try {
       $statement->execute();
       $result = TRUE;

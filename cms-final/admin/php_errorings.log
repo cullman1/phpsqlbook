@@ -1,0 +1,30 @@
+[25-Sep-2017 13:26:34 Europe/Berlin] PHP Notice:  Undefined variable: name in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 58
+[25-Sep-2017 13:26:34 Europe/Berlin] PHP Stack trace:
+[25-Sep-2017 13:26:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[25-Sep-2017 17:28:29 Europe/Berlin] PHP Warning:  transliterator_transliterate(): Could not create transliterator with ID &quot;Russian-ASCII&quot; (transliterator_create: unable to open ICU transliterator with id &quot;Russian-ASCII&quot;: U_INVALID_ID) in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 16
+[25-Sep-2017 17:28:29 Europe/Berlin] PHP Stack trace:
+[25-Sep-2017 17:28:29 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
+[25-Sep-2017 17:28:29 Europe/Berlin] PHP   2. UserManager->adminupdate() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:33
+[25-Sep-2017 17:28:29 Europe/Berlin] PHP   3. Utilities::createSlug() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php:117
+[25-Sep-2017 17:28:29 Europe/Berlin] PHP   4. transliterator_transliterate() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php:16
+[25-Sep-2017 17:31:50 Europe/Berlin] PHP Warning:  transliterator_transliterate(): Could not create transliterator with ID &quot;Any-ASCII&quot; (transliterator_create: unable to open ICU transliterator with id &quot;Any-ASCII&quot;: U_INVALID_ID) in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 16
+[25-Sep-2017 17:31:50 Europe/Berlin] PHP Stack trace:
+[25-Sep-2017 17:31:50 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
+[25-Sep-2017 17:31:50 Europe/Berlin] PHP   2. UserManager->adminupdate() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:33
+[25-Sep-2017 17:31:50 Europe/Berlin] PHP   3. Utilities::createSlug() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php:117
+[25-Sep-2017 17:31:50 Europe/Berlin] PHP   4. transliterator_transliterate() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php:16
+[25-Sep-2017 17:43:12 Europe/Berlin] PHP Notice:  Use of undefined constant transliterator_list_ids - assumed 'transliterator_list_ids' in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 14
+[25-Sep-2017 17:43:12 Europe/Berlin] PHP Stack trace:
+[25-Sep-2017 17:43:12 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
+[25-Sep-2017 17:43:12 Europe/Berlin] PHP   2. UserManager->adminupdate() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:33
+[25-Sep-2017 17:43:12 Europe/Berlin] PHP   3. Utilities::createSlug() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php:117
+[25-Sep-2017 17:43:46 Europe/Berlin] PHP Notice:  Use of undefined constant transliterator_list_ids - assumed 'transliterator_list_ids' in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 14
+[25-Sep-2017 17:43:46 Europe/Berlin] PHP Stack trace:
+[25-Sep-2017 17:43:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
+[25-Sep-2017 17:43:46 Europe/Berlin] PHP   2. UserManager->adminupdate() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:33
+[25-Sep-2017 17:43:46 Europe/Berlin] PHP   3. Utilities::createSlug() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php:117
+[25-Sep-2017 17:44:03 Europe/Berlin] PHP Notice:  Use of undefined constant transliterator_list_ids - assumed 'transliterator_list_ids' in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 14
+[25-Sep-2017 17:44:03 Europe/Berlin] PHP Stack trace:
+[25-Sep-2017 17:44:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
+[25-Sep-2017 17:44:03 Europe/Berlin] PHP   2. UserManager->adminupdate() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:33
+[25-Sep-2017 17:44:03 Europe/Berlin] PHP   3. Utilities::createSlug() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php:117

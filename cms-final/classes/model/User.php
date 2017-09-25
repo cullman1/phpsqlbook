@@ -22,7 +22,7 @@ class User
   }
 
   public function getFullName(){
-    return htmlspecialchars($this->forename . ' ' . $this->surname);
+    return htmlspecialchars(trim($this->forename) . ' ' . trim($this->surname));
   }
 
   public function getPassword(){
