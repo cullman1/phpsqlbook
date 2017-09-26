@@ -17,6 +17,8 @@ require_once 'classes/model/Comment.php';
 require_once 'classes/model/Media.php';
 require_once 'classes/model/User.php';
 
+require_once 'vendor/html-purifier-4.9.3/library/HTMLPurifier.auto.php';
+
 $database_config = array (
     'dsn' => 'mysql:host=localhost:3306;dbname=phpbook4;charset=utf8mb4',
     'username' => 'root',

@@ -11,7 +11,7 @@ if (isset($_GET['title']) ) {                                        // If title
 
 }
 if (empty($article)) {
-   // header( "Location: page-not-found.php" );
+    header( "Location: page-not-found.php" );
 }
 
 $info  = (isset($_GET['info']) ? 'info' : '');                 // Is it an info page
@@ -27,7 +27,7 @@ include 'includes/header.php';
 
 <section>
 
-  <h1 class="display-4"><?=  htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
+  <h1 class="display-4"><?=  htmlentities($article->title, ENT_HTML401, 'UTF-8') ?></h1>
 
   <div class="credit <?=$info?>">
     <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= htmlentities( $article->author, ENT_QUOTES, 'UTF-8') ?></a> on <i><?= htmlentities( $article->created, ENT_QUOTES, 'UTF-8') ?></i>.
@@ -73,8 +73,8 @@ include 'includes/header.php';
         <i class="fa fa-comment-o"></i> Comments: <?=  htmlentities( $article->comment_count , ENT_QUOTES, 'UTF-8') ?>
 
       </div>
-
-      <?= htmlspecialchars_decode($article->content) ?>
+  
+      <?= $article->content ?>
 
     </div>
 

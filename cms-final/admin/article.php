@@ -22,7 +22,7 @@ $article       = new Article($id, $title, $summary, $content, $category_id, $use
 // image data
 $imagetitle    = ( isset($_POST['imagetitle'] ) ? trim(($_POST['imagetitle']))  : '');
 $alt           = ( isset($_POST['alt'] )        ? trim(($_POST['alt']))         : '');
-$media         = new Media('', $imagetitle, $alt, '');              // Create Media object
+$media         = new Media('', $imagetitle, $alt, '');  
 
 $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'', 'imagetitle'=>'', 'alt'=>'');   // Form errors
 $alert         = '';           // Status messages
@@ -40,8 +40,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   if (empty($_POST)) {
     $errors['file'] = 'File too large to upload';
   }
-  $errors['title']    = (Validate::isName($title, 1, 64)      ? '' : 'Not a valid title');
-  $errors['summary']  = (Validate::isName($summary, 1, 160)   ? '' : 'Not a valid summary');
+  $errors['title']    = (Validate::isText($title, 1, 64)      ? '' : 'Not a valid title');
+  $errors['summary']  = (Validate::isAllowedHTML($summary, 1, 160)   ? '' : 'Not a valid summary');
   $errors['content']  = (Validate::isAllowedHTML($content, 1, 2000)  ? '' : 'Not valid content');
 
   $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
@@ -116,7 +116,7 @@ include 'includes/header.php';
 
         <div class="form-group">
           <label for="title">Title: </label>
-          <input name="title" id="title" value="<?=  htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
+          <input name="title" id="title" value="<?=  htmlentities($article->title) ?>" class="form-control">
           <span class="errors"><?= $errors['title'] ?></span>
         </div>
         <div class="form-group">
@@ -174,7 +174,7 @@ include 'includes/header.php';
         </div>
         <div class="form-group">
           <label for="title">Title:</label>
-          <input type="text" name="imagetitle" value="<?= htmlentities($imagetitle, ENT_QUOTES, 'UTF-8') ?>" id="title" /></label>
+          <input type="text" name="imagetitle" value="<?= htmlentities($imagetitle, ENT_QUOTES, 'UTF-8') ?>" id="imagetitle" /></label>
           <span class="errors"><?= $errors['imagetitle'] ?></span>
         </div>
         <div class="form-group">

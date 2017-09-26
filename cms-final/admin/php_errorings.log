@@ -28,3 +28,82 @@
 [25-Sep-2017 17:44:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
 [25-Sep-2017 17:44:03 Europe/Berlin] PHP   2. UserManager->adminupdate() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:33
 [25-Sep-2017 17:44:03 Europe/Berlin] PHP   3. Utilities::createSlug() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php:117
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP Warning:  require_once(vendor/library/HTMLPurifier.auto.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms-final\config.php on line 20
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:2
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'vendor/library/HTMLPurifier.auto.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms-final\config.php on line 20
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 11:43:50 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:2
+[26-Sep-2017 11:49:50 Europe/Berlin] PHP Notice:  Undefined variable: result in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 42
+[26-Sep-2017 11:49:50 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 11:49:50 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 11:49:50 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP Notice:  Using deprecated API: use $config->set('HTML.Allowed', ...) instead invoked on line 41 in file C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php in C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php on line 901
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   3. HTMLPurifier_Config->set() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:41
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   4. HTMLPurifier_Config->triggerError() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:303
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   5. trigger_error() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:901
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP Fatal error:  Cannot set directive after finalization invoked on line 41 in file C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php in C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php on line 901
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   3. HTMLPurifier_Config->set() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:41
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   4. HTMLPurifier_Config->isFinalized() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:307
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   5. HTMLPurifier_Config->triggerError() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:850
+[26-Sep-2017 12:02:06 Europe/Berlin] PHP   6. trigger_error() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:901
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP Fatal error:  Cannot set directive after finalization invoked on line 41 in file C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php in C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php on line 901
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP   3. HTMLPurifier_Config->set() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:41
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP   4. HTMLPurifier_Config->isFinalized() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:307
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP   5. HTMLPurifier_Config->triggerError() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:850
+[26-Sep-2017 12:03:27 Europe/Berlin] PHP   6. trigger_error() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:901
+[26-Sep-2017 12:13:57 Europe/Berlin] PHP Fatal error:  Call to undefined function mb_strreplace() in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 52
+[26-Sep-2017 12:13:57 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 12:13:57 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 12:13:57 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 12:14:37 Europe/Berlin] PHP Fatal error:  Call to undefined function mb_str_replace() in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 52
+[26-Sep-2017 12:14:37 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 12:14:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 12:14:37 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 12:16:01 Europe/Berlin] PHP Warning:  str_replace() expects at least 3 parameters, 2 given in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 52
+[26-Sep-2017 12:16:01 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 12:16:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 12:16:01 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 12:16:01 Europe/Berlin] PHP   3. str_replace() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:52
+[26-Sep-2017 12:56:32 Europe/Berlin] PHP Notice:  Undefined variable: dirty in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 55
+[26-Sep-2017 12:56:32 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 12:56:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 12:56:32 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP Warning:  Element 'hn' is not supported (for information on implementing this, see the support forums)  in C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\HTMLDefinition.php on line 311
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   2. Validate::isAllowedHTML() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:45
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   3. HTMLPurifier->purify() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:53
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   4. HTMLPurifier_Generator->__construct() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier.php:158
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   5. HTMLPurifier_Config->getHTMLDefinition() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Generator.php:74
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   6. HTMLPurifier_Config->getDefinition() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:415
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   7. HTMLPurifier_Definition->setup() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Config.php:515
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   8. HTMLPurifier_HTMLDefinition->doSetup() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\Definition.php:51
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP   9. HTMLPurifier_HTMLDefinition->setupConfigStuff() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\HTMLDefinition.php:196
+[26-Sep-2017 13:13:49 Europe/Berlin] PHP  10. trigger_error() C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library\HTMLPurifier\HTMLDefinition.php:311
+[26-Sep-2017 14:08:48 Europe/Berlin] PHP Warning:  htmlentities(): charset ` ISO-8859-1' not supported, assuming utf-8 in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 119
+[26-Sep-2017 14:08:48 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 14:08:48 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 14:08:48 Europe/Berlin] PHP   2. htmlentities() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:119
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP Warning:  Creating default object from empty value in C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php on line 55
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$title in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\MediaManager.php on line 26
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP   2. MediaManager->saveImage() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:78
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP Notice:  Undefined property: stdClass::$alt in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\MediaManager.php on line 27
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP Stack trace:
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
+[26-Sep-2017 18:44:46 Europe/Berlin] PHP   2. MediaManager->saveImage() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:78
