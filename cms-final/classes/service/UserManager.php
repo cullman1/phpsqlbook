@@ -68,14 +68,13 @@ class UserManager
   public function create($user) {
     $hash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
     $seo_name = Utilities::createSlug($user->getFullName());
-
     $pdo  = $this->pdo;
     $sql  = 'INSERT INTO user (forename,  surname,  email,  password,  joined,  seo_name,  profile_image) 
 		                  VALUES (:forename, :surname, :email, :password, :joined, :seo_name, :profile_image)'; // SQL
     $statement = $pdo->prepare($sql);                              // Prepare
     $statement->bindValue(':forename',      $user->forename);      // Bind value
     $statement->bindValue(':surname',       $user->surname);       // Bind value
-    $statement->bindValue(':email',         $user->email);         // Bind value
+    $statement->bindValue(':email',         Utilities::punyCodeDomain($user->email));         // Bind value
     $statement->bindValue(':password',      $hash);                // Bind value
     $statement->bindValue(':joined',        date('d-m-Y')); // Bind value
     $statement->bindValue(':seo_name',      $seo_name);            // Bind value
@@ -100,7 +99,7 @@ class UserManager
     $statement->bindValue(':id', $user->id, PDO::PARAM_INT);       // Bind value
     $statement->bindValue(':forename',      $user->forename);      // Bind value
     $statement->bindValue(':surname',       $user->surname);       // Bind value
-    $statement->bindValue(':email',         $user->email);         // Bind value
+    $statement->bindValue(':email',         Utilities::punyCodeDomain($user->email));         // Bind value
     $statement->bindValue(':password',      $user->getPassword()); // Bind value
     $statement->bindValue(':seo_name',      $seo_name);            // Bind value
     $statement->bindValue(':profile_image', $user->profile_image); // Bind value
@@ -121,7 +120,7 @@ class UserManager
     $statement->bindValue(':id', $user->id, PDO::PARAM_INT);         // Bind value
     $statement->bindValue(':forename', $user->forename);             // Bind value
     $statement->bindValue(':surname',  $user->surname);              // Bind value
-    $statement->bindValue(':email',    $user->email);                // Bind value
+    $statement->bindValue(':email',    Utilities::punyCodeDomain($user->email));                // Bind value
     $statement->bindValue(':role',     $user->role, PDO::PARAM_INT); // Bind value
      $statement->bindValue(':seo_name',      $seo_name);            // Bind value
     try {

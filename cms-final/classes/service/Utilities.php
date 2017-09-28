@@ -17,6 +17,13 @@ class Utilities
     return $text;
   }
 
+  public static function punyCodeDomain($email) {
+  $split_email =  explode('@', $email);
+   $domain = idn_to_ascii($split_email[1]); 
+   $email = $split_email[0]. '@' . $domain;
+    return $email;
+  }
+
   public static function createPagination($count, $show, $from) {
     $total_pages  = ceil($count / $show);       // Total matches
     $current_page = ceil($from / $show) + 1;    // Current page

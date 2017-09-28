@@ -107,3 +107,28 @@
 [26-Sep-2017 18:44:46 Europe/Berlin] PHP Stack trace:
 [26-Sep-2017 18:44:46 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:0
 [26-Sep-2017 18:44:46 Europe/Berlin] PHP   2. MediaManager->saveImage() C:\xampp\htdocs\phpsqlbook\cms-final\admin\article.php:78
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP Warning:  PDO::__construct(): php_network_getaddresses: getaddrinfo failed: No such host is known.  in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\CMS.php on line 21
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP Stack trace:
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\users.php:0
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\cms-final\admin\users.php:2
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP   3. CMS->getArticleManager() C:\xampp\htdocs\phpsqlbook\cms-final\config.php:29
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP   4. CMS->getPDO() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\CMS.php:38
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP   5. PDO->__construct() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\CMS.php:21
+[27-Sep-2017 14:10:11 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: No such host is known. ' in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\CMS.php:21
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\CMS.php(21): PDO->__construct('mysql:host=mari...', '387732_testuser...', 'phpbo^ok3belonG...')
+#1 C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\CMS.php(38): CMS->getPDO()
+#2 C:\xampp\htdocs\phpsqlbook\cms-final\config.php(29): CMS->getArticleManager()
+#3 C:\xampp\htdocs\phpsqlbook\cms-final\admin\users.php(2): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\CMS.php on line 21
+[27-Sep-2017 17:56:32 Europe/Berlin] PHP Deprecated:  Function split() is deprecated in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 21
+[27-Sep-2017 17:56:32 Europe/Berlin] PHP Stack trace:
+[27-Sep-2017 17:56:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
+[27-Sep-2017 17:56:32 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:27
+[27-Sep-2017 17:56:32 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:64
+[27-Sep-2017 17:58:26 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
+[27-Sep-2017 17:58:26 Europe/Berlin] PHP Stack trace:
+[27-Sep-2017 17:58:26 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:0
+[27-Sep-2017 17:58:26 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\admin\user.php:27
+[27-Sep-2017 17:58:26 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:64

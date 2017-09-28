@@ -61,6 +61,7 @@ class Validate {
   }
 
   public static function isEmail($email) {
+    $email = Utilities::punyCodeDomain($email); 
     return filter_var($email, FILTER_VALIDATE_EMAIL);
   }
 
