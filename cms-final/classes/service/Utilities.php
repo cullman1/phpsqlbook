@@ -18,7 +18,7 @@ class Utilities
   }
 
   public static function punyCodeDomain($email) {
-  $split_email =  explode('@', $email);
+   $split_email =  explode('@', $email);
    $domain = idn_to_ascii($split_email[1]); 
    $email = $split_email[0]. '@' . $domain;
     return $email;
@@ -41,6 +41,4 @@ class Utilities
     $result .= '</ul></nav>';
     return $result ;
   }
-
-
 }
