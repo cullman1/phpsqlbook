@@ -24,6 +24,9 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="404.php" />
+    <Compile Include="cms-final\info.php" />
+    <Compile Include="cms-final\404.php" />
     <Compile Include="info.php" />
     <Compile Include="cms-final\admin\article-delete.php" />
     <Compile Include="cms-final\admin\article.php" />

@@ -1,6 +1,13 @@
 <?php
 
 require_once("config.php");
+$single_byte_string_length        = strlen('$$$100');  
+$multi_byte_string_length = mb_strlen('ööö00');
+echo $single_byte_string_length;
+echo $multi_byte_string_length;
+
+mb_internal_encoding("iso-8859-1");
+echo "ヒタミ";
 $text = " Il était un château,  Weiß, Goldmann, Göbel, Weiss, Göthe, Goethe und Götz < > ' \" ";
    $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
