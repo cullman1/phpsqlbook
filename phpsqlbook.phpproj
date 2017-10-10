@@ -92,7 +92,6 @@
     <Compile Include="code\chapter_03\global-and-local-scope.php" />
     <Compile Include="code\chapter_03\include-and-require-files.php" />
     <Compile Include="code\chapter_03\includes\footer.php" />
-    <Compile Include="code\chapter_03\includes\functions.php" />
     <Compile Include="code\chapter_03\global-and-static-variables.php" />
     <Compile Include="code\chapter_03\includes\header.php" />
     <Compile Include="code\chapter_03\index.php" />
@@ -569,6 +568,7 @@
     <Folder Include="code\chapter_02_old\" />
     <Folder Include="code\chapter_03\" />
     <Folder Include="code\chapter_03\includes\" />
+    <Folder Include="code\chapter_03\css\" />
     <Folder Include="code\chapter_04\includes\" />
     <Folder Include="code\chapter_04\classes\" />
     <Folder Include="code\chapter_05\includes\" />
@@ -868,6 +868,7 @@
     <Content Include="cms-final\uploads\thyme-pot_thumbnail.jpg" />
     <Content Include="cms-final\uploads\users\ivy.jpg" />
     <Content Include="cms-final\uploads\woody-nightshade.jpg" />
+    <Content Include="code\chapter_03\css\styles.css" />
     <Content Include="code\chapter_08\chamomile.gif" />
     <Content Include="code\chapter_08\data-jsonp.js" />
     <Content Include="code\chapter_08\lavender.gif" />
