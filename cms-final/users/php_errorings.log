@@ -1,10 +1,20 @@
-[27-Sep-2017 17:26:18 Europe/Berlin] PHP Notice:  Undefined variable: emailv in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php on line 65
-[27-Sep-2017 17:26:18 Europe/Berlin] PHP Stack trace:
-[27-Sep-2017 17:26:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
-[27-Sep-2017 17:26:18 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
-[27-Sep-2017 18:00:52 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1267 Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8mb4_general_ci,COERCIBLE) for operation '='' in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php:34
-Stack trace:
-#0 C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php(34): PDOStatement->execute()
-#1 C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php(38): UserManager->getUserByEmail('custard@\xE3\x83\x92\xE3\x82\xBF\xE3...')
-#2 {main}
-  thrown in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php on line 34
+[12-Oct-2017 12:45:37 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
+[12-Oct-2017 12:45:37 Europe/Berlin] PHP Stack trace:
+[12-Oct-2017 12:45:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
+[12-Oct-2017 12:45:37 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
+[12-Oct-2017 12:45:37 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:64
+[12-Oct-2017 12:47:57 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
+[12-Oct-2017 12:47:57 Europe/Berlin] PHP Stack trace:
+[12-Oct-2017 12:47:57 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
+[12-Oct-2017 12:47:57 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
+[12-Oct-2017 12:47:57 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:65
+[12-Oct-2017 12:48:01 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
+[12-Oct-2017 12:48:01 Europe/Berlin] PHP Stack trace:
+[12-Oct-2017 12:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
+[12-Oct-2017 12:48:01 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
+[12-Oct-2017 12:48:01 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:65
+[12-Oct-2017 12:48:09 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
+[12-Oct-2017 12:48:09 Europe/Berlin] PHP Stack trace:
+[12-Oct-2017 12:48:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
+[12-Oct-2017 12:48:09 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
+[12-Oct-2017 12:48:09 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:65
