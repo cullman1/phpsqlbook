@@ -7,6 +7,7 @@ $userManager->redirectNonAdmin();
 
 // Get data
 $id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
+$action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
 $forename    = ( isset($_POST['forename']) ? $_POST['forename'] : ''); // Get values
 $surname     = ( isset($_POST['surname'])  ? $_POST['surname']  : ''); // Get values
 $email       = ( isset($_POST['email'])    ? $_POST['email']    : ''); // Get values
@@ -30,7 +31,16 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   if (mb_strlen(implode($errors)) > 0) {                  // If data valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                             // Otherwise
-    $result = $userManager->adminupdate($user);             // Add user to database
+    if (!empty($userManager->getUserByEmail($email))) {
+            $alert = '<div class="alert alert-danger">That email is already in use</div>';
+        } else {                   // Otherwise
+    if ($action === 'create') {
+      $result = $userManager->create($user);             // Add category to database
+    }
+    if ($action === 'update') {
+      $result = $userManager->adminupdate($user);             // Add category to database
+    }
+    }
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
@@ -48,23 +58,23 @@ include 'includes/header.php';
 
 <section>
 
-  <h2>Edit user</h2>
+  <h2><?=$action?> user</h2>
   <?= $alert ?>
 
   <form action="user.php?id=<?=$id?>" method="POST" >
     <div class="form-group">
       <label for="forename">Forename: </label>
-      <input name="forename" id="forename" value="<?= $user->forename ?>" class="form-control">
+      <input name="forename" id="forename" value="<?= htmlentities( $user->forename, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
       <span class="errors"><?= $errors['forename'] ?></span>
     </div>
     <div class="form-group">
       <label for="surname">Surname: </label>
-      <input name="surname" id="surname" value="<?= $user->surname ?>" class="form-control">
+      <input name="surname" id="surname" value="<?= htmlentities( $user->surname, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
       <span class="errors"><?= $errors['surname'] ?></span>
     </div>
     <div class="form-group">
       <label for="email">Email: </label>
-      <input type="email" name="email" id="email" value="<?= $user->email ?>" class="form-control">
+      <input type="email" name="email" id="email" value="<?= htmlentities( $user->email, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
       <span class="errors"><?= $errors['email'] ?></span>
     </div>
     <div class="form-group">

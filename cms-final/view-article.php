@@ -34,7 +34,7 @@ include 'includes/header.php';
   </div>
 
   <div class="row">
-    <div class="col-8">
+    <div id="art_image" class="col-8">
 
     <?php if (sizeof($article_images) < 2) { ?>
       <img src="../uploads/<?=  htmlentities( $article_images[0]->filename , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $article_images[0]->alt , ENT_QUOTES, 'UTF-8')?>"/>
@@ -126,9 +126,13 @@ include 'includes/header.php';
 
             $('#thumbnails a:first-child').addClass("active");
 
+
+$('img[src="../uploads/"]').parent().hide();
+
           </script>
         <?php } else { ?>
           <a href="<?= ROOT ?>users/login.php">Log in to add your own comment.</a>
+          <script>$('img[src="../uploads/"]').parent().hide();</script>
         <?php } ?>
       </div>
     </div>
