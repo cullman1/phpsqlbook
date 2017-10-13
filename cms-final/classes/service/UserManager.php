@@ -220,12 +220,11 @@ class UserManager
 
   public function redirectNonAdmin() {
     if (!isset($_SESSION['role'])) {
-      header('Location: ../users/login.php');
+      header('Location:'. ROOT. 'users/login.php');
       exit;
     } else {
       if ($_SESSION['role'] != 2) {
-        header('Location: ../page-not-found.php');
-        echo 'not admin';
+        header('Location:'. ROOT. 'page-not-found.php');
         exit;
       }
     }

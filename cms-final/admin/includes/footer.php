@@ -1,3 +1,7 @@
+<?php
+require_once '../../config.php';
+$userManager->redirectNonAdmin();
+?>
 <footer>
   &copy; <?php echo date("Y"); ?>
   <a href="system-info.php">System info</a>

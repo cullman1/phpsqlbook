@@ -1,20 +1,12 @@
-[12-Oct-2017 12:45:37 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
-[12-Oct-2017 12:45:37 Europe/Berlin] PHP Stack trace:
-[12-Oct-2017 12:45:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
-[12-Oct-2017 12:45:37 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
-[12-Oct-2017 12:45:37 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:64
-[12-Oct-2017 12:47:57 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
-[12-Oct-2017 12:47:57 Europe/Berlin] PHP Stack trace:
-[12-Oct-2017 12:47:57 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
-[12-Oct-2017 12:47:57 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
-[12-Oct-2017 12:47:57 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:65
-[12-Oct-2017 12:48:01 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
-[12-Oct-2017 12:48:01 Europe/Berlin] PHP Stack trace:
-[12-Oct-2017 12:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
-[12-Oct-2017 12:48:01 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
-[12-Oct-2017 12:48:01 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:65
-[12-Oct-2017 12:48:09 Europe/Berlin] PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Utilities.php on line 22
-[12-Oct-2017 12:48:09 Europe/Berlin] PHP Stack trace:
-[12-Oct-2017 12:48:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:0
-[12-Oct-2017 12:48:09 Europe/Berlin] PHP   2. Validate::isEmail() C:\xampp\htdocs\phpsqlbook\cms-final\users\register.php:25
-[12-Oct-2017 12:48:09 Europe/Berlin] PHP   3. Utilities::punyCodeDomain() C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\Validate.php:65
+[13-Oct-2017 11:52:00 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php on line 302
+[13-Oct-2017 11:52:00 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:52:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\reset-password.php:0
+[13-Oct-2017 11:52:00 Europe/Berlin] PHP   2. UserManager->getUserFromToken() C:\xampp\htdocs\phpsqlbook\cms-final\users\reset-password.php:23
+[13-Oct-2017 12:09:51 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php on line 302
+[13-Oct-2017 12:09:51 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:09:51 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\reset-password.php:0
+[13-Oct-2017 12:09:51 Europe/Berlin] PHP   2. UserManager->getUserFromToken() C:\xampp\htdocs\phpsqlbook\cms-final\users\reset-password.php:23
+[13-Oct-2017 12:10:03 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\classes\service\UserManager.php on line 302
+[13-Oct-2017 12:10:03 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:10:03 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\reset-password.php:0
+[13-Oct-2017 12:10:03 Europe/Berlin] PHP   2. UserManager->getUserFromToken() C:\xampp\htdocs\phpsqlbook\cms-final\users\reset-password.php:25

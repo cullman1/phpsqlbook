@@ -1,5 +1,4 @@
 <?php
-//$current_page    = basename($_SERVER["SCRIPT_FILENAME"], 'system-info.php');
 $current_page    = $_SERVER['REQUEST_URI'];
 $categoryManager = $cms->getCategoryManager();
 $category_list   = $categoryManager->getNavigationCategories();
@@ -54,6 +53,3 @@ function highlight_nav($section, $url) {
         </ul>
       </div>
     </nav>
-  <?php
-
-  ?>

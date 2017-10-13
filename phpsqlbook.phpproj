@@ -25,7 +25,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="404.php" />
-    <Compile Include="cms-final\info.php" />
+    <Compile Include="cms-final\error-has-occurred.php" />
+    <Compile Include="code\info.php" />
     <Compile Include="cms-final\vendor\html-purifier-4.9.3\benchmarks\ConfigSchema.php" />
     <Compile Include="cms-final\vendor\html-purifier-4.9.3\benchmarks\Lexer.php" />
     <Compile Include="cms-final\vendor\html-purifier-4.9.3\benchmarks\Trace.php" />
@@ -972,8 +973,6 @@
   <ItemGroup>
     <Folder Include="assets\" />
     <Folder Include="cms-final\" />
-    <Folder Include="cms-final\.idea\" />
-    <Folder Include="cms-final\.idea\inspectionProfiles\" />
     <Folder Include="cms-final\admin\" />
     <Folder Include="cms-final\admin\css\" />
     <Folder Include="cms-final\admin\includes\" />
@@ -1210,10 +1209,6 @@
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
     <Content Include="cms-final\.htaccess" />
-    <Content Include="cms-final\.idea\cms-final.iml" />
-    <Content Include="cms-final\.idea\deployment.xml" />
-    <Content Include="cms-final\.idea\modules.xml" />
-    <Content Include="cms-final\.idea\workspace.xml" />
     <Content Include="cms-final\admin\css\styles.css" />
     <Content Include="cms-final\admin\lib\jquery\jquery-1.12.4.min.js" />
     <Content Include="cms-final\admin\lib\photoviewer\photo-viewer.js" />

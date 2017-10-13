@@ -7,6 +7,9 @@ if (isset($_GET['name'])) {
   $show  = (filter_input(INPUT_GET, 'show', FILTER_VALIDATE_INT) ? $_GET['show'] : 6);
   $from  = (filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
   $category   = $categoryManager->getCategoryBySeoName($name);
+  if (empty($category)) {
+  header( "Location: page-not-found.php" );
+}
   $count        = $articleManager->getArticleCountByCategorySeoName($category->seo_name); 
   $article_list = $articleManager->getArticleSummariesByCategorySeoName($category->seo_name, $show, $from);
 }

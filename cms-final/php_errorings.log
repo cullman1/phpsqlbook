@@ -1,0 +1,72 @@
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 23
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 24
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 24
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 30
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 30
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 33
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 59
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 59
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 63
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 63
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 71
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php on line 71
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 11:50:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\view-article.php:0

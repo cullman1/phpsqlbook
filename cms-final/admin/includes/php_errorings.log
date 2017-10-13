@@ -1,0 +1,21 @@
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php on line 8
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php:0
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php on line 12
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php:0
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Notice:  Undefined variable: site_name in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php on line 12
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php:0
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php on line 23
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php:0
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php on line 27
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:58:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php:0
+[13-Oct-2017 12:58:21 Europe/Berlin] PHP Warning:  require_once(../config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php on line 2
+[13-Oct-2017 12:58:21 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:58:21 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php:0
+[13-Oct-2017 12:58:21 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '../config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php on line 2
+[13-Oct-2017 12:58:21 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 12:58:21 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\header.php:0

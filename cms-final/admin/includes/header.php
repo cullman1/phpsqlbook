@@ -1,3 +1,7 @@
+<?php
+require_once '../../config.php';
+$userManager->redirectNonAdmin();
+?>
 <!DOCTYPE html>
 <html>
   <head>

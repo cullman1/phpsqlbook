@@ -4,13 +4,15 @@ require_once('../../vendor/PHPMailer/PHPMailerAutoload.php');
 
 $password  = (isset($_POST['password']) ? $_POST['password'] : '' ); 
 $confirm   = (isset($_POST['confirm'])  ? $_POST['confirm']  : '' ); 
-$token     = (isset($_GET['token'])     ? $_REQUEST['token'] : '' ); 
+$token     = (isset($_GET['token'])     ? $_GET['token'] : '' ); 
 $subject   = 'Your password has been updated';
 $message   = 'Your password was updated on ' . date('Y-m-d H:i:s');
 $show_form = TRUE;
 $error    = array('password' => '', 'confirm' => '');
 $alert     = '';
-
+if (empty($token)) {
+    header( "Location: ../error-has-occurred.php" );
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Has form been submitted?  
     $error['password'] = (Validate::isPassword($password) ? 
                                                    '' : 'Please enter a valid password.'); 
