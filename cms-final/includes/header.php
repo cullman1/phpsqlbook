@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) .'/config.php';
 $current_page    = $_SERVER['REQUEST_URI'];
 $categoryManager = $cms->getCategoryManager();
 $category_list   = $categoryManager->getNavigationCategories();

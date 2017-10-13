@@ -1,0 +1,8 @@
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP Warning:  require_once(../../config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\footer.php on line 2
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\articles.php:0
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\admin\articles.php:44
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '../../config.php' (include_path='C:\xampp\htdocs\phpsqlbook\cms-final\vendor\html-purifier-4.9.3\library;.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\cms-final\admin\includes\footer.php on line 2
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP Stack trace:
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\articles.php:0
+[13-Oct-2017 14:37:04 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\admin\articles.php:44
