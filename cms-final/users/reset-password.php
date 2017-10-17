@@ -37,7 +37,7 @@ include dirname(__DIR__) . '/includes/header.php';
 ?>
 <?= $alert ?>
 <?php if ($show_form == TRUE) { ?>
-  <form method="post" action="reset-password.php?token=<?= $token ?>">
+  <form  method="post" action="reset-password.php?token=<?= htmlspecialchars($token, ENT_QUOTES, 'UTF-8'); ?>">
     <h1>Reset Password</h1>
     <label for="password">Enter Your New Password:</label>
     <input type="password" name="password" id="password" /> <?= $error['password']; ?><br />

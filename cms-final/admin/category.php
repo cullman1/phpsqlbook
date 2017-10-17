@@ -55,7 +55,7 @@ include 'includes/header.php';
   <h2><?=$action?> category</h2>
   <?= $alert ?>
 
-  <form action="category.php?id=<?=$category->id?>&action=<?=$action?>" method="post">
+  <form action="category.php?id=<?=htmlspecialchars($category->id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
     <div class="form-group">
       <label for="name">Name: </label>
       <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control">

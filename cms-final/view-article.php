@@ -84,7 +84,7 @@ include 'includes/header.php';
       <div class="col-8">
         <h2 class="display-4">Comments</h2>
         <?php if ($userManager->isLoggedIn()) { ?>
-          <form method="post" action="<?= ROOT ?>add_comment?id=<?= $article->id ?>" class="comment">
+          <form method="post" action="<?= ROOT ?>add_comment?id=<?= htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>" class="comment">
             <h4>Add a comment</h4>
             <textarea id="comment" name="comment" class="form-control"></textarea><br/>
             <button type="submit" class="btn btn-primary">Submit comment</button>

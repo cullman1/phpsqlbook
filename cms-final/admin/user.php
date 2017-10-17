@@ -25,7 +25,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
 } else {  // The form was posted so validate the data and try to update
   $errors['forename'] = (Validate::isName($forename, 1, 64) ? '' : 'Not a valid name');
   $errors['surname']  = (Validate::isName($surname, 1, 64)  ? '' : 'Not a valid name');
-  $errors['email']    = (Validate::isEmail($email)                    ? '' : 'Not a valid email address');
+  $errors['email']    = (Validate::isEmail($email)          ? '' : 'Not a valid email address');
   $errors['role']     = (Validate::isNumber($role, 1, 2)    ? '' : 'Please select a role');
 
   if (mb_strlen(implode($errors)) > 0) {                  // If data valid
@@ -61,7 +61,7 @@ include 'includes/header.php';
   <h2><?=$action?> user</h2>
   <?= $alert ?>
 
-  <form action="user.php?id=<?=$id?>" method="POST" >
+  <form action="user.php?id=<?= htmlspecialchars($id,ENT_QUOTES,'UTF-8'); ?>" method="POST" >
     <div class="form-group">
       <label for="forename">Forename: </label>
       <input name="forename" id="forename" value="<?= htmlentities( $user->forename, ENT_QUOTES, 'UTF-8') ?>" class="form-control">

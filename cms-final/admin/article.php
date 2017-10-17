@@ -109,7 +109,7 @@ include 'includes/header.php';
   <h2 class="display-4 mb-4"><?=$action?> article</h2>
   <?= $alert ?>
 
-  <form action="article.php?id=<?=$article->id?>&action=<?=$action?>" method="post" enctype="multipart/form-data">
+  <form action="article.php?id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
 
     <div class="row">
       <div class="col-8">
