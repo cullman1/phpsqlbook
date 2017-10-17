@@ -52,7 +52,7 @@ include 'includes/header.php';
 
 <section>
 
-  <h2><?=$action?> category</h2>
+  <h2><?=htmlentities( $action,ENT_QUOTES,'UTF-8');?> category</h2>
   <?= $alert ?>
 
   <form action="category.php?id=<?=htmlspecialchars($category->id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
@@ -63,7 +63,7 @@ include 'includes/header.php';
     </div>
     <div class="form-group">
       <label for="description">Description: </label>
-      <textarea name="description" id="description" class="form-control"><?=  htmlspecialchars_decode($category->description) ?></textarea>
+      <textarea name="description" id="description" class="form-control"><?=  htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
       <span class="errors"><?= $errors['description'] ?></span>
     </div>
     <div class="form-group">

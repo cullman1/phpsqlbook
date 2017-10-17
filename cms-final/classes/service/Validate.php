@@ -26,14 +26,6 @@ class Validate {
     return TRUE;
   }
 
-  /*public static function isAllowedHTML($string) {
-    $result = strip_tags($string,'<p><em><strong><hn><blockquote>');
-    if (($result != $string )) {
-      return FALSE;
-    }
-    return TRUE;
-  }*/
-
   public static function sanitizeHTML($string) {
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);

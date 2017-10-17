@@ -74,27 +74,27 @@ include '../includes/header.php';
           <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <label for="forename">Forename: </label>
-              <input name="forename" id="forename" value="<?= $forename ?>" class="form-control">
+              <input name="forename" id="forename" value="<?= htmlspecialchars($forename, ENT_QUOTES, 'UTF-8'); ?>" class="form-control">
               <span class="errors"><?= $errors['forename'] ?></span>
             </div>
             <div class="form-group">
               <label for="surname">Surname: </label>
-              <input name="surname" id="surname" value="<?= $surname ?>" class="form-control">
+              <input name="surname" id="surname" value="<?= htmlspecialchars($surname, ENT_QUOTES, 'UTF-8'); ?>" class="form-control">
               <span class="errors"><?= $errors['surname'] ?></span>
             </div>
             <div class="form-group">
               <label for="email">Email: </label>
-              <input type="email" name="email" id="email" value="<?= $email ?>" class="form-control">
+              <input type="email" name="email" id="email" value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>" class="form-control">
               <span class="errors"><?= $errors['email'] ?></span>
             </div>
             <div class="form-group">
               <label for="password">Password: </label>
-              <input type="password" name="password" id="password" value="<?= $password ?>" class="form-control">
+              <input type="password" name="password" id="password" value="<?= htmlspecialchars($password, ENT_QUOTES, 'UTF-8'); ?>" class="form-control">
               <span class="errors"><?= $errors['password'] ?></span>
             </div>
             <div class="form-group">
               <label for="password">Confirm password: </label>
-              <input type="password" name="confirm" id="confirm" value="<?= $confirm ?>" class="form-control">
+              <input type="password" name="confirm" id="confirm" value="<?= htmlspecialchars($confirm, ENT_QUOTES, 'UTF-8'); ?>" class="form-control">
               <span class="errors"><?= $errors['confirm'] ?></span>
             </div>
             <div class="form-group">

@@ -98,7 +98,7 @@ include 'includes/header.php';
             <?php if ($comment->reply_to_id) { ?>
               <span class="reply_to"> &lt; In reply to: <?=  htmlentities( $comment->reply_to , ENT_QUOTES, 'UTF-8')?></span>
             <?php } ?>
-            <p><?= $comment->comment ?></p>
+            <p><?= htmlentities($comment->comment , ENT_QUOTES, 'UTF-8'); ?></p>
             <div class="date"><?= $comment->posted; ?></div>
           </div>
         <?php } ?>
