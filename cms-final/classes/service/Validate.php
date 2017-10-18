@@ -56,7 +56,10 @@ class Validate {
     if (!empty($email) && (mb_strpos($email,'@')!==false)) {
       $email = Utilities::punyCodeDomain($email); 
     }
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+   if ( (! filter_var($email, FILTER_VALIDATE_EMAIL))) {
+       return FALSE;
+    }
+    return TRUE;
   }
 
   public static function isPassword($password) {
