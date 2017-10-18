@@ -53,7 +53,7 @@ class Validate {
   }
 
   public static function isEmail($email) {
-    if (!empty($email)) {
+    if (!empty($email) && (mb_strpos($email,'@')!==false)) {
       $email = Utilities::punyCodeDomain($email); 
     }
     return filter_var($email, FILTER_VALIDATE_EMAIL);

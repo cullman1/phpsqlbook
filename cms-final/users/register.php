@@ -102,7 +102,7 @@ include '../includes/header.php';
               <input type="file" name="file" accept="image/*" id="file"  />
               <span class="errors"><?= $errors['file'] ?></span>
             </div>
-            <input type="submit" name="create" value="save" class="btn btn-default">
+            <input type="submit" name="create" value="save" style="background-color:#dddddd" class="btn btn-default">
           </form>
         <?php } ?>
 
