@@ -1,0 +1,96 @@
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 9
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:47
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 9
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:47
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:47
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 24
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:47
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 27
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:47
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 9
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:48
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 9
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:48
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:48
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 24
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:48
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 27
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:48
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 9
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:49
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 9
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:49
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: product in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:49
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 24
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:49
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 27
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:49
+[18-Oct-2017 13:35:36 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 24
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:47
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 27
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:47
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 24
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:48
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 27
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:48
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 24
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:49
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Notice:  Undefined variable: stock in C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php on line 27
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP Stack trace:
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:0
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   2. product_create() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:49
+[18-Oct-2017 13:36:08 Europe/Berlin] PHP   3. get_stock_indicator() C:\xampp\htdocs\phpsqlbook\code\chapter_03\functions.php:10

@@ -298,11 +298,13 @@ class UserManager
     } else {
         $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');               
         $user = $statement->fetch();
-        $expires = new DateTime($user->expires);
-        $now = (new DateTime())->format('Y-m-d H:i:s');
-        if($now<$expires) {
+        if ($user) {
+          $expires = new DateTime($user->expires);
+          $now = (new DateTime())->format('Y-m-d H:i:s');
+          if($now<$expires) {
             return $user;
-        }   
+          }   
+        }
     }
     return false;
 }

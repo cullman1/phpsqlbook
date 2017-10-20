@@ -21,10 +21,12 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   $user = ($id == '' ? $user : $userManager->getUserById($id)); // Do you load a user
   if (!$user) {
     $alert = '<div class="alert alert-danger">User not found</div>';
+    $user        = new User($id, $forename, $surname, $email, '', $role);
+    $action = 'create';
   }
 } else {  // The form was posted so validate the data and try to update
-  $errors['forename'] = (Validate::isName($forename, 1, 64) ? '' : 'Not a valid name');
-  $errors['surname']  = (Validate::isName($surname, 1, 64)  ? '' : 'Not a valid name');
+  $errors['forename'] = (Validate::isName($forename, 0, 64) ? '' : 'Not a valid name');
+  $errors['surname']  = (Validate::isName($surname, 0, 64)  ? '' : 'Not a valid name');
   $errors['email']    = (Validate::isEmail($email)          ? '' : 'Not a valid email address');
   $errors['role']     = (Validate::isNumber($role, 1, 2)    ? '' : 'Please select a role');
 

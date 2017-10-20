@@ -21,8 +21,11 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   $category = ($id == '' ? $category : $categoryManager->getCategoryById($id)); // Do you load a category
   if (!$category) {
     $alert = '<div class="alert alert-danger">Category not found</div>';
+    $category    = new Category($id, $name, $description, $navigation);  // Create Category object
+    $action = 'create';
   }
 } else {  // The form was posted so validate the data and try to update
+  
   $errors['name']        = (Validate::isName($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9 and contain no HTML tags');
   $errors['description'] = (Validate::isAllowedHTML($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters and only contain allowed HTML tags.');
 

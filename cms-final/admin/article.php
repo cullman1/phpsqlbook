@@ -35,6 +35,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   $article = ($id == '' ? $article : $articleManager->getArticleById($id)); // Do you load a category
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
+    $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
+    $action= 'create';
   }
 } else {
   if (empty($_POST)) {

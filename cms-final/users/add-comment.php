@@ -8,17 +8,19 @@ $comment    = filter_var($comment, FILTER_SANITIZE_STRING);
 if (empty($article_id)) {
     header( "Location: ../error-has-occurred.php" );
 }
+$comment = trim($comment);
 if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {
     $comment  = new Comment(0, $article_id, $_SESSION['user_id'], $comment, $created);
     $result   = $articleManager->addComment($comment);
 } else {
-    $result   = 'Comments must be under 2000 characters.';
+    $result   = 'Comments must be over 0 characters and under 2000 characters.';
 }
 if ($result === TRUE) {
     header('Location: '. ROOT .  $articleManager->getArticleUrl($article_id) );
 }
 include('../includes/header.php'); 
-echo 'We were unable to add your comment.<br>';
-echo $result;
+echo '<section class="jumbotron text-center">';
+echo '<div class="container"><h1 class="jumbotron-heading">We were unable to add your comment.</h1>'.$result ."</div>";
+echo '</section>';
 include('../includes/footer.php');
 ?>

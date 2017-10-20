@@ -19,6 +19,7 @@ class Validate {
 
    public static function isName($string, $min = 0, $max = 100){
      $result = preg_replace('/<[^>]*>/', '',  $string); 
+     $result = trim($result);
      $length = mb_strlen($string);
     if (($length <= $min) or ($length >= $max) or ($result != $string )) {
       return FALSE;
@@ -35,14 +36,14 @@ class Validate {
     return $clean_html;
   }
 
-  public static function isAllowedHTML($string) {
+  public static function isAllowedHTML($string, $min, $max) {
     $string = html_entity_decode($string);
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);
     $config->set('Core.Encoding', 'UTF-8'); // replace with your encoding
     $config->set('HTML.Allowed', 'p,strong,em,u,strike'); // replace with your doctype
     $clean_html = $purifier->purify($string);
-    if (($clean_html != $string )) {
+    if ( ($clean_html != $string ) || (mb_strlen($clean_html) <= $min) || (mb_strlen($clean_html)>= $max)) {
       return FALSE;
     }
     return TRUE;
