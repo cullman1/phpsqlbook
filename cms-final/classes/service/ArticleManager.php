@@ -86,15 +86,16 @@ class ArticleManager{
 
   public function getAllArticleSummaries(){
     $pdo = $this->pdo;
-    $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.media_id, article.published,
+    $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
-            category.id as category_id, category.name AS category,
-            media.id as media_id, media.alt AS thumb_alt
+            category.id as category_id, category.name AS category, media.id as media_id,  media.filename as thumb, media.alt AS thumb_alt
             FROM article
             LEFT JOIN user ON article.user_id = user.id 
+              LEFT JOIN articleimages ON articleimages.article_id = article.id
+            LEFT JOIN media ON media.id = articleimages.media_id
             LEFT JOIN category ON article.category_id = category.id 
-            LEFT JOIN media ON article.media_id = media.id 
             AND article.published = TRUE
+             GROUP BY id
             ORDER BY article.created DESC';
     $statement = $pdo->prepare($sql);
     $statement->execute();

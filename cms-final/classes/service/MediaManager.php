@@ -16,14 +16,53 @@ class MediaManager {
     return TRUE;
   }
 
+    public function deleteImage($media_id) {
+    $pdo = $this->pdo;
+    $pdo->beginTransaction();
+    try {
+      $sql = 'select * FROM media WHERE id = :id';
+      $statement = $pdo->prepare($sql);                                 // Prepare
+      $statement->bindValue(':id',   $media_id);                 // Bind value
+      $statement->execute();  
+      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Media');     // Object
+      $image = $statement->fetch();
+
+      $sql = 'DELETE FROM media WHERE id = :id';
+      $statement = $pdo->prepare($sql);                                 // Prepare
+      $statement->bindValue(':id',    $media_id);               // Bind value
+      $statement->execute();                                            // Try to execute
+
+      $sql = 'DELETE FROM articleimages WHERE media_id = :id';
+      $statement = $pdo->prepare($sql);                                 // Prepare
+      $statement->bindValue(':id',   $media_id);                 // Bind value
+      $statement->execute();                                         // Try to execute
+
+      $pdo->commit();
+   
+
+      if ($image) {
+        if(file_exists('../uploads/'. $image->filename)) {
+
+          unlink('../uploads/'. $image->filename); // deletes file
+          unlink('../uploads/thumb/'. $image->filename);
+
+        }        
+      } 
+      $result = TRUE;
+    } catch (PDOException $error) {                                  // Otherwise
+      $pdo->rollBack();
+      $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this
+    }
+    return $result;
+  }
+
   public function saveImage($article_id, $media) {
     $pdo = $this->pdo;
     $pdo->beginTransaction();
     try {
-      $sql = 'INSERT INTO media (title,  alt,  filename) 
-	     	                  VALUES (:title, :alt, :filename)';
+      $sql = 'INSERT INTO media ( alt,  filename) 
+	     	  VALUES ( :alt, :filename)';
       $statement = $pdo->prepare($sql);                                 // Prepare
-      $statement->bindValue(':title',     $media->title);               // Bind value
       $statement->bindValue(':alt',       $media->alt);                 // Bind value
       $statement->bindValue(':filename',  $media->filename);            // Bind value
       $statement->execute();                                            // Try to execute

@@ -1,27 +1,28 @@
 <?php
 require_once '../config.php';
 
+// is logged in otherwise redirect
 $userManager->redirectNonAdmin();
 
-$user_list     = $userManager->getAllUsers();
 $category_list = $categoryManager->getAllCategories();
 
 // Get data
-$id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
-$action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
+$seo_title   = (isset($_GET['seo_title'])  ? $_GET['seo_title'] : ''); // Get values
+$action      = (isset($_GET['action']) ? $_GET['action'] : 'create'); // Get values
 
 // article data
-$title         = ( isset($_POST['title'])       ? trim(($_POST['title']))       : ''); // Get values
-$summary       = ( isset($_POST['summary'])     ? trim(($_POST['summary']))     : ''); // Get values
-$content       = ( isset($_POST['content'])     ? trim(($_POST['content']))     : ''); // Get values
+$id            = ( isset($_POST['id'])          ? $_POST['id']          : ''); // Get values
+$title         = ( isset($_POST['title'])       ? $_POST['title']       : ''); // Get values
+$summary       = ( isset($_POST['summary'])     ? $_POST['summary']     : ''); // Get values
+$content       = ( isset($_POST['content'])     ? $_POST['content']     : ''); // Get values
 $published     = ( isset($_POST['published'])   ? $_POST['published']   : ''); // Get values
 $user_id       = ( isset($_POST['user_id'])     ? $_POST['user_id']     : ''); // Get values
 $category_id   = ( isset($_POST['category_id']) ? $_POST['category_id'] : ''); // Get values
 $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
 
 // image data
-$alt           = ( isset($_POST['alt'] )        ? trim(($_POST['alt']))         : '');
-$media         = new Media('', $alt, '');  
+$alt           = ( isset($_POST['alt'] )        ? $_POST['alt']         : '');
+$media         = new Media('',  $alt, '');              // Create Media object
 
 $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'',  'alt'=>'');   // Form errors
 $alert         = '';           // Status messages
@@ -30,20 +31,15 @@ $uploadedfile  = FALSE;        // Was image uploaded
 
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
-  // No - show a blank category to create or an existing article to edit
-  $article = ($id == '' ? $article : $articleManager->getArticleById($id)); // Do you load a category
+  // No - show a blank category to create or an existing category to edit
+  $article = ($seo_title == '' ? $article : $articleManager->getArticleBySeoTitle($seo_title)); // Do you load a category
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
-    $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
-    $action= 'create';
   }
 } else {
-  if (empty($_POST)) {
-    $errors['file'] = 'File too large to upload';
-  }
   $errors['title']    = (Validate::isText($title, 1, 64)      ? '' : 'Not a valid title');
-  $errors['summary']  = (Validate::isAllowedHTML($summary, 1, 160)   ? '' : 'Not a valid summary');
-  $errors['content']  = (Validate::isAllowedHTML($content, 1, 2000)  ? '' : 'Not valid content');
+  $errors['summary']  = (Validate::isText($summary, 1, 160)   ? '' : 'Not a valid summary');
+  $errors['content']  = (Validate::isText($summary, 1, 2000)  ? '' : 'Not valid content');
 
   $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
   if ($uploadedfile) {
@@ -56,32 +52,40 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $media->filename = $filename;
 
     // Validate file information
-    $errors['alt']   = (Validate::isName($alt, 1, 256)             ? '' : 'Title should be letters A-z and numbers 0-9');
+    $errors['alt']   = (Validate::isText($alt, 1, 256)             ? '' : 'Title should be letters A-z and numbers 0-9');
     $errors['file'] .= (Validate::isAllowedFilename($filename)                ? '' : 'Not a valid filename<br>');
     $errors['file'] .= (Validate::isAllowedExtension($filename)               ? '' : 'Not a valid file extension<br>');
-    $errors['file'] .= (Validate::isAllowedMediaType($temporary)              ? '' : 'Not a valid media type<br>');
-    $errors['file'] .= (Validate::isWithinFileSize($filesize, 20971520)  ? '' : 'File too large - max size 20mb<br>');
+    $errors['file'] .= (Validate::isAllowedMediaType($mediatype)              ? '' : 'Not a valid media type<br>');
+    $errors['file'] .= (Validate::isWithinFileSize($filesize, 1000000)   ? '' : 'File too large<br>');
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
 
-  if (mb_strlen(implode($errors)) > 0) {                                            // If data not valid
+  if (strlen(implode($errors)) > 0) {                                            // If data not valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                                       // Otherwise
     if ($action === 'create') {
       $result  = $articleManager->create($article);      // Add article to database
-    }
-    if ($action === 'update') {
-      $result = $articleManager->update($article);      // Add article to database
-    }
-    if ($uploadedfile && isset($result) && ($result === TRUE)) {
-      $moveresult   = $mediaManager->moveImage($filename, $temporary);         // Move image
-      $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
-      $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
-      $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
-      if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
-        $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
+      if ($uploadedfile) {
+        $moveresult  = $mediaManager->moveImage($filename, $temporary);         // Move image
+        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
+        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
+        if ($moveresult != TRUE || $imageresult !=TRUE || $thumbresult != TRUE) {
+          $result .= $moveresult .  $imageresult . $thumbresult; // Add the error to result
+        }
       }
     }
+    if ($action === 'update') {
+      $result  = $articleManager->update($article);      // Add article to database
+      if ($uploadedfile) {
+        $moveresult  = $mediaManager->moveImage($filename, $temporary);         // Move image
+        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
+        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
+        if ($moveresult != TRUE || $imageresult !=TRUE || $thumbresult != TRUE) {
+          $result .= $moveresult .  $imageresult . $thumbresult; // Add the error to result
+        }
+      }
+    }
+
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
@@ -95,7 +99,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
 
 }
 
-// Get existing images (has to happen after page has been updated)
+// Get existing images (has to happen after page has been updated
 if (isset($article->id) && is_numeric($article->id) ) {  // If check passes
   $article_images = $articleManager->getArticleImages($article->id);
 }
@@ -103,30 +107,31 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array();
 }
 
-include 'includes/header.php';
+include '../includes/header.php';
 ?>
 <section>
-  <h2 class="display-4 mb-4"><?=$action?> article</h2>
+  <h2 class="display-4 mt-4 mb-3"><?=$action?> work</h2>
   <?= $alert ?>
 
-  <form action="article.php?id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
+  <form action="<?=ROOT?>users/<?=$action?>/<?=$seo_title?>" method="post" enctype="multipart/form-data">
 
     <div class="row">
       <div class="col-8">
 
+        <input name="id" value="<?= $article->id ?>" type="hidden">
         <div class="form-group">
           <label for="title">Title: </label>
-          <input name="title" id="title" value="<?=  htmlentities($article->title) ?>" class="form-control">
+          <input name="title" id="title" value="<?= $article->title ?>" class="form-control">
           <span class="errors"><?= $errors['title'] ?></span>
         </div>
         <div class="form-group">
           <label for="summary">Summary: </label>
-          <textarea name="summary" id="summary" class="form-control"><?=  htmlentities($article->summary, ENT_QUOTES, 'UTF-8') ?></textarea>
+          <textarea name="summary" id="summary" class="form-control"><?= $article->summary ?></textarea>
           <span class="errors"><?= $errors['summary'] ?></span>
         </div>
         <div class="form-group">
           <label for="content">Content: </label>
-          <textarea name="content" id="content" class="form-control"><?=  htmlentities($article->content, ENT_QUOTES, 'UTF-8') ?></textarea>
+          <textarea name="content" id="content" class="form-control"><?= $article->content ?></textarea>
           <span class="errors"><?= $errors['content'] ?></span>
         </div>
 
@@ -144,19 +149,7 @@ include 'includes/header.php';
           <span class="errors"><?= $errors['category_id'] ?></span>
         </div>
 
-        <div class="form-group">
-          <label for="user_id">Author: </label>
-          <select name="user_id" id="user_id" class="form-control">
-            <?php foreach ($user_list as $user) { ?>
-            <option value="<?= $user->id ?>"
-              <?php if ($article->user_id == $user->id) {
-                echo 'selected';
-              }?>
-            ><?= $user->getFullName(); ?></option>
-            <?php }?>
-          </select>
-          <span class="errors"><?= $errors['user_id'] ?></span>
-        </div>
+        <input type="hidden" name="user_id" value="<?= $article->user_id ?>">
 
         <div class="form-group">
           <label for="published" class="form-check-label">
@@ -174,13 +167,12 @@ include 'includes/header.php';
         </div>
         <div class="form-group">
           <label for="alt">Alt text:</label>
-          <input type="text" name="alt" id="alt" value="" /></label>
+          <input type="text" name="alt" id="alt" value="<?= $alt ?>" /></label>
           <span class="errors"><?= $errors['alt'] ?></span>
         </div>
 
         <?php foreach ($article_images as $image) {
-          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
-                &nbsp;    <a class="btn btn-primary" href="delete-image.php?id=' . $image->id.'&article_id=' . $article->id.'">delete image</a><br><br>';
+          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . $image->alt . '" /><br><br>';
         } ?>
 
       </div><!-- /col -->
@@ -189,4 +181,16 @@ include 'includes/header.php';
 
   </form>
 </section>
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>
+<script src="<?=ROOT?>admin/lib/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+  $(function() {
+    if ($('#content').length){
+      tinymce.init({
+        selector: '#content',
+        toolbar: 'styleselect, formatselect, bold, italic, alignleft, aligncenter, alignright, alignjustify, bullist, numlist, blockquote',
+        plugins: "code"
+      });
+    }
+  });
+</script>

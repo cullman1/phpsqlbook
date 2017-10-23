@@ -31,8 +31,8 @@ RewriteRule ^search/?$ 		           search.php 		                  [NC,L,QSA]
 RewriteRule ^users/?$  	                   users/user-list.php                   [NC,L,QSA]
 RewriteRule ^users/([A-z0-9\-]+)/?$        view-user.php?name=$1                 [NC,L,QSA]
 RewriteRule ^user-update/([A-z0-9\-]+)/?$  users/user-update.php?name=$1         [NC,L]
-RewriteRule ^users/create/                 upload.php?action=create              [NC,L]
-RewriteRule ^users/update/([A-z0-9\-]+)/?$ upload.php?action=update&seo_title=$1 [NC,L]
+RewriteRule ^users/create/                 users/user-upload.php?action=create              [NC,L]
+RewriteRule ^users/update/([A-z0-9\-]+)/?$ users/upload.php?action=update&seo_title=$1 [NC,L]
 
 # Category pages
 RewriteRule ^([A-z0-9\-]+)/?$    	   view-category.php?name=$1        [NC,L,QSA]

@@ -25,7 +25,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="404.php" />
+    <Compile Include="cms-final\admin\delete-image.php" />
     <Compile Include="cms-final\error-has-occurred.php" />
+    <Compile Include="cms-final\users\user-upload.php" />
     <Compile Include="code\chapter_03\functions.php" />
     <Compile Include="code\info.php" />
     <Compile Include="cms-final\vendor\html-purifier-4.9.3\benchmarks\ConfigSchema.php" />
