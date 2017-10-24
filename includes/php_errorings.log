@@ -1,0 +1,39 @@
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Warning:  include(../config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 3
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Warning:  include(): Failed opening '../config.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 3
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Warning:  include(includes/headercopy.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 4
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/headercopy.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 4
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 39
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 39
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:48:01 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 8
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 9
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 10
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:50:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:51:06 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 8
+[23-Oct-2017 20:51:06 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:51:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[23-Oct-2017 20:51:09 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\includes\croppie.php on line 8
+[23-Oct-2017 20:51:09 Europe/Berlin] PHP Stack trace:
+[23-Oct-2017 20:51:09 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\croppie.php:0
+[24-Oct-2017 12:04:02 Europe/Berlin] PHP Warning:  require_once(../config.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\includes\article-cropped.php on line 2
+[24-Oct-2017 12:04:02 Europe/Berlin] PHP Stack trace:
+[24-Oct-2017 12:04:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\article-cropped.php:0
+[24-Oct-2017 12:04:02 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '../config.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\includes\article-cropped.php on line 2
+[24-Oct-2017 12:04:02 Europe/Berlin] PHP Stack trace:
+[24-Oct-2017 12:04:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\includes\article-cropped.php:0

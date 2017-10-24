@@ -27,6 +27,7 @@
     <Compile Include="404.php" />
     <Compile Include="cms-final\admin\delete-image.php" />
     <Compile Include="cms-final\error-has-occurred.php" />
+    <Compile Include="cms-final\admin\includes\modal-window.php" />
     <Compile Include="cms-final\users\user-upload.php" />
     <Compile Include="code\chapter_03\functions.php" />
     <Compile Include="code\info.php" />
@@ -524,6 +525,7 @@
     <Compile Include="cms-final\vendor\html-purifier-4.9.3\tests\test_files.php" />
     <Compile Include="includes\404.php" />
     <Compile Include="code\chapter_03\increment-decrement.php" />
+    <Compile Include="cms-final\admin\article-cropped.php" />
     <Compile Include="info.php" />
     <Compile Include="cms-final\admin\article-delete.php" />
     <Compile Include="cms-final\admin\article.php" />
@@ -1212,6 +1214,7 @@
     <Content Include="assets\clip.png" />
     <Content Include="assets\comments-xl.png" />
     <Content Include="cms-final\.htaccess" />
+    <Content Include="cms-final\admin\css\croppie.css" />
     <Content Include="cms-final\admin\css\styles.css" />
     <Content Include="cms-final\admin\lib\jquery\jquery-1.12.4.min.js" />
     <Content Include="cms-final\admin\lib\photoviewer\photo-viewer.js" />

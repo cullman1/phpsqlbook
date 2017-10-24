@@ -13,7 +13,7 @@ if (empty($image_id) || empty($article_id)) {
 $result   = $mediaManager->deleteImage($image_id);
 
 if ($result === TRUE) {
-    header('Location: '. ROOT .  'admin/article.php?id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
+    header('Location: '. ROOT .  'admin/article.php?action=update&id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
 }
 include('../includes/header.php'); 
 echo '<section class="jumbotron text-center">';

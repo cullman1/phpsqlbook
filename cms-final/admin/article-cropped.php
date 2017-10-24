@@ -20,11 +20,10 @@ $category_id   = ( isset($_POST['category_id']) ? $_POST['category_id'] : ''); /
 $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
 
 // image data
-$imagetitle    = ( isset($_POST['imagetitle'] ) ? $_POST['imagetitle']  : '');
 $alt           = ( isset($_POST['alt'] )        ? $_POST['alt']         : '');
-$media         = new Media('', $imagetitle, $alt, '');              // Create Media object
+$media         = new Media('', $alt, '');              // Create Media object
 
-$errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'', 'imagetitle'=>'', 'alt'=>'');   // Form errors
+$errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'',  'alt'=>'');   // Form errors
 $alert         = '';           // Status messages
 $uploadedfile  = FALSE;        // Was image uploaded
 
@@ -33,16 +32,22 @@ $uploadedfile  = FALSE;        // Was image uploaded
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing article to edit
   $article = ($id == '' ? $article : $articleManager->getArticleById($id)); // Do you load a category
-  if (!$article) {
+   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
+    $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
+    $action= 'create';
   }
 } else {
+ if (empty($_POST)) {
+    $errors['file'] = 'File too large to upload';
+  }
   $errors['title']    = (Validate::isText($title, 1, 64)      ? '' : 'Not a valid title');
   $errors['summary']  = (Validate::isText($summary, 1, 160)   ? '' : 'Not a valid summary');
   $errors['content']  = (Validate::isText($summary, 1, 2000)  ? '' : 'Not valid content');
 
   $uploadedfile = (isset($_POST['imagebase64']));
   if ($uploadedfile) {
+    
     $filename    = Validate::sanitizeFileName($title);
 
     $data = $_POST['imagebase64'];
@@ -53,41 +58,34 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $media->filename = $filename . '.jpg';
 
     // Validate file information
-    $errors['imagetitle'] = (Validate::isText($imagetitle, 1, 256) ? '' : 'Title should be letters A-z and numbers 0-9');
     $errors['alt']   = (Validate::isText($alt, 1, 256)             ? '' : 'Title should be letters A-z and numbers 0-9');
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
 
-  if (strlen(implode($errors)) > 0) {                                            // If data not valid
+ 
+
+if (mb_strlen(implode($errors)) > 0) {                                           // If data not valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                                       // Otherwise
     if ($action === 'create') {
       $result  = $articleManager->create($article);      // Add article to database
-      if ($uploadedfile) {
-        $filename = $filename. '.jpg';
-        file_put_contents('../uploads/' . $filename, $data);
-        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
-        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
-//        $mediaManager->cropImageIM($filename, '../' . UPLOAD_DIR, 150, 150);
-        if ($imageresult !=TRUE || $thumbresult != TRUE) {
-          $result .= $imageresult . $thumbresult; // Add the error to result
-        }
-      }
     }
     if ($action === 'update') {
-      $result  = $articleManager->update($article);      // Add article to database
-      if ($uploadedfile) {
-        file_put_contents($filename. '.jpg', $data);
-        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
-        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
-//        $mediaManager->cropImageIM($filename, '../' . UPLOAD_DIR, 150, 150);
-        if ($imageresult !=TRUE || $thumbresult != TRUE) {
-          $result .= $imageresult . $thumbresult; // Add the error to result
-        }
+      $result = $articleManager->update($article);      // Add article to database
+    }
+     if ($uploadedfile && isset($result) && ($result === TRUE)) {
+       // file_put_contents($filename. '.jpg', $data);
+      $moveresult   = $mediaManager->moveImage($filename, $temporary);         // Move image
+      $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
+      $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
+      $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
+           if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
+        $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
+      }
       }
     }
 
-  }
+ 
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
     $alert = '<div class="alert alert-success">' . $action . ' article ' . $article->id .' succeeded</div>';
@@ -109,9 +107,9 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
 }
 
 include 'includes/header.php';
+
 ?>
 <link href="../lib/croppie/croppie.css" rel="stylesheet" type="text/css">
-<script src="../lib/jquery/jquery-1.12.4.min.js"></script>
 <script src="../lib/croppie/croppie.js"></script>
 <section>
   <h2 class="display-4 mb-4"><?=$action?> article</h2>
@@ -173,12 +171,13 @@ include 'includes/header.php';
         </div>
 
       </div>
-      <div class="col-8">
+      <div class="col-4">
 
         <div class="form-group">
           <label for="file">Upload file: </label>
           <input type="file" accept="image/*" id="file"  />
           <input type="hidden" id="imagebase64" name="imagebase64">
+
           <span class="errors"><?= $errors['file'] ?></span>
         </div>
         <div class="photocropper" style="display:none">
@@ -187,13 +186,8 @@ include 'includes/header.php';
 
         <a href="#" class="btn-crop btn btn-primary">Crop image</a>
 
-        <div id="crop-success" class="alert alert-success" style="display:none">image cropped</div>
+        <div id="crop-success" class="alert alert-success" style="display:none">Image cropped</div>
 
-        <div class="form-group">
-          <label for="title">Title:</label>
-          <input type="text" name="imagetitle" value="<?= $imagetitle ?>" id="title" /></label>
-          <span class="errors"><?= $errors['imagetitle'] ?></span>
-        </div>
         <div class="form-group">
           <label for="alt">Alt text:</label>
           <input type="text" name="alt" id="alt" value="<?= $alt ?>" /></label>
@@ -201,7 +195,8 @@ include 'includes/header.php';
         </div>
 
         <?php foreach ($article_images as $image) {
-          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . $image->alt . '" /><br><br>';
+          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
+                &nbsp;    <a class="btn btn-primary" href="delete-image.php?id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
         } ?>
 
       </div><!-- /col -->
