@@ -525,7 +525,6 @@
     <Compile Include="cms-final\vendor\html-purifier-4.9.3\tests\test_files.php" />
     <Compile Include="includes\404.php" />
     <Compile Include="code\chapter_03\increment-decrement.php" />
-    <Compile Include="cms-final\admin\article-cropped.php" />
     <Compile Include="info.php" />
     <Compile Include="cms-final\admin\article-delete.php" />
     <Compile Include="cms-final\admin\article.php" />

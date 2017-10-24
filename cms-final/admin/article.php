@@ -2,7 +2,6 @@
 require_once '../config.php';
 
 $userManager->redirectNonAdmin();
-
 $user_list     = $userManager->getAllUsers();
 $category_list = $categoryManager->getAllCategories();
 
@@ -22,11 +21,9 @@ $article       = new Article($id, $title, $summary, $content, $category_id, $use
 // image data
 $alt           = ( isset($_POST['alt'] )        ? trim(($_POST['alt']))         : '');
 $media         = new Media('', $alt, '');  
-
 $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'',  'alt'=>'');   // Form errors
 $alert         = '';           // Status messages
 $uploadedfile  = FALSE;        // Was image uploaded
-
 
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
@@ -54,16 +51,13 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $mediatype   = $_FILES['file']['type'];
     $temporary   = $_FILES['file']['tmp_name'];
     $filesize    = $_FILES['file']['size'];
-
-
     $data = $_POST['imagebase64'];
     list($type, $data) = explode(';', $data);
     list(, $data)      = explode(',', $data);
     $data = base64_decode($data);
+    $filename = strtolower($filename);
     $filename = str_replace(".jpg",".png", $filename);
-    $media->filename = "cropped_". $filename;
-
-
+    $filename = "cropped_". $filename;
     $filename    = Validate::sanitizeFileName($filename);
 
     // Validate file information
@@ -85,13 +79,13 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
       $result = $articleManager->update($article);      // Add article to database
     }
     if ($uploadedfile && isset($result) && ($result === TRUE)) {
-       file_put_contents('../uploads/'.$media->filename, $data);
-       $moveresult   = $mediaManager->moveImage($media->filename, $data);         // Move image
+       file_put_contents('../uploads/'.$filename, $data);
+       $moveresult   = $mediaManager->moveImage($filename, $data);         // Move image
+        $media->filename = $filename;
       $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
- 
-      $resizeresult = $mediaManager->resizeImage($media->filename, 600 );   // Resize image
-      $thumbresult  = $mediaManager->resizeImage($media->filename, 150, TRUE); // Create thumbnail
-      
+      $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
+      $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
+     
       if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
         $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
       }
@@ -184,8 +178,8 @@ include 'includes/modal-window.php';
         </div>
 
       </div>
-      <div class="col-4">
 
+      <div class="col-4">
         <div class="form-group">
           <label for="file">Upload file: </label>
                   <input type="file" name="file" accept="image/*" id="file" value="Choose file" />  
@@ -193,8 +187,7 @@ include 'includes/modal-window.php';
           <span class="errors"><?= $errors['file'] ?></span>
           <div id="crop-success" class="alert alert-success" style="display:none">Image cropped</div>       
           <img id="crop-image" width=100 style="display:none;" src="" />
-</div>
-
+        </div>
 
         <div class="form-group">
           <label for="alt">Alt text:</label>
@@ -242,18 +235,14 @@ include 'includes/modal-window.php';
     $('.btn-crop').on('click', function (e) {
       e.preventDefault();
       $uploadCrop.croppie('result', {
-        enforceBoundary: true, 
         enableExif: false,
-        type: 'base64',
+        type: 'canvas',
         size:  { width: 600, height: 360 }
       }).then(function (croppedimage) {
-      
         $('#imagebase64').val(croppedimage);
-      
       }).then(function() {
-         $('#imageModal').modal('toggle');
+        $('#imageModal').modal('toggle');
         $('#crop-success').show();
-          
       });
     });
 
