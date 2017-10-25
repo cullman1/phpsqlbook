@@ -25,12 +25,15 @@ $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=
 $alert         = '';           // Status messages
 $uploadedfile  = FALSE;        // Was image uploaded
 
+
+
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing article to edit
   $article = ($id == '' ? $article : $articleManager->getArticleById($id)); // Do you load a category
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
+    //Correct error that if we go back to page it's still in update mode
     $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
     $action= 'create';
   }
@@ -110,7 +113,7 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
 }
 
 include 'includes/header.php';
-include 'includes/modal-window.php';
+include '../includes/modal-window.php';
 ?>
 <link href="../lib/croppie/croppie.css" rel="stylesheet" type="text/css">
 <script src="../lib/croppie/croppie.js"></script>
@@ -248,9 +251,8 @@ include 'includes/modal-window.php';
   });
 
   function resetFormElement() {
+  //This empties the file control if the image isn't cropped and the modal closed.
    $('#file').wrap('<form>').closest('form').get(0).reset();
    $('#file').unwrap();
-   $('#file').stopPropagation();
-   $('#file').preventDefault();
   }
 </script>

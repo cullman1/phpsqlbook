@@ -1,7 +1,6 @@
 <?php
 require_once '../config.php';
 
-$userManager->redirectNonAdmin();
 $image_id = (filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ? $_GET['id'] : '');
 $article_id = (filter_input(INPUT_GET, 'article_id', FILTER_VALIDATE_INT) ? $_GET['article_id'] : '');
 

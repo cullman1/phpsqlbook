@@ -1,18 +1,20 @@
 <?php
-
 require_once 'config.php';
 
 if (isset($_GET['title']) ) {                                        // If title exists
   $title = $_GET['title'];                                           // Get title
   $article = $articleManager->getArticleBySeoTitle($title);          // Get article
+  if (empty($article)) {
+    header( "Location: page-not-found.php" );
+  } else {
   $article_images = $articleManager->getArticleImages($article->id);
   $comments  = $articleManager->getCommentsAndRepliesByArticleId($article->id);
   $comments  = ( ($comments) ? $articleManager->sortComments($comments) : array() );
-
+  }
 }
 if (empty($article)) {
     header( "Location: page-not-found.php" );
-}
+} else {
 
 $info  = (isset($_GET['info']) ? 'info' : '');                 // Is it an info page
 
@@ -24,18 +26,14 @@ $page_title      .= $article->title . ' ' . $article->category . ' by ' . $artic
 $meta_description = $article->summary;
 include 'includes/header.php';
 ?>
-
 <section>
-
   <h1 class="display-4"><?=  htmlentities($article->title, ENT_HTML401, 'UTF-8') ?></h1>
-
   <div class="credit <?=$info?>">
     <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= htmlentities( $article->author, ENT_QUOTES, 'UTF-8') ?></a> on <i><?= htmlentities( $article->created, ENT_QUOTES, 'UTF-8') ?></i>.
   </div>
 
   <div class="row">
     <div id="art_image" class="col-8">
-
     <?php if (sizeof($article_images) < 2) { ?>
       <img src="../uploads/<?=  htmlentities( $article_images[0]->filename , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $article_images[0]->alt , ENT_QUOTES, 'UTF-8')?>"/>
     <?php } else { ?>
@@ -50,9 +48,7 @@ include 'includes/header.php';
       </div>
     <?php  } ?>
     </div>
-
     <div class="col-4">
-
       <div class="like-comment-count <?=$info?>">
         <?php
           if ($userManager->isLoggedIn()) {
@@ -67,17 +63,12 @@ include 'includes/header.php';
             echo '<i class="fa fa-heart-o"></i> ';
           }
         ?>
-
         Likes <?= htmlentities($article->like_count , ENT_QUOTES, 'UTF-8') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <i class="fa fa-comment-o"></i> Comments: <?=  htmlentities( $article->comment_count , ENT_QUOTES, 'UTF-8') ?>
-
       </div>
-  
       <?= $article->content ?>
-
     </div>
-
   </section>
   <section class="comments <?=$info?>">
     <div class="row">
@@ -126,9 +117,7 @@ include 'includes/header.php';
 
             $('#thumbnails a:first-child').addClass("active");
 
-
-$('img[src="../uploads/"]').parent().hide();
-
+            $('img[src="../uploads/"]').parent().hide();
           </script>
         <?php } else { ?>
           <a href="<?= ROOT ?>users/login.php">Log in to add your own comment.</a>
@@ -141,4 +130,5 @@ $('img[src="../uploads/"]').parent().hide();
   <script src="<?=ROOT?>lib/photoviewer/photo-viewer.js"></script>
   <script src="<?=ROOT?>lib/jquery/jquery-1.12.4.min.js"></script>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php';
+} ?>

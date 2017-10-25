@@ -7,9 +7,9 @@ if (isset($_GET['name'])) {  // If check passes
     $my_profile = $userManager->isCurrentUser($_GET['name']);
 }
 
-if (empty($user)) {
-    header( "Location: page-not-found.php" );
-}
+if (empty($user) ) {
+    header( "Location: user-upload.php?action=create" );
+} else {
 
 $page_title      .= $user->getFullName();
 $meta_description = 'A selection of work by ' . $user->getFullName();
@@ -42,4 +42,5 @@ include 'includes/header.php'; ?>
     </div>
   </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php'; 
+} ?>

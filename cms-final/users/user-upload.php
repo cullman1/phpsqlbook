@@ -3,7 +3,6 @@ require_once '../config.php';
 
 // is logged in otherwise redirect
 $userManager->redirectNonAdmin();
-
 $category_list = $categoryManager->getAllCategories();
 
 // Get data
@@ -16,14 +15,13 @@ $title         = ( isset($_POST['title'])       ? $_POST['title']       : ''); /
 $summary       = ( isset($_POST['summary'])     ? $_POST['summary']     : ''); // Get values
 $content       = ( isset($_POST['content'])     ? $_POST['content']     : ''); // Get values
 $published     = ( isset($_POST['published'])   ? $_POST['published']   : ''); // Get values
-$user_id       = ( isset($_POST['user_id'])     ? $_POST['user_id']     : ''); // Get values
+$user_id       = ( isset( $_SESSION['user_id'] )     ?  $_SESSION['user_id']      : ''); // Get values
 $category_id   = ( isset($_POST['category_id']) ? $_POST['category_id'] : ''); // Get values
 $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
 
 // image data
 $alt           = ( isset($_POST['alt'] )        ? $_POST['alt']         : '');
 $media         = new Media('',  $alt, '');              // Create Media object
-
 $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'',  'alt'=>'');   // Form errors
 $alert         = '';           // Status messages
 $uploadedfile  = FALSE;        // Was image uploaded
@@ -35,57 +33,65 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   $article = ($seo_title == '' ? $article : $articleManager->getArticleBySeoTitle($seo_title)); // Do you load a category
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
+    //Correct error that if we go back to page it's still in update mode
+    $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
+    $action= 'create';
   }
 } else {
+ if (empty($_POST)) {
+    $errors['file'] = 'File too large to upload';
+  }
   $errors['title']    = (Validate::isText($title, 1, 64)      ? '' : 'Not a valid title');
   $errors['summary']  = (Validate::isText($summary, 1, 160)   ? '' : 'Not a valid summary');
   $errors['content']  = (Validate::isText($summary, 1, 2000)  ? '' : 'Not valid content');
 
   $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
-  if ($uploadedfile) {
+  $croppedfile = (isset($_POST['imagebase64'])  ? $_POST['imagebase64'] : '');
+
+  if (($croppedfile) && ($uploadedfile))  {
     $filename    = $_FILES['file']['name'];
     $mediatype   = $_FILES['file']['type'];
     $temporary   = $_FILES['file']['tmp_name'];
     $filesize    = $_FILES['file']['size'];
-
+   $data = $_POST['imagebase64'];
+    list($type, $data) = explode(';', $data);
+    list(, $data)      = explode(',', $data);
+    $data = base64_decode($data);
+    $filename = strtolower($filename);
+    $filename = str_replace(".jpg",".png", $filename);
+    $filename = "cropped_". $filename;
     $filename    = Validate::sanitizeFileName($filename);
-    $media->filename = $filename;
 
     // Validate file information
     $errors['alt']   = (Validate::isText($alt, 1, 256)             ? '' : 'Title should be letters A-z and numbers 0-9');
     $errors['file'] .= (Validate::isAllowedFilename($filename)                ? '' : 'Not a valid filename<br>');
     $errors['file'] .= (Validate::isAllowedExtension($filename)               ? '' : 'Not a valid file extension<br>');
-    $errors['file'] .= (Validate::isAllowedMediaType($mediatype)              ? '' : 'Not a valid media type<br>');
-    $errors['file'] .= (Validate::isWithinFileSize($filesize, 1000000)   ? '' : 'File too large<br>');
+    $errors['file'] .= (Validate::isAllowedMediaType($temporary)              ? '' : 'Not a valid media type<br>');
+    $errors['file'] .= (Validate::isWithinFileSize($filesize, 20971520)   ? '' : 'File too large<br>');
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
 
-  if (strlen(implode($errors)) > 0) {                                            // If data not valid
+ if (mb_strlen(implode($errors)) > 0) {                                         // If data not valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                                       // Otherwise
-    if ($action === 'create') {
+     if ($action === 'create') {
       $result  = $articleManager->create($article);      // Add article to database
-      if ($uploadedfile) {
-        $moveresult  = $mediaManager->moveImage($filename, $temporary);         // Move image
-        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
-        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
-        if ($moveresult != TRUE || $imageresult !=TRUE || $thumbresult != TRUE) {
-          $result .= $moveresult .  $imageresult . $thumbresult; // Add the error to result
-        }
-      }
     }
     if ($action === 'update') {
-      $result  = $articleManager->update($article);      // Add article to database
-      if ($uploadedfile) {
-        $moveresult  = $mediaManager->moveImage($filename, $temporary);         // Move image
-        $imageresult = $mediaManager->saveImage($article->id, $media);       // Add image to database
-        $thumbresult = $mediaManager->createThumbnailGD($filename, 150, 150); // Create thumbnail
-        if ($moveresult != TRUE || $imageresult !=TRUE || $thumbresult != TRUE) {
-          $result .= $moveresult .  $imageresult . $thumbresult; // Add the error to result
-        }
+      $result = $articleManager->update($article);      // Add article to database
+    }
+    if ((($croppedfile) && ($uploadedfile)) && isset($result) && ($result === TRUE)) {
+       file_put_contents('../uploads/'.$filename, $data);
+       $moveresult   = $mediaManager->moveImage($filename, $data);         // Move image
+        $media->filename = $filename;
+      $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
+      $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
+      $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
+     
+      if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
+        $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
       }
     }
-
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
@@ -96,7 +102,6 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   if (isset($result) && ($result !== TRUE) ) {                 // Tried to create and it failed
     $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
-
 }
 
 // Get existing images (has to happen after page has been updated
@@ -108,12 +113,15 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
 }
 
 include '../includes/header.php';
+include '../includes/modal-window.php';
 ?>
+<link href="<?= ROOT ?>lib/croppie/croppie.css" rel="stylesheet" type="text/css">
+<script src="<?= ROOT ?>lib/croppie/croppie.js"></script>
 <section>
   <h2 class="display-4 mt-4 mb-3"><?=$action?> work</h2>
   <?= $alert ?>
 
-  <form action="<?=ROOT?>users/<?=$action?>/<?=$seo_title?>" method="post" enctype="multipart/form-data">
+  <form  method="POST" enctype="multipart/form-data" action="<?= ROOT ?>users/user-upload.php?id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" >
 
     <div class="row">
       <div class="col-8">
@@ -163,16 +171,18 @@ include '../includes/header.php';
         <div class="form-group">
           <label for="file">Upload file: </label>
           <input type="file" name="file" accept="image/*" id="file"  />
+                      <input type="hidden" id="imagebase64" name="imagebase64">    
           <span class="errors"><?= $errors['file'] ?></span>
         </div>
         <div class="form-group">
           <label for="alt">Alt text:</label>
-          <input type="text" name="alt" id="alt" value="<?= $alt ?>" /></label>
+          <input type="text" name="alt" id="alt" value="" /></label>
           <span class="errors"><?= $errors['alt'] ?></span>
         </div>
 
         <?php foreach ($article_images as $image) {
-          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . $image->alt . '" /><br><br>';
+          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
+                &nbsp;    <a class="btn btn-primary" href="' . ROOT . 'admin/delete-image.php?id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
         } ?>
 
       </div><!-- /col -->
@@ -182,6 +192,60 @@ include '../includes/header.php';
   </form>
 </section>
 <?php include '../includes/footer.php'; ?>
+
+
+<script type="text/javascript">
+  $(function() {
+    var $uploadCrop;
+
+    function readFile(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $uploadCrop.croppie('bind', { url: e.target.result } );
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $uploadCrop = $('#picture').croppie({
+      viewport: { width: 600, height: 360  },
+      boundary: { width: 700, height: 400 }
+    });
+
+    $('#file').on('change', function () {
+      readFile(this);
+      $('#imageModal').modal('show');
+      $('.photocropper').show();
+    });
+
+     $('#btn-close').on('click', function (e) {
+       resetFormElement();
+     });
+
+    $('.btn-crop').on('click', function (e) {
+      e.preventDefault();
+      $uploadCrop.croppie('result', {
+        enableExif: false,
+        enforceBoundary: true,
+        type: 'canvas',
+        size:  { width: 600, height: 360 }
+      }).then(function (croppedimage) {
+        $('#imagebase64').val(croppedimage);
+      }).then(function() {
+        $('#imageModal').modal('toggle');
+        $('#crop-success').show();
+      });
+    });
+
+  });
+
+  function resetFormElement() {
+     //This empties the file control if the image isn't cropped and the modal closed.
+   $('#file').wrap('<form>').closest('form').get(0).reset();
+   $('#file').unwrap();
+  }
+</script>
 <script src="<?=ROOT?>admin/lib/tinymce/js/tinymce/tinymce.min.js"></script>
 <script>
   $(function() {
