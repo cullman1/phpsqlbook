@@ -16,7 +16,7 @@ class MediaManager {
     return TRUE;
   }
 
-    public function deleteImage($media_id) {
+  public function deleteImage($media_id) {
     $pdo = $this->pdo;
     $pdo->beginTransaction();
     try {
@@ -26,6 +26,7 @@ class MediaManager {
       $statement->execute();  
       $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Media');     // Object
       $image = $statement->fetch();
+      $count = $statement->rowCount();                            // Have we introduced this? This is useful
 
       $sql = 'DELETE FROM media WHERE id = :id';
       $statement = $pdo->prepare($sql);                                 // Prepare
@@ -39,16 +40,17 @@ class MediaManager {
 
       $pdo->commit();
    
-
       if ($image) {
         if(file_exists('../uploads/'. $image->filename)) {
-
           unlink('../uploads/'. $image->filename); // deletes file
           unlink('../uploads/thumb/'. $image->filename);
-
         }        
       } 
-      $result = TRUE;
+      if ($count == 0) {
+        $result = FALSE;
+      } else {
+        $result = TRUE;
+      }
     } catch (PDOException $error) {                                  // Otherwise
       $pdo->rollBack();
       $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this

@@ -43,10 +43,9 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   $errors['content']  = (Validate::isAllowedHTML($content, 1, 2000)  ? '' : 'Not valid content');
 
   $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
-   $croppedfile = (isset($_POST['imagebase64']));
+   $croppedfile = (isset($_POST['imagebase64'])  ? $_POST['imagebase64'] : '');
 
-  if ($croppedfile) {
-    
+  if (($croppedfile) && ($uploadedfile))  {
     $filename    = $_FILES['file']['name'];
     $mediatype   = $_FILES['file']['type'];
     $temporary   = $_FILES['file']['tmp_name'];
@@ -61,7 +60,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $filename    = Validate::sanitizeFileName($filename);
 
     // Validate file information
-    $errors['alt']   = (Validate::isName($alt, 1, 256)             ? '' : 'Al text should be letters A-z, numbers 0-9 and spaces');
+    $errors['alt']   = (Validate::isName($alt, 1, 256)             ? '' : 'Alt text should be letters A-z, numbers 0-9 and spaces');
     $errors['file'] .= (Validate::isAllowedFilename($filename)                ? '' : 'Not a valid filename<br>');
     $errors['file'] .= (Validate::isAllowedExtension($filename)               ? '' : 'Not a valid file extension<br>');
     $errors['file'] .= (Validate::isAllowedMediaType($temporary)              ? '' : 'Not a valid media type<br>');
@@ -78,7 +77,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     if ($action === 'update') {
       $result = $articleManager->update($article);      // Add article to database
     }
-    if ($uploadedfile && isset($result) && ($result === TRUE)) {
+    if ((($croppedfile) && ($uploadedfile)) && isset($result) && ($result === TRUE)) {
        file_put_contents('../uploads/'.$filename, $data);
        $moveresult   = $mediaManager->moveImage($filename, $data);         // Move image
         $media->filename = $filename;
@@ -92,8 +91,6 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     }
   }
 
-
-
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
     $alert = '<div class="alert alert-success">' . $action . ' article ' . $article->id .' succeeded</div>';
     $action = 'update';
@@ -102,7 +99,6 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   if (isset($result) && ($result !== TRUE) ) {                 // Tried to create and it failed
     $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
-
 }
 
 // Get existing images (has to happen after page has been updated)
@@ -123,10 +119,8 @@ include 'includes/modal-window.php';
   <?= $alert ?>
 
   <form action="article.php?id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
-
     <div class="row">
       <div class="col-8">
-
         <div class="form-group">
           <label for="title">Title: </label>
           <input name="title" id="title" value="<?=  htmlentities($article->title) ?>" class="form-control">
@@ -192,7 +186,7 @@ include 'includes/modal-window.php';
         <div class="form-group">
           <label for="alt">Alt text:</label>
           <input type="text" name="alt" id="alt" value="" /></label>
-          <span class="errors"><?= $errors['alt'] ?></span>
+          <br/><span class="errors"><?= $errors['alt'] ?></span>
         </div>
 
         <?php foreach ($article_images as $image) {
@@ -232,10 +226,15 @@ include 'includes/modal-window.php';
       $('.photocropper').show();
     });
 
+     $('#btn-close').on('click', function (e) {
+       resetFormElement();
+     });
+
     $('.btn-crop').on('click', function (e) {
       e.preventDefault();
       $uploadCrop.croppie('result', {
         enableExif: false,
+        enforceBoundary: true,
         type: 'canvas',
         size:  { width: 600, height: 360 }
       }).then(function (croppedimage) {
@@ -247,4 +246,11 @@ include 'includes/modal-window.php';
     });
 
   });
+
+  function resetFormElement() {
+   $('#file').wrap('<form>').closest('form').get(0).reset();
+   $('#file').unwrap();
+   $('#file').stopPropagation();
+   $('#file').preventDefault();
+  }
 </script>
