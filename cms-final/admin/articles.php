@@ -9,7 +9,7 @@
 ?>
 <section>
 
-  <a class="btn btn-primary" href="article.php?action=create">create article</a>
+  <a class="btn btn-primary" href="article.php?include=croppie&action=create">create article</a>
 
 
   <table class="table">
@@ -32,7 +32,7 @@
         <td><?= htmlentities( $article->category, ENT_NOQUOTES, 'UTF-8'); ?></td>
         <td><?= ($article->published ? 'Yes' : 'No') ?></td>
         <td><?= htmlentities($article->author, ENT_NOQUOTES, 'UTF-8'); ?></td>
-        <td><a class="btn btn-primary" href="article.php?id=<?= $article->id?>&action=update">edit</a></td>
+        <td><a class="btn btn-primary" href="article.php?include=croppie&id=<?= $article->id?>&action=update">edit</a></td>
         <td><a class="btn btn-danger delete" href="article-delete.php?id=<?= $article->id?>">delete</a></td>
       </tr>
       <?php  } ?>

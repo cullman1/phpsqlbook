@@ -13,7 +13,7 @@ if (isset($_GET['doc'])) {
 
     if (file_exists('test-schema.html') && !isset($_GET['purge'])) {
         echo file_get_contents('test-schema.html');
-        exit;
+        exit();
     }
 
     $style = 'plain';
@@ -35,7 +35,7 @@ if (isset($_GET['doc'])) {
     file_put_contents('test-schema.html', $html);
     echo $html;
 
-    exit;
+    exit();
 }
 
 ?><!DOCTYPE html

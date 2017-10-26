@@ -11,6 +11,7 @@ $reply_to_id = filter_var($reply_to_id, FILTER_SANITIZE_URL);
 $parent_id   = filter_var($parent_id,   FILTER_SANITIZE_URL);
 if (empty($article_id) || empty($reply_to_id) || empty($parent_id) ) {
     header( "Location: ../error-has-occurred.php" );
+    exit();
 }
 $comment = trim($comment);
 if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {
@@ -22,6 +23,7 @@ if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {
 }
 if ($result === TRUE) {
     header('Location: '. ROOT .  $articleManager->getArticleUrl($article_id) );
+    exit();
 }
 include('../includes/header.php'); 
 echo '<section class="jumbotron text-center">';

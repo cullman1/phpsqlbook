@@ -221,11 +221,11 @@ class UserManager
   public function redirectNonAdmin() {
     if (!isset($_SESSION['role'])) {
       header('Location:'. ROOT. 'users/login.php');
-      exit;
+      exit();
     } else {
       if ($_SESSION['role'] != 2) {
         header('Location:'. ROOT. 'page-not-found.php');
-        exit;
+        exit();
       }
     }
   }

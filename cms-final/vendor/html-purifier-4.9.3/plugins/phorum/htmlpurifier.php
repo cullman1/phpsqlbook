@@ -223,7 +223,7 @@ function phorum_htmlpurifier_common()
         echo '<strong>Error:</strong> No migration path specified for HTML Purifier, please check
         <tt>modes/htmlpurifier/migrate.bbcode.php</tt> for instructions on
         how to migrate from your previous markup language.';
-        exit;
+        exit();
     }
 
     if (!function_exists('phorum_htmlpurifier_migrate')) {

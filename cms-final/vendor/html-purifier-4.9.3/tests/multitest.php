@@ -33,7 +33,7 @@ require_once 'common.php';
 
 if (!SimpleReporter::inCli()) {
     echo 'Multitest only available from command line';
-    exit;
+    exit();
 }
 
 $AC = array(); // parameters

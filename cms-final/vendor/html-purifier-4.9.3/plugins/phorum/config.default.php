@@ -1,6 +1,6 @@
 <?php
 
-if(!defined("PHORUM")) exit;
+if(!defined("PHORUM")) exit();
 
 // default HTML Purifier configuration settings
 $config->set('HTML.Allowed',

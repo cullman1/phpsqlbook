@@ -5,7 +5,7 @@ ini_set('xdebug.show_mem_delta', true);
 
 if (file_exists('Trace.xt')) {
     echo "Previous trace Trace.xt must be removed before this script can be run.";
-    exit;
+    exit();
 }
 
 xdebug_start_trace(dirname(__FILE__) . '/Trace');

@@ -113,15 +113,13 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
 }
 
 include 'includes/header.php';
-include '../includes/modal-window.php';
 ?>
-<link href="../lib/croppie/croppie.css" rel="stylesheet" type="text/css">
-<script src="../lib/croppie/croppie.js"></script>
+
 <section>
   <h2 class="display-4 mb-4"><?=$action?> article</h2>
   <?= $alert ?>
 
-  <form action="article.php?id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
+  <form action="article.php?include=croppie&id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col-8">
         <div class="form-group">
@@ -191,10 +189,9 @@ include '../includes/modal-window.php';
           <input type="text" name="alt" id="alt" value="" /></label>
           <br/><span class="errors"><?= $errors['alt'] ?></span>
         </div>
-
         <?php foreach ($article_images as $image) {
           echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
-                &nbsp;    <a class="btn btn-primary" href="delete-image.php?id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
+                &nbsp;    <a class="btn btn-primary" href="delete-image.php?page=article&id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
         } ?>
 
       </div><!-- /col -->
@@ -204,55 +201,3 @@ include '../includes/modal-window.php';
   </form>
 </section>
 <?php include 'includes/footer.php'; ?>
-<script type="text/javascript">
-  $(function() {
-    var $uploadCrop;
-
-    function readFile(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $uploadCrop.croppie('bind', { url: e.target.result } );
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-
-    $uploadCrop = $('#picture').croppie({
-      viewport: { width: 600, height: 360  },
-      boundary: { width: 700, height: 400 }
-    });
-
-    $('#file').on('change', function () {
-      readFile(this);
-      $('#imageModal').modal('show');
-      $('.photocropper').show();
-    });
-
-     $('#btn-close').on('click', function (e) {
-       resetFormElement();
-     });
-
-    $('.btn-crop').on('click', function (e) {
-      e.preventDefault();
-      $uploadCrop.croppie('result', {
-        enableExif: false,
-        enforceBoundary: true,
-        type: 'canvas',
-        size:  { width: 600, height: 360 }
-      }).then(function (croppedimage) {
-        $('#imagebase64').val(croppedimage);
-      }).then(function() {
-        $('#imageModal').modal('toggle');
-        $('#crop-success').show();
-      });
-    });
-
-  });
-
-  function resetFormElement() {
-  //This empties the file control if the image isn't cropped and the modal closed.
-   $('#file').wrap('<form>').closest('form').get(0).reset();
-   $('#file').unwrap();
-  }
-</script>

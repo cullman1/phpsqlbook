@@ -9,7 +9,7 @@
  * by creating a 'config.php' file.
  */
 
-if(!defined("PHORUM_ADMIN")) exit;
+if(!defined("PHORUM_ADMIN")) exit();
 
 // error reporting is good!
 error_reporting(E_ALL ^ E_NOTICE);

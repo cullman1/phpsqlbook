@@ -80,7 +80,7 @@ Allowed options:
     --disable-phpt
     --verbose (-v)
 <?php
-    exit;
+    exit();
 }
 
 // Disable PHPT tests if they're not enabled
@@ -190,7 +190,7 @@ $test_file_lookup = array_flip($test_files);
 if ($AC['file']) {
     if (!isset($test_file_lookup[$AC['file']])) {
         echo "Invalid file passed\n";
-        exit;
+        exit();
     }
 }
 

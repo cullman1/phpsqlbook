@@ -5,19 +5,19 @@ if (isset($_GET['title']) ) {                                        // If title
   $title = $_GET['title'];                                           // Get title
   $article = $articleManager->getArticleBySeoTitle($title);          // Get article
   if (empty($article)) {
-    header( "Location: page-not-found.php" );
-  } else {
+    header( "Location: http://".$_SERVER['HTTP_HOST']. ROOT.'page-not-found.php' );
+    exit();
+  } 
   $article_images = $articleManager->getArticleImages($article->id);
   $comments  = $articleManager->getCommentsAndRepliesByArticleId($article->id);
   $comments  = ( ($comments) ? $articleManager->sortComments($comments) : array() );
-  }
 }
 if (empty($article)) {
     header( "Location: page-not-found.php" );
-} else {
+    exit();
+} 
 
 $info  = (isset($_GET['info']) ? 'info' : '');                 // Is it an info page
-
 if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array(new Media());
 }
@@ -126,9 +126,7 @@ include 'includes/header.php';
       </div>
     </div>
   </section>
-
   <script src="<?=ROOT?>lib/photoviewer/photo-viewer.js"></script>
   <script src="<?=ROOT?>lib/jquery/jquery-1.12.4.min.js"></script>
 
-<?php include 'includes/footer.php';
-} ?>
+<?php include 'includes/footer.php'; ?>

@@ -2,7 +2,7 @@
 
 if (!defined('HTMLPurifierTest')) {
     echo "Invalid entry point\n";
-    exit;
+    exit();
 }
 
 // setup our own autoload, checking for HTMLPurifier library if spl_autoload_register

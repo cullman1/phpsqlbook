@@ -11,6 +11,7 @@ require_once '../config.php';
 
   if (empty($user_list)) {
     header( "Location: page-not-found.php" );
+    exit();
   }
 
   $page_title      .= 'Users';
@@ -24,7 +25,7 @@ require_once '../config.php';
       <p class="lead text-muted">A list of all users</p>
     </div>
   </section>
-
+  <section>
   <div class="container">
     <div class="row">
     <?php foreach ($user_list as $user) { ?>
@@ -41,8 +42,8 @@ require_once '../config.php';
     <?php } ?>
    </div>
   </div>
-
-  <?php
-    echo Utilities::createPagination($count, $show, $from);
-    include '../includes/footer.php';
+  
+  <?php echo Utilities::createPagination($count, $show, $from); ?>
+  </section>
+  <?php  include '../includes/footer.php';
   ?>

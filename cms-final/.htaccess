@@ -30,8 +30,8 @@ RewriteRule ^search/?$ 		           search.php 		                  [NC,L,QSA]
 # Member profiles
 RewriteRule ^users/?$  	                   users/user-list.php                   [NC,L,QSA]
 RewriteRule ^users/([A-z0-9\-]+)/?$        view-user.php?name=$1                 [NC,L,QSA]
-RewriteRule ^users/create/                 users/user-upload.php?action=create              [NC,L]
-RewriteRule ^users/update/([A-z0-9\-]+)/?$ users/user-upload.php?action=update&seo_title=$1 [NC,L]
+RewriteRule ^users/create/                 users/user-upload.php?include=croppie&action=create              [NC,L]
+RewriteRule ^users/update/([A-z0-9\-]+)/?$ users/user-upload.php?include=croppie&action=update&seo_title=$1 [NC,L]
 
 # Category pages
 RewriteRule ^([A-z0-9\-]+)/?$    	   view-category.php?name=$1        [NC,L,QSA]

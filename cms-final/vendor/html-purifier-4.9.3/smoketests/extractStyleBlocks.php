@@ -14,7 +14,7 @@ Error: <a href="http://csstidy.sourceforge.net/">CSSTidy</a> library not
 found, please install and configure <code>test-settings.php</code>
 accordingly.
 <?php
-    exit;
+    exit();
 }
 
 require_once $csstidy_location . 'class.csstidy.php';

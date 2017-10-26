@@ -13,4 +13,4 @@ if ((mb_strpos($_SERVER['REQUEST_URI'], '/unlike')) && (isset($_SESSION['user_id
 }
 
 header('Location: '. ROOT . $articleManager->getArticleUrl($article_id)); 
-?>?>
+?>

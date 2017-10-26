@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if ($user) {
         $userManager->createUserSession($user);
         header('Location: ' . ROOT . 'index.php');
+        exit();
       } else {
         $alert = '<div class="alert alert-danger">Login failed</div>';
     }

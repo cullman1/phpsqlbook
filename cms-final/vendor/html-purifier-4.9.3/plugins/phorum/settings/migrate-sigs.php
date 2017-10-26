@@ -7,7 +7,7 @@ function phorum_htmlpurifier_migrate_sigs_check()
     if (!empty($_POST['migrate-sigs'])) {
         if (!isset($_POST['confirmation']) || strtolower($_POST['confirmation']) !== 'yes') {
             echo 'Invalid confirmation code.';
-            exit;
+            exit();
         }
         $PHORUM['mod_htmlpurifier']['migrate-sigs'] = true;
         phorum_db_update_settings(array("mod_htmlpurifier"=>$PHORUM["mod_htmlpurifier"]));
@@ -72,7 +72,7 @@ function phorum_htmlpurifier_migrate_sigs($offset)
     $extra = 'admin.php?module=modsettings&mod=htmlpurifier&migrate-sigs=' . $offset;
     // relies on output buffering to work
     header("Location: http://$host$uri/$extra");
-    exit;
+    exit();
 
 }
 

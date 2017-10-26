@@ -15,7 +15,7 @@
  * explicitly says, "No, I do not need to migrate."
  */
 
-if(!defined("PHORUM")) exit;
+if(!defined("PHORUM")) exit();
 
 require_once(dirname(__FILE__) . "/../bbcode/bbcode.php");
 

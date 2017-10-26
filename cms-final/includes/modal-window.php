@@ -1,3 +1,58 @@
+<link href="<?= ROOT ?>lib/croppie/croppie.css" rel="stylesheet" type="text/css">
+<script src="<?= ROOT ?>lib/croppie/croppie.js"></script>
+<script type="text/javascript">
+  $(function() {
+    var $uploadCrop;
+
+    function readFile(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $uploadCrop.croppie('bind', { url: e.target.result } );
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $uploadCrop = $('#picture').croppie({
+      viewport: { width: 600, height: 360  },
+      boundary: { width: 700, height: 400 }
+    });
+
+    $('#file').on('change', function () {
+      readFile(this);
+            $('.photocropper').show();
+      $('#imageModal').modal('show');
+
+    });
+
+     $('#btn-close').on('click', function (e) {
+       resetFormElement();
+     });
+
+    $('.btn-crop').on('click', function (e) {
+      e.preventDefault();
+      $uploadCrop.croppie('result', {
+        enableExif: false,
+        enforceBoundary: true,
+        type: 'canvas',
+        size:  { width: 600, height: 360 }
+      }).then(function (croppedimage) {
+        $('#imagebase64').val(croppedimage);
+      }).then(function() {
+        $('#imageModal').modal('toggle');
+        $('#crop-success').show();
+      });
+    });
+
+  });
+
+  function resetFormElement() {
+     //This empties the file control if the image isn't cropped and the modal closed.
+   $('#file').wrap('<form>').closest('form').get(0).reset();
+   $('#file').unwrap();
+  }
+</script>
 <div class="modal fade" tabindex="-1" role="dialog" id="imageModal">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

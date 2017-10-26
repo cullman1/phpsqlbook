@@ -89,7 +89,7 @@ plaintext mode). </p>
     $id = isset($_GET['id']) ? (int) $_GET['id'] : false;
     if (!$id) {
         display_error('Must specify ID.');
-        exit;
+        exit();
     }
     $html = cache_get($id); // filesystem or database
     if ($html === false) {

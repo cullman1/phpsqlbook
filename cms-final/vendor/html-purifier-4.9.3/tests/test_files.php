@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('HTMLPurifierTest')) exit;
+if (!defined('HTMLPurifierTest')) exit();
 
 // These arrays are defined by this file and can be relied upon.
 $test_files = array();
