@@ -8,7 +8,7 @@ $category_list = $categoryManager->getAllCategories();
 // Get data
 $seo_title   = (isset($_GET['seo_title'])  ? $_GET['seo_title'] : ''); // Get values
 $action      = (isset($_GET['action']) ? $_GET['action'] : 'create'); // Get values
-
+$article_id            = ( isset($_GET['article_id'])          ? $_GET['article_id']          : ''); // Get values
 // article data
 $id            = ( isset($_POST['id'])          ? $_POST['id']          : ''); // Get values
 $title         = ( isset($_POST['title'])       ? $_POST['title']       : ''); // Get values
@@ -30,7 +30,11 @@ $uploadedfile  = FALSE;        // Was image uploaded
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing category to edit
-  $article = ($seo_title == '' ? $article : $articleManager->getArticleBySeoTitle($seo_title)); // Do you load a category
+
+   $article = ($seo_title == '' ? $article : $articleManager->getArticleBySeoTitle($seo_title)); // Do you load a category
+   if (empty($article->id)) {
+      $article = ($article_id == '' ? $article : $articleManager->getArticleById($article_id)); // Do you load a category
+   }
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
     //Correct error that if we go back to page it's still in update mode
@@ -119,7 +123,7 @@ include '../includes/header.php';
   <h2 class="display-4 mt-4 mb-3"><?=$action?> work</h2>
   <?= $alert ?>
 
-  <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>users/user-upload.php?include=croppie&id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" >
+  <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>users/user-upload.php?include=croppie&article_id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" >
 
     <div class="row">
       <div class="col-8">

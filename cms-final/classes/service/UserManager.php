@@ -65,6 +65,20 @@ class UserManager
     return (password_verify($password, $user->getPassword()) ? $user : FALSE);
   }
 
+  public function isUserAuthorOfArticle($user_id, $article_id) {
+    $pdo = $this->pdo;
+    $query = 'SELECT count(*) FROM article WHERE id = :article_id AND user_id = :user_id';
+    $statement = $pdo->prepare($query);
+    $statement->bindValue(':user_id', $user_id);
+    $statement->bindValue(':article_id', $article_id);
+    $statement->execute();
+    $count = $statement->fetchColumn();
+    if ($count>0) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
   public function create($user) {
     $hash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
     $seo_name = Utilities::createSlug($user->getFullName());
