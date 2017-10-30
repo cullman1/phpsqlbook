@@ -8,16 +8,12 @@ if (isset($_GET['name'])) {
   $from  = (filter_input(INPUT_GET, 'from', FILTER_VALIDATE_INT) ? $_GET['from'] : 0);
   $category   = $categoryManager->getCategoryBySeoName($name);
   if (empty($category)) {
-     header( "Location: http://".$_SERVER['HTTP_HOST']. ROOT.'page-not-found.php' );
-    exit();
+    Utilities::errorPage('page-not-found.php');
   } 
   $count        = $articleManager->getArticleCountByCategorySeoName($category->seo_name); 
   $article_list = $articleManager->getArticleSummariesByCategorySeoName($category->seo_name, $show, $from);
-}
-
-if (empty($category)) {
-  header( "Location: page-not-found.php" );
-   exit();
+} else {
+    Utilities::errorPage('page-not-found.php');
 } 
 
 $page_title      .= $category->name;
@@ -40,8 +36,7 @@ include 'includes/header.php'; ?>
     ?>
    </div>
   </div>
-</section>
-<section>
+
 <?php  echo Utilities::createPagination($count, $show, $from);?>
 </section>
  <?php include 'includes/footer.php'; ?>

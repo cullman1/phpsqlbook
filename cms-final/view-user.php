@@ -1,15 +1,13 @@
 <?php
-
 require_once 'config.php';
 
 if (isset($_GET['name'])) {  // If check passes
-    $user       = $userManager->getUserBySeoName($_GET['name']);
-    $my_profile = $userManager->isCurrentUser($_GET['name']);
+  $user       = $userManager->getUserBySeoName($_GET['name']);
+  $my_profile = $userManager->isCurrentUser($_GET['name']);
 }
 
 if (empty($user) ) {
-    header( "Location: user-upload.php?include=croppie&action=create" );
-    exit();
+  Utilities::errorPage('user-upload.php?include=croppie&action=create');
 } 
 
 $page_title      .= $user->getFullName();

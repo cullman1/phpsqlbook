@@ -11,8 +11,7 @@ $show_form = TRUE;
 $error    = array('password' => '', 'confirm' => '');
 $alert     = '';
 if (empty($token)) {
-    header( "Location: ../error-has-occurred.php" );
-    exit();
+    Utilities::errorPage('error-has-occurred.php');
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Has form been submitted?  
     $error['password'] = (Validate::isPassword($password) ? 

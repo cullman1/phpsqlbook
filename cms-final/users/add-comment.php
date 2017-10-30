@@ -6,8 +6,7 @@ $comment    = (filter_input(INPUT_POST, 'comment') ? $_POST['comment'] : '');
 $created    = date('Y-m-d H:i:s');
 $comment    = filter_var($comment, FILTER_SANITIZE_STRING);
 if (empty($article_id)) {
-    header( "Location: ../error-has-occurred.php" );
-    exit();
+    Utilities::errorPage('page-not-found.php');
 }
 $comment = trim($comment);
 if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {

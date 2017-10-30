@@ -15,8 +15,7 @@
   }
 
   if (empty($image_id) || empty($article_id)) {
-    header( "Location: ../error-has-occurred.php" );
-    exit();
+    Utilities::errorPage('error-has-occurred.php');
   } 
   $result = false;
 
@@ -35,7 +34,7 @@
 
 include('../includes/header.php'); 
 echo '<section class="jumbotron text-center">';
-echo '<div class="container"><h1 class="jumbotron-heading">We were unable to delete your image.</h1>'.$result ."</div>";
+echo '<div class="container"><h1 class="jumbotron-heading">We were unable to delete your image.</h1>$result</div>';
 echo '</section>';
 include('../includes/footer.php');
 ?>

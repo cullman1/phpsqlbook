@@ -5,19 +5,15 @@ if (isset($_GET['title']) ) {                                        // If title
   $title = $_GET['title'];                                           // Get title
   $article = $articleManager->getArticleBySeoTitle($title);          // Get article
   if (empty($article)) {
-    header( "Location: http://".$_SERVER['HTTP_HOST']. ROOT.'page-not-found.php' );
-    exit();
+    Utilities::errorPage('page-not-found.php');
   } 
   $article_images = $articleManager->getArticleImages($article->id);
   $comments  = $articleManager->getCommentsAndRepliesByArticleId($article->id);
   $comments  = ( ($comments) ? $articleManager->sortComments($comments) : array() );
-}
-if (empty($article)) {
-    header( "Location: page-not-found.php" );
-    exit();
+} else {
+  Utilities::errorPage('page-not-found.php');
 } 
 
-$info  = (isset($_GET['info']) ? 'info' : '');                 // Is it an info page
 if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array(new Media());
 }
@@ -28,7 +24,7 @@ include 'includes/header.php';
 ?>
 <section>
   <h1 class="display-4"><?=  htmlentities($article->title, ENT_HTML401, 'UTF-8') ?></h1>
-  <div class="credit <?=$info?>">
+  <div class="credit">
     <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= htmlentities( $article->author, ENT_QUOTES, 'UTF-8') ?></a> on <i><?= htmlentities( $article->created, ENT_QUOTES, 'UTF-8') ?></i>.
   </div>
 
@@ -49,7 +45,7 @@ include 'includes/header.php';
     <?php  } ?>
     </div>
     <div class="col-4">
-      <div class="like-comment-count <?=$info?>">
+      <div class="like-comment-count">
         <?php
           if ($userManager->isLoggedIn()) {
             if ($article->liked) {
@@ -70,7 +66,7 @@ include 'includes/header.php';
       <?= $article->content ?>
     </div>
   </section>
-  <section class="comments <?=$info?>">
+  <section class="comments">
     <div class="row">
       <div class="col-8">
         <h2 class="display-4">Comments</h2>
@@ -127,6 +123,6 @@ include 'includes/header.php';
     </div>
   </section>
   <script src="<?=ROOT?>lib/photoviewer/photo-viewer.js"></script>
-  <script src="<?=ROOT?>lib/jquery/jquery-1.12.4.min.js"></script>
+
 
 <?php include 'includes/footer.php'; ?>

@@ -10,8 +10,7 @@ $comment    = filter_var($comment, FILTER_SANITIZE_STRING);
 $reply_to_id = filter_var($reply_to_id, FILTER_SANITIZE_URL);
 $parent_id   = filter_var($parent_id,   FILTER_SANITIZE_URL);
 if (empty($article_id) || empty($reply_to_id) || empty($parent_id) ) {
-    header( "Location: ../error-has-occurred.php" );
-    exit();
+    Utilities::errorPage('page-not-found.php');
 }
 $comment = trim($comment);
 if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {

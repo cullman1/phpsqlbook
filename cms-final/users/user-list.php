@@ -10,8 +10,7 @@ require_once '../config.php';
 
 
   if (empty($user_list)) {
-    header( "Location: page-not-found.php" );
-    exit();
+    Utilities::errorPage('page-not-found.php');
   }
 
   $page_title      .= 'Users';

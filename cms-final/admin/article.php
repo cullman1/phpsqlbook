@@ -191,7 +191,7 @@ include 'includes/header.php';
         </div>
         <?php foreach ($article_images as $image) {
           echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
-                &nbsp;    <a class="btn btn-primary" href="delete-image.php?page=article&id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
+                &nbsp;<br><br><a class="btn btn-primary" href="delete-image.php?page=article&id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
         } ?>
 
       </div><!-- /col -->

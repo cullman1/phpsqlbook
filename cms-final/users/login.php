@@ -18,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $user = $userManager->getUserByEmailPassword($email, $password);
       if ($user) {
         $userManager->createUserSession($user);
-        header('Location: ' . ROOT . 'index.php');
-        exit();
+        Utilities::errorPage('index.php');
       } else {
         $alert = '<div class="alert alert-danger">Login failed</div>';
     }

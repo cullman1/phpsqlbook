@@ -8,6 +8,11 @@
 
 class Utilities
 {
+  public static function errorPage($page) {
+     header( "Location: http://".$_SERVER['HTTP_HOST']. ROOT. $page );
+    exit();
+  }
+  
   public static function createSlug($text) {
     $text = mb_strtolower($text);
     $text = trim($text);
