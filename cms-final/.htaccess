@@ -3,10 +3,6 @@ RewriteEngine On                       # Turn on the rewriting engine
 # Home page
 RewriteRule ^/?$     		           index.php        	            [NC,L]
 
-# Pages in the main navigation
-RewriteRule ^about/?$    	           view-article.php?title=about&info=true 	[NC,L]
-RewriteRule ^contact/?$  	           view-article.php?title=contact&info=true   [NC,L]
-
 # Admin pages are ignored
 RewriteRule ^admin/?$   	           admin/articles.php               [NC,L]
 RewriteRule ^admin/([A-z0-9\-\.]+)/?$  admin/$1                         [NC,L]

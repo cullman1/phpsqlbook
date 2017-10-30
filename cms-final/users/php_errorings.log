@@ -1,3 +1,0 @@
-[26-Oct-2017 17:43:43 Europe/Berlin] PHP Catchable fatal error:  Object of class Article could not be converted to string in C:\xampp\htdocs\phpsqlbook\cms-final\users\user-upload.php on line 35
-[26-Oct-2017 17:43:43 Europe/Berlin] PHP Stack trace:
-[26-Oct-2017 17:43:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\users\user-upload.php:0

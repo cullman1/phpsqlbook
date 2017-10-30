@@ -36,8 +36,6 @@ function highlight_nav($section, $url) {
            echo '<a href="' . ROOT . $category_link->seo_name . '" class="nav-item nav-link ' . highlight_nav($section, $category_link->name) . '">' . $category_link->name . '</a>';
           }
           ?>
-          <a href="<?= ROOT ?>about" class="nav-item nav-link <?= highlight_nav($section, 'about')?>">About</a>
-          <a href="<?= ROOT ?>contact" class="nav-item nav-link <?= highlight_nav($section, 'contact')?>">Contact</a>
         </ul>
         <ul class="navbar-nav user-nav">
         <?php if ($is_logged_in) { ?>

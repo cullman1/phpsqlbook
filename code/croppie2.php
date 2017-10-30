@@ -38,6 +38,8 @@ if(isset($_POST['imagedata'])){
 
       $('#file').on('change', function () {
         readFile(this);
+        //Extra two
+        //lines in article here.
       });
 
       $('.btn-crop').on('click', function () {

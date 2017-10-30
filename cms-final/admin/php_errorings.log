@@ -1,9 +1,0 @@
-[26-Oct-2017 18:07:06 Europe/Berlin] PHP Notice:  Undefined variable: result in C:\xampp\htdocs\phpsqlbook\cms-final\admin\delete-image.php on line 40
-[26-Oct-2017 18:07:06 Europe/Berlin] PHP Stack trace:
-[26-Oct-2017 18:07:06 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\delete-image.php:0
-[26-Oct-2017 18:08:21 Europe/Berlin] PHP Notice:  Undefined variable: result in C:\xampp\htdocs\phpsqlbook\cms-final\admin\delete-image.php on line 39
-[26-Oct-2017 18:08:21 Europe/Berlin] PHP Stack trace:
-[26-Oct-2017 18:08:21 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\delete-image.php:0
-[26-Oct-2017 18:08:35 Europe/Berlin] PHP Notice:  Undefined variable: result in C:\xampp\htdocs\phpsqlbook\cms-final\admin\delete-image.php on line 38
-[26-Oct-2017 18:08:35 Europe/Berlin] PHP Stack trace:
-[26-Oct-2017 18:08:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\admin\delete-image.php:0

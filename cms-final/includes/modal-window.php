@@ -1,3 +1,4 @@
+<?php if(defined('ROOT')) { ?>
 <link href="<?= ROOT ?>lib/croppie/croppie.css" rel="stylesheet" type="text/css">
 <script src="<?= ROOT ?>lib/croppie/croppie.js"></script>
 <script type="text/javascript">
@@ -14,29 +15,23 @@
       }
     }
 
-    $uploadCrop = $('#picture').croppie({
+      $uploadCrop = $('#picture').croppie({
       viewport: { width: 600, height: 360  },
       boundary: { width: 700, height: 400 }
     });
 
     $('#file').on('change', function () {
-      readFile(this);
-            $('.photocropper').show();
-      $('#imageModal').modal('show');
-
-    });
-
-     $('#btn-close').on('click', function (e) {
-       resetFormElement();
-     });
+         readFile(this);
+         $('.photocropper').show();
+         $('#imageModal').modal('show');
+       });
 
     $('.btn-crop').on('click', function (e) {
-      e.preventDefault();
       $uploadCrop.croppie('result', {
-        enableExif: false,
-        enforceBoundary: true,
         type: 'canvas',
-        size:  { width: 600, height: 360 }
+        size:  { width: 600, height: 360 },
+        enableExif: false,
+        enforceBoundary: true
       }).then(function (croppedimage) {
         $('#imagebase64').val(croppedimage);
       }).then(function() {
@@ -44,6 +39,16 @@
         $('#crop-success').show();
       });
     });
+
+       $('#file').on('change', function () {
+         readFile(this);
+         $('.photocropper').show();
+         $('#imageModal').modal('show');
+       });
+
+     $('#btn-close').on('click', function (e) {
+       resetFormElement();
+     });
 
   });
 
@@ -53,6 +58,7 @@
    $('#file').unwrap();
   }
 </script>
+<?php } ?>
 <div class="modal fade" tabindex="-1" role="dialog" id="imageModal">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
