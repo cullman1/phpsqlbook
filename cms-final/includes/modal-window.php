@@ -2,6 +2,7 @@
 <link href="<?= ROOT ?>lib/croppie/croppie.css" rel="stylesheet" type="text/css">
 <script src="<?= ROOT ?>lib/croppie/croppie.js"></script>
 <script type="text/javascript">
+
   $(function() {
     var $uploadCrop;
 
@@ -21,31 +22,25 @@
     });
 
     $('#file').on('change', function () {
-         readFile(this);
-         $('.photocropper').show();
-         $('#imageModal').modal('show');
-       });
+    readFile(this);
+       $('.photocropper').show();
+       $('#imageModal').modal('show');  
+    });
 
     $('.btn-crop').on('click', function (e) {
       $uploadCrop.croppie('result', {
         type: 'canvas',
-        size:  { width: 600, height: 360 },
-        enableExif: false,
-        enforceBoundary: true
+        size:  { width: 600, height: 360 }
       }).then(function (croppedimage) {
         $('#imagebase64').val(croppedimage);
+
       }).then(function() {
         $('#imageModal').modal('toggle');
         $('#crop-success').show();
       });
     });
 
-       $('#file').on('change', function () {
-         readFile(this);
-         $('.photocropper').show();
-         $('#imageModal').modal('show');
-       });
-
+   
      $('#btn-close').on('click', function (e) {
        resetFormElement();
      });
@@ -59,7 +54,7 @@
   }
 </script>
 <?php } ?>
-<div class="modal fade" tabindex="-1" role="dialog" id="imageModal">
+<div class="modal" tabindex="-1" role="dialog" id="imageModal">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">

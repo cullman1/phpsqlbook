@@ -89,8 +89,9 @@ include 'includes/header.php';
             <div class="date"><?= $comment->posted; ?></div>
           </div>
         <?php } ?>
-
+            
         <?php if ($userManager->isLoggedIn()) { ?>
+            <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
           <script>
             var form, reply_to_id, parent_id;
 
@@ -122,7 +123,6 @@ include 'includes/header.php';
       </div>
     </div>
   </section>
-  <script src="<?=ROOT?>lib/photoviewer/photo-viewer.js"></script>
-
 
 <?php include 'includes/footer.php'; ?>
+  <script src="<?=ROOT?>lib/photoviewer/photo-viewer.js"></script>

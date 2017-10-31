@@ -21,7 +21,7 @@
             } else {
               echo '<i class="fa fa-heart-o"></i> ';
             }
-          ?><?=  htmlentities( $article->like_count, ENT_QUOTES, 'UTF-8') ?>
+         echo htmlentities( $article->like_count, ENT_QUOTES, 'UTF-8'); ?>
         </div>
         <div class="col">
           <div class="text-right"><i class="fa fa-comment-o"></i> <?=  htmlentities( $article->comment_count, ENT_QUOTES, 'UTF-8') ?></div>

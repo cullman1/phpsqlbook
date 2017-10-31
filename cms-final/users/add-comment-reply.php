@@ -21,8 +21,7 @@ if ((mb_strlen($comment)>0) && (mb_strlen($comment)<2000)) {
    echo '<div class="container"><h1 class="jumbotron-heading">We were unable to add your comment.</h1>'.$result ."</div>";
 }
 if ($result === TRUE) {
-    header('Location: '. ROOT .  $articleManager->getArticleUrl($article_id) );
-    exit();
+     Utilities::errorPage($articleManager->getArticleUrl($article_id) );
 }
 include('../includes/header.php'); 
 echo '<section class="jumbotron text-center">';

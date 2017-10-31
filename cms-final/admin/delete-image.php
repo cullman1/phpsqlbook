@@ -23,18 +23,16 @@
     $result   = $mediaManager->deleteImage($image_id);
     if ($result === TRUE) {
       if ($page == "article") {
-        header('Location: '. ROOT .  'admin/article.php?include=croppie&action=update&id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
-        exit();
+        Utilities::errorPage('admin/article.php?include=croppie&action=update&id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
       } else {
-        header('Location: '. ROOT .  'users/user-upload.php?include=croppie&action=update&article_id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
-        exit();
+        Utilities::errorPage( 'users/user-upload.php?include=croppie&action=update&article_id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
       }
     }
   }
 
 include('../includes/header.php'); 
-echo '<section class="jumbotron text-center">';
-echo '<div class="container"><h1 class="jumbotron-heading">We were unable to delete your image.</h1>$result</div>';
-echo '</section>';
+echo "<section class='jumbotron text-center'>";
+echo "<div class='container'><h1 class='jumbotron-heading'>We were unable to delete your image.</h1> $result </div>";
+echo "</section>";
 include('../includes/footer.php');
 ?>

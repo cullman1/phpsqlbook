@@ -36,7 +36,7 @@ include 'includes/header.php'; ?>
     ?>
    </div>
   </div>
-
+  <br/>
 <?php  echo Utilities::createPagination($count, $show, $from);?>
 </section>
  <?php include 'includes/footer.php'; ?>

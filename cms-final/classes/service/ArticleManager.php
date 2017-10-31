@@ -61,9 +61,8 @@ class ArticleManager{
 
   public function getArticleBySeoTitle($seo_title) {
     $pdo = $this->pdo;
-    $sql = 'SELECT article.*, 
-        CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user, 
-        category.id AS category_id, category.name AS category ';
+    $sql = 'SELECT article.*, CONCAT(user.forename, " ", user.surname) AS author, 
+user.seo_name AS seo_user, category.id AS category_id, category.name AS category ';
         if (isset($_SESSION['user_id'])) {
         $sql .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' .
                   $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
@@ -339,10 +338,9 @@ class ArticleManager{
           WHERE article.id=:id';
   $statement = $pdo->prepare($sql);          
   $statement->bindValue(':id', $article_id);    
-  if ($statement->execute() ) {
-    $statement->setFetchMode(PDO::FETCH_OBJ);     
-    $titles = $statement->fetch();
-  }
+  $statement->execute();
+  $statement->setFetchMode(PDO::FETCH_OBJ);     
+  $titles = $statement->fetch();
   if ($titles) {
     return $titles->seo_name . '/' . $titles->seo_title;
   } else {
@@ -374,6 +372,7 @@ class ArticleManager{
         }
         catch (PDOException $error) {                                 // If an error
             $pdo->rollback();                           // Undo changes
+            echo $error;
             return FALSE;           // Return error
     }
  }
