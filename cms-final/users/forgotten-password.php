@@ -38,14 +38,21 @@ include dirname(__DIR__) . '/includes/header.php';
 ?>
 
 <?php if ($show_form) { ?>
+    <div class="container mt-4 mb-4">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-4">
+
   <form  class="login-form" method="post" action="forgotten-password.php">
-  <fieldset >
-<legend>Forgotten Your Password?</legend>
+
+ <h4 class="card-title">Forgotten Your Password?</h4>
  <div class="title-error"><?= $alert ?></div>
     <label>Enter Your Email Address: <input type="text" name="email" /><br>
     <span class="title-error"> <?= $errors['email']; ?></span></label><br>
     <input type="submit" name="submit" value="Send Reset Link"/><br><br>
-    </fieldset>
+
   </form> 	
+  </div>
+  </div>
+  </div>
 <?php } ?>
  <?php include dirname(__DIR__) . '/includes/footer.php';  ?>

@@ -37,13 +37,19 @@ include dirname(__DIR__) . '/includes/header.php';
 ?>
 <?= $alert ?>
 <?php if ($show_form == TRUE) { ?>
+    <div class="container mt-4 mb-4">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-4">
   <form  method="post" action="reset-password.php?token=<?= htmlspecialchars($token, ENT_QUOTES, 'UTF-8'); ?>">
-    <h1>Reset Password</h1>
+   <h4 class="card-title">Reset Password</h4>
     <label for="password">Enter Your New Password:</label>
     <input type="password" name="password" id="password" /> <?= $error['password']; ?><br />
     <label for="confirm">Confirm Your Password:</label>
-    <input type="password" name="confirm" id="confirm" /> <?= $error['confirm']; ?> 
+    <input type="password" name="confirm" id="confirm" /> <?= $error['confirm']; ?> <br><br>
     <input type="submit" value="Submit New Password" />
   </form>   
+  </div>
+  </div>
+  </div>
 <?php } ?>
  <?php include dirname(__DIR__) . '/includes/footer.php';  ?>

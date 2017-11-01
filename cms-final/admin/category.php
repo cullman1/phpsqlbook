@@ -6,12 +6,10 @@ $userManager->redirectNonAdmin();
 // Get data
 $id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
 $action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
-
 $name        = (isset($_POST['name'])        ? $_POST['name']        : ''); // Get values
 $description = (isset($_POST['description']) ? $_POST['description'] : ''); // Get values
 $navigation  = (isset($_POST['navigation'])  ? 1  : 0); // Get values
 $category    = new Category($id, $name, $description, $navigation);  // Create Category object
-
 $errors      = array('id' => '', 'name'=>'', 'description'=>'');       // Form errors
 $alert       = '';                                                     // Status messages
 
@@ -25,10 +23,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $action = 'create';
   }
 } else {  // The form was posted so validate the data and try to update
-  
   $errors['name']        = (Validate::isName($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9 and contain no HTML tags');
   $errors['description'] = (Validate::isAllowedHTML($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters and only contain allowed HTML tags.');
-
   if (mb_strlen(implode($errors)) > 0) {                          // If data valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                     // Otherwise
@@ -74,9 +70,7 @@ include 'includes/header.php';
       <input type="checkbox" name="navigation" id="navigation" class="form-control" value="1"
           <?php if ($category->navigation == 1) {
             echo 'checked';
-          }
-          ?>
-      >
+          } ?>
     </div>
     <input type="submit" name="submit" value="save" class="btn btn-primary">
   </form>

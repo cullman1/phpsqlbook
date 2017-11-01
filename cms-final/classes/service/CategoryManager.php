@@ -63,7 +63,6 @@ class CategoryManager
     $statement->bindValue(':description', $category->description);         // Bind description
     $statement->bindValue(':navigation', $category->navigation, PDO::PARAM_BOOL);  // Bind navigation
     $statement->bindValue(':seo_name',   Utilities::createSlug($category->name));
-
     try {
       $statement->execute();                                               // Execute SQL
       $category->id = $pdo->lastInsertId();                                // Add id to object

@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
     $profile_image    = Validate::sanitizeFileName($filename);
 
-    $errors['forename'] = (Validate::isName($forename) ? '' : 'Please enter a valid forename ( Html characters are not allowed).');
-    $errors['surname']  = (Validate::isName($surname) ? '' : 'Please enter a valid surname  ( Html characters are not allowed).');
+    $errors['forename'] = (Validate::isName($forename) ? '' : 'Please enter a valid forename (Html characters are not allowed).');
+    $errors['surname']  = (Validate::isName($surname) ? '' : 'Please enter a valid surname  (Html characters are not allowed).');
     $errors['email']    = (Validate::isEmail($email) ? '' : 'Please enter a valid email.');
     $errors['password'] = (Validate::isPassword($password) ? '' : 'Please enter a valid password.');
     $errors['confirm'] = (Validate::isConfirmPassword($password, $confirm)? '' : 'Please make sure passwords match.');
