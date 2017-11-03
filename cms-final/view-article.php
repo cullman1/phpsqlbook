@@ -23,7 +23,7 @@ $meta_description = $article->summary;
 include 'includes/header.php';
 ?>
 <section>
-  <h1 class="display-4"><?=  htmlentities($article->title, ENT_HTML401, 'UTF-8') ?></h1>
+  <h1 class="display-4"><?=  htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
   <div class="credit">
     <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= htmlentities( $article->author, ENT_QUOTES, 'UTF-8') ?></a> on <i><?= htmlentities( $article->created, ENT_QUOTES, 'UTF-8') ?></i>.
   </div>

@@ -7,7 +7,7 @@ $userManager->redirectNonAdmin();
 
 // Get data
 $id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
-$action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
+$action      = ( isset($_GET['action'])     ? $_GET['action'] : 'create'); // Get values
 $forename    = ( isset($_POST['forename']) ? $_POST['forename'] : ''); // Get values
 $surname     = ( isset($_POST['surname'])  ? $_POST['surname']  : ''); // Get values
 $email       = ( isset($_POST['email'])    ? $_POST['email']    : ''); // Get values
@@ -32,16 +32,18 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
 
   if (mb_strlen(implode($errors)) > 0) {                  // If data valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
-  } else {                                             // Otherwise
-    if (!empty($userManager->getUserByEmail($email))) {
-            $alert = '<div class="alert alert-danger">That email is already in use</div>';
-        } else {                   // Otherwise
-    if ($action === 'create') {
-      $result = $userManager->create($user);             // Add category to database
-    }
+  } else {      
     if ($action === 'update') {
       $result = $userManager->adminupdate($user);             // Add category to database
-    }
+    } else { 
+echo "ACTION".$action;                                    
+      if (!empty($userManager->getUserByEmail($email))) {
+            $alert = '<div class="alert alert-danger">That email is already in use</div>';
+      } else {                  // Otherwise
+        if ($action === 'create') {
+          $result = $userManager->create($user);             // Add category to database
+        }
+      }
     }
   }
 
@@ -63,7 +65,7 @@ include 'includes/header.php';
   <h2><?=$action?> user</h2>
   <?= $alert ?>
 
-  <form action="user.php?id=<?= htmlspecialchars($id,ENT_QUOTES,'UTF-8'); ?>" method="POST" >
+  <form action="user.php?action=<?= $action ?>&id=<?= htmlspecialchars($id,ENT_QUOTES,'UTF-8'); ?>" method="POST" >
     <div class="form-group">
       <label for="forename">Forename: </label>
       <input name="forename" id="forename" value="<?= htmlentities( $user->forename, ENT_QUOTES, 'UTF-8') ?>" class="form-control">

@@ -28,7 +28,7 @@ $userManager->redirectNonAdmin();
         <td><?= $user->getFullName() ?></td>
         <td><?= $user->email ?></td>
         <td><?= $user->joined ?></td>
-        <td><a class="btn btn-primary" href="user.php?id=<?= $user->id?>">edit</a></td>
+        <td><a class="btn btn-primary" href="user.php?action=update&id=<?= $user->id?>">edit</a></td>
         <td><a class="btn btn-danger" href="user-delete.php?id=<?= $user->id?>">delete</a></td>
       </tr>
       <?php } ?>
