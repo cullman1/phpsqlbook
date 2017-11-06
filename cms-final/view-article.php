@@ -48,12 +48,11 @@ include 'includes/header.php';
       <div class="like-comment-count">
         <?php
           if ($userManager->isLoggedIn()) {
+            echo '<a href="' . ROOT . 'like?id=' . $article->id . '">';
             if ($article->liked) {
-              echo '<a href="' . ROOT . 'unlike?id=' . $article->id . '">
-                <i class="fa fa-heart"></i></a> ';
+              echo '<i class="fa fa-heart"></i></a>';
             } else {
-              echo '<a href="' . ROOT . 'like?id=' . $article->id . '">
-                <i class="fa fa-heart-o"></i></a> ';
+              echo '<i class="fa fa-heart-o"></i></a>';
             }
           } else {
             echo '<i class="fa fa-heart-o"></i> ';
@@ -90,8 +89,13 @@ include 'includes/header.php';
           </div>
         <?php } ?>
             
-        <?php if ($userManager->isLoggedIn()) { ?>
-            <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+       
+      </div>
+    </div>
+  </section>
+
+<?php include 'includes/footer.php'; ?>
+ <?php if ($userManager->isLoggedIn()) { ?>
           <script>
             var form, reply_to_id, parent_id;
 
@@ -113,16 +117,10 @@ include 'includes/header.php';
             });
 
             $('#thumbnails a:first-child').addClass("active");
-
             $('img[src="../uploads/"]').parent().hide();
           </script>
         <?php } else { ?>
           <a href="<?= ROOT ?>users/login.php">Log in to add your own comment.</a>
           <script>$('img[src="../uploads/"]').parent().hide();</script>
         <?php } ?>
-      </div>
-    </div>
-  </section>
-
-<?php include 'includes/footer.php'; ?>
   <script src="<?=ROOT?>lib/photoviewer/photo-viewer.js"></script>

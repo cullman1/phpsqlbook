@@ -16,7 +16,6 @@ RewriteRule ^reset-password/?$   	   users/reset-password.php         [NC,L]
 
 # Likes and comments
 RewriteRule ^like/?$   		           users/like.php      		         [NC,L,QSA]
-RewriteRule ^unlike/?$   	           users/like.php     	             [NC,L,QSA]
 RewriteRule ^add_comment/?$            users/add-comment.php?id=$1       [NC,L,QSA]
 RewriteRule ^add_comment_reply/?$      users/add-comment-reply.php?id=$1 [NC,L,QSA]
 

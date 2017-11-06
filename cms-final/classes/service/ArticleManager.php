@@ -64,14 +64,14 @@ class ArticleManager{
     $sql = 'SELECT article.*, CONCAT(user.forename, " ", user.surname) AS author, 
 user.seo_name AS seo_user, category.id AS category_id, category.name AS category ';
         if (isset($_SESSION['user_id'])) {
-        $sql .= ', COALESCE( (SELECT 1 FROM likes WHERE likes.user_id=' .
+        $sql .= ', COALESCE( (SELECT max(1) FROM likes WHERE likes.user_id=' .
                   $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
                   AS liked ';
         }
         $sql .= 'FROM article
     		LEFT JOIN user ON article.user_id = user.id
     		LEFT JOIN category ON article.category_id = category.id
-    		WHERE article.seo_title=:seo_title';                          // Query
+    		WHERE article.seo_title=:seo_title';    
     $statement = $pdo->prepare($sql);          // Prepare
     $statement->bindValue(':seo_title', $seo_title);  // Bind value from query string
     $statement->execute();
@@ -288,6 +288,20 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
         }
         return $article_list;
     }
+
+   public function getLikeStatus($user_id, $article_id){
+    $pdo = $this->pdo;
+    $sql = 'SELECT count(*) FROM likes WHERE article_id = :article_id AND user_id = :user_id';
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(':user_id', $user_id);
+    $statement->bindValue(':article_id', $article_id);
+    $statement->execute();
+    $count = $statement->fetchColumn();
+    if ($count>0) {
+      return FALSE;
+    }
+    return TRUE;
+  }
 
   public function addLikeById($user_id, $article_id) {
   $pdo = $this->pdo;
