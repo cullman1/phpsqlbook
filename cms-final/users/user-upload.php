@@ -32,10 +32,16 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing category to edit
 
    $article = ($seo_title == '' ? $article : $articleManager->getArticleBySeoTitle($seo_title)); // Do you load a category
+  
    if (empty($article->id)) {
       $article = ($article_id == '' ? $article : $articleManager->getArticleById($article_id)); // Do you load a category
    }
-  if (!$article) {
+     if (!empty($article->id)) {
+   $usercheck =  $userManager->isUserAuthorOfArticle($_SESSION['user_id'], $article->id);
+   } else {
+   $usercheck = FALSE;
+   }
+  if ((!$article) || (!$usercheck)) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
     //Correct error that if we go back to page it's still in update mode
     $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object

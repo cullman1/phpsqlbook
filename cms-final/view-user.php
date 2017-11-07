@@ -3,11 +3,14 @@ require_once 'config.php';
 
 if (isset($_GET['name'])) {  // If check passes
   $user       = $userManager->getUserBySeoName($_GET['name']);
-  $my_profile = $userManager->isCurrentUser($_GET['name']);
+  if (empty($user) ) {
+  Utilities::errorPage('page-not-found.php');
+  } 
+  $my_profile = $userManager->isCurrentUser($user->seo_name);
 }
-
+ 
 if (empty($user) ) {
-  Utilities::errorPage('user-upload.php?include=croppie&action=create');
+  Utilities::errorPage('page-not-found.php');
 } 
 
 $page_title      .= $user->getFullName();
@@ -26,7 +29,7 @@ include 'includes/header.php'; ?>
       <img src="<?= ROOT ?>uploads/thumb/<?= $user->profile_image ?>" alt="<?= $user->getFullName() ?>" class="rounded-circle" style="max-width: 100px" />
       <p class="lead text-muted">Joined: <?= $user->joined ?></p>
       <?php if ($my_profile) {
-        echo '<a href="' . ROOT . 'users/create/" class="btn btn-primary">upload work</a>';
+        echo '<a href="' . ROOT . 'users/user-upload.php?include=croppie&action=create" class="btn btn-primary">upload work</a>';
       } ?>
     </div>
   </section>

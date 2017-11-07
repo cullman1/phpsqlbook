@@ -1,14 +1,14 @@
   <div class="card article-summary">
-   <a href="<?= ROOT ?><?= $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">
+   <a href="<?= ROOT . $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">
     <img class="card-img-top" src="<?= ROOT ?>uploads/<?= htmlentities($article->filename, ENT_QUOTES, 'UTF-8') ?>" alt="<?=  htmlentities($article->alt, ENT_QUOTES, 'UTF-8') ?>">
    </a>
     <div class="card-body text-center">
-      <a href="<?= ROOT ?><?= $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">
+      <a href="<?= ROOT . $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">
         <h5 class="card-title"><?= htmlentities($article->title, ENT_QUOTES, 'UTF-8')?></h5>
       </a>
       <p><?= $article->summary ?></p>
       <p>
-        Posted in <a href="<?= ROOT ?><?=  htmlentities( $article->seo_category, ENT_QUOTES, 'UTF-8') ?>"><?=  htmlentities( $article->category, ENT_QUOTES, 'UTF-8') ?></a>
+        Posted in <a href="<?= ROOT .  htmlentities( $article->seo_category, ENT_QUOTES, 'UTF-8') ?>"><?=  htmlentities( $article->category, ENT_QUOTES, 'UTF-8') ?></a>
         by <a href="<?= ROOT ?>users/<?=  htmlentities( $article->seo_user, ENT_QUOTES, 'UTF-8') ?>"><?=  htmlentities( $article->author, ENT_QUOTES, 'UTF-8')?></a>
       </p>
     </div>

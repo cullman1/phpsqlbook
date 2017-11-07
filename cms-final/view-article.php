@@ -13,7 +13,6 @@ if (isset($_GET['title']) ) {                                        // If title
 } else {
   Utilities::errorPage('page-not-found.php');
 } 
-
 if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array(new Media());
 }
@@ -87,9 +86,7 @@ include 'includes/header.php';
             <p><?= htmlentities($comment->comment , ENT_QUOTES, 'UTF-8'); ?></p>
             <div class="date"><?= $comment->posted; ?></div>
           </div>
-        <?php } ?>
-            
-       
+        <?php } ?> 
       </div>
     </div>
   </section>
