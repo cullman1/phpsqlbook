@@ -7,10 +7,12 @@
      <h5><?= $article->title ?></h5>
    </a>
    <p><?= $article->summary ?></p>
-   <p>Posted in <a href="<?= ROOT  ?><?= $article->category ?>"><?= $article->category ?></a>
-   by <a href="<?= ROOT ?>view-user.php?id=<?= $article->user_id ?>">
+   <p>Posted in <a href="<?= ROOT ?>view-category.php?id=<?= $article->category_id ?>">  
+  <?= $article->category ?></a>
+  by <a href="<?= ROOT ?>view-user.php?id=<?= $article->user_id ?>">
        <?= $article->author ?>
      </a>
    </p>
+
   </div>
 </div>
