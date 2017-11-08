@@ -28,6 +28,7 @@
     <Compile Include="cms-final\admin\delete-image.php" />
     <Compile Include="cms-final\error-has-occurred.php" />
     <Compile Include="cms-final\includes\modal-window.php" />
+    <Compile Include="cms-final\server-not-available.php" />
     <Compile Include="cms-final\users\user-upload.php" />
     <Compile Include="code\chapter_03\functions.php" />
     <Compile Include="code\info.php" />

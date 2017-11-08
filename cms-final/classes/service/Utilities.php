@@ -10,7 +10,7 @@ class Utilities
 {
   public static function errorPage($page) {
      header( "Location: http://".$_SERVER['HTTP_HOST']. ROOT. $page );
-    exit();
+     exit();
   }
   
   public static function createSlug($text) {

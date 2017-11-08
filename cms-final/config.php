@@ -24,7 +24,8 @@ require_once 'vendor/html-purifier-4.9.3/library/HTMLPurifier.auto.php';
     'username' => 'root',
     'password' => ''
 );*/
-
+define('ROOT', '/phpsqlbook/cms-final/');
+define('UPLOAD_DIR', 'uploads/');
 $database_config = array (
     'dsn' => 'mysql:host=207.246.241.90;dbname=387732_phpbook3;charset=utf8mb4',
     'username' => '387732_testuser3',
@@ -44,5 +45,3 @@ $page_title       = $site_name . ' ';
 $meta_description = 'An agency for creatives';
 
 ini_set( 'default_charset', 'UTF-8' );
-define('ROOT', '/phpsqlbook/cms-final/');
-define('UPLOAD_DIR', 'uploads/');

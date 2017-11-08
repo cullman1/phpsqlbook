@@ -18,8 +18,13 @@ class CMS
   public function getPDO()
   {
     if ($this->pdo === null) {
-      $this->pdo = new PDO($this->configuration['dsn'], $this->configuration['username'], $this->configuration['password']);
-      $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $this->pdo = new PDO($this->configuration['dsn'], $this->configuration['username'], $this->configuration['password']);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $exeception) {
+            Utilities::errorPage('server-not-available.php');
+        }
     }
     return $this->pdo;
   }
