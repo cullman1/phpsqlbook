@@ -1,6 +1,6 @@
  <div class="card article-summary">
  <a href="<?= ROOT ?>view-article.php?id=<?= $article->id ?>">
-   <img src="<?= ROOT ?>uploads/<?= $article->media_filename ?>" alt="<?= $article->media_alt ?>">
+   <img src="<?= ROOT ?>uploads/<?= $article->media_filename ?>" width="310" alt="<?= $article->media_alt ?>">
  </a>
  <div class="card-body text-center">
 <a href="<?= ROOT ?>view-article.php?id=<?= $article->id ?>">

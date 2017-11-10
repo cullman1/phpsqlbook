@@ -38,7 +38,8 @@ class ArticleManager {
             article.user_id, article.category_id, article.published,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id as category_id, category.name AS category,
-            media.id as media_id, media.alt AS media_alt FROM article
+            media.id as media_id, media.filename as media_filename, media.alt AS media_alt 
+           FROM article
             LEFT JOIN user ON article.user_id = user.id 
             LEFT JOIN category ON article.category_id = category.id 
                     LEFT JOIN articleimages ON articleimages.article_id = article.id
@@ -91,7 +92,7 @@ class ArticleManager {
             WHERE article.user_id=:user_id
             AND category.navigation = TRUE
             AND article.published = TRUE
-            GROUP BY id
+       
             ORDER BY article.created DESC';
        $statement = $pdo->prepare($sql);
        $statement->bindValue(':user_id', $id, PDO::PARAM_INT);

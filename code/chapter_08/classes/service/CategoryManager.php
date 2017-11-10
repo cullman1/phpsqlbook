@@ -27,7 +27,10 @@ class CategoryManager
 
     public function getNavigationCategories(){
         $pdo = $this->pdo;
-        $sql = 'SELECT * FROM category WHERE navigation = TRUE';
+        $sql = 'SELECT DISTINCT category.*
+            FROM category 
+            INNER JOIN article ON article.category_id = category.id
+            WHERE navigation = TRUE';
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');

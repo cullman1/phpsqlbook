@@ -33,7 +33,7 @@ function highlight_nav($section, $url) {
         <ul class="navbar-nav">
           <?php
           foreach ($category_list as $category_link) {
-           echo '<a href="' . ROOT . $category_link->seo_name . '" class="nav-item nav-link ' . highlight_nav($section, $category_link->name) . '">' . $category_link->name . '</a>';
+           echo '<a href="' . ROOT . 'view-category.php?id=' .  $category_link->id . '" class="nav-item nav-link ' . highlight_nav($section, $category_link->name) . '">' . $category_link->name . '</a>';
           }
           ?>
         </ul>
