@@ -76,7 +76,6 @@ include 'includes/header.php';
           </form>
         <?php } else { ?> 
           <a href="<?= ROOT ?>users/login.php">Log in to add your own comment.</a>
-          <script>$('img[src="../uploads/"]').parent().hide();</script>
         <?php } ?>
         <?php foreach ($comments as $comment) { ?>
           <div class="comment <?php if ($comment->reply_to) { echo 'reply'; } ?>"

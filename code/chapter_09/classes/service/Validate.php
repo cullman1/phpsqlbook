@@ -2,10 +2,6 @@
 
 class Validate {
 
-const MEDIATYPE_jpeg = 'image/jpeg';
-const MEDIATYPE_png = 'image/png';
-const MEDIATYPE_gif = 'image/gif';
-
   public static function isNumber($number, $min = 0, $max = 4294967295) {
     if ( (!filter_var($number, FILTER_VALIDATE_INT)) or (($number < $min) or ($number > $max)) ) {
       return FALSE;
@@ -14,26 +10,72 @@ const MEDIATYPE_gif = 'image/gif';
   }
 
   public static function isText($string, $min = 0, $max = 30000){
-    $length = strlen($string);
-    if (($length < $min) or ($length > $max)) {
+    $length = mb_strlen($string);
+    if (($length <= $min) or ($length >= $max)) {
       return FALSE;
     }
     return TRUE;
   }
 
+   public static function isName($string, $min = 0, $max = 100){
+     $result = preg_replace('/<[^>]*>/', '',  $string); 
+     $result = trim($result);
+     $length = mb_strlen($string);
+    if (($length <= $min) or ($length >= $max) or ($result != $string )) {
+      return FALSE;
+    }
+    return TRUE;
+  }
+
+  public static function sanitizeHTML($string) {
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+    $config->set('Core.Encoding', 'UTF-8'); // replace with your encoding
+    $config->set('HTML.Allowed', 'em,strong,u,strike,p,br'); // replace with your doctype
+    $clean_html = $purifier->purify( $string );
+    return $clean_html;
+  }
+
+  public static function isAllowedHTML($string, $min, $max) {
+    $string = html_entity_decode($string);
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+    $config->set('Core.Encoding', 'UTF-8'); // replace with your encoding
+    $config->set('HTML.Allowed', 'p,strong,em,u,strike'); // replace with your doctype
+    $clean_html = $purifier->purify($string);
+    if ( ($clean_html != $string ) || (mb_strlen($clean_html) <= $min) || (mb_strlen($clean_html)>= $max)) {
+      return FALSE;
+    }
+    return TRUE;
+  }
+
+  public static function isChecked($value) {
+    return ($value == 'on' ? TRUE : FALSE);
+  }
+
   public static function isEmail($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (!empty($email) && (mb_strpos($email,'@')!==false)) {
+      $email = Utilities::punyCodeDomain($email); 
+    }
+   if ( (! filter_var($email, FILTER_VALIDATE_EMAIL))) {
+       return FALSE;
+    }
+    return TRUE;
   }
 
   public static function isPassword($password) {
-    if( (strlen($password)<8) OR (strlen($password)>32) ) { $error = TRUE; }                    // Less than 8 characters
+    if( (mb_strlen($password)<8) OR (mb_strlen($password)>32) ) { $error = TRUE; }                    // Less than 8 characters
     if(preg_match_all('/[A-Z]/', $password)<1) { $error = TRUE; } // < 1 x A-Z return FALSE
     if(preg_match_all('/[a-z]/', $password)<1) { $error = TRUE; } // < 1 x a-z return FALSE
     if(preg_match_all('/\d/', $password)<1)    { $error = TRUE; } // < 1 x 0-9 return FALSE
     if (isset($error)) {
-      return FASLE;
+      return FALSE;
     }
-    return '';
+    return TRUE;
+  }
+
+  public static function isConfirmPassword($password, $confirm) {
+    return ( ($password != $confirm) ? FALSE : TRUE );
   }
 
   public static function isDate($date_array) {
@@ -49,16 +91,8 @@ const MEDIATYPE_gif = 'image/gif';
     return TRUE;
   }
 
-  public static function isFilename($filename) {
-    $result = preg_replace('/[^A-z0-9 \.\-\_]/', '', $filename); /// add other characters allowed here
-    if ($result != $filename ) {
-      return FALSE;
-    }
-    return TRUE;
-  }
-
-  public static function isAllowedCharacters($text) {
-    $result = preg_replace('/[^A-z0-9 \.,!\?\'\"#\$%&*\(\)\+\-\/]/', '', $title); /// add other characters allowed here
+    public static function isAllowedFilename($text) {
+    $result = preg_replace('/[^A-z0-9 \.,!\?\'\"#\$%&*\(\)\+\-\/]/', '', $text); /// add other characters allowed here
     if ($result != $text ) {
       return FALSE;
     }
@@ -66,103 +100,45 @@ const MEDIATYPE_gif = 'image/gif';
   }
 
 
-
-  public static function isAllowedExtension($filename, $filetypes) {         // Check file extension
-    $error = '';                                                 // Blank error message
+  public static function isAllowedExtension($filename) {       // Check file extension
+    $filename = mb_strtolower($filename);
     if (!preg_match('/.(jpg|jpeg|png|gif)$/', $filename) ) {    // If not file extension
-      $error .= 'Your filename must end with .jpg .jpeg .png or .gif'; // Error message
+      return FALSE;
     }
-    return $error;                                                // Return error
+    return TRUE;                                               // Return error
   }
 
-  public static function isAllowedMediaType($mediatype) {                       // Check media type
-    $allowed = Array(self::MEDIATYPE_jpeg,self::MEDIATYPE_png, self::MEDIATYPE_gif); // Allowed
-    if (in_array($mediatype, $allowedmedia)) {            // If type is in list
-      $error = '';                                            // Blank error message
-    } else {                                                    // Otherwise
-      $error = 'You can only upload jpg, jpeg, png, and gif formats.'; // Error message
+  public static function isAllowedMediaType($file) {      // Check media type
+    //Must include extension=php_fileinfo.dll first in php.ini   
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $fileContents = file_get_contents($file);
+    $mimeType = $finfo->buffer($fileContents);   
+    $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
+    if (!in_array($mimeType, $allowedmedia_types)) {          // If type is in list
+      return FALSE;                                            // Blank error message
     }
-    return $error;                                              // Return error
+    return TRUE;
   }
 
+  public static function isWithinFileSize($size, $max) {        // Check file size
+    if ($size > $max) {                                         // If size too big
+      return FALSE;
+    }
+    return TRUE;                                                // Return error
+  }
+
+  // This is in article manager too at the moment..
   public static function sanitizeFileName($file) {                         // Clean file name
+    $file = transliterator_transliterate("Latin-ASCII", $file); //Do we transliterate?
     $file = preg_replace('([\~,;])',       '-', $file);    // Replace \ , ; with -
     $file = preg_replace('([^\w\d\-_~.])',  '', $file);    // Remove unwanted characters
     return $file;                                          // Return cleaned name
   }
 
-  public static function isName($name) {
-    $error = '';
-    $name = trim($name);
-
-    if ( (self::stringLength($name, 1, 255)) == FALSE ) {
-      $error = 'Please enter between 1 and 255 characters.<br>';
-    }
-
-    $result = preg_replace('/[^A-z\'\-]/', '', $name); /// add other characters allowed here
-    if ($result != $name ) {
-      $error .= 'You can only use the following characters A-Z, a-z, &#39; -<br>';
-    }
-
-    return $error;
+  public static function sanitizeName($name) {                         // Clean file name
+    $name = preg_replace('([\~,;])',       '-', $file);    // Replace \ , ; with -
+    $name = preg_replace('([^\w\d\-_~.])',  '', $file);    // Remove unwanted characters
+    return $name;                                          // Return cleaned name
   }
 
-
-
-  // None of these are needed any more
-  public static function isCategory($category) {
-    $errors = array('id' => '', 'name'=>'', 'description'=>'');             // Form errors
-    if ($category->id != '') {
-      $errors['id']   = self::isID($category->id);
-    }
-    $errors['name']        = self::isCategoryName($category->name);
-    $errors['description'] = self::isCategoryDescription($category->description);
-    return $errors;
-  }
-
-  public static function isArticle($article) {
-    if ($article->id != 'new') {
-      $errors['id']   = $this->isID($Article->id);
-    }
-    $errors['title']       = self::isArticleTitle($article->title);
-    $errors['content']     = self::isArticleContent($article->content);
-    //		$errors['published']   = self::isArticleContent($article->published);
-    $errors['category_id'] = self::isID($article->category_id);
-    $errors['user_id']     = self::isID($article->user_id);
-    //		$errors['media_id']    = self::isID($article->media_id);
-    return $errors;
-  }
-
-  public static function isUser($user) {
-    if ($User->id != 'new') {
-      $errors['id']   = $this->isID($User->id);
-    }
-    $errors['forename'] = self::isName($user->forename);
-    $errors['surname']  = self::isName($user->surname);
-    $errors['email']    = self::isEmail($user->email);
-    $errors['password'] = self::isPassword($user->password);
-    return $errors;
-  }
-
-  public static function isMedia($media) {                                  // Return cleaned name
-    if ($Media->id != 'new') {                                // If not new media
-      $errors['id']   = $this->isID($Media->id);              // Validate id
-    }
-//    self::filename    = sanitize_file_name(self::filename);          // Clean filenamne
-    $errors['title']  = self::isMediaTitle($media->title);           // Check title
-    $errors['alt']    = self::isMediaAlt($media->alt);               // Check alt text
-    $errors['file']  .= self::isAllowedFileExtension($media->filename); // Check ext
-    $errors['file']   = self::isAllowedMediaType($media->mediaType); // Check type
-    $errors['file']  .= self::isWithinFileSize($media->filesize);    // Check size
-    return $errors;                                                   // Return array
-  }
-
-  public static function isGallery($gallery) {
-    if ($gallery->id != 'new') {
-      $errors['id']   = $this->isID($Gallery->id);
-    }
-    $errors['name'] = self::isGalleryName($gallery->name);
-    $errors['mode'] = self::ismode($gallery->mode);
-    return $errors;
-  }
 }
