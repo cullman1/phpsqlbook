@@ -74,8 +74,10 @@ include 'includes/header.php';
             <textarea id="comment" name="comment" class="form-control"></textarea><br/>
             <button type="submit" class="btn btn-primary">Submit comment</button>
           </form>
+        <?php } else { ?> 
+          <a href="<?= ROOT ?>users/login.php">Log in to add your own comment.</a>
+          <script>$('img[src="../uploads/"]').parent().hide();</script>
         <?php } ?>
-
         <?php foreach ($comments as $comment) { ?>
           <div class="comment <?php if ($comment->reply_to) { echo 'reply'; } ?>"
              data-comment="<?= $comment->id ?>" data-parent="<?= $comment->parent_id ?>">
@@ -116,8 +118,5 @@ include 'includes/header.php';
             $('#thumbnails a:first-child').addClass("active");
             $('img[src="../uploads/"]').parent().hide();
           </script>
-        <?php } else { ?>
-          <a href="<?= ROOT ?>users/login.php">Log in to add your own comment.</a>
-          <script>$('img[src="../uploads/"]').parent().hide();</script>
-        <?php } ?>
+        <?php }  ?>      
   <script src="<?=ROOT?>lib/photoviewer/photo-viewer.js"></script>

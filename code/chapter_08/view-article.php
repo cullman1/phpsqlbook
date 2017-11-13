@@ -11,14 +11,18 @@ if (empty($article)) {                                 // If article is empty
 $page_title .= $article->title . ' ' . $article->category . ' by ' . $article->author;
 $meta_description = $article->summary;
 include 'includes/header.php';                         // Show the header
+
 ?>
 <section>
-  <h1><?= $article->title ?></h1>
-  <?= $article->content ?>
-  <img src="<?= $article->media_filename ?>" alt="<?= $article->media_alt ?>" />
+  <h1 class="display-4"><?= $article->title ?></h1>
   <div class="credit">
-    Posted by <i><?= $article->author ?></i>
-    on <i><?= $article->created ?></i> in <i><?= $article->category ?></i>.
+    <?= $article->category ?> by <a href="<?= ROOT ?>view-user.php?id=
+    <?= $article->user_id ?>"><?= $article->author ?></a> on <?= $article->created ?>
   </div>
+  <div class="row">
+    <div class="col-8"><img src="<?= ROOT ?>uploads/<?= $article->media_filename ?>" 
+                      alt="<?= $article->media_alt ?>" /></div>
+    <div class="col-4"><?= $article->content ?></div>
+  </div>  
 </section>
 <?php include 'includes/footer.php'; ?>
