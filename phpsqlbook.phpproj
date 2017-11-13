@@ -66,6 +66,7 @@
     <Compile Include="code\chapter_09\includes\footer.php" />
     <Compile Include="code\chapter_09\includes\header.php" />
     <Compile Include="code\chapter_09\index.php" />
+    <Compile Include="code\chapter_09\includes\search.php" />
     <Compile Include="code\chapter_09\search.php" />
     <Compile Include="code\chapter_09\view-article.php" />
     <Compile Include="code\chapter_09\view-search.php" />

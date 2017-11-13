@@ -31,5 +31,5 @@ $meta_description = 'An agency for creatives';
 $site_name        = 'Creative Folk';
 
 ini_set( 'default_charset', 'UTF-8' );
-define('ROOT', '/phpsqlbook/code/chapter_08/');
+define('ROOT', '/phpsqlbook/code/chapter_09/');
 define('ROOT2', '/phpsqlbook/cms-final/');
