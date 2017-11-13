@@ -89,7 +89,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     if ((($croppedfile) && ($uploadedfile)) && isset($result) && ($result === TRUE)) {
        file_put_contents('../uploads/'.$filename, $data);
        $moveresult   = $mediaManager->moveImage($filename, $data);         // Move image
-        $media->filename = $filename;
+        $media->file = $filename;
       $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
       $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
       $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
@@ -184,7 +184,7 @@ include '../includes/header.php';
           <span class="errors"><?= $errors['alt'] ?></span>
         </div>
         <?php foreach ($article_images as $image) {
-          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->filename . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
+          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->file . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
                 &nbsp;    <a class="btn btn-primary" href="' . ROOT . 'admin/delete-image.php?page=user&id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
         } ?>
 

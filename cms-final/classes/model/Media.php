@@ -1,15 +1,12 @@
 <?php
-Class Media
-{
+class Media {
   public $id;
   public $alt;
-  public $filename;
-  public $filepath;
+  public $file;
 
-  function __construct($id = NULL, $alt = NULL, $filename = NULL, $filepath = NULL) {
+  function __construct($id = NULL, $alt = NULL, $file = NULL) {
     $this->id        = $id;
     $this->alt       = $alt;
-    $this->filename  = $filename;
-    $this->filepath  = $filepath;
+    $this->file  = $file;
   }
 }

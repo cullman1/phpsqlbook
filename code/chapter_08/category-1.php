@@ -22,7 +22,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) ) {          // If got a categ
             category.id as category_id, 
             category.name AS category,
             media.id as media_id, 
-            media.filename AS media_filename, 
+            media.file AS media_file, 
             media.alt AS media_alt
             FROM article
             LEFT JOIN user ON article.user_id = user.id 
@@ -55,7 +55,7 @@ if (empty($category) || empty($article_list)) {                 // If objects em
     <h1><?= $category->name ?></h1>
     <?php foreach ($article_list as $article) { ?>
       <div class="article">
-        <img src="<?= ROOT ?>uploads/<?= $article->media_filename ?>" alt="<?= $article->media_alt ?>">
+        <img src="<?= ROOT ?>uploads/<?= $article->media_file ?>" alt="<?= $article->media_alt ?>">
         <a href="article.php?id=<?=$article->id?>">
           <?=$article->title?><?=$article->summary?></a>
       </div>

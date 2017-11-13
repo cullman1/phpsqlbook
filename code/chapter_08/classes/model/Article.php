@@ -22,6 +22,6 @@ class Article{
   public  $author;
   public  $author_image;
   public  $media_id;
-  public  $media_filename;
+  public  $media_file;
   public  $media_alt;
 }

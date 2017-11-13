@@ -12,7 +12,7 @@ class ArticleManager {
             article.user_id, article.category_id, article.published,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id as category_id, category.name AS category, media.id as media_id,   
-            media.filename as media_filename, media.alt AS media_alt 
+            media.file as media_file, media.alt AS media_alt 
             FROM article
             LEFT JOIN user ON article.user_id = user.id 
             LEFT JOIN category ON article.category_id = category.id 
@@ -37,7 +37,7 @@ class ArticleManager {
         $sql = 'SELECT article.*, 
         user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author, user.profile_image AS author_image, 
         category.id AS category_id, category.name AS category,
-	      media.id AS media_id, media.filename AS media_filename, media.alt AS media_alt
+	      media.id AS media_id, media.file AS media_file, media.alt AS media_alt
     		FROM article 
     		LEFT JOIN user ON article.user_id = user.id
     		LEFT JOIN category ON article.category_id = category.id
@@ -60,7 +60,7 @@ class ArticleManager {
             article.user_id, article.category_id, article.published,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id as category_id, category.name AS category,
-            media.id as media_id, media.filename as media_filename, media.alt AS media_alt 
+            media.id as media_id, media.file as media_file, media.alt AS media_alt 
            FROM article
             LEFT JOIN user ON article.user_id = user.id 
             LEFT JOIN category ON article.category_id = category.id 
@@ -85,7 +85,7 @@ class ArticleManager {
    public function getArticleSummariesByUserId($id) {
        $pdo = $this->pdo;
        $sql = 'SELECT article.id, article.title, article.summary, article.created, article.published, user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author,             category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
-            media.id as media_id, media.filename as media_filename, media.alt as media_alt
+            media.id as media_id, media.file as media_file, media.alt as media_alt
             FROM article
             LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id

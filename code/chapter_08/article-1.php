@@ -7,7 +7,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) ) {   // If got a numeric arti
     $sql = 'SELECT article.*, user.id AS user_id, 
           CONCAT(user.forename, " ", user.surname) AS author, user.profile_image AS  
           author_image, category.id AS category_id, category.name AS category, media.id  
-          AS media_id, media.filename AS media_filename, media.alt AS media_alt 
+          AS media_id, media.file AS media_file, media.alt AS media_alt 
           FROM article 
           LEFT JOIN user ON article.user_id = user.id
           LEFT JOIN category ON article.category_id = category.id
@@ -38,7 +38,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) ) {   // If got a numeric arti
   <body>
     <section>
       <h1><?= $article->title ?></h1>
-      <img src="<?= ROOT ?>uploads/<?= $article->media_filename ?>" alt="<?= $article->media_alt ?>" />
+      <img src="<?= ROOT ?>uploads/<?= $article->media_file ?>" alt="<?= $article->media_alt ?>" />
       <?= $article->content ?>
       <div class="credit">
         <img src="<?= ROOT ?>uploads/<?= $article->author_image ?>" 

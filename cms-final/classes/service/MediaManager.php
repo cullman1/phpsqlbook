@@ -41,9 +41,9 @@ class MediaManager {
       $pdo->commit();
    
       if ($image) {
-        if(file_exists('../uploads/'. $image->filename)) {
-          unlink('../uploads/'. $image->filename); // deletes file
-          unlink('../uploads/thumb/'. $image->filename);
+        if(file_exists('../uploads/'. $image->file)) {
+          unlink('../uploads/'. $image->file); // deletes file
+          unlink('../uploads/thumb/'. $image->file);
         }        
       } 
       if ($count == 0) {
@@ -62,11 +62,11 @@ class MediaManager {
     $pdo = $this->pdo;
     $pdo->beginTransaction();
     try {
-      $sql = 'INSERT INTO media ( alt,  filename) 
-	     	  VALUES ( :alt, :filename)';
+      $sql = 'INSERT INTO media ( alt, file) 
+	     	  VALUES ( :alt, :file)';
       $statement = $pdo->prepare($sql);                                 // Prepare
       $statement->bindValue(':alt',       $media->alt);                 // Bind value
-      $statement->bindValue(':filename',  $media->filename);            // Bind value
+      $statement->bindValue(':file',  $media->file);            // Bind value
       $statement->execute();                                            // Try to execute
       $media->id = $pdo->lastInsertId();                                // Add id to object
 

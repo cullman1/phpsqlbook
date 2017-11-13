@@ -30,14 +30,14 @@ include 'includes/header.php';
   <div class="row">
     <div id="art_image" class="col-8">
     <?php if (sizeof($article_images) < 2) { ?>
-      <img src="../uploads/<?=  htmlentities( $article_images[0]->filename , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $article_images[0]->alt , ENT_QUOTES, 'UTF-8')?>"/>
+      <img src="../uploads/<?=  htmlentities( $article_images[0]->file , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $article_images[0]->alt , ENT_QUOTES, 'UTF-8')?>"/>
     <?php } else { ?>
       <div class="gallery">
         <div id="photo-viewer"></div>
         <div id="thumbnails">
         <?php foreach ($article_images as $image) { ?>
-            <a href="../uploads/<?= htmlentities( $image->filename , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $image->alt , ENT_QUOTES, 'UTF-8')?>" class="thumb" />
-            <img src="../uploads/thumb/<?= htmlentities( $image->filename , ENT_QUOTES, 'UTF-8')?>" alt="<?=htmlentities( $image->alt , ENT_QUOTES, 'UTF-8')?>"/></a>
+            <a href="../uploads/<?= htmlentities( $image->file , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $image->alt , ENT_QUOTES, 'UTF-8')?>" class="thumb" />
+            <img src="../uploads/thumb/<?= htmlentities( $image->file , ENT_QUOTES, 'UTF-8')?>" alt="<?=htmlentities( $image->alt , ENT_QUOTES, 'UTF-8')?>"/></a>
         <?php } ?>
         </div>
       </div>

@@ -16,11 +16,10 @@ include 'includes/header.php';                         // Show the header
 <section>
   <h1 class="display-4"><?= $article->title ?></h1>
   <div class="credit">
-    <?= $article->category ?> by <a href="<?= ROOT ?>view-user.php?id=
-    <?= $article->user_id ?>"><?= $article->author ?></a> on <?= $article->created ?>
+    <?= $article->category ?> by <a href="<?= ROOT ?>view-user.php?id=<?= $article->user_id ?>"><?= $article->author ?></a> on <?= $article->created ?>
   </div>
   <div class="row">
-    <div class="col-8"><img src="<?= ROOT ?>uploads/<?= $article->media_filename ?>" 
+    <div class="col-8"><img src="<?= ROOT ?>uploads/<?= $article->media_file ?>" 
                       alt="<?= $article->media_alt ?>" /></div>
     <div class="col-4"><?= $article->content ?></div>
   </div>  

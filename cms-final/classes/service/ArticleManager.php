@@ -15,7 +15,7 @@ class ArticleManager{
             article.comment_count, article.like_count,
             user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user,
             category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
-            media.id as media_id, media.filename, media.alt
+            media.id as media_id, media.file as media_file, media.alt as media_alt
 
             FROM article
 
@@ -87,7 +87,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     $pdo = $this->pdo;
     $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
-            category.id as category_id, category.name AS category, media.id as media_id,  media.filename as thumb, media.alt AS thumb_alt
+            category.id as category_id, category.name AS category, media.id as media_id,  media.file as thumb, media.alt AS thumb_alt
             FROM article
             LEFT JOIN user ON article.user_id = user.id 
               LEFT JOIN articleimages ON articleimages.article_id = article.id
@@ -112,7 +112,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
             article.like_count, article.comment_count,
             user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
-            media.id as media_id, media.filename, media.alt
+            media.id as media_id, media.filename as media_file, media.alt as media_alt
 
             FROM article
 
@@ -143,7 +143,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
             article.like_count, article.comment_count,
             user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user,
             category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
-            media.id as media_id, media.filename, media.alt
+            media.id as media_id, media.file as media_file, media.alt as media_alt
 
             FROM article
 
@@ -262,7 +262,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
             article.comment_count, article.like_count,
             user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user, 
             category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
-            media.id as media_id, media.filename, media.alt
+            media.id as media_id, media.file as media_file, media.alt as media_alt
 
             FROM article
 
