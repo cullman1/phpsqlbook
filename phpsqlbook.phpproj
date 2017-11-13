@@ -56,7 +56,7 @@
     <Compile Include="code\chapter_09\classes\model\ArticleSummary.php" />
     <Compile Include="code\chapter_09\classes\model\Category.php" />
     <Compile Include="code\chapter_09\classes\model\User.php" />
-    <Compile Include="code\chapter_09\classes\service\ArticleManager.php" />
+    <Compile Include="code\chapter_09\classes\service\ArticleManager2.php" />
     <Compile Include="code\chapter_09\classes\service\CategoryManager.php" />
     <Compile Include="code\chapter_09\classes\service\CMS.php" />
     <Compile Include="code\chapter_09\classes\service\UserManager.php" />

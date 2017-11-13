@@ -8,7 +8,7 @@
    </a>
    <p><?= $article->summary ?></p>
      <p><?php if (isset($_GET['term'])) {
-                  echo clean(substr($article->content, 0, 100)) ;
+                  echo $article->content;
               } ?>;
      </p>
    <p>

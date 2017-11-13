@@ -110,7 +110,7 @@ class ArticleManager {
    function getSearchCount($term) {
        $pdo = $this->pdo;                                // Database connection
        $query =  "SELECT COUNT(*) FROM article ";
-       $query .= "WHERE ((title LIKE :term) OR (content LIKE :term)) "; // Query
+       $query .= "WHERE ((title LIKE :term)  OR (summary LIKE :term) OR (content LIKE :term)) "; // Query
        $like_term = '%' . $term . '%';                     // Add wildcards to search term
        $statement = $pdo->prepare($query);                 // Prepare 
        $statement->bindParam(':term', $like_term);         // Bind search term
@@ -131,7 +131,7 @@ class ArticleManager {
              LEFT JOIN category ON article.category_id = category.id
              LEFT JOIN articleimages ON articleimages.article_id = article.id
              LEFT JOIN media ON media.id = articleimages.media_id 
-             WHERE ((title LIKE :term) OR (content LIKE :term)) ORDER BY id DESC ';           
+             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term)) ORDER BY id DESC ';           
        $like_term = '%' . $term . '%';                     // Add wildcards to search term
        $statement = $pdo->prepare($sql);     // Prepare 
        $statement->bindParam(':term', $like_term);         // Bind search term
@@ -141,7 +141,20 @@ class ArticleManager {
        if (!$article_list) {
            return null;
        }
+       //Tamper with results here:
+       foreach($article_list as $article) {
+           $article->content = $this->showTerm($article->content, $term);
+           $article->title = $this->showTerm($article->title, $term);
+           $article->summary = $this->showTerm($article->summary, $term);
+       }
+
        return $article_list;
+   }
+
+   function showTerm($article_part, $term) {
+       $pos_term = mb_strpos($article_part, $term);
+       $article_part =str_ireplace($term, "<strong><u>".$term."</u></strong>",  $article_part); 
+       return substr( $article_part, $pos_term, 100);
    }
 
 }
