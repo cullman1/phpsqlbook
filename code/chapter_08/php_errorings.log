@@ -1,0 +1,32 @@
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Warning:  include(classes/Article.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 3
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Warning:  include(): Failed opening 'classes/Article.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 3
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 6
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 6
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 13:00:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 13:02:43 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 6
+[14-Nov-2017 13:02:43 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 13:02:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 13:02:43 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 6
+[14-Nov-2017 13:02:43 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 13:02:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 13:04:49 Europe/Berlin] PHP Fatal error:  Using $this when not in object context in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 4
+[14-Nov-2017 13:04:49 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 13:04:49 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 14:07:42 Europe/Berlin] PHP Warning:  require_once(datbase-connection.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 2
+[14-Nov-2017 14:07:42 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 14:07:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 14:07:42 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required 'datbase-connection.php' (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 2
+[14-Nov-2017 14:07:42 Europe/Berlin] PHP Stack trace:
+[14-Nov-2017 14:07:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:0
+[14-Nov-2017 14:07:54 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE article.id= 99999999' at line 1' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php:7
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 7

@@ -1196,3 +1196,8 @@ Stack trace:
 [25-Aug-2017 18:02:55 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php on line 44
 [25-Aug-2017 18:02:55 Europe/Berlin] PHP Stack trace:
 [25-Aug-2017 18:02:55 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_07\test-1.php:0
+[15-Nov-2017 13:53:49 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'media.filename' in 'field list'' in C:\xampp\htdocs\phpsqlbook\code\chapter_07\example.php:22
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\code\chapter_07\example.php(22): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_07\example.php on line 22

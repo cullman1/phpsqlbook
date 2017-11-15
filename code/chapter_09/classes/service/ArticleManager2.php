@@ -108,54 +108,47 @@ class ArticleManager {
    }
 
    function getSearchCount($term) {
-       $pdo = $this->pdo;                                // Database connection
-       $query =  "SELECT COUNT(*) FROM article ";
-       $query .= "WHERE ((title LIKE :term)  OR (summary LIKE :term) OR (content LIKE :term)) "; // Query
-       $like_term = '%' . $term . '%';                     // Add wildcards to search term
-       $statement = $pdo->prepare($query);                 // Prepare 
-       $statement->bindParam(':term', $like_term);         // Bind search term
-       $statement->execute();                              // Execute
-       $article_count = $statement->fetchColumn();         // Return count from function
-       if (!$article_count) {
-           return null;
-       }
-       return $article_count;  
-   }
-
-   function searchArticles($term) {
-       $pdo = $this->pdo;                                  // Database connection
-       $sql =  'SELECT article.*, category.name AS category, category.id as category_id,  
-             user.id as user_id,  CONCAT(user.forename, " ", user.surname) AS author,     
+    $like_term = '%' . $term . '%';
+    $sql = "SELECT COUNT(*) FROM article
+            WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))";
+    $statement = $this->pdo->prepare($sql);                   // Prepare 
+    $statement->bindParam(':term',  $like_term );         // Bind search term
+    $statement->execute();                              // Execute
+    $article_count = $statement->fetchColumn();         // Return count from function
+    return $article_count;  
+  }
+  function searchArticles($term) {
+    $like_term = '%' . $term . '%';
+   $sql =  'SELECT article.*, category.name AS category, category.id as category_id,
+             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
              media.id as media_id, media.file AS media_file, media.alt AS media_alt 
-             FROM article LEFT JOIN user ON article.user_id = user.id
+             FROM article 
+             LEFT JOIN user ON article.user_id = user.id
              LEFT JOIN category ON article.category_id = category.id
              LEFT JOIN articleimages ON articleimages.article_id = article.id
-             LEFT JOIN media ON media.id = articleimages.media_id 
-             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term)) ORDER BY id DESC ';           
-       $like_term = '%' . $term . '%';                     // Add wildcards to search term
-       $statement = $pdo->prepare($sql);     // Prepare 
-       $statement->bindParam(':term', $like_term);         // Bind search term
-       $statement->execute();                              // Execute
-       $statement->setFetchMode(PDO::FETCH_CLASS, 'Article');           
-       $article_list = $statement->fetchAll();             // Return matches in database
-       if (!$article_list) {
-           return null;
-       }
-       //Tamper with results here:
-       foreach($article_list as $article) {
+             LEFT JOIN media ON media.id = articleimages.media_id
+             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term)) ';           
+    $statement = $this->pdo->prepare($sql);                   // Prepare 
+    $statement->bindParam(':term',  $like_term );         // Bind search term
+    $statement->execute();                              // Execute
+    $statement->setFetchMode(PDO::FETCH_CLASS, 'Article');           
+    $article_list = $statement->fetchAll();             // Return matches in database
+    if (!$article_list) {
+      return null;
+    }
+    foreach($article_list as $article) {
            $article->content = $this->showTerm($article->content, $term);
-           $article->title = $this->showTerm($article->title, $term);
+           $article->title   = $this->showTerm($article->title, $term);
            $article->summary = $this->showTerm($article->summary, $term);
-       }
-
-       return $article_list;
+    }
+    return $article_list;
+  }
+  function showTerm($article, $term) {
+       $pos_term = mb_strpos($article, $term);
+       $article =str_ireplace($term, "<strong><u>".$term."</u></strong>", $article); 
+       return substr($article, $pos_term, 100);
    }
 
-   function showTerm($article_part, $term) {
-       $pos_term = mb_strpos($article_part, $term);
-       $article_part =str_ireplace($term, "<strong><u>".$term."</u></strong>",  $article_part); 
-       return substr( $article_part, $pos_term, 100);
-   }
 
 }
 

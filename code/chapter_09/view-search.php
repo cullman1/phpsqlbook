@@ -17,7 +17,7 @@ include 'includes/header.php'; ?>
 <section class="jumbotron text-center">
     <div class="container">
     <h1 class="jumbotron-heading">Search</h1>
-   <p class="lead text-muted">
+
    <?php  if (!empty($term)) {                                           // If search term sent
               echo 'You searched for <strong>' . $display_term . '</strong>. ';             // Show search term
               if ($count > 0) { 
@@ -27,7 +27,7 @@ include 'includes/header.php'; ?>
                   echo "<br/>No articles containing the term <strong>$display_term</strong> were found";
               }
      
-  } ?></p>
+  } ?>
     </div>
   </section>
   <div class="container">

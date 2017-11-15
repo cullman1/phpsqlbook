@@ -9,9 +9,9 @@ $sql = 'SELECT article.*,
             user.profile_image AS author_image, 
             category.id AS category_id, 
             category.name AS category,
-            media.id AS media_id, 
-            media.filename AS media_filename, 
-            media.alt AS media_alt
+                  media.id AS media_id, 
+            media.file as media_file, 
+            media.alt AS media_alt 
           FROM article 
             LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id

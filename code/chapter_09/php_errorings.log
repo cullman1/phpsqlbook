@@ -1,0 +1,12 @@
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager2.php on line 155
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP Stack trace:
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\index.php:0
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\code\chapter_09\index.php:2
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP Fatal error:  Cannot pass parameter 2 by reference in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager2.php on line 116
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP Stack trace:
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP   2. ArticleManager->getSearchCount() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:10
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP Fatal error:  Cannot pass parameter 2 by reference in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager2.php on line 116
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP Stack trace:
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP   2. ArticleManager->getSearchCount() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:10

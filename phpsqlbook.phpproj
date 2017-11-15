@@ -44,11 +44,14 @@
     <Compile Include="code\chapter_08\classes\service\CategoryManager.php" />
     <Compile Include="code\chapter_08\classes\service\CMS.php" />
     <Compile Include="code\chapter_08\classes\service\UserManager.php" />
+    <Compile Include="code\chapter_08\database-connection.php" />
     <Compile Include="code\chapter_08\config.php" />
     <Compile Include="code\chapter_08\includes\article-summary.php" />
     <Compile Include="code\chapter_08\includes\footer.php" />
     <Compile Include="code\chapter_08\includes\header.php" />
     <Compile Include="code\chapter_08\index.php" />
+    <Compile Include="code\chapter_08\no-article.php" />
+    <Compile Include="code\chapter_08\page-not-found.php" />
     <Compile Include="code\chapter_08\view-article.php" />
     <Compile Include="code\chapter_08\view-category.php" />
     <Compile Include="code\chapter_08\view-user.php" />
