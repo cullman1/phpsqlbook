@@ -27,7 +27,7 @@
     <tbody>
     <?php foreach ($article_list as $article) { ?>
       <tr>
-        <td><img src="../uploads/thumb/<?= htmlentities($article->thumb, ENT_NOQUOTES, 'UTF-8');  ?>" alt="<?= htmlentities($article->thumb_alt, ENT_NOQUOTES, 'UTF-8'); ?>"></td>
+        <td><img src="../uploads/thumb/<?= htmlentities($article->media_file, ENT_NOQUOTES, 'UTF-8');  ?>" alt="<?= htmlentities($article->media_alt, ENT_NOQUOTES, 'UTF-8'); ?>"></td>
         <td><?= htmlentities($article->title, ENT_NOQUOTES, 'UTF-8'); ?></td>
         <td><?= htmlentities( $article->category, ENT_NOQUOTES, 'UTF-8'); ?></td>
         <td><?= ($article->published ? 'Yes' : 'No') ?></td>

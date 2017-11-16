@@ -6,7 +6,7 @@ class ArticleManager {
         $this->pdo = $pdo;
     }
     
-    public function getHomepageArticleSummaries(){
+    public function getAllArticleSummaries($limit='0'){
         $pdo = $this->pdo;
         $sql = 'SELECT article.id, article.title, article.summary, article.created, 
             article.user_id, article.category_id, article.published,
@@ -20,8 +20,10 @@ class ArticleManager {
             LEFT JOIN media ON articleimages.media_id = media.id
             WHERE category.navigation = TRUE 
             AND article.published = TRUE
-            ORDER BY article.created DESC 
-            LIMIT 9';
+            ORDER BY article.created DESC ';
+             if ($limit != 0) { 
+         $sql .= ' LIMIT '. $limit;
+    }
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
@@ -127,7 +129,8 @@ class ArticleManager {
              LEFT JOIN category ON article.category_id = category.id
              LEFT JOIN articleimages ON articleimages.article_id = article.id
              LEFT JOIN media ON media.id = articleimages.media_id
-             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term)) ';           
+           
+             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))   group by id';           
     $statement = $this->pdo->prepare($sql);                   // Prepare 
     $statement->bindParam(':term',  $like_term );         // Bind search term
     $statement->execute();                              // Execute
@@ -144,8 +147,9 @@ class ArticleManager {
     return $article_list;
   }
   function showTerm($article, $term) {
-       $pos_term = mb_strpos($article, $term);
-       $article =str_ireplace($term, "<strong><u>".$term."</u></strong>", $article); 
+    //   $pos_term = mb_strpos($article, $term);
+       $pos_term = ((mb_strpos($article, $term)-50) > 0 ? (mb_strpos($article, $term)-50) : 0);
+       $article = preg_replace("/$term/i", "<strong><u>$0</u></strong>", $article);  
        return substr($article, $pos_term, 100);
    }
 

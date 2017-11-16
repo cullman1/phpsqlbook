@@ -8,8 +8,8 @@ class ArticleSummary {
     public $category_id;
     public $category;
     public $media_id;
-    public $thumb;
-    public $thumb_alt;
+    public $media_file;
+    public $media_alt;
     public $published;
 }
 ?>

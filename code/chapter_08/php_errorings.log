@@ -30,3 +30,192 @@ Stack trace:
 #0 C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php(7): PDOStatement->execute()
 #1 {main}
   thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_08\no-article.php on line 7
+[16-Nov-2017 14:04:25 Europe/Berlin] PHP Warning:  include(classes/Article.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 4
+[16-Nov-2017 14:04:25 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:04:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:04:25 Europe/Berlin] PHP Warning:  include(): Failed opening 'classes/Article.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 4
+[16-Nov-2017 14:04:25 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:04:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:04:42 Europe/Berlin] PHP Warning:  include(classes/Article.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 4
+[16-Nov-2017 14:04:42 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:04:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:04:42 Europe/Berlin] PHP Warning:  include(): Failed opening 'classes/Article.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 4
+[16-Nov-2017 14:04:42 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:04:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Warning:  include(classes/Article.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 4
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Warning:  include(): Failed opening 'classes/Article.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 4
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 35
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 36
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 41
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 42
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 42
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 43
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 45
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 46
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 47
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 48
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php on line 49
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:05:04 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\article-1.php:0
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 17
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 17
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 18
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 18
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:34:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:35:56 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:35:56 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:35:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:36:43 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:37:13 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:37:16 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:37:25 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:37:26 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:37:26 Europe/Berlin] PHP Parse error:  syntax error, unexpected '{' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 23
+[16-Nov-2017 14:37:45 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 7
+[16-Nov-2017 14:37:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:37:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:37:45 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 7
+[16-Nov-2017 14:37:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:37:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:37:53 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 7
+[16-Nov-2017 14:37:53 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:37:53 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:37:53 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 7
+[16-Nov-2017 14:37:53 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:37:53 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:39:11 Europe/Berlin] PHP Notice:  Undefined variable: pdo in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 7
+[16-Nov-2017 14:39:11 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:39:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:39:11 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 7
+[16-Nov-2017 14:39:11 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:39:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:39:22 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM article 
+            WHERE article.id = '148'' at line 2' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:10
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php(10): PDOStatement->execute()
+#1 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 10
+[16-Nov-2017 14:39:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 25
+[16-Nov-2017 14:39:43 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:39:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:39:43 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 27
+[16-Nov-2017 14:39:43 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:39:43 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:41:32 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 24
+[16-Nov-2017 14:41:32 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:41:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 14:42:39 Europe/Berlin] PHP Notice:  Undefined variable: article in C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php on line 24
+[16-Nov-2017 14:42:39 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 14:42:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\ternary-check.php:0
+[16-Nov-2017 18:11:16 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DESCLIMIT 9' at line 13' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\classes\service\ArticleManager.php:28
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\code\chapter_08\classes\service\ArticleManager.php(28): PDOStatement->execute()
+#1 C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php(3): ArticleManager->getAllArticleSummaries(9)
+#2 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_08\classes\service\ArticleManager.php on line 28
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_file in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$media_alt in C:\xampp\htdocs\phpsqlbook\code\chapter_08\includes\article-summary.php on line 3
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
+[16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16

@@ -21,7 +21,7 @@ include 'includes/header.php'; ?>
    <?php  if (!empty($term)) {                                           // If search term sent
               echo 'You searched for <strong>' . $display_term . '</strong>. ';             // Show search term
               if ($count > 0) { 
-                  echo '<br/>We found ' . $count . ' result(s).';           // Number of results
+                  echo "<br/>We found $count article(s) containing your term.";           // Number of results
                  
               } else {
                   echo "<br/>No articles containing the term <strong>$display_term</strong> were found";

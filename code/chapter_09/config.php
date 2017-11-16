@@ -8,7 +8,7 @@ require_once 'classes/model/ArticleSummary.php';
 require_once 'classes/model/Category.php';
 require_once 'classes/model/User.php';
 
-require_once 'classes/service/ArticleManager2.php';
+require_once 'classes/service/ArticleManager.php';
 require_once 'classes/service/CategoryManager.php';
 require_once 'classes/service/CMS.php';
 require_once 'classes/service/UserManager.php';

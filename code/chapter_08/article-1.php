@@ -1,9 +1,10 @@
 <?php
 define('ROOT', '/phpsqlbook/cms-final/'); 
-require_once 'config.php';                     // Includes connection and class
-include 'classes/Article.php';                   // Includes connection and class
+require_once 'database-connection.php';          // Includes connection
+  include 'classes/Article.php';                   // Includes class
+  $id = ( isset($_GET['id']) ? $_GET['id'] : '');                     // Includes connection and class
 
-if (isset($_GET['id']) && is_numeric($_GET['id']) ) {   // If got a numeric article id
+if ( is_numeric($id) ) {   // If got a numeric article id
     $sql = 'SELECT article.*, user.id AS user_id, 
           CONCAT(user.forename, " ", user.surname) AS author, user.profile_image AS  
           author_image, category.id AS category_id, category.name AS category, media.id  
@@ -15,7 +16,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) ) {   // If got a numeric arti
           LEFT JOIN media ON articleimages.media_id = media.id
           WHERE article.id=:id';                         // Query
     $statement = $pdo->prepare($sql);                      // Prepare
-    $statement->bindValue(':id', $_GET['id'], PDO::PARAM_INT);     // Bind value from query string
+    $statement->bindValue(':id', $id, PDO::PARAM_INT);     // Bind value from query string
     $statement->execute();                                 // Execute
     $statement->setFetchMode(PDO::FETCH_CLASS, 'Article'); // Set fetch mode
     $article = $statement->fetch();                        // Store data in $article  

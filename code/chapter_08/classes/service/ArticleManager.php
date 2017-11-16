@@ -6,7 +6,7 @@ class ArticleManager {
         $this->pdo = $pdo;
     }
     
-    public function getHomepageArticleSummaries(){
+    public function getAllArticleSummaries($limit='0'){
         $pdo = $this->pdo;
         $sql = 'SELECT article.id, article.title, article.summary, article.created, 
             article.user_id, article.category_id, article.published,
@@ -20,8 +20,10 @@ class ArticleManager {
             LEFT JOIN media ON articleimages.media_id = media.id
             WHERE category.navigation = TRUE 
             AND article.published = TRUE
-            ORDER BY article.created DESC 
-            LIMIT 9';
+            ORDER BY article.created DESC ';
+             if ($limit != 0) { 
+         $sql .= ' LIMIT '. $limit;
+    }
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
