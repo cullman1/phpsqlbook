@@ -1,9 +1,6 @@
 <?php
 require_once '../config.php';
-
 $userManager->redirectNonAdmin();
-
-// Get data
 $id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
 $action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
 $name        = (isset($_POST['name'])        ? $_POST['name']        : ''); // Get values
@@ -12,7 +9,6 @@ $navigation  = (isset($_POST['navigation'])  ? 1  : 0); // Get values
 $category    = new Category($id, $name, $description, $navigation);  // Create Category object
 $errors      = array('id' => '', 'name'=>'', 'description'=>'');       // Form errors
 $alert       = '';                                                     // Status messages
-
 // Was form posted
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing category to edit

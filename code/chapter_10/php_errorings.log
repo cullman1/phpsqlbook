@@ -1,0 +1,270 @@
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager2.php on line 155
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP Stack trace:
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\index.php:0
+[15-Nov-2017 17:40:26 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\code\chapter_09\index.php:2
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP Fatal error:  Cannot pass parameter 2 by reference in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager2.php on line 116
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP Stack trace:
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[15-Nov-2017 17:40:45 Europe/Berlin] PHP   2. ArticleManager->getSearchCount() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:10
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP Fatal error:  Cannot pass parameter 2 by reference in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager2.php on line 116
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP Stack trace:
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[15-Nov-2017 17:41:24 Europe/Berlin] PHP   2. ArticleManager->getSearchCount() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:10
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP Warning:  preg_replace(): Delimiter must not be alphanumeric or backslash in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   4. preg_replace() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:148
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP Warning:  preg_replace(): Delimiter must not be alphanumeric or backslash in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   4. preg_replace() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:148
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP Warning:  preg_replace(): Delimiter must not be alphanumeric or backslash in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 11:51:36 Europe/Berlin] PHP   4. preg_replace() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:148
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP Strict standards:  Only variables should be passed by reference in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 115
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP   2. ArticleManager->getSearchCount() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:10
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP Strict standards:  Only variables should be passed by reference in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 132
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:07:02 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:44 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:140
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:141
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Notice:  Undefined variable: pos_term in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 148
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP Stack trace:
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:0
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   2. ArticleManager->searchArticles() C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php:12
+[16-Nov-2017 12:42:45 Europe/Berlin] PHP   3. ArticleManager->showTerm() C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:142
+[16-Nov-2017 12:59:15 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'LEFT JOIN user ON article.user_id = user.id
+             LEFT JOIN category ON ' at line 5' in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php:134
+Stack trace:
+#0 C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php(134): PDOStatement->execute()
+#1 C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php(12): ArticleManager->searchArticles('Flyer')
+#2 {main}
+  thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 134

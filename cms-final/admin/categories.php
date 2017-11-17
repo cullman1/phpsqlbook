@@ -1,16 +1,11 @@
 <?php
   require_once '../config.php';
-
   $userManager->redirectNonAdmin();
   $category_list   = $categoryManager->getAllCategories();
-
   include 'includes/header.php';
 ?>
-
 <section>
-
   <a class="btn btn-primary" href="category.php?action=create">create category</a>
-
   <table class="table">
     <thead>
       <tr>
@@ -33,7 +28,5 @@
       <?php } ?>
     </tbody>
   </table>
-
 </section>
-
 <?php include 'includes/footer.php'; ?>
