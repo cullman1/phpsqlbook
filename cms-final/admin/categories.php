@@ -23,7 +23,7 @@
         <td><?= htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></td>
         <td><?= ($category->navigation ? 'Yes' : 'No') ?></td>
         <td><a class="btn btn-primary" href="category.php?id=<?= $category->id?>&action=update">edit</a></td>
-        <td><a class="btn btn-danger" href="category-delete.php?id=<?= $category->id?>">delete</a></td>
+        <td><a class="btn btn-danger delete" href="category-delete.php?id=<?= $category->id?>">delete</a></td>
       </tr>
       <?php } ?>
     </tbody>

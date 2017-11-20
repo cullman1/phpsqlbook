@@ -1,6 +1,6 @@
 <?php
   require_once '../config.php';
-  $userManager->redirectNonAdmin();
+//  $userManager->redirectNonAdmin();
   $category_list   = $categoryManager->getAllCategories();
   include 'includes/header.php';
 ?>

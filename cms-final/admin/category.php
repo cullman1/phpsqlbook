@@ -53,7 +53,7 @@ include 'includes/header.php';
   <form action="category.php?id=<?=htmlspecialchars($category->id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
     <div class="form-group">
       <label for="name">Name: </label>
-      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
+      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?> class="form-control">
       <span class="errors"><?= $errors['name'] ?></span>
     </div>
     <div class="form-group">

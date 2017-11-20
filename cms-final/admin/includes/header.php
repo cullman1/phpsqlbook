@@ -18,9 +18,9 @@ $userManager->redirectNonAdmin();
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <a href="articles.php" class="nav-item nav-link">articles</a>
-          <a href="categories.php" class="nav-item nav-link">categories</a>
-          <a href="users.php" class="nav-item nav-link">users</a>
+          <li><a href="articles.php" class="nav-item nav-link">articles</a></li>
+          <li><a href="categories.php" class="nav-item nav-link">categories</a></li>
+          <li><a href="users.php" class="nav-item nav-link">users</a></li>
         </ul>
         <ul class="navbar-nav user-nav">
           <?php if ($is_logged_in) { ?>
