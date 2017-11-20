@@ -1,0 +1,18 @@
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php on line 40
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php:0
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php on line 40
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php:0
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php on line 62
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php:0
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php on line 62
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 12:08:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php:0
+[20-Nov-2017 12:09:17 Europe/Berlin] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php on line 62
+[20-Nov-2017 12:09:17 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 12:09:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php:0
+[20-Nov-2017 12:09:17 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php on line 62
+[20-Nov-2017 12:09:17 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 12:09:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\category.php:0

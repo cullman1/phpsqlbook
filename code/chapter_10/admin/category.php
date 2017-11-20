@@ -1,6 +1,6 @@
 <?php
 require_once '../config.php';
-$userManager->redirectNonAdmin();
+//$userManager->redirectNonAdmin();
 $id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT); // Get values
 $action      = (isset($_GET['action'])       ? $_GET['action'] : 'create'); // Get values
 $name        = (isset($_POST['name'])        ? $_POST['name']        : ''); // Get values
@@ -37,30 +37,26 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) { // Was form posted
     $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
 }
-include 'includes/header.php';
+include '../includes/header.php';
 ?>
 <section>
   <h2><?=htmlentities( $action,ENT_QUOTES,'UTF-8');?> category</h2>
   <?= $alert ?>
   <form action="category.php?id=<?=htmlspecialchars($category->id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
     <div class="form-group">
-      <label for="name">Name: </label>
-      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
-      <span class="errors"><?= $errors['name'] ?></span>
+       <label>Name: 
+      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control"> </label>
+      <span class="errors"><?= $errors['name'] ?></span></label>
     </div>
     <div class="form-group">
-      <label for="description">Description: </label>
-      <textarea name="description" id="description" class="form-control"><?=  htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
-      <span class="errors"><?= $errors['description'] ?></span>
+      <label> Description: <textarea name="description" id="description" class="form-control"><?=  htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
+      <span class="errors"><?= $errors['description'] ?></span></label>
     </div>
     <div class="form-group">
-      <label for="navigation">Show in navigation: </label>
-      <input type="checkbox" name="navigation" id="navigation" class="form-control" value="1"
-          <?php if ($category->navigation == 1) {
-            echo 'checked';
-          } ?> >
+      <label>Show in navigation: <input type="checkbox" name="navigation" id="navigation" class="form-control" value="1"
+          <?php if ($category->navigation == 1) { echo 'checked'; } ?> > </label>
     </div>
     <input type="submit" name="submit" value="save" class="btn btn-primary">
   </form>
 </section>
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

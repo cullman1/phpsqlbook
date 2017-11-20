@@ -13,7 +13,7 @@ class ArticleManager{
     $pdo = $this->pdo;
     $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
-            category.id as category_id, category.name AS category, media.id as media_id,  media.file as media_file, media.alt AS media_alt
+            category.id as category_id, category.name AS category,  category.seo_name AS seo_category,  media.id as media_id,  media.file as media_file, media.alt AS media_alt
             FROM article
             LEFT JOIN user ON article.user_id = user.id 
               LEFT JOIN articleimages ON articleimages.article_id = article.id

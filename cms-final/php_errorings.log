@@ -1,0 +1,432 @@
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:14:58 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:15:19 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:16 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 2
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 6
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Notice:  Undefined property: ArticleSummary::$seo_category in C:\xampp\htdocs\phpsqlbook\cms-final\includes\article-summary.php on line 11
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP Stack trace:
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:0
+[20-Nov-2017 13:17:18 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\cms-final\index.php:17
