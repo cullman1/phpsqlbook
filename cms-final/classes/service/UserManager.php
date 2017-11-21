@@ -198,8 +198,7 @@ class UserManager
     $_SESSION['role']     = $user->role;
   }
 
-  public function getAllUsers()
-  {
+  public function getAllUsers() {
     $pdo = $this->pdo;
     $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined FROM user';
     $statement = $pdo->prepare($sql);

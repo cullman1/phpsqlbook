@@ -219,3 +219,46 @@ Stack trace:
 [16-Nov-2017 18:12:30 Europe/Berlin] PHP Stack trace:
 [16-Nov-2017 18:12:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:0
 [16-Nov-2017 18:12:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\index.php:16
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Notice:  Constant ROOT already defined in C:\xampp\htdocs\phpsqlbook\code\chapter_08\config.php on line 33
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:3
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   3. define() C:\xampp\htdocs\phpsqlbook\code\chapter_08\config.php:33
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Warning:  include(classes/Category.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 4
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'classes/Category.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 4
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Warning:  include(classes/ArticleSummary.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 5
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'classes/ArticleSummary.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 5
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:5) in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 43
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:16:19 Europe/Berlin] PHP   2. header() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:43
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP Notice:  Constant ROOT already defined in C:\xampp\htdocs\phpsqlbook\code\chapter_08\config.php on line 33
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP   2. require_once() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:3
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP   3. define() C:\xampp\htdocs\phpsqlbook\code\chapter_08\config.php:33
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP Fatal error:  Cannot redeclare class Category in C:\xampp\htdocs\phpsqlbook\code\chapter_08\classes\Category.php on line 2
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:17:22 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:4
+[21-Nov-2017 11:17:30 Europe/Berlin] PHP Fatal error:  Cannot redeclare class Category in C:\xampp\htdocs\phpsqlbook\code\chapter_08\classes\Category.php on line 2
+[21-Nov-2017 11:17:30 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:17:30 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:17:30 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:3
+[21-Nov-2017 11:20:58 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 51
+[21-Nov-2017 11:20:58 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:20:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:20:58 Europe/Berlin] PHP Notice:  Use of undefined constant ROOT - assumed 'ROOT' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 57
+[21-Nov-2017 11:20:58 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 11:20:58 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php:0
+[21-Nov-2017 11:42:05 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 64
+[21-Nov-2017 11:42:28 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 64
+[21-Nov-2017 11:42:29 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in C:\xampp\htdocs\phpsqlbook\code\chapter_08\category-1.php on line 64

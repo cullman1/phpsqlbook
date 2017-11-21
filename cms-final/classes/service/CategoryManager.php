@@ -41,8 +41,7 @@ class CategoryManager
     return $category;
   }
 
-  public function getAllCategories()
-  {
+  public function getAllCategories() {
     $pdo = $this->pdo;
     $sql = 'SELECT * FROM category';
     $statement = $pdo->prepare($sql);

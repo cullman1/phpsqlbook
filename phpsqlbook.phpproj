@@ -26,6 +26,8 @@
   <ItemGroup>
     <Compile Include="404.php" />
     <Compile Include="cms-final\admin\delete-image.php" />
+    <Compile Include="cms-final\admin\includes\footer.php" />
+    <Compile Include="cms-final\admin\includes\header.php" />
     <Compile Include="cms-final\error-has-occurred.php" />
     <Compile Include="cms-final\includes\modal-window.php" />
     <Compile Include="cms-final\server-not-available.php" />
@@ -37,6 +39,8 @@
     <Compile Include="code\chapter_08\article-1.php" />
     <Compile Include="code\chapter_08\category-1.php" />
     <Compile Include="code\chapter_08\classes\Article.php" />
+    <Compile Include="code\chapter_08\classes\ArticleSummary.php" />
+    <Compile Include="code\chapter_08\classes\Category.php" />
     <Compile Include="code\chapter_08\classes\model\Article.php" />
     <Compile Include="code\chapter_08\classes\model\ArticleSummary.php" />
     <Compile Include="code\chapter_08\classes\model\Category.php" />
@@ -57,6 +61,7 @@
     <Compile Include="code\chapter_08\view-article.php" />
     <Compile Include="code\chapter_08\view-category.php" />
     <Compile Include="code\chapter_08\view-user.php" />
+    <Compile Include="code\chapter_10\admin\article.php" />
     <Compile Include="code\chapter_10\admin\categories.php" />
     <Compile Include="code\chapter_10\admin\category.php" />
     <Compile Include="code\chapter_10\classes\model\Article.php" />
@@ -75,6 +80,7 @@
     <Compile Include="code\chapter_10\includes\search.php" />
     <Compile Include="code\chapter_10\index.php" />
     <Compile Include="code\chapter_10\search.php" />
+    <Compile Include="code\chapter_10\transaction.php" />
     <Compile Include="code\chapter_10\view-article.php" />
     <Compile Include="code\chapter_10\view-category.php" />
     <Compile Include="code\chapter_10\view-search.php" />
@@ -601,8 +607,8 @@
     <Compile Include="cms-final\admin\categories.php" />
     <Compile Include="cms-final\admin\category-delete.php" />
     <Compile Include="cms-final\admin\category.php" />
-    <Compile Include="cms-final\admin\includes\footer.php" />
-    <Compile Include="cms-final\admin\includes\header.php" />
+    <Compile Include="code\chapter_10\admin\includes\footer.php" />
+    <Compile Include="code\chapter_10\admin\includes\header.php" />
     <Compile Include="cms-final\admin\index.php" />
     <Compile Include="cms-final\admin\user-delete.php" />
     <Compile Include="cms-final\admin\user.php" />
@@ -1014,6 +1020,7 @@
     <Folder Include="cms-final\admin\" />
     <Folder Include="cms-final\admin\css\" />
     <Folder Include="cms-final\admin\includes\" />
+    <Folder Include="code\chapter_10\admin\includes\" />
     <Folder Include="cms-final\admin\lib\" />
     <Folder Include="cms-final\admin\lib\jquery\" />
     <Folder Include="cms-final\admin\lib\photoviewer\" />

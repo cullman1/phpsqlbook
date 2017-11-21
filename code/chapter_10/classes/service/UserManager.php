@@ -26,6 +26,20 @@ class UserManager
         return $user;
     }
 
+      public function getAllUsers()
+  {
+    $pdo = $this->pdo;
+    $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined FROM user';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
+    $user = $statement->fetchAll();
+    if (!$user) {
+      return null;
+    }
+    return $user;
+  }
+
  
 }
 

@@ -1,6 +1,6 @@
 <?php
 define('ROOT', '/phpsqlbook/cms-final/'); 
-require_once 'config.php';                            // Database connection
+require_once 'database-connection.php';                            // Database connection
 include 'classes/Category.php';                         // Category class
 include 'classes/ArticleSummary.php';                   // ArticleSummary class
 
@@ -39,7 +39,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) ) {          // If got a categ
     $article_list = $statement->fetchAll();                       // Store in variable
 }
 
-if (empty($category) || empty($article_list)) {                 // If objects empty
+if (empty($category) ) {                 // If objects empty
     header( "Location: page-not-found.php" );
    exit();              // Redirect user
 }
@@ -53,12 +53,14 @@ if (empty($category) || empty($article_list)) {                 // If objects em
   </head>
   <body>
     <h1><?= $category->name ?></h1>
+     <?php if (!empty($article_list)) { ?>  
     <?php foreach ($article_list as $article) { ?>
       <div class="article">
-        <img src="<?= ROOT ?>uploads/<?= $article->media_file ?>" alt="<?= $article->media_alt ?>">
-        <a href="article.php?id=<?=$article->id?>">
-          <?=$article->title?><?=$article->summary?></a>
+        <img src="<?= ROOT ?>uploads/<?= $article->media_file ?>" alt="<?= $article->media_alt ?>" /><br/>
+        <a href="article.php?id=<?=$article->id?>"><?=$article->title?></a>
+          <p><?=$article->summary?></p>
       </div>
     <?php } ?>
+    <?php } else { echo "No articles were found in this category"; } ?>
   </body>
 </html>

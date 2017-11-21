@@ -268,3 +268,24 @@ Stack trace:
 #1 C:\xampp\htdocs\phpsqlbook\code\chapter_09\view-search.php(12): ArticleManager->searchArticles('Flyer')
 #2 {main}
   thrown in C:\xampp\htdocs\phpsqlbook\code\chapter_09\classes\service\ArticleManager.php on line 134
+[21-Nov-2017 14:10:38 Europe/Berlin] PHP Fatal error:  Using $this when not in object context in C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php on line 4
+[21-Nov-2017 14:10:38 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:10:38 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php:0
+[21-Nov-2017 14:12:55 Europe/Berlin] PHP Notice:  Undefined variable: connection in C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php on line 10
+[21-Nov-2017 14:12:55 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:12:55 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php:0
+[21-Nov-2017 14:12:55 Europe/Berlin] PHP Fatal error:  Call to a member function prepare() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php on line 10
+[21-Nov-2017 14:12:55 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:12:55 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php:0
+[21-Nov-2017 14:13:34 Europe/Berlin] PHP Notice:  Undefined variable: connection in C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php on line 28
+[21-Nov-2017 14:13:34 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:13:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php:0
+[21-Nov-2017 14:13:34 Europe/Berlin] PHP Fatal error:  Call to a member function rollback() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php on line 28
+[21-Nov-2017 14:13:34 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:13:34 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php:0
+[21-Nov-2017 14:14:33 Europe/Berlin] PHP Notice:  Undefined variable: connection in C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php on line 13
+[21-Nov-2017 14:14:33 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:14:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php:0
+[21-Nov-2017 14:14:33 Europe/Berlin] PHP Fatal error:  Call to a member function lastInsertId() on null in C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php on line 13
+[21-Nov-2017 14:14:33 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:14:33 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\transaction.php:0

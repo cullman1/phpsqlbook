@@ -79,10 +79,6 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     return $article;
   }
 
-
-
-  
-
   public function getArticleSummariesByUserId($id){
     $pdo = $this->pdo;
     $sql = 'SELECT article.id, article.title, article.summary, article.created, article.published, article.seo_title,
@@ -129,11 +125,10 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     try {
       $statement->execute();                                         // Try to execute
       $article->id = $pdo->lastInsertId();                           // Add id to object
-      $result = TRUE;                                                // Say worked if it did
+      return TRUE;                                                // Say worked if it did
     } catch (PDOException $error) {                                  // Otherwise
-      $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this
+      return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this
     }
-    return $result;
   }
 
   public function update($article){
@@ -150,15 +145,14 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     $statement->bindValue(':published',   $article->published, PDO::PARAM_BOOL);   // Bind value
     try {
       $statement->execute();
-      $result = TRUE;
+      return TRUE;
     } catch (PDOException $error) {                                      // Otherwise
       if ($error->errorInfo[1] == 1062) {                              // If a duplicate
-        $result = 'An article with that title exists - try a different title.'; // Error
+        return 'An article with that title exists - try a different title.'; // Error
       } else {                                                         // Otherwise
-        $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+        return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
       }                                                                // End if/else
     }
-    return $result;
   }
 
   public function delete($id){

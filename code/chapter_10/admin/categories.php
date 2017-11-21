@@ -1,8 +1,9 @@
 <?php
   require_once '../config.php';
 //  $userManager->redirectNonAdmin();
-  $category_list   = $categoryManager->getAllCategories();
-  include 'includes/header.php';
+  $categories   = $categoryManager->getAllCategories();
+        
+  include '../includes/header.php';
 ?>
 <section>
   <a class="btn btn-primary" href="category.php?action=create">create category</a>
@@ -17,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($category_list as $category) { ?>
+      <?php foreach ($categories as $category) { ?>
       <tr>
         <td><?= htmlentities($category->name, ENT_QUOTES, 'UTF-8'); ?></td>
         <td><?= htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></td>
@@ -29,4 +30,4 @@
     </tbody>
   </table>
 </section>
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

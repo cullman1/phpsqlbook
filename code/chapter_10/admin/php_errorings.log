@@ -30,3 +30,77 @@
 [20-Nov-2017 19:14:25 Europe/Berlin] PHP Fatal error:  Call to undefined method CategoryManager::getAllCategories() in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 4
 [20-Nov-2017 19:14:25 Europe/Berlin] PHP Stack trace:
 [20-Nov-2017 19:14:25 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 14:15:55 Europe/Berlin] PHP Fatal error:  Call to undefined method CategoryManager::getAllCategories() in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 4
+[21-Nov-2017 14:15:55 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 14:15:55 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Warning:  include(includes/header.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 5
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/header.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 5
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 32
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 32
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:17:59 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:18:31 Europe/Berlin] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 32
+[21-Nov-2017 16:18:31 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:18:31 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:18:31 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 32
+[21-Nov-2017 16:18:31 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:18:31 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:19:07 Europe/Berlin] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 32
+[21-Nov-2017 16:19:07 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:19:07 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:19:07 Europe/Berlin] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.;C:\xampp\php\PEAR') in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 32
+[21-Nov-2017 16:19:07 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:19:07 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php:0
+[21-Nov-2017 16:24:14 Europe/Berlin] PHP Parse error:  syntax error, unexpected '<' in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\categories.php on line 7
+[21-Nov-2017 16:33:18 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::redirectNonAdmin() in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php on line 4
+[21-Nov-2017 16:33:18 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:33:18 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:34:47 Europe/Berlin] PHP Fatal error:  Class 'Media' not found in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php on line 23
+[21-Nov-2017 16:34:47 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:34:47 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:34:56 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::redirectNonAdmin() in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 3
+[21-Nov-2017 16:34:56 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:34:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:34:56 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::redirectNonAdmin() in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\footer.php on line 3
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:37:10 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:177
+[21-Nov-2017 16:37:32 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:37:32 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:37:32 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:37:32 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:38:21 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:38:21 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:38:21 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:38:21 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:40:50 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:40:50 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:40:50 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:40:50 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:41:40 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:41:40 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:41:40 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:41:40 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:42:27 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:42:27 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:42:27 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:42:27 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:43:08 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:43:08 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:43:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:43:08 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115
+[21-Nov-2017 16:43:20 Europe/Berlin] PHP Notice:  Undefined variable: is_logged_in in C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\includes\header.php on line 26
+[21-Nov-2017 16:43:20 Europe/Berlin] PHP Stack trace:
+[21-Nov-2017 16:43:20 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:0
+[21-Nov-2017 16:43:20 Europe/Berlin] PHP   2. include() C:\xampp\htdocs\phpsqlbook\code\chapter_10\admin\article.php:115

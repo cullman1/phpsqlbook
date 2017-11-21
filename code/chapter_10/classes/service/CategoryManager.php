@@ -41,25 +41,25 @@ class CategoryManager
         return $category_list;
     }
 
-     public function create($category) {
+  public function create($category) {
     $pdo = $this->pdo;
     $sql = 'INSERT INTO category (name, description, navigation) VALUES (:name, :description, :navigation)'; // SQL
     $statement = $pdo->prepare($sql);                                      // Prepare
     $statement->bindValue(':name', $category->name);                       // Bind name
     $statement->bindValue(':description', $category->description);         // Bind description
     $statement->bindValue(':navigation', $category->navigation, PDO::PARAM_BOOL);  // Bind navigation
-    try {
-      $statement->execute();                                               // Execute SQL
-      $category->id = $pdo->lastInsertId();                                // Add id to object
-      $result   = TRUE;                                                    // Get id created
-    } catch (PDOException $error) {                                        // Otherwise
-      if ($error->errorInfo[1] == 1062) {                                  // If it is a duplicate
-        $result = 'A category with that name exists - try a different name';
-      } else {
-        $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
-      }
-    }
-    return $result;                                                   // Say succeeded
+   try {                                                              // Try block
+    $statement->execute();                                           // Execute
+    $result = TRUE;                                                  // Succeeded
+  } catch (PDOException $error) {                                    // Otherwise
+    if ($error->errorInfo[1] == 1062) {                              // If a duplicate
+      $result = 'A category with that name exists - try a different name'; // Error
+    } else {                                                         // Otherwise
+      $result = $statement->errorCode() . ': ' . $statement->errorInfo(); // Error
+    }                                                                // End if/else
+  }                                                                  // End catch block
+  return $result;                                                    // Return result
+
   }
 
   public function update($category){
@@ -98,4 +98,16 @@ class CategoryManager
     return $result;                                                  // Return result
   }
 
+   public function getAllCategories() {
+    $pdo = $this->pdo;
+    $sql = 'SELECT * FROM category';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
+    $category = $statement->fetchAll();
+    if (!$category) {
+      return null;
+    }
+    return $category;
+  }
 }
