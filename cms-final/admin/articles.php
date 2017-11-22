@@ -3,7 +3,7 @@
 
   $userManager->redirectNonAdmin();
 
-  $article_list  = $articleManager->getAllArticleSummaries();
+  $article_list  = $articleManager->getAllArticleSummaries(0,1);
   
   include 'includes/header.php';
 ?>

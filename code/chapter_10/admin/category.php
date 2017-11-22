@@ -7,7 +7,6 @@ $name        = (isset($_POST['name'])        ? $_POST['name']        : ''); // G
 $description = (isset($_POST['description']) ? $_POST['description'] : ''); // Get values
 $navigation  = (isset($_POST['navigation'])  ? 1  : 0); // Get values
 $category    = new Category($id, $name, $description, $navigation);  // Create Category object
-
 $errors      = array('id' => '', 'name'=>'', 'description'=>'');       // Form errors
 $alert       = '';                                                     // Status messages
 if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) { // Was form posted
@@ -43,21 +42,24 @@ include '../includes/header.php';
 <section>
   <h2><?=htmlentities( $action,ENT_QUOTES,'UTF-8');?> category</h2>
   <?= $alert ?>
-  <form action="category.php?id=<?=htmlspecialchars($category->id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
+  <form method="post">
+   <div class="col-8">
     <div class="form-group">
-       <label>Name: 
-      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control"> </label>
-      <span class="errors"><?= $errors['name'] ?></span></label>
+       <label>Name: </label>
+      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control"> 
+      <span class="errors"><?= $errors['name'] ?></span>
     </div>
     <div class="form-group">
-      <label> Description: <textarea  name="description" id="description" class="form-control"><?=  htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
-      <span class="errors"><?= $errors['description'] ?></span></label>
+      <label> Description: </label>
+      <textarea  name="description" id="description" class="form-control"><?=  htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
+      <span class="errors"><?= $errors['description'] ?></span>
     </div>
     <div class="form-group">
       <label>Show in navigation: <input type="checkbox" name="navigation" id="navigation" class="form-cotrol" value="1"
           <?php if ($category->navigation == 1) { echo 'checked'; } ?> > </label>
     </div>
     <input type="submit" name="submit" value="save" class="btn btn-primary">
+    </div>
   </form>
 </section>
 <?php include '../includes/footer.php'; ?>

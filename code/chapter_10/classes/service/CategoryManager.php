@@ -104,10 +104,10 @@ class CategoryManager
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
-    $category = $statement->fetchAll();
-    if (!$category) {
+    $category_list = $statement->fetchAll();
+    if (!$category_list) {
       return null;
     }
-    return $category;
+    return $category_list;
   }
 }

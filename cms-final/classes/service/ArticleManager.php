@@ -9,9 +9,9 @@ class ArticleManager{
     $this->pdo = $pdo;
   }
 
-    public function getAllArticleSummaries($limit=0){
+    public function getAllArticleSummaries($limit=0, $publish=0){
     $pdo = $this->pdo;
-    $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published,
+    $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published, article.like_count, article.comment_count,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id as category_id, category.name AS category,  category.seo_name AS seo_category,  media.id as media_id,  media.file as media_file, media.alt AS media_alt
             FROM article
@@ -19,9 +19,11 @@ class ArticleManager{
               LEFT JOIN articleimages ON articleimages.article_id = article.id
             LEFT JOIN media ON media.id = articleimages.media_id
             LEFT JOIN category ON article.category_id = category.id 
-            AND article.published = TRUE
-             GROUP BY id
-            ORDER BY article.created DESC ';
+             WHERE category.navigation = TRUE ';
+             if ($publish == 0) { 
+           $sql .= '  AND article.published = TRUE';
+           }
+           $sql .= ' ORDER BY article.created DESC ';
     if ($limit!=0) { 
          $sql .= ' LIMIT '. $limit;
     }
@@ -127,7 +129,12 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
       $article->id = $pdo->lastInsertId();                           // Add id to object
       return TRUE;                                                // Say worked if it did
     } catch (PDOException $error) {                                  // Otherwise
-      return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this
+      
+      if ($error->errorInfo[1] == 1062) {                              // If a duplicate
+        return 'An article with that title exists - try a different title.'; // Error
+      } else {                                                         // Otherwise
+        return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+      } 
     }
   }
 
@@ -147,11 +154,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
       $statement->execute();
       return TRUE;
     } catch (PDOException $error) {                                      // Otherwise
-      if ($error->errorInfo[1] == 1062) {                              // If a duplicate
-        return 'An article with that title exists - try a different title.'; // Error
-      } else {                                                         // Otherwise
-        return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
-      }                                                                // End if/else
+             return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this                                                        // End if/else
     }
   }
 
