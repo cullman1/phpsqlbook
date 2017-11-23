@@ -15,14 +15,19 @@ if (isset($_GET['include'])) {
 } ?>
 <script>
   $(function() {
-    if ($('#content').length){
+  if ($('#description').length){
       tinymce.init({
-        selector: '#content',
+        selector: '#description',
         toolbar: 'styleselect, formatselect, bold, italic, alignleft, aligncenter, alignright, alignjustify, bullist, numlist, blockquote',
         plugins: "code"
       });
     }
+    $(".delete").click(function(){
+      if (!confirm("Do you want to delete")){
+        return false;
+      }
+    });
   });
-</script>    
+</script>       
 </body>
 </html>

@@ -29,11 +29,14 @@ include 'includes/header.php'; ?>
 <section>
   <div class="container">
     <div class="row">
-    <?php
-      foreach ($article_list as $article) {
-        include 'includes/article-summary.php';
-      }
-    ?>
+    <?php if ($article_list) {
+            foreach ($article_list as $article) {
+              include 'includes/article-summary.php';
+            } 
+          } else {
+            echo "<p>No articles were found in this category</p>";
+          } ?>
+
    </div>
   </div>
   <br/>

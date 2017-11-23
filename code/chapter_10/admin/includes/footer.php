@@ -10,7 +10,7 @@ require_once dirname(__DIR__) .'/../config.php';
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-<script src="<?= ROOT2 ?>admin/lib/tinymce/js/tinymce/tinymce.min.js"></script>
+<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 <?php
 if (isset($_GET['include'])) { 
  if($_GET['include']=="croppie") {
@@ -19,17 +19,11 @@ if (isset($_GET['include'])) {
 } ?>
 <script>
   $(function() {
-    if ($('#content').length){
-      tinymce.init({
-        selector: '#content',
-        toolbar: 'styleselect, formatselect, bold, italic, alignleft, aligncenter, alignright, alignjustify, bullist, numlist, blockquote',
-        plugins: "code"
-      });
-    }
-    if ($('#description').length){
+  if ($('#description').length){
       tinymce.init({
         selector: '#description',
-        toolbar: 'styleselect, formatselect, bold, italic, alignleft, aligncenter, alignright, alignjustify, bullist, numlist, blockquote',
+        toolbar: 'styleselect, formatselect, bold, italic, alignleft, aligncenter, 
+                  alignright, alignjustify, bullist, numlist, blockquote',
         plugins: "code"
       });
     }
