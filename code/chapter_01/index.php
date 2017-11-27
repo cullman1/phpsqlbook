@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>PHP &amp; MySQL - Chapter 1: Database-Driven Websites</title>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css" />
   </head>
   <body>
     <h1 id="header"><a href="../index.html">PHP &amp; MySQL</a></h1>
