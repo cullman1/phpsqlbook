@@ -1,0 +1,27 @@
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 26
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 27
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 32
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 33
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 33
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 34
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 36
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 37
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\phpsqlbook\code\c07\example.php on line 38
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP Stack trace:
+[28-Nov-2017 17:20:35 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c07\example.php:0
