@@ -27,27 +27,6 @@ class Validate {
     return TRUE;
   }
 
-  public static function sanitizeHTML($string) {
-    $config = HTMLPurifier_Config::createDefault();
-    $purifier = new HTMLPurifier($config);
-    $config->set('Core.Encoding', 'UTF-8'); // replace with your encoding
-    $config->set('HTML.Allowed', 'em,strong,u,strike,p,br'); // replace with your doctype
-    $clean_html = $purifier->purify( $string );
-    return $clean_html;
-  }
-
-  public static function IsSafeHTML($string, $min, $max) {
-    $string = html_entity_decode($string);
-    $config = HTMLPurifier_Config::createDefault();
-    $purifier = new HTMLPurifier($config);
-    $config->set('Core.Encoding', 'UTF-8'); // replace with your encoding
-    $config->set('HTML.Allowed', 'p,strong,em,u,strike'); // replace with your doctype
-    $clean_html = $purifier->purify($string);
-    if ( ($clean_html != $string ) || (mb_strlen($clean_html) <= $min) || (mb_strlen($clean_html)>= $max)) {
-      return FALSE;
-    }
-    return TRUE;
-  }
 
   public static function isChecked($value) {
     return ($value == 'on' ? TRUE : FALSE);
