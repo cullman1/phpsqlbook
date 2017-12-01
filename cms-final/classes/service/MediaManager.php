@@ -3,8 +3,7 @@
 class MediaManager {
   private $pdo;
 
-  public function __construct($pdo)
-  {
+  public function __construct($pdo) {
     $this->pdo = $pdo;
   }
 
@@ -78,12 +77,11 @@ class MediaManager {
       $statement->execute();                                         // Try to execute
 
       $pdo->commit();
-      $result = TRUE;
+      return TRUE;
     } catch (PDOException $error) {                                  // Otherwise
       $pdo->rollBack();
-      $result = $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this
+      return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error <-- cannot show this
     }
-    return $result;
   }
 
   public function resizeImage($filename, $new_width, $thumb = NULL) {
