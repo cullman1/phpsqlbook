@@ -133,7 +133,7 @@ function getSearchCount($term) {
     $statement = $pdo->prepare($sql);             // Prepare 
     $statement->bindParam(':term', $like_term);         // Bind search term
     $statement->execute();                              // Execute
-    $statement->setFetchMode(PDO::FETCH_CLASS, 'Article');           
+   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');     // Object
     $article_list = $statement->fetchAll();             // Return matches in database
     if (!$article_list) {
       return null;

@@ -1,9 +1,6 @@
 <?php
 require_once('config.php');                    // Include database connection
-function clean($text) {
-  $text = trim($text);
-  return htmlspecialchars($text, ENT_QUOTES, 'UTF-8', TRUE);
-}
+
 $term = ( isset($_GET['term']) ? trim($_GET['term']) : ''); // Get search term or blank string
 if (!empty($term)) {                                    // If search sent
     $errors['title']    = (Validate::isText($term, 1, 64)      ? '' : 'Not a valid search');
@@ -11,7 +8,7 @@ if (!empty($term)) {                                    // If search sent
     if ($count > 0) {                                     // If matches are found
         $article_list = $articleManager->searchArticles($term); // Get the results
     } 
-    $display_term = clean($term);                         // Output escape the search term
+    $display_term = htmlspecialchars(trim($term), ENT_QUOTES, 'UTF-8', TRUE);
 } 
 include 'includes/header.php'; ?>
 <section class="jumbotron text-center">

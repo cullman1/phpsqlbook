@@ -184,6 +184,7 @@
     <Compile Include="code\c09\post-data-form.php" />
     <Compile Include="code\c09\post-data.php" />
     <Compile Include="code\c09\post-to-same-page.php" />
+    <Compile Include="code\c09\validate-test.php" />
     <Compile Include="code\c10\cms\admin\article.php" />
     <Compile Include="code\c10\cms\admin\articles.php" />
     <Compile Include="code\c10\cms\admin\categories.php" />

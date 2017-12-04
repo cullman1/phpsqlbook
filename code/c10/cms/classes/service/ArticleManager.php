@@ -120,7 +120,7 @@ function getSearchCount($term) {
   function searchArticles($term) {
    $pdo = $this->pdo;
    $like_term = '%' . $term . '%'; 
-   $sql =  'SELECT article.*, category.name AS category, category.id as category_id,
+   $sql =  'SELECT article.id, article.title, article.summary, article.content, category.name AS category, category.id as category_id,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             media.id as media_id, media.file AS media_file, media.alt AS media_alt 
             FROM article 
@@ -133,7 +133,7 @@ function getSearchCount($term) {
     $statement = $pdo->prepare($sql);             // Prepare 
     $statement->bindParam(':term', $like_term);         // Bind search term
     $statement->execute();                              // Execute
-    $statement->setFetchMode(PDO::FETCH_CLASS, 'Article');           
+   $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');     // Object
     $article_list = $statement->fetchAll();             // Return matches in database
     if (!$article_list) {
       return null;
