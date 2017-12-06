@@ -180,6 +180,7 @@
     <Compile Include="code\c09\cms\view-category.php" />
     <Compile Include="code\c09\cms\view-search.php" />
     <Compile Include="code\c09\cms\view-user.php" />
+    <Compile Include="code\c09\escape-functions.php" />
     <Compile Include="code\c09\index.php" />
     <Compile Include="code\c09\post-data-form.php" />
     <Compile Include="code\c09\post-data.php" />
@@ -710,6 +711,7 @@
     <Compile Include="code\c10\config.php" />
     <Compile Include="code\c10\index.php" />
     <Compile Include="code\c10\transaction.php" />
+    <Compile Include="code\c11\checking-file-type.php" />
     <Compile Include="code\chapter_03\functions.php" />
     <Compile Include="code\chapter_07\classes\Article.php" />
     <Compile Include="code\chapter_07\config.php" />
@@ -2055,6 +2057,7 @@
     <Folder Include="code\chapter_07\" />
     <Folder Include="code\chapter_08\" />
     <Folder Include="code\chapter_09\" />
+    <Folder Include="code\c11\" />
     <Folder Include="code\uploads\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />

@@ -78,21 +78,15 @@ class Validate {
     return ( ($password != $confirm) ? FALSE : TRUE );
   }
 
-  public static function isDate($date_array) {
-    $date_object = new DateTime($date_array[0], $date_array[1], $date_array[2]);
-    if (!$date_object) {
-      return FALSE;
-    }
-    return TRUE;
-  }
-
-  public static function isDateAndTime($date_time) {
-    $date_time_string = $date_time[2] . '-' . $date_time[0] . '-' . $date_time[1] . ' ' . $date_time[3] . ':' . $date_time[4];
-    $date_object = date_create($date_time_string);
-    if (!$date_object) {
-      return FALSE;
-    }
-    return TRUE;
+  public static function isDateTime($month, $day, $year, $hours='00', $minutes='00') {
+      $date_time = $day . '-'. $month. '-'. $year. ' '. $hours . ':'. $minutes;
+      try {
+          $create_date = new DateTime($date_time);
+          return TRUE;
+      }
+      catch(Exception $e) {
+          return FALSE;
+      }
   }
 
     public static function isAllowedFilename($text) {
@@ -112,18 +106,16 @@ class Validate {
     return TRUE;                                               // Return error
   }
 
-  public static function isAllowedMediaType($file) {      // Check media type
-    //Must include extension=php_fileinfo.dll first in php.ini   
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $fileContents = file_get_contents($file);
-    $mimeType = $finfo->buffer($fileContents);   
-
-    $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
-    if (!in_array($mimeType, $allowedmedia_types)) {          // If type is in list
-      return FALSE;                                            // Blank error message
+  public static function isAllowedMediaType($file) {       //Must include extension=php_fileinfo.dll first in php.ini   
+      if (function_exists('mime_content_type')) {
+          $mimeType = mime_content_type($file);
+          $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
+          if (in_array($mimeType, $allowedmedia_types)) {          // If type is in list
+              return TRUE;                                            // Blank error message
+          }
+      }
+      return FALSE;
     }
-    return TRUE;
-  }
 
   public static function isWithinFileSize($size, $max) {        // Check file size
     if ($size > $max) {                                         // If size too big
@@ -141,8 +133,8 @@ class Validate {
   }
 
   public static function sanitizeName($name) {                         // Clean file name
-    $name = preg_replace('([\~,;])',       '-', $file);    // Replace \ , ; with -
-    $name = preg_replace('([^\w\d\-_~.])',  '', $file);    // Remove unwanted characters
+      $name = preg_replace('([\~,;])',       '-', $name);    // Replace \ , ; with -
+      $name = preg_replace('([^\w\d\-_~.])',  '', $name);    // Remove unwanted characters
     return $name;                                          // Return cleaned name
   }
 

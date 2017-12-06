@@ -3,7 +3,7 @@
 
   $image_id = (filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ? $_GET['id'] : '');
   $article_id = (filter_input(INPUT_GET, 'article_id', FILTER_VALIDATE_INT) ? $_GET['article_id'] : '');
-  $page = (filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT) ? $_GET['page'] : '');
+  $page = (filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING) ? $_GET['page'] : '');
   $allowedToDelete = false;
 
   if (isset($_SESSION['role'])) {

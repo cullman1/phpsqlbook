@@ -19,8 +19,8 @@
     $error['article']  = (Validate::isText($title,0,2000) ? '' : 'Content not valid');   
     $error['email']    = (Validate::isEmail($email) ? '' : 'Email address not valid');            
     $error['password'] = (Validate::isPassword($password) ? '' : 'Password not valid');  
-    $error['confirm']     = (Validate::isConfirmPassword($password, $confirm) ? '' : 'Please ensure passwords match'); 
-    $error['date']      = (Validate::isDateTime($month, $day, $year, $hours, $minutes) ? '' : 'Not a valid date/time');
+    $error['confirm']  = (Validate::isConfirmPassword($password, $confirm) ? '' : 'Please ensure passwords match'); 
+    $error['date']     = (Validate::isDateTime($month, $day, $year, $hours, $minutes) ? '' : 'Not a valid date/time');
     $valid = implode($error);
     if (strlen($valid) < 1 ) {
       echo 'Your data was valid';
@@ -39,6 +39,6 @@
   Year:     <input type="text"     name="year"     value="<?= $year;  ?>" size="5" >
   Hours:      <input type="text"     name="hours"      value="<?= $hours;   ?>" size="2" > 
   Minutes:     <input type="text"     name="minutes"     value="<?= $minutes;  ?>" size="2" >
-   <?= $error['date']?><br/><br/>
+  <?= $error['date']?><br/><br/>
   <input type="submit" name="submit">
 </form>

@@ -71,35 +71,9 @@ class Validate {
     return TRUE;
   }
 
-    public static function isAllowedFilename($text) {
-    $result = preg_replace('/[^A-z0-9 \.,!\?\'\"#\$%&*\(\)\+\-\/]/', '', $text); /// add other characters allowed here
-    if ($result != $text ) {
-      return FALSE;
-    }
-    return TRUE;
-  }
+ 
 
 
-  public static function isAllowedExtension($filename) {       // Check file extension
-    $filename = mb_strtolower($filename);
-    if (!preg_match('/.(jpg|jpeg|png|gif)$/', $filename) ) {    // If not file extension
-      return FALSE;
-    }
-    return TRUE;                                               // Return error
-  }
-
-  public static function isAllowedMediaType($file) {      // Check media type
-    //Must include extension=php_fileinfo.dll first in php.ini   
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $fileContents = file_get_contents($file);
-    $mimeType = $finfo->buffer($fileContents);   
-
-    $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
-    if (!in_array($mimeType, $allowedmedia_types)) {          // If type is in list
-      return FALSE;                                            // Blank error message
-    }
-    return TRUE;
-  }
 
   public static function isWithinFileSize($size, $max) {        // Check file size
     if ($size > $max) {                                         // If size too big
