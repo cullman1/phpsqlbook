@@ -57,17 +57,14 @@ class Validate {
     return ( ($password != $confirm) ? FALSE : TRUE );
   }
 
-  public static function isDate($date_array) {
-    return checkdate($date_array[0], $date_array[1], $date_array[2]);
-  }
-
-  public static function isDateAndTime($date_time) {
-    $date_time_string = $date_time[2] . '-' . $date_time[0] . '-' . $date_time[1] . ' ' . $date_time[3] . ':' . $date_time[4];
-    $date_object = date_create($date_time_string);
-    if (!$date_object) {
-      return FALSE;
-    }
+  public static function isDateTime($month, $day, $year, $hours='00', $minutes='00') {
+     $date_time = $day . '-'. $month. '-'. $year. ' '. $hours . ':'. $minutes;
+    try {
+    $create_date = new DateTime($date_time);
     return TRUE;
+  } catch(Exception $e) {
+      return FALSE;
+  }
   }
 
     public static function isAllowedFilename($text) {

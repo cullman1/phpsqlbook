@@ -79,7 +79,11 @@ class Validate {
   }
 
   public static function isDate($date_array) {
-    return checkdate($date_array[0], $date_array[1], $date_array[2]);
+    $date_object = new DateTime($date_array[0], $date_array[1], $date_array[2]);
+    if (!$date_object) {
+      return FALSE;
+    }
+    return TRUE;
   }
 
   public static function isDateAndTime($date_time) {
@@ -113,6 +117,7 @@ class Validate {
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $fileContents = file_get_contents($file);
     $mimeType = $finfo->buffer($fileContents);   
+
     $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
     if (!in_array($mimeType, $allowedmedia_types)) {          // If type is in list
       return FALSE;                                            // Blank error message

@@ -93,6 +93,7 @@ class Validate {
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $fileContents = file_get_contents($file);
     $mimeType = $finfo->buffer($fileContents);   
+
     $allowedmedia_types = array('image/jpeg', 'image/png', 'image/gif'); // Allowed
     if (!in_array($mimeType, $allowedmedia_types)) {          // If type is in list
       return FALSE;                                            // Blank error message

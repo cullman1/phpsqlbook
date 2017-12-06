@@ -740,7 +740,6 @@
     <Compile Include="code\chapter_08\view-category.php" />
     <Compile Include="code\chapter_08\view-user.php" />
     <Compile Include="code\chapter_10\admin\article.php" />
-    <Compile Include="code\chapter_10\admin\article_old.php" />
     <Compile Include="code\chapter_10\admin\categories.php" />
     <Compile Include="code\chapter_10\admin\category.php" />
     <Compile Include="code\chapter_10\classes\model\Article.php" />
