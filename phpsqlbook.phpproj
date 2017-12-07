@@ -712,6 +712,8 @@
     <Compile Include="code\c10\index.php" />
     <Compile Include="code\c10\transaction.php" />
     <Compile Include="code\c11\checking-file-type.php" />
+    <Compile Include="code\c11\data-about-files.php" />
+    <Compile Include="code\c11\index.php" />
     <Compile Include="code\chapter_03\functions.php" />
     <Compile Include="code\chapter_07\classes\Article.php" />
     <Compile Include="code\chapter_07\config.php" />
