@@ -92,6 +92,16 @@
     <Compile Include="code\c04\index.php" />
     <Compile Include="code\c04\object-in-object.php" />
     <Compile Include="code\c04\working-with-objects.php" />
+    <Compile Include="code\c05\array-functions.php" />
+    <Compile Include="code\c05\array-sorting-functions.php" />
+    <Compile Include="code\c05\array-updating-functions.php" />
+    <Compile Include="code\c05\date-functions.php" />
+    <Compile Include="code\c05\finding-characters.php" />
+    <Compile Include="code\c05\index.php" />
+    <Compile Include="code\c05\numeric-functions.php" />
+    <Compile Include="code\c05\object-viewer.php" />
+    <Compile Include="code\c05\removing-and-replacing-characters.php" />
+    <Compile Include="code\c05\strpos-function.php" />
     <Compile Include="code\c06\database-connection.php" />
     <Compile Include="code\c06\index.php" />
     <Compile Include="code\c06\user.php" />
@@ -2061,6 +2071,7 @@
     <Folder Include="code\chapter_08\" />
     <Folder Include="code\chapter_09\" />
     <Folder Include="code\c11\" />
+    <Folder Include="code\c05\" />
     <Folder Include="code\uploads\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
