@@ -27,15 +27,6 @@ class Validate {
     return TRUE;
   }
 
-  public static function sanitizeHTML($string) {
-    $config = HTMLPurifier_Config::createDefault();
-    $purifier = new HTMLPurifier($config);
-    $config->set('Core.Encoding', 'UTF-8'); // replace with your encoding
-    $config->set('HTML.Allowed', 'em,strong,u,strike,p,br'); // replace with your doctype
-    $clean_html = $purifier->purify( $string );
-    return $clean_html;
-  }
-
   public static function IsSafeHTML($string, $min, $max) {
     $string = html_entity_decode($string);
     $config = HTMLPurifier_Config::createDefault();
@@ -124,7 +115,7 @@ class Validate {
     return TRUE;                                                // Return error
   }
 
-  // This is in article manager too at the moment..
+  // Sanitize methods
   public static function sanitizeFileName($file) {                         // Clean file name
     $file = transliterator_transliterate("Latin-ASCII", $file); //Do we transliterate?
     $file = preg_replace('([\~,;])',       '-', $file);    // Replace \ , ; with -
@@ -136,6 +127,15 @@ class Validate {
       $name = preg_replace('([\~,;])',       '-', $name);    // Replace \ , ; with -
       $name = preg_replace('([^\w\d\-_~.])',  '', $name);    // Remove unwanted characters
     return $name;                                          // Return cleaned name
+  }
+
+  public static function sanitizeHTML($string) {
+      $config = HTMLPurifier_Config::createDefault();
+      $purifier = new HTMLPurifier($config);
+      $config->set('Core.Encoding', 'UTF-8'); // replace with your encoding
+      $config->set('HTML.Allowed', 'em,strong,u,strike,p,br'); // replace with your doctype
+      $clean_html = $purifier->purify( $string );
+      return $clean_html;
   }
 
 }
