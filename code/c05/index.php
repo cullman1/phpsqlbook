@@ -13,6 +13,16 @@ include '../../includes/header-chapters.php' ?>
                <tr><td>Array Sorting functions</td><td><a href="array-sorting-functions.php">array-sorting-functions.php</a></td></tr>
                      <tr><td>Object viewing with var_dump() and print_r()</td><td><a href="object-viewer.php">object-viewer.php</a></td></tr>
             <tr><td>Date functions</td><td><a href="date-functions.php">date-functions.php</a></td></tr>
+            <tr><td>DateTime object</td><td><a href="datetime-object.php">datetime-object.php</a></td></tr>
+           <tr><td>DateTime object setting the date and the time</td><td><a href="datetime-object-set-date-and-time.php">datetime-object-set-date-and-time.php</a></td></tr>
+           <tr><td>DateInterval object</td><td><a href="dateinterval-object.php">dateinterval-object.php</a></td></tr>
+         <tr><td>DatePeriod object</td><td><a href="dateperiod-object.php">dateperiod-object.php</a></td></tr>
+        <tr><td>DateTimeZone object</td><td><a href="datetimezone-object.php">datetimezone-object.php</a></td></tr>
+                <tr><td>DateTimeZone object</td><td><a href="datetimezone-object.php">datetimezone-object.php</a></td></tr>
+              <tr><td>Using header() to redirect</td><td><a href="redirect.php">redirect.php</a></td></tr>
+                      <tr><td>$_SERVER superglobal</td><td><a href="server-superglobal.php">server-superglobal.php</a></td></tr>
+                              <tr><td>$GLOBALS superglobal</td><td><a href="globals-superglobal.php">globals-superglobal.php</a></td></tr>
+                   <tr><td>Craft Counter example</td><td><a href="home.php">home.php</a></td></tr>
     </table>
  </div>
 <?php include '../../includes/footer-site.php' ?>

@@ -9,7 +9,10 @@ echo '<b>Offer ends: </b> ';
 echo $ends_array['weekday'] . ' ';
 echo $ends_array['mday'] . ' ';
 echo $ends_array['month'] . ' ';
-echo $ends_array['year'];
+echo $ends_array['year']. ' ';
+echo $ends_array['hours'] . ' ';
+echo $ends_array['minutes'] . ' ';
+echo $ends_array['seconds'];
 
 ?>
 ...
