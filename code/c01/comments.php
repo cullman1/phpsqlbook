@@ -1,19 +1,19 @@
 <?php 
   /* 
-  This page displays the user's name in a greeting
+  This page displays the user's name
   and details of a current offer
   */
-  $username = 'Ivy';  // Store user's name
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>echo Command with double quotes</title>
+  <title>Adding comments to your code</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <h1>The Candy Store</h1>
-  <h2><?php echo "Welcome $username"; ?>.</h2>
-  <?php echo "<p class=\"offer\">Offer: 20% off</p>" ?>
+  <h2><?php echo "Welcome Ivy"; // Show name ?>.</h2>
+  <p>
+  <?php echo '<p class="offer">Offer: 20% off</p>' ?>
 </body>
 </html>

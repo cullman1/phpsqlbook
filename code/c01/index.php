@@ -5,7 +5,6 @@ include '../../includes/header-chapters.php' ?>
      <div class="col-md-4"><h2>Chapter 1: Basic Programming Instructions</h2><br/></div>
     <table>
     	<tr><td>Echo statement page</td><td><a href="echo.php">echo.php</a></td></tr>
-      <tr><td>Echo statement page with double quotes</td><td><a href="echo-double.php">echo-double.php</a></td></tr>
       <tr><td>Comments</td><td><a href="comments.php">comments.php</a></td></tr> 
 <tr><td>Variables</td><td><a href="variables.php">variables.php</a></td></tr> 
 <tr><td>Associative arrays</td><td><a href="associative-arrays.php">associative-arrays.php</a></td></tr> 

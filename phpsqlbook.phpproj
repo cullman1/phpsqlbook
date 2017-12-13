@@ -37,7 +37,6 @@
     <Compile Include="code\c01\associative-arrays.php" />
     <Compile Include="code\c01\comments.php" />
     <Compile Include="code\c01\comparison-operators.php" />
-    <Compile Include="code\c01\echo-double.php" />
     <Compile Include="code\c01\echo.php" />
     <Compile Include="code\c01\example.php" />
     <Compile Include="code\c01\includes\footer.php" />
