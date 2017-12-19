@@ -17,14 +17,16 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array(new Media());
 }
 
-$page_title      .= $article->title . ' ' . $article->category . ' by ' . $article->author;
-$meta_description = $article->summary;
+$page_title .= htmlentities($article->title, ENT_QUOTES, 'UTF-8') . ' ' .  
+                 htmlentities($article->category, ENT_QUOTES, 'UTF-8') . ' by ' .  
+                 htmlentities($article->author, ENT_QUOTES, 'UTF-8');
+  $meta_description = htmlentities($article->summary, ENT_QUOTES, 'UTF-8');
 include 'includes/header.php';
 ?>
 <section>
   <h1 class="display-4"><?=  htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
   <div class="credit">
-    <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= htmlentities( $article->author, ENT_QUOTES, 'UTF-8') ?></a> on <i><?= htmlentities( $article->created, ENT_QUOTES, 'UTF-8') ?></i>.
+    <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= htmlentities( $article->author, ENT_QUOTES, 'UTF-8') ?></a> on <i><?= $article->created ?></i>.
   </div>
 
   <div class="row">

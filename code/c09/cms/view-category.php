@@ -9,8 +9,8 @@
     header( "Location: page-not-found.php" );
     exit();              // Redirect user
   }
-  $page_title      .= $category->name;
-  $meta_description = $category->description;
+  $page_title      .= htmlentities($category->name, ENT_QUOTES, 'UTF-8') ;
+$meta_description =  htmlentities($category->description, ENT_QUOTES, 'UTF-8') ;
   include 'includes/header.php';
 ?>
 <section class="jumbotron text-center">

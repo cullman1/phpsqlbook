@@ -8,8 +8,10 @@
     header( "Location: page-not-found.php" );
     exit();                                              // Redirect user
   }                                                      // Otherwise start the template
-  $page_title .= $article->title . ' ' . $article->category . ' by ' . $article->author;
-  $meta_description = $article->summary;
+  $page_title .= htmlentities($article->title, ENT_QUOTES, 'UTF-8') . ' ' .  
+                 htmlentities($article->category, ENT_QUOTES, 'UTF-8') . ' by ' .  
+                 htmlentities($article->author, ENT_QUOTES, 'UTF-8');
+  $meta_description = htmlentities($article->summary, ENT_QUOTES, 'UTF-8');
   include 'includes/header.php';                         // Show the header
 ?>
 <section>
@@ -20,8 +22,8 @@
   </div>
   <div class="row">
     <div class="col-8"><img src="<?= ROOT ?>uploads/<?= $article->media_file ?>" 
-                      alt="<?= $article->media_alt ?>" /></div>
-    <div class="col-4"><?= $article->content ?></div>
+      alt="<?= htmlentities($article->media_alt, ENT_QUOTES, 'UTF-8') ?>" /></div>
+    <div class="col-4"><?= htmlentities($article->content, ENT_QUOTES, 'UTF-8') ?></div>
   </div>  
 </section>
 <?php include 'includes/footer.php'; ?>

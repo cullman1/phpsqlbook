@@ -16,8 +16,8 @@ if (isset($_GET['name'])) {
     Utilities::errorPage('page-not-found.php');
 } 
 
-$page_title      .= $category->name;
-$meta_description = $category->description;
+$page_title      .= htmlentities($category->name, ENT_QUOTES, 'UTF-8') ;
+$meta_description =  htmlentities($category->description, ENT_QUOTES, 'UTF-8') ;
 
 include 'includes/header.php'; ?>
 
