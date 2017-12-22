@@ -1,0 +1,10 @@
+[20-Dec-2017 18:26:37 Europe/Berlin] PHP Warning:  mb_split() expects at least 2 parameters, 1 given in C:\xampp\htdocs\phpsqlbook\code\tester.php on line 7
+[20-Dec-2017 18:26:37 Europe/Berlin] PHP Stack trace:
+[20-Dec-2017 18:26:37 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\tester.php:0
+[20-Dec-2017 18:26:37 Europe/Berlin] PHP   2. mb_split() C:\xampp\htdocs\phpsqlbook\code\tester.php:7
+[20-Dec-2017 18:29:11 Europe/Berlin] PHP Fatal error:  Call to undefined function mb_str_split() in C:\xampp\htdocs\phpsqlbook\code\tester.php on line 7
+[20-Dec-2017 18:29:11 Europe/Berlin] PHP Stack trace:
+[20-Dec-2017 18:29:11 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\tester.php:0
+[20-Dec-2017 18:29:13 Europe/Berlin] PHP Fatal error:  Call to undefined function mb_str_split() in C:\xampp\htdocs\phpsqlbook\code\tester.php on line 7
+[20-Dec-2017 18:29:13 Europe/Berlin] PHP Stack trace:
+[20-Dec-2017 18:29:13 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\tester.php:0

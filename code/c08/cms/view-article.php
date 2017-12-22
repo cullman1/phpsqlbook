@@ -1,7 +1,7 @@
 <?php
   require_once 'config.php';                             // Config information
   $id = ( isset($_GET['id']) ? $_GET['id'] : '');                       
-  if (isset($id) && is_numeric($id) {                    // If have id
+  if (isset($id) && is_numeric($id)) {                    // If have id
     $article = $articleManager->getArticleById($id);     // Get article object
   }
   if (empty($article)) {                                 // If article is empty

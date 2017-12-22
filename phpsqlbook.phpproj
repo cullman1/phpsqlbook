@@ -1309,6 +1309,7 @@
     <Compile Include="cms-final\vendor\html-purifier-4.9.3\tests\test_files.php" />
     <Compile Include="code\intro\index.php" />
     <Compile Include="code\intro\test.php" />
+    <Compile Include="code\tester.php" />
     <Compile Include="includes\404.php" />
     <Compile Include="code\chapter_03\increment-decrement.php" />
     <Compile Include="info.php" />
