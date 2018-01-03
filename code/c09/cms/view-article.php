@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-8"><img src="<?= ROOT ?>uploads/<?= $article->media_file ?>" 
       alt="<?= htmlentities($article->media_alt, ENT_QUOTES, 'UTF-8') ?>" /></div>
-    <div class="col-4"><?= htmlentities($article->content, ENT_QUOTES, 'UTF-8') ?></div>
+    <div class="col-4"><?= $article->content ?></div>
   </div>  
   
 </section>
