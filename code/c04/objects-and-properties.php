@@ -17,5 +17,8 @@
   $account->balance = 14.99;
 
   include 'includes/header.php';
-  echo $customer->email . '<br/>$' . $account->balance;
 ?>
+<p><?php echo 'Email: '    . $customer->email; ?></p>
+<p><?php echo 'Balance: $' . $account->balance; ?></p>
+
+<?php include 'includes/footer.php'; ?>

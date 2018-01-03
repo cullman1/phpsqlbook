@@ -18,5 +18,6 @@
   $account->balance = 100;
 
   include 'includes/header.php';
-  echo '<br/>$' .$account->deposit(50);
+  echo '<p>$' .$account->deposit(50) . '</p>';
+  include 'includes/footer.php';
 ?>

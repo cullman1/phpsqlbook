@@ -1,21 +1,22 @@
 <?php 
-  $nutrition = array('fat' => 38, 'sugar' => 51, 
-                     'salt' => 0.25);
-  $nutrition['fat']   = 36;
-  $nutrition['fibre'] = 2.1;
+  $best_sellers = array(
+    'Chocolate', 'Mint', 'Bubble gum', 'Toffee', 
+    'Jelly Beans', 'Fudge', 'Gobstoppers');
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Variables</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <h1>The Candy Store</h1>
-  <h2>Nutrition (per 100g)</h2>
-  <p>Fat:   <?php echo $nutrition['fat']; ?>%</p>
-  <p>Sugar: <?php echo $nutrition['sugar']; ?>%</p>
-  <p>Salt:  <?php echo $nutrition['salt']; ?>%</p>
-  <p>Fibre: <?php echo $nutrition['fibre']; ?>g</p>
-</body>
+  <head>
+    <title>Indexed Arrays</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>The Candy Store</h1>
+    <h2>Best Sellers</h2>
+    <ul>
+      <li><?php echo $best_sellers[0]; ?></li>
+      <li><?php echo $best_sellers[1]; ?></li>
+      <li><?php echo $best_sellers[2]; ?></li>
+    </ul>
+    <p>(Total items: 7)</p>
+  </body>
 </html>

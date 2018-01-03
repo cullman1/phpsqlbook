@@ -9,7 +9,7 @@ include '../../includes/header-chapters.php' ?>
       <tr><td>Objects and Methods</td><td><a href="objects-and-methods.php">objects-and-methods.php</a></td></tr>
       <tr><td>Using Constructors in Classes</td><td><a href="constructor-methods.php">constructor-methods.php</a></td></tr>
       <tr><td>Getter example</td><td><a href="getter.php">getter.php</a></td></tr>
-      <tr><td>Array in an object property</td><td><a href="array.php">array.php</a></td></tr>
+      <tr><td>Array in an object property</td><td><a href="array-in-object.php">array-in-object.php</a></td></tr>
       <tr><td>Object in an object property</td><td><a href="object-in-object.php">object-in-object.php</a></td></tr>
       <tr><td>Example</td><td><a href="example.php">example.php</a></td></tr>
     </table>

@@ -9,19 +9,21 @@
   }
 ?>
 <!DOCTYPE html>
-<html> 
-<head>
-  <title>Variables</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-  <header>
-    <h1><?php write_logo(); ?> The Candy Store</h1>
-  </header>
-  <article>
-    <h2>Welcome to the Candy Store</h2>
-  </article>
-  <footer>
-    <?php write_logo(); ?>
-    <?php write_copyright_notice(); ?>
-  </footer>
+<html>
+  <head>
+    <title>Basic functions</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1><?php write_logo(); ?> The Candy Store</h1>
+    </header>
+    <article>
+      <h2>Welcome to the Candy Store</h2>
+    </article>
+    <footer>
+      <?php write_logo(); ?>
+      <?php write_copyright_notice(); ?>
+    </footer>
+  </body>
 </html>

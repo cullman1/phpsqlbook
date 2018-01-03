@@ -10,19 +10,21 @@
   }
 ?>
 <!DOCTYPE html>
-<html> <head>
-  <title>Variables</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-
-  <header>
-    <h1><?php echo create_logo(); ?>The Candy Store</h1>
-  </header>
-  <article>
-    <h2>Welcome to The Candy Store.</h2>
-  </article>
-  <footer>
-    <?php echo create_logo(); ?>
-    <?php echo create_copyright_notice(); ?>
-  </footer>
+<html>
+  <head>
+    <title>Functions with return values</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1><?php echo create_logo(); ?>The Candy Store</h1>
+    </header>
+    <article>
+      <h2>Welcome to The Candy Store.</h2>
+    </article>
+    <footer>
+      <?php echo create_logo(); ?>
+      <?php echo create_copyright_notice(); ?>
+    </footer>
+  </body>
 </html>

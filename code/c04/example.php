@@ -6,7 +6,7 @@
   $customer = new Customer('Ivy', 'Stone', 'ivy@example.org', 'Jup!t3r26', $accounts);
   include 'includes/header.php';
 ?> 
-Name: <?php echo $customer->getFullName(); ?>
+<h2>Name: <span class="important"><?php echo $customer->getFullName(); ?></span></h2>
 <table>
   <tr>
     <th>Account Number</th>
@@ -28,5 +28,5 @@ Name: <?php echo $customer->getFullName(); ?>
     }
   ?>
 </table>
-</body>
-</html>
+
+<?php include 'includes/footer.php'; ?>

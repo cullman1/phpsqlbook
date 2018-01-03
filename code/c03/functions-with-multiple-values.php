@@ -11,20 +11,21 @@ function calculate_prices($us_price, $rates) {
                    'jp' => $us_price * $rates['jp']);
   return $prices;
 }
+
 $intl_prices = calculate_prices($us_price, $rates);
 ?>
 <!DOCTYPE html>
 <html> 
-<head>
-  <title>Variables</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+  <head>
+    <title>Functions with multiple values</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
   <body>
-<h1>The Candy Store</h1>
-<h2>Chocolates</h2>
-<p>US $<?php echo $us_price; ?></p>
-<p>(UK &pound; <?php echo $intl_prices['uk']; ?> | 
-    EU &euro;  <?php echo $intl_prices['eu']; ?> | 
-    JP &yen;   <?php echo $intl_prices['jp']; ?>)</p>
-</body>
+    <h1>The Candy Store</h1>
+    <h2>Chocolates</h2>
+    <p>US $<?php echo $us_price; ?></p>
+    <p>(UK &pound; <?php echo $intl_prices['uk']; ?> | 
+      EU &euro;    <?php echo $intl_prices['eu']; ?> | 
+      JP &yen;     <?php echo $intl_prices['jp']; ?>)</p>
+  </body>
 </html>

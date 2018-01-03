@@ -23,7 +23,10 @@ class Account {
 }
 $account = new Account(20148896, 'Savings', 80);
 include 'includes/header.php';
-echo $account->type . ' account' . '<br>'; 
-echo 'Old balance: $' . $account->getBalance();
-echo ' New balance: $' . $account->deposit(35);
+
+echo '<h2>' . $account->type . ' account' . '</h2>'; 
+echo 'Previous balance: $' . $account->getBalance();
+echo '<br>New balance: $' . $account->deposit(35);
+
+include 'includes/footer.php'; 
 ?>

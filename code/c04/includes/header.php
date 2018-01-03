@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Bank</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link href="css/styles.css?a=1" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Roboto+Condensed" rel="stylesheet">
   </head>
   <body>
+    <header>
+      <img src="img/geobank.png" alt="GeoBank" />
+    </header>
+    <section>

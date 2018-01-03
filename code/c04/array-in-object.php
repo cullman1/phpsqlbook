@@ -21,26 +21,18 @@ class Account {
      return $this->balance;
   }
 }
-class AccountNumber {
-  public $sortcode;
-  public $iban;
 
-  function __construct($sortcode, $iban) {
-    $this->sortcode = $sortcode;
-    $this->iban = $iban;
-  }
-}
+//Create an array to store in the property
+$account_number = array( 'sortcode' => 402355,
+                         'iban'     => 12345678);
 
-// Create an object to store in the property
-$account_number = new AccountNumber(402355, 12345678);
-
-// Create instance of Account class and set properties
+//Create an instance of the class and set properties
 $account = new Account($account_number,'Savings',  10);
 include 'includes/header.php';
 ?>
 
 <h2><?php echo $account->type; ?> account</h2>
-Sortcode: <?php echo $account->number->sortcode; ?><br>
-IBAN:     <?php echo $account->number->iban; ?>
+Sortcode <?php echo $account->number['sortcode']; ?><br>
+IBAN     <?php echo $account->number['iban']; ?>
 
 <?php include 'includes/footer.php'; ?>

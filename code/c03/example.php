@@ -30,22 +30,22 @@ function create_product_row($name, $price, $quantity) {
 ?>
 <!DOCTYPE html>
 <html> 
-<head>
-  <title>Variables</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+  <head>
+    <title>Functions example</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
   <body>
-<h1>The Candy Store</h1>
- <h2>Stock Control</h2>
-<table>
-  <tr>
-    <th>Product</th><th>Price</th><th>Stock</th><th>Total value</th><th>Stock Level</th>
-  </tr>
-<?php
-echo create_product_row('Toffee', 3, 12);
-echo create_product_row('Mints', 2, 26);
-echo create_product_row('Fudge', 4, 8);
-?>
-</table>
-</body>
+    <h1>The Candy Store</h1>
+    <h2>Stock Control</h2>
+    <table>
+      <tr>
+        <th>Product</th><th>Price</th><th>Stock</th><th>Total value</th><th>Stock Level</th>
+      </tr>
+      <?php
+        echo create_product_row('Toffee', 3, 12);
+        echo create_product_row('Mints', 2, 26);
+        echo create_product_row('Fudge', 4, 8);
+      ?>
+    </table>
+  </body>
 </html>
