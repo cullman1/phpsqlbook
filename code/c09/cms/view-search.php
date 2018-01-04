@@ -1,6 +1,5 @@
 <?php
-  require_once('config.php');                                 // Include classes
-                                  
+  require_once('config.php');                                 // Include classes                       
   $term = ( isset($_GET['term']) ? trim($_GET['term']) : ''); // Get search term 
   if (!empty($term)) {                                        // If search sent
     $errors['title'] = (Validate::isText($term, 1, 64) ? '' : 'Not a valid search');
@@ -31,11 +30,25 @@
   <div class="row">
     <?php
     if ($count > 0) { 
-        foreach ($article_list as $article) {
-            include 'includes/article-summary.php';
-        }
-    }
-    ?>
+        foreach ($article_list as $article) { ?>
+      <div class="card article-summary">
+     <a href="<?= ROOT ?>view-article.php?id=<?= $article->id ?>">
+    <img class="card-img-top" src="<?= ROOT ?>uploads/<?= $article->media_file ?>"
+     alt="<?= htmlentities($article->media_alt , ENT_QUOTES, 'UTF-8') ?>"></a>
+  <div class="card-body text-center">
+    <a href="<?= ROOT ?>view-article.php?id=<?= $article->id ?>">
+      <h5 class="card-title" ><?= $article->title ?>  
+      </h5></a>
+    <p><?= $article->summary ?></p>
+    <p>Posted in <a href="<?= ROOT ?>view-category.php?id=<?= $article->category_id ?>">
+      <?= htmlentities($article->category, ENT_QUOTES, 'UTF-8') ?></a> by       
+      <a href="<?= ROOT ?>view-user.php?id=<?= $article->user_id ?>">
+      <?= htmlentities($article->author, ENT_QUOTES, 'UTF-8') ?></a>
+    </p>
+  </div>
+</div>
+       <?php }
+    } ?>
   </div>
 </div>
 <?php include 'includes/footer.php'; ?>

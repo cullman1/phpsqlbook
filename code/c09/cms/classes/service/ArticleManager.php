@@ -135,15 +135,14 @@ function getSearchCount($term) {
     $statement->execute();                              // Execute
    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');     // Object
     $article_list = $statement->fetchAll();             // Return matches in database
-    if (!$article_list) {
-      return null;
-    }
-    foreach($article_list as $article) {
-      $article->content = $this->showTerm($article->content, $term);
-      $article->title   = $this->showTerm($article->title, $term);
-      $article->summary = $this->showTerm($article->summary, $term);
-    }
-    return $article_list;
+    if ($article_list) {
+        foreach($article_list as $article) {
+            $article->title   = $this->showTerm($article->title, $term);
+            $article->summary = $this->showTerm($article->summary, $term);
+        }
+        return $article_list;
+     }
+     return null;
   }
   function showTerm($text, $term) {
     $pos_term = ((mb_strpos($text, $term)-50) > 0 ? (mb_strpos($text, $term)-50) : 0);
