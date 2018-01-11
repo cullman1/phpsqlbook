@@ -1,0 +1,48 @@
+/*
+font-family: 'Josefin Slab', serif;
+font-family: 'Raleway Dots', cursive;
+font-family: 'Satisfy', cursive;
+font-family: 'Stardos Stencil', cursive;
+*/
+
+html, body {
+	margin: 0;
+}
+
+body {
+	background-color: #efefef;
+	font-family: 'Quicksand', sans-serif;
+	color: #666; }
+
+header {
+	background-color: #e36372;
+	border-top: 10px solid #755c5f;
+	text-align: center;
+	padding: 0.5em; }
+
+section {
+	padding: 1em;
+	width: max-content;
+	margin: 0 auto;}
+
+b {
+	font-family: 'Satisfy', cursive;
+	color: #e36372; 
+	margin: 0;}
+
+h2, th {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: normal;
+	font-size: 1em; 
+	color: #666;
+	margin: 0.75em 0 0.25em 0;}
+
+th {
+	padding-top: 1em;}
+
+div.footer {
+	margin-top: 2em;
+	padding: 1em;
+	background-color: #e36372;
+	color: #fff;
+	border-top: 1px solid #333;}

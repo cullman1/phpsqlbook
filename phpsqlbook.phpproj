@@ -207,10 +207,13 @@
     <Compile Include="code\c09\cms\view-search.php" />
     <Compile Include="code\c09\cms\view-user.php" />
     <Compile Include="code\c09\escape-functions.php" />
+    <Compile Include="code\c09\filter-input.php" />
     <Compile Include="code\c09\index.php" />
+    <Compile Include="code\c09\filter-var.php" />
     <Compile Include="code\c09\post-data-form.php" />
     <Compile Include="code\c09\post-data.php" />
     <Compile Include="code\c09\post-to-same-page.php" />
+    <Compile Include="code\c09\sanitize.php" />
     <Compile Include="code\c09\validate-test.php" />
     <Compile Include="code\c10\cms\admin\article.php" />
     <Compile Include="code\c10\cms\admin\articles.php" />
