@@ -32,7 +32,7 @@ class MediaManager {
       $statement->bindValue(':id',    $media_id);               // Bind value
       $statement->execute();                                            // Try to execute
 
-      $sql = 'DELETE FROM articleimages WHERE media_id = :id';
+      $sql = 'DELETE FROM articleimage WHERE media_id = :id';
       $statement = $pdo->prepare($sql);                                 // Prepare
       $statement->bindValue(':id',   $media_id);                 // Bind value
       $statement->execute();                                         // Try to execute
@@ -69,7 +69,7 @@ class MediaManager {
       $statement->execute();                                            // Try to execute
       $media->id = $pdo->lastInsertId();                                // Add id to object
 
-      $sql = 'INSERT INTO articleimages (article_id,  media_id) 
+      $sql = 'INSERT INTO articleimage (article_id,  media_id) 
 	    	                           VALUES (:article_id, :media_id)';
       $statement = $pdo->prepare($sql);                                 // Prepare
       $statement->bindValue(':article_id', $article_id);               // Bind value

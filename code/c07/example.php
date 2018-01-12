@@ -12,8 +12,8 @@
           FROM article 
             LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id
-            LEFT JOIN articleimages ON articleimages.article_id = article.id
-            LEFT JOIN media ON articleimages.media_id = media.id
+            LEFT JOIN articleimage ON articleimage.article_id = article.id
+            LEFT JOIN media ON articleimage.media_id = media.id
             WHERE article.id = 1';
   $statement = $pdo->prepare($sql);
   $statement->execute();

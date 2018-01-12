@@ -16,8 +16,8 @@ class ArticleManager{
             category.id as category_id, category.name AS category,  category.seo_name AS seo_category,  media.id as media_id,  media.file as media_file, media.alt AS media_alt
             FROM article
             LEFT JOIN user ON article.user_id = user.id 
-              LEFT JOIN articleimages ON articleimages.article_id = article.id
-            LEFT JOIN media ON media.id = articleimages.media_id
+              LEFT JOIN articleimage ON articleimage.article_id = article.id
+            LEFT JOIN media ON media.id = articleimage.media_id
             LEFT JOIN category ON article.category_id = category.id 
              WHERE category.navigation = TRUE ';
              if ($publish == 0) { 
@@ -93,8 +93,8 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
 
             LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id
-            LEFT JOIN articleimages ON articleimages.article_id = article.id
-            LEFT JOIN media ON media.id = articleimages.media_id
+            LEFT JOIN articleimage ON articleimage.article_id = article.id
+            LEFT JOIN media ON media.id = articleimage.media_id
 
             WHERE article.user_id=:user_id
             AND category.navigation = TRUE
@@ -173,10 +173,10 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
 
   public function getArticleImages($id){
     $pdo = $this->pdo;
-    $sql = 'SELECT articleimages.*, media.* 
-    		FROM articleimages 
-    		LEFT JOIN media ON articleimages.media_id = media.id
-    		WHERE articleimages.article_id=:id';                    // Query
+    $sql = 'SELECT articleimage.*, media.* 
+    		FROM articleimage
+    		LEFT JOIN media ON articleimage.media_id = media.id
+    		WHERE articleimage.article_id=:id';                    // Query
     $statement = $pdo->prepare($sql);                   // Prepare
     $statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
     $statement->execute();
@@ -211,8 +211,8 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
 
             LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id
-            LEFT JOIN articleimages ON articleimages.article_id = article.id
-            LEFT JOIN media ON media.id = articleimages.media_id
+            LEFT JOIN articleimage ON articleimage.article_id = article.id
+            LEFT JOIN media ON media.id = articleimage.media_id
             
             WHERE category.seo_name=:seo_name 
             AND article.published = TRUE

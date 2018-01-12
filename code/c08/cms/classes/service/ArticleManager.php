@@ -18,8 +18,8 @@ class ArticleManager {
             
             LEFT JOIN user ON article.user_id = user.id 
             LEFT JOIN category ON article.category_id = category.id 
-            LEFT JOIN articleimages ON articleimages.article_id = article.id
-            LEFT JOIN media ON articleimages.media_id = media.id
+            LEFT JOIN articleimage ON articleimage.article_id = article.id
+            LEFT JOIN media ON articleimage.media_id = media.id
       
             WHERE category.navigation = TRUE ';
     if ($publish == 0) { 
@@ -49,8 +49,8 @@ class ArticleManager {
           FROM article 
           LEFT JOIN user ON article.user_id = user.id
           LEFT JOIN category ON article.category_id = category.id
-          LEFT JOIN articleimages ON articleimages.article_id = article.id
-          LEFT JOIN media ON articleimages.media_id = media.id
+          LEFT JOIN articleimage ON articleimage.article_id = article.id
+          LEFT JOIN media ON articleimage.media_id = media.id
           WHERE article.id=:id';                      // Query
   $statement = $pdo->prepare($sql);                   // Prepare
   $statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
@@ -73,8 +73,8 @@ public function getArticleSummariesByCategoryId($id){
           FROM article
           LEFT JOIN user ON article.user_id = user.id 
           LEFT JOIN category ON article.category_id = category.id 
-          LEFT JOIN articleimages ON articleimages.article_id = article.id
-          LEFT JOIN media ON articleimages.media_id = media.id
+          LEFT JOIN articleimage ON articleimage.article_id = article.id
+          LEFT JOIN media ON articleimage.media_id = media.id
           WHERE article.category_id=:category_id 
           AND article.published = TRUE
           ORDER BY article.created DESC';
@@ -92,13 +92,22 @@ public function getArticleSummariesByCategoryId($id){
 public function getArticleSummariesByUserId($id) {
   $pdo = $this->pdo;
   $sql = 'SELECT article.id, article.title, article.summary, article.created, 
-          ...
-          LEFT JOIN media ON articleimages.media_id = media.id            
+            article.user_id, article.category_id, article.published,
+          user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
+          category.id as category_id, category.name AS category,
+          media.id as media_id, media.file AS media_file, media.alt AS media_alt 
+          FROM article
+          LEFT JOIN user ON article.user_id = user.id 
+          LEFT JOIN category ON article.category_id = category.id 
+          LEFT JOIN articleimage ON articleimage.article_id = article.id
+
+          LEFT JOIN media ON articleimage.media_id = media.id            
           WHERE article.user_id=:user_id 
           AND article.published = TRUE
           ORDER BY article.created DESC';
   $statement = $pdo->prepare($sql);
   $statement->bindValue(':user_id', $id, PDO::PARAM_INT);
+   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
   $article_list = $statement->fetchAll();
   if (!$article_list) {

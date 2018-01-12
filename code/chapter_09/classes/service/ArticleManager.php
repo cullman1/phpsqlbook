@@ -16,8 +16,8 @@ class ArticleManager {
             FROM article
             LEFT JOIN user ON article.user_id = user.id 
             LEFT JOIN category ON article.category_id = category.id 
-            LEFT JOIN articleimages ON articleimages.article_id = article.id
-            LEFT JOIN media ON articleimages.media_id = media.id
+            LEFT JOIN articleimage ON articleimage.article_id = article.id
+            LEFT JOIN media ON articleimage.media_id = media.id
             WHERE category.navigation = TRUE 
             AND article.published = TRUE
             ORDER BY article.created DESC ';
@@ -43,8 +43,8 @@ class ArticleManager {
     		FROM article 
     		LEFT JOIN user ON article.user_id = user.id
     		LEFT JOIN category ON article.category_id = category.id
-    		        LEFT JOIN articleimages ON articleimages.article_id = article.id
-          LEFT JOIN media ON articleimages.media_id = media.id
+    		        LEFT JOIN articleimage ON articleimage.article_id = article.id
+          LEFT JOIN media ON articleimage.media_id = media.id
     		WHERE article.id=:id';                          // Query
         $statement = $pdo->prepare($sql);          // Prepare
         $statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
@@ -66,8 +66,8 @@ class ArticleManager {
            FROM article
             LEFT JOIN user ON article.user_id = user.id 
             LEFT JOIN category ON article.category_id = category.id 
-                    LEFT JOIN articleimages ON articleimages.article_id = article.id
-          LEFT JOIN media ON articleimages.media_id = media.id
+                    LEFT JOIN articleimage ON articleimage.article_id = article.id
+          LEFT JOIN media ON articleimage.media_id = media.id
             WHERE article.category_id=:category_id 
             AND article.published = TRUE
             ORDER BY article.created';
@@ -92,8 +92,8 @@ class ArticleManager {
             FROM article
             LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id
-            LEFT JOIN articleimages ON articleimages.article_id = article.id
-            LEFT JOIN media ON media.id = articleimages.media_id
+            LEFT JOIN articleimage ON articleimage.article_id = article.id
+            LEFT JOIN media ON media.id = articleimage.media_id
             WHERE article.user_id=:user_id
             AND category.navigation = TRUE
             AND article.published = TRUE
@@ -127,8 +127,8 @@ class ArticleManager {
              FROM article 
              LEFT JOIN user ON article.user_id = user.id
              LEFT JOIN category ON article.category_id = category.id
-             LEFT JOIN articleimages ON articleimages.article_id = article.id
-             LEFT JOIN media ON media.id = articleimages.media_id
+             LEFT JOIN articleimage ON articleimage.article_id = article.id
+             LEFT JOIN media ON media.id = articleimage.media_id
            
              WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))   group by id';           
     $statement = $this->pdo->prepare($sql);                   // Prepare 
