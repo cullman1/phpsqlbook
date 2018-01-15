@@ -19,14 +19,16 @@ class ArticleManager{
               LEFT JOIN articleimage ON articleimage.article_id = article.id
             LEFT JOIN media ON media.id = articleimage.media_id
             LEFT JOIN category ON article.category_id = category.id 
-             WHERE category.navigation = TRUE ';
+             WHERE category.navigation = TRUE';
              if ($publish == 0) { 
            $sql .= '  AND article.published = TRUE';
            }
+                   $sql .= ' GROUP BY ID ';
            $sql .= ' ORDER BY article.created DESC ';
     if ($limit!=0) { 
          $sql .= ' LIMIT '. $limit;
     }
+    echo($sql);
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');

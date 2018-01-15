@@ -25,7 +25,9 @@ class ArticleManager {
     if ($publish == 0) { 
       $sql .= '  AND article.published = TRUE';
     }
+       $sql .= ' GROUP BY ID ';
       $sql .= ' ORDER BY article.created DESC ';    
+
     if ($limit != 0) { 
          $sql .= ' LIMIT '. $limit;
     }
