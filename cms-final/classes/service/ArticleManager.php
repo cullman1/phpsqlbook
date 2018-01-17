@@ -11,7 +11,7 @@ class ArticleManager{
 
     public function getAllArticleSummaries($limit=0, $publish=0){
     $pdo = $this->pdo;
-    $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published, article.like_count, article.comment_count,
+    $sql = 'SELECT article.id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published, article.like_count, article.comment_count,article.seo_title,
             user.id as user_id, CONCAT(user.forename, " ", user.surname) AS author,
             category.id as category_id, category.name AS category,  category.seo_name AS seo_category,  media.id as media_id,  media.file as media_file, media.alt AS media_alt
             FROM article
@@ -28,7 +28,6 @@ class ArticleManager{
     if ($limit!=0) { 
          $sql .= ' LIMIT '. $limit;
     }
-    echo($sql);
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
@@ -64,14 +63,14 @@ class ArticleManager{
     $sql = 'SELECT article.*, CONCAT(user.forename, " ", user.surname) AS author, 
 user.seo_name AS seo_user, category.id AS category_id, category.name AS category ';
         if (isset($_SESSION['user_id'])) {
-        $sql .= ', COALESCE( (SELECT max(1) FROM likes WHERE likes.user_id=' .
-                  $_SESSION['user_id'] . ' AND likes.article_id = article.id), 0) 
+        $sql .= ', (select count(*) FROM likes WHERE likes.user_id=' .
+                  $_SESSION['user_id'] . ' AND likes.article_id = article.id) 
                   AS liked ';
         }
         $sql .= 'FROM article
     		LEFT JOIN user ON article.user_id = user.id
     		LEFT JOIN category ON article.category_id = category.id
-    		WHERE article.seo_title=:seo_title';    
+    		WHERE article.seo_title=:seo_title';   
     $statement = $pdo->prepare($sql);          // Prepare
     $statement->bindValue(':seo_title', $seo_title);  // Bind value from query string
     $statement->execute();
@@ -208,14 +207,11 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
             user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user, 
             category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
             media.id as media_id, media.file as media_file, media.alt as media_alt
-
             FROM article
-
             LEFT JOIN user ON article.user_id = user.id
             LEFT JOIN category ON article.category_id = category.id
             LEFT JOIN articleimage ON articleimage.article_id = article.id
             LEFT JOIN media ON media.id = articleimage.media_id
-            
             WHERE category.seo_name=:seo_name 
             AND article.published = TRUE
             GROUP BY id
