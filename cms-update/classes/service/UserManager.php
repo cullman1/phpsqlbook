@@ -13,7 +13,7 @@ class UserManager
   public function getUserById($id)
   {
     $pdo = $this->pdo;
-    $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined, user.role, user.seo_name FROM user WHERE id = :id';
+    $sql = 'SELECT user.user_id, user.forename, user.surname, user.email, user.joined, user.role, user.seo_name FROM user WHERE user_id = :id';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':id', $id, PDO::PARAM_INT);
     $statement->execute();
@@ -27,7 +27,7 @@ class UserManager
 
   public function getUserByEmail($email) {
     $pdo = $this->pdo;
-    $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined, user.role, user.seo_name 
+    $sql = 'SELECT user.user_id, user.forename, user.surname, user.email, user.joined, user.role, user.seo_name 
             FROM user WHERE email = :email';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':email', $email);
@@ -67,7 +67,7 @@ class UserManager
 
   public function isUserAuthorOfArticle($user_id, $article_id) {
     $pdo = $this->pdo;
-    $query = 'SELECT count(*) FROM article WHERE id = :article_id AND user_id = :user_id';
+    $query = 'SELECT count(*) FROM article WHERE user_id = :article_id AND user_id = :user_id';
     $statement = $pdo->prepare($query);
     $statement->bindValue(':user_id', $user_id);
     $statement->bindValue(':article_id', $article_id);
@@ -96,7 +96,7 @@ class UserManager
 
     try {
       $statement->execute();
-      $user->id = $pdo->lastInsertId();                                // Add id to object
+      $user->user_id = $pdo->lastInsertId();                                // Add id to object
       $result = TRUE;
     } catch (PDOException $error) {                                    // Otherwise
       $result = $error->getMessage() . '<br>File: ' . $error->getFile() . '<br>Line: '  . $error->getLine();    // Error - use the methods not array
@@ -108,9 +108,9 @@ class UserManager
     $seo_name = Utilities::createSlug($user->getFullName());
 
     $pdo = $this->pdo;
-    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, password = :password, seo_name = :seo_name, profile_image = :profile_image WHERE id = :id';         //SQL
+    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, password = :password, seo_name = :seo_name, profile_image = :profile_image WHERE user_id = :id';         //SQL
     $statement = $pdo->prepare($sql);                              // Prepare
-    $statement->bindValue(':id', $user->id, PDO::PARAM_INT);       // Bind value
+    $statement->bindValue(':id', $user->user_id, PDO::PARAM_INT);       // Bind value
     $statement->bindValue(':forename',      $user->forename);      // Bind value
     $statement->bindValue(':surname',       $user->surname);       // Bind value
     $statement->bindValue(':email',         Utilities::punyCodeDomain($user->email));         // Bind value
@@ -129,9 +129,9 @@ class UserManager
   public function adminupdate($user){
     $seo_name = Utilities::createSlug($user->getFullName());
     $pdo = $this->pdo;
-    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, seo_name = :seo_name, role = :role WHERE id = :id';         //SQL
+    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, seo_name = :seo_name, role = :role WHERE user_id = :id';         //SQL
     $statement = $pdo->prepare($sql);                                // Prepare
-    $statement->bindValue(':id', $user->id, PDO::PARAM_INT);         // Bind value
+    $statement->bindValue(':id', $user->user_id, PDO::PARAM_INT);         // Bind value
     $statement->bindValue(':forename', $user->forename);             // Bind value
     $statement->bindValue(':surname',  $user->surname);              // Bind value
     $statement->bindValue(':email',    Utilities::punyCodeDomain($user->email));                // Bind value
@@ -148,7 +148,7 @@ class UserManager
 
   public function delete($id){
     $pdo = $this->pdo;
-    $sql = 'DELETE FROM user WHERE id = :id';                 // SQL
+    $sql = 'DELETE FROM user WHERE user_id = :id';                 // SQL
     $statement = $pdo->prepare($sql);                             // Prepare
     $statement->bindValue(':id', $id, PDO::PARAM_INT);            // Bind ID
     try {
@@ -194,13 +194,13 @@ class UserManager
     }
     $_SESSION['name']     = htmlspecialchars($user->forename);
     $_SESSION['seo_name'] = $user->seo_name;
-    $_SESSION['user_id']  = $user->id;
+    $_SESSION['user_id']  = $user->user_id;
     $_SESSION['role']     = $user->role;
   }
 
   public function getAllUsers() {
     $pdo = $this->pdo;
-    $sql = 'SELECT user.id, user.forename, user.surname, user.email, user.joined FROM user';
+    $sql = 'SELECT user.user_id, user.forename, user.surname, user.email, user.joined FROM user';
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
@@ -323,7 +323,7 @@ class UserManager
   public function updatePassword($userId,$password) {
     $pdo = $this->pdo;
     $hash = password_hash($password, PASSWORD_DEFAULT);
-    $sql = 'UPDATE user SET password = :password WHERE id = :id';
+    $sql = 'UPDATE user SET password = :password WHERE user_id = :id';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':password', $hash);
     $statement->bindValue(':id', $userId);

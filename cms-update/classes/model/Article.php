@@ -1,6 +1,6 @@
 <?php
 class Article{
-  public  $id;
+  public  $article_id;
   public  $title;
   public  $summary;
   public  $content;
@@ -17,8 +17,8 @@ class Article{
   public  $comment_count;
   public  $liked;
 
-  public function __construct($id = NULL, $title = NULL, $summary = NULL, $content = NULL, $category_id = NULL, $user_id = NULL, $published = NULL) {
-    $this->id           = $id;
+  public function __construct($article_id = NULL, $title = NULL, $summary = NULL, $content = NULL, $category_id = NULL, $user_id = NULL, $published = NULL) {
+    $this->article_id           = $article_id;
     $this->title        = $title;
     $this->summary      = $summary;
     $this->content      = $content;

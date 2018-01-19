@@ -1,6 +1,6 @@
   <div class="card article-summary">
    <a href="<?= ROOT . $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">
-    <img class="card-img-top" src="<?= ROOT ?>uploads/<?= htmlentities($article->media_file, ENT_QUOTES, 'UTF-8') ?>" alt="<?=  htmlentities($article->media_alt, ENT_QUOTES, 'UTF-8') ?>">
+    <img class="card-img-top" src="<?= ROOT ?>uploads/<?= htmlentities($article->image_file, ENT_QUOTES, 'UTF-8') ?>" alt="<?=  htmlentities($article->image_alt, ENT_QUOTES, 'UTF-8') ?>">
    </a>
     <div class="card-body text-center">
       <a href="<?= ROOT . $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">

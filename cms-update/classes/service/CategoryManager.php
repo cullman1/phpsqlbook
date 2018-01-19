@@ -29,7 +29,7 @@ class CategoryManager
   public function getCategoryById($id)
   {
     $pdo = $this->pdo;
-    $sql = 'SELECT * FROM category WHERE id=:id';
+    $sql = 'SELECT * FROM category WHERE category_id =:id';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':id', $id, PDO::PARAM_INT);
     $statement->execute();
@@ -64,7 +64,7 @@ class CategoryManager
     $statement->bindValue(':seo_name',   Utilities::createSlug($category->name));
     try {
       $statement->execute();                                               // Execute SQL
-      $category->id = $pdo->lastInsertId();                                // Add id to object
+      $category->category_id = $pdo->lastInsertId();                                // Add id to object
       $result   = TRUE;                                                    // Get id created
     } catch (PDOException $error) {                                        // Otherwise
       if ($error->errorInfo[1] == 1062) {                                  // If it is a duplicate
@@ -78,9 +78,9 @@ class CategoryManager
 
   public function update($category){
     $pdo = $this->pdo;
-    $sql = 'UPDATE category SET name = :name, description = :description, navigation = :navigation, seo_name = :seo_name WHERE id = :id';//SQL
+    $sql = 'UPDATE category SET name = :name, description = :description, navigation = :navigation, seo_name = :seo_name WHERE category_id = :id';//SQL
     $statement = $pdo->prepare($sql);                                  // Prepare
-    $statement->bindValue(':id', $category->id, PDO::PARAM_INT);       // Bind id
+    $statement->bindValue(':id', $category->category_id, PDO::PARAM_INT);       // Bind id
     $statement->bindValue(':name', $category->name);                   // Bind name
     $statement->bindValue(':description', $category->description);     // Bind description
     $statement->bindValue(':navigation', $category->navigation);       // Bind navigation
@@ -100,7 +100,7 @@ class CategoryManager
 
   public function delete($id){
     $pdo = $this->pdo;
-    $sql = 'DELETE FROM category WHERE id = :id';                 // SQL
+    $sql = 'DELETE FROM category WHERE category_id = :id';                 // SQL
     $statement = $pdo->prepare($sql);                             // Prepare
     $statement->bindValue(':id', $id, PDO::PARAM_INT);            // Bind ID
     try {

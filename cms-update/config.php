@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 require_once 'classes/service/CMS.php';
 require_once 'classes/service/ArticleManager.php';
 require_once 'classes/service/CategoryManager.php';
-require_once 'classes/service/MediaManager.php';
+require_once 'classes/service/ImageManager.php';
 require_once 'classes/service/UserManager.php';
 require_once 'classes/service/Validate.php';
 require_once 'classes/service/Utilities.php';
@@ -14,7 +14,7 @@ require_once 'classes/model/Article.php';
 require_once 'classes/model/ArticleSummary.php';
 require_once 'classes/model/Category.php';
 require_once 'classes/model/Comment.php';
-require_once 'classes/model/Media.php';
+require_once 'classes/model/Image.php';
 require_once 'classes/model/User.php';
 
 require_once 'vendor/html-purifier-4.9.3/library/HTMLPurifier.auto.php';
@@ -38,7 +38,7 @@ $cms              = new CMS($database_config);
 $articleManager   = $cms->getArticleManager();
 $categoryManager  = $cms->getCategoryManager();
 $userManager      = $cms->getUserManager();
-$mediaManager     = $cms->getMediaManager();
+$imageManager     = $cms->getImageManager();
 
 $is_logged_in     = $userManager->isLoggedIn();
 $my_profile       = FALSE;

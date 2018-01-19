@@ -1,7 +1,7 @@
 <?php
 class User
 {
-  public  $id;
+  public  $user_id;
   public  $forename;
   public  $surname;
   public  $email;
@@ -11,8 +11,8 @@ class User
   public  $seo_name;
   public  $profile_image;
 
-  public function __construct($id = NULL, $forename = NULL, $surname = NULL, $email = NULL, $password = NULL, $role = NULL, $profile_image = NULL) {
-    $this->id            = $id;
+  public function __construct($user_id = NULL, $forename = NULL, $surname = NULL, $email = NULL, $password = NULL, $role = NULL, $profile_image = NULL) {
+    $this->user_id            = $user_id;
     $this->forename      = $forename;
     $this->surname       = $surname;
     $this->email         = $email;

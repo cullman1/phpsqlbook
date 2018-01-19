@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 require_once 'classes/service/CMS.php';
 require_once 'classes/service/ArticleManager.php';
 require_once 'classes/service/CategoryManager.php';
-require_once 'classes/service/MediaManager.php';
+require_once 'classes/service/ImageManager.php';
 require_once 'classes/service/UserManager.php';
 require_once 'classes/service/Validate.php';
 require_once 'classes/service/Utilities.php';
@@ -27,7 +27,7 @@ $cms              = new CMS($database_config);
 $articleManager   = $cms->getArticleManager();
 $categoryManager  = $cms->getCategoryManager();
 $userManager      = $cms->getUserManager();
-$mediaManager     = $cms->getMediaManager();
+$mediaManager     = $cms->getImageManager();
 
 $is_logged_in     = $userManager->isLoggedIn();
 $my_profile       = FALSE;

@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $result = $userManager->create($user);
 
             if ($uploadedfile) {
-              $moveresult  = $mediaManager->moveImage($profile_image, $temporary);         // Move image
-              $thumbresult = $mediaManager->resizeImage($profile_image, 150, TRUE); // Create thumbnail
+              $moveresult  = $imageManager->moveImage($profile_image, $temporary);         // Move image
+              $thumbresult = $imageManager->resizeImage($profile_image, 150, TRUE); // Create thumbnail
               if ($moveresult != TRUE || $thumbresult != TRUE) {
                 $result .= $moveresult . $thumbresult; // Add the error to result
              }

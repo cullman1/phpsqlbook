@@ -21,7 +21,7 @@ $article       = new Article($id, $title, $summary, $content, $category_id, $use
 
 // image data
 $alt           = ( isset($_POST['alt'] )        ? $_POST['alt']         : '');
-$media         = new Media('',  $alt, '');              // Create Media object
+$image         = new Image('',  $alt, '');              // Create Image object
 $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'',  'alt'=>'');   // Form errors
 $alert         = '';           // Status messages
 $uploadedfile  = FALSE;        // Was image uploaded
@@ -31,11 +31,11 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   // No - show a blank category to create or an existing category to edit
    $article = ($seo_title == '' ? $article : $articleManager->getArticleBySeoTitle($seo_title)); // Do you load a category
    $usercheck = FALSE;
-   if (empty($article->id)) {
+   if (empty($article->article_id)) {
       $article = ($article_id == '' ? $article : $articleManager->getArticleById($article_id)); // Do you load a category
    }
-   if (!empty($article->id)) {
-     $usercheck =  $userManager->isUserAuthorOfArticle($_SESSION['user_id'], $article->id);
+   if (!empty($article->article_id)) {
+     $usercheck =  $userManager->isUserAuthorOfArticle($_SESSION['user_id'], $article->article_id);
    }
    if ((!$article) || ((!$usercheck) && ($action!="create"))) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
@@ -88,11 +88,11 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     }
     if ((($croppedfile) && ($uploadedfile)) && isset($result) && ($result === TRUE)) {
        file_put_contents('../uploads/'.$filename, $data);
-       $moveresult   = $mediaManager->moveImage($filename, $data);         // Move image
-        $media->file = $filename;
-      $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
-      $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
-      $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
+       $moveresult   = $imageManager->moveImage($filename, $data);         // Move image
+        $image->file = $filename;
+      $saveresult   = $imageManager->saveImage($article->article_id, $image);          // Add image to database
+      $resizeresult = $imageManager->resizeImage($filename, 600 );   // Resize image
+      $thumbresult  = $imageManager->resizeImage($filename, 150, TRUE); // Create thumbnail
      
       if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
         $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
@@ -101,7 +101,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
-    $alert = '<div class="alert alert-success">' . $action . ' article ' . $article->id .' succeeded</div>';
+    $alert = '<div class="alert alert-success">' . $action . ' article ' . $article->article_id .' succeeded</div>';
     $action = 'update';
   }
 
@@ -111,8 +111,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
 }
 
 // Get existing images (has to happen after page has been updated
-if (isset($article->id) && is_numeric($article->id) ) {  // If check passes
-  $article_images = $articleManager->getArticleImages($article->id);
+if (isset($article->article_id) && is_numeric($article->article_id) ) {  // If check passes
+  $article_images = $articleManager->getArticleImages($article->article_id);
 }
 if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array();
@@ -125,12 +125,12 @@ include '../includes/header.php';
   <h2 class="display-4 mt-4 mb-3"><?=$action?> work</h2>
   <?= $alert ?>
 
-  <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>users/user-upload.php?include=croppie&article_id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" >
+  <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>users/user-upload.php?include=croppie&article_id=<?=htmlspecialchars($article->article_id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" >
 
     <div class="row">
       <div class="col-8">
 
-        <input name="id" value="<?=  htmlentities($article->id) ?>" type="hidden">
+        <input name="id" value="<?=  htmlentities($article->article_id) ?>" type="hidden">
         <div class="form-group">
           <label for="title">Title: </label>
           <input name="title" id="title" value="<?=  htmlentities($article->title) ?>" class="form-control">
@@ -151,8 +151,8 @@ include '../includes/header.php';
           <label for="category_id">Category: </label>
           <select name="category_id" id="category_id" class="form-control">
             <?php foreach ($category_list as $category) { ?>
-            <option value="<?= $category->id ?>"
-              <?php if ($article->category_id == $category->id) {
+            <option value="<?= $category->category_id ?>"
+              <?php if ($article->category_id == $category->category_id) {
                 echo 'selected';
               }?>
             ><?= $category->name ?></option>
@@ -185,7 +185,7 @@ include '../includes/header.php';
         </div>
         <?php foreach ($article_images as $image) {
           echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->file . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
-                &nbsp;    <a class="btn btn-primary" href="' . ROOT . 'admin/delete-image.php?page=user&id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
+                &nbsp;    <a class="btn btn-primary" href="' . ROOT . 'admin/delete-image.php?page=user&id=' . $image->image_id.'&article_id=' . $article->article_id.'">Delete Image</a><br><br>';
         } ?>
 
       </div><!-- /col -->

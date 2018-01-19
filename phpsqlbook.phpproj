@@ -44,12 +44,12 @@
     <Compile Include="cms-update\classes\model\ArticleSummary.php" />
     <Compile Include="cms-update\classes\model\Category.php" />
     <Compile Include="cms-update\classes\model\Comment.php" />
-    <Compile Include="cms-update\classes\model\Media.php" />
+    <Compile Include="cms-update\classes\model\Image.php" />
     <Compile Include="cms-update\classes\model\User.php" />
     <Compile Include="cms-update\classes\service\ArticleManager.php" />
     <Compile Include="cms-update\classes\service\CategoryManager.php" />
     <Compile Include="cms-update\classes\service\CMS.php" />
-    <Compile Include="cms-update\classes\service\MediaManager.php" />
+    <Compile Include="cms-update\classes\service\ImageManager.php" />
     <Compile Include="cms-update\classes\service\UserManager.php" />
     <Compile Include="cms-update\classes\service\Utilities.php" />
     <Compile Include="cms-update\classes\service\Validate.php" />
@@ -570,28 +570,11 @@
     <Compile Include="cms-update\view-article.php" />
     <Compile Include="cms-update\view-category.php" />
     <Compile Include="cms-update\view-user.php" />
-    <Compile Include="includes\404.php" />
     <Compile Include="info.php" />
-    <Compile Include="assets\config.php" />
-    <Compile Include="includes\croppie.php" />
     <Compile Include="code\chapter_11\fatal-error-1.php" />
     <Compile Include="emailcheck_revise.php" />
     <Compile Include="login\confirm-email.php" />
     <Compile Include="login\forgotten-password.php" />
-    <Compile Include="includes\db_config.php" />
-    <Compile Include="includes\footer.php" />
-    <Compile Include="includes\footer-editor.php" />
-    <Compile Include="includes\footer-site.php" />
-    <Compile Include="includes\gallery-modal-insert.php" />
-    <Compile Include="includes\gallery-modal.php" />
-    <Compile Include="includes\header.php" />
-    <Compile Include="includes\header-article.php" />
-    <Compile Include="includes\header-register.php" />
-    <Compile Include="includes\header-site.php" />
-    <Compile Include="includes\login-variables.php" />
-    <Compile Include="includes\pagination.php" />
-    <Compile Include="includes\rich-text-control.php" />
-    <Compile Include="includes\table.php" />
     <Compile Include="login\login-user.php" />
     <Compile Include="login\logon.php" />
     <Compile Include="login\login-admin.php" />
@@ -614,10 +597,7 @@
     <Compile Include="Script1.php" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\" />
     <Folder Include="cms-update\" />
-    <Folder Include="cms-update\.idea\" />
-    <Folder Include="cms-update\.idea\inspectionProfiles\" />
     <Folder Include="cms-update\admin\" />
     <Folder Include="cms-update\admin\css\" />
     <Folder Include="cms-update\admin\includes\" />
@@ -789,24 +769,17 @@
     <Folder Include="cms-update\vendor\html-purifier-4.9.3\tests\PHPT\Section\" />
     <Folder Include="cms-update\vendor\html-purifier-4.9.3\tests\tmp\" />
     <Folder Include="cms-update\vendor\PHPMailer\" />
+    <Folder Include="code\" />
+    <Folder Include="code\chapter_11\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
-    <Folder Include="includes\" />
     <Folder Include="js\" />
     <Folder Include="login\" />
     <Folder Include="pages\" />
     <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\background.jpg" />
-    <Content Include="assets\clip.jpg" />
-    <Content Include="assets\clip.png" />
-    <Content Include="assets\comments-xl.png" />
     <Content Include="cms-update\.htaccess" />
-    <Content Include="cms-update\.idea\cms-final.iml" />
-    <Content Include="cms-update\.idea\deployment.xml" />
-    <Content Include="cms-update\.idea\modules.xml" />
-    <Content Include="cms-update\.idea\workspace.xml" />
     <Content Include="cms-update\admin\css\croppie.css" />
     <Content Include="cms-update\admin\css\styles.css" />
     <Content Include="cms-update\admin\lib\jquery\jquery-1.12.4.min.js" />

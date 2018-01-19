@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $user = $userManager->getUserByEmail($email);
   }
   if ($user) {
-    $token = $userManager->createToken($user->id,'password_reset'); 
+    $token = $userManager->createToken($user->user_id,'password_reset'); 
     $link    =  'http://'.$_SERVER['HTTP_HOST'].ROOT. 'users/reset-password.php?token=' . $token;
     $from    = 'no-reply@example.org';
     $subject = 'Reset Password Link';

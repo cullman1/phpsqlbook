@@ -33,7 +33,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
-    $alert = '<div class="alert alert-success">' . $action . ' category ' . $category->id .' succeeded</div>';
+    $alert = '<div class="alert alert-success">' . $action . ' category ' . $category->category_id .' succeeded</div>';
     $action = 'update';
   }
 
@@ -50,7 +50,7 @@ include 'includes/header.php';
   <h2><?=htmlentities( $action,ENT_QUOTES,'UTF-8');?> category</h2>
   <?= $alert ?>
 
-  <form action="category.php?id=<?=htmlspecialchars($category->id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
+  <form action="category.php?id=<?=htmlspecialchars($category->category_id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
     <div class="form-group">
       <label for="name">Name: </label>
       <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control">

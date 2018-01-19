@@ -48,7 +48,7 @@ echo "ACTION".$action;
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
-    $alert = '<div class="alert alert-success">Update user ' . $user->id .' succeeded</div>';
+    $alert = '<div class="alert alert-success">Update user ' . $user->user_id .' succeeded</div>';
     $action = 'update';
   }
 

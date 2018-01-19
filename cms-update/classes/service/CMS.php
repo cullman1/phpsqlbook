@@ -7,7 +7,7 @@ class CMS
 
   private $articleManager;
   private $categoryManager;
-  private $mediaManager;
+  private $imageManager;
   private $userManager;
 
   public function __construct($configuration)
@@ -54,11 +54,11 @@ class CMS
     return $this->userManager;
   }
 
-  public function getMediaManager()
+  public function getImageManager()
   {
-    if ($this->mediaManager === null) {
-      $this->mediaManager = new MediaManager($this->getPDO());
+    if ($this->imageManager === null) {
+      $this->imageManager = new ImageManager($this->getPDO());
     }
-    return $this->mediaManager;
+    return $this->imageManager;
   }
 }

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Has form been submitted?
         $user = $userManager->getUserFromToken($token, 'password_reset');           // Get user
     }
   if (!empty($user)) {                                               // If found user
-    $updated = $userManager->updatePassword($user->id,$password);
+    $updated = $userManager->updatePassword($user->user_id,$password);
   }
   if (!empty($updated)) {
       $userManager->sendEmail($user->email, $subject, $message);                // Send email

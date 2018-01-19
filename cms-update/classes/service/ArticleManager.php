@@ -30,7 +30,6 @@ class ArticleManager{
     if ($limit!=0) { 
          $sql .= ' LIMIT '. $limit;
     }
-   
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
@@ -44,12 +43,12 @@ class ArticleManager{
   public function getArticleById($id) {
     $pdo = $this->pdo;
     $sql = 'SELECT article.*, 
-        user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author,  
-        category.id AS category_id, category.name AS category 
+         CONCAT(user.forename, " ", user.surname) AS author,  
+         category.name AS category 
     		FROM article 
-    		LEFT JOIN user ON article.user_id = user.id
-    		LEFT JOIN category ON article.category_id = category.id
-    		WHERE article.id=:id';                          // Query
+    		LEFT JOIN user ON article.user_id = user.user_id
+    		LEFT JOIN category ON article.category_id = category.category_id
+    		WHERE article.article_id=:id';                          // Query
     $statement = $pdo->prepare($sql);          // Prepare
     $statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
     $statement->execute();
@@ -64,15 +63,15 @@ class ArticleManager{
   public function getArticleBySeoTitle($seo_title) {
     $pdo = $this->pdo;
     $sql = 'SELECT article.*, CONCAT(user.forename, " ", user.surname) AS author, 
-user.seo_name AS seo_user, category.id AS category_id, category.name AS category ';
+user.seo_name AS seo_user, category.name AS category ';
         if (isset($_SESSION['user_id'])) {
         $sql .= ', (select count(*) FROM likes WHERE likes.user_id=' .
-                  $_SESSION['user_id'] . ' AND likes.article_id = article.id) 
+                  $_SESSION['user_id'] . ' AND likes.article_id = article.article_id) 
                   AS liked ';
         }
         $sql .= 'FROM article
-    		LEFT JOIN user ON article.user_id = user.id
-    		LEFT JOIN category ON article.category_id = category.id
+    		LEFT JOIN user ON article.user_id = user.user_id
+    		LEFT JOIN category ON article.category_id = category.category_id
     		WHERE article.seo_title=:seo_title';   
     $statement = $pdo->prepare($sql);          // Prepare
     $statement->bindValue(':seo_title', $seo_title);  // Bind value from query string
@@ -87,23 +86,24 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
 
   public function getArticleSummariesByUserId($id){
     $pdo = $this->pdo;
-    $sql = 'SELECT article.id, article.title, article.summary, article.created, article.published, article.seo_title,
+    $sql = 'SELECT article.article_id, article.title, article.summary, article.created, article.published, article.seo_title,
             article.like_count, article.comment_count,
-            user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user,
-            category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
+             CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user,
+            category.name AS category, category.seo_name AS seo_category, 
              image.file as image_file, image.alt as image_alt
 
             FROM article
 
-            LEFT JOIN user ON article.user_id = user.id
-            LEFT JOIN category ON article.category_id = category.id
-            LEFT JOIN articleimage ON articleimage.article_id = article.id
-            LEFT JOIN image ON image_id = articleimage.image_id
+            LEFT JOIN user ON article.user_id = user.user_id
+            LEFT JOIN category ON article.category_id = category.category_id
+            LEFT JOIN articleimage ON articleimage.article_id = article.article_id
+            LEFT JOIN image ON image.
+image_id = articleimage.image_id
 
             WHERE article.user_id=:user_id
             AND category.navigation = TRUE
             AND article.published = TRUE
-            GROUP BY id
+            GROUP BY article_id
             ORDER BY article.created DESC';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':user_id', $id, PDO::PARAM_INT);
@@ -130,7 +130,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     $statement->bindValue(':published',   $article->published, PDO::PARAM_BOOL);  // Bind value
     try {
       $statement->execute();                                         // Try to execute
-      $article->id = $pdo->lastInsertId();                           // Add id to object
+      $article->article_id = $pdo->lastInsertId();                           // Add id to object
       return TRUE;                                                // Say worked if it did
     } catch (PDOException $error) {                                  // Otherwise
       
@@ -144,9 +144,9 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
 
   public function update($article){
     $pdo = $this->pdo;
-    $sql = 'UPDATE article SET title = :title, seo_title = :seo_title, summary = :summary, content = :content, category_id = :category_id, user_id = :user_id, published = :published WHERE id = :id'; //SQL
+    $sql = 'UPDATE article SET title = :title, seo_title = :seo_title, summary = :summary, content = :content, category_id = :category_id, user_id = :user_id, published = :published WHERE article_id = :id'; //SQL
     $statement = $pdo->prepare($sql);                                               // Prepare
-    $statement->bindValue(':id',          $article->id, PDO::PARAM_INT);            // Bind value
+    $statement->bindValue(':id',          $article->article_id, PDO::PARAM_INT);            // Bind value
     $statement->bindValue(':title',       $article->title);                         // Bind value
     $statement->bindValue(':seo_title',   Utilities::createSlug($article->title));
     $statement->bindValue(':summary',     $article->summary);                        // Bind value
@@ -164,7 +164,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
 
   public function delete($id){
     $pdo = $this->pdo;
-    $sql = 'DELETE FROM article WHERE id = :id';                 // SQL
+    $sql = 'DELETE FROM article WHERE article_id = :id';                 // SQL
     $statement = $pdo->prepare($sql);                             // Prepare
     $statement->bindValue(':id', $id, PDO::PARAM_INT);            // Bind ID
     try {
@@ -179,12 +179,12 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     $pdo = $this->pdo;
     $sql = 'SELECT articleimage.*, image.* 
     		FROM articleimage
-    		LEFT JOIN image ON articleimage.image_id = image.id
+    		LEFT JOIN image ON articleimage.image_id = image.image_id
     		WHERE articleimage.article_id=:id';                    // Query
     $statement = $pdo->prepare($sql);                   // Prepare
     $statement->bindValue(':id', $id, PDO::PARAM_INT);  // Bind value from query string
     $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Media');     // Object
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Image');     // Object
     $image_list = $statement->fetchAll();
     if (!$image_list) {
       return null;
@@ -195,7 +195,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
   public function getArticleCountByCategorySeoName($name) {
    $pdo  = $this->pdo;
    $sql = 'SELECT COUNT(*) FROM category 
-           INNER JOIN article ON article.category_id = category.id
+           INNER JOIN article ON article.category_id = category.category_id
            WHERE  seo_name=:name AND published = true';
   $statement = $pdo->prepare($sql);
   $statement->bindValue(':name', $name);
@@ -205,19 +205,19 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
 
   public function getArticleSummariesByCategorySeoName($title, $show='9', $from='0'){
         $pdo = $this->pdo;
-        $sql = 'SELECT article.id, article.title, article.summary, article.created, article.published, article.seo_title,
+        $sql = 'SELECT article.article_id, article.title, article.summary, article.created, article.published, article.seo_title,
             article.comment_count, article.like_count,
-            user.id AS user_id, CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user, 
-            category.id AS category_id, category.name AS category, category.seo_name AS seo_category, 
+             CONCAT(user.forename, " ", user.surname) AS author, user.seo_name AS seo_user, 
+             category.name AS category, category.seo_name AS seo_category, 
              image.file as image_file, image.alt as image_alt
             FROM article
-            LEFT JOIN user ON article.user_id = user.id
-            LEFT JOIN category ON article.category_id = category.id
-            LEFT JOIN articleimage ON articleimage.article_id = article.id
-            LEFT JOIN image ON image_id = articleimage.image_id
+            LEFT JOIN user ON article.user_id = user.user_id
+            LEFT JOIN category ON article.category_id = category.category_id
+            LEFT JOIN articleimage ON articleimage.article_id = article.article_id
+            LEFT JOIN image ON image.image_id = articleimage.image_id
             WHERE category.seo_name=:seo_name 
             AND article.published = TRUE
-            GROUP BY id
+            GROUP BY article_id
             ORDER BY article.created DESC';
         if (!empty($show)) {             // If value given for $show add 
             $sql .= " LIMIT " . $show . " OFFSET " . $from;
@@ -256,7 +256,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     $statement->bindValue(':user_id', $user_id);
     $statement->bindValue(':article_id', $article_id);
     $statement->execute();
-    $sql= 'UPDATE article SET like_count = like_count + 1 WHERE id = :article_id';
+    $sql= 'UPDATE article SET like_count = like_count + 1 WHERE article_id = :article_id';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':article_id', $article_id);
     $statement->execute();
@@ -277,7 +277,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     $statement->bindValue(':user_id', $user_id);  
     $statement->bindValue(':article_id', $article_id);  
     $statement->execute();
-    $sql = 'UPDATE article SET like_count = like_count - 1 WHERE id = :article_id';
+    $sql = 'UPDATE article SET like_count = like_count - 1 WHERE article_id = :article_id';
     $statement = $pdo->prepare($sql);   
     $statement->bindValue(':article_id', $article_id);  
     $statement->execute();
@@ -292,8 +292,8 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
   public function getArticleUrl($article_id) {
   $pdo = $this->pdo;
   $sql = 'SELECT category.seo_name, article.seo_title FROM article
-          LEFT JOIN category ON article.category_id = category.id
-          WHERE article.id=:id';
+          LEFT JOIN category ON article.category_id = category.category_id
+          WHERE article.article_id=:id';
   $statement = $pdo->prepare($sql);          
   $statement->bindValue(':id', $article_id);    
   $statement->execute();
@@ -321,7 +321,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
     $statement->bindValue(':reply_to_id',$comment->reply_to_id);     // Bind parameter
     $statement->bindValue(':parent_id',$comment->parent_id);         // Bind parameter
     $statement->execute();                                        // Execute query
-    $sql='UPDATE article SET comment_count = comment_count + 1 WHERE id = :article_id';
+    $sql='UPDATE article SET comment_count = comment_count + 1 WHERE article_id = :article_id';
     $statement = $pdo->prepare($sql);         // Connect + prepare
     $statement->bindValue(':article_id',  $comment->article_id);     // Bind parameter 
     $statement->execute();                                        // Execute query
@@ -340,7 +340,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
   $sql = 'SELECT comment.*, 
           CONCAT(user.forename, " ", user.surname) as author  
           FROM comment 
-          JOIN user ON comment.user_id = user.id   
+          JOIN user ON comment.user_id = user.user_id   
           WHERE article_id = :id 
           ORDER BY posted ASC';  
   $statement = $pdo->prepare($sql);
@@ -360,11 +360,11 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
   $sql = 'SELECT comment.*, comment.reply_to_id AS reply_to_copy,
           CONCAT(user.forename, " ", user.surname) AS author,  
           (SELECT CONCAT(user.forename, " ", user.surname) FROM user 
-          JOIN comment ON user.id = comment.user_id
-          WHERE comment.id = reply_to_copy) 
+          JOIN comment ON user.user_id = comment.user_id
+          WHERE comment.comment_id = reply_to_copy) 
           AS reply_to
           FROM comment
-          JOIN user ON comment.user_id = user.id 
+          JOIN user ON comment.user_id = user.user_id 
           WHERE article_id = :id 
           ORDER BY posted DESC';
   $statement = $pdo->prepare($sql);
@@ -386,7 +386,7 @@ user.seo_name AS seo_user, category.id AS category_id, category.name AS category
       if ($comment->parent_id == 0) {
         array_push($nested_comments, $comment);
         foreach ($comment_list_reversed as $reply) {
-          if ($reply->parent_id == $comment->id) {
+          if ($reply->parent_id == $comment->comment_id) {
             array_push($nested_comments, $reply);
           }
         }

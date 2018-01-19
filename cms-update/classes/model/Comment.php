@@ -1,6 +1,6 @@
 <?php
 class Comment {
-  public $id;                 // Unique number to identify comment
+  public $comment_id;                 // Unique number to identify comment
   public $article_id;         // id of the article the comment is made upon
   public $user_id;            // id of the user who made the comment
   public $comment;            // The text of the user's comment
@@ -10,9 +10,9 @@ class Comment {
   public $author;             // Name of author
   public $image;              // Profile picture of author
 
-  function __construct($id='', $article_id='', $user_id=NULL, $comment=NULL, $date=NULL, 
+  function __construct($comment_id='', $article_id='', $user_id=NULL, $comment=NULL, $date=NULL, 
                         $reply_to_id=0, $parent_id=0, $author=NULL, $image=NULL) {
-    $this->id                = $id;
+    $this->comment_id                = $comment_id;
     $this->article_id        = $article_id;
     $this->user_id           = $user_id;
     $this->comment           = $comment;

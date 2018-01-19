@@ -20,7 +20,7 @@
   $result = false;
 
   if ($allowedToDelete) {
-    $result   = $mediaManager->deleteImage($image_id);
+    $result   = $imageManager->deleteImage($image_id);
     if ($result === TRUE) {
       if ($page == "article") {
         Utilities::errorPage('admin/article.php?include=croppie&action=update&id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));

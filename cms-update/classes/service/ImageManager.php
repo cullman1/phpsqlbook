@@ -1,6 +1,6 @@
 <?php
 
-class MediaManager {
+class ImageManager {
   private $pdo;
 
   public function __construct($pdo) {
@@ -15,26 +15,26 @@ class MediaManager {
     return TRUE;
   }
 
-  public function deleteImage($media_id) {
+  public function deleteImage($image_id) {
     $pdo = $this->pdo;
     $pdo->beginTransaction();
     try {
-      $sql = 'select * FROM media WHERE id = :id';
+      $sql = 'select * FROM image WHERE image_id = :id';
       $statement = $pdo->prepare($sql);                                 // Prepare
-      $statement->bindValue(':id',   $media_id);                 // Bind value
+      $statement->bindValue(':id',   $image_id);                 // Bind value
       $statement->execute();  
-      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Media');     // Object
+      $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Image');     // Object
       $image = $statement->fetch();
       $count = $statement->rowCount();                            // Have we introduced this? This is useful
 
-      $sql = 'DELETE FROM media WHERE id = :id';
+      $sql = 'DELETE FROM image WHERE image_id = :id';
       $statement = $pdo->prepare($sql);                                 // Prepare
-      $statement->bindValue(':id',    $media_id);               // Bind value
+      $statement->bindValue(':id',    $image_id);               // Bind value
       $statement->execute();                                            // Try to execute
 
-      $sql = 'DELETE FROM articleimage WHERE media_id = :id';
+      $sql = 'DELETE FROM articleimage WHERE image_id = :id';
       $statement = $pdo->prepare($sql);                                 // Prepare
-      $statement->bindValue(':id',   $media_id);                 // Bind value
+      $statement->bindValue(':id',   $image_id);                 // Bind value
       $statement->execute();                                         // Try to execute
 
       $pdo->commit();
@@ -57,23 +57,23 @@ class MediaManager {
     return $result;
   }
 
-  public function saveImage($article_id, $media) {
+  public function saveImage($article_id, $image) {
     $pdo = $this->pdo;
     $pdo->beginTransaction();
     try {
-      $sql = 'INSERT INTO media ( alt, file) 
+      $sql = 'INSERT INTO image ( alt, file) 
 	     	  VALUES ( :alt, :file)';
       $statement = $pdo->prepare($sql);                                 // Prepare
-      $statement->bindValue(':alt',       $media->alt);                 // Bind value
-      $statement->bindValue(':file',  $media->file);            // Bind value
+      $statement->bindValue(':alt',       $image->alt);                 // Bind value
+      $statement->bindValue(':file',  $image->file);            // Bind value
       $statement->execute();                                            // Try to execute
-      $media->id = $pdo->lastInsertId();                                // Add id to object
+      $image->image_id = $pdo->lastInsertId();                                // Add id to object
 
-      $sql = 'INSERT INTO articleimage (article_id,  media_id) 
-	    	                           VALUES (:article_id, :media_id)';
+      $sql = 'INSERT INTO articleimage (article_id,  image_id) 
+	    	                           VALUES (:article_id, :image_id)';
       $statement = $pdo->prepare($sql);                                 // Prepare
       $statement->bindValue(':article_id', $article_id);               // Bind value
-      $statement->bindValue(':media_id',   $media->id);                 // Bind value
+      $statement->bindValue(':image_id',   $image->image_id);                 // Bind value
       $statement->execute();                                         // Try to execute
 
       $pdo->commit();

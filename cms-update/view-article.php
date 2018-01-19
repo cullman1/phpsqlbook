@@ -7,14 +7,14 @@ if (isset($_GET['title']) ) {                                        // If title
   if (empty($article)) {
     Utilities::errorPage('page-not-found.php');
   } 
-  $article_images = $articleManager->getArticleImages($article->id);
-  $comments  = $articleManager->getCommentsAndRepliesByArticleId($article->id);
+  $article_images = $articleManager->getArticleImages($article->article_id);
+  $comments  = $articleManager->getCommentsAndRepliesByArticleId($article->article_id);
   $comments  = ( ($comments) ? $articleManager->sortComments($comments) : array() );
 } else {
   Utilities::errorPage('page-not-found.php');
 } 
 if (!(isset($article_images)) || sizeof($article_images)<1) {
-  $article_images = array(new Media());
+  $article_images = array(new Image());
 }
 
 $page_title .= htmlentities($article->title, ENT_QUOTES, 'UTF-8') . ' ' .  
@@ -49,7 +49,7 @@ include 'includes/header.php';
       <div class="like-comment-count">
         <?php
           if ($userManager->isLoggedIn()) {
-            echo '<a href="' . ROOT . 'like?id=' . $article->id . '">';
+            echo '<a href="' . ROOT . 'like?id=' . $article->article_id . '">';
             if ($article->liked) {
               echo '<i class="fa fa-heart"></i></a>';
             } else {
@@ -71,7 +71,7 @@ include 'includes/header.php';
       <div class="col-8">
         <h2 class="display-4">Comments</h2>
         <?php if ($userManager->isLoggedIn()) { ?>
-          <form method="post" action="<?= ROOT ?>add_comment?id=<?= htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>" class="comment">
+          <form method="post" action="<?= ROOT ?>add_comment?id=<?= htmlspecialchars($article->article_id, ENT_QUOTES, 'UTF-8'); ?>" class="comment">
             <h4>Add a comment</h4>
             <textarea id="comment" name="comment" class="form-control"></textarea><br/>
             <button type="submit" class="btn btn-primary">Submit comment</button>
@@ -81,7 +81,7 @@ include 'includes/header.php';
         <?php } ?>
         <?php foreach ($comments as $comment) { ?>
           <div class="comment <?php if ($comment->reply_to) { echo 'reply'; } ?>"
-             data-comment="<?= $comment->id ?>" data-parent="<?= $comment->parent_id ?>">
+             data-comment="<?= $comment->comment_id ?>" data-parent="<?= $comment->parent_id ?>">
             <b><span class="author"><?= $comment->author ?></span></b>
             <?php if ($comment->reply_to_id) { ?>
               <span class="reply_to"> &lt; In reply to: <?=  htmlentities( $comment->reply_to , ENT_QUOTES, 'UTF-8')?></span>
@@ -108,7 +108,7 @@ include 'includes/header.php';
               parent_id   = $(this).parent().attr('data-parent');
               if (parent_id == '0') { parent_id = reply_to_id; }
               form        = '<form method=\"post\" ';
-              form       += 'action=\"http://<?=$_SERVER['HTTP_HOST']?><?= ROOT ?>add_comment_reply?id=<?= $article->id ?>';
+              form       += 'action=\"http://<?=$_SERVER['HTTP_HOST']?><?= ROOT ?>add_comment_reply?id=<?= $article->article_id ?>';
               form       += '&reply_to_id=' + reply_to_id + '&parent_id=' + parent_id + '\">';
               form       += '<label for="reply">Reply:</label><textarea id=\"reply\" name=\"comment\" class="form-control"></textarea><br/>';
               form       += '<button type=\"submit\"  class=\"btn btn-primary\">Reply</button></form>';

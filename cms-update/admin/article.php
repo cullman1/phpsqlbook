@@ -20,7 +20,7 @@ $article       = new Article($id, $title, $summary, $content, $category_id, $use
 
 // image data
 $alt           = ( isset($_POST['alt'] )        ? trim(($_POST['alt']))         : '');
-$media         = new Media('', $alt, '');  
+$image         = new Image('', $alt, '');  
 $errors        = array('title' => '', 'summary'=>'', 'content'=>'', 'published'=>'', 'user_id'=>'', 'category_id'=>'', 'file'=>'',  'alt'=>'');   // Form errors
 $alert         = '';           // Status messages
 $uploadedfile  = FALSE;        // Was image uploaded
@@ -82,11 +82,11 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     }
     if ((($croppedfile) && ($uploadedfile)) && isset($result) && ($result === TRUE)) {
        file_put_contents('../uploads/'.$filename, $data);
-       $moveresult   = $mediaManager->moveImage($filename, $data);         // Move image
-        $media->file = $filename;
-      $saveresult   = $mediaManager->saveImage($article->id, $media);          // Add image to database
-      $resizeresult = $mediaManager->resizeImage($filename, 600 );   // Resize image
-      $thumbresult  = $mediaManager->resizeImage($filename, 150, TRUE); // Create thumbnail
+       $moveresult   = $imageManager->moveImage($filename, $data);         // Move image
+        $image->file = $filename;
+      $saveresult   = $imageManager->saveImage($article->article_id, $image);          // Add image to database
+      $resizeresult = $imageManager->resizeImage($filename, 600 );   // Resize image
+      $thumbresult  = $imageManager->resizeImage($filename, 150, TRUE); // Create thumbnail
      
       if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
         $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
@@ -95,7 +95,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   }
 
   if ( isset($result) && ($result === TRUE) ) {                // Tried to create and it worked
-    $alert = '<div class="alert alert-success">' . $action . ' article ' . $article->id .' succeeded</div>';
+    $alert = '<div class="alert alert-success">' . $action . ' article ' . $article->article_id .' succeeded</div>';
     $action = 'update';
   }
 
@@ -105,8 +105,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
 }
 
 // Get existing images (has to happen after page has been updated)
-if (isset($article->id) && is_numeric($article->id) ) {  // If check passes
-  $article_images = $articleManager->getArticleImages($article->id);
+if (isset($article->article_id) && is_numeric($article->article_id) ) {  // If check passes
+  $article_images = $articleManager->getArticleImages($article->article_id);
 }
 if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array();
@@ -118,7 +118,7 @@ include 'includes/header.php';
   <h2 class="display-4 mb-4"><?=$action?> article</h2>
   <?= $alert ?>
 
-  <form action="article.php?include=croppie&id=<?=htmlspecialchars($article->id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
+  <form action="article.php?include=croppie&id=<?=htmlspecialchars($article->article_id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col-8">
         <div class="form-group">
@@ -141,8 +141,8 @@ include 'includes/header.php';
           <label for="category_id">Category: </label>
           <select name="category_id" id="category_id" class="form-control">
             <?php foreach ($category_list as $category) { ?>
-            <option value="<?= $category->id ?>"
-              <?php if ($article->category_id == $category->id) {
+            <option value="<?= $category->category_id ?>"
+              <?php if ($article->category_id == $category->category_id) {
                 echo 'selected';
               }?>
             ><?= $category->name ?></option>
@@ -155,8 +155,8 @@ include 'includes/header.php';
           <label for="user_id">Author: </label>
           <select name="user_id" id="user_id" class="form-control">
             <?php foreach ($user_list as $user) { ?>
-            <option value="<?= $user->id ?>"
-              <?php if ($article->user_id == $user->id) {
+            <option value="<?= $user->user_id ?>"
+              <?php if ($article->user_id == $user->user_id) {
                 echo 'selected';
               }?>
             ><?= $user->getFullName(); ?></option>
@@ -190,7 +190,7 @@ include 'includes/header.php';
         </div>
         <?php foreach ($article_images as $image) {
           echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->file . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
-                &nbsp;<br><br><a class="btn btn-primary" href="delete-image.php?page=article&id=' . $image->id.'&article_id=' . $article->id.'">Delete Image</a><br><br>';
+                &nbsp;<br><br><a class="btn btn-primary" href="delete-image.php?page=article&id=' . $image->image_id.'&article_id=' . $article->article_id.'">Delete Image</a><br><br>';
         } ?>
 
       </div><!-- /col -->

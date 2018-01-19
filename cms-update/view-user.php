@@ -16,7 +16,7 @@ if (empty($user) ) {
 $page_title      .= $user->getFullName();
 $meta_description = 'A selection of work by ' . $user->getFullName();
 
-$users_articles   = $articleManager->getArticleSummariesByUserId($user->id);
+$users_articles   = $articleManager->getArticleSummariesByUserId($user->user_id);
 if (!(isset($users_articles)) || sizeof($users_articles)<1) {
   $users_articles = array();
 }
