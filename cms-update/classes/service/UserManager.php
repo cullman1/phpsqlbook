@@ -83,8 +83,8 @@ class UserManager
     $hash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
     $seo_name = Utilities::createSlug($user->getFullName());
     $pdo  = $this->pdo;
-    $sql  = 'INSERT INTO user (forename,  surname,  email,  password,  joined,  seo_name,  profile_image) 
-		                  VALUES (:forename, :surname, :email, :password, :joined, :seo_name, :profile_image)'; // SQL
+    $sql  = 'INSERT INTO user (forename,  surname,  email,  password,  joined,  seo_name,  picture) 
+		                  VALUES (:forename, :surname, :email, :password, :joined, :seo_name, :picture)'; // SQL
     $statement = $pdo->prepare($sql);                              // Prepare
     $statement->bindValue(':forename',      $user->forename);      // Bind value
     $statement->bindValue(':surname',       $user->surname);       // Bind value
@@ -92,7 +92,7 @@ class UserManager
     $statement->bindValue(':password',      $hash);                // Bind value
     $statement->bindValue(':joined',        date('d-m-Y')); // Bind value
     $statement->bindValue(':seo_name',      $seo_name);            // Bind value
-    $statement->bindValue(':profile_image', $user->profile_image); // Bind value
+    $statement->bindValue(':picture', $user->picture); // Bind value
 
     try {
       $statement->execute();
@@ -108,7 +108,7 @@ class UserManager
     $seo_name = Utilities::createSlug($user->getFullName());
 
     $pdo = $this->pdo;
-    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, password = :password, seo_name = :seo_name, profile_image = :profile_image WHERE user_id = :id';         //SQL
+    $sql = 'UPDATE user SET forename = :forename, surname = :surname, email = :email, password = :password, seo_name = :seo_name, picture = :picture WHERE user_id = :id';         //SQL
     $statement = $pdo->prepare($sql);                              // Prepare
     $statement->bindValue(':id', $user->user_id, PDO::PARAM_INT);       // Bind value
     $statement->bindValue(':forename',      $user->forename);      // Bind value
@@ -116,7 +116,7 @@ class UserManager
     $statement->bindValue(':email',         Utilities::punyCodeDomain($user->email));         // Bind value
     $statement->bindValue(':password',      $user->getPassword()); // Bind value
     $statement->bindValue(':seo_name',      $seo_name);            // Bind value
-    $statement->bindValue(':profile_image', $user->profile_image); // Bind value
+    $statement->bindValue(':picture', $user->picture); // Bind value
     try {
       $statement->execute();
       $result = TRUE;
@@ -174,7 +174,7 @@ class UserManager
 
   public function getUsers($show='9', $from='0') {
     $pdo = $this->pdo;
-    $sql = 'SELECT id, forename, surname, email, joined, role, seo_name, profile_image FROM user ORDER BY id DESC';
+    $sql = 'SELECT id, forename, surname, email, joined, role, seo_name, picture FROM user ORDER BY id DESC';
     if (!empty($show)) {             // If value given for $show add
       $sql .= " LIMIT " . $show . " OFFSET " . $from;
     }

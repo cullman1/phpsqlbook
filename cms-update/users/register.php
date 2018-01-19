@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $filesize    = $_FILES['file']['size'];
 
     $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
-    $profile_image    = Validate::sanitizeFileName($filename);
+    $picture    = Validate::sanitizeFileName($filename);
 
     $errors['forename'] = (Validate::isName($forename) ? '' : 'Please enter a valid forename (Html characters are not allowed).');
     $errors['surname']  = (Validate::isName($surname) ? '' : 'Please enter a valid surname  (Html characters are not allowed).');
@@ -38,12 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!empty($userManager->getUserByEmail($email))) {
             $alert = '<div class="alert alert-danger">That email is already in use</div>';
         } else {
-            $user = new User(0,$forename, $surname, $email, $password, 1, $profile_image);
+            $user = new User(0,$forename, $surname, $email, $password, 1, $picture);
             $result = $userManager->create($user);
 
             if ($uploadedfile) {
-              $moveresult  = $imageManager->moveImage($profile_image, $temporary);         // Move image
-              $thumbresult = $imageManager->resizeImage($profile_image, 150, TRUE); // Create thumbnail
+              $moveresult  = $imageManager->moveImage($picture, $temporary);         // Move image
+              $thumbresult = $imageManager->resizeImage($picture, 150, TRUE); // Create thumbnail
               if ($moveresult != TRUE || $thumbresult != TRUE) {
                 $result .= $moveresult . $thumbresult; // Add the error to result
              }

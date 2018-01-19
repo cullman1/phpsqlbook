@@ -9,16 +9,16 @@ class User
   public  $joined;
   public  $role;
   public  $seo_name;
-  public  $profile_image;
+  public  $picture;
 
-  public function __construct($user_id = NULL, $forename = NULL, $surname = NULL, $email = NULL, $password = NULL, $role = NULL, $profile_image = NULL) {
+  public function __construct($user_id = NULL, $forename = NULL, $surname = NULL, $email = NULL, $password = NULL, $role = NULL, $picture = NULL) {
     $this->user_id            = $user_id;
     $this->forename      = $forename;
     $this->surname       = $surname;
     $this->email         = $email;
     $this->password      = $password;
     $this->role          = $role;
-    $this->profile_image = $profile_image;
+    $this->picture = $picture;
   }
 
   public function getFullName(){

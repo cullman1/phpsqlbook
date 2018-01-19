@@ -30,7 +30,7 @@ require_once '../config.php';
     <?php foreach ($user_list as $user) { ?>
         <div class="card" style="width:20rem; margin: 0.4rem;">
           <a href="<?= ROOT ?>users">
-            <img class="card-img-top" src="<?= ROOT ?>uploads/thumb/<?= $user->profile_image ?>" alt="<?= $user->getFullName() ?>">
+            <img class="card-img-top" src="<?= ROOT ?>uploads/thumb/<?= $user->picture ?>" alt="<?= $user->getFullName() ?>">
           </a>
           <div class="card-body text-center">
             <a href="<?= ROOT ?>users/<?= $user->seo_name ?>">
