@@ -2,11 +2,11 @@
   ini_set('display_errors', TRUE);                         // Turn on errors
   error_reporting(E_ALL);                                  // Show all errors
 
-  $server   = '207.246.241.90';                                 // DSN information
-  $database = '387732_phpbook3';
+  $server   = '207.246.241.138';                                 // DSN information
+  $database = '387732_phpbook4';
   $port     = '3306';         // XAMPP usually set to 3306 MAMP usually set to 8889
-  $user     = '387732_testuser3';
-  $password = 'phpbo^ok3belonG_3r'; 
+  $user     = '387732_testuser4';
+  $password = 'CVz-MhH-Yju-4Xc'; 
 
   try {                                                     // Try to connect 
     $pdo = new PDO("mysql:host=$server;dbname=$database;charset=utf8mb4;", $user, $password);

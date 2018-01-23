@@ -6,6 +6,7 @@ include '../../includes/header-chapters.php' ?>
     <table>
         <tr><td>Sending Form data to new page</td><td><a href="post-data-form.php">post-data-form.php</a></td></tr>
         <tr><td>Sending Form data to same page</td><td><a href="post-to-same-page.php">post-to-same-page.php</a></td></tr>
+         <tr><td>Using filters</td><td><a href="filter-input-and-filter-var.php">filter-input-and-filter-var.php</a></td></tr>
          <tr><td>Validate object test</td><td><a href="validate-test.php">validate-test.php</a></td></tr>
                  <tr><td>Escape functions</td><td><a href="escape-functions.php">escape-functions.php</a></td></tr>
         <tr><td>Chapter 9 version of CMS</td><td><a href="cms/index.php">Index page</a></td></tr>

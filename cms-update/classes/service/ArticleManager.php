@@ -97,8 +97,7 @@ user.seo_name AS seo_user, category.name AS category ';
             LEFT JOIN user ON article.user_id = user.user_id
             LEFT JOIN category ON article.category_id = category.category_id
             LEFT JOIN articleimage ON articleimage.article_id = article.article_id
-            LEFT JOIN image ON image.
-image_id = articleimage.image_id
+            LEFT JOIN image ON image.image_id = articleimage.image_id
 
             WHERE article.user_id=:user_id
             AND category.navigation = TRUE

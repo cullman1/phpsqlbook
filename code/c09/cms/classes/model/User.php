@@ -9,7 +9,7 @@
  * @author ChrisU
  */
 class User {
-    public  $id;
+    public  $user_id;
     public  $forename;
     public  $surname;
     public  $email;

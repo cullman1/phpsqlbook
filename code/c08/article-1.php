@@ -1,21 +1,21 @@
 <?php
   require_once 'database-connection.php';          // Includes connection
   include 'classes/Article.php';                   // Includes class
-  $id = ( isset($_GET['id']) ? $_GET['id'] : '');                   
-  if (is_numeric($id)) {   // If got a numeric article id
-    $sql = 'SELECT article.*, user.id AS user_id, 
-            CONCAT(user.forename, " ", user.surname) AS author,
-            category.id AS category_id, category.name AS category, 
-            media.id AS media_id, media.file AS media_file,    
-            media.alt AS media_alt 
+  $article_id = ( isset($_GET['article_id']) ? $_GET['article_id'] : '');                   
+  if (is_numeric($article_id)) {   // If got a numeric article id
+    $sql = 'SELECT article.*, 
+             CONCAT(user.forename, " ", user.surname) AS author,
+             category.name AS category, 
+             image.image_id AS image_id, image.file AS image_file, 
+             image.alt AS image_alt 
             FROM article 
-            LEFT JOIN user ON article.user_id = user.id
-            LEFT JOIN category ON article.category_id = category.id
-            LEFT JOIN articleimage ON articleimage.article_id = article.id
-            LEFT JOIN media ON articleimage.media_id = media.id
-            WHERE article.id=:id';                         // Query
+             LEFT JOIN user ON article.user_id = user.user_id
+             LEFT JOIN category ON article.category_id = category.category_id
+             LEFT JOIN articleimage ON articleimage.article_id = article.article_id
+             LEFT JOIN image ON articleimage.image_id = image.image_id
+            WHERE article.article_id=:id';                         // Query
     $statement = $pdo->prepare($sql);                      // Prepare
-    $statement->bindValue(':id', $id, PDO::PARAM_INT); // Bind value from query
+    $statement->bindValue(':id', $article_id, PDO::PARAM_INT); // Bind value from query
     $statement->execute();                                 // Execute
     $statement->setFetchMode(PDO::FETCH_CLASS, 'Article'); // Set fetch mode
     $article = $statement->fetch();                        // Store data in $article                  
@@ -35,7 +35,7 @@
   <body>
     <section>
       <h1><?= $article->title ?></h1>
-      <img src="uploads<?= $article->media_file ?>" alt="<?= $article->media_alt ?>"/>
+       <img src="uploads<?= $article->image_file ?>" alt="<?= $article->image_alt ?>"/>
       <?= $article->content ?>
       <div class="credit">
         Posted by <i><?= $article->author ?></i> on <i><?= $article->created ?></i> 

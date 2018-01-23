@@ -12,12 +12,11 @@
   require_once 'classes/service/ArticleManager.php';
   require_once 'classes/service/CategoryManager.php';
   require_once 'classes/service/UserManager.php';
-  require_once 'classes/service/Validate.php';
 
  $database_config = array (
-    'dsn' => 'mysql:host=207.246.241.90;dbname=387732_phpbook3;charset=utf8mb4',
-    'username' => '387732_testuser3',
-    'password' => 'phpbo^ok3belonG_3r'
+    'dsn' => 'mysql:host=207.246.241.138;dbname=387732_phpbook4;port=3306;charset=utf8',
+    'username' => '387732_testuser4',
+    'password' => 'CVz-MhH-Yju-4Xc'
 );
 
   $cms              = new CMS($database_config);
@@ -30,5 +29,6 @@
   $site_name        = 'Creative Folk';
 
   ini_set( 'default_charset', 'UTF-8' );
-  define('ROOT', '/phpsqlbook/code/c09/cms/');
-define('ROOT2', '/phpsqlbook/cms-final/');
+  define('ROOT', '/phpsqlbook/code/c08/cms/');
+
+  

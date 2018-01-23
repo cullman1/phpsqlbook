@@ -1,19 +1,21 @@
 <?php
   require_once 'database-connection.php';
-  $id = ( isset($_GET['id']) ? $_GET['id'] : '' );
-  if (is_numeric($id)) {
+  $article_id = (isset($_GET['article_id']) 
+                 ? $_GET['article_id'] : '' );
+  if (is_numeric($article_id)) {
     $sql = 'SELECT * 
             FROM article 
-            WHERE article.id = :id';
+            WHERE article.article_id = :id';
     $statement = $pdo->prepare($sql);
-    $statement->bindValue(':id', $id, PDO::PARAM_INT);
+    $statement->bindValue(':id', $article_id, 
+                          PDO::PARAM_INT);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $article  = $statement->fetch();
   }
-?> ...
+?> 
 <section>
-  <?php if (is_numeric($id) && $article) { ?>
+  <?php if (is_numeric($article_id) && $article) { ?>
     <h1><?= $article->title ?></h1>
     <div class="row">
       <?= $article->content ?>

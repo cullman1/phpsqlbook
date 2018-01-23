@@ -1,9 +1,9 @@
 <?php
   require_once 'config.php';
-  $id = ( isset($_GET['id']) ? $_GET['id'] : '');
-  if (isset($id) && is_numeric($id) ) {  // If check passes
-    $category        = $categoryManager->getCategoryById($id);
-    $article_list    = $articleManager->getArticleSummariesByCategoryId($id);
+  $category_id = ( isset($_GET['category_id']) ? $_GET['category_id'] : '');
+  if (isset($category_id) && is_numeric($category_id) ) {  // If check passes
+    $category        = $categoryManager->getCategoryById($category_id);
+    $article_list    = $articleManager->getArticleSummariesByCategoryId($category_id);
   }
   if (empty($category)) {
     header( "Location: page-not-found.php" );

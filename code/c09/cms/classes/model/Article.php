@@ -10,7 +10,7 @@
  */
 
 class Article{
-  public  $id;
+  public  $article_id;
   public  $title;
   public  $summary;
   public  $content;
@@ -21,7 +21,7 @@ class Article{
   public  $category;
   public  $author;
   public  $author_image;
-  public  $media_id;
-  public  $media_file;
-  public  $media_alt;
+  public  $image_id;
+  public  $image_file;
+  public  $image_alt;
 }

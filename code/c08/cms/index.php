@@ -1,6 +1,6 @@
-<?php
+<?php 
   require_once 'config.php';
- $article_list   = $articleManager->getAllArticleSummaries(9);
+  $article_list   = $articleManager->getAllArticleSummaries(9);
   include 'includes/header.php';
 ?>
 <section class="jumbotron text-center">

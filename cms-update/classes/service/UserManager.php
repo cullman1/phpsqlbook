@@ -90,7 +90,7 @@ class UserManager
     $statement->bindValue(':surname',       $user->surname);       // Bind value
     $statement->bindValue(':email',         Utilities::punyCodeDomain($user->email));         // Bind value
     $statement->bindValue(':password',      $hash);                // Bind value
-    $statement->bindValue(':joined',        date('d-m-Y')); // Bind value
+    $statement->bindValue(':joined',        date('Y-m-d H:i:s')); // Bind value
     $statement->bindValue(':seo_name',      $seo_name);            // Bind value
     $statement->bindValue(':picture', $user->picture); // Bind value
 

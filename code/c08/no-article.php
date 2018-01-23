@@ -1,10 +1,11 @@
 <?php
   require_once 'database-connection.php';
   
-  $id = 99999999;
-  $sql = 'SELECT * FROM article WHERE id= :id';
+  $article_id = 99999999;
+  $sql = 'SELECT * FROM article WHERE article_id= :id';
   $statement = $pdo->prepare($sql);
-  $statement->bindValue(':id', $id , PDO::PARAM_INT);
+  $statement->bindValue(':id', $article_id, 
+                        PDO::PARAM_INT);
   $statement->execute();
   $statement->setFetchMode(PDO::FETCH_OBJ); 
   $article = $statement->fetch(); 
@@ -12,7 +13,7 @@
     header( "Location: page-not-found.php" );
     exit();
   }
-?> ...
+?> 
 <section class="jumbotron text-center">
   <h1><?= $article->title ?></h1>
     <div class="row">

@@ -1,10 +1,10 @@
 <?php
   require_once 'config.php';
 
-  $id = ( isset($_GET['id']) ? $_GET['id'] : '');
-  if (isset($_GET['id']) && is_numeric($_GET['id']) ) {  // If check passes
-    $user           = $userManager->getUserById($_GET['id']);
-    $users_articles = $articleManager->getArticleSummariesByUserId($_GET['id']);
+  $user_id = ( isset($_GET['user_id']) ? $_GET['user_id'] : '');
+  if (isset($_GET['user_id']) && is_numeric($_GET['user_id']) ) {  // If check passes
+    $user           = $userManager->getUserById($_GET['user_id']);
+    $users_articles = $articleManager->getArticleSummariesByUserId($_GET['user_id']);
   }
   if (empty($user)) {
     header( "Location: page-not-found.php" );
@@ -18,8 +18,8 @@
 <section class="jumbotron text-center">
   <div class="container">
     <h1 class="jumbotron-heading"><?= $user->getFullName() ?></h1>
-    <img src="uploads/users/<?= $user->image ?>" alt="<?= $user->getFullName() ?>"
-         class="rounded-circle" style="max-width: 100px" />
+<img src="uploads/<?= $user->picture ?>" alt="<?= $user->getFullName() ?>"
+    class="rounded-circle" style="max-width:100px" onerror="this.style.display='none'"/>
     <p class="lead text-muted">Joined: <?= $user->joined ?></p>
   </div>
 </section>
@@ -32,7 +32,8 @@
         }
       } else {
         echo "<p>No articles were found for this user</p>";
-       } ?>
+       }    
+    ?>
   </div>
 </div>
 <?php include 'includes/footer.php'; ?>
