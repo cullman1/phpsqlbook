@@ -36,8 +36,9 @@ function highlight_nav($section, $url) {
            echo '<a href="' . ROOT . 'view-category.php?category_id=' .  $category_link->category_id . '" class="nav-item nav-link ' . highlight_nav($section, $category_link->name) . '">' . $category_link->name . '</a>';
           }
           ?>
-        </ul>
+        </ul>     <?php require_once dirname(__DIR__) .'/includes/search.php'; ?>
         <ul class="navbar-nav user-nav">
         </ul>
       </div>
+ 
     </nav>

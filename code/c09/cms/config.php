@@ -12,6 +12,7 @@
   require_once 'classes/service/ArticleManager.php';
   require_once 'classes/service/CategoryManager.php';
   require_once 'classes/service/UserManager.php';
+  require_once 'classes/service/Validate.php';
 
  $database_config = array (
     'dsn' => 'mysql:host=207.246.241.138;dbname=387732_phpbook4;port=3306;charset=utf8',

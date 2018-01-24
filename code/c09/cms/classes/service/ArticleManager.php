@@ -113,4 +113,52 @@ public function getArticleSummariesByUserId($user_id){
   return $article_list;
 }
 
+function getSearchCount($term) {
+    $pdo = $this->pdo;
+    $like_term = '%' . $term . '%';
+    $sql = 'SELECT COUNT(*) FROM article
+            WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))';
+    $statement = $pdo->prepare($sql);                   // Prepare 
+    $statement->bindParam(':term', $like_term);         // Bind search term
+    $statement->execute();                              // Execute
+    return $statement->fetchColumn();                   // Return count from function
+  }
+  
+  function searchArticles($term) {
+    $pdo = $this->pdo;
+    $like_term = '%' . $term . '%'; 
+    $sql = 'SELECT article.*, category.name AS category, 
+             CONCAT(user.forename, " ", user.surname) AS author,
+             image.file AS image_file, image.alt AS image_alt
+            FROM article 
+             LEFT JOIN user ON article.user_id = user.user_id
+             LEFT JOIN category ON article.category_id = category.category_id
+             LEFT JOIN articleimage ON articleimage.article_id = article.article_id
+             LEFT JOIN image ON image.image_id = articleimage.image_id
+            WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))
+             GROUP BY title';           
+    $statement = $pdo->prepare($sql);                   // Prepare 
+    $statement->bindParam(':term', $like_term);         // Bind search term
+    $statement->execute();                              // Execute
+    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');          
+    $article_list = $statement->fetchAll();             // Return matches in database
+    if ($article_list) {
+      foreach($article_list as $article) {
+        $article->title   = $this->showTerm(htmlentities($article->title, ENT_QUOTES,  
+                                                         'UTF-8', TRUE), $term);
+        $article->summary = $this->showTerm(htmlentities($article->summary, ENT_QUOTES,  
+                                                         'UTF-8', TRUE), $term);
+      }
+      return $article_list; 
+    }
+    return null;
+  }
+
+  function showTerm($text, $term) {
+    $pos_term = ((mb_strpos($text, $term)-50) > 0 ? (mb_strpos($text, $term)-50) : 0);
+    $text = preg_replace("/$term/i", "<strong><u>$0</u></strong>", $text);   
+    return substr($text, $pos_term, 100);
+  }
+
+
   }

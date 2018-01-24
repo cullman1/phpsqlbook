@@ -8,12 +8,14 @@
     header( "Location: page-not-found.php" );
     exit();                                              // Redirect user
   }                                                      // Otherwise start the template
-  $page_title .= $article->title . ' ' . $article->category . ' by ' . $article->author;
-  $meta_description = $article->summary;
+$page_title .= htmlentities($article->title, ENT_QUOTES, 'UTF-8') . ' ' .  
+                 htmlentities($article->category, ENT_QUOTES, 'UTF-8') . ' by ' .  
+                 htmlentities($article->author, ENT_QUOTES, 'UTF-8');
+  $meta_description = htmlentities($article->summary, ENT_QUOTES, 'UTF-8');
   include 'includes/header.php';                         // Show the header
 ?>
 <section>
-  <h1 class="display-4"><?= htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
+ <h1 class="display-4"><?= htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
   <div class="credit">
     <?= htmlentities($article->category, ENT_QUOTES, 'UTF-8') ?> 
     by <a href="<?= ROOT ?>view-user.php?user_id=<?= $article->user_id ?>">

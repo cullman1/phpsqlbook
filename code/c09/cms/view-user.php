@@ -11,16 +11,16 @@
     exit();              // Redirect user
   }
 
-  $page_title      .= $user->getFullName();
-  $meta_description = 'A selection of work by ' . $user->getFullName();
+  $page_title      .= htmlentities($user->getFullName(), ENT_QUOTES, 'UTF-8');
+  $meta_description = 'A selection of work by ' . htmlentities($user->getFullName(), ENT_QUOTES, 'UTF-8');
   include 'includes/header.php'; 
 ?>
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading"><?= $user->getFullName() ?></h1>
-<img src="uploads/<?= $user->picture ?>" alt="<?= $user->getFullName() ?>"
+    <h1 class="jumbotron-heading"><?=htmlentities( $user->getFullName(), ENT_QUOTES, 'UTF-8'); ?></h1>
+<img src="uploads/<?= htmlentities($user->picture, ENT_QUOTES, 'UTF-8'); ?>" alt="<?= htmlentities($user->getFullName(), ENT_QUOTES, 'UTF-8'); ?>"
     class="rounded-circle" style="max-width:100px" onerror="this.style.display='none'"/>
-    <p class="lead text-muted">Joined: <?= $user->joined ?></p>
+    <p class="lead text-muted">Joined: <?= htmlentities($user->joined, ENT_QUOTES, 'UTF-8'); ?></p>
   </div>
 </section>
 <div class="container">
