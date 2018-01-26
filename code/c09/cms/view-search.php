@@ -1,13 +1,16 @@
 <?php
-  require_once 'config.php';                                 // Include classes             
+  require_once 'config.php';                                 // Include classes     
+  $count = 0;        
   $term = ( isset($_GET['term']) ? trim($_GET['term']) : ''); // Get search term 
   if (!empty($term)) {                                        // If search sent
-    $errors['title'] = (Validate::isText($term, 1, 64) ? '' : 'Not a valid search');
-    $count = $articleManager->getSearchCount($term);          // Get count of matches
-    if ($count > 0) {                                         // If matches are found
-      $article_list = $articleManager->searchArticles($term); // Get the results
+    $errors['test'] = (Validate::isSafeHtml($term, 1, 64) ? '' : 'Not a valid search');
+    if (mb_strlen(implode($errors)) == 0) {                                            // If data not valid
+      $count = $articleManager->getSearchCount($term);          // Get count of matches
+      if ($count > 0) {                                         // If matches are found
+        $article_list = $articleManager->searchArticles($term); // Get the results
+      } 
+      $display_term = htmlspecialchars(trim($term), ENT_QUOTES, 'UTF-8', TRUE); 
     } 
-    $display_term = htmlspecialchars(trim($term), ENT_QUOTES, 'UTF-8', TRUE); 
   } 
   include 'includes/header.php'; 
 ?>
@@ -15,14 +18,18 @@
   <div class="container">
     <h1 class="jumbotron-heading">Search</h1>
    <?php 
-     if (!empty($term)) {                                         // If search term sent
+     if (!empty($term) && (mb_strlen(implode($errors)) == 0)) {                                         // If search term sent
        echo "You searched for <strong>$display_term</strong>";
        if ($count > 0) { 
          echo "<br/>We found $count article(s) containing your term."; //Number of hits          
        } else {
          echo "<br/>No articles containing <strong>$display_term</strong> were found";
        }   
-    } 
+    } else if (empty($term)) {
+      echo "No search term supplied";
+    } else {
+      echo "Not a valid search";
+    }
   ?>
   </div>
 </section>
@@ -52,7 +59,7 @@
       </div>       
     <?php
     }
-  }
+  } 
   ?>
   </div>
 </div>

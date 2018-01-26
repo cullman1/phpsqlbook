@@ -3,7 +3,7 @@
   $userManager->redirectNonAdmin();
   $user_list     = $userManager->getAllUsers();   
   $category_list = $categoryManager->getAllCategories();
-  $id     = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT);      // Get article data
+  $article_id     = filter_input(INPUT_GET,'article_id', FILTER_VALIDATE_INT);    
   $action = (isset($_GET['action'])       ? $_GET['action'] : 'create'); 
   $title         = ( isset($_POST['title'])       ? trim(($_POST['title']))       : '');
   $summary       = ( isset($_POST['summary'])     ? trim(($_POST['summary']))     : '');
@@ -11,19 +11,20 @@
   $published     = ( isset($_POST['published'])   ? $_POST['published']           : '');
   $user_id       = ( isset($_POST['user_id'])     ? $_POST['user_id']             : '');   
   $category_id   = ( isset($_POST['category_id']) ? $_POST['category_id']         : ''); 
-  $article = new Article($id, $title, $summary, $content, $category_id, $user_id, 
-                         $published);   
+  $article = new Article($article_id, $title, $summary, $content, $category_id,                          
+                         $user_id, $published);   
   $errors        = array('title' => '', 'summary'=>'', 'content'=>''); // Form errors
   $alert         = '';                                                 // Status message
   if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
-    $article = ($id == '' ? $article : $articleManager->getArticleById($id)); 
+    $article = ($article_id == '' ? $article 
+                                  : $articleManager->getArticleById($article_id)); 
     if (!$article) {
       $alert = '<div class="alert alert-danger">Article not found</div>';
-      $article = new Article($id, $title, $summary, $content, $category_id, $user_id,       
-                             $published); 
+      $article = new Article($article_id, $title, $summary, $content, $category_id,      
+                             $user_id, $published); 
       $action= 'create';
-  }
-  } else {
+    } 
+    } else {
   $errors['title'] = (Validate::isText($title, 1, 64)      ? '' : 'Invalid title');
   $errors['summary'] = (Validate::isSafeHTML($summary,1,160) ? '' : 'Invalid summary');
   $errors['content'] = (Validate::isSafeHTML($content,1,2000) ? '' : 'Invalid content');
@@ -38,25 +39,26 @@
     }
   }
 if ( isset($result) && ($result === TRUE) ) {               
-    $alert = '<div class="alert alert-success">' . $action . ' article ' . $article->id 
-             .' succeeded</div>';
+    $alert = '<div class="alert alert-success">' . $action . ' article ' 
+             . $article->article_id .' succeeded</div>';
     $action = 'update';
   }
   if (isset($result) && ($result !== TRUE) ) {                 
     $alert = '<div class="alert alert-danger">' . $result . '</div>';
   }
 }
-include 'includes/header.php'; ?><!-- PHP code on subsequent two pages precedes this --> <section>
-  <h2 class="display-4 mb-4"><?=$action ?> article</h2>
-  <?= $alert ?>
-  <form action="?action=<?=htmlentities($action, ENT_QUOTES, 'UTF-8') ?>&id=<?=htmlentities($article->id, ENT_QUOTES, 'UTF-8') ?>" method="post"> 
+include 'includes/header.php'; ?> 
+<section>
+  <h2 class="display-4 mb-4"><?=$action ?> article</h2><?= $alert ?>
+  <form method="post" action="?action=<?=htmlentities($action, ENT_QUOTES, 'UTF-8') ?> 
+   &article_id=<?=htmlentities($article->article_id, ENT_QUOTES, 'UTF-8') ?>"> 
     <div class="col-8">
-     <div class="form-group">
-    <label for="title">Title: </label>
-    <input name="title" value="<?=htmlentities($article->title)?>" class="form-control">
-    <span class="errors"><?= $errors['title'] ?></span>  
-  </div>
-  <div class="form-group">
+      <div class="form-group">
+      <label for="title">Title: </label>
+      <input name="title" value="<?=htmlentities($article->title)?>">
+      <span class="errors"><?= $errors['title'] ?></span>  
+    </div>
+    <div class="form-group">
     <label for="summary">Summary: </label>
     <textarea name="summary" id="summary" class="form-control">
     <?=htmlentities($article->summary, ENT_QUOTES, 'UTF-8') ?></textarea>
@@ -72,19 +74,23 @@ include 'includes/header.php'; ?><!-- PHP code on subsequent two pages precedes 
     <label for="category_id">Category:  </label> 
       <select name="category_id" id="category_id" class="form-control">
       <?php foreach ($category_list as $category) { ?>
-        <option value="<?= $category->id ?>"
-        <?php if ($article->category_id == $category->id) { echo 'selected'; }?> >
+        <option value="<?= $category->category_id ?>"
+          <?php if ($article->category_id == $category->category_id) { 
+            echo 'selected'; 
+            } ?> >
         <?= $category->name ?></option>
-        <?php }?>
+      <?php } ?>
       </select>
   </div>
   <div class="form-group">
     <label for="user_id">Author: </label>
       <select name="user_id" id="user_id" class="form-control">
-      <?php foreach ($user_list as $user) { ?>
-        <option value="<?= $user->id ?>" <?php if ($article->user_id == $user->id) { 
-        echo 'selected'; }?> ><?= $user->getFullName(); ?></option>
-      <?php }?>
+       <?php foreach ($user_list as $user) { ?>
+         <option value="<?= $user->user_id ?>" 
+           <?php if ($article->user_id == $user->user_id) {  
+              echo 'selected'; 
+           } ?> ><?= $user->getFullName(); ?></option>
+      <?php } ?>
     </select>
   </div>
   <div class="form-group">

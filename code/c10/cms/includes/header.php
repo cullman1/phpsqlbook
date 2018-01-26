@@ -20,7 +20,7 @@ function highlight_nav($section, $url) {
     <title><?= $page_title ?></title>
     <meta name="description" value=" <?= $meta_description ?>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="<?= ROOT2 ?>/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="<?= ROOT ?>/css/styles.css" />
     <script src="https://use.fontawesome.com/3409469903.js"></script>
   </head>
   <body>
@@ -33,20 +33,12 @@ function highlight_nav($section, $url) {
         <ul class="navbar-nav">
           <?php
           foreach ($category_list as $category_link) {
-           echo '<a href="' . ROOT . 'view-category.php?id=' .  $category_link->id . '" class="nav-item nav-link ' . highlight_nav($section, $category_link->name) . '">' . $category_link->name . '</a>';
+           echo '<a href="' . ROOT . 'view-category.php?category_id=' .  $category_link->category_id . '" class="nav-item nav-link ' . highlight_nav($section, $category_link->name) . '">' . $category_link->name . '</a>';
           }
-          ?><?php require_once dirname(__DIR__) .'/includes/search.php'; ?>
-        </ul>
-          <ul class="navbar-nav user-nav">
-        <?php if ($is_logged_in) { ?>
-            <li><a href="<?= ROOT ?>users/<?= $_SESSION['seo_name'] ?>" class="nav-item nav-link"><?= $_SESSION['name'] ?>'s profile</a></li>
-            <?php if ($_SESSION['role']==2 ) { ?>
-              <li><a class="nav-item nav-link" href="<?= ROOT ?>admin/articles.php">Admin</a></li>
-            <?php } ?>
-            <li><a href="<?= ROOT ?>users/logout.php" class="nav-item nav-link" >Logout</a></li>
-          <?php  } else { ?>
-            <li><a href="<?= ROOT ?>users/login.php"  class="nav-item nav-link">Login</a></li>
-          <?php } ?>
+          ?>
+        </ul>     <?php require_once dirname(__DIR__) .'/includes/search.php'; ?>
+        <ul class="navbar-nav user-nav">
         </ul>
       </div>
+ 
     </nav>

@@ -26,7 +26,7 @@ include 'includes/header.php'; ?>
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading"><?= $user->getFullName() ?></h1>
-      <img src="<?= ROOT ?>uploads/thumb/<?= $user->picture ?>" alt="<?= $user->getFullName() ?>" class="rounded-circle" style="max-width: 100px" />
+      <img src="<?= ROOT ?>uploads/thumb/<?= $user->picture ?>" alt="<?= $user->getFullName() ?>" class="rounded-circle" style="max-width: 100px" onerror="this.style.display='none'" />
       <p class="lead text-muted">Joined: <?= $user->joined ?></p>
       <?php if ($my_profile) {
         echo '<a href="' . ROOT . 'users/user-upload.php?include=croppie&action=create" class="btn btn-primary">upload work</a>';

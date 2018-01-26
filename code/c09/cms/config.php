@@ -13,6 +13,7 @@
   require_once 'classes/service/CategoryManager.php';
   require_once 'classes/service/UserManager.php';
   require_once 'classes/service/Validate.php';
+  require_once 'vendor/html-purifier-4.9.3/library/HTMLPurifier.auto.php';
 
  $database_config = array (
     'dsn' => 'mysql:host=207.246.241.138;dbname=387732_phpbook4;port=3306;charset=utf8',
@@ -30,6 +31,6 @@
   $site_name        = 'Creative Folk';
 
   ini_set( 'default_charset', 'UTF-8' );
-  define('ROOT', '/phpsqlbook/code/c08/cms/');
+  define('ROOT', '/phpsqlbook/code/c09/cms/');
 
   

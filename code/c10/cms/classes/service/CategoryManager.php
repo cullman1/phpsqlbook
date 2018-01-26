@@ -7,11 +7,11 @@ class CategoryManager {
     $this->pdo = $pdo;
   }
 
-  public function getCategoryById($id) {
+  public function getCategoryById($category_id) {
     $pdo = $this->pdo;
-    $sql = 'SELECT * FROM category WHERE id=:id';
+    $sql = 'SELECT * FROM category WHERE category_id=:id';
     $statement = $pdo->prepare($sql);
-    $statement->bindValue(':id', $id, PDO::PARAM_INT);
+    $statement->bindValue(':id', $category_id, PDO::PARAM_INT);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
     $category = $statement->fetch();
@@ -25,7 +25,7 @@ class CategoryManager {
     $pdo = $this->pdo;
     $sql = 'SELECT DISTINCT category.*
             FROM category 
-            INNER JOIN article ON article.category_id = category.id
+            INNER JOIN article ON article.category_id = category.category_id
             WHERE navigation = TRUE';
     $statement = $pdo->prepare($sql);
     $statement->execute();
@@ -45,9 +45,9 @@ class CategoryManager {
     $statement->bindValue(':name', $category->name);                // Bind name
     $statement->bindValue(':description', $category->description);  // Bind description
     $statement->bindValue(':navigation', $category->navigation, PDO::PARAM_BOOL);         
-  try {                                                              // Try block
+    try {                                                              // Try block
     $statement->execute();                                           // Execute
-     $category->id = $connection->lastInsertId();          // Add new id to object
+    $category->category_id = $connection->lastInsertId();
     return TRUE;                                                  // Succeeded
   } catch (PDOException $error) {                                    // Otherwise
     if ($error->errorInfo[1] == 1062) {                              // If a duplicate
@@ -55,14 +55,14 @@ class CategoryManager {
     } else {                                                         // Otherwise
       return $statement->errorCode() . ': ' . $statement->errorInfo(); // Error
     }                                                                // End if/else
-  }                                                                  // End catch block
-}
+  }                                                                  // End catch block                                                 // Say succeeded  
+  }
   public function update($category){
     $pdo = $this->pdo;                                              // Connection
     $sql = 'UPDATE category SET name = :name, description = :description, 
-            navigation = :navigation WHERE id = :id';               // SQL
+            navigation = :navigation WHERE category_id = :category_id';             
     $statement = $pdo->prepare($sql);                               // Prepare       
-    $statement->bindValue(':id', $category->id, PDO::PARAM_INT);    // Bind id
+    $statement->bindValue(':category_id', $category->category_id, PDO::PARAM_INT);         
     $statement->bindValue(':name', $category->name);                // Bind name
     $statement->bindValue(':description', $category->description);  // Bind description
     $statement->bindValue(':navigation', $category->navigation);    // Bind navigation      
@@ -73,11 +73,11 @@ class CategoryManager {
     }
     return TRUE;                                                    // Say succeeded
   }
-  public function delete($id){
+  public function delete($category_id){
     $pdo = $this->pdo;                                              // Connection
-    $sql = 'DELETE FROM category WHERE id = :id';                   // SQL
+    $sql = 'DELETE FROM category WHERE category_id = :category_id'; // SQL                  
     $statement = $pdo->prepare($sql);                               // Prepare
-    $statement->bindValue(':id', $id, PDO::PARAM_INT);              // Bind ID
+    $statement->bindValue(':category_id', $category_id, PDO::PARAM_INT);              
     try {                                                           // Try to execute
       $statement->execute();                                        // Execute SQL
     } catch (PDOException $error) {                                 // Otherwise

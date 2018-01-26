@@ -9,7 +9,7 @@
  * @author ChrisU
  */
 class User {
-    public  $id;
+    public  $user_id;
     public  $forename;
     public  $surname;
     public  $email;
@@ -20,8 +20,4 @@ class User {
     public function getFullName(){
         return $this->forename . ' ' . $this->surname;
     }
-
-     public function getPassword(){
-    return $this->password;
-  }
 }

@@ -1,8 +1,8 @@
 <?php
 class Validate {
-            public static function isNumber($number, $min = 0, $max = 4294967295) {
-  if ((!filter_var($number, FILTER_VALIDATE_INT)) or (($number < $min) or 
-     ($number > $max))) {
+ public static function isNumber($number, $min = 0, $max = 4294967295) {
+  $options = array('options' => array('min_range'=>$min, 'max_range'=>$max));
+  if (!filter_var($number, FILTER_VALIDATE_INT, $options)) {
       return FALSE;
   }
   return TRUE;
@@ -52,7 +52,7 @@ public static function isConfirmPassword($password, $confirm) {
     return FALSE;
   }
 }
-public static function isSafeHTML($string) {
+public static function isSafeHTML($string, $min, $max) {
   $string = html_entity_decode($string);
   $config = HTMLPurifier_Config::createDefault();
   $purifier = new HTMLPurifier($config);
@@ -60,8 +60,7 @@ public static function isSafeHTML($string) {
   $config->set('HTML.Allowed', 'p,strong,em,u,strike');
   $config->set('Cache.DefinitionImpl', null); //Switch off cache for hosted environment
   $clean_html = $purifier->purify($string);
-  if ( ($clean_html != $string ) || (mb_strlen($clean_html) <= $min) || 
-       (mb_strlen($clean_html)>= $max)) {
+  if ( ($clean_html != $string ) || (mb_strlen($clean_html) <= $min) || (mb_strlen($clean_html)>= $max)) {
     return FALSE;
   }
   return TRUE;

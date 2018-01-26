@@ -1,21 +1,21 @@
 <?php
   require_once '../config.php';
-
   $userManager->redirectNonAdmin();
 
   $action      = (isset($_GET['action'])  ? $_GET['action'] : 'create');
-  $id          = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT);              
+  $category_id = filter_input(INPUT_GET,'category_id', FILTER_VALIDATE_INT);              
   $name        = (isset($_POST['name'])   ? $_POST['name']        : '');     
   $description = (isset($_POST['description']) ? $_POST['description'] : '');
   $navigation  = (isset($_POST['navigation'])  ? 1  : 0);                    
-  $category    = new Category($id, $name, $description, $navigation); // Create Category 
-  $errors      = array('id' => '', 'name'=>'', 'description'=>'');    // Form errors
-  $alert       = '';                                                  // Status message
+  $category    = new Category($category_id, $name, $description, $navigation); 
+  $errors      = array('category_id' => '', 'name'=>'', 'description'=>'');    
+  $alert       = '';                                                                      
   if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {                    // Was form posted
-    $category = ($id == '' ? $category : $categoryManager->getCategoryById($id)); 
+    $category = ($category_id == '' ? $category 
+                           : $categoryManager->getCategoryById($category_id)); 
     if (!$category) {
       $alert = '<div class="alert alert-danger">Category not found</div>';
-      $category  = new Category($id, $name, $description, $navigation);//Create Category
+      $category  = new Category($category_id, $name, $description, $navigation);
       $action = 'create';
     }
   } else {  // The form was posted so validate the data and try to update
@@ -34,8 +34,8 @@
       }
     }
     if ( isset($result) && ($result === TRUE) ) {            // Tried to create - worked
-      $alert = '<div class="alert alert-success">' . $action . ' category ' . 
-                $category->id .' succeeded</div>';
+      $alert = '<div class="alert alert-success">' . $action . ' category '  
+                . $category->category_id .' succeeded</div>';
       $action = 'update';
     }
     if (isset($result) && ($result !== TRUE) ) {             // Tried to create - failed
@@ -47,8 +47,8 @@
 <section>
   <h2><?=htmlentities( $action, ENT_QUOTES, 'UTF-8');?> category</h2>
   <?= $alert ?>
-  <form action="?action=<?=htmlentities($action, ENT_QUOTES, 'UTF-8') ?>   
-        &id=<?=htmlentities($category->id, ENT_QUOTES, 'UTF-8') ?>" method="post">
+  <form method="post" action="?action=<?=htmlentities($action, ENT_QUOTES, 'UTF-8') ?>   
+        &category_id=<?=htmlentities($category->category_id, ENT_QUOTES, 'UTF-8') ?>" >
     <div class="form-group">
     <label for="name">Name: </label>
     <input name="name" value="<?=htmlentities( $category->name, ENT_QUOTES, 'UTF-8')?>">

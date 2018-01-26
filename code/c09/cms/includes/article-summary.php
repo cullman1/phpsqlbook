@@ -10,7 +10,7 @@
     <p>Posted in <a href="<?= ROOT ?>view-category.php?category_id=
       <?= $article->category_id ?>">
       <?= htmlentities($article->category, ENT_QUOTES, 'UTF-8') ?></a> by       
-      <a href="<?= ROOT ?>view-user.php?userid=<?= $article->user_id ?>">
+      <a href="<?= ROOT ?>view-user.php?user_id=<?= $article->user_id ?>">
       <?= htmlentities($article->author, ENT_QUOTES, 'UTF-8') ?></a>
     </p>
   </div>

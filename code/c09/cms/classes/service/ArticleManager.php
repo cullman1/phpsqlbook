@@ -66,8 +66,8 @@ public function getArticleSummariesByCategoryId($category_id){
   $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
           article.user_id, article.category_id, article.published, 
           CONCAT(user.forename, " ", user.surname) AS author, 
-          category.name AS category,
-          image.image_id as image_id, image.file AS image_file, image.alt AS image_alt 
+          category.name AS category_name,  category.description AS category_description,
+           image.file AS image_file, image.alt AS image_alt 
           FROM article
           LEFT JOIN user ON article.user_id = user.user_id 
           LEFT JOIN category ON article.category_id = category.category_id 
@@ -117,7 +117,8 @@ function getSearchCount($term) {
     $pdo = $this->pdo;
     $like_term = '%' . $term . '%';
     $sql = 'SELECT COUNT(*) FROM article
-            WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))';
+            WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))
+     AND article.published = TRUE';
     $statement = $pdo->prepare($sql);                   // Prepare 
     $statement->bindParam(':term', $like_term);         // Bind search term
     $statement->execute();                              // Execute
@@ -136,6 +137,7 @@ function getSearchCount($term) {
              LEFT JOIN articleimage ON articleimage.article_id = article.article_id
              LEFT JOIN image ON image.image_id = articleimage.image_id
             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))
+              AND article.published = TRUE
              GROUP BY title';           
     $statement = $pdo->prepare($sql);                   // Prepare 
     $statement->bindParam(':term', $like_term);         // Bind search term

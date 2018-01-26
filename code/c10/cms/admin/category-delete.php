@@ -2,9 +2,9 @@
   require_once '../config.php';
   $userManager->redirectNonAdmin();
 
-  $id     = ( isset($_GET['id']) ? $_GET['id'] : ''); // Get values
-  $alert  = 'Delete not successful';                  // Status messages
-  $result = $categoryManager->delete($id);
+  $category_id = ( isset($_GET['category_id']) ? $_GET['category_id'] : ''); 
+  $alert  = 'Delete not successful';                
+  $result = $categoryManager->delete($category_id);
   if (isset($result) && ($result === TRUE)) {
     $alert = '<div class="alert alert-success">Category deleted</div>';
   }

@@ -11,9 +11,8 @@ class ArticleManager{
 
     public function getAllArticleSummaries($limit=0, $publish=0){
     $pdo = $this->pdo;
-    $sql = 'SELECT 
-             article.*,  
-             CONCAT(user.forename, " ", user.surname) AS author,
+    $sql = '  SELECT article.article_id, article.title, article.summary, article.created, article.user_id, article.category_id, article.published, article.like_count, article.comment_count,article.seo_title,
+             CONCAT(user.forename, " ", user.surname) AS author, user.seo_name as seo_user,
              category.name AS category,  category.seo_name AS seo_category,  
              image.file as image_file, image.alt AS image_alt
             FROM article
@@ -25,7 +24,7 @@ class ArticleManager{
              if ($publish == 0) { 
            $sql .= '  AND article.published = TRUE';
            }
-                   $sql .= ' GROUP BY article.article_id ';
+                   $sql .= ' GROUP BY article.title ';
            $sql .= ' ORDER BY article.created DESC ';
     if ($limit!=0) { 
          $sql .= ' LIMIT '. $limit;
