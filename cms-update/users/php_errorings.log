@@ -1,6 +1,0 @@
-[25-Jan-2018 14:50:33 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list'' in C:\xampp\htdocs\phpsqlbook\cms-update\classes\service\UserManager.php:182
-Stack trace:
-#0 C:\xampp\htdocs\phpsqlbook\cms-update\classes\service\UserManager.php(182): PDOStatement->execute()
-#1 C:\xampp\htdocs\phpsqlbook\cms-update\users\user-list.php(9): UserManager->getUsers(6, 0)
-#2 {main}
-  thrown in C:\xampp\htdocs\phpsqlbook\cms-update\classes\service\UserManager.php on line 182

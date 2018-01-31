@@ -9,13 +9,13 @@
     header( "Location: page-not-found.php" );
     exit();              // Redirect user
   }
-$page_title .= htmlentities($category->name, ENT_QUOTES, 'UTF-8');
-  $meta_description = htmlentities($category->description, ENT_QUOTES, 'UTF-8');
+$page_title .= Utilities::clean($category->name);
+  $meta_description = Utilities::clean($category->description);
   include 'includes/header.php';
 ?>
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading"><?= htmlentities($category->name, ENT_QUOTES, 'UTF-8'); ?></h1>
+    <h1 class="jumbotron-heading"><?= Utilities::clean($category->name); ?></h1>
     <p class="lead text-muted"><?= $category->description ?></p>
   </div>
 </section>

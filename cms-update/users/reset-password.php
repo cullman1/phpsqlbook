@@ -40,7 +40,7 @@ include dirname(__DIR__) . '/includes/header.php';
     <div class="container mt-4 mb-4">
       <div class="row justify-content-md-center">
         <div class="col col-lg-4">
-  <form  method="post" action="reset-password.php?token=<?= htmlspecialchars($token, ENT_QUOTES, 'UTF-8'); ?>">
+  <form  method="post" action="reset-password.php?token=<?= Utilities::clean_link($token); ?>">
    <h4 class="card-title">Reset Password</h4>
     <label for="password">Enter Your New Password:</label>
     <input type="password" name="password" id="password" /> <?= $error['password']; ?><br />

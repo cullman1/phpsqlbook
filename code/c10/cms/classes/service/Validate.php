@@ -30,6 +30,7 @@ public static function isText($string, $min = 0, $max = 30000){
   return TRUE;
 }
 public static function isPassword($password) {
+$error = false;
   if( (strlen($password)<8) OR (strlen($password)>32) ) { $error = TRUE; } 
   if(preg_match_all('/[A-Z]/', $password)<1) { $error = TRUE; }// if no A-Z return FALSE
   if(preg_match_all('/[a-z]/', $password)<1) { $error = TRUE; }// if no a-z return FALSE  
@@ -52,7 +53,7 @@ public static function isConfirmPassword($password, $confirm) {
     return FALSE;
   }
 }
-public static function isSafeHTML($string, $min, $max) {
+public static function isHTML($string, $min, $max) {
   $string = html_entity_decode($string);
   $config = HTMLPurifier_Config::createDefault();
   $purifier = new HTMLPurifier($config);

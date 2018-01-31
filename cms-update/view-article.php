@@ -17,29 +17,29 @@ if (!(isset($article_images)) || sizeof($article_images)<1) {
   $article_images = array(new Image());
 }
 
-$page_title .= htmlentities($article->title, ENT_QUOTES, 'UTF-8') . ' ' .  
-                 htmlentities($article->category, ENT_QUOTES, 'UTF-8') . ' by ' .  
-                 htmlentities($article->author, ENT_QUOTES, 'UTF-8');
-  $meta_description = htmlentities($article->summary, ENT_QUOTES, 'UTF-8');
+$page_title .= Utilities::clean($article->title) . ' ' .  
+                 Utilities::clean($article->category) . ' by ' .  
+                 Utilities::clean($article->author);
+  $meta_description = Utilities::clean($article->summary);
 include 'includes/header.php';
 ?>
 <section>
-  <h1 class="display-4"><?=  htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
+  <h1 class="display-4"><?=  Utilities::clean($article->title) ?></h1>
   <div class="credit">
-    <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= htmlentities( $article->author, ENT_QUOTES, 'UTF-8') ?></a> on <i><?= $article->created ?></i>.
+    <?= $article->category ?> by <a href="<?= ROOT ?>users/<?= $article->seo_user ?>"><?= Utilities::clean( $article->author) ?></a> on <i><?= $article->created ?></i>.
   </div>
 
   <div class="row">
     <div id="art_image" class="col-8">
     <?php if (sizeof($article_images) < 2) { ?>
-      <img src="../uploads/<?=  htmlentities( $article_images[0]->file , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $article_images[0]->alt , ENT_QUOTES, 'UTF-8')?>"/>
+      <img src="../uploads/<?=  Utilities::clean( $article_images[0]->file)?>" alt="<?= Utilities::clean( $article_images[0]->alt)?>"/>
     <?php } else { ?>
       <div class="gallery">
         <div id="photo-viewer"></div>
         <div id="thumbnails">
         <?php foreach ($article_images as $image) { ?>
-            <a href="../uploads/<?= htmlentities( $image->file , ENT_QUOTES, 'UTF-8')?>" alt="<?= htmlentities( $image->alt , ENT_QUOTES, 'UTF-8')?>" class="thumb" />
-            <img src="../uploads/thumb/<?= htmlentities( $image->file , ENT_QUOTES, 'UTF-8')?>" alt="<?=htmlentities( $image->alt , ENT_QUOTES, 'UTF-8')?>"/></a>
+            <a href="../uploads/<?= Utilities::clean( $image->file)?>" alt="<?= Utilities::clean( $image->alt)?>" class="thumb" />
+            <img src="../uploads/thumb/<?= Utilities::clean( $image->file )?>" alt="<?=Utilities::clean( $image->alt)?>"/></a>
         <?php } ?>
         </div>
       </div>
@@ -59,9 +59,9 @@ include 'includes/header.php';
             echo '<i class="fa fa-heart-o"></i> ';
           }
         ?>
-        Likes <?= htmlentities($article->like_count , ENT_QUOTES, 'UTF-8') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Likes <?= Utilities::clean($article->like_count ) ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <i class="fa fa-comment-o"></i> Comments: <?=  htmlentities( $article->comment_count , ENT_QUOTES, 'UTF-8') ?>
+        <i class="fa fa-comment-o"></i> Comments: <?=  Utilities::clean( $article->comment_count ) ?>
       </div>
       <?= $article->content ?>
     </div>
@@ -71,7 +71,7 @@ include 'includes/header.php';
       <div class="col-8">
         <h2 class="display-4">Comments</h2>
         <?php if ($userManager->isLoggedIn()) { ?>
-          <form method="post" action="<?= ROOT ?>add_comment?id=<?= htmlspecialchars($article->article_id, ENT_QUOTES, 'UTF-8'); ?>" class="comment">
+          <form method="post" action="<?= ROOT ?>add_comment?id=<?= clean_link($article->article_id); ?>" class="comment">
             <h4>Add a comment</h4>
             <textarea id="comment" name="comment" class="form-control"></textarea><br/>
             <button type="submit" class="btn btn-primary">Submit comment</button>
@@ -84,9 +84,9 @@ include 'includes/header.php';
              data-comment="<?= $comment->comment_id ?>" data-parent="<?= $comment->parent_id ?>">
             <b><span class="author"><?= $comment->author ?></span></b>
             <?php if ($comment->reply_to_id) { ?>
-              <span class="reply_to"> &lt; In reply to: <?=  htmlentities( $comment->reply_to , ENT_QUOTES, 'UTF-8')?></span>
+              <span class="reply_to"> &lt; In reply to: <?=  Utilities::clean( $comment->reply_to )?></span>
             <?php } ?>
-            <p><?= htmlentities($comment->comment , ENT_QUOTES, 'UTF-8'); ?></p>
+            <p><?= Utilities::clean($comment->comment ); ?></p>
             <div class="date"><?= $comment->posted; ?></div>
           </div>
         <?php } ?> 

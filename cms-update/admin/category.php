@@ -20,7 +20,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   }
 } else {  // The form was posted so validate the data and try to update
   $errors['name']        = (Validate::isName($name, 1, 256)         ? '' : 'Name should be letters A-z and numbers 0-9 and contain no HTML tags');
-  $errors['description'] = (Validate::IsSafeHTML($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters and only contain allowed HTML tags.');
+  $errors['description'] = (Validate::isHTML($description, 1, 1000) ? '' : 'Description should be between 1 and 1000 characters and only contain allowed HTML tags.');
   if (mb_strlen(implode($errors)) > 0) {                          // If data valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                     // Otherwise
@@ -47,18 +47,18 @@ include 'includes/header.php';
 
 <section>
 
-  <h2><?=htmlentities( $action,ENT_QUOTES,'UTF-8');?> category</h2>
+  <h2><?=Utilities::clean( $action);?> category</h2>
   <?= $alert ?>
 
-  <form action="category.php?id=<?=htmlspecialchars($category->category_id,ENT_QUOTES,'UTF-8');?>&action=<?=htmlspecialchars($action,ENT_QUOTES,'UTF-8'); ?>" method="post">
+  <form action="category.php?id=<?=Utilities::clean_link($category->category_id);?>&action=<?=Utilities::clean_link($action); ?>" method="post">
     <div class="form-group">
       <label for="name">Name: </label>
-      <input name="name" id="name" value="<?= htmlentities( $category->name, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
+      <input name="name" id="name" value="<?= Utilities::clean( $category->name) ?>" class="form-control">
       <span class="errors"><?= $errors['name'] ?></span>
     </div>
     <div class="form-group">
       <label for="description">Description: </label>
-      <textarea name="description" id="description" class="form-control"><?=  htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
+      <textarea name="description" id="description" class="form-control"><?=  Utilities::clean($category->description); ?></textarea>
       <span class="errors"><?= $errors['description'] ?></span>
     </div>
     <div class="form-group">

@@ -12,6 +12,7 @@
   require_once 'classes/service/ArticleManager.php';
   require_once 'classes/service/CategoryManager.php';
   require_once 'classes/service/UserManager.php';
+  require_once 'classes/service/Utilities.php';
   require_once 'classes/service/Validate.php';
   require_once 'vendor/html-purifier-4.9.3/library/HTMLPurifier.auto.php';
 

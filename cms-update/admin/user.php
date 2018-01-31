@@ -65,27 +65,27 @@ include 'includes/header.php';
   <h2><?=$action?> user</h2>
   <?= $alert ?>
 
-  <form action="user.php?action=<?= $action ?>&id=<?= htmlspecialchars($id,ENT_QUOTES,'UTF-8'); ?>" method="POST" >
+  <form action="user.php?action=<?= $action ?>&id=<?= clean_link($id); ?>" method="POST" >
     <div class="form-group">
       <label for="forename">Forename: </label>
-      <input name="forename" id="forename" value="<?= htmlentities( $user->forename, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
+      <input name="forename" id="forename" value="<?= Utilities::clean( $user->forename) ?>" class="form-control">
       <span class="errors"><?= $errors['forename'] ?></span>
     </div>
     <div class="form-group">
       <label for="surname">Surname: </label>
-      <input name="surname" id="surname" value="<?= htmlentities( $user->surname, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
+      <input name="surname" id="surname" value="<?= Utilities::clean( $user->surname) ?>" class="form-control">
       <span class="errors"><?= $errors['surname'] ?></span>
     </div>
     <div class="form-group">
       <label for="email">Email: </label>
-      <input type="email" name="email" id="email" value="<?= htmlentities( $user->email, ENT_QUOTES, 'UTF-8') ?>" class="form-control">
+      <input type="email" name="email" id="email" value="<?= Utilities::clean( $user->email) ?>" class="form-control">
       <span class="errors"><?= $errors['email'] ?></span>
     </div>
     <div class="form-group">
       <label for="role">Role: </label>
       <select name="role" id="role">
-        <option value="1" <?php if ($user->role == '1') { echo 'selected'; } ?>>Public user</option>
-        <option value="2" <?php if ($user->role == '2') { echo 'selected'; } ?>>Administrator</option>
+        <option value="1" <?php if ($user->role == '2') { echo 'selected'; } ?>>Public user</option>
+        <option value="2" <?php if ($user->role == '1') { echo 'selected'; } ?>>Administrator</option>
       </select>
     </div>
     <input type="submit" name="create" value="save" class="btn btn-primary">

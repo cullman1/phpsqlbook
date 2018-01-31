@@ -42,8 +42,8 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $errors['file'] = 'File too large to upload';
   }
   $errors['title']    = (Validate::isText($title, 1, 64)      ? '' : 'Not a valid title');
-  $errors['summary']  = (Validate::IsSafeHTML($summary, 1, 160)   ? '' : 'Not a valid summary');
-  $errors['content']  = (Validate::IsSafeHTML($content, 1, 2000)  ? '' : 'Not valid content');
+  $errors['summary']  = (Validate::isText($summary, 1, 160)   ? '' : 'Not a valid summary');
+  $errors['content']  = (Validate::isHTML($content, 1, 2000)  ? '' : 'Not valid content');
 
   $uploadedfile = (file_exists($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']) );
    $croppedfile = (isset($_POST['imagebase64'])  ? $_POST['imagebase64'] : '');
@@ -118,22 +118,22 @@ include 'includes/header.php';
   <h2 class="display-4 mb-4"><?=$action?> article</h2>
   <?= $alert ?>
 
-  <form action="article.php?include=croppie&id=<?=htmlspecialchars($article->article_id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" method="post" enctype="multipart/form-data">
+  <form action="article.php?include=croppie&id=<?=Utilities::clean_link($article->article_id); ?>&action=<?=Utilities::clean_link($action); ?>" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col-8">
         <div class="form-group">
           <label for="title">Title: </label>
-          <input name="title" id="title" value="<?=  htmlentities($article->title) ?>" class="form-control">
+          <input name="title" id="title" value="<?=  Utilities::clean($article->title) ?>" class="form-control">
           <span class="errors"><?= $errors['title'] ?></span>
         </div>
         <div class="form-group">
           <label for="summary">Summary: </label>
-          <textarea name="summary" id="summary" class="form-control"><?=  htmlentities($article->summary, ENT_QUOTES, 'UTF-8') ?></textarea>
+          <textarea name="summary" id="summary" class="form-control"><?=  Utilities::clean($article->summary) ?></textarea>
           <span class="errors"><?= $errors['summary'] ?></span>
         </div>
         <div class="form-group">
           <label for="content">Content: </label>
-          <textarea name="content" id="content" class="form-control"><?=  htmlentities($article->content, ENT_QUOTES, 'UTF-8') ?></textarea>
+          <textarea name="content" id="content" class="form-control"><?=  Utilities::clean($article->content) ?></textarea>
           <span class="errors"><?= $errors['content'] ?></span>
         </div>
 
@@ -189,7 +189,7 @@ include 'includes/header.php';
           <br/><span class="errors"><?= $errors['alt'] ?></span>
         </div>
         <?php foreach ($article_images as $image) {
-          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->file . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
+          echo '<img src="../' . UPLOAD_DIR . 'thumb/' . $image->file . '" alt="' . Utilities::clean($image->alt) . '" />
                 &nbsp;<br><br><a class="btn btn-primary" href="delete-image.php?page=article&id=' . $image->image_id.'&article_id=' . $article->article_id.'">Delete Image</a><br><br>';
         } ?>
 

@@ -16,13 +16,13 @@ if (isset($_GET['name'])) {
     Utilities::errorPage('page-not-found.php');
 } 
 
-$page_title      .= htmlentities($category->name, ENT_QUOTES, 'UTF-8') ;
-$meta_description =  htmlentities($category->description, ENT_QUOTES, 'UTF-8') ;
+$page_title      .= Utilities::clean($category->name) ;
+$meta_description =  Utilities::clean($category->description) ;
 
 include 'includes/header.php'; ?>
 
   <section class="jumbotron text-center">
-      <h1 class="jumbotron-heading"><?=  htmlentities($category->name, ENT_QUOTES, 'UTF-8') ?></h1>
+      <h1 class="jumbotron-heading"><?=  Utilities::clean($category->name) ?></h1>
       <p class="lead text-muted"><?=  htmlspecialchars_decode($category->description) ?></p>
   </section>
 

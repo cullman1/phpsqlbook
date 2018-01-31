@@ -27,7 +27,7 @@ class Validate {
     return TRUE;
   }
 
-  public static function IsSafeHTML($string, $min, $max) {
+  public static function isHTML($string, $min, $max) {
     $string = html_entity_decode($string);
     $config = HTMLPurifier_Config::createDefault();
     $purifier = new HTMLPurifier($config);

@@ -22,7 +22,7 @@ class User
   }
 
   public function getFullName(){
-    return htmlspecialchars(trim($this->forename) . ' ' . trim($this->surname));
+    return Utilities::clean_link(trim($this->forename) . ' ' . trim($this->surname));
   }
 
   public function getPassword(){

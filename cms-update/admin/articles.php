@@ -27,11 +27,11 @@
     <tbody>
     <?php foreach ($article_list as $article) { ?>
       <tr>
-        <td><img src="../uploads/thumb/<?= htmlentities($article->image_file, ENT_NOQUOTES, 'UTF-8');  ?>" alt="<?= htmlentities($article->image_alt, ENT_NOQUOTES, 'UTF-8'); ?>"></td>
-        <td><?= htmlentities($article->title, ENT_NOQUOTES, 'UTF-8'); ?></td>
-        <td><?= htmlentities( $article->category, ENT_NOQUOTES, 'UTF-8'); ?></td>
+        <td><img src="../uploads/thumb/<?= clean_link($article->image_file);  ?>" alt="<?= clean_link($article->image_alt); ?>"></td>
+        <td><?= Utilities::clean($article->title); ?></td>
+        <td><?= Utilities::clean($article->category); ?></td>
         <td><?= ($article->published ? 'Yes' : 'No') ?></td>
-        <td><?= htmlentities($article->author, ENT_NOQUOTES, 'UTF-8'); ?></td>
+        <td><?= Utilities::clean($article->author); ?></td>
         <td><a class="btn btn-primary" href="article.php?include=croppie&id=<?= $article->article_id?>&action=update">edit</a></td>
         <td><a class="btn btn-danger delete" href="article-delete.php?id=<?= $article->article_id?>">delete</a></td>
       </tr>

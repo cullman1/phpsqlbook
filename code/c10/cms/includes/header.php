@@ -38,6 +38,14 @@ function highlight_nav($section, $url) {
           ?>
         </ul>     <?php require_once dirname(__DIR__) .'/includes/search.php'; ?>
         <ul class="navbar-nav user-nav">
+            <?php if ($is_logged_in) { ?>
+                <?php if ($_SESSION['role']!=2 ) { ?>
+                    <li><a class="nav-item nav-link" href="<?= ROOT ?>admin/articles.php">Admin</a></li>
+                <?php } ?>
+                <li><a href="<?= ROOT ?>users/logout.php" class="nav-item nav-link" >Logout</a></li>
+            <?php  } else { ?>
+                <li><a href="<?= ROOT ?>users/login.php"  class="nav-item nav-link">Login</a></li>
+            <?php } ?>
         </ul>
       </div>
  

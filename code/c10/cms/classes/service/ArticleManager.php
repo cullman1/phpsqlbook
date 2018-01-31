@@ -146,10 +146,8 @@ function getSearchCount($term) {
     $article_list = $statement->fetchAll();             // Return matches in database
     if ($article_list) {
       foreach($article_list as $article) {
-        $article->title   = $this->showTerm(htmlentities($article->title, ENT_QUOTES,  
-                                                         'UTF-8', TRUE), $term);
-        $article->summary = $this->showTerm(htmlentities($article->summary, ENT_QUOTES,  
-                                                         'UTF-8', TRUE), $term);
+        $article->title   = $this->showTerm(Utilities::clean($article->title), $term);
+        $article->summary = $this->showTerm(Utilities::clean($article->summary), $term);
       }
       return $article_list; 
     }

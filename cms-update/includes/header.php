@@ -40,7 +40,7 @@ function highlight_nav($section, $url) {
         <ul class="navbar-nav user-nav">
         <?php if ($is_logged_in) { ?>
             <li><a href="<?= ROOT ?>users/<?= $_SESSION['seo_name'] ?>" class="nav-item nav-link"><?= $_SESSION['name'] ?>'s profile</a></li>
-            <?php if ($_SESSION['role']==2 ) { ?>
+            <?php if ($_SESSION['role']!=2 ) { ?>
               <li><a class="nav-item nav-link" href="<?= ROOT ?>admin">Admin</a></li>
             <?php } ?>
             <li><a href="<?= ROOT ?>users/logout.php" class="nav-item nav-link" >Logout</a></li>

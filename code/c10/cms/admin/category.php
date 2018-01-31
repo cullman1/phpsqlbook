@@ -21,7 +21,7 @@
   } else {  // The form was posted so validate the data and try to update
     $errors['name']  = (Validate::isName($name, 1, 256) ? '' : 
     'Name can only be A-Z/0-9');
-    $errors['description'] = (Validate::isSafeHTML($description, 1, 1000) ? '' :  
+    $errors['description'] = (Validate::isHTML($description, 1, 1000) ? '' :  
     'Description should be between 1-1000 characters and only have allowed HTML tags.');
     if (mb_strlen(implode($errors)) > 0) {                   // If data not valid
       $alert = '<div class="alert alert-danger">Please correct form errors</div>'; 
@@ -45,19 +45,19 @@
   include 'includes/header.php';
 ?>
 <section>
-  <h2><?=htmlentities( $action, ENT_QUOTES, 'UTF-8');?> category</h2>
+  <h2><?=Utilities::clean( $action);?> category</h2>
   <?= $alert ?>
-  <form method="post" action="?action=<?=htmlentities($action, ENT_QUOTES, 'UTF-8') ?>   
-        &category_id=<?=htmlentities($category->category_id, ENT_QUOTES, 'UTF-8') ?>" >
+  <form method="post" action="?action=<?=Utilities::clean($action) ?>   
+        &category_id=<?=Utilities::clean($category->category_id) ?>" >
     <div class="form-group">
     <label for="name">Name: </label>
-    <input name="name" value="<?=htmlentities( $category->name, ENT_QUOTES, 'UTF-8')?>">
+    <input name="name" value="<?=Utilities::clean( $category->name)?>">
     <span class="errors"><?= $errors['name'] ?></span>
     </div>
     <div class="form-group">
       <label for="description">Description: </label>
       <textarea name="description" id="description" class="form-control">
-       <?=  htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?>
+       <?=  Utilities::clean($category->description); ?>
       </textarea>
       <span class="errors"><?= $errors['description'] ?></span>
     </div>

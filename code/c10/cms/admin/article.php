@@ -20,14 +20,13 @@
                                   : $articleManager->getArticleById($article_id)); 
     if (!$article) {
       $alert = '<div class="alert alert-danger">Article not found</div>';
-      $article = new Article($article_id, $title, $summary, $content, $category_id,      
-                             $user_id, $published); 
+      $article = new Article(); 
       $action= 'create';
     } 
     } else {
   $errors['title'] = (Validate::isText($title, 1, 64)      ? '' : 'Invalid title');
-  $errors['summary'] = (Validate::isSafeHTML($summary,1,160) ? '' : 'Invalid summary');
-  $errors['content'] = (Validate::isSafeHTML($content,1,2000) ? '' : 'Invalid content');
+  $errors['summary'] = (Validate::isText($summary,1,160) ? '' : 'Invalid summary');
+  $errors['content'] = (Validate::isHTML($content,1,2000) ? '' : 'Invalid content');
   if (mb_strlen(implode($errors)) > 0) {                                                  
     $alert = '<div class="alert alert-danger">Please correct form errors</div>';  
  } else {                                                                          
@@ -50,24 +49,24 @@ if ( isset($result) && ($result === TRUE) ) {
 include 'includes/header.php'; ?> 
 <section>
   <h2 class="display-4 mb-4"><?=$action ?> article</h2><?= $alert ?>
-  <form method="post" action="?action=<?=htmlentities($action, ENT_QUOTES, 'UTF-8') ?> 
-   &article_id=<?=htmlentities($article->article_id, ENT_QUOTES, 'UTF-8') ?>"> 
+  <form method="post" action="?action=<?= Utilities::clean_link($action) ?> 
+   &article_id=<?=Utilities::clean_link($article->article_id) ?>"> 
     <div class="col-8">
       <div class="form-group">
       <label for="title">Title: </label>
-      <input name="title" value="<?=htmlentities($article->title)?>">
+      <input name="title" value="<?=Utilities::clean($article->title)?>">
       <span class="errors"><?= $errors['title'] ?></span>  
     </div>
     <div class="form-group">
     <label for="summary">Summary: </label>
     <textarea name="summary" id="summary" class="form-control">
-    <?=htmlentities($article->summary, ENT_QUOTES, 'UTF-8') ?></textarea>
+    <?=Utilities::clean($article->summary) ?></textarea>
     <span class="errors"><?= $errors['summary'] ?></span>  
   </div>
   <div class="form-group">
     <label for="content">Content: </label>
      <textarea name="content" id="content" class="form-control">
-     <?= htmlentities($article->content, ENT_QUOTES, 'UTF-8') ?></textarea>
+     <?= Utilities::clean($article->content) ?></textarea>
     <span class="errors"><?= $errors['content'] ?></span>  
   </div>
   <div class="form-group">

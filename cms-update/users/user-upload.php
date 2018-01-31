@@ -125,25 +125,25 @@ include '../includes/header.php';
   <h2 class="display-4 mt-4 mb-3"><?=$action?> work</h2>
   <?= $alert ?>
 
-  <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>users/user-upload.php?include=croppie&article_id=<?=htmlspecialchars($article->article_id, ENT_QUOTES, 'UTF-8'); ?>&action=<?=htmlspecialchars($action, ENT_QUOTES, 'UTF-8'); ?>" >
+  <form method="POST" enctype="multipart/form-data" action="<?= ROOT ?>users/user-upload.php?include=croppie&article_id=<?=Utilities::clean_link($article->article_id); ?>&action=<?=Utilities::clean_link($action); ?>" >
 
     <div class="row">
       <div class="col-8">
 
-        <input name="id" value="<?=  htmlentities($article->article_id) ?>" type="hidden">
+        <input name="id" value="<?=  Utilities::clean($article->article_id) ?>" type="hidden">
         <div class="form-group">
           <label for="title">Title: </label>
-          <input name="title" id="title" value="<?=  htmlentities($article->title) ?>" class="form-control">
+          <input name="title" id="title" value="<?=  Utilities::clean($article->title) ?>" class="form-control">
           <span class="errors"><?= $errors['title'] ?></span>
         </div>
         <div class="form-group">
           <label for="summary">Summary: </label>
-          <textarea name="summary" id="summary" class="form-control"><?=  htmlentities($article->summary, ENT_QUOTES, 'UTF-8') ?></textarea>
+          <textarea name="summary" id="summary" class="form-control"><?=  Utilities::clean($article->summary) ?></textarea>
           <span class="errors"><?= $errors['summary'] ?></span>
         </div>
         <div class="form-group">
           <label for="content">Content: </label>
-          <textarea name="content" id="content" class="form-control"><?=  htmlentities($article->content, ENT_QUOTES, 'UTF-8') ?></textarea>
+          <textarea name="content" id="content" class="form-control"><?=  Utilities::clean($article->content) ?></textarea>
           <span class="errors"><?= $errors['content'] ?></span>
         </div>
 
@@ -184,7 +184,7 @@ include '../includes/header.php';
           <span class="errors"><?= $errors['alt'] ?></span>
         </div>
         <?php foreach ($article_images as $image) {
-          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->file . '" alt="' . htmlentities($image->alt, ENT_QUOTES, 'UTF-8') . '" />
+          echo '<img src="' . ROOT . UPLOAD_DIR . 'thumb/' . $image->file . '" alt="' . Utilities::clean($image->alt) . '" />
                 &nbsp;    <a class="btn btn-primary" href="' . ROOT . 'admin/delete-image.php?page=user&id=' . $image->image_id.'&article_id=' . $article->article_id.'">Delete Image</a><br><br>';
         } ?>
 

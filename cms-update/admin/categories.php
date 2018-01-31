@@ -19,8 +19,8 @@
     <tbody>
       <?php foreach ($category_list as $category) { ?>
       <tr>
-        <td><?= htmlentities($category->name, ENT_QUOTES, 'UTF-8'); ?></td>
-        <td><?= htmlentities($category->description, ENT_QUOTES, 'UTF-8'); ?></td>
+        <td><?= Utilities::clean($category->name); ?></td>
+        <td><?= Utilities::clean($category->description); ?></td>
         <td><?= ($category->navigation ? 'Yes' : 'No') ?></td>
         <td><a class="btn btn-primary" href="category.php?id=<?= $category->category_id?>&action=update">edit</a></td>
         <td><a class="btn btn-danger delete" href="category-delete.php?id=<?= $category->category_id?>">delete</a></td>

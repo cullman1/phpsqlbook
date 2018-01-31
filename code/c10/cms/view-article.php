@@ -8,23 +8,23 @@
     header( "Location: page-not-found.php" );
     exit();                                              // Redirect user
   }                                                      // Otherwise start the template
-$page_title .= htmlentities($article->title, ENT_QUOTES, 'UTF-8') . ' ' .  
-                 htmlentities($article->category, ENT_QUOTES, 'UTF-8') . ' by ' .  
-                 htmlentities($article->author, ENT_QUOTES, 'UTF-8');
-  $meta_description = htmlentities($article->summary, ENT_QUOTES, 'UTF-8');
+$page_title .= Utilities::clean($article->title) . ' ' .  
+                 Utilities::clean($article->category) . ' by ' .  
+                 Utilities::clean($article->author);
+  $meta_description = Utilities::clean($article->summary);
   include 'includes/header.php';                         // Show the header
 ?>
 <section>
- <h1 class="display-4"><?= htmlentities($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
+ <h1 class="display-4"><?= Utilities::clean($article->title) ?></h1>
   <div class="credit">
-    <?= htmlentities($article->category, ENT_QUOTES, 'UTF-8') ?> 
+    <?= Utilities::clean($article->category) ?> 
     by <a href="<?= ROOT ?>view-user.php?user_id=<?= $article->user_id ?>">
-    <?= htmlentities($article->author, ENT_QUOTES, 'UTF-8') ?></a> 
+    <?= Utilities::clean($article->author) ?></a> 
     on <?= $article->created ?>
   </div>
   <div class="row">
     <div class="col-8"><img src="<?= ROOT ?>uploads/<?= $article->image_file ?>" 
-      alt="<?= htmlentities($article->image_alt, ENT_QUOTES, 'UTF-8') ?>" /></div>
+      alt="<?= Utilities::clean($article->image_alt) ?>" /></div>
     <div class="col-4"><?= $article->content ?></div>
   </div>  
 </section>

@@ -23,9 +23,9 @@
     $result   = $imageManager->deleteImage($image_id);
     if ($result === TRUE) {
       if ($page == "article") {
-        Utilities::errorPage('admin/article.php?include=croppie&action=update&id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
+        Utilities::errorPage('admin/article.php?include=croppie&action=update&id='. clean_link($article_id));
       } else {
-        Utilities::errorPage( 'users/user-upload.php?include=croppie&action=update&article_id='. htmlentities($article_id, ENT_QUOTES, "UTF-8"));
+        Utilities::errorPage( 'users/user-upload.php?include=croppie&action=update&article_id='. clean_link($article_id));
       }
     }
   }

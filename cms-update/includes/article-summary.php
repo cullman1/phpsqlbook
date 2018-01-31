@@ -1,15 +1,15 @@
   <div class="card article-summary">
-   <a href="<?= ROOT . $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">
-    <img class="card-img-top" src="<?= ROOT ?>uploads/<?= htmlentities($article->image_file, ENT_QUOTES, 'UTF-8') ?>" alt="<?=  htmlentities($article->image_alt, ENT_QUOTES, 'UTF-8') ?>">
+   <a href="<?= ROOT . $article->seo_category ?>/<?= Utilities::clean_link($article->seo_title) ?>">
+    <img class="card-img-top" src="<?= ROOT ?>uploads/<?= Utilities::clean_link($article->image_file) ?>" alt="<?=  Utilities::clean($article->image_alt) ?>">
    </a>
     <div class="card-body text-center">
-      <a href="<?= ROOT . $article->seo_category ?>/<?= htmlentities($article->seo_title, ENT_QUOTES, 'UTF-8') ?>">
-        <h5 class="card-title"><?= htmlentities($article->title, ENT_QUOTES, 'UTF-8')?></h5>
+      <a href="<?= ROOT . Utilities::clean_link($article->seo_category) ?>/<?= Utilities::clean_link($article->seo_title) ?>">
+        <h5 class="card-title"><?= Utilities::clean($article->title)?></h5>
       </a>
       <p><?= $article->summary ?></p>
       <p>
-        Posted in <a href="<?= ROOT .  htmlentities( $article->seo_category, ENT_QUOTES, 'UTF-8') ?>"><?=  htmlentities( $article->category, ENT_QUOTES, 'UTF-8') ?></a>
-        by <a href="<?= ROOT ?>users/<?=  htmlentities( $article->seo_user, ENT_QUOTES, 'UTF-8') ?>"><?=  htmlentities( $article->author, ENT_QUOTES, 'UTF-8')?></a>
+        Posted in <a href="<?= ROOT .  Utilities::clean_link( $article->seo_category) ?>"><?=  Utilities::clean_link( $article->category) ?></a>
+        by <a href="<?= ROOT ?>users/<?=  Utilities::clean_link( $article->seo_user) ?>"><?=  Utilities::clean_link( $article->author) ?></a>
       </p>
     </div>
     <div class="card-footer">
@@ -21,15 +21,15 @@
             } else {
               echo '<i class="fa fa-heart-o"></i> ';
             }
-         echo htmlentities( $article->like_count, ENT_QUOTES, 'UTF-8'); ?>
+         echo Utilities::clean( $article->like_count); ?>
         </div>
         <div class="col">
-          <div class="text-right"><i class="fa fa-comment-o"></i> <?=  htmlentities( $article->comment_count, ENT_QUOTES, 'UTF-8') ?></div>
+          <div class="text-right"><i class="fa fa-comment-o"></i> <?=  Utilities::clean( $article->comment_count) ?></div>
         </div>
       </div>
       <div class="row">
         <?php if ($my_profile) {
-          echo '<div class="col"><a href="' . ROOT . 'users/update/' .  htmlentities( $article->seo_title, ENT_QUOTES, 'UTF-8') .'" class="btn btn-primary">edit</a></div>';
+          echo '<div class="col"><a href="' . ROOT . 'users/update/' .  Utilities::clean_link( $article->seo_title) .'" class="btn btn-primary">edit</a></div>';
         } ?>
       </div>
     </div>
