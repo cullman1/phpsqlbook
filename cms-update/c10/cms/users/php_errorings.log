@@ -1,0 +1,42 @@
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\code\c10\cms\classes\service\Validate.php on line 34
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   2. Validate::isPassword() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:17
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\code\c10\cms\classes\service\Validate.php on line 36
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   2. Validate::isPassword() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:17
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\code\c10\cms\classes\service\Validate.php on line 38
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   2. Validate::isPassword() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:17
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Notice:  Undefined variable: error in C:\xampp\htdocs\phpsqlbook\code\c10\cms\classes\service\Validate.php on line 40
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:14:08 Europe/Berlin] PHP   2. Validate::isPassword() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:17
+[30-Jan-2018 13:14:39 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::getUserByEmail() in C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php on line 21
+[30-Jan-2018 13:14:39 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:14:39 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:16:17 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::getUserByEmail() in C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php on line 21
+[30-Jan-2018 13:16:17 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:16:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:16:42 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::getUserByEmail() in C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php on line 21
+[30-Jan-2018 13:16:42 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:16:42 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:17:00 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::getUserByEmail() in C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php on line 21
+[30-Jan-2018 13:17:00 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:17:00 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:17:41 Europe/Berlin] PHP Fatal error:  Call to undefined method UserManager::getUserByEmail() in C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php on line 22
+[30-Jan-2018 13:17:41 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:17:41 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:18:17 Europe/Berlin] PHP Fatal error:  Class 'Utilities' not found in C:\xampp\htdocs\phpsqlbook\code\c10\cms\classes\service\UserManager.php on line 94
+[30-Jan-2018 13:18:17 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:18:17 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:18:17 Europe/Berlin] PHP   2. UserManager->createSuperAdmin() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:28
+[30-Jan-2018 13:18:38 Europe/Berlin] PHP Fatal error:  Class 'Utilities' not found in C:\xampp\htdocs\phpsqlbook\code\c10\cms\classes\service\UserManager.php on line 101
+[30-Jan-2018 13:18:38 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:18:38 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0
+[30-Jan-2018 13:18:38 Europe/Berlin] PHP   2. UserManager->createSuperAdmin() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:28
+[30-Jan-2018 13:20:36 Europe/Berlin] PHP Notice:  Undefined variable: picture in C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php on line 25
+[30-Jan-2018 13:20:36 Europe/Berlin] PHP Stack trace:
+[30-Jan-2018 13:20:36 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\code\c10\cms\users\setup.php:0

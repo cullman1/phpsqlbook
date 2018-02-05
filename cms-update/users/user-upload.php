@@ -77,7 +77,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
 
- if (mb_strlen(implode($errors)) > 0) {                                         // If data not valid
+ if (strlen(implode($errors)) > 0) {                                         // If data not valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                                       // Otherwise
      if ($action === 'create') {

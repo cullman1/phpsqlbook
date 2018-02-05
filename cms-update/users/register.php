@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errors['file'] .= (!file_exists('../uploads/' . $filename) ? '' : 'A file with that name already exists.');
     }
 
-    if (mb_strlen(implode($errors)) < 1) {
+    if (strlen(implode($errors)) < 1) {
         if (!empty($userManager->getUserByEmail($email))) {
             $alert = '<div class="alert alert-danger">That email is already in use</div>';
         } else {

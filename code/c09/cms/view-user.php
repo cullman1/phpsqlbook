@@ -1,10 +1,10 @@
 <?php
   require_once 'config.php';
 
-  $user_id = ( isset($_GET['user_id']) ? $_GET['user_id'] : '');
-  if (isset($_GET['user_id']) && is_numeric($_GET['user_id']) ) {  // If check passes
-    $user           = $userManager->getUserById($_GET['user_id']);
-    $users_articles = $articleManager->getArticleSummariesByUserId($_GET['user_id']);
+  $user_id = ( isset($user_id) ? $user_id : '');
+  if (isset($user_id) && is_numeric($user_id) ) {  // If check passes
+    $user           = $userManager->getUserById($user_id);
+    $users_articles = $articleManager->getArticleSummariesByUserId($user_id);
   }
   if (empty($user)) {
     header( "Location: page-not-found.php" );

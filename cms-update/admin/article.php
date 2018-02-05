@@ -34,7 +34,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
   if (!$article) {
     $alert = '<div class="alert alert-danger">Article not found</div>';
     //Correct error that if we go back to page it's still in update mode
-    $article       = new Article($id, $title, $summary, $content, $category_id, $user_id, $published); // Create Article object
+    $article       = new Article(); // Create Article object
     $action= 'create';
   }
 } else {
@@ -71,7 +71,7 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     $errors['file'] .= (!file_exists('../uploads/'. $filename)        ? '' : 'A file with that name already exists.');
   }
 
-  if (mb_strlen(implode($errors)) > 0) {                                            // If data not valid
+  if (strlen(implode($errors)) > 0) {                                            // If data not valid
     $alert = '<div class="alert alert-danger">Please correct form errors</div>'; // Error
   } else {                                                                       // Otherwise
     if ($action === 'create') {

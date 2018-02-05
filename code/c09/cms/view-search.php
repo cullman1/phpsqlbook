@@ -4,7 +4,7 @@
   $term = ( isset($_GET['term']) ? trim($_GET['term']) : ''); // Get search term 
   if (!empty($term)) {                                        // If search sent
     $errors['test'] = (Validate::isSafeHtml($term, 1, 64) ? '' : 'Not a valid search');
-    if (mb_strlen(implode($errors)) == 0) {                                            // If data not valid
+    if (strlen(implode($errors)) == 0) {                                            // If data not valid
       $count = $articleManager->getSearchCount($term);          // Get count of matches
       if ($count > 0) {                                         // If matches are found
         $article_list = $articleManager->searchArticles($term); // Get the results
@@ -18,7 +18,7 @@
   <div class="container">
     <h1 class="jumbotron-heading">Search</h1>
    <?php 
-     if (!empty($term) && (mb_strlen(implode($errors)) == 0)) {                                         // If search term sent
+     if (!empty($term) && (strlen(implode($errors)) == 0)) {                                         // If search term sent
        echo "You searched for <strong>$display_term</strong>";
        if ($count > 0) { 
          echo "<br/>We found $count article(s) containing your term."; //Number of hits          

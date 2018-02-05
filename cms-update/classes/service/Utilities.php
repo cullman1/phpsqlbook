@@ -22,11 +22,11 @@ class Utilities
     return $text;
   }
 
-  public static function Utilities::clean($item) {
+  public static function clean($item) {
     return htmlentities($item, ENT_QUOTES, 'UTF-8') ;
   }
 
-   public static function Utilities::clean_link($item) {
+   public static function clean_link($item) {
     return htmlspecialchars($item, ENT_QUOTES, 'UTF-8') ;
   }
 

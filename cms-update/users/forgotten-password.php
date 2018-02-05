@@ -12,7 +12,7 @@ $errors = array('email' => '');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $error['email']    = (Validate::isEmail($email) ? '' : 'Please enter a valid email.'); 
 
-  if (mb_strlen(implode($error)) < 1) {
+  if (strlen(implode($error)) < 1) {
       $user = $userManager->getUserByEmail($email);
   }
   if ($user) {

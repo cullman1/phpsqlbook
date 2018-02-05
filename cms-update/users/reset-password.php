@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Has form been submitted?
 
     $alert = '<div class="alert alert-danger">Password not updated.</div>'; 
 
-    if (mb_strlen(implode($error)) < 1) {
+    if (strlen(implode($error)) < 1) {
         $user = $userManager->getUserFromToken($token, 'password_reset');           // Get user
     }
   if (!empty($user)) {                                               // If found user
