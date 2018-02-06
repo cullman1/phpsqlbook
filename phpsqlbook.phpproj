@@ -1095,6 +1095,7 @@
     <Compile Include="code\c10\cms\admin\categories.php" />
     <Compile Include="code\c10\cms\admin\category-delete.php" />
     <Compile Include="code\c10\cms\admin\category.php" />
+    <Compile Include="code\c10\cms\admin\includes\ErrorMessages.php" />
     <Compile Include="code\c10\cms\admin\includes\footer.php" />
     <Compile Include="code\c10\cms\admin\includes\header.php" />
     <Compile Include="code\c10\cms\classes\model\Article.php" />
@@ -1109,6 +1110,7 @@
     <Compile Include="code\c10\cms\classes\service\Validate.php" />
     <Compile Include="code\c10\cms\config.php" />
     <Compile Include="code\c10\cms\includes\article-summary.php" />
+    <Compile Include="code\c10\cms\includes\ErrorMessages.php" />
     <Compile Include="code\c10\cms\includes\footer.php" />
     <Compile Include="code\c10\cms\includes\header.php" />
     <Compile Include="code\c10\cms\includes\search.php" />

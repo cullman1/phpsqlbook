@@ -8,8 +8,8 @@ $error = array('email' => '', 'password'=>'');             // Form errors
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error['email']     = (Validate::isEmail($email) ? '' : 'Please enter a valid email address.');
-  //  $error['password']  = (Validate::isPassword($password) ? '' : 'Your password must contain 1 uppercase letter, 1 lowercase letter, 
-  //          and a number. It must be between 8 and 32 characters.\'');
+    //$error['password']  = (Validate::isPassword($password) ? '' : 'Your password must contain 1 uppercase letter, 1 lowercase letter, 
+    //        and a number. It must be between 8 and 32 characters.\'');
     $valid = implode($error);
 
     if (mb_strlen($valid) > 0 ) {
@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $user = $userManager->getUserByEmailPassword($email, $password);
       if ($user) {
         $userManager->createUserSession($user);
-        Utilities::errorPage('index.php');
+        //Utilities::errorPage('index.php');
+        header('Location: ../index.php');
       } else {
         $alert = '<div class="alert alert-danger">Login failed</div>';
     }
@@ -43,7 +44,7 @@ include dirname(__DIR__) . '/includes/header.php';
             <input type="password" name="password" placeholder="Password" class="form-control" /><br>
             <div class="error"><?= $error['password']; ?></div>
             <button type="submit" class="btn btn-primary">Login</button><br>
-           
+            <a href="<?= ROOT ?>users/forgotten-password.php" class="card-link">Forgotten your password?</a> <br>
           </form>
         </div>
       </div>

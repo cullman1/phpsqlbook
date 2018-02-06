@@ -24,7 +24,6 @@ $userManager->redirectNonAdmin();
         </ul>
         <ul class="navbar-nav user-nav">
           <?php if ($is_logged_in) { ?>
-            <li><a class="nav-item nav-link" href="<?= ROOT ?>users/<?=$_SESSION['seo_name']?>"><?= $_SESSION["name"] ?>'s profile</a></li>
             <li><a class="nav-item nav-link" href="<?= ROOT ?>users/logout.php">Logout</a></li>
           <?php  } else { ?>
             <li><a class="nav-item nav-link" href="<?= ROOT ?>users/login.php">Login</a></li>

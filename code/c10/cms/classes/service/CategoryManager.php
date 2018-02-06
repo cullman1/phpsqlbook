@@ -47,7 +47,7 @@ class CategoryManager {
     $statement->bindValue(':navigation', $category->navigation, PDO::PARAM_BOOL);         
     try {                                                              // Try block
     $statement->execute();                                           // Execute
-    $category->category_id = $connection->lastInsertId();
+    $category->category_id = $pdo->lastInsertId();
     return TRUE;                                                  // Succeeded
   } catch (PDOException $error) {                                    // Otherwise
     if ($error->errorInfo[1] == 1062) {                              // If a duplicate

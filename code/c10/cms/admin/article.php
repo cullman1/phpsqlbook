@@ -1,76 +1,64 @@
-<?php 
-  require_once '../config.php';
-  $userManager->redirectNonAdmin();
-  $user_list     = $userManager->getAllUsers();   
-  $category_list = $categoryManager->getAllCategories();
-  $id     = filter_input(INPUT_GET,'article_id', FILTER_VALIDATE_INT);    
-  $action = (isset($_GET['action'])       ? $_GET['action'] : 'create'); 
-  $title         = ( isset($_POST['title'])       ? trim(($_POST['title']))       : '');
-  $summary       = ( isset($_POST['summary'])     ? trim(($_POST['summary']))     : '');
-  $content       = ( isset($_POST['content'])     ? trim(($_POST['content']))     : '');   
-  $published     = ( isset($_POST['published'])   ? (int)$_POST['published']           : '');
-  $user_id       = ( isset($_POST['user_id'])     ? (int)$_POST['user_id']             : '');   
-  $category_id   = ( isset($_POST['category_id']) ? $_POST['category_id']         : ''); 
-  $article = new Article($id, $title, $summary, $content, $category_id,                          
-                         $user_id, $published);   
-  $errors        = array('title' => '', 'summary'=>'', 'content'=>''); // Form errors
-  $alert         = '';                                                 // Status message
-   // Form not submitted
-  if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
-    $article = ($id == '' ? $article : $articleManager->getArticleById($id));
-   if (!$article) {
-      header('Location: ../page-not-found.php');
-      exit;
-    }
-  } 
-   // Form submitted
-  if ( ($_SERVER['REQUEST_METHOD'] == 'POST') ) {
-    $errors['title']   = (Validate::isText($title,   1, 64)   ? '' : 'Invalid title');
-    $errors['summary'] = (Validate::isText($summary, 1, 160)  ? '' : 'Invalid summary');
-    $errors['content'] = (Validate::isHTML($content, 1, 2000) ? '' : 'Invalid content');
+<?php
+require_once '../config.php';
+$userManager->redirectNonAdmin();
+$user_list     = $userManager->getAllUsers();
+$category_list = $categoryManager->getAllCategories();
+$id            = filter_input(INPUT_GET,'article_id', FILTER_VALIDATE_INT);
+$action        = ( isset($_GET['action']) ? $_GET['action'] : 'create');
+$title         = $_POST['title']        ?? '';
+$summary       = $_POST['summary']      ?? '';
+$content       = $_POST['content']      ?? '';
 
-    // If form has errors
+$published     = $_POST['published']    ?? '';
+$user_id       = $_POST['user_id']      ?? '';
+$category_id   = $_POST['category_id']  ?? '';
+$errors        = array('title' => '', 'summary'=>'', 'content'=>'');
+$article       = new Article($id, $title, $summary, $content, $category_id, $user_id,
+    $published);
+
+// Form not submitted yet, try to load the requested article
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    $article = (empty($id) ? $article : $articleManager->getArticleById($id));
+    if (!$article) {
+        header('Location: ../page-not-found.php');
+        exit;
+    }
+}
+// Form was submitted, try to create or update the article
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $errors['title'] = (Validate::isText($title, 1, 64) ? '' : $error_title);
+    $errors['summary'] = (Validate::isText($summary, 1, 160) ? '' : $error_summary);
+    $errors['content'] = (Validate::isHTML($content, 1, 2000) ? '' : $error_content);
     if (strlen(implode($errors)) > 0) {
-      $alert = '<div class="alert alert-danger">Please correct form errors</div>';
+        $alert = "<div class=\"alert alert-danger\">$error_form_correct</div>";
+    } else {
+        if (strlen(implode($errors)) == 0) {
+            if ($action == 'create') $result = $articleManager->create($article); // Create
+            if ($action == 'update') $result = $articleManager->update($article); // Update
+        }
+        if (isset($result) && ($result === TRUE)) {
+            $alert = "<div class=\"alert alert-success\">$action $alert_success</div>";
+            $action = 'update';
+        }
+        if (isset($result) && ($result !== TRUE)) {
+            $alert = "<div class=\"alert alert-danger\">$result</div>";
+        }
     }
-
-    // If form is valid
-    if (strlen(implode($errors)) == 0) {
-      if ($action === 'create') {
-        $result = $articleManager->create($article);  // Add article to database
-      }
-      if ($action === 'update') {
-        $result = $articleManager->update($article);   // Add article to database
-      }
-    }
-
-    // If update succeeded
-    if ( isset($result) && ($result === TRUE) ) {
-      $alert = '<div class="alert alert-success">' . $action . ' article ' 
-               . $article->article_id .' succeeded</div>';
-      $action = 'update';
-    }
-    // If update failed
-    if (isset($result) && ($result !== TRUE) ) {
-      $alert = '<div class="alert alert-danger">' . $result . '</div>';
-    }
-  }
-
+}
 include 'includes/header.php'; ?> 
 <section>
-  <h2 class="display-4 mb-4"><?=$action ?> article</h2><?= $alert ?>
-  <form method="post" action="?action=<?= Utilities::clean_link($action) ?> 
-   &article_id=<?=Utilities::clean_link($article->article_id) ?>"> 
+  <h2 class="display-4 mb-4"><?=$action ?> article</h2><?= $alert ?? '' ?>
+  <form method="post" action="?action=<?= Utilities::clean_link($action) ?>&article_id=<?=Utilities::clean_link($article->article_id) ?>">
     <div class="col-8">
       <div class="form-group">
       <label for="title">Title: </label>
       <input name="title" value="<?=Utilities::clean($article->title)?>">
-      <span class="error"><?= $errors['name'] ?? '' ?></span></span>
+      <span class="error"><?= $errors['name'] ?? '' ?></span>
     </div>
     <div class="form-group">
     <label for="summary">Summary: </label>
-    <textarea name="summary" id="summary" class="form-control">
-    <?=Utilities::clean($article->summary) ?></textarea>
+    <textarea name="summary" id="summary" class="form-control"><?=Utilities::clean($article->summary) ?></textarea>
     <span class="errors"><?= $errors['summary'] ?></span>  
   </div>
   <div class="form-group">
