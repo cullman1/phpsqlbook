@@ -14,7 +14,7 @@ $errors      = array('category_id' => '', 'name'=>'', 'description'=>'');
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     $category = ($id == '' ? $category : $categoryManager->getCategoryById($id));
-    if (!$category) {
+    if ($category) {
         header('Location: ../page-not-found.php');
         exit;
     }

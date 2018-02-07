@@ -1,45 +1,41 @@
 <?php
 class CMS {
-  private $configuration;
   private $pdo;
-
-  private $articleManager;
-  private $categoryManager;
-  private $userManager;
+  public $articleManager;
+  public $categoryManager;
+  public $userManager;
 
   public function __construct($configuration) {
-    $this->configuration = $configuration;
-  }
-
-  public function getPDO() {
-    if ($this->pdo === null) {
-      $this->pdo = new PDO($this->configuration['dsn'], 
-                           $this->configuration['username'], 
-                           $this->configuration['password']);
+      $this->pdo = new PDO(
+          $configuration['dsn'],
+          $configuration['username'],
+          $configuration['password']);
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    return $this->pdo;
+
+      $this->categoryManager = new CategoryManager($this->pdo);
+      $this->articleManager = new ArticleManager($this->pdo);
+      $this->userManager = new UserManager($this->pdo);
   }
 
-  public function getCategoryManager() {
-    if ($this->categoryManager === null) {
-      $this->categoryManager = new CategoryManager($this->getPDO());
-    }
-    return $this->categoryManager;
+  public static function redirect($page) {
+      header( "Location: http://".$_SERVER['HTTP_HOST']. ROOT. $page );
+      exit();
   }
 
-  public function getArticleManager() {
-    if ($this->articleManager === null) {
-      $this->articleManager = new ArticleManager($this->getPDO());
-    }
-    return $this->articleManager;
+  public static function clean($item) {
+      return htmlentities($item, ENT_QUOTES, 'UTF-8') ;
   }
 
-  public function getUserManager() {
-    if ($this->userManager === null) {
-      $this->userManager = new UserManager($this->getPDO());
-    }
-    return $this->userManager;
+  public static function cleanLink($item) {
+      return htmlspecialchars($item, ENT_QUOTES, 'UTF-8') ;
   }
+
+  public static function punyCodeDomain($email) {
+      $split_email =  explode('@', $email);
+      $domain = idn_to_ascii($split_email[1]); 
+      $email = $split_email[0]. '@' . $domain;
+      return $email;
+  }
+
 
 }

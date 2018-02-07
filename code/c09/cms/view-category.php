@@ -2,20 +2,20 @@
   require_once 'config.php';
   $id = ( isset($_GET['category_id']) ? $_GET['category_id'] : '');
   if (isset($id) && is_numeric($id) ) {  // If check passes
-    $category        = $categoryManager->getCategoryById($id);
-    $article_list    = $articleManager->getArticleSummariesByCategoryId($id);
+    $category        = $cms->categoryManager->getCategoryById($id);
+    $article_list    = $cms->articleManager->getArticleSummariesByCategoryId($id);
   }
   if (empty($category)) {
     header( "Location: page-not-found.php" );
     exit();              // Redirect user
   }
-$page_title .= Utilities::clean($category->name);
-  $meta_description = Utilities::clean($category->description);
+$page_title .= CMS::clean($category->name);
+  $meta_description = CMS::clean($category->description);
   include 'includes/header.php';
 ?>
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading"><?= Utilities::clean($category->name); ?></h1>
+    <h1 class="jumbotron-heading"><?= CMS::clean($category->name); ?></h1>
     <p class="lead text-muted"><?= $category->description ?></p>
   </div>
 </section>

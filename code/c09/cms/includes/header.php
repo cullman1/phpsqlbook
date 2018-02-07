@@ -1,8 +1,8 @@
 <?php
 require_once dirname(__DIR__) .'/config.php';
 $current_page    = $_SERVER['REQUEST_URI'];
-$categoryManager = $cms->getCategoryManager();
-$category_list   = $categoryManager->getNavigationCategories();
+$cms->categoryManager = $cms->getCategoryManager();
+$category_list   = $cms->categoryManager->getNavigationCategories();
 
 preg_match('/^\/cms-final\/([A-z0-9\-]+)/i', $current_page, $section);
 $section = (isset($section[1]) ? $section[1] : '');

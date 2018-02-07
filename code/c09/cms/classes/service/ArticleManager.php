@@ -146,8 +146,8 @@ function getSearchCount($term) {
     $article_list = $statement->fetchAll();             // Return matches in database
     if ($article_list) {
       foreach($article_list as $article) {
-        $article->title   = $this->showTerm(Utilities::clean($article->title), $term);
-        $article->summary = $this->showTerm(Utilities::clean($article->summary), $term);
+        $article->title   = $this->showTerm(CMS::clean($article->title), $term);
+        $article->summary = $this->showTerm(CMS::clean($article->summary), $term);
       }
       return $article_list; 
     }

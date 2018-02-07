@@ -3,24 +3,24 @@
 
   $user_id = ( isset($user_id) ? $user_id : '');
   if (isset($user_id) && is_numeric($user_id) ) {  // If check passes
-    $user           = $userManager->getUserById($user_id);
-    $users_articles = $articleManager->getArticleSummariesByUserId($user_id);
+    $user           = $cms->userManager->getUserById($user_id);
+    $users_articles = $cms->articleManager->getArticleSummariesByUserId($user_id);
   }
   if (empty($user)) {
     header( "Location: page-not-found.php" );
     exit();              // Redirect user
   }
 
-  $page_title      .= Utilities::clean($user->getFullName());
-  $meta_description = 'A selection of work by ' . Utilities::clean($user->getFullName());
+  $page_title      .= CMS::clean($user->getFullName());
+  $meta_description = 'A selection of work by ' . CMS::clean($user->getFullName());
   include 'includes/header.php'; 
 ?>
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading"><?=Utilities::clean( $user->getFullName()); ?></h1>
-<img src="uploads/<?= Utilities::clean($user->picture); ?>" alt="<?= Utilities::clean($user->getFullName()); ?>"
+    <h1 class="jumbotron-heading"><?=CMS::clean( $user->getFullName()); ?></h1>
+<img src="uploads/<?= CMS::clean($user->picture); ?>" alt="<?= CMS::clean($user->getFullName()); ?>"
     class="rounded-circle" style="max-width:100px" onerror="this.style.display='none'"/>
-    <p class="lead text-muted">Joined: <?= Utilities::clean($user->joined); ?></p>
+    <p class="lead text-muted">Joined: <?= CMS::clean($user->joined); ?></p>
   </div>
 </section>
 <div class="container">

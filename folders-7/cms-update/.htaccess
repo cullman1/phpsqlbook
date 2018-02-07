@@ -1,0 +1,35 @@
+RewriteEngine On                       # Turn on the rewriting engine
+
+# Home page
+RewriteRule ^/?$     		           index.php        	            [NC,L]
+
+# Admin pages are ignored
+RewriteRule ^admin/?$   	           admin/articles.php               [NC,L]
+RewriteRule ^admin/([A-z0-9\-\.]+)/?$  admin/$1                         [NC,L]
+
+# Membership pages
+RewriteRule ^login/?$   	           users/login.php      	        [NC,L]
+RewriteRule ^logout/?$   	           users/logout.php                 [NC,L]
+RewriteRule ^register/?$  	           users/register.php      	        [NC,L]
+RewriteRule ^lost-password/?$          users/logout.php      	        [NC,L]
+RewriteRule ^reset-password/?$   	   users/reset-password.php         [NC,L]
+
+# Likes and comments
+RewriteRule ^like/?$   		           users/like.php      		         [NC,L,QSA]
+RewriteRule ^add_comment/?$            users/add-comment.php?id=$1       [NC,L,QSA]
+RewriteRule ^add_comment_reply/?$      users/add-comment-reply.php?id=$1 [NC,L,QSA]
+
+# Search
+RewriteRule ^search/?$ 		           search.php 		                  [NC,L,QSA]
+
+# Member profiles
+RewriteRule ^users/?$  	                   users/user-list.php                   [NC,L,QSA]
+RewriteRule ^users/([A-z0-9\-]+)/?$        view-user.php?name=$1                 [NC,L,QSA]
+RewriteRule ^users/create/                 users/user-upload.php?include=croppie&action=create              [NC,L]
+RewriteRule ^users/update/([A-z0-9\-]+)/?$ users/user-upload.php?include=croppie&action=update&seo_title=$1 [NC,L]
+
+# Category pages
+RewriteRule ^([A-z0-9\-]+)/?$    	   view-category.php?name=$1        [NC,L,QSA]
+
+# Article pages
+RewriteRule ^[A-z0-9\-]+/([A-z0-9\-]+)/?$  view-article.php?title=$1    [NC,L]

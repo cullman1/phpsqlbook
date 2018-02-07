@@ -1,0 +1,4 @@
+[07-Feb-2018 11:36:56 Europe/Berlin] PHP Fatal error:  Call to undefined function cleanLink() in C:\xampp\htdocs\phpsqlbook\cms-update\admin\articles.php on line 30
+[07-Feb-2018 11:36:56 Europe/Berlin] PHP Stack trace:
+[07-Feb-2018 11:36:56 Europe/Berlin] PHP   1. {main}() C:\xampp\htdocs\phpsqlbook\cms-update\admin\articles.php:0
+[07-Feb-2018 11:40:05 Europe/Berlin] PHP Parse error:  syntax error, unexpected '?' in C:\xampp\htdocs\phpsqlbook\cms-update\admin\article.php on line 109
