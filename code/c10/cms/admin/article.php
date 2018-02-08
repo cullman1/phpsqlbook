@@ -8,7 +8,6 @@ $action        = $_GET['action']        ?? 'create';
 $title         = $_POST['title']        ?? '';
 $summary       = $_POST['summary']      ?? '';
 $content       = $_POST['content']      ?? '';
-
 $published     = $_POST['published']    ?? '';
 $user_id       = $_POST['user_id']      ?? '';
 $category_id   = $_POST['category_id']  ?? '';
@@ -31,15 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $alert = "<div class=\"alert alert-danger\">$error_form_correct</div>";
     } else {
         if (strlen(implode($errors)) == 0) {
-            if ($action == 'create') $result = $articleManager->create($article); // Create
-            if ($action == 'update') $result = $articleManager->update($article); // Update
+            if ($action == 'create') $result = $cms->articleManager->create($article); // Create
+            if ($action == 'update') $result = $cms->articleManager->update($article); // Update
         }
         if (isset($result) && ($result === TRUE)) {
             $alert = "<div class=\"alert alert-success\">$action $alert_success</div>";
             $action = 'update';
         }
         if (isset($result) && ($result !== TRUE)) {
-            $alert = "<div class=\"alert alert-danger\">$result</div>";
+            $alert = "<div class=\"alert alert-danger\">$error_article_duplicate</div>";
         }
     }
 }

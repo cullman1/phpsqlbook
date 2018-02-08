@@ -7,3 +7,4 @@ $error_form_correct = 'Please check form and try again';
 $alert_success = ' action was successful';
 $alert_login_failed = '<div class="alert alert-danger">Login failed</div>';
 $alert_check_login =  '<div class="alert alert-danger">Please check your login details</div>';
+$error_article_duplicate = "An article with that title already exists";

@@ -11,3 +11,4 @@ $error_summary = "The article content was invalid.";
 $error_form_correct = "Please correct form errors";
 
 $alert_success = "action was successful";
+$error_article_duplicate = "An article with that title already exists";

@@ -145,7 +145,7 @@ class ArticleManager {
     return substr($text, $pos_term, 100);
   }
 
-  public function create($article) {
+  public function create(Article $article) : bool{
   $pdo = $this->pdo;
   $sql = 'INSERT INTO article (title, summary, content, category_id, user_id, published)    
           VALUES (:title, :summary, :content, :category_id, :user_id, :published)';
@@ -162,14 +162,14 @@ class ArticleManager {
       return TRUE;                                                   // Say it worked
   } catch (PDOException $error) {                                    // Otherwise
     if ($error->errorInfo[1] == 1062) {                              // If a duplicate
-      return 'An article with that title exists - try a different title.'; // Error
+      return FALSE; // Error
     } else {                                                         // Otherwise
-      return $error->errorInfo[1] . ': ' . $error->errorInfo[2];     // Error
+      throw $error;
     }        
   }  
 }
 
-public function update($article){
+public function update(Article $article) : bool{
   $pdo = $this->pdo;     
   $sql = 'UPDATE article SET title = :title, content = :content, summary = :summary,
           category_id = :category_id, user_id = :user_id, published = :published 
@@ -186,21 +186,21 @@ public function update($article){
     $statement->execute();                                             // Execute SQL
     return TRUE;                                                       // Success
   } catch (PDOException $error) {                                      // Otherwise
-     return $error->errorInfo[1] . ': ' . $error->errorInfo[2];        // Error 
+      if ($error->errorInfo[1] == 1062) {                              // If a duplicate
+          return FALSE; // Error
+      } else {                                                         // Otherwise
+          throw $error;
+      }
   }
 }
 
-    public function delete($id){
+    public function delete(int $id) :bool{
         $pdo = $this->pdo;
         $sql = 'DELETE FROM article WHERE article_id = :id';                 // SQL
         $statement = $pdo->prepare($sql);                             // Prepare
         $statement->bindValue(':id', $id, PDO::PARAM_INT);            // Bind ID
-        try {
-            $statement->execute();                                      // If executes
-            return TRUE;                                                // Say succeeded
-        } catch (PDOException $error) {                               // Otherwise
-            return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
-        }
+        $statement->execute();                                      // If executes
+        return TRUE;                                                // Say succeeded
     }
 
   }
