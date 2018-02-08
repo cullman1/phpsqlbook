@@ -6,21 +6,18 @@ class UserManager {
   public function __construct($pdo) {
     $this->pdo = $pdo;
   }
-  
-  public function getUserById($user_id) {
+
+    public function getUserById($id) :?User {
     $pdo = $this->pdo;
     $sql = 'SELECT user.user_id, user.forename, user.surname, user.joined, user.email, user.picture
             FROM user 
             WHERE user_id = :id';
     $statement = $pdo->prepare($sql);
-    $statement->bindValue(':id', $user_id, PDO::PARAM_INT);
+    $statement->bindValue(':id', $id, PDO::PARAM_INT);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
     $user = $statement->fetch();
-    if (!$user) {
-      return null;
-    }
-    return $user;
+    return $user ?: NULL;
   }
 
 }

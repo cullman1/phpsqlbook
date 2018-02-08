@@ -6,7 +6,7 @@ class ArticleManager {
     $this->pdo = $pdo;
   }
   
-  public function getAllArticleSummaries($limit=0, $publish=0){
+  public function getArticleSummaries($limit=0, $publish=0){
     $pdo = $this->pdo;
     $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
              article.user_id, article.category_id, article.published,

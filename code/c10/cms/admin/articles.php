@@ -1,7 +1,7 @@
 <?php
   require_once '../config.php';
   $cms->userManager->redirectNonAdmin();
-  $article_list  = $cms->articleManager->getAllArticleSummaries(0,1);
+  $article_list  = $cms->articleManager->getArticleSummaries(0,1);
   include 'includes/header.php';
 ?>
 <section>

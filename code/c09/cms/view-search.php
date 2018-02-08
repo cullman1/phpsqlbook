@@ -3,7 +3,7 @@
   $count = 0;        
   $term = ( isset($_GET['term']) ? trim($_GET['term']) : ''); // Get search term 
   if (!empty($term)) {                                        // If search sent
-    $errors['test'] = (Validate::isSafeHtml($term, 1, 64) ? '' : 'Not a valid search');
+    $errors['test'] = (Validate::isHTML($term, 1, 64) ? '' : $error_search);
     if (strlen(implode($errors)) == 0) {                                            // If data not valid
       $count = $cms->articleManager->getSearchCount($term);          // Get count of matches
       if ($count > 0) {                                         // If matches are found
@@ -26,9 +26,9 @@
          echo "<br/>No articles containing <strong>$display_term</strong> were found";
        }   
     } else if (empty($term)) {
-      echo "No search term supplied";
+      echo $error_no_term;
     } else {
-      echo "Not a valid search";
+      echo $error_search;
     }
   ?>
   </div>

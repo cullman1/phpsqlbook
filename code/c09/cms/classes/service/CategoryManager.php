@@ -7,21 +7,18 @@ class CategoryManager {
     $this->pdo = $pdo;
   }
 
-  public function getCategoryById($category_id) {
+    public function getCategoryById($id) :?Category {
     $pdo = $this->pdo;
     $sql = 'SELECT * FROM category WHERE category_id=:id';
     $statement = $pdo->prepare($sql);
-    $statement->bindValue(':id', $category_id, PDO::PARAM_INT);
+    $statement->bindValue(':id', $id, PDO::PARAM_INT);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
     $category = $statement->fetch();
-    if (!$category) {
-      return null;
-    }
-    return $category;
-  }  
+      return $category ?:NULL;
+  }
 
-  public function getNavigationCategories(){
+    public function getNavigationCategories() :array {
     $pdo = $this->pdo;
     $sql = 'SELECT DISTINCT category.*
             FROM category 
@@ -31,9 +28,6 @@ class CategoryManager {
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
     $category_list = $statement->fetchAll();
-    if (!$category_list) {
-      return null;
-    }
-    return $category_list;
+        return $category_list ?? null;
   }
 }
