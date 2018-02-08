@@ -1,16 +1,10 @@
 <?php
   require_once 'config.php';
-
-  $user_id = ( isset($user_id) ? $user_id : '');
-  if (isset($user_id) && is_numeric($user_id) ) {  // If check passes
-    $user           = $cms->userManager->getUserById($user_id);
-    $users_articles = $cms->articleManager->getArticleSummariesByUserId($user_id);
+  if (filter_input(INPUT_GET, 'user_id', FILTER_VALIDATE_INT)) {
+    $user           = $cms->userManager->getUserById($_GET['user_id']);
+    $users_articles = $cms->articleManager->getArticleSummariesByUserId($_GET['user_id']);
   }
-  if (empty($user)) {
-    header( "Location: page-not-found.php" );
-    exit();              // Redirect user
-  }
-
+  if (empty($user))CMS::redirect('page-not-found.php');
   $page_title      .= CMS::clean($user->getFullName());
   $meta_description = 'A selection of work by ' . CMS::clean($user->getFullName());
   include 'includes/header.php'; 

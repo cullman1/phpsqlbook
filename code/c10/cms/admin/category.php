@@ -1,8 +1,8 @@
 <?php
 require_once '../config.php';
-$userManager->redirectNonAdmin();
+$cms->userManager->redirectNonAdmin();
 $id          = filter_input(INPUT_GET,'category_id', FILTER_VALIDATE_INT);
-$action      = (isset($_GET['action'])       ? $_GET['action']       : 'create');
+$action      = $_GET['action']       ?? 'create';
 $name        = $_POST['name']        ?? '';
 $description = $_POST['description']        ?? '';
 $navigation  = (isset($_POST['navigation'])  ? 1 : 0);
@@ -13,11 +13,8 @@ $errors      = array('category_id' => '', 'name'=>'', 'description'=>'');
 // Form not submitted
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
-    $category = ($id == '' ? $category : $categoryManager->getCategoryById($id));
-    if ($category) {
-        header('Location: ../page-not-found.php');
-        exit;
-    }
+    $category = (empty($id) ? $category : $cms->categoryManager->getCategoryById($id));
+    if (!$category) CMS::redirect('page-not-found.php');
 }
 
 // Form was submitted
@@ -30,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $alert = '<div class="alert alert-danger">$error_form_correct</div>';
     }  else {                                                // If data valid
         if (strlen(implode($errors)) == 0) {
-            if ($action == 'create') $result = $categoryManager->create($category);
-            if ($action == 'update') $result = $categoryManager->update($category);
+            if ($action == 'create') $result = $cms->categoryManager->create($category);
+            if ($action == 'update') $result = $cms->categoryManager->update($category);
         }
 
         if (isset($result) && ($result === TRUE)) {

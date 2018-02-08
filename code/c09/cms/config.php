@@ -20,8 +20,6 @@
 
   $cms              = new CMS($database_config);
 
-  $is_logged_in     = $cms->userManager->isLoggedIn();
-
   $page_title       = 'Creative Folk ';
   $meta_description = 'An agency for creatives';
   $site_name        = 'Creative Folk';

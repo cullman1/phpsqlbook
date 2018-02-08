@@ -1,7 +1,7 @@
 <?php
   require_once '../config.php';
-  $userManager->redirectNonAdmin();
-  $categories   = $categoryManager->getAllCategories();
+  $cms->userManager->redirectNonAdmin();
+  $categories   = $cms->categoryManager->getAllCategories();
   include 'includes/header.php';
 ?>
 <section>
