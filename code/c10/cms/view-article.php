@@ -1,13 +1,9 @@
 <?php
   require_once 'config.php';                             // Config information
-  $article_id = ( isset($_GET['article_id']) ? $_GET['article_id'] : '');                       
-  if (isset($article_id) && is_numeric($article_id)) {   // If have id
-    $article = $articleManager->getArticleById($article_id);     // Get article object
-  }  
-  if (empty($article)) {                                 // If article is empty
-    header( "Location: page-not-found.php" );
-    exit();                                              // Redirect user
-  }                                                      // Otherwise start the template
+if (filter_input(INPUT_GET, 'article_id', FILTER_VALIDATE_INT)) {
+    $article = $cms->articleManager->getArticleById($_GET['article_id']);     // Get article object
+}
+if (empty($article)) CMS::redirect('page-not-found.php');                                                       // Otherwise start the template
 $page_title .= CMS::clean($article->title) . ' ' .
                  CMS::clean($article->category) . ' by ' .
                  CMS::clean($article->author);

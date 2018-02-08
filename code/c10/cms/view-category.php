@@ -1,14 +1,10 @@
 <?php
   require_once 'config.php';
-  $id = ( isset($_GET['category_id']) ? $_GET['category_id'] : '');
-  if (isset($id) && is_numeric($id) ) {  // If check passes
-    $category        = $cms->categoryManager->getCategoryById($id);
-    $article_list    = $cms->articleManager->getArticleSummariesByCategoryId($id);
-  }
-  if (empty($category)) {
-    header( "Location: page-not-found.php" );
-    exit();              // Redirect user
-  }
+if (filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT)) {
+    $category        = $cms->categoryManager->getCategoryById($_GET['category_id']);
+    $article_list    = $cms->articleManager->getArticleSummariesByCategoryId($_GET['category_id']);
+}
+if (empty($category)) CMS::redirect('page-not-found.php');
 $page_title .= CMS::clean($category->name);
   $meta_description = CMS::clean($category->description);
   include 'includes/header.php';

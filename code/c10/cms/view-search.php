@@ -5,9 +5,9 @@
   if (!empty($term)) {                                        // If search sent
     $errors['test'] = (Validate::isHTML($term, 1, 64) ? '' : 'Not a valid search');
     if (strlen(implode($errors)) == 0) {                                            // If data not valid
-      $count = $articleManager->getSearchCount($term);          // Get count of matches
+      $count = $cms->articleManager->getSearchCount($term);          // Get count of matches
       if ($count > 0) {                                         // If matches are found
-        $article_list = $articleManager->searchArticles($term); // Get the results
+        $article_list = $cms->articleManager->searchArticles($term); // Get the results
       } 
       $display_term = CMS::cleanLink(trim($term));
     } 

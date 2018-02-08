@@ -60,7 +60,7 @@ class ArticleManager {
         $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
           article.user_id, article.category_id, article.published, 
           CONCAT(user.forename, " ", user.surname) AS author, 
-          category.name AS category_name,  category.description AS category_description,
+          category.name AS category,  category.description AS description,
            image.file AS image_file, image.alt AS image_alt 
           FROM article
           LEFT JOIN user ON article.user_id = user.user_id 
