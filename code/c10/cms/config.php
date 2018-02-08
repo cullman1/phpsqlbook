@@ -15,7 +15,7 @@
   require_once 'classes/service/Validate.php';
   require_once 'vendor/html-purifier-4.9.3/library/HTMLPurifier.auto.php';
 
-  include '../database-connection.php';
+  include dirname(__DIR__) . '../database-connection.php';
   include 'includes/ErrorMessages.php';
 
   $cms              = new CMS($database_config);
