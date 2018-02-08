@@ -5,10 +5,10 @@ class ArticleManager {
   public function __construct($pdo) {
     $this->pdo = $pdo;
   }
-  
-  public function getArticleSummaries($limit=0, $publish=0){
-    $pdo = $this->pdo;
-    $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
+
+    public function getArticleSummaries(int $limit=0, int $published=0) : array {
+        $pdo = $this->pdo;
+        $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
              article.user_id, article.category_id, article.published,
              CONCAT(user.forename, " ", user.surname) AS author,
              category.name AS category,             
@@ -19,27 +19,24 @@ class ArticleManager {
              LEFT JOIN articleimage ON articleimage.article_id = article.article_id
              LEFT JOIN image ON articleimage.image_id = image.image_id  
             WHERE category.navigation = TRUE';
-    if ($publish == 0) { 
-      $sql .= '  AND article.published = TRUE';
-    }
-      $sql .= ' ORDER BY article.created DESC ';    
-    if ($limit != 0) { 
-         $sql .= ' LIMIT '. $limit;
-    }
-   
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
-    $article_list = $statement->fetchAll();
-    if (!$article_list) {
-      return null;
-    }
-    return $article_list;
-  }
+        if ($published == 0) {
+            $sql .= '  AND article.published = TRUE';
+        }
+        $sql .= ' ORDER BY article.created DESC ';
+        if ($limit != 0) {
+            $sql .= ' LIMIT '. $limit;
+        }
 
-  public function getArticleById($article_id) {
-  $pdo = $this->pdo;
-  $sql = 'SELECT article.*, 
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
+        return $statement->fetchAll();
+
+    }
+
+    public function getArticleById(int $id) : ?Article {
+        $pdo = $this->pdo;
+        $sql = 'SELECT article.*, 
            CONCAT(user.forename, " ", user.surname) AS author, 
            user.picture AS author_image, 
            category.name AS category, 
@@ -50,20 +47,17 @@ class ArticleManager {
            LEFT JOIN articleimage ON articleimage.article_id = article.article_id
            LEFT JOIN image ON articleimage.image_id = image.image_id
           WHERE article.article_id=:id';                     // Query
-  $statement = $pdo->prepare($sql);                          // Prepare
-  $statement->bindValue(':id', $article_id, PDO::PARAM_INT); // Bind value   
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');          
-  $article = $statement->fetch();
-  if (!$article) {
-    return null;
-  }
-  return $article;
-}
+        $statement = $pdo->prepare($sql);                          // Prepare
+        $statement->bindValue(':id', $id, PDO::PARAM_INT); // Bind value
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');
+        $article = $statement->fetch();
+        return $article ?: NULL;
+    }
 
-public function getArticleSummariesByCategoryId($category_id){
-  $pdo = $this->pdo;
-  $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
+    public function getArticleSummariesByCategoryId(int $id) : ?array {
+        $pdo = $this->pdo;
+        $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
           article.user_id, article.category_id, article.published, 
           CONCAT(user.forename, " ", user.surname) AS author, 
           category.name AS category_name,  category.description AS category_description,
@@ -76,20 +70,16 @@ public function getArticleSummariesByCategoryId($category_id){
           WHERE article.category_id=:category_id 
           AND article.published = TRUE
           ORDER BY article.created DESC';
-  $statement = $pdo->prepare($sql);
-  $statement->bindValue(':category_id', $category_id, PDO::PARAM_INT);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
-  $article_list = $statement->fetchAll();
-  if (!$article_list) {
-    return null;
-  }
-  return $article_list;
-}
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':category_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
+        return $statement->fetchAll();
+    }
 
-public function getArticleSummariesByUserId($user_id){
-  $pdo = $this->pdo;
-  $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
+    public function getArticleSummariesByUserId(int $id) : ?array {
+        $pdo = $this->pdo;
+        $sql = 'SELECT article.article_id, article.title, article.summary, article.created, 
           article.user_id, article.category_id, article.published, 
           CONCAT(user.forename, " ", user.surname) AS author, 
           category.name AS category,
@@ -102,33 +92,29 @@ public function getArticleSummariesByUserId($user_id){
               WHERE article.user_id=:user_id 
           AND article.published = TRUE
           ORDER BY article.created DESC';
-  $statement = $pdo->prepare($sql);
-  $statement->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-  $statement->execute();
-  $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
-  $article_list = $statement->fetchAll();
-  if (!$article_list) {
-    return null;
-  }
-  return $article_list;
-}
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'ArticleSummary');
+        return $statement->fetchAll();
+    }
 
-function getSearchCount($term) {
-    $pdo = $this->pdo;
-    $like_term = '%' . $term . '%';
-    $sql = 'SELECT COUNT(*) FROM article
+    function getSearchCount(string $term) : ?int {
+        $pdo = $this->pdo;
+        $like_term = '%' . $term . '%';
+        $sql = 'SELECT COUNT(*) FROM article
             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))
      AND article.published = TRUE';
-    $statement = $pdo->prepare($sql);                   // Prepare 
-    $statement->bindParam(':term', $like_term);         // Bind search term
-    $statement->execute();                              // Execute
-    return $statement->fetchColumn();                   // Return count from function
-  }
-  
-  function searchArticles($term) {
-    $pdo = $this->pdo;
-    $like_term = '%' . $term . '%'; 
-    $sql = 'SELECT article.*, category.name AS category, 
+        $statement = $pdo->prepare($sql);                   // Prepare
+        $statement->bindParam(':term', $like_term);         // Bind search term
+        $statement->execute();                              // Execute
+        return $statement->fetchColumn();                   // Return count from function
+    }
+
+    function searchArticles(string $term) : ?array {
+        $pdo = $this->pdo;
+        $like_term = '%' . $term . '%';
+        $sql = 'SELECT article.*, category.name AS category, 
              CONCAT(user.forename, " ", user.surname) AS author,
              image.file AS image_file, image.alt AS image_alt
             FROM article 
@@ -138,21 +124,20 @@ function getSearchCount($term) {
              LEFT JOIN image ON image.image_id = articleimage.image_id
             WHERE ((title LIKE :term) OR (summary LIKE :term) OR (content LIKE :term))
               AND article.published = TRUE
-             GROUP BY title';           
-    $statement = $pdo->prepare($sql);                   // Prepare 
-    $statement->bindParam(':term', $like_term);         // Bind search term
-    $statement->execute();                              // Execute
-    $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');          
-    $article_list = $statement->fetchAll();             // Return matches in database
-    if ($article_list) {
-      foreach($article_list as $article) {
-        $article->title   = $this->showTerm(CMS::clean($article->title), $term);
-        $article->summary = $this->showTerm(CMS::clean($article->summary), $term);
-      }
-      return $article_list; 
+             GROUP BY title';
+        $statement = $pdo->prepare($sql);                   // Prepare
+        $statement->bindParam(':term', $like_term);         // Bind search term
+        $statement->execute();                              // Execute
+        $statement->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Article');
+        $article_list = $statement->fetchAll();             // Return matches in database
+        if ($article_list) {
+            foreach($article_list as $article) {
+                $article->title   = $this->showTerm(CMS::clean($article->title), $term);
+                $article->summary = $this->showTerm(CMS::clean($article->summary), $term);
+            }
+        }
+        return $article_list;
     }
-    return null;
-  }
 
   function showTerm($text, $term) {
     $pos_term = ((mb_strpos($text, $term)-50) > 0 ? (mb_strpos($text, $term)-50) : 0);
@@ -204,5 +189,18 @@ public function update($article){
      return $error->errorInfo[1] . ': ' . $error->errorInfo[2];        // Error 
   }
 }
+
+    public function delete($id){
+        $pdo = $this->pdo;
+        $sql = 'DELETE FROM article WHERE article_id = :id';                 // SQL
+        $statement = $pdo->prepare($sql);                             // Prepare
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);            // Bind ID
+        try {
+            $statement->execute();                                      // If executes
+            return TRUE;                                                // Say succeeded
+        } catch (PDOException $error) {                               // Otherwise
+            return $error->errorInfo[1] . ': ' . $error->errorInfo[2];  // Error
+        }
+    }
 
   }

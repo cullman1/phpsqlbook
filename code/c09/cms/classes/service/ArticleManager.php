@@ -19,9 +19,9 @@ class ArticleManager {
              LEFT JOIN articleimage ON articleimage.article_id = article.article_id
              LEFT JOIN image ON articleimage.image_id = image.image_id  
             WHERE category.navigation = TRUE';
-    if ($published == 0) {
+   // if ($published == 0) {
       $sql .= '  AND article.published = TRUE';
-    }
+   // }
       $sql .= ' ORDER BY article.created DESC ';    
     if ($limit != 0) { 
          $sql .= ' LIMIT '. $limit;

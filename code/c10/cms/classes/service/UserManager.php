@@ -6,22 +6,30 @@ class UserManager {
   public function __construct($pdo) {
     $this->pdo = $pdo;
   }
-  
-  public function getUserById($user_id) {
-    $pdo = $this->pdo;
-    $sql = 'SELECT user.user_id, user.forename, user.surname, user.joined, user.email, user.picture
+
+    public function getUserById($id) :?User {
+        $pdo = $this->pdo;
+        $sql = 'SELECT user.user_id, user.forename, user.surname, user.joined, user.email, user.picture
             FROM user 
             WHERE user_id = :id';
-    $statement = $pdo->prepare($sql);
-    $statement->bindValue(':id', $user_id, PDO::PARAM_INT);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
-    $user = $statement->fetch();
-    if (!$user) {
-      return null;
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
+        $user = $statement->fetch();
+        return $user ?: NULL;
     }
-    return $user;
-  }
+
+    public function getAllUsers() :array {
+        $pdo = $this->pdo;
+        $sql = 'SELECT user.user_id, user.forename, user.surname, user.email, user.joined 
+            FROM user';
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
+        $user_list = $statement->fetchAll();
+        return $user_list ?? null;
+    }
 
     public function getUserByEmail($email) {
     $pdo = $this->pdo;
@@ -34,19 +42,6 @@ class UserManager {
       $user = $statement->fetch();
     }
     return ($user ? $user : FALSE);
-  }
-
-  public function getAllUsers() {
-    $pdo = $this->pdo;
-    $sql = 'SELECT user.user_id, user.forename, user.surname, user.email FROM user';
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
-    $user_list = $statement->fetchAll();
-    if (!$user_list) {
-      return null;
-    }
-    return $user_list;
   }
 
    public function isLoggedIn() {

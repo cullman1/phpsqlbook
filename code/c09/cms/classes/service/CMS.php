@@ -19,8 +19,12 @@ class CMS {
 
   public static function redirect($page) {
       header( "Location: http://".$_SERVER['HTTP_HOST']. ROOT. $page );
-      exit();
+      exit;
   }
+
+    public function formatDate($timestamp) {
+        return date('jS F Y', strtotime($timestamp));
+    }
 
   public static function clean($item) {
       return htmlentities($item, ENT_QUOTES, 'UTF-8') ;

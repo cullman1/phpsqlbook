@@ -11,13 +11,11 @@
 </section>
 <div class="container">
   <div class="row">
-    <?php if ($article_list) {
+    <?php
             foreach ($article_list as $article) {
               include 'includes/article-summary.php';
             } 
-          } else {
-            echo "<p>No articles were found in this category</p>";
-          } ?>
+          ?>
   </div>
 </div>
 <?php include 'includes/footer.php'; ?>

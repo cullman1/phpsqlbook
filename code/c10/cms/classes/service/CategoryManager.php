@@ -7,35 +7,29 @@ class CategoryManager {
     $this->pdo = $pdo;
   }
 
-  public function getCategoryById($category_id) {
-    $pdo = $this->pdo;
-    $sql = 'SELECT * FROM category WHERE category_id=:id';
-    $statement = $pdo->prepare($sql);
-    $statement->bindValue(':id', $category_id, PDO::PARAM_INT);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
-    $category = $statement->fetch();
-    if (!$category) {
-      return null;
+    public function getCategoryById($id) :?Category {
+        $pdo = $this->pdo;
+        $sql = 'SELECT * FROM category WHERE category_id=:id';
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
+        $category = $statement->fetch();
+        return $category ?:NULL;
     }
-    return $category;
-  }  
 
-  public function getNavigationCategories(){
-    $pdo = $this->pdo;
-    $sql = 'SELECT DISTINCT category.*
+    public function getNavigationCategories() :array {
+        $pdo = $this->pdo;
+        $sql = 'SELECT DISTINCT category.*
             FROM category 
             INNER JOIN article ON article.category_id = category.category_id
             WHERE navigation = TRUE';
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
-    $category_list = $statement->fetchAll();
-    if (!$category_list) {
-      return null;
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
+        $category_list = $statement->fetchAll();
+        return $category_list ?? null;
     }
-    return $category_list;
-  }
 
   public function create($category) {
     $pdo = $this->pdo;                                              // Connection
@@ -86,17 +80,13 @@ class CategoryManager {
     return TRUE;                                                    // Say succeeeded
   }
 
-  public function getAllCategories() {
+  public function getAllCategories() :array {
     $pdo = $this->pdo;
     $sql = 'SELECT * FROM category';
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Category');
-    $category_list = $statement->fetchAll();
-    if (!$category_list) {
-      return null;
-    }
-    return $category_list;
+    return $statement->fetchAll();
   }
 
 }

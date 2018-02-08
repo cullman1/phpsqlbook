@@ -23,8 +23,7 @@
         <td><?= ($article->published ? 'Yes' : 'No') ?></td>
         <td><?= CMS::clean($article->author); ?></td>
         <td><a class="btn btn-primary" href="article.php?article_id=<?= $article->article_id?>&action=update">edit</a></td>
-        <td><a class="btn btn-danger delete" href="article-delete.php?
-             article_id=<?= $article->article_id?>">delete</a></td>
+        <td><a class="btn btn-danger delete" href="article-delete.php?article_id=<?= $article->article_id?>">delete</a></td>
       </tr>
       <?php  } ?>
     </tbody>
