@@ -47,18 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 include 'includes/header.php';
 ?>
     <section>
-        <h2><?=Utilities::clean($action);?> category</h2>
+        <h2><?=CMS::clean($action);?> category</h2>
         <?= $alert ?? '' ?>
-        <form method="post" action="?action=<?=Utilities::clean_link($action) ?>&category_id=<?=Utilities::clean_link($category->category_id) ?>" >
+        <form method="post" action="?action=<?=CMS::cleanLink($action) ?>&category_id=<?=CMS::cleanLink($category->category_id) ?>" >
             <div class="form-group">
                 <label for="name">Name: </label>
-                <input name="name" value="<?=Utilities::clean($category->name)?>">
+                <input name="name" value="<?=CMS::clean($category->name)?>">
                 <span class="errors"><?= $errors['name'] ?></span>
             </div>
             <div class="form-group">
                 <label for="description">Description: </label>
                 <textarea name="description" id="description" class="form-control">
-       <?=Utilities::clean($category->description); ?>
+       <?=CMS::clean($category->description); ?>
       </textarea>
                 <span class="errors"><?= $errors['description'] ?></span>
             </div>

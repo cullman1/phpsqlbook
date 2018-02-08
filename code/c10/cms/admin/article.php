@@ -1,10 +1,10 @@
 <?php
 require_once '../config.php';
-$userManager->redirectNonAdmin();
-$user_list     = $userManager->getAllUsers();
-$category_list = $categoryManager->getAllCategories();
+$cms->userManager->redirectNonAdmin();
+$user_list     = $cms->userManager->getAllUsers();
+$category_list = $cms->categoryManager->getAllCategories();
 $id            = filter_input(INPUT_GET,'article_id', FILTER_VALIDATE_INT);
-$action        = ( isset($_GET['action']) ? $_GET['action'] : 'create');
+$action        = $_GET['action']        ?? 'create';
 $title         = $_POST['title']        ?? '';
 $summary       = $_POST['summary']      ?? '';
 $content       = $_POST['content']      ?? '';
@@ -18,11 +18,8 @@ $article       = new Article($id, $title, $summary, $content, $category_id, $use
 
 // Form not submitted yet, try to load the requested article
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    $article = (empty($id) ? $article : $articleManager->getArticleById($id));
-    if (!$article) {
-        header('Location: ../page-not-found.php');
-        exit;
-    }
+    $article = (empty($id) ? $article : $cms->articleManager->getArticleById($id));
+    if (!$article)  $cms->redirect('page-not-found.php');
 }
 // Form was submitted, try to create or update the article
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -49,22 +46,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 include 'includes/header.php'; ?> 
 <section>
   <h2 class="display-4 mb-4"><?=$action ?> article</h2><?= $alert ?? '' ?>
-  <form method="post" action="?action=<?= Utilities::clean_link($action) ?>&article_id=<?=Utilities::clean_link($article->article_id) ?>">
+  <form method="post" action="?action=<?= CMS::cleanLink($action) ?>&article_id=<?=CMS::cleanLink($article->article_id) ?>">
     <div class="col-8">
       <div class="form-group">
       <label for="title">Title: </label>
-      <input name="title" value="<?=Utilities::clean($article->title)?>">
+      <input name="title" value="<?=CMS::clean($article->title)?>">
       <span class="error"><?= $errors['name'] ?? '' ?></span>
     </div>
     <div class="form-group">
     <label for="summary">Summary: </label>
-    <textarea name="summary" id="summary" class="form-control"><?=Utilities::clean($article->summary) ?></textarea>
+    <textarea name="summary" id="summary" class="form-control"><?=CMS::clean($article->summary) ?></textarea>
     <span class="errors"><?= $errors['summary'] ?></span>  
   </div>
   <div class="form-group">
     <label for="content">Content: </label>
      <textarea name="content" id="content" class="form-control">
-     <?= Utilities::clean($article->content) ?></textarea>
+     <?= CMS::clean($article->content) ?></textarea>
     <span class="errors"><?= $errors['content'] ?></span>  
   </div>
   <div class="form-group">

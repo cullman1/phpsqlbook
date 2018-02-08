@@ -74,17 +74,17 @@ class UserManager {
     if (session_status() == PHP_SESSION_NONE) {
       session_start();
     }
-    $_SESSION['name']     = Utilities::clean_link($user->forename);
+    $_SESSION['name']     = CMS::cleanLink($user->forename);
 
     $_SESSION['user_id']  = $user->user_id;
     $_SESSION['role']     = $user->role;
   }
    public function redirectNonAdmin() {
     if (!isset($_SESSION['role'])) {
-      Utilities::errorPage('users/login.php');
+      CMS::redirect('users/login.php');
     } else {
       if ($_SESSION['role'] == 2) {
-        Utilities::errorPage('page-not-found.php');
+          CMS::redirect('page-not-found.php');
       }
     }
   }

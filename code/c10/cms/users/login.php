@@ -1,27 +1,24 @@
 <?php
-require_once('../config.php');
+  require_once('../config.php');
+  $email    = $_POST['email'] ?? '' ;
+  $password = $_POST['password'] ?? '' ;
+  $error = array('email' => '', 'password'=>'');             // Form errors
 
-$email    = ( isset($_POST['email'])    ? $_POST['email']    : '' );
-$password = ( isset($_POST['password']) ? $_POST['password'] : '' ); 
-$alert  = '';
-$error = array('email' => '', 'password'=>'');             // Form errors
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error['email']     = (Validate::isEmail($email) ? '' : 'Please enter a valid email address.');
     //$error['password']  = (Validate::isPassword($password) ? '' : 'Your password must contain 1 uppercase letter, 1 lowercase letter, 
     //        and a number. It must be between 8 and 32 characters.\'');
     $valid = implode($error);
 
-    if (mb_strlen($valid) > 0 ) {
-      $alert = '<div class="alert alert-danger">Please check your login details</div>';
+    if (strlen($valid) > 0 ) {
+      $alert = $alert_check_login;
     } else {
-      $user = $userManager->getUserByEmailPassword($email, $password);
+      $user = $cms->userManager->getUserByEmailPassword($email, $password);
       if ($user) {
-        $userManager->createUserSession($user);
-        //Utilities::errorPage('index.php');
-        header('Location: ../index.php');
+          $cms->userManager->createUserSession($user);
+          CMS::redirect('index.php');
       } else {
-        $alert = '<div class="alert alert-danger">Login failed</div>';
+        $alert = $alert_login_failed;
     }
   }
 
@@ -36,7 +33,7 @@ include dirname(__DIR__) . '/includes/header.php';
 
           <form class="login-form" method="post" action="">
             <h4 class="card-title">Login</h4>
-            <?= $alert ?>
+            <?= $alert ?? '' ?>
             <label for="email">Email</label><br>
             <input type="text" name="email" id="email" placeholder="Email" class="form-control" /><br>
             <div class="title-error"><?= $error['email']; ?></div>

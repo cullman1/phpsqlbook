@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__DIR__) .'/../config.php';
-$userManager->redirectNonAdmin();
+$cms->userManager->redirectNonAdmin();
 ?>
 <footer>
   &copy; <?php echo date("Y"); ?>

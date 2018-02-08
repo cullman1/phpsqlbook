@@ -18,7 +18,7 @@ class Utilities
     return htmlentities($item, ENT_QUOTES, 'UTF-8') ;
   }
 
-  public static function clean_link($item) {
+  public static function cleanLink($item) {
     return htmlspecialchars($item, ENT_QUOTES, 'UTF-8') ;
   }
 

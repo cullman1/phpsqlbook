@@ -72,11 +72,11 @@ if ( !($_SERVER['REQUEST_METHOD'] == 'POST') ) {
     if ($action === 'update') $result = $cms->articleManager->update($article);      // Add article to database
     if ((($croppedfile) && ($uploadedfile)) && isset($result) && ($result === TRUE)) {
        file_put_contents('../uploads/'.$filename, $data);
-       $moveresult   = $imageManager->moveImage($filename, $data);         // Move image
+       $moveresult   = $cms->imageManager->moveImage($filename, $data);         // Move image
         $image->file = $filename;
-      $saveresult   = $imageManager->saveImage($article->article_id, $image);          // Add image to database
-      $resizeresult = $imageManager->resizeImage($filename, 600 );   // Resize image
-      $thumbresult  = $imageManager->resizeImage($filename, 150, TRUE); // Create thumbnail
+      $saveresult   = $cms->imageManager->saveImage($article->article_id, $image);          // Add image to database
+      $resizeresult = $cms->imageManager->resizeImage($filename, 600 );   // Resize image
+      $thumbresult  = $cms->imageManager->resizeImage($filename, 150, TRUE); // Create thumbnail
      
       if ($moveresult != TRUE || $saveresult != TRUE || $resizeresult !=TRUE || $thumbresult != TRUE) {
         $result .= $moveresult .  $saveresult . $resizeresult . $thumbresult; // Add the error to result
