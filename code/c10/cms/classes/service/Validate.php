@@ -1,6 +1,8 @@
 <?php
 class Validate {
- 
+
+    private $error_title = '';
+
 public static function isNumber($number, $min = 0, $max = 4294967295) {
   $options = array('options' => array('min_range'=>$min, 'max_range'=>$max));
   if (!filter_var($number, FILTER_VALIDATE_INT, $options)) {

@@ -50,7 +50,7 @@ include 'includes/header.php'; ?>
       <div class="form-group">
       <label for="title">Title: </label>
       <input name="title" value="<?=CMS::clean($article->title)?>">
-      <span class="error"><?= $errors['name'] ?? '' ?></span>
+      <span class="error"><?= $errors['name'] ?></span>
     </div>
     <div class="form-group">
     <label for="summary">Summary: </label>

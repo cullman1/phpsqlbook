@@ -7,40 +7,35 @@ $name        = $_POST['name']        ?? '';
 $description = $_POST['description']        ?? '';
 $navigation  = (isset($_POST['navigation'])  ? 1 : 0);
 $category    = new Category($id, $name, $description, $navigation);
-
 $errors      = array('category_id' => '', 'name'=>'', 'description'=>'');
 
 // Form not submitted
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-
-    $category = (empty($id) ? $category : $cms->categoryManager->getCategoryById($id));
-    if (!$category) CMS::redirect('page-not-found.php');
+  $category = (empty($id) ? $category : $cms->categoryManager->getCategoryById($id));
+  if (!$category) CMS::redirect('page-not-found.php');
 }
-
 // Form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $errors['name'] = (Validate::isName($name, 1, 256) ? '' : $error_name);
-    $errors['description'] = (Validate::isHTML($description, 1, 1000) ? '' : $error_text);
-
-    if (strlen(implode($errors)) > 0) {                      // If data not valid
-        $alert = '<div class="alert alert-danger">$error_form_correct</div>';
-    }  else {                                                // If data valid
-        if (strlen(implode($errors)) == 0) {
-            if ($action == 'create') $result = $cms->categoryManager->create($category);
-            if ($action == 'update') $result = $cms->categoryManager->update($category);
-        }
-
-        if (isset($result) && ($result === TRUE)) {
-            $alert = "<div class=\"alert alert-success\">$action $alert_success</div>";
-            $action = 'update';
-        }
-        if (isset($result) && ($result !== TRUE)) {
-            $alert = "<div class=\"alert alert-danger\">$result</div>";
-        }
+  $errors['name'] = (Validate::isName($name, 1, 256) ? '' :
+    'The name should be between 1 and 256 characters');
+  $errors['description'] = (Validate::isHTML($description, 1, 1000) ? '' : $error_text);
+  if (strlen(implode($errors)) > 0) {                      // If data not valid
+    $alert = '<div class="alert alert-danger">$error_form_correct</div>';
+  } else {                                                // If data valid
+    if (strlen(implode($errors)) == 0) {
+      if ($action == 'create') $result = $cms->categoryManager->create($category);
+      if ($action == 'update') $result = $cms->categoryManager->update($category);
     }
-}
 
+    if (isset($result) && ($result === TRUE)) {
+      $alert = "<div class=\"alert alert-success\">$action $alert_success</div>";
+      $action = 'update';
+    }
+    if (isset($result) && ($result !== TRUE)) {
+      $alert = "<div class=\"alert alert-danger\">$result</div>";
+    }
+  }
+}
 include 'includes/header.php';
 ?>
     <section>
