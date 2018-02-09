@@ -14,12 +14,16 @@ public static function isText($string, $min = 0, $max = 30000){
     }
     return TRUE;
   }
-   public static function isEmail($email) {
-    if ( (! filter_var($email, FILTER_VALIDATE_EMAIL))) {
-       return FALSE;
+    public static function isEmail($email) {
+        if (!empty($email) && (mb_strpos($email,'@')!==false)) {
+            $email = CMS::punyCodeDomain($email);
+        }
+        if ( (! filter_var($email, FILTER_VALIDATE_EMAIL))) {
+            return FALSE;
+        }
+        return TRUE;
     }
-    return TRUE;
-  }
+
   public static function isName($string, $min = 0, $max = 100){
   $result = preg_replace('/<[^>]*>/', '',  $string); 
   $result = trim($result);
