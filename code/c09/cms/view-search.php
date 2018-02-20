@@ -4,7 +4,7 @@
   $term = ( isset($_GET['term']) ? trim($_GET['term']) : ''); // Get search term
 $errors = array('valid'=>'');
 if (!empty($term)) {                                        // If search sent
-  $errors['valid'] = (Validate::isHTML($term, 1, 64) ? '' : 'Search term not valid');
+  $errors['valid'] = Validate::isSearchTerm($term);
   if (strlen(implode($errors)) == 0) {                                            // If data not valid
     $count = $cms->articleManager->getSearchCount($term);          // Get count of matches
     if ($count > 0) {                                         // If matches are found

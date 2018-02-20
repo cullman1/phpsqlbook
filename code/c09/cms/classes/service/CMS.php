@@ -34,12 +34,4 @@ class CMS {
       return htmlspecialchars($item, ENT_QUOTES, 'UTF-8') ;
   }
 
-  public static function punyCodeDomain($email) {
-      $split_email =  explode('@', $email);
-      $domain = idn_to_ascii($split_email[1]); 
-      $email = $split_email[0]. '@' . $domain;
-      return $email;
-  }
-
-
 }
